@@ -1172,7 +1172,7 @@ l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ git checkout HEAD~1
 l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ cat database.db 
 >�>P++Ytablesqlite_sequencesqlite_sequenceCREATE TABLE sqlite_sequence(name,seq)n�;tableusersusersCREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, pass��%adminusersl3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ S
 
-```
+````
 - Có thể thấy lúc này database.db có thêm một bản ghi trong table users `adminusers`
 
 - Dùng tool view online thì thấy được password của admin là 1 phần đầu của flag.
@@ -1321,12 +1321,9 @@ fn delete_user() {
     conn.execute("DELETE FROM users WHERE id=?1;", &[&number])
         .expect("Failed to delete user!");
 }
-
 ````
 
-
 Flag2: `_gOT_thE_DB_`
-
 
 
 ### Nhánh w4rri0r-changes
