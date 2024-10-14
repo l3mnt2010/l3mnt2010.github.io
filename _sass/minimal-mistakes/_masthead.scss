@@ -3,6 +3,7 @@
    ========================================================================== */
 
 .masthead {
+  color: #000;
   position: relative;
   border-bottom: 1px solid $border-color;
   -webkit-animation: $intro-transition;
@@ -16,6 +17,7 @@
     margin-left: auto;
     margin-right: auto;
     padding: 1em;
+    color: #000;
     max-width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -67,6 +69,7 @@
   margin-right: 0;
   width: 100%;
   clear: both;
+  color: #000;
 
   .site-nav {
     margin-left: 0;
