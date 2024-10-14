@@ -217,13 +217,10 @@
 
   .visible-links {
     display: flex;
-    width: 1/2;
+    width: 600px;
     margin: auto;
     align-items: center;
     justify-content: space-between;
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
     overflow: hidden;
 
     li {
