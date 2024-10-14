@@ -695,6 +695,7 @@ def getRepository(topic):
 ```
 - Có thể thấy phương thức `getRepository` dính bug `path traversal` vì dòng ``for suffix in ['', '.md']:
         repoFile = f"{Config.knowledgePath}/{topic}{suffix}"`` nên hiển nhiên ta có thể join vào file ``../config.py`` để `languagemodels` đọc compilot_key
+
 ![image](https://hackmd.io/_uploads/ByAXfqFQ0.png)
 ![image](https://hackmd.io/_uploads/Byb_K5KXC.png)
 
@@ -718,6 +719,7 @@ user flag : `HTB{SpIP_Abu53_4_RC3}`
 
 - Mình chưa học nhiều về leo thang đặc quyền nên khá kém, mãi sau 1 buổi được 1 anh list cho là sudo -l thì matthew có thể access với quyền root mà không cần nhập mật khẩu, mình cứ nghĩ vào /root/root.txt là có root flag nhưng không, mình ngồi mất 3 tiếng để lục tung tất cả các file trong server cả /tmp/cache/,var/etc/,vv.. nhưng vẫn không có.
 - Cuối cùng tìm được manh mối:
+
 ```
 $ sudo uname -a
 
@@ -728,13 +730,12 @@ Linux WIN-1EGDT8E0CN3 4.4.0-17763-Microsoft #2268-Microsoft Thu Oct 07 16:36:00 
 
 - Bây giờ tìm xem làm sao để access ra ngoài wsl thì mình tìm được cách để mount ổ ``C:/`` ở window sang `/mnt` trên wsl.
 
-```
 Tạo một thư mục tạm để mount:
 sudo mkdir /mnt/temp
 Mount C: vào dir tmp:
 sudo mount -t drvfs C: /mnt/temp
-```
 - Lúc này trong /mnt/tmp/ sẽ access được như dưới đây:
+
 ```
 ┌──(l3mnt2010㉿ASUSEXPERTBOOK)-[~/HTBBusi/CVE-2023-27372/CVE-2023-27372-PoC]
 └─$ sudo python3 exploit.py -u http://spip.submerged.htb
@@ -1902,4 +1903,4 @@ p.then();
 - Tiến hành lấy shell
 
 
-Team write up: [Tại đây](https://kcsc.edu.vn/htb-business-ctf-2024-the-vault-of-hope-write-up?fbclid=IwY2xjawF5tBBleHRuA2FlbQIxMAABHUBADREdLyawPdAlOxwR9b0B_5qYHe7BInaovOEPljrzOkKMWqVssX3Pvw_aem_sbo3GIjSuixmivINXYVoHw)
+# Team write up: [Tại đây](https://kcsc.edu.vn/htb-business-ctf-2024-the-vault-of-hope-write-up?fbclid=IwY2xjawF5tBBleHRuA2FlbQIxMAABHUBADREdLyawPdAlOxwR9b0B_5qYHe7BInaovOEPljrzOkKMWqVssX3Pvw_aem_sbo3GIjSuixmivINXYVoHw)
