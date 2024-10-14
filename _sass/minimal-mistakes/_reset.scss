@@ -13,6 +13,9 @@ html {
   color: #131313;
   background: rgb(255, 255, 255);
   font-size: 12px;
+  background-image: url(./../../assets/images/avatar.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @include breakpoint($medium) {
     font-size: 14px;
