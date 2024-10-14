@@ -14,7 +14,9 @@ html {
   background: rgb(255, 255, 255);
   opacity: 0.6;
   font-size: 12px;
-  background-image: url(./../../assets/images/avatar.jpg);
+  background:
+  linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+  url(./../../assets/images/avatar.jpg) no-repeat center center / cover;
   background-repeat: no-repeat;
   background-size: cover;
 
