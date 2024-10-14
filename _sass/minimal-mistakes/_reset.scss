@@ -6,19 +6,24 @@
     color: #131313;
  }
 
-html {
-  /* apply a natural box layout model to all elements */
+ html {
+  /* Áp dụng mô hình bố cục hộp tự nhiên cho tất cả các phần tử */
   box-sizing: border-box;
-  // background: linear-gradient(to right, black,#010033,black);
+  
+  /* Đặt màu sắc và kích thước font */
   color: #131313;
-  opacity: 0.6;
   font-size: 12px;
+  
+  /* Sử dụng nhiều lớp nền: lớp phủ mờ và hình ảnh nền */
   background:
-  linear-gradient(rgba(255, 255, 255, 0.927), rgba(255, 255, 255, 0.927)),
-  url(./../../assets/images/avatar.jpg) no-repeat center center / cover;
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    url(./../../assets/images/avatar.jpg) no-repeat center center / cover;
+  
+  /* Các thiết lập khác */
   background-repeat: no-repeat;
   background-size: cover;
 
+  /* Các breakpoint cho kích thước font */
   @include breakpoint($medium) {
     font-size: 14px;
   }
@@ -31,9 +36,11 @@ html {
     font-size: 18px;
   }
 
+  /* Điều chỉnh kích thước văn bản trên các trình duyệt */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
+
 
 // ::-webkit-scrollbar {
 // 	width: 17px;
