@@ -16,7 +16,7 @@
   
   /* Sử dụng nhiều lớp nền: lớp phủ mờ và hình ảnh nền */
   background:
-    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+    linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)),
     url(./../../assets/images/avatar.jpg) no-repeat center center / cover;
   
   /* Các thiết lập khác */
