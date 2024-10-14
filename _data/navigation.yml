@@ -1,0 +1,14 @@
+# main links
+main:
+  - title: "Home page"
+    url: /
+  - title: "Articles"
+    url: /year-archive/
+  - title: "Categories"
+    url: /categories/
+  - title: "Tags"
+    url: /tags/
+  # - title: "Search blog"
+  #   url: /buscador/
+  # - title: "Search POC"
+  #   url: /search-poc-github/

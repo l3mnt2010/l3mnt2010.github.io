@@ -1,0 +1,7 @@
+{% assign lang = site.locale | slice: 0,2 | default: "en" %}
+{% case lang %}
+{% when "gr" %}
+  {% assign lang = "gr" %}
+{% else %}
+  {% assign lang = "en" %}
+{% endcase %}

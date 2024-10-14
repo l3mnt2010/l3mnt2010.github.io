@@ -1,0 +1,46 @@
+/* CSS cho result-item */
+.result-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+.result-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.result-item p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+.result-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.result-item li {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.result-item a {
+    text-decoration: none;
+    color: #b60e4e;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.result-item a:hover {
+    color: #f21368;
+}
+
+.footer {
+    margin-bottom: 10px;
+}
