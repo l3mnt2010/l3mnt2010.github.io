@@ -1900,3 +1900,6 @@ p.then();
 ```
 
 - Tiến hành lấy shell
+
+
+Team write up: [Tại đây](https://kcsc.edu.vn/htb-business-ctf-2024-the-vault-of-hope-write-up?fbclid=IwY2xjawF5tBBleHRuA2FlbQIxMAABHUBADREdLyawPdAlOxwR9b0B_5qYHe7BInaovOEPljrzOkKMWqVssX3Pvw_aem_sbo3GIjSuixmivINXYVoHw)
