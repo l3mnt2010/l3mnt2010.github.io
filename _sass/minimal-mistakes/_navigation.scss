@@ -216,13 +216,9 @@
   }
 
   .visible-links {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: end;
-    width: 50%;
+    width: 20%;
     margin: auto;
-    -ms-flex-pack: end;
     align-items: center;
     justify-content: space-between;
     -webkit-box-flex: 1;
