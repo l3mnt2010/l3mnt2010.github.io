@@ -109,7 +109,7 @@ analytics:
 author:
   name             : "l3mnt2010"
   avatar           : "/assets/images/avatar.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "**Full Stack developer** | ** CTF-player **"
+  bio              : "**Full Stack developer** | **CTF-player**"
   # location         : "Somewhere"
   email            :
   links:
