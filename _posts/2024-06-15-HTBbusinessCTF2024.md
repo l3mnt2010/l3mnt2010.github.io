@@ -15,7 +15,7 @@ tags:
 ---
 
 <p align="center">
-<img src="https://hackmd.io/_uploads/HyYE67ioT.png">
+<img src="https://l3mnt2010.github.io/assets/images/images-icon/htb-bussiness.jpg">
 </p>
 
 # Solved challenges
