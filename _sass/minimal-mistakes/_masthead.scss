@@ -64,7 +64,6 @@
 }
 
 .masthead__menu {
-  float: left;
   margin-left: 0;
   margin-right: 0;
   width: 100%;
@@ -75,7 +74,6 @@
     margin-left: 0;
 
     @include breakpoint($small) {
-      float: right;
     }
   }
 
