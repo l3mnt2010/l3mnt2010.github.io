@@ -5,9 +5,9 @@ excerpt: "January 14, 2021 04:00 PM ICT to January 14, 2021 04:00 PM ICT"
 header:
 show_date: true
 header:
-  teaser: "../assets/images/images-icon/ImaginaryCTF2021.png"
+  teaser: "../assets/images/images-icon/chh.png"
   teaser_home_page: true
-#   icon: "https://hackmd.io/_uploads/By3gJwG0h.png"
+  icon: "https://hackmd.io/_uploads/By3gJwG0h.png"
 categories:
   - CTF
 tags:
