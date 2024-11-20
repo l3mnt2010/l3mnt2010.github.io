@@ -5,7 +5,7 @@ excerpt: "Jannuary 17, 2024 04:00 PM ICT to Jannuary 17, 2024 04:00 PM ICT"
 header:
 show_date: true
 header:
-  teaser: "../assets/images/images-icon/vsCTF.png"
+  teaser: "../assets/images/images-icon/deserial.jpg"
   teaser_home_page: true
   icon: "https://hackmd.io/_uploads/By3gJwG0h.png"
 categories:
@@ -16,7 +16,7 @@ tags:
 ---
 
 <p align="center">
-<img src="https://l3mnt2010.github.io/assets/images/images-icon/vsCTF.png" alt="">
+<img src="https://l3mnt2010.github.io/assets/images/images-icon/deserial.jpg" alt="">
 </p>
 
 # Insecure deserialization
