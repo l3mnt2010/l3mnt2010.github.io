@@ -1,5 +1,5 @@
 ---
-title: "AkasecCTF web chall ctf 2024 - solved challenges - part 1"
+title: "AkasecCTF web chall ctf 2024 - solved challenges"
 excerpt: "Jun 13, 2024 08:00 AM ICT to Jun 13, 2024 04:00 PM ICT"
 header:
 show_date: true
