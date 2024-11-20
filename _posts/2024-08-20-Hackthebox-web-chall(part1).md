@@ -1,5 +1,5 @@
 ---
-title: "Htb web chall ctf 2024 - solved challenges"
+title: "Htb web chall ctf 2024 - solved challenges - part 1"
 excerpt: "August 20, 2023 08:00 AM ICT to August 20, 2023 04:00 PM ICT"
 header:
 show_date: true
