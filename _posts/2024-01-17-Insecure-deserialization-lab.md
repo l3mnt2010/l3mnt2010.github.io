@@ -13,6 +13,7 @@ categories:
 tags:
   - CTF
   - Vietnamese
+  - Deserialize
 ---
 
 <p align="center">
