@@ -1,10 +1,10 @@
 ---
-title: "Htb business ctf 2024 the vault of hope - solved challenges in time"
-excerpt: "May 18, 2024 08:00 PM ICT to May 22, 2024 08:00 PM ICT"
+title: "Htb web chall ctf 2024 - solved challenges"
+excerpt: "August 20, 2023 08:00 AM ICT to August 19, 2023 04:00 PM ICT"
 header:
 show_date: true
 header:
-  teaser: "../assets/images/images-icon/htb-bussiness.jpg"
+  teaser: "../assets/images/images-icon/htb.jpg"
   teaser_home_page: true
   icon: "https://hackmd.io/_uploads/By3gJwG0h.png"
 categories:
@@ -15,7 +15,7 @@ tags:
 ---
 
 <p align="center">
-<img src="https://l3mnt2010.github.io/assets/images/images-icon/htb-bussiness.jpg">
+<img src="https://l3mnt2010.github.io/assets/images/images-icon/htb.jpg">
 </p>
 
 # Hack the box
