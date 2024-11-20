@@ -19,10 +19,10 @@ tags:
 <img src="https://l3mnt2010.github.io/assets/images/images-icon/htb-cyber.jpg" alt="">
 </p>
 
-# [Cyber Apocalypse 2024: Hacker Royale with KCSC](https://)
+# Cyber Apocalypse 2024: Hacker Royale with KCSC
 
 
-## [Flag Command](https://)
+## Flag Command
 
 - ![image](https://hackmd.io/_uploads/Sk2v1zlRT.png)
 
@@ -557,12 +557,12 @@ l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$
 
 flag: `HTB{w34kly_t35t3d_t3mplate5_n0t_s4f3_4t_411}`
 
-## [Time KORP](https://)
+## Time KORP
 
 - Đây là một bài command injection đơn giản với mã nguồn php.
 - ![image](https://hackmd.io/_uploads/BJz-0bfA6.png)
 
-[RECON](https://)
+[RECON
 - Đề bài cho ta source code, trước tiên thì xem cơ bản chức năng đã nha :<
 - Vào trang ta có thể thấy trang có 2 chức năng chính là hiển thị ngày và hiển thì giờ.
 - ![image](https://hackmd.io/_uploads/ByQWJffRT.png)
@@ -578,7 +578,7 @@ flag: `HTB{w34kly_t35t3d_t3mplate5_n0t_s4f3_4t_411}`
 
 - Sever nhận param format là `%Y-%m-%d` để hiển thị.
 
-[DETECT](https://)
+[DETECT
 - Okeee, như ta thấy thì chưa có lỗ hổng gì có thể tìm thấy ở trên cùng viewwww source nào :100: 
 
 - Nhìn một cách tổng quan ta có thể thấy cấu trúc cây thư mục viết theo mô hình MVC khá phổ biến hiện nay :>
@@ -692,7 +692,7 @@ class TimeModel
 - Hmm, thì đây là mình có thể vận dụng để tấn công commandinjection.
 
 
-[ATTACK](https://)
+[ATTACK
 
 - Đầu tiên mình thử dùng curl thì sever không có, thử tiếp đến wget với payload:
 
@@ -708,16 +708,16 @@ class TimeModel
 - ![image](https://hackmd.io/_uploads/SJ7V8MzC6.png)
 
 
-[Flag](https://) : `HTB{t1m3_f0r_th3_ult1m4t3_pwn4g3}`
+[Flag : `HTB{t1m3_f0r_th3_ult1m4t3_pwn4g3}`
 
-## [Labyrinth_linguist](https://)
+## Labyrinth_linguist
 
 ![image](https://hackmd.io/_uploads/r1TUwMfCp.png)
 
 - Tiếp tục là một bài white-box nhưng mà với source java mà lâu rùi mình chưa đụng nên mình chưa làm và gần cuối giải thì mới để ý và xem thêm hướng giải quyết của các anh trong clb:
 
 
-[RECON:](https://)
+[RECON:
 
 - Đầu tiên thì cũng xem phần "vỏ" của trang này
 - ![image](https://hackmd.io/_uploads/Bkx-dfz06.png)
@@ -967,7 +967,7 @@ try {
 - Chưa làm thì cũng đoán chắc đây là SSTI rùi:< 
 
 - Sau khi hỏi mấy anh thì mình tìm được bài nì:
-[https://www.linkedin.com/pulse/apache-velocity-server-side-template-injection-marjan-sterjev/](https://) 
+[https://www.linkedin.com/pulse/apache-velocity-server-side-template-injection-marjan-sterjev/ 
 
 - Mình sẽ dựa trên blog này để phân tích.
 
@@ -1043,7 +1043,7 @@ $output
 Flag: `HTB{f13ry_t3mpl4t35_fr0m_th3_d3pth5!!}`
 
 
-## [SerialFlow - medium](https://)
+## SerialFlow - medium
 
 - Tiếp tục là chall white-box python khác đầu tiên thì mình vào xem source thấy khá là lú thì code khá là ngắn:<
 - ![image](https://hackmd.io/_uploads/ryv7MS40T.png)
