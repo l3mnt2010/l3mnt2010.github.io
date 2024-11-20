@@ -241,6 +241,7 @@ public class ExperimentalSerializerController {
     }
 ```
 - Đây là /route thực hiện điều đó sau đó ta có thể thấy nó generate jwt mới với thông tin của hacker theo class:
+
 ```
 public class Hacker {
     @NotBlank
