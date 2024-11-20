@@ -4,7 +4,7 @@ excerpt: "Jun 13, 2024 08:00 AM ICT to Jun 13, 2024 04:00 PM ICT"
 header:
 show_date: true
 header:
-  teaser: "../assets/images/images-icon/htb.jpg"
+  teaser: "../assets/images/images-icon/akasec.png"
   teaser_home_page: true
   icon: "https://hackmd.io/_uploads/By3gJwG0h.png"
 categories:
@@ -15,7 +15,7 @@ tags:
 ---
 
 <p align="center">
-<img src="https://l3mnt2010.github.io/assets/images/images-icon/htb.jpg">
+<img src="https://l3mnt2010.github.io/assets/images/images-icon/akasec.png">
 </p>
 
 
