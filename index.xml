@@ -208,16 +208,15 @@ breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent:
     </item>
     
     <item>
-      <title>Insecure-deserialization-lab</title>
+      <title>Insecure deserialization lab</title>
       <link>https://l3mnt2010.github.io/insecure-deserialization-lab/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/insecure-deserialization-lab/</guid>
-      <description>Insecure deserialization Lab: Modifying serialized objects   Đề bài yêu cầu như sau:
+      <description>Jannuary 17, 2024 04:00 PM ICT to Jannuary 17, 2024 04:00 PM ICT
+Lab: Modifying serialized objects   Đề bài yêu cầu như sau:
     Như ta thấy thì lab chứa lỗ hổng Insecure deserialization do đó dễ bị leo thang đặc quyền vào nhiệm vụ là ta đạt được quyền quản trị sau đó xóa carlos.
-  Let&amp;rsquo;s go bắt đầu bài lab nào:
-  Đăng nhập với viewner:
-    Quan sát thấy có chức năng đổi email người dùng.</description>
+  Let&amp;rsquo;s go bắt đầu bài lab nào:</description>
     </item>
     
     <item>
@@ -249,7 +248,7 @@ networks:internal:driver: bridgeServer đã xóa rm /usr/bin/wget và không 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/java-security/</guid>
-      <description>java security Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d
+      <description>Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d và anh Jang.
 Cài đặt môi trường:
  IntelliJ - ide để chạy và debug java java enviroment để chạy java  Mở ide -&amp;gt; tạo project mới -&amp;gt; gen ra:
 ở trên là cấu trúc cây thư mục của 1 dự án java spring boot web cơ bản theo mô hình mvc flow từ controller -&amp;gt; service -&amp;gt; view để tương tác với người dùng.</description>
@@ -291,7 +290,7 @@ l3mnt2010@ASUSEXPERTBOOK:~$ smbclient -L //10.129.243.28Password for [WORKGROUP
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/liferay-pentest/</guid>
-      <description>Liferay Tại đây</description>
+      <description>Liferay Liferay</description>
     </item>
     
     <item>
@@ -376,13 +375,13 @@ $ ffmpeg -i &amp;quot;/app/upload/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg&amp;q
     </item>
     
     <item>
-      <title>XXE-lab</title>
+      <title>XXE lab</title>
       <link>https://l3mnt2010.github.io/xxe-lab/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/xxe-lab/</guid>
-      <description>Full XML external entity (XXE) injection Exploiting XXE using external entities to retrieve files  Bài này không có filter gì cả và chức năng chính là check trong kho hàng có còn hàng không với yêu cầu gửi lên là 1 dữ liệu XML     Khi mà xác định sẽ trả ra có bao nhiêu cơ sở có sản phầm này
-  Bây giờ thì chúng ta bắt request này:</description>
+      <description>January 17, 2024 04:00 PM ICT to January 17, 2024 04:00 PM ICT
+Exploiting XXE using external entities to retrieve files  Bài này không có filter gì cả và chức năng chính là check trong kho hàng có còn hàng không với yêu cầu gửi lên là 1 dữ liệu XML     Khi mà xác định sẽ trả ra có bao nhiêu cơ sở có sản phầm này</description>
     </item>
     
   </channel>

@@ -10,16 +10,15 @@
     <webMaster>llam16219@gmail.com (l3mnt2010)</webMaster>
     <copyright>l3mnt2010</copyright><atom:link href="https://l3mnt2010.github.io/tags/deserialize/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Insecure-deserialization-lab</title>
+      <title>Insecure deserialization lab</title>
       <link>https://l3mnt2010.github.io/insecure-deserialization-lab/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/insecure-deserialization-lab/</guid>
-      <description>Insecure deserialization Lab: Modifying serialized objects   Đề bài yêu cầu như sau:
+      <description>Jannuary 17, 2024 04:00 PM ICT to Jannuary 17, 2024 04:00 PM ICT
+Lab: Modifying serialized objects   Đề bài yêu cầu như sau:
     Như ta thấy thì lab chứa lỗ hổng Insecure deserialization do đó dễ bị leo thang đặc quyền vào nhiệm vụ là ta đạt được quyền quản trị sau đó xóa carlos.
-  Let&amp;rsquo;s go bắt đầu bài lab nào:
-  Đăng nhập với viewner:
-    Quan sát thấy có chức năng đổi email người dùng.</description>
+  Let&amp;rsquo;s go bắt đầu bài lab nào:</description>
     </item>
     
   </channel>

