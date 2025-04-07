@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Audio controlled Shelly devices - Zoltán&#39;s Blog</title>
+  <meta name="description" content="I can see you&#39;re talking to me in riddles. Do what you like, you go where the wind blows.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/audio-controlled-shelly-devices\/",
+          "name": "Audio controlled shelly devices"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Audio controlled Shelly devices",
+  "description" : "The idea came from Tina Müller who was giving and awesome demo of the Vosk library. I quickly checked out the Alphacephei pages.\nI fundamentally like when a cool library has Python APIs.\nVosk is an offline open source speech recognition toolkit. It enables speech recognition for lots of languages. The vosk models are small (50 Mb) but still provide continuous large vocabulary transcription, zero-latency response with streaming API.\nInstalling vosk library on my openSUSE Tumbleweed goes like",
+  "inLanguage" : "en",
+  "wordCount":  614 ,
+  "datePublished" : "2022-06-13T17:32:50\u002b03:00",
+  "dateModified" : "2022-06-13T17:32:50\u002b03:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "voks, shelley, linux, opens source, accesibility" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/audio-controlled-shelly-devices\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Audio controlled Shelly devices" />
+<meta property="og:description" content="I can see you&#39;re talking to me in riddles. Do what you like, you go where the wind blows.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/audio-controlled-shelly-devices/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Audio controlled Shelly devices" />
+  <meta name="twitter:description" content="I can see you&#39;re talking to me in riddles. Do what you like, you go where the wind blows.">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Audio controlled Shelly devices</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">I can see you&#39;re talking to me in riddles. Do what you like, you go where the wind blows.</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on June 13, 2022
+  
+  
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>The idea came from <a href="https://github.com/perlpunk">Tina Müller</a> who was giving and awesome demo of the Vosk library. I quickly checked out the <a href="https://alphacephei.com/vosk/">Alphacephei</a> pages.</p>
+<p>I fundamentally like when a cool library has Python APIs.</p>
+<p>Vosk is an offline open source speech recognition toolkit. It enables speech recognition for lots of languages. The vosk models are small (50 Mb) but still provide continuous large vocabulary transcription, zero-latency response with streaming API.</p>
+<p>Installing vosk library on my openSUSE Tumbleweed goes like</p>
+<pre><code>pip3 install vosk
+</code></pre><p>I usually start with checking out the examples provided with the API implementation. To get the python samples I needed to clone the vosk-api:</p>
+<pre><code>git clone https://github.com/alphacep/vosk-api
+</code></pre><p>My goal was to control the Shelly lights in my home with voice control.</p>
+<h3 id="some-words-about-api-design">Some words about API design</h3>
+<p>Now, when it comes to Shelly Cloud API it becomes obviously visible what is a different a poorly done API and a well done API.</p>
+<p>A good API consist of the following important parts:</p>
+<ul>
+<li>Documentation</li>
+<li>Example code</li>
+<li>Open source implementation</li>
+<li>Robust tests</li>
+</ul>
+<p>While the Vosk API commendably fulfills my requirements  the Shelly API has only a pretty poor <a href="https://shelly.cloud/documents/developers/shelly_cloud_api_access.pdf">documentation</a></p>
+<p>I am very far from being impressed with the Shelly Cloud API. For this excercise I wanted to try out the cloud API to see how it works compare to the MQTT (Message Queue Telemetry Transport) what I played with <a href="https://bzoltan1.github.io/playing-with-shelly/">earlier</a>. I must say that already at half way I have decided that the next will be to migrate to <a href="https://nymea.io/">Nymea</a> as I have heard only positive words about it.</p>
+<p>True the simplicity of Shelly Cloud API is appealing. But for example their limitation that it can serve only one request per second is really annoying. This limitation means that if I request the status of a Shelly device then I need to sleep() for at least a full second before I can fire up the command to change that status. So a simple status switching call (turn it off if it was on or turn it on if it was off) is a 1.5-2 seconds job. And that is not acceptable. I have opened a ticket at Shelly&rsquo;s customer service but they told me that such as life. </p>
+<h3 id="implementation">Implementation</h3>
+<p>I have used the simplest examples as design patterns to make a super simple application: <a href="https://github.com/bzoltan1/vosk-shelly">https://github.com/bzoltan1/vosk-shelly)</a></p>
+<p>The Python code is self explaining in my opinion, but basically all it takes is </p>
+<pre><code>import vosk 
+</code></pre><p>create a qeueue  </p>
+<pre><code>q = queue.Queue() 
+</code></pre><p>fire up the vosk model</p>
+<pre><code>model = vosk.Model(lang=&quot;en-us&quot;) 
+</code></pre><p>Listen to the audio device with </p>
+<pre><code>sd.RawInputStream(samplerate=44100, blocksize=8000, device=None, dtype='int16', channels=1, callback=callback): 
+</code></pre><p>capture the recognized text</p>
+<pre><code>rec = vosk.KaldiRecognizer(model, 44100) 
+</code></pre><p>And launch a while loop</p>
+<p>and process the result what</p>
+<pre><code>rec.AcceptWaveform(data) 
+</code></pre><p>and</p>
+<pre><code>rec.Result() 
+</code></pre><p>gives.</p>
+<p>After that it is up to the program&rsquo;s logic to send a http request with the POST command like 
+<code>https://[instance].cloud/device/light/control?id=[]&amp;auth_key=[]&amp;turn=[on|off]</code> </p>
+<h3 id="lessons-learned">Lessons learned</h3>
+<p>First of all, it is super cool that speech recognition is available in the open source scene and I am happy that Tina draw my attention to that. It is surprisingly easy to develop small and smart applications.  Turning on and off smart lights is just one thing. But with a  low budget Raspberry Pi and with a good speech synthesis software one can ask from bed about the weather forecast, number of unread emails or the content of instant messages. </p>
+<p>Also with a privacy safe voice controlling system we can build cool accessibility and emergency applications.</p>
+<h3 id="the-proof">The proof</h3>
+<p>A friend of mine was laughing when I was giving them a demo that the video does not show me switching on and off the physical light switch :)
+I guess you need to trust me with this.</p>
+
+
+
+<video width=100% controls>
+    <source src="https://bzoltan1.github.io/vosk-shelley.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+
+
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/voks/">voks</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/shelley/">shelley</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/linux/">linux</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/opens-source/">opens source</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/accesibility/">accesibility</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/contributing-to-sle/opensuse/" data-toggle="tooltip" data-placement="top" title="Contributing to SLE/openSUSE">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/data-visualization-with-grafana-and-telegraf/" data-toggle="tooltip" data-placement="top" title="Data visualization with Grafana and Telegraf">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2022
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

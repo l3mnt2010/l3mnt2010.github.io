@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>voks on Zoltán&#39;s Blog</title>
+    <link>https://bzoltan1.github.io/tags/voks/</link>
+    <description>Recent content in voks on Zoltán&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zoltan.balogh@suse.com (Zoltán Balogh)</managingEditor>
+    <webMaster>zoltan.balogh@suse.com (Zoltán Balogh)</webMaster>
+    <copyright>© Zoltán Balogh 2021</copyright>
+    <lastBuildDate>Mon, 13 Jun 2022 17:32:50 +0300</lastBuildDate><atom:link href="https://bzoltan1.github.io/tags/voks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Audio controlled Shelly devices</title>
+      <link>https://bzoltan1.github.io/audio-controlled-shelly-devices/</link>
+      <pubDate>Mon, 13 Jun 2022 17:32:50 +0300</pubDate>
+      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
+      <guid>https://bzoltan1.github.io/audio-controlled-shelly-devices/</guid>
+      <description>The idea came from Tina Müller who was giving and awesome demo of the Vosk library. I quickly checked out the Alphacephei pages.
+I fundamentally like when a cool library has Python APIs.
+Vosk is an offline open source speech recognition toolkit. It enables speech recognition for lots of languages. The vosk models are small (50 Mb) but still provide continuous large vocabulary transcription, zero-latency response with streaming API.
+Installing vosk library on my openSUSE Tumbleweed goes like</description>
+    </item>
+    
+  </channel>
+</rss>

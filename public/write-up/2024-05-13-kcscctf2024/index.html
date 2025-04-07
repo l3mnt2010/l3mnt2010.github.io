@@ -1,0 +1,652 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>KCSC CTF 2024 - WEB &#39;s challenges - Zoltán&#39;s Blog</title>
+  <meta name="description" content="WEB challs Bài Ka Tuổi Trẻ (200 points)  Đây là một bài của anh null001 với một đoạn code python khá ngắn  from flask import Flask, request, redirectfrom os import access, R_OK, statfrom os.path import isfile, join, normpathimport regexapp = Flask(__name__, static_url_path=&#39;/static&#39;, static_folder=&#39;static&#39;)@app.get(&#39;/&#39;)def home():if request.args.get(&#39;file&#39;):filename = join(&quot;./static&quot;, request.args.get(&#39;file&#39;))if isfile(normpath(filename)) and access(normpath(filename), R_OK) and (stat(normpath(filename)).st_size &lt; 1024 * 1024 * 2):try:with open(normpath(filename), &quot;rb&quot;) as file:if not regex.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-05-13-kcscctf2024\/",
+          "name": "Kcsc ctf 2024 web \u0027s challenges"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "KCSC CTF 2024 - WEB \u0027s challenges",
+  "description" : "WEB challs Bài Ka Tuổi Trẻ (200 points)  Đây là một bài của anh null001 với một đoạn code python khá ngắn  from flask import Flask, request, redirect\rfrom os import access, R_OK, stat\rfrom os.path import isfile, join, normpath\rimport regex\rapp = Flask(__name__, static_url_path=\u0027\/static\u0027, static_folder=\u0027static\u0027)\r@app.get(\u0027\/\u0027)\rdef home():\rif request.args.get(\u0027file\u0027):\rfilename = join(\u0026quot;.\/static\u0026quot;, request.args.get(\u0027file\u0027))\rif isfile(normpath(filename)) and access(normpath(filename), R_OK) and (stat(normpath(filename)).st_size \u0026lt; 1024 * 1024 * 2):\rtry:\rwith open(normpath(filename), \u0026quot;rb\u0026quot;) as file:\rif not regex.",
+  "inLanguage" : "en",
+  "wordCount":  1634 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-05-13-kcscctf2024\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="KCSC CTF 2024 - WEB &#39;s challenges" />
+<meta property="og:description" content="WEB challs Bài Ka Tuổi Trẻ (200 points)  Đây là một bài của anh null001 với một đoạn code python khá ngắn  from flask import Flask, request, redirectfrom os import access, R_OK, statfrom os.path import isfile, join, normpathimport regexapp = Flask(__name__, static_url_path=&#39;/static&#39;, static_folder=&#39;static&#39;)@app.get(&#39;/&#39;)def home():if request.args.get(&#39;file&#39;):filename = join(&quot;./static&quot;, request.args.get(&#39;file&#39;))if isfile(normpath(filename)) and access(normpath(filename), R_OK) and (stat(normpath(filename)).st_size &lt; 1024 * 1024 * 2):try:with open(normpath(filename), &quot;rb&quot;) as file:if not regex.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-05-13-kcscctf2024/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="KCSC CTF 2024 - WEB &#39;s challenges" />
+  <meta name="twitter:description" content="WEB challs Bài Ka Tuổi Trẻ (200 points)  Đây là một bài của anh null001 với một đoạn code python khá ngắn  from flask import Flask, request, redirectfrom os import access, R_OK, statfrom os.path …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>KCSC CTF 2024 - WEB &#39;s challenges</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="web-challs">WEB challs</h1>
+<h2 id="bài-ka-tuổi-trẻ-200-points">Bài Ka Tuổi Trẻ (200 points)</h2>
+<ul>
+<li>Đây là một bài của anh <code>null001</code> với một đoạn code python khá ngắn</li>
+</ul>
+<pre><code>from flask import Flask, request, redirect
+from os import access, R_OK, stat
+from os.path import isfile, join, normpath
+import regex
+
+app = Flask(__name__, static_url_path='/static', static_folder='static')
+
+@app.get('/')
+def home():
+	if request.args.get('file'):
+		filename = join(&quot;./static&quot;, request.args.get('file'))
+		if isfile(normpath(filename)) and access(normpath(filename), R_OK) and (stat(normpath(filename)).st_size &lt; 1024 * 1024 * 2):
+			try:
+				with open(normpath(filename), &quot;rb&quot;) as file:
+					if not regex.search(r'^(([ -~])+.)+([(^~\'!*&lt;&gt;:;,?&quot;*|%)]+)|([^\x00-\x7F]+)(([ -~])+.)+$', filename, timeout=2) and &quot;flag&quot; not in filename:
+						return file.read(1024 * 1024 * 2)
+			except:
+				pass
+	return redirect(&quot;/?file=index.html&quot;)
+
+</code></pre><ul>
+<li>Vị trí của flag là /flag.txt</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BJtp6_gmA.png" alt="image"></p>
+<ul>
+<li>
+<p>Chall chỉ có một chức năng duy nhất là get <code>/</code> với param là <code>file</code> sau đó nối chuỗi với thư mục ./static sẽ check xem file đó có tồn tại hay không và mở file này -&gt; check tên file với regex với timeout tối đa là 2s và nếu tên không chứa <code>flag</code> thì sẽ hiển thị nội dung.</p>
+</li>
+<li>
+<p>Có thể thấy rõ là trang web dính lỗi path traversal.</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/SkALZFx7A.png" alt="image"></p>
+</li>
+<li>
+<p>Ban đầu có vẻ hầu hết mọi người đề thi theo hướng bypass regex để khai thác lỗi ở trên nhưng có vẻ không khả thi.</p>
+</li>
+<li>
+<p>Khi nhận được hint 1 thì ta thấy anh <code>null001</code> có đề cập đến <code>file descriptor</code> thì theo như mình tìm hiểu là trong linux nó sẽ có các tiến trình có các phần stdin stdout và stderror, khi thực hiện một tiến trình ví dụ như đọc file thì unix sẽ tạo một file trong <code>/proc/{id}/fd/*</code> thì có thể hiểu nó như một symlink hoặc là cache trỏ đến file mà mình mở ra đấy.</p>
+</li>
+<li>
+<p>Có thể thấy <code>Try except</code> mở file với điều kiện so sánh regex tối đa 2s nhưng việc mở file đã được thực hiện trước đó. Và khi mở file thì trong proc sẽ mở 1 tiến trình để trỏ tới cho đến khi with open file vẫn còn hoạt động.</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BJ2aoHJmC.png" alt="image"></p>
+<ul>
+<li>Mình sẽ để tên file dài nhất có thể để có thể đạt gần tới timeout 2s nhằm mục đích là mình sẽ race condition để đọc được file /flag.txt được trỏ đến ở trong <code>fd/</code> được tạo ra trong tiến trình này.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HJX2qrkX0.png" alt="image"></p>
+<ul>
+<li>Dùng intruder mình sẽ random <code>/proc/{id}/fd/{num}</code> từ 1 đến 20 hoặc có thể nhiều hơn nếu chưa được-&gt; kết quả mình race được flag như dưới đây</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BkG_qBkXA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/r1Cu9H1QC.png" alt="image"></p>
+<p>Flag : <code>KCSC{D1eu_tuу3t_v01_n@m_o_n0i_ch1nh_ta_ch@ng_can_tim_d@u_xa}</code></p>
+<h2 id="itest-develop500-points">Itest develop(500 points)</h2>
+<ul>
+<li>
+<p>Bài này mình hiểu rõ vấn đề và ngồi từ 10h đến hết giải để tìm configKey và browserKey trong logs của Safe example browser nhưng không có sau mới nhớ ra nó nằm trong default setup tool.</p>
+</li>
+<li>
+<p>Tiếp tục là một bài whitebox của anh <code>meulody</code> code trong 1 tiếng @@.</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/By1t0FlQC.png" alt="image"></p>
+<ul>
+<li>
+<p>Đề bài cho mình file Safe-Exame-Browser giống như đúc ở <code>kma</code> version <code>3.7.0.682</code> một file .seb để truy cập và một source code của server có chứa flag mà 1 middleware khá mạnh mẽ.</p>
+</li>
+<li>
+<p>Thì đầu tiên ta sẽ cài sau mở file .seb và cơ chế seb của trường là chạy với quyền administrator và tắt hết mấy chương trình khác + không chụp ảnh màn hình + không copy cho nên mình xin phép chụp ảnh với điện thoại, và ở đây thì đã cấu hình không tắt mấy chương trình khác rồi.</p>
+</li>
+<li>
+<p>Có thể thấy browserKey và configKey ở đây
+<img src="https://hackmd.io/_uploads/rkyyJigmC.png" alt="image"></p>
+</li>
+<li>
+<p>Khi vào trang server truy cập như sau:</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BJplkilmC.png" alt="image"></p>
+<ul>
+<li>
+<p>Chúng ta cùng view qua một chút source của server thì có phần quan trọng là middleware này sẽ lấy mã configKey và browserKey để cộng chuỗi với url rồi băm sha-256 để so sánh với 2 header mà người dùng dùng exame browser cung cấp nếu đúng thì có thể đi đế endpoint của ứng dụng nếu sai sẽ trả ra như ở ảnh trên.
+<img src="https://hackmd.io/_uploads/ryg6bil7A.png" alt="image"></p>
+</li>
+<li>
+<p>Thêm 2 endpoint quan trọng để có flag:
+<img src="https://hackmd.io/_uploads/r1kLMslXR.png" alt="image"></p>
+</li>
+<li>
+<p>Bây giờ chúng ta sẽ truy cập vào <code>/get-flag</code> sau đó 1 session được tạo và redirect đến <code>/flag/:uuid</code> vừa tạo và nhận flag.</p>
+</li>
+<li>
+<p>Vậy có vẻ mấu chốt của vấn đề đó là phải vượt qua được middleware.</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/H1RP-sgmR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rJ5AzhgQ0.png" alt="image"></p>
+<ul>
+<li>mở devtool console lên nhận được header là:</li>
+</ul>
+<pre><code>X-Safeexambrowser-Configkeyhash:
+1ccc354e52405d81f0e214ad4a14648858e1f365a150d80698cace88c1e48af4
+X-Safeexambrowser-Requesthash:
+a7372538471a9010ad9d4d9fd5f7a46b0a0bf03d0f774730bdf20200e09f52ec
+</code></pre><ul>
+<li>Sau đó mở trang với 2 header ở trên thì đã load được trang web vì vượt qua middleware.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HJJgNolmC.png" alt="image"></p>
+<ul>
+<li>
+<p>Quan sát thấy CSP như sau: <code>default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests</code></p>
+</li>
+<li>
+<p>Directive <code>frame-ancestors 'self'</code> chỉ cho phép trang web được nhúng (embedded) trong các khung (frames) từ cùng nguồn gốc. Điều này ngăn chặn các cuộc tấn công clickjacking.</p>
+</li>
+<li>
+<p>Anh Tuấn Anh gợi ý cho cách bypass CSP là dùng <code>window.open()</code></p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/B1gBQ3e7A.png" alt="image"></p>
+<ul>
+<li>Sau đó thì sẽ dùng <code>location.href=&quot;http://itest.kcsc.ctf:10003/get-flag&quot;</code> truy cập để nhận được sessionID, và do chức năng redirect thì ta sẽ truy cập được đến endpoint <code>/flag/:uuid</code></li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/B1U-Nng7R.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/r137NngQA.png" alt="image"></p>
+<ul>
+<li>
+<p>Tiếp theo ta có thể gán sessionId đấy vào trong Cookie trong dev tool và trỏ <code>location.href = &quot;http://itest.kcsc.ctf:10003/flag/:uuid&quot;</code> không thì có thể dùng burp cũng tương tự nhau.</p>
+</li>
+<li>
+<p>Lấy header ở dưới này và dán vào request:</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rJEvNhxXA.png" alt="image"></p>
+<ul>
+<li>Và dùng Cookie là sessionId được tạo cùng với 2 header truy cập đến /flag/uuid và nhận được flag.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HJiZe2gXR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/r1VpN2gX0.png" alt="image"></p>
+<ul>
+<li><strong>Bài này mấu chốt là chúng ta cần phải tìm ra được cách bypass CSP</strong>.</li>
+</ul>
+<p>FLAG : <code>KCSC{-Ban-Da-Bi-Dinh-Chi-Thi-Mon-Nay-17c6c806-173f-45dd-b7bf-9f33f849df21}</code></p>
+<h2 id="simple-flask500-points">Simple Flask(500 points)</h2>
+<ul>
+<li>
+<p>Đây là một bài python-flask white-box với chức năng unzip file mình đã tải lên server và lưu nó vào trong thư mục <code>uploads/</code> và hiển thị các đường link trỏ đến từng file trong file zip này.</p>
+</li>
+<li>
+<p>Quan sát source code dưới đây:</p>
+</li>
+<li>
+<p>Vị trí của flag là <code>env</code></p>
+</li>
+</ul>
+<pre><code>from flask import Flask, request, render_template, flash
+import zipfile
+import re
+import os
+from os import listdir
+from os.path import isfile, join
+
+app = Flask(__name__, static_folder='uploads')
+app.secret_key = &quot;test_keyyyyyyy&quot;
+
+def list_all_files(mypath: str):
+	output = []
+	for path, subdirs, files in os.walk(mypath):
+		for name in files:
+			output.append(os.path.join(path, name))
+	return output
+
+def fileIsSafe(file_ext: str):
+	if not file_ext:
+		return False
+	if re.match(r'\.(py|ini|html|htm|env|bash|sh|so|preload)', file_ext):
+		return False
+	return True
+
+@app.route('/')
+def index():
+	mypath = &quot;uploads&quot;
+	uploaded_file = list_all_files(mypath)
+	return render_template('index.html', data = uploaded_file)
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    if not request.files['file']:
+        return &quot;No file provided&quot;
+    else:
+        try:
+            client_file = request.files['file']
+            with zipfile.ZipFile(client_file, 'r') as zip_ref:
+                for name in zip_ref.namelist():
+                    _, file_ext = os.path.splitext(name)
+                    if fileIsSafe(file_ext):
+                        if len(name.split(&quot;/&quot;)) != 1:
+                            curr_path = &quot;uploads&quot;
+                            for folder_name in name.split(&quot;/&quot;)[:-1]:
+                                curr_path += f&quot;/{folder_name}&quot;
+                                if not os.path.exists(curr_path):
+                                    os.mkdir(curr_path)
+                            dest_path = os.path.normpath(f&quot;uploads/{name}&quot;)
+                            with open(dest_path, &quot;wb&quot;) as f:
+                                f.write(zip_ref.read(name))
+        except:
+            return &quot;Something went wrong&quot;
+    return &quot;Success! Check the 'uploads/' folder&quot;
+
+@app.route('/healthz')
+def healthz():
+	import subprocess
+	output = subprocess.check_output([&quot;python&quot;, &quot;-c&quot;, &quot;print('OK')&quot;])
+	return output
+	
+if __name__ == &quot;__main__&quot;:
+	app.run(host=&quot;0.0.0.0&quot;, debug=False, port=5000)
+
+</code></pre><ul>
+<li>
+<p>hàm fileIsSafe sẽ check xem nếu đuôi file nằm trong <code>py|ini|html|htm|env|bash|sh|so|preload</code> thì sẽ upload thất bại</p>
+</li>
+<li>
+<p>Route <code>/healthz</code> sẽ print(&lsquo;OK&rsquo;) với thư viện subprocess có thể để ý ở đây là subprocess được import lại mỗi khi truy cập tới enpoint.</p>
+</li>
+<li>
+<p>Bài này khá giống bài zip-slip ở trên HTB và hướng của bài này là khai thác zipslip để overwrite file.</p>
+</li>
+</ul>
+<h3 id="solution-1-unintended-zipslip-to-ssti">SOLUTION 1: UNINTENDED (ZipSlip to SSTI)</h3>
+<ul>
+<li>Mình sẽ tận dụng zipslip để overwrite file index.html trong templates sau đó SSTI để đọc env.</li>
+<li>Tạo file index.HTML để bypass <code>fileIsSafe</code>  với nội dung như dưới:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/S1dttlemA.png" alt="image"></p>
+<ul>
+<li>Sau đó dùng <code>evilar.py</code> ở <a href="https://github.com/ptoomey3/evilarc/blob/master/evilarc.py"><strong>đây</strong></a> để tạo payload zipslip.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/S1eRkdxQC.png" alt="image"></p>
+<ul>
+<li>Để ý một chút là nếu mà server đã render index.html lần đầu rồi thì lúc này sẽ lưu cache lại ta overwrite được nhưng mà lúc render thì server vẫn lấy index.html ở cache ban đầu cho nên không thể đọc được flag vì vậy ta cần phải upload file zip luôn lên endpoint <code>/upload</code> hoặc có thể dùng burp, ở đây mình dùng curl. Vì nếu truy cập vào <code>/</code> thì sẽ render và lưu cache kia trước nên sẽ fail.</li>
+</ul>
+<pre><code>┌──(l3mnt2010㉿ASUSEXPERTBOOK)-[~/tools/zip-slip-exploit-example]
+└─$ curl -F file=@evil.zip http://localhost:5000/upload  
+Success! Check uploads/ folder
+</code></pre><ul>
+<li>Bây giờ thì chỉ cần truy cập vào <code>/</code> và nó sẽ hiển thị file <code>index.HTML</code> của mình đã overwrite.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/H1HQtelQ0.png" alt="image"></p>
+<ul>
+<li>
+<p>Nhưng mà không hiểu sao mình test trên server lại không được và chỉ ra flag với solution intended.</p>
+</li>
+<li>
+<p>Để ý có <code>/healthz</code> như này thì mình ý tưởng ghi đè file subprocess.py của python3.8 để return ra <code>os.popen('env').read()</code> như ở dưới.</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BknQlugXA.png" alt="image"></p>
+<ul>
+<li>Nhưng mà dở ở chỗ là file này nó lại không overwrite được nên cũng fail với ý tưởng này.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/SJtXKxxmA.png" alt="image"></p>
+<ul>
+<li>Tiếp nữa còn 1 ý tưởng nữa là overwrite file app.PY mình đã test thử để enpoint <code>/healthz</code> trả ra env nhưng mà server lại không reload lại được nên ý tưởng này cũng fail.</li>
+</ul>
+<h3 id="solution2--intended-zipslip-overwrite-pth-bypass-blacklist">SOLUTION2 : INTENDED (Zipslip overwrite .pth bypass blacklist)</h3>
+<ul>
+<li>Mình nghĩ là sẽ overwrite được file khác không nằm trong black list kia nên mình đã tìm trong python3.8 chỉ thấy các file <code>.so</code> mà cũng fillter chắc cũng không ghi đè được với đuôi <code>.SO</code>.Stuck khá lâu thì đánh liều xin hint từ author là anh <code>nhienit2010</code> và anh bảo là overwrite file <code>.pth</code></li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/Bk-X2txm0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SJ4slOlXR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ryRlWOgm0.png" alt="image"></p>
+<p><strong>CODE</strong>: 
+<code>   import os; var = 'SETUPTOOLS_USE_DISTUTILS'; enabled = os.environ.get(var, 'stdlib') == 'local'; enabled and __import__('_distutils_hack').add_shim();</code></p>
+<ul>
+<li>
+<p>GTP thì mình được giải thích khá đầy đủ như dưới đây
+<img src="https://hackmd.io/_uploads/SygxzdgmR.png" alt="image"></p>
+</li>
+<li>
+<p>Có thể hiểu mục đích của đoạn mã là để tùy chỉnh phiên bản của distutils nếu khác môi trường local thì sẽ sử dụng phiên bản mặc định còn trên local còn nếu không thì ngược lại. Cơ bản là nó sẽ load các package và file <code>.pth</code> sẽ được thiết lập môi trường trong &lsquo;sys.path&rsquo; và sẽ thực thi đoạn mã .pth này khi chạy các lệnh python như ta thấy ở đây gói subprocess được gọi và trước lúc đó nó sẽ chạy file này trước(mình ga' nên không biết có chuẩn chưa)</p>
+</li>
+<li>
+<p>Bây giờ mình sẽ thêm một dòng <code>print(os.popen('env').read())</code> vào trong file như dưới đây mục đích là in ra env chứa flag khi truy cập đến endpoint <code>/healthz</code>.</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/ry3Ulde7R.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rJBS4_lmA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/S1anoOe7C.png" alt="image"></p>
+<p>FLAG : <code>KCSC{n0th1ng_1n_y0ur_eye5_62165631}</code></p>
+<p>Tài liệu tham khảo: 
+<a href="https://www.youtube.com/watch?v=-gP58pozNuM&amp;t=7s">https://www.youtube.com/watch?v=-gP58pozNuM&amp;t=7s</a>
+<a href="https://www.youtube.com/watch?v=FuiLk7uH9Jw&amp;t=319s">https://www.youtube.com/watch?v=FuiLk7uH9Jw&amp;t=319s</a>
+<a href="https://khaidantri.net/file-descriptor-la-gi#google_vignette">https://khaidantri.net/file-descriptor-la-gi#google_vignette</a></p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2024-12-02-lamehtb/" data-toggle="tooltip" data-placement="top" title="Lame HTB">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2024-10-24-isitdtu-ctf-2024/" data-toggle="tooltip" data-placement="top" title="ISITDTU-CTF-2024 - WEB &#39;s challenges">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

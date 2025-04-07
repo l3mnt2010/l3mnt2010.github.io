@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>software engineering on Zoltán&#39;s Blog</title>
+    <link>https://bzoltan1.github.io/tags/software-engineering/</link>
+    <description>Recent content in software engineering on Zoltán&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zoltan.balogh@suse.com (Zoltán Balogh)</managingEditor>
+    <webMaster>zoltan.balogh@suse.com (Zoltán Balogh)</webMaster>
+    <copyright>© Zoltán Balogh 2021</copyright>
+    <lastBuildDate>Mon, 03 Apr 2023 06:13:44 +0300</lastBuildDate><atom:link href="https://bzoltan1.github.io/tags/software-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Paradigm shifts in software development</title>
+      <link>https://bzoltan1.github.io/paradigm-shifts-in-software-development/</link>
+      <pubDate>Mon, 03 Apr 2023 06:13:44 +0300</pubDate>
+      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
+      <guid>https://bzoltan1.github.io/paradigm-shifts-in-software-development/</guid>
+      <description>I could have given it the title &amp;lsquo;Old Man&amp;rsquo;s Ranting,&amp;rsquo; but even though it would have been more honest, it wouldn&amp;rsquo;t be very catchy.
+Why I decided to write this up? I knew something was in the air when my favorite fishmonger, an incredibly friendly and always super-helpful fellow, asked me what I thought about that Chat.GPT thingy. That doesn&amp;rsquo;t happen often. Like our neighbor, who was a fantastic craftsman, didn&amp;rsquo;t stop me in the &amp;rsquo;90s to ask me what I thought about object-oriented programming.</description>
+    </item>
+    
+  </channel>
+</rss>

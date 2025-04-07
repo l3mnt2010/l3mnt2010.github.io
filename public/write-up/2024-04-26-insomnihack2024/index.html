@@ -1,0 +1,654 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Insomni&#39;hack2024 - WEB &#39;s challenges - Zoltán&#39;s Blog</title>
+  <meta name="description" content="WEB challs InsoBank   Title : NextJs, Python, MySql, postgresSql, smart from u :3
+  The web application in this challenge is a banking app that supports transferring deposits from one account to another. However, all the accounts involved in a transfer operation must belong to the same person; this means we cannot transfer money from our account to other people’s accounts.   You must register with new account and login with your account   You only can transfer for 2 account provide by sever">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-04-26-insomnihack2024\/",
+          "name": "Insomni\u0027Hack2024 web \u0027s challenges"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Insomni\u0027hack2024 - WEB \u0027s challenges",
+  "description" : "WEB challs InsoBank   Title : NextJs, Python, MySql, postgresSql, smart from u :3\n  The web application in this challenge is a banking app that supports transferring deposits from one account to another. However, all the accounts involved in a transfer operation must belong to the same person; this means we cannot transfer money from our account to other people’s accounts.   You must register with new account and login with your account   You only can transfer for 2 account provide by sever",
+  "inLanguage" : "en",
+  "wordCount":  1240 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, English" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-04-26-insomnihack2024\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Insomni&#39;hack2024 - WEB &#39;s challenges" />
+<meta property="og:description" content="WEB challs InsoBank   Title : NextJs, Python, MySql, postgresSql, smart from u :3
+  The web application in this challenge is a banking app that supports transferring deposits from one account to another. However, all the accounts involved in a transfer operation must belong to the same person; this means we cannot transfer money from our account to other people’s accounts.   You must register with new account and login with your account   You only can transfer for 2 account provide by sever">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-04-26-insomnihack2024/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Insomni&#39;hack2024 - WEB &#39;s challenges" />
+  <meta name="twitter:description" content="WEB challs InsoBank   Title : NextJs, Python, MySql, postgresSql, smart from u :3
+  The web application in this challenge is a banking app that supports transferring deposits from one account to …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>Insomni&#39;hack2024 - WEB &#39;s challenges</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="web-challs">WEB challs</h1>
+<h2 id="insobank">InsoBank</h2>
+<ul>
+<li>
+<p><strong>Title : NextJs, Python, MySql, postgresSql, smart from u :3</strong></p>
+</li>
+<li>
+<p>The web application in this challenge is a banking app that supports transferring deposits from one account to another. However, all the accounts involved in a transfer operation must belong to the same person; this means we cannot transfer money from our account to other people’s accounts.
+<img src="https://hackmd.io/_uploads/SkBCrl9jT.png" alt="image"></p>
+</li>
+<li>
+<p>You must register with new account and login with your account
+<img src="https://hackmd.io/_uploads/SyDM8x5sp.png" alt="image"></p>
+</li>
+<li>
+<p>You only can transfer for 2 account provide by sever</p>
+</li>
+<li>
+<p>This is UI transfer
+<img src="https://hackmd.io/_uploads/S1hdIl9j6.png" alt="image"></p>
+</li>
+<li>
+<p>To have flag FLAG = os.getenv(&ldquo;FLAG&rdquo;) or &lsquo;INS{fake-flag}&rsquo;</p>
+</li>
+<li>
+<p>Your acoount must have 1 account have balance &gt; 13.37.</p>
+</li>
+</ul>
+<pre><code> for (accountid,name,balance) in cursor.fetchall():
+        if balance &gt; 13.37:
+            results[accountid] = {'name': name, 'balance': balance, 'flag': FLAG}
+        else:
+            results[accountid] = {'name': name, 'balance': balance}
+    conn.close()
+    return jsonify(results)
+
+</code></pre><ul>
+<li>View important source:</li>
+</ul>
+<p><a href="https://">Route /batch/new</a></p>
+<pre><code>
+
+@app.route(&quot;/batch/new&quot;, methods=['POST'])
+@jwt_required()
+def newbatch():
+    userid = get_jwt_identity()
+    batchid = str(uuid.uuid4())
+    senderid = request.json.get(&quot;senderid&quot;)
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute('''
+        SELECT userid FROM accounts WHERE id = %s
+        ''',(senderid,))
+    data = cursor.fetchone()
+    if data == None or data[0]!=userid:
+        return jsonify({&quot;error&quot;:&quot;Invalid account&quot;})
+    cursor.execute('''
+        INSERT INTO batches(id,senderid,userid) VALUES (%s,%s,%s) 
+        ''', (batchid,senderid,userid))
+    conn.commit()
+    conn.close()
+    return redirect(&quot;/batches&quot;)
+</code></pre><ul>
+<li>This code effective touch a new batch for tranfer.</li>
+</ul>
+<p><a href="https://">Route /validate</a></p>
+<pre><code>@app.route(&quot;/validate&quot;, methods=['POST'])
+@jwt_required()
+def validate():
+    userid = get_jwt_identity()
+    batchid = request.json.get(&quot;batchid&quot;)
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute(&quot;SELECT id,senderid FROM batches WHERE id = %s AND userid = %s&quot;, (batchid,userid))
+    data = cursor.fetchone()
+    if data == None or data[0] != batchid:
+        return jsonify({&quot;error&quot;:&quot;Invalid batchid&quot;})
+    senderid = data[1]
+
+    cursor.execute(&quot;LOCK TABLES batch_transactions WRITE, accounts WRITE, batches WRITE&quot;)
+    cursor.execute(&quot;SELECT sum(amount) FROM batch_transactions WHERE batchid = %s&quot;, (batchid,))
+    data = cursor.fetchone()
+
+    if data == None or data[0] == None:
+        cursor.execute(&quot;UNLOCK TABLES&quot;)
+        conn.close()
+        return jsonify({&quot;error&quot;:&quot;Invalid batch&quot;})
+    total = data[0]
+    cursor.execute('''
+        SELECT balance FROM accounts WHERE id = %s
+        ''', (senderid,))
+    data = cursor.fetchone()
+    balance = data[0] if data else 0
+    if total &gt; balance:
+        cursor.execute(&quot;UNLOCK TABLES&quot;)
+        conn.close()
+        return jsonify({&quot;error&quot;:&quot;Insufficient balance (&quot;+str(total)+&quot; &gt; &quot; + str(balance) +&quot;)&quot;})
+    cursor.execute('''
+        UPDATE accounts SET balance = (balance - %s) WHERE id = %s
+    ''',(total,senderid))
+
+    cursor.execute('''
+        UPDATE batch_transactions SET verified = true WHERE batchid = %s;
+        ''',(batchid,))
+    connpg = get_db(type='pg')
+    cursorpg = connpg.cursor()
+    cursorpg.execute('''
+        UPDATE batch_transactions SET verified = true WHERE batchid = %s
+        ''',(batchid,))
+    connpg.commit()
+    connpg.close()
+    cursor.execute('''
+            UPDATE batches SET verified = true WHERE id = %s;
+            ''',(batchid,))
+    cursor.execute('''
+        UNLOCK TABLES;
+    ''')
+    conn.close()
+    return redirect(&quot;/batches&quot;)
+</code></pre><ul>
+<li></li>
+</ul>
+<p><a href="https://">Route /transfer</a></p>
+<pre><code>@app.route(&quot;/transfer&quot;, methods=['POST'])
+@jwt_required()
+def transfer():
+    userid = get_jwt_identity()
+    txid = str(uuid.uuid4())
+    amount = request.json.get('amount')
+    recipient = request.json.get('recipient')
+    batchid = request.json.get('batchid')
+    if not float(amount) &gt; 0:
+        return jsonify({&quot;error&quot;:&quot;Invalid amount&quot;})
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute('''
+        SELECT count(*) FROM batches WHERE id = %s AND userid = %s AND verified = false
+        ''',(batchid,userid))
+    data = cursor.fetchone()
+    if data[0] != 1:
+        conn.close()
+        return jsonify({&quot;error&quot;:&quot;Invalid batchid&quot;})
+
+    cursor.execute('''
+        SELECT userid FROM accounts WHERE id = %s
+        ''', (recipient,))
+    data = cursor.fetchone()
+    if data == None or data[0] != userid:
+        conn.close()
+        return jsonify({&quot;error&quot;: &quot;Recipient account does not belong to you&quot;})
+
+    cursor.execute('''
+        SELECT count(*) FROM batch_transactions WHERE batchid = %s AND recipient = %s
+        ''',(batchid,recipient))
+    data = cursor.fetchone()
+
+    if data[0] &gt; 0:
+        conn.close()
+        return jsonify({&quot;error&quot;:&quot;You can only have one transfer per recipient in a batch&quot;})
+
+    cursor.execute('''
+        SELECT balance FROM accounts WHERE id = (SELECT senderid FROM batches WHERE id = %s)
+            ''', (batchid,))
+    data = cursor.fetchone()
+    balance = data[0]
+
+    connpg = get_db(type='pg')
+
+    cursorpg = connpg.cursor()
+    cursorpg.execute('''
+        LOCK TABLE batch_transactions;
+        INSERT INTO batch_transactions (id,batchid,recipient,amount) SELECT %s,%s,%s,%s WHERE (SELECT coalesce(sum(amount),0)+%s FROM batch_transactions WHERE batchid = %s) &lt;= %s
+        ''', (txid,batchid,recipient,amount,amount,batchid,balance))
+    connpg.commit()
+    connpg.close()
+    cursor.execute('''
+        INSERT INTO batch_transactions (id,batchid,recipient,amount) SELECT %s,%s,%s,%s WHERE (SELECT coalesce(sum(amount),0)+%s FROM batch_transactions WHERE batchid = %s) &lt;= %s
+        ''', (txid,batchid,recipient,amount,amount,batchid,balance))
+    conn.commit()
+    conn.close()
+
+    return redirect(&quot;/transactions?batchid=&quot;+batchid)
+    
+</code></pre><ul>
+<li>will first check the user&rsquo;s jwt, then check if the amount the user sent is greater than 0 or not.</li>
+<li>then it will select the total number of records with unverified transaction from mysql , Then it will check the batch id, user id and see if the verified attribute is false or not (which means the transaction has not been committed) . If batch id does not exist, user id is not equal to our id, an error will be returned.</li>
+<li>Then it will check if 1 id (there are 3 ids for each recipient, like 1 account with 3 wallets) received the money twice or not. If so, an error will also be returned. The next part will take our balance and add information to both the MySQL and PostgreSQL databases.</li>
+</ul>
+<h3 id="after-a-thorough-code-review-here-are-the-vulnerabilities-that-we-can-exploit">After a thorough code review, here are the vulnerabilities that we can exploit:</h3>
+<ul>
+<li>
+<p><strong>Discrepancies in Data Precision:</strong></p>
+</li>
+<li>
+<p>In the MySQL database, the data type of amount is decimal(10,2), while in the PostgreSQL database, it is just decimal. This causes a floating-point number like 0.014 to be stored in MySQL as 0.01, but as 0.014 in PostgreSQL.
+<img src="https://hackmd.io/_uploads/H17sue5oa.png" alt="image"></p>
+</li>
+<li>
+<p>We can see excec_transfer will be excute every 1 minute by sh
+<img src="https://hackmd.io/_uploads/H17wtxcja.png" alt="image"></p>
+</li>
+</ul>
+<pre><code>#!/usr/local/bin/python
+
+import psycopg2
+import mysql.connector
+import sqlite3
+import os
+
+MYSQL_DB_HOST = os.getenv(&quot;MYSQL_HOST&quot;) or 'mysql'
+MYSQL_DB_USER = os.getenv(&quot;MYSQL_USER&quot;) or 'user'
+MYSQL_DB_PASSWORD = os.getenv(&quot;MYSQL_PASSWORD&quot;) or 'password'
+MYSQL_DB_DATABASE = os.getenv(&quot;MYSQL_DB&quot;) or 'inso24'
+
+PG_DB_HOST = os.getenv(&quot;PG_HOST&quot;) or 'pg'
+PG_DB_USER = os.getenv(&quot;PG_USER&quot;) or 'postgres'
+PG_DB_PASSWORD = os.getenv(&quot;PG_PASSWORD&quot;) or 'postgres'
+PG_DB_DATABASE = os.getenv(&quot;PG_DB&quot;) or 'inso24'
+
+
+def get_db(type='mysql'):
+    if type == 'mysql':
+        conn = mysql.connector.connect(
+            host=MYSQL_DB_HOST,
+            user=MYSQL_DB_USER,
+            password=MYSQL_DB_PASSWORD,
+            database=MYSQL_DB_DATABASE
+        )
+    elif type == 'sqlite':
+        conn = sqlite3.connect(&quot;/app/db/db.sqlite&quot;)
+    elif type == 'pg':
+        conn = psycopg2.connect(
+            host=PG_DB_HOST,
+            database=PG_DB_DATABASE,
+            user=PG_DB_USER,
+            password=PG_DB_PASSWORD)
+    return conn
+
+conn = get_db()
+cursor = conn.cursor()
+connpg = get_db(type='pg')
+cursorpg = connpg.cursor()
+
+cursorpg.execute('''
+    SELECT DISTINCT batchid FROM batch_transactions WHERE verified = true and executed = false 
+    ''')
+for (batchid,) in cursorpg.fetchall():
+    TRANSFERS = {}
+    cursorpg.execute('''
+    SELECT id,sender,recipient,amount FROM batch_transactions WHERE batchid = %s AND verified = true AND executed = false 
+    ''',(batchid,))
+    transactions = cursorpg.fetchall()
+    for (txid,sender,recipient,amount) in transactions:
+        cursor.execute('''
+            UPDATE batch_transactions SET executed = true WHERE id = %s
+            ''',(txid,))
+        cursorpg.execute('''
+            UPDATE batch_transactions SET executed = true WHERE id = %s
+            ''',(txid,))
+        TRANSFERS[recipient] = amount if recipient not in TRANSFERS.keys() else TRANSFERS[recipient] + amount
+    for recipient in TRANSFERS:
+        cursor.execute('''
+            UPDATE accounts SET balance = balance + %s WHERE id = %s
+            ''', (TRANSFERS[recipient], recipient))
+    cursor.execute('''
+            UPDATE batches SET executed = true WHERE id = %s
+            ''',(batchid,))
+    connpg.commit()
+    conn.commit()
+    connpg.close()
+    conn.close()
+
+</code></pre><p>Flow exec :</p>
+<ul>
+<li>
+<p>This section will check for transactions that have not yet been executed and have been verified to perform the money transfer, then repeat a number of times equal to the total number of records, then each iteration finds the number of similar records and repeats with the number of records. selected, set excuted = true for both mysql and pgsql tables to confirm excuted this time, then assign again TRANSFERS[recipient] = amount if recipient not in TRANSFERS.keys() else TRANSFERS[recipient] + amount, continue looping with the number of elements of TRANSFER then add balance to the value of TRANSFERS[recipient] , so This will be an important part to get the FLAG.</p>
+</li>
+<li>
+<p>The logic flaw arises here. The amount to deduct is based on decimal(10,2), while the amount to increase is based on decimal. When two transactions with the same batch_id are processed at once, an extra $0.01 gets smuggled into the recipient’s account.</p>
+</li>
+<li>
+<p>For example, if two transactions are each transferring $0.014 from saving to checking account, the sender’s account gets deducted by $0.02, but the recipient’s account gets increased by $0.028, which rounds up to $0.03.</p>
+</li>
+</ul>
+<p><a href="https://">deployment</a></p>
+<ul>
+<li>
+<p>There are many ways to solve it : race or take advantage of differences.</p>
+</li>
+<li>
+<p>Sending a request for the amount 09.0000000000000000000000000000000000000000000000000000000000000000000 may cause MySQL to return an error, but not PostgreSQL.</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/r1NAEpjjT.png" alt="image"></p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/SJhAEaijT.png" alt="image"></p>
+</li>
+</ul>
+<p>Thank you @null001 for helping me understand the flow</p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/english/">English</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2024-10-24-isitdtu-ctf-2024/" data-toggle="tooltip" data-placement="top" title="ISITDTU-CTF-2024 - WEB &#39;s challenges">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2021-07-23-imaginaryctf2021/" data-toggle="tooltip" data-placement="top" title="ImaginaryCTF2021">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

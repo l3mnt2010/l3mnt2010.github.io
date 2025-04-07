@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OBS on Zoltán&#39;s Blog</title>
+    <link>https://bzoltan1.github.io/tags/obs/</link>
+    <description>Recent content in OBS on Zoltán&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zoltan.balogh@suse.com (Zoltán Balogh)</managingEditor>
+    <webMaster>zoltan.balogh@suse.com (Zoltán Balogh)</webMaster>
+    <copyright>© Zoltán Balogh 2021</copyright>
+    <lastBuildDate>Sat, 04 Mar 2023 03:27:12 +0300</lastBuildDate><atom:link href="https://bzoltan1.github.io/tags/obs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cross build and packaging</title>
+      <link>https://bzoltan1.github.io/cross-build-and-packaging/</link>
+      <pubDate>Sat, 04 Mar 2023 03:27:12 +0300</pubDate>
+      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
+      <guid>https://bzoltan1.github.io/cross-build-and-packaging/</guid>
+      <description>Introduction Let&amp;rsquo;s start by clarifying what we mean by cross-building and cross-packaging. Cross-compilation is the process of compiling source code on one platform, called the host, in order to generate an executable binary for a different target platform. The emphasis here is on the word &amp;ldquo;different&amp;rdquo;. The target platform may have a different CPU architecture, such as when we work on an x86 computer and want to build software for a Raspberry Pi board with an ARM CPU.</description>
+    </item>
+    
+  </channel>
+</rss>

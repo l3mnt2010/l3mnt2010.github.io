@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>osc on Zoltán&#39;s Blog</title>
+    <link>https://bzoltan1.github.io/tags/osc/</link>
+    <description>Recent content in osc on Zoltán&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zoltan.balogh@suse.com (Zoltán Balogh)</managingEditor>
+    <webMaster>zoltan.balogh@suse.com (Zoltán Balogh)</webMaster>
+    <copyright>© Zoltán Balogh 2021</copyright>
+    <lastBuildDate>Fri, 06 Jan 2023 04:41:11 +0300</lastBuildDate><atom:link href="https://bzoltan1.github.io/tags/osc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build system statistics</title>
+      <link>https://bzoltan1.github.io/build-system-statistics/</link>
+      <pubDate>Fri, 06 Jan 2023 04:41:11 +0300</pubDate>
+      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
+      <guid>https://bzoltan1.github.io/build-system-statistics/</guid>
+      <description>From time to time we should ask ourselves how are we doing. Are we successful, are we on the right track, are we heading to the right direction, are we fast enough, are we accelerating or slowing down?
+This time I am talking about the openSUSE Linux Distribution and about the SUSE Linux Enterprise Server.
+And here I quickly would like to note an important disclaimer with a short story.</description>
+    </item>
+    
+    <item>
+      <title>Contributing to SLE/openSUSE</title>
+      <link>https://bzoltan1.github.io/contributing-to-sle/opensuse/</link>
+      <pubDate>Sat, 19 Feb 2022 06:42:50 +0300</pubDate>
+      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
+      <guid>https://bzoltan1.github.io/contributing-to-sle/opensuse/</guid>
+      <description>The motivation of this post is to demonstrate how easy and logical is the workflow of an upstream change in a project to a given SUSE Linux codestream. I try to write this post in a codestream agnostic way. As I have experienced the workflow from the package maintainer point of view is the same for SUSE:SLE-15:Update and for openSUSE:Factory.
+What I want to do It all starts with a Bugzilla case.</description>
+    </item>
+    
+  </channel>
+</rss>

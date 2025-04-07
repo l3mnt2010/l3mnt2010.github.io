@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>haproxy on Zoltán&#39;s Blog</title>
+    <link>https://bzoltan1.github.io/tags/haproxy/</link>
+    <description>Recent content in haproxy on Zoltán&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zoltan.balogh@suse.com (Zoltán Balogh)</managingEditor>
+    <webMaster>zoltan.balogh@suse.com (Zoltán Balogh)</webMaster>
+    <copyright>© Zoltán Balogh 2021</copyright>
+    <lastBuildDate>Thu, 22 Apr 2021 20:40:57 +0300</lastBuildDate><atom:link href="https://bzoltan1.github.io/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Measuring web traffic with Matomo</title>
+      <link>https://bzoltan1.github.io/measuring-web-traffic-with-matomo/</link>
+      <pubDate>Thu, 22 Apr 2021 20:40:57 +0300</pubDate>
+      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
+      <guid>https://bzoltan1.github.io/measuring-web-traffic-with-matomo/</guid>
+      <description>Matomo is an open source PHP/MySQL based web analytics application to track online visits to websites and displays reports on these visits. It does what Google Analytics does, but it is open source. Matomo has commercial cloud based offering for those who do not want to host their own instance but the code is there on GitHub (https://github.com/matomo-org/matomo) for anyone who is interested.
+I decided to first test drive the cloud based solution and then install my own instance.</description>
+    </item>
+    
+    <item>
+      <title>Private cloud based on openSUSE Leap 15.3 beta and Nextcloud</title>
+      <link>https://bzoltan1.github.io/private-cloud-based-on-opensuse-leap-15.3-beta-and-nextcloud/</link>
+      <pubDate>Mon, 05 Apr 2021 19:36:57 +0300</pubDate>
+      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
+      <guid>https://bzoltan1.github.io/private-cloud-based-on-opensuse-leap-15.3-beta-and-nextcloud/</guid>
+      <description>Motivation I used to have a Synology DS414 server what worked well for about 8 years. Naturally, occasionally I had to change disks in the RAID5 system in it, but other than that it did its job. But regardless of the really smooth user experience and the low maintenance needs I never really liked that system as the Synology Disk Station Manager OS is not like many &amp;ldquo;real&amp;rdquo; Linux distributions and the community behind that OS is basically non existent.</description>
+    </item>
+    
+  </channel>
+</rss>

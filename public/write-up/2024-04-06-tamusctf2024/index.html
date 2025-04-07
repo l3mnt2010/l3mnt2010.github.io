@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Tamus CTF 2024 - some WEB &#39;s challenges - Zoltán&#39;s Blog</title>
+  <meta name="description" content="WEB challs forgotten-password  Bài này cũng có thể nói là một trick dùng phising và viết bằng RUBY- oke view qua source của nó tí nào(mình đọc cả buổi chiều :)))    Nhìn có vẻ loằng ngoằng thì mình giải thích một chút nha.
+  Đầu tiên vào trong trang web có chức năng đăng nhập. Và sever khum cung cấp mật khẩu cho mình vì vậy mình phải forget-password để sever gửi mail vào tài khoản của mình.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-04-06-tamusctf2024\/",
+          "name": "Tamus ctf 2024 some web \u0027s challenges"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Tamus CTF 2024 - some WEB \u0027s challenges",
+  "description" : "WEB challs forgotten-password  Bài này cũng có thể nói là một trick dùng phising và viết bằng RUBY- oke view qua source của nó tí nào(mình đọc cả buổi chiều :)))    Nhìn có vẻ loằng ngoằng thì mình giải thích một chút nha.\n  Đầu tiên vào trong trang web có chức năng đăng nhập. Và sever khum cung cấp mật khẩu cho mình vì vậy mình phải forget-password để sever gửi mail vào tài khoản của mình.",
+  "inLanguage" : "en",
+  "wordCount":  621 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-04-06-tamusctf2024\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Tamus CTF 2024 - some WEB &#39;s challenges" />
+<meta property="og:description" content="WEB challs forgotten-password  Bài này cũng có thể nói là một trick dùng phising và viết bằng RUBY- oke view qua source của nó tí nào(mình đọc cả buổi chiều :)))    Nhìn có vẻ loằng ngoằng thì mình giải thích một chút nha.
+  Đầu tiên vào trong trang web có chức năng đăng nhập. Và sever khum cung cấp mật khẩu cho mình vì vậy mình phải forget-password để sever gửi mail vào tài khoản của mình.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-04-06-tamusctf2024/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Tamus CTF 2024 - some WEB &#39;s challenges" />
+  <meta name="twitter:description" content="WEB challs forgotten-password  Bài này cũng có thể nói là một trick dùng phising và viết bằng RUBY- oke view qua source của nó tí nào(mình đọc cả buổi chiều :)))    Nhìn có vẻ loằng ngoằng thì mình …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>Tamus CTF 2024 - some WEB &#39;s challenges</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="web-challs">WEB challs</h1>
+<h2 id="forgotten-password">forgotten-password</h2>
+<ul>
+<li>Bài này cũng có thể nói là một trick dùng phising và viết bằng RUBY- oke view qua source của nó tí nào(mình đọc cả buổi chiều :)))</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/SkU_Va7xR.png" alt="image"></p>
+<ul>
+<li>
+<p>Nhìn có vẻ loằng ngoằng thì mình giải thích một chút nha.</p>
+</li>
+<li>
+<p>Đầu tiên vào trong trang web có chức năng đăng nhập. Và sever khum cung cấp mật khẩu cho mình vì vậy mình phải forget-password để sever gửi mail vào tài khoản của mình.</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/SJNJSTXeA.png" alt="image"></p>
+<ul>
+<li>Sau khi vào trang forget sẽ có giao diện như này:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BJ-ZBpmx0.png" alt="image"></p>
+<ul>
+<li>
+<p>Nếu nhập sai thì nó sẽ báo hoặc nếu mà nhập các email không có trong database.</p>
+</li>
+<li>
+<p>Đây là phần controller của nó:</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HJcHr6mxA.png" alt="image"></p>
+<ul>
+<li>Và nếu nhập đúng thì bạn sẽ được sent email là flag nhá:&gt;</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/Bk_dBT7eA.png" alt="image"></p>
+<ul>
+<li>
+<p>Khum hiểu sao khi build docker mình không build lại được cho nên mình sẽ nói về hướng giải quyết nha:</p>
+</li>
+<li>
+<p>Để ý một chút trong file <code>auth_controller.rb</code></p>
+</li>
+</ul>
+<pre><code>class AuthController &lt; ApplicationController
+
+
+  def login
+  end
+
+  def forget
+  end
+
+  def recover
+    user_found = false
+    User.all.each { |user|
+      if params[:email].include?(user.email)
+        user_found = true
+        break
+      end
+    }
+
+    if user_found
+      RecoveryMailer.recovery_email(params[:email]).deliver_now
+      redirect_to forgot_password_path, notice: 'Password reset email sent'
+    else
+      redirect_to forgot_password_path, alert: 'You are not a registered user!'
+    end
+
+  end
+end
+
+
+</code></pre><ul>
+<li>Có thể thấy là đoạn này sever set mặc định <code>user_found=false</code> và kiểm tra tất cả các email có trong database nếu có thì <code>set user_found=true</code> lúc này mới gọi đến phương thức <code>recovery_email</code> của class <code>RecoveryMailer</code></li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/H1d58p7g0.png" alt="image"></p>
+<ul>
+<li>Trick ở đây là mình sẽ sử dụng dấu <code>;</code> thì lúc này sever sẽ chỉ check một email</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/B1RMv6mlC.png" alt="image"> <code>b8500763@gmail.com</code></p>
+<p>Payload : <code>b8500763@gmail.com;your-email@gmail.com</code></p>
+<p>Flag : <img src="https://hackmd.io/_uploads/rJLtwamgA.png" alt="image"></p>
+<h2 id="cereal">Cereal</h2>
+<ul>
+<li>Đây tiếp tục là một bài easy với mã nguồn php liên quan đến serialize mà sqli:&gt;</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rJK4Oa7gC.png" alt="image"></p>
+<ul>
+<li>Trang web có chức năng đăng nhập và lưu lại username và password với giá trị deserialize.</li>
+<li>Đây là đoạn code quan trọng của bài:</li>
+</ul>
+<pre><code>&lt;?php
+class User {
+  public $username = '';
+	public $id = -1;
+	
+	protected $password = '';
+	protected $profile;
+
+	public function setPassword($pass) {
+		$this-&gt;password = $pass;
+	}
+
+	public function sendProfile() {
+		return $this-&gt;profile;
+	}
+
+	public function refresh() {
+		// Database connection
+		$conn = new PDO('sqlite:../important.db');
+		$conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$query = &quot;select username, email, favorite_cereal, creation_date from users where `id` = '&quot; . $this-&gt;id . &quot;' AND `username` = '&quot; . $this-&gt;username . &quot;'&quot;;
+		$stmt = $conn-&gt;prepare($query);
+		$stmt-&gt;execute();
+		$row = $stmt-&gt;fetch();
+
+		$this-&gt;profile = $row;
+	}
+
+	public function validate() {
+		// Database connection
+		$conn = new PDO('sqlite:../important.db');
+		$conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$query = &quot;select * from users where `username` = :username&quot;;
+		$stmt = $conn-&gt;prepare($query);
+		$stmt-&gt;bindParam(':username', $this-&gt;username);
+		$stmt-&gt;execute();
+		$row = $stmt-&gt;fetch();
+
+		if (md5($row['password']) !== $this-&gt;password) {
+			header('Location: logout.php');
+			exit;
+		}
+	}
+
+	public function __wakeup() {
+		$this-&gt;validate();
+		$this-&gt;refresh();
+    	}
+}
+
+?&gt;
+
+</code></pre><ul>
+<li>
+<p>Như ta có thể thấy thì magic method __wakeup() sẽ luôn được gọi khi giá trị được deserialize.</p>
+</li>
+<li>
+<p>Lúc này 2 phương thức validate() và refresh chắc chắn được gọi.</p>
+</li>
+<li>
+<p>Đề bài cho chúng ta tài khoảng user để đăng nhập và vào cookie chúng ta cũng thấy giá trị.</p>
+</li>
+<li>
+<p>Ta có thể thấy nếu mà đúng thì 2 phương thức này được gọi với người dùng <code>lương thiện</code> còn ta muốn dùng không lương thiện thì khá hóc nhưng mà khá dễ thôi mục tiêu là ta có thể lợi dụng refresh để lấy lại giá trị password của admin với sqli chắc chắn dính ở đây.</p>
+</li>
+<li>
+<p>Vượt qua validate thì ta để nguyên username và password như cũ.</p>
+</li>
+<li>
+<p>Đến refresh mình khá <code>ngu</code> vì ban đầu mình sqli được nhưng mà sử dụng <code>and</code> với <code>or</code> bị detect mình cứ tưởng là do <code>$conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</code></p>
+</li>
+<li>
+<p>Sau test lại theo lời chỉ giáo của anh <code>Ngọc</code> thì đã được:(((</p>
+</li>
+</ul>
+<p>FLAG : <img src="https://hackmd.io/_uploads/HJCS5TQlC.png" alt="image"></p>
+<h2 id="remote">Remote</h2>
+<ul>
+<li>Tiếp tục là một bài white box với mã nguồn php filter khá <code>cẩn thận</code> bằng thư viện.</li>
+</ul>
+<p>updating&hellip;</p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2024-01-14-uoftctf2024/" data-toggle="tooltip" data-placement="top" title="UofTCTF 2024 - Full WEB &#39;s challenges">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2024-10-09-svattt-2024-quals/" data-toggle="tooltip" data-placement="top" title="SVATTT 2024 Quals - WEB &#39;s challenges">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

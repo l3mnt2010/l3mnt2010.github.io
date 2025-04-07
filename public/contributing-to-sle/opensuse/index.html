@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Contributing to SLE/openSUSE - Zoltán&#39;s Blog</title>
+  <meta name="description" content="What is the path of an upstream fix to a given codestream">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/contributing-to-sle\/opensuse\/",
+          "name": "Contributing to sle open suse"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Contributing to SLE\/openSUSE",
+  "description" : "The motivation of this post is to demonstrate how easy and logical is the workflow of an upstream change in a project to a given SUSE Linux codestream. I try to write this post in a codestream agnostic way. As I have experienced the workflow from the package maintainer point of view is the same for SUSE:SLE-15:Update and for openSUSE:Factory.\nWhat I want to do It all starts with a Bugzilla case.",
+  "inLanguage" : "en",
+  "wordCount":  1026 ,
+  "datePublished" : "2022-02-19T06:42:50\u002b03:00",
+  "dateModified" : "2022-02-19T06:42:50\u002b03:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "opensuse, enerprise linux, osc, vim" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/contributing-to-sle\/opensuse\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Contributing to SLE/openSUSE" />
+<meta property="og:description" content="What is the path of an upstream fix to a given codestream">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/contributing-to-sle/opensuse/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Contributing to SLE/openSUSE" />
+  <meta name="twitter:description" content="What is the path of an upstream fix to a given codestream">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Contributing to SLE/openSUSE</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">What is the path of an upstream fix to a given codestream</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on February 19, 2022
+  
+  
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>The motivation of this post is to demonstrate how easy and logical is the workflow of an upstream change in a project to a given SUSE Linux codestream. I try to write this post in a codestream agnostic way. As I have experienced the workflow from the package maintainer point of view is the same for  SUSE:SLE-15:Update and for  openSUSE:Factory.</p>
+<h3 id="what-i-want-to-do">What I want to do</h3>
+<p>It all starts with a Bugzilla case. For the sake of this exercise I will walk through the process with this bug report: <a href="https://bugzilla.suse.com/show_bug.cgi?id=1195126">https://bugzilla.suse.com/show_bug.cgi?id=1195126</a> I use this case because it was a fairly simple, straight forward issue. It is a CVE-2022-0351: vim: uncontrolled recursion in eval7(). This is a  Common Vulnerabilities and Exposures (CVE) what means that somebody has found and published an information-security vulnerabilities and exposures. By classification it is an important issue and as a package maintainer it is not my role to re-evaluate if the issue represents serious threat or not. My goal is to figure out if I can reproduce the issue and if I can find a fix for it.</p>
+<h3 id="how-it-all-starts">How it all starts</h3>
+<p>Naturally I receive an email notification from Bugzilla about the issue. That is what triggers me to start working on the problem. Naturally if I act slowly I may receive a kind notice from somebody who is waiting for the fix.</p>
+<p>As start I branch the codebase I am  going to work on. In my particular case it is the SUSE:SLE-15:Update, but it could be the openSUSE:Factory as well.</p>
+<pre><code>osc -A https://api.suse.de branch -m 'Fixing #1195126 - CVE-2022-0351: vim: uncontrolled recursion in eval7().' SUSE:SLE-15:Update vim
+</code></pre><pre><code>osc -A https://api.opensuse.org branch -m 'Fixing #1195126 - CVE-2022-0351: vim: uncontrolled recursion in eval7().' openSUSE:Factory vim
+</code></pre><p>And after the branch is created I check out the code</p>
+<pre><code>osc -A https://api.suse.de co home:bzoltan1:branches:SUSE:SLE-15:Update/vim
+</code></pre><pre><code>osc -A https://api.opensuse.org co home:bzoltan1:branches:editors/vim
+</code></pre><p>Here I would like to note that many developers feed the build server address and credentials, trusted project, etc to their <code>$HOME/.oscrc file.</code> I also have that setup but for the sake of clarity in this post I indicate the difference between two codestreams.</p>
+<h3 id="time-to-do-the-real-work">Time to do the real work</h3>
+<p>For a simple fix like this I expect that the bug report contains some instructions on how to reproduce (1) the issue and often even links a git hash or commit in the upstream codebase (2) where one can find the patch.</p>
+<ol>
+<li>
+<p><a href="https://huntr.dev/bounties/8b36db58-b65c-4298-be7f-40b9e37fd161/">https://huntr.dev/bounties/8b36db58-b65c-4298-be7f-40b9e37fd161/</a></p>
+</li>
+<li>
+<p><a href="https://github.com/vim/vim/commit/fe6fb267e6ee5c5da2f41889e4e0e0ac5bf4b89d">https://github.com/vim/vim/commit/fe6fb267e6ee5c5da2f41889e4e0e0ac5bf4b89d</a></p>
+</li>
+</ol>
+<p>Naturally every case is different and one can not expect to be served with ready made reproducers and fixes on a silver plate like me in this particular case. More often it takes more sweat and time to get the fix ready.</p>
+<p>The package  source tree contains a set of standard files. The most important two for us now are the tar.gz file of the untouched upstream source code and the spec file for the package.  I need to make five steps:</p>
+<h4 id="1-unpack-the-targz-and-make-a-orig-copy-of-the-upstream-source-directory">1. Unpack the tar.gz and make a .orig copy of the upstream source directory</h4>
+<pre><code>tar -zxf vim-8.0.1568.tar.gz
+cp vim-8.0.1568 vim-8.0.1568.orig
+</code></pre><p>I make the .orig directory to create the patch file once I managed to apply the fix on the source directory. As in distribution packages we very seldom (if ever) change the upstream source tar.gz but instead we create patch files. I call these patches distro patches. Each distro has their own patch sets for their packages. Often they are similar and naturally one can find the same security patches in all well maintained distributions.</p>
+<h4 id="2-build-the-source-code-and-try-to-reproduce-the-bug">2. Build the source code and try to reproduce the bug</h4>
+<p>Since the bug in our case is about a stack corruption and this kind of memory corruption vulnerabilities can cause bypass protection mechanisms and be successful arbitrary code execution I will build the source with Address Sanitizer</p>
+<pre><code>CC=gcc CFLAGS=&quot;-fsanitize=address -O2&quot; LDFLAGS=-fsanitize=address ./configure --enable-gui=none --with-features=huge
+make -j$(nproc)
+</code></pre><p>Not all cases require such measure and the project may build in a different way. Reading the fine manual usually helps.</p>
+<p>Naturally it is important to build the source in the right environment. In this post I do not cover it but one need to have access to the right development environment. Usually a chroot, container, vm or a dedicated build server is what we use. In case of openSUSE maintenance I have easy job as my main OS is openSUSE Tumbleweed.</p>
+<p>Once I have the binaries I can try to reproduce the bug</p>
+<h4 id="3-fix-the-bug-apply-the-upstream-patch-and-create-the-distro-patch">3. Fix the bug, apply the upstream patch and create the distro patch</h4>
+<p>That is where the .orig directory comes handy. To fix the bug I needed to modify two files, the src/globals.h and the src/eval.c so creating the vim-8.0.1568-CVE-2022-0351.patch file I need these two commands:</p>
+<pre><code>diff -u vim-8.0.1568.orig/src/globals.h vim-8.0.1568/src/globals.h &gt;vim-8.0.1568-CVE-2022-0351.patch
+diff -u vim-8.0.1568.orig/src/eval.c vim-8.0.1568/src/eval.c &gt;&gt; vim-8.0.1568-CVE-2022-0351.patch
+</code></pre><h4 id="4-take-care-of-package-housekeeping-and-push-the-package-for-a-test-build">4. Take care of package housekeeping and push the package for a test build</h4>
+<p>I add the patch file to the <code>vim.spec</code> file. It is rather unlikely that my patch is the first distro patch so it is easy to find where these two lines should be added</p>
+<pre><code> [...]
+
+Patch106: vim-8.0.1568-CVE-2022-0351.patch
+
+ [...]
+
+%patch106 -p1
+
+ [...]
+</code></pre><p>Naturally I need to add the patch file to the project and push for a build</p>
+<pre><code>osc add vim-8.0.1568-CVE-2022-0351.patc
+</code></pre><p>and push for a build to the right build server, depending on the target codebase</p>
+<pre><code>osc -A https://api.opensuse.org commit -m &quot;Fixing #1195126 CVE-2022-0351: vim: uncontrolled recursion in eval7()&quot;
+</code></pre><pre><code>osc -A https://api.suse.de commit -m &quot;Fixing #1195126 CVE-2022-0351: vim: uncontrolled recursion in eval7()&quot;
+</code></pre><h4 id="5-submit-a-request">5. Submit a request</h4>
+<p>If all goes well so far then all I need is to submit my request for the change and look for the feedback.</p>
+<pre><code>osc -A https://api.opensuse.org submitrequest -m 'Fixing #1195126 CVE-2022-0351: vim: uncontrolled recursion in eval7()'
+</code></pre><pre><code>osc -A https://api.suse.de submitrequest -m 'Fixing #1195126 CVE-2022-0351: vim: uncontrolled recursion in eval7()'
+</code></pre><p>The submit request command will return a unique request ID. This ID I can follow on the build system and see if the administrators ask for any change or improvement.</p>
+<h3 id="summary">Summary</h3>
+<p>All in all, I believe I can make a point here that contributing to SLE or to openSUSE is really not a rocket science. The workflow is straight forward and the tools are easy to use.</p>
+<h3 id="valuable-sources-of-information">Valuable sources of information</h3>
+<ul>
+<li>
+<p><a href="https://en.opensuse.org/openSUSE:How_to_contribute_to_Factory">https://en.opensuse.org/openSUSE:How_to_contribute_to_Factory</a></p>
+</li>
+<li>
+<p><a href="https://openbuildservice.org/help/manuals/obs-user-guide/art.obs.bg.html">https://openbuildservice.org/help/manuals/obs-user-guide/art.obs.bg.html</a></p>
+</li>
+</ul>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/opensuse/">opensuse</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/enerprise-linux/">enerprise linux</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/osc/">osc</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vim/">vim</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/playing-with-shelly/" data-toggle="tooltip" data-placement="top" title="Playing with Shelly">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/audio-controlled-shelly-devices/" data-toggle="tooltip" data-placement="top" title="Audio controlled Shelly devices">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2022
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

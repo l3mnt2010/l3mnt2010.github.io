@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>matomo on Zoltán&#39;s Blog</title>
+    <link>https://bzoltan1.github.io/tags/matomo/</link>
+    <description>Recent content in matomo on Zoltán&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zoltan.balogh@suse.com (Zoltán Balogh)</managingEditor>
+    <webMaster>zoltan.balogh@suse.com (Zoltán Balogh)</webMaster>
+    <copyright>© Zoltán Balogh 2021</copyright>
+    <lastBuildDate>Thu, 22 Apr 2021 20:40:57 +0300</lastBuildDate><atom:link href="https://bzoltan1.github.io/tags/matomo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Measuring web traffic with Matomo</title>
+      <link>https://bzoltan1.github.io/measuring-web-traffic-with-matomo/</link>
+      <pubDate>Thu, 22 Apr 2021 20:40:57 +0300</pubDate>
+      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
+      <guid>https://bzoltan1.github.io/measuring-web-traffic-with-matomo/</guid>
+      <description>Matomo is an open source PHP/MySQL based web analytics application to track online visits to websites and displays reports on these visits. It does what Google Analytics does, but it is open source. Matomo has commercial cloud based offering for those who do not want to host their own instance but the code is there on GitHub (https://github.com/matomo-org/matomo) for anyone who is interested.
+I decided to first test drive the cloud based solution and then install my own instance.</description>
+    </item>
+    
+  </channel>
+</rss>

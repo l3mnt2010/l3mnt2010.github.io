@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Private cloud based on openSUSE Leap 15.3 beta and Nextcloud - Zoltán&#39;s Blog</title>
+  <meta name="description" content="Be yourself. Unless you can be a unicorn, In that case, you should always be a unicorn.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/private-cloud-based-on-opensuse-leap-15.3-beta-and-nextcloud\/",
+          "name": "Private cloud based on open suse leap 15.3 beta and nextcloud"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Private cloud based on openSUSE Leap 15.3 beta and Nextcloud",
+  "description" : "Motivation I used to have a Synology DS414 server what worked well for about 8 years. Naturally, occasionally I had to change disks in the RAID5 system in it, but other than that it did its job. But regardless of the really smooth user experience and the low maintenance needs I never really liked that system as the Synology Disk Station Manager OS is not like many \u0026ldquo;real\u0026rdquo; Linux distributions and the community behind that OS is basically non existent.",
+  "inLanguage" : "en",
+  "wordCount":  1457 ,
+  "datePublished" : "2021-04-05T19:36:57\u002b03:00",
+  "dateModified" : "2021-04-05T19:36:57\u002b03:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "opensuse, nextcloud, mdadm, haproxy, letsencrypt, monit, telegram" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/private-cloud-based-on-opensuse-leap-15.3-beta-and-nextcloud\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Private cloud based on openSUSE Leap 15.3 beta and Nextcloud" />
+<meta property="og:description" content="Be yourself. Unless you can be a unicorn, In that case, you should always be a unicorn.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/private-cloud-based-on-opensuse-leap-15.3-beta-and-nextcloud/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Private cloud based on openSUSE Leap 15.3 beta and Nextcloud" />
+  <meta name="twitter:description" content="Be yourself. Unless you can be a unicorn, In that case, you should always be a unicorn.">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Private cloud based on openSUSE Leap 15.3 beta and Nextcloud</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">Be yourself. Unless you can be a unicorn, In that case, you should always be a unicorn.</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on April 5, 2021
+  
+  
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <h3 id="motivation">Motivation</h3>
+<p>I used to have a Synology DS414 server what worked  well for about 8 years. Naturally, occasionally I had to change disks in the RAID5 system in it, but other than that it did its job. But regardless of the really smooth user experience and the low maintenance needs I never really liked that system as the Synology Disk Station Manager OS is not like many &ldquo;real&rdquo; Linux distributions and the community behind that OS is basically non existent. And to be honest I do not really feel that Synology is very eager to build and maintain a community around their OS. It looks more like that they just barely comply with the GPL. All in all, I had just enough motivation to migrate my private cloud and NAS to a proper OS.</p>
+<p>I guess it is hardly a surprise that my choice is openSUSE. I was hesitating to use Tumbleweed, the rolling development release of openSUSE, but then I thought that will do a conservative decision and  go with the Leap 15.3 release. Leap is stable, thou I had no problem running my daily driver computer on Tumbleweed.</p>
+<h3 id="the-hardware">The hardware</h3>
+<ul>
+<li>A fairly mature ASUS P8H77-M Pro motherboard with</li>
+<li>core i5-3550 CPU @ 3.30GHz and</li>
+<li>16GB of RAM.</li>
+<li>The disk system would be the same as in Synology, a 4 * Western Digital NAS grade Red 3T  SATA RAID5 where one disk is a dedicated hot spare.</li>
+</ul>
+<h3 id="the-plan">The plan </h3>
+<ul>
+<li>Install the openSUSE Leap 15.3</li>
+<li>Software RAID5 with mdadm</li>
+<li>NFS server for LAN clients</li>
+<li>Apache web server with HAProxy load balancer and proxy server </li>
+<li>Let&rsquo;s Encrypt SSL certification</li>
+<li>NextCloud with all the cool applications</li>
+<li>Monit for system monitoring</li>
+</ul>
+<h3 id="installing-the-base-os">Installing the base OS</h3>
+<p>I have downloaded the installation media from the official place <a href="http://download.opensuse.org/distribution/leap/15.3/iso/">http://download.opensuse.org/distribution/leap/15.3/iso/</a></p>
+<p>I very seldom use any other tool than the good old <code>dd</code> command  to create a USB boot stick, but this time I wanted to try out something fancy. So I installed the imagewriter app, what is a graphical utility for writing raw disk images &amp; hybrid ISOs to USB keys. I just opened the app and dragged the <code>openSUSE-Leap-15.3-NET-x86_64-Build91.1-Media.iso</code> from the file manager to the app and plugged in an USB stick. I have quickly configured the server&rsquo;s BIOS to enable it booting from USB and that was it. Installing the Leap 15.3 was a pretty boring, straight forward, next-next-finish job.</p>
+<h3 id="softrawe-raid">Softrawe RAID</h3>
+<p>First of all, the best instruction I have found on how to work with software raid on Linux is from Xiao Guoan - <a href="https://www.linuxbabe.com/linux-server/linux-software-raid-1-setup">https://www.linuxbabe.com/linux-server/linux-software-raid-1-setup</a>. I really recommend it for reading, it explains the whole workflow and the testing steps very well.</p>
+<p>In my case to build the RAID5 from three disks was fairly simple.</p>
+<p>I made new MBR partition table on the hard drives,created a new partition on each drive with linux raid type and assembled the RAID drive from these three disk partitions</p>
+<pre><code>parted /dev/sdb mklabel gpt
+parted /dev/sdc mklabel gpt
+parted /dev/sdd mklabel gpt
+echo -e &quot;n\np\n1\n\n\nt\n29\nw\nq\n&quot; &gt; autopart.txt
+fdisk /dev/sdb &lt; ./autopart.txt
+fdisk /dev/sdc &lt; ./autopart.txt
+fdisk /dev/sdd &lt; ./autopart.txt
+mdadm --create /dev/md0 --level=5 --raid-devices=3 /dev/sdb1 /dev/sdc1 /dev/sdd1
+</code></pre><p>After creating the drive I checked if all looks fine</p>
+<pre><code>cat /proc/mdstat
+mdadm --detail /dev/md0
+mdadm --examine /dev/sdb1 /dev/sdc1 /dev/sdd1
+</code></pre><p>I chose teh ext4 file system, formatted the drive and mounted it.</p>
+<pre><code>mkfs.ext4 /dev/md0
+mkdir /mnt/volume1
+mount /dev/md0 /mnt/volume1
+setfacl -R -m u:username:rwx /mnt/volume1
+df -h
+</code></pre><p>I want my new drive to be mounted automatically so I add an extra line to the fstab.</p>
+<pre><code>echo &quot;UUID=`blkid|grep md0| sed -r 's/^.*UUID=\&quot;(.*)\&quot; BLOCK.*$/\1/'`/mnt/volume1 ext4 defaults 0 0 &quot;
+</code></pre><h3 id="nfs-server">NFS server</h3>
+<p>Most probably there are many other solutions to provide storage service from a private NAS. I do not know if I am totally outdated or just old school but to me NFS has worked for decades. I have been happy NFS user on HP-UX, Solaris, FreeBSD and on various Linux distros.  It is easy to set up, performs well for my needs and one can find tons of instructions, troubleshooting guides for it easily. To me the most important question when I choose a technology is usually if there is an active and big enough community behind the technology or not. Technical superiority may be worthless if I am all alone with any possible problems.</p>
+<p>The way to set up NFS server is really easy</p>
+<p>At this point just to have a nice system got the hosts and hostname set. I was a little bit wondering why the Leap installation did not take care of it. Maybe I accidentally looked over  something</p>
+<pre><code>echo &quot;nas&quot; &gt; /etc/hostname
+echo -e &quot;127.0.0.1 nas\n::1 nas\n&quot; &gt; /etc/hosts
+</code></pre><p>For the sake of the consistency of my story here I pretend if I have Music, Pictures and Movies directories to export</p>
+<pre><code>zypper install nfs-kernel-server
+echo &quot;/mnt/volume1/Music 192.168.1.0/24(rw,async,no_wdelay,no_root_squash,no_subtree_check,insecure_locks)&quot; &gt;&gt; /etc/exports
+echo &quot;/mnt/volume1/Pictures 192.168.1.0/24(rw,async,no_wdelay,no_root_squash,no_subtree_check,insecure_locks)&quot; &gt;&gt; /etc/exports
+echo &quot;/mnt/volume1/Movies 192.168.1.0/24(rw,async,no_wdelay,no_root_squash,no_subtree_check,insecure_locks)&quot; &gt;&gt; /etc/exports
+exportfs -r
+systemctl enable nfsserver
+systemctl restart nfsserver
+showmount -e localhost
+</code></pre><h3 id="lets-encrypt-with-haproxy">Let&rsquo;s Encrypt with HAProxy</h3>
+<p>Naturally I want to use my NextCloud server&rsquo;s web UI with secure http and for that I need proper TLS certificate. Nowadays the most convenient certificate provider authority is <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a>. </p>
+<p>Also I would like to use haproxy  what provides a high availability load balancer and proxy server for apache. It means that I can deploy multiple http services on my server easily. I know it is possible to work it out with apache configuration but I prefer to keep the load balancing as a separate layer.</p>
+<p>First install both services</p>
+<pre><code>sudo zypper install haproxy apache2
+</code></pre><p>The haproxy&rsquo;s default configuration is just fine but we need to add the frontend and backend configurations</p>
+<pre><code>frontend all_443  
+    mode http  
+    bind *:443 ssl crt /etc/ssl/nas.nokedli.org/nas.nokedli.org.pem  
+    http-request set-header X-Forwarded-Proto https if { ssl_fc }  
+    use_backend nas-server if { ssl_fc_sni_end nas.nokedli.org }  
+    use_backend nas-server if { ssl_fc_sni_end nas.nokedli.local }
+
+frontend fe-nokedli  
+    bind *:80  
+    redirect scheme https code 301 if !{ ssl_fc }  
+    acl letsencrypt-acl path_beg /.well-known/acme-challenge/  
+    acl is_nas hdr_beg(host) -i nas.nokedli.local  
+    use_backend letsencrypt-backend if letsencrypt-acl  
+    use_backend nas-server if is_nas  
+    default_backend nas-server
+
+backend letsencrypt-backend  
+    server letsencrypt 127.0.0.1:8888
+
+backend be-nokedli  
+    # Config omitted here
+
+backend nas-server  
+     server nas-server nas.nokedli.local:8080
+</code></pre><p>With Let&rsquo;s Encrypt there are few tricks here. First of all, since haproxy is standing in front of the apache I need to request certificate for the webroot of the nextcloud and not for the web server. The key is the <code>--webroot</code> option.</p>
+<pre><code>certbot certonly --standalone --non-interactive --webroot --agree-tos --email [ email address ] -d [ domain ] -w /srv/www/htdocs/nextcloud/
+</code></pre><p>Yet again the <a href="https://www.linuxbabe.com/security/letsencrypt-webroot-tls-certificate">article about the Let&rsquo;s Encrypt with webroot on LinuxBabe</a> is super useful and easy to understand.</p>
+<p>Important to note that Let&rsquo;s Encrypt certificates are only valid for 90 days. So using Crontab to run renew regularly is a good idea.</p>
+<p>HAProxy needs an ssl-certificate to be one file, in a certain format. To do that, I simple dump the certificates from Let&rsquo;s Encrypt to a single file</p>
+<pre><code>bash -c &quot;mkdir -p /etc/ssl/nas.nokedli.org/ &amp;&amp; cd /etc/letsencrypt/live/nas.nokedli.org/ &amp;&amp; cat fullchain.pem privkey.pem &gt; /etc/ssl/nas.nokedli.org/nas.nokedli.org.pem&quot;
+</code></pre><p>After that I needed one more thing. This is something what wasted several hours of my life as haproxy was complaining about not being able to load SSL private key from PEM file.
+After some debugging I came to realize that I need to convince the apparmor to  let the haproxy access the PEM file, so the <code>/etc/apparmor.d/local/usr.sbin.haproxy</code> need to contain this</p>
+<pre><code>/etc/ssl/nas.nokedli.org/* r,
+</code></pre><h3 id="nextcloud">NextCloud</h3>
+<p>Installing NextCloud is not a short process, but still fairly simple and straight forward as the openSUSE documentation is complete. I just followed the instructions step by step.</p>
+<p><a href="https://en.opensuse.org/SDB:LAMP_setup">https://en.opensuse.org/SDB:LAMP_setup</a></p>
+<p><a href="https://en.opensuse.org/SDB:Nextcloud">https://en.opensuse.org/SDB:Nextcloud</a></p>
+<p>There is one thing what is not mentioned in the documentation. In my case after the after <code>zypper install nextcloud</code> the server must be rebooted.</p>
+<p>Also since I am using secure http the <code>/srv/www/htdocs/nextcloud/config/config.php</code> add <code>'overwriteprotocol' =&gt; 'https',</code></p>
+<p>And the  array of the trusted domains should be fixed too</p>
+<pre><code>'trusted_domains' =&gt;  
+    array (  
+        0 =&gt; 'nas.nokedli.org',  
+        1 =&gt; 'nas.nokedli.local',  
+    ),  
+</code></pre><h3 id="monit">Monit</h3>
+<p>The fundamentum of the idea is Monit. </p>
+<p><a href="https://mmonit.com/wiki/Monit/Installation">https://mmonit.com/wiki/Monit/Installation</a></p>
+<p><code>/etc/monit.d/mdadm_monitor</code></p>
+<pre><code># Using simple regular expression matching
+check file raid with path /proc/mdstat
+   if match &quot;\[.*_.*\]&quot; then exec &quot;/usr/local/etc/monit/scripts/message.sh&quot;
+# Using mdadm for improved granularity
+check program raid-md0 with path &quot;/sbin/mdadm --misc --detail --test /dev/md0&quot;
+  if status != 0 then exec &quot;/usr/local/etc/monit/scripts/message.sh&quot;
+
+</code></pre><p>where the /usr/local/etc/monit/scripts/message.sh is</p>
+<pre><code>#!/bin/sh  
+/usr/bin/curl --request POST --data '{&quot;sender&quot;:&quot;'&quot;`uname -n` - ${MONIT_SERVICE}&quot;'&quot;,&quot;content&quot;:&quot;'&quot;${MONIT_EVENT}&quot;'&quot;}' http://localhost:10000/send
+</code></pre><p>I have posted a dedicated article about how I like my system being monitored</p>
+<p><a href="https://bzoltan1.github.io/telegram-bridge/">https://bzoltan1.github.io/telegram-bridge/</a></p>
+<pre><code>zypper ar -f https://download.opensuse.org/repositories/home:/bzoltan1/openSUSE_Leap_15.0 bzoltan1
+zypper ref
+zypper in tgb
+systemctl enable tgb
+systemctl start tgb
+</code></pre><p>Naturally I needed to add my token and chatid to the <code>/etc/tgb.yaml</code></p>
+<h3 id="summary">Summary</h3>
+<p>All in all it was a fun excercise and finally I can have a fully open source and real community backed NAS with all (and more) the features what I used to have.</p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/opensuse/">opensuse</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/nextcloud/">nextcloud</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/mdadm/">mdadm</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/haproxy/">haproxy</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/letsencrypt/">letsencrypt</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/monit/">monit</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/telegram/">telegram</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/setup-a-blog-with-github-pages-and-hugo/" data-toggle="tooltip" data-placement="top" title="Setup a Blog With Github Pages and Hugo">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/measuring-web-traffic-with-matomo/" data-toggle="tooltip" data-placement="top" title="Measuring web traffic with Matomo">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2021
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

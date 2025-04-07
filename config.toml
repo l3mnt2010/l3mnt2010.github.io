@@ -1,16 +1,25 @@
 baseurl = "https://bzoltan1.github.io/"
-contentdir    = "content"
-layoutdir     = "layouts"
-publishdir    = "public"
-theme = "beautifulhugo"
 languageCode = "en-us"
 title = "Zoltán's Blog"
+theme = "beautifulhugo"
 paginate = 20
-Copyright = "© Zoltán Balogh 2021"
 canonifyurls = true
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 metaDataFormat = "yaml"
+copyright = "© Zoltán Balogh 2021"
+
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+
+# Thêm để tránh lỗi IsMultilingual
+defaultContentLanguage = "en"
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight = 1
 
 [params]
 description = "Recorded ignorance"
@@ -28,7 +37,6 @@ name = "Zoltán Balogh"
 email = "zoltan.balogh@suse.com"
 github = "bzoltan1"
 linkedin = "zbalogh"
-
 
 [[menu.main]]  
 name = "Home" 
@@ -56,6 +64,7 @@ weight = 3
 
 [permalinks]
 post = "/:slug/"
+
 [sitemap]
 ChangeFreq = ""
 Filename = "sitemap.xml"
