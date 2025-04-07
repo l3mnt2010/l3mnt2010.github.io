@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Zoltán&#39;s Blog</title>
-    <link>https://bzoltan1.github.io/categories/</link>
-    <description>Recent content in Categories on Zoltán&#39;s Blog</description>
+    <title>Categories on l3mnt2010&#39;s Blog</title>
+    <link>https://l3mnt2010.github.io/categories/</link>
+    <description>Recent content in Categories on l3mnt2010&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zoltan.balogh@suse.com (Zoltán Balogh)</managingEditor>
-    <webMaster>zoltan.balogh@suse.com (Zoltán Balogh)</webMaster>
-    <copyright>© Zoltán Balogh 2021</copyright>
-    <lastBuildDate>Wed, 21 Jul 2021 18:17:00 +0700</lastBuildDate><atom:link href="https://bzoltan1.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>zoltan.balogh@suse.com (l3mnt2010 Balogh)</managingEditor>
+    <webMaster>zoltan.balogh@suse.com (l3mnt2010 Balogh)</webMaster>
+    <copyright>© l3mnt2010 Balogh 2021</copyright>
+    <lastBuildDate>Wed, 21 Jul 2021 18:17:00 +0700</lastBuildDate><atom:link href="https://l3mnt2010.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Offensive Security</title>
-      <link>https://bzoltan1.github.io/categories/offensive-security/</link>
+      <link>https://l3mnt2010.github.io/categories/offensive-security/</link>
       <pubDate>Wed, 21 Jul 2021 18:17:00 +0700</pubDate>
-      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
-      <guid>https://bzoltan1.github.io/categories/offensive-security/</guid>
+      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <guid>https://l3mnt2010.github.io/categories/offensive-security/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lab</title>
-      <link>https://bzoltan1.github.io/categories/lab/</link>
+      <link>https://l3mnt2010.github.io/categories/lab/</link>
       <pubDate>Sun, 30 Aug 2020 18:17:00 +0700</pubDate>
-      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
-      <guid>https://bzoltan1.github.io/categories/lab/</guid>
+      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <guid>https://l3mnt2010.github.io/categories/lab/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CTF</title>
-      <link>https://bzoltan1.github.io/categories/ctf/</link>
+      <link>https://l3mnt2010.github.io/categories/ctf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
-      <guid>https://bzoltan1.github.io/categories/ctf/</guid>
+      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <guid>https://l3mnt2010.github.io/categories/ctf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Machine</title>
-      <link>https://bzoltan1.github.io/categories/machine/</link>
+      <link>https://l3mnt2010.github.io/categories/machine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
-      <guid>https://bzoltan1.github.io/categories/machine/</guid>
+      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <guid>https://l3mnt2010.github.io/categories/machine/</guid>
       <description></description>
     </item>
     

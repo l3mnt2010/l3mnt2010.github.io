@@ -13,7 +13,7 @@ I decided to first test drive the cloud based solution and then install my own i
 
 ### Test drive on the cloud
 
-This was a boringly simple and straight forward job. Just visited the [https://matomo.org/start-free-analytics-trial/](https://matomo.org/start-free-analytics-trial/) and signed up my [https://bzoltan1.github.io/](https://bzoltan1.github.io/) for the 21 day free trial period.
+This was a boringly simple and straight forward job. Just visited the [https://matomo.org/start-free-analytics-trial/](https://matomo.org/start-free-analytics-trial/) and signed up my [https://l3mnt2010.github.io/](https://l3mnt2010.github.io/) for the 21 day free trial period.
 
 The only hurdle to jump over was to inject the tracker script to the Hugo base. 
 

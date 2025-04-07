@@ -40,7 +40,7 @@ A good API consist of the following important parts:
 
 While the Vosk API commendably fulfills my requirements  the Shelly API has only a pretty poor [documentation](https://shelly.cloud/documents/developers/shelly_cloud_api_access.pdf)
 
-I am very far from being impressed with the Shelly Cloud API. For this excercise I wanted to try out the cloud API to see how it works compare to the MQTT (Message Queue Telemetry Transport) what I played with [earlier](https://bzoltan1.github.io/playing-with-shelly/). I must say that already at half way I have decided that the next will be to migrate to [Nymea](https://nymea.io/) as I have heard only positive words about it.
+I am very far from being impressed with the Shelly Cloud API. For this excercise I wanted to try out the cloud API to see how it works compare to the MQTT (Message Queue Telemetry Transport) what I played with [earlier](https://l3mnt2010.github.io/playing-with-shelly/). I must say that already at half way I have decided that the next will be to migrate to [Nymea](https://nymea.io/) as I have heard only positive words about it.
 
 True the simplicity of Shelly Cloud API is appealing. But for example their limitation that it can serve only one request per second is really annoying. This limitation means that if I request the status of a Shelly device then I need to sleep() for at least a full second before I can fire up the command to change that status. So a simple status switching call (turn it off if it was on or turn it on if it was off) is a 1.5-2 seconds job. And that is not acceptable. I have opened a ticket at Shelly's customer service but they told me that such as life. 
 

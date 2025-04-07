@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Zoltán&#39;s Blog</title>
-    <link>https://bzoltan1.github.io/posts/</link>
-    <description>Recent content in Posts on Zoltán&#39;s Blog</description>
+    <title>Posts on l3mnt2010&#39;s Blog</title>
+    <link>https://l3mnt2010.github.io/posts/</link>
+    <description>Recent content in Posts on l3mnt2010&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zoltan.balogh@suse.com (Zoltán Balogh)</managingEditor>
-    <webMaster>zoltan.balogh@suse.com (Zoltán Balogh)</webMaster>
-    <copyright>© Zoltán Balogh 2021</copyright>
-    <lastBuildDate>Wed, 21 Jul 2021 18:17:00 +0700</lastBuildDate><atom:link href="https://bzoltan1.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>zoltan.balogh@suse.com (l3mnt2010 Balogh)</managingEditor>
+    <webMaster>zoltan.balogh@suse.com (l3mnt2010 Balogh)</webMaster>
+    <copyright>© l3mnt2010 Balogh 2021</copyright>
+    <lastBuildDate>Wed, 21 Jul 2021 18:17:00 +0700</lastBuildDate><atom:link href="https://l3mnt2010.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android Pentest Note</title>
-      <link>https://bzoltan1.github.io/posts/androi-pentest-note-p1/</link>
+      <link>https://l3mnt2010.github.io/posts/androi-pentest-note-p1/</link>
       <pubDate>Wed, 21 Jul 2021 18:17:00 +0700</pubDate>
-      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
-      <guid>https://bzoltan1.github.io/posts/androi-pentest-note-p1/</guid>
+      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <guid>https://l3mnt2010.github.io/posts/androi-pentest-note-p1/</guid>
       <description>Concept Structure  AndroidManifest file contains the application’s structure Res folder contains all the resources that the application needs to run , including user interface layout, icons, audio, etc. The most interesting files for us are the classes.dex files because they are the compiled java files. The .dex extension stands for Dalvik EXecutable. So we need to decompile these dex files to get the java classes.  Tools  Apktool : tool for reverse engineering Android apk files.</description>
     </item>
     
     <item>
       <title>Insecure-deserialization-lab</title>
-      <link>https://bzoltan1.github.io/posts/2024-01-17-insecure-deserialization-lab/</link>
+      <link>https://l3mnt2010.github.io/posts/2024-01-17-insecure-deserialization-lab/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
-      <guid>https://bzoltan1.github.io/posts/2024-01-17-insecure-deserialization-lab/</guid>
+      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <guid>https://l3mnt2010.github.io/posts/2024-01-17-insecure-deserialization-lab/</guid>
       <description>Insecure deserialization Lab: Modifying serialized objects   Đề bài yêu cầu như sau:
     Như ta thấy thì lab chứa lỗ hổng Insecure deserialization do đó dễ bị leo thang đặc quyền vào nhiệm vụ là ta đạt được quyền quản trị sau đó xóa carlos.
   Let&amp;rsquo;s go bắt đầu bài lab nào:
@@ -34,10 +34,10 @@
     
     <item>
       <title>Java security</title>
-      <link>https://bzoltan1.github.io/posts/2024-10-17-java-sec/</link>
+      <link>https://l3mnt2010.github.io/posts/2024-10-17-java-sec/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
-      <guid>https://bzoltan1.github.io/posts/2024-10-17-java-sec/</guid>
+      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <guid>https://l3mnt2010.github.io/posts/2024-10-17-java-sec/</guid>
       <description>java security Chào mọi người, đây là series học javasec của mình từ việc theo dõi blog của anh tsug0d
 Cài đặt môi trường:
  IntelliJ - ide để chạy và debug java java enviroment để chạy java  Mở ide -&amp;gt; tạo project mới -&amp;gt; gen ra:
@@ -46,19 +46,19 @@ Cài đặt môi trường:
     
     <item>
       <title>Liferay Pentest</title>
-      <link>https://bzoltan1.github.io/posts/2024-11-21-liferaypentest/</link>
+      <link>https://l3mnt2010.github.io/posts/2024-11-21-liferaypentest/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
-      <guid>https://bzoltan1.github.io/posts/2024-11-21-liferaypentest/</guid>
+      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <guid>https://l3mnt2010.github.io/posts/2024-11-21-liferaypentest/</guid>
       <description>Liferay Tại đây</description>
     </item>
     
     <item>
       <title>XXE-lab</title>
-      <link>https://bzoltan1.github.io/posts/2024-01-17-xxe-lab/</link>
+      <link>https://l3mnt2010.github.io/posts/2024-01-17-xxe-lab/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
-      <guid>https://bzoltan1.github.io/posts/2024-01-17-xxe-lab/</guid>
+      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <guid>https://l3mnt2010.github.io/posts/2024-01-17-xxe-lab/</guid>
       <description>Full XML external entity (XXE) injection Exploiting XXE using external entities to retrieve files  Bài này không có filter gì cả và chức năng chính là check trong kho hàng có còn hàng không với yêu cầu gửi lên là 1 dữ liệu XML     Khi mà xác định sẽ trả ra có bao nhiêu cơ sở có sản phầm này
   Bây giờ thì chúng ta bắt request này:</description>
     </item>

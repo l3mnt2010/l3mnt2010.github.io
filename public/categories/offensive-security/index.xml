@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Offensive Security on Zoltán&#39;s Blog</title>
-    <link>https://bzoltan1.github.io/categories/offensive-security/</link>
-    <description>Recent content in Offensive Security on Zoltán&#39;s Blog</description>
+    <title>Offensive Security on l3mnt2010&#39;s Blog</title>
+    <link>https://l3mnt2010.github.io/categories/offensive-security/</link>
+    <description>Recent content in Offensive Security on l3mnt2010&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zoltan.balogh@suse.com (Zoltán Balogh)</managingEditor>
-    <webMaster>zoltan.balogh@suse.com (Zoltán Balogh)</webMaster>
-    <copyright>© Zoltán Balogh 2021</copyright>
-    <lastBuildDate>Wed, 21 Jul 2021 18:17:00 +0700</lastBuildDate><atom:link href="https://bzoltan1.github.io/categories/offensive-security/index.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>zoltan.balogh@suse.com (l3mnt2010 Balogh)</managingEditor>
+    <webMaster>zoltan.balogh@suse.com (l3mnt2010 Balogh)</webMaster>
+    <copyright>© l3mnt2010 Balogh 2021</copyright>
+    <lastBuildDate>Wed, 21 Jul 2021 18:17:00 +0700</lastBuildDate><atom:link href="https://l3mnt2010.github.io/categories/offensive-security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android Pentest Note</title>
-      <link>https://bzoltan1.github.io/posts/androi-pentest-note-p1/</link>
+      <link>https://l3mnt2010.github.io/posts/androi-pentest-note-p1/</link>
       <pubDate>Wed, 21 Jul 2021 18:17:00 +0700</pubDate>
-      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
-      <guid>https://bzoltan1.github.io/posts/androi-pentest-note-p1/</guid>
+      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <guid>https://l3mnt2010.github.io/posts/androi-pentest-note-p1/</guid>
       <description>Concept Structure  AndroidManifest file contains the application’s structure Res folder contains all the resources that the application needs to run , including user interface layout, icons, audio, etc. The most interesting files for us are the classes.dex files because they are the compiled java files. The .dex extension stands for Dalvik EXecutable. So we need to decompile these dex files to get the java classes.  Tools  Apktool : tool for reverse engineering Android apk files.</description>
     </item>
     
     <item>
       <title>[Attackdefense.com] Privilege Escalation</title>
-      <link>https://bzoltan1.github.io/write-up/attackdefense.com-privilege-escalation/</link>
+      <link>https://l3mnt2010.github.io/write-up/attackdefense.com-privilege-escalation/</link>
       <pubDate>Sun, 30 Aug 2020 18:17:00 +0700</pubDate>
-      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
-      <guid>https://bzoltan1.github.io/write-up/attackdefense.com-privilege-escalation/</guid>
+      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <guid>https://l3mnt2010.github.io/write-up/attackdefense.com-privilege-escalation/</guid>
       <description>Link https://attackdefense.com/challengedetails?cid=2021
 Student to Teacher Find SUID binaries Using ‘Strings’ to view
 When we run the read-submission file. It will call and run the read-file. Read file is a binary file. We will use the PATH variable method

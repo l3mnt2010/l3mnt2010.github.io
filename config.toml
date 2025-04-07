@@ -1,13 +1,13 @@
-baseurl = "https://bzoltan1.github.io/"
+baseurl = "https://l3mnt2010.github.io/"
 languageCode = "en-us"
-title = "Zoltán's Blog"
+title = "l3mnt2010's Blog"
 theme = "beautifulhugo"
 paginate = 20
 canonifyurls = true
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 metaDataFormat = "yaml"
-copyright = "© Zoltán Balogh 2021"
+copyright = "© l3mnt2010 Balogh 2021"
 
 contentdir = "content"
 layoutdir = "layouts"
@@ -33,7 +33,7 @@ email = "zoltan.balogh@suse.com"
 hideHUGOSupport = false
 
 [Author]
-name = "Zoltán Balogh"
+name = "l3mnt2010 Balogh"
 email = "zoltan.balogh@suse.com"
 github = "bzoltan1"
 linkedin = "zbalogh"

@@ -223,7 +223,7 @@ where the /usr/local/etc/monit/scripts/message.sh is
 
 I have posted a dedicated article about how I like my system being monitored
 
-[https://bzoltan1.github.io/telegram-bridge/](https://bzoltan1.github.io/telegram-bridge/)
+[https://l3mnt2010.github.io/telegram-bridge/](https://l3mnt2010.github.io/telegram-bridge/)
 
 ```  
 zypper ar -f https://download.opensuse.org/repositories/home:/bzoltan1/openSUSE_Leap_15.0 bzoltan1
