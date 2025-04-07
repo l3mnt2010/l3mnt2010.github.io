@@ -1,0 +1,43 @@
+---
+title: "Paradigm shifts in software development"
+subtitle: "Sometimes thinking outside the box just is not enough."
+date: 2023-04-03T06:13:44+03:00
+tags: ["software engineering"]
+type: post
+---
+I could have given it the title 'Old Man's Ranting,' but even though it would have been more honest, it wouldn't be very catchy.
+
+### Why I decided to write this up?
+
+
+![Kala Patagónico](/kala-patagonico.jpeg)
+I knew something was in the air when my favorite fishmonger, an incredibly friendly and always super-helpful fellow, asked me what I thought about that Chat.GPT thingy. That doesn't happen often. Like our neighbor, who was a fantastic craftsman, didn't stop me in the '90s to ask me what I thought about object-oriented programming. Neither did the ladies in our university's canteen ask us how POSIX threads would impact software engineering. Sure, the significance of these examples is arguable. Still, my point is that a massive paradigm shift in our beloved profession rarely breaks through to the general public.
+
+And that is exactly what has just happened. Language models fine-tuned with machine learning and deep learning techniques were fed with the massive content of the almighty internet, and it impressed hundreds of millions of people so much that even my fishmonger got excited. I must admit that I got a tiny bit annoyed by this buzz. Primarily because I don't like any buzz at all, but also because I would be happy if the public would get excited about data privacy and software security aspects of our industry and profession. And most importantly, because it annoys the hell out of me that people now call these well-trained language models something I consider a very human quality: intelligence. We don't call the softness of teddy bears artificial love, and we don't call the work of our kitchen machines artificial cooking, etc., etc. No machine can ever make food like my mom, because no machine can love and care as a parent does. So let me cut the BS here and just state that regardless of how clickbait journalists and scientists chasing grant money do and say, intelligence is a human quality. Software can only be at maximum efficient, fast, or whatever, but not intelligent. I am sorry, maybe I am too old for this.
+
+Or maybe I've just seen a similar paradigm shift in the last few decades.
+
+### Let me share two old stories
+
+![Turbo Vision](/tv-oop.jpg)
+
+In around 1992/1993, a few of my grammar school friends and I were developing software for Novell Netware (version 3.x as I remember) that could send emails and attachments to users and user groups on the local network. At the time, we had little knowledge that these local networks could be connected to each other and form a larger network. We used Turbo Vision for the UI and DOS interrupts to communicate with the server. The Turbo Vision part was relatively easy, as one teacher in the school was writing a book on Turbo Vision as an OOP application with two extremely talented students, so we had enough available knowledge. However, the Novel Netware specific DOS interrupts and server API were almost uncharted territory for us. We had a set of floppy disks with Norton Guides .ng files about some interrupt descriptions, but they were not complete. One of us even managed to reverse engineer some essential parts of the Netware APIs by reading and hacking with the raw file system of the server, but we hit a dead end. Our best option was to invest our pocket money, which we usually saved for less intellectual and often questionably legitimate activities, in train tickets and visit the importer of Novel products. I still remember the shocked face of the grown-up who opened the door for us and got our question right after our greeting of "good morning sir": "Why does this and that interrupt not return the full list of members of a given group?"
+
+Yes, that was how it was before the internet: floppy disks, books, friends, and often long train travels and phone calls to obtain information. Just a year later, we had access to mailing lists, IRC channels, and the vast knowledge of the international university networks.
+
+Moving the background work for developing software from offline to online changed the whole industry and changed our way of working. We definitely knew in the mid-'90s that software development was going to be significantly different tomorrow compared to what it was yesterday.
+
+
+![CDE](/CDE.jpg)
+
+The second time I experienced a similar change was around the millennium. I successfully managed to convince my boss to migrate from the horrible technology of MetaCard (please do not Google it; it really is not worth it) to XMotif. The OS was HPUX 10.20, and I was excited about XMotif. I don't know why, but I was. That migration project was just at the turning point of another paradigm shift in software development. In the beginning, I had to ask my boss for support to buy a hard copy of XMotif, which was horribly expensive. But it had all the information I needed for the job. The internet already existed, but the available and valuable information was not much. However, that was the last hardcopy handbook I needed to buy to accomplish software development tasks. A few years after the millennium, Google arose, and soon the participative web was born. That was the first time anything related to our profession was recognized by the general public. They called it Web 2.0, or at least Tim O'Reilly did. I would call it the democratization of the internet.
+
+### The shift
+I would definitely compare the hype and buzz around the emergence of language models trained with large data and machine learning techniques to the phenomenon of the social web. Communities were born, shared knowledge libraries were established: Wikipedia, Stack Overflow, podcasts, blogs, online tech media, Slashdot, Freshmeat, to name a few. These platforms completely redefined how we develop software. The Internet became a free library with millions of design patterns, example codes, documentation, and hundreds of thousands of other hackers and coders who were willing to help. Needless to say, I have never opened my book about XMotif or any similar book again.
+
+The knowledge first transitioned from hard copies to digital form, then migrated to the Internet and later became the binding agent for communities. All these shifts have changed the technology industry and the software engineering profession. Did these shifts eliminate our jobs? Nope, just the opposite. Is coding different now than it was back in the days without the Internet and social web content? Hell yes. And at that point, please imagine Stack Overflow on steroids. It is going to be a hell of a ride. The Internet was never meant to be the ultimate library of truth and eternal wisdom, and nobody expected the social web to be a collective support group for humankind. Just as the next big thing is not going to solve any of our big problems for good. But as we hardly can imagine our work and life without search engines, social web, and community knowledge, we are going to get used to the next thing and quickly become addicted to it, just as we got addicted to washing machines, fridges, and the wheel.
+
+### The change
+A reasonable hiring manager these days does not ask candidates if they can write the binary search algorithm on paper. I bet that soon, hiring managers will not ask candidates if they can optimize a piece of code during interviews. It is hardly surprising that different qualities, skills, and experiences matter now than in 2003 or 1993. With access to super-fast computers trained with the massive content of the internet (including social web content), we can expect different skills to be relevant tomorrow than yesterday. I am confident that as software engineering becomes less about algorithm crafting and code hammering, other aspects of development work will become more relevant. I expect social skills to be valued more. Being nice, kind, and helpful to fellow, possibly less-talented teammates will be important when most of our jobs involve instructing and guiding coding bots. Patience and calmness will be big things when we are following automatic integration and deployment pipelines. Mentoring and coaching skills are already known as essential skills for effective requirement management, and I expect them to become even more relevant. I also expect open source software, online communities and the participative web becoming more relevant and more valued as the training techniques of these  algorithms need organic data, new and up to date information, knowledge.
+
+![Not by AI](/Written-By-Human-Not-By-AI-Badge-white.png)

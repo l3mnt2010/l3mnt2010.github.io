@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lab on Zoltán&#39;s Blog</title>
+    <link>https://bzoltan1.github.io/categories/lab/</link>
+    <description>Recent content in Lab on Zoltán&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zoltan.balogh@suse.com (Zoltán Balogh)</managingEditor>
+    <webMaster>zoltan.balogh@suse.com (Zoltán Balogh)</webMaster>
+    <copyright>© Zoltán Balogh 2021</copyright>
+    <lastBuildDate>Sun, 30 Aug 2020 18:17:00 +0700</lastBuildDate><atom:link href="https://bzoltan1.github.io/categories/lab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Attackdefense.com] Privilege Escalation</title>
+      <link>https://bzoltan1.github.io/write-up/attackdefense.com-privilege-escalation/</link>
+      <pubDate>Sun, 30 Aug 2020 18:17:00 +0700</pubDate>
+      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
+      <guid>https://bzoltan1.github.io/write-up/attackdefense.com-privilege-escalation/</guid>
+      <description>Link https://attackdefense.com/challengedetails?cid=2021
+Student to Teacher Find SUID binaries Using ‘Strings’ to view
+When we run the read-submission file. It will call and run the read-file. Read file is a binary file. We will use the PATH variable method
+First create another read-file executable file in / tmp with the content to generate a shell. Then use export to append the $ PATH variable. Then run the read-submission file. Because of the teacher’s suid, when running will generate the teacher’s shell:</description>
+    </item>
+    
+  </channel>
+</rss>

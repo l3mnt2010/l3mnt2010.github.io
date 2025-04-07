@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hackweek on Zoltán&#39;s Blog</title>
+    <link>https://bzoltan1.github.io/tags/hackweek/</link>
+    <description>Recent content in hackweek on Zoltán&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zoltan.balogh@suse.com (Zoltán Balogh)</managingEditor>
+    <webMaster>zoltan.balogh@suse.com (Zoltán Balogh)</webMaster>
+    <copyright>© Zoltán Balogh 2021</copyright>
+    <lastBuildDate>Wed, 01 Feb 2023 19:15:12 +0300</lastBuildDate><atom:link href="https://bzoltan1.github.io/tags/hackweek/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reverse dependencies</title>
+      <link>https://bzoltan1.github.io/reverse-dependencies/</link>
+      <pubDate>Wed, 01 Feb 2023 19:15:12 +0300</pubDate>
+      <author>zoltan.balogh@suse.com (Zoltán Balogh)</author>
+      <guid>https://bzoltan1.github.io/reverse-dependencies/</guid>
+      <description>As start let&amp;rsquo;s sort it out what is dependency and what is reverse dependency. Dependencies and reverse dependencies in Linux distributions are important concepts to understand. A package dependency means that another package relies on it in order to function. For example, if package B requires package A to be installed in order to work, then package B is dependent on package A and is considered a reverse dependency of package A.</description>
+    </item>
+    
+  </channel>
+</rss>

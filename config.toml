@@ -1,0 +1,62 @@
+baseurl = "https://bzoltan1.github.io/"
+contentdir    = "content"
+layoutdir     = "layouts"
+publishdir    = "public"
+theme = "beautifulhugo"
+languageCode = "en-us"
+title = "Zoltán's Blog"
+paginate = 20
+Copyright = "© Zoltán Balogh 2021"
+canonifyurls = true
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+metaDataFormat = "yaml"
+
+[params]
+description = "Recorded ignorance"
+authorlocation = "authorlocation"
+cover = "static/cover.png"
+logo = "avatar.png"
+favicon = "avatar.png"
+githubName = "bzoltan1"
+linkedinName = "zbalogh"
+email = "zoltan.balogh@suse.com"
+hideHUGOSupport = false
+
+[Author]
+name = "Zoltán Balogh"
+email = "zoltan.balogh@suse.com"
+github = "bzoltan1"
+linkedin = "zbalogh"
+
+
+[[menu.main]]  
+name = "Home" 
+weight = 100 
+identifier = "home"
+pre = "<br />"
+url = "/"
+
+[[menu.main]]
+name = "About"
+weight = 0
+identifier = "contact"
+pre = "<br />"
+url = "/about"
+
+[[menu.main]]
+name = "Blog"
+url = ""
+weight = 1
+
+[[menu.main]]
+name = "Tags"
+url = "tags"
+weight = 3
+
+[permalinks]
+post = "/:slug/"
+[sitemap]
+ChangeFreq = ""
+Filename = "sitemap.xml"
+Priority = "-1"
