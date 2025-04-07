@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <title>Htb business ctf 2024 the vault of hope - solved challenges in time - &gt; root@l3mnt2010:~# ./exploit.py</title>
-  <meta name="description" content="Solved challenges Web/Jailbreak  Mở đầu các chall web bằng một bài black box khá đơn giản. Trang web có khá nhiều page render client side và không tương tác với server trừ chức năng update firmware với định dạng file xml.   Nhìn vào thì ta sẽ nghĩ ngay đến vul XXE external entity injection để đọc file trên hệ thống. Quan sát kĩ hơn bằng việc chặn proxy :    Post method với /api/update nhận file xml và trả ra nội dung update version nằm trong một thẻ của file xml vì vậy có thể đoán nôm na rằng server sẽ hiển thị nội dung của tag Version.">
+  <meta name="description" content="Solved challenges  Web/Jailbreak Web/Blueprint Heist  Reconnaissance &#43; detect  publicRoutes internalRoutes RCE   Exploit wkhtmltopdf SSRF Leak secret_key jwt -&gt; authenticate to admin user. Exploit Sqli bypass waf SSTI in ejs template via sqli Exploit chain     Giải này phần MISC có khá nhiều bài web với mức độ tầm medium &#43; easy  MISC/Chrono Mind FullPwn/Submerged  User Flag Root flag   Misc/Zephyr  Nhánh main Nhánh w4rri0r-changes Flag3 - Stash   Web/Magicom misc/Super-Duper Pwn  bot api     Team write up: Tại đây  .">
   <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -59,9 +59,9 @@
     "name" : ""
   },
   "headline": "Htb business ctf 2024 the vault of hope - solved challenges in time",
-  "description" : "Solved challenges Web\/Jailbreak  Mở đầu các chall web bằng một bài black box khá đơn giản. Trang web có khá nhiều page render client side và không tương tác với server trừ chức năng update firmware với định dạng file xml.   Nhìn vào thì ta sẽ nghĩ ngay đến vul XXE external entity injection để đọc file trên hệ thống. Quan sát kĩ hơn bằng việc chặn proxy :    Post method với \/api\/update nhận file xml và trả ra nội dung update version nằm trong một thẻ của file xml vì vậy có thể đoán nôm na rằng server sẽ hiển thị nội dung của tag Version.",
+  "description" : "Solved challenges  Web\/Jailbreak Web\/Blueprint Heist  Reconnaissance \u002b detect  publicRoutes internalRoutes RCE   Exploit wkhtmltopdf SSRF Leak secret_key jwt -\u0026gt; authenticate to admin user. Exploit Sqli bypass waf SSTI in ejs template via sqli Exploit chain     Giải này phần MISC có khá nhiều bài web với mức độ tầm medium \u002b easy  MISC\/Chrono Mind FullPwn\/Submerged  User Flag Root flag   Misc\/Zephyr  Nhánh main Nhánh w4rri0r-changes Flag3 - Stash   Web\/Magicom misc\/Super-Duper Pwn  bot api     Team write up: Tại đây  \r\r\r\r\r.",
   "inLanguage" : "en",
-  "wordCount":  7617 ,
+  "wordCount":  8061 ,
   "datePublished" : "0001-01-01T00:00:00\u002b00:00",
   "dateModified" : "0001-01-01T00:00:00\u002b00:00",
   "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
@@ -82,14 +82,14 @@
 
 
 <meta property="og:title" content="Htb business ctf 2024 the vault of hope - solved challenges in time" />
-<meta property="og:description" content="Solved challenges Web/Jailbreak  Mở đầu các chall web bằng một bài black box khá đơn giản. Trang web có khá nhiều page render client side và không tương tác với server trừ chức năng update firmware với định dạng file xml.   Nhìn vào thì ta sẽ nghĩ ngay đến vul XXE external entity injection để đọc file trên hệ thống. Quan sát kĩ hơn bằng việc chặn proxy :    Post method với /api/update nhận file xml và trả ra nội dung update version nằm trong một thẻ của file xml vì vậy có thể đoán nôm na rằng server sẽ hiển thị nội dung của tag Version.">
+<meta property="og:description" content="Solved challenges  Web/Jailbreak Web/Blueprint Heist  Reconnaissance &#43; detect  publicRoutes internalRoutes RCE   Exploit wkhtmltopdf SSRF Leak secret_key jwt -&gt; authenticate to admin user. Exploit Sqli bypass waf SSTI in ejs template via sqli Exploit chain     Giải này phần MISC có khá nhiều bài web với mức độ tầm medium &#43; easy  MISC/Chrono Mind FullPwn/Submerged  User Flag Root flag   Misc/Zephyr  Nhánh main Nhánh w4rri0r-changes Flag3 - Stash   Web/Magicom misc/Super-Duper Pwn  bot api     Team write up: Tại đây  .">
 <meta property="og:image" content="https://l3mnt2010.github.io/avatar.png" />
 <meta property="og:url" content="https://l3mnt2010.github.io/write-up/2024-05-18-htbbusinessctf2024/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="&gt; root@l3mnt2010:~# ./exploit.py" />
 
   <meta name="twitter:title" content="Htb business ctf 2024 the vault of hope - solved challenges in time" />
-  <meta name="twitter:description" content="Solved challenges Web/Jailbreak  Mở đầu các chall web bằng một bài black box khá đơn giản. Trang web có khá nhiều page render client side và không tương tác với server trừ chức năng update firmware …">
+  <meta name="twitter:description" content="Solved challenges  Web/Jailbreak Web/Blueprint Heist  Reconnaissance &#43; detect  publicRoutes internalRoutes RCE   Exploit wkhtmltopdf SSRF Leak secret_key jwt -&gt; authenticate to admin user. Exploit …">
   <meta name="twitter:image" content="https://l3mnt2010.github.io/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://l3mnt2010.github.io/avatar.png' rel='icon' type='image/x-icon'/>
@@ -121,6 +121,12 @@
         
           
             <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
               <a title="Posts" href="https://l3mnt2010.github.io/posts">Posts</a>
             </li>
           
@@ -128,18 +134,6 @@
           
             <li>
               <a title="Write-up" href="https://l3mnt2010.github.io/write-up">Write-up</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
             </li>
           
         
@@ -262,7 +256,258 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <!-- raw HTML omitted -->
+        
+  <div class="toc-container">
+    <div class="toc">
+      <nav id="TableOfContents">
+        
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#solved-challenges">Solved challenges</a>
+      <ol>
+        <li><a href="#webjailbreak">Web/Jailbreak</a></li>
+        <li><a href="#webblueprint-heist">Web/Blueprint Heist</a>
+          <ol>
+            <li><a href="#reconnaissance--detect">Reconnaissance + detect</a>
+              <ol>
+                <li><a href="#publicroutes">publicRoutes</a></li>
+                <li><a href="#internalroutes">internalRoutes</a></li>
+                <li><a href="#rce">RCE</a></li>
+              </ol>
+            </li>
+            <li><a href="#exploit-wkhtmltopdf-ssrf">Exploit wkhtmltopdf SSRF</a></li>
+            <li><a href="#leak-secret_key-jwt---authenticate-to-admin-user">Leak secret_key jwt -&gt; authenticate to admin user.</a></li>
+            <li><a href="#exploit-sqli-bypass-waf">Exploit Sqli bypass waf</a></li>
+            <li><a href="#ssti-in-ejs-template-via-sqli">SSTI in ejs template via sqli</a></li>
+            <li><a href="#exploit-chain">Exploit chain</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#giải-này-phần-misc-có-khá-nhiều-bài-web-với-mức-độ-tầm-medium--easy">Giải này phần MISC có khá nhiều bài web với mức độ tầm medium + easy</a>
+      <ol>
+        <li><a href="#miscchrono-mind">MISC/Chrono Mind</a></li>
+        <li><a href="#fullpwnsubmerged">FullPwn/Submerged</a>
+          <ol>
+            <li><a href="#user-flag">User Flag</a></li>
+            <li><a href="#root-flag">Root flag</a></li>
+          </ol>
+        </li>
+        <li><a href="#misczephyr">Misc/Zephyr</a>
+          <ol>
+            <li><a href="#nhánh-main">Nhánh main</a></li>
+            <li><a href="#nhánh-w4rri0r-changes">Nhánh w4rri0r-changes</a></li>
+            <li><a href="#flag3---stash">Flag3 - Stash</a></li>
+          </ol>
+        </li>
+        <li><a href="#webmagicom">Web/Magicom</a></li>
+        <li><a href="#miscsuper-duper-pwn">misc/Super-Duper Pwn</a>
+          <ol>
+            <li><a href="#bot">bot</a></li>
+            <li><a href="#api">api</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#team-write-up-tại-đâyhttpskcsceduvnhtb-business-ctf-2024-the-vault-of-hope-write-upfbclidiwy2xjawf5tbblehrua2flbqixmaabhubadredlyawpdaloxwr9b0b_5qyhe7binaovoepljrzokkmwqvssx3pvw_aem_sbo3gijsuixmivinxyvohw">Team write up: <a href="https://kcsc.edu.vn/htb-business-ctf-2024-the-vault-of-hope-write-up?fbclid=IwY2xjawF5tBBleHRuA2FlbQIxMAABHUBADREdLyawPdAlOxwR9b0B_5qYHe7BInaovOEPljrzOkKMWqVssX3Pvw_aem_sbo3GIjSuixmivINXYVoHw">Tại đây</a></a></li>
+  </ol>
+</nav>
+      </nav>
+    </div>
+  </div>
+
+  <style>
+     
+    .toc-container {
+      position: fixed;
+      left: 0;
+      top: 100px;  
+      width: 350px;  
+      max-height: 80vh;
+      overflow-y: auto;
+      overflow-x: auto;
+      padding: 20px;
+      border-right: 1px solid #eee;
+      background-color: black;  
+      z-index: 100;
+      text-align: left;  
+    }
+
+    .toc {
+      font-size: 2.6rem;  
+      color: #fff;  
+      text-align: left;  
+    }
+
+    .toc h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;  
+      text-align: left;  
+    }
+
+     
+    .toc ul, .toc ol {
+      padding-left: 0;  
+      margin: 0;
+      list-style-type: none;
+      text-align: left;  
+    }
+
+     
+    .toc ul ul, .toc ul ol, .toc ol ul, .toc ol ol {
+      padding-left: 10px;
+    }
+
+    .toc li {
+      padding: 10px 0;
+      line-height: 1.6;
+      text-align: left;  
+    }
+
+    .toc a {
+      text-decoration: none;
+      color: #fff;  
+      display: block;
+      text-align: left;  
+      padding-left: 3px;  
+      font-size: 1.5rem;  
+      transition: color 0.2s;
+    }
+
+    .toc a:hover {
+      color: #ffcc00;  
+    }
+
+     
+    .toc a.active {
+      color: #ffcc00;  
+      font-weight: bold;
+      border-left: 4px solid #ffcc00;  
+      padding-left: 3px;  
+      margin-left: -5px;
+    }
+
+     
+    .main-content {
+      margin-left: 380px;  
+    }
+
+     
+    @media (max-width: 1200px) {
+      .toc-container {
+        width: 280px;  
+      }
+      .main-content {
+        margin-left: 320px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .toc-container {
+        position: static;
+        width: 100%;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      function highlightTOC() {
+        const headings = document.querySelectorAll('.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6');
+        const tocLinks = document.querySelectorAll('.toc a');
+
+        if (headings.length === 0 || tocLinks.length === 0) return;
+
+        let currentActiveIndex = -1;
+        const scrollPosition = window.scrollY;
+
+        for (let i = 0; i < headings.length; i++) {
+          const heading = headings[i];
+          const headingTop = heading.offsetTop - 100;
+          const headingBottom = headingTop + heading.offsetHeight;
+
+          if (scrollPosition >= headingTop && scrollPosition <= headingBottom) {
+            currentActiveIndex = i;
+            break;
+          }
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active'));
+
+        if (currentActiveIndex >= 0) {
+          const currentHeading = headings[currentActiveIndex];
+          const headingId = currentHeading.id;
+
+          const correspondingLink = document.querySelector(`.toc a[href="#${headingId}"]`);
+          if (correspondingLink) {
+            correspondingLink.classList.add('active');
+
+            const tocContainer = document.querySelector('.toc-container');
+            const linkTop = correspondingLink.offsetTop;
+            const containerScrollTop = tocContainer.scrollTop;
+            const containerHeight = tocContainer.clientHeight;
+
+            if (linkTop < containerScrollTop || linkTop > containerScrollTop + containerHeight) {
+              tocContainer.scrollTop = linkTop - containerHeight / 2;
+            }
+          }
+        }
+      }
+
+      highlightTOC();
+      window.addEventListener('scroll', highlightTOC);
+      window.addEventListener('resize', highlightTOC);
+
+      const fragment = window.location.hash;
+      if (fragment) {
+        const element = document.querySelector(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+
+          const tocLinks = document.querySelectorAll('.toc a');
+          tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === fragment) {
+              link.classList.add('active');
+            }
+          });
+
+          highlightTOC();
+        }
+      }
+
+      const tocLinks = document.querySelectorAll('.toc a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            tocLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            history.pushState(null, null, `#${targetId}`);
+
+            event.preventDefault();
+          }
+        });
+      });
+    });
+  </script>  
+
+
+<!-- raw HTML omitted -->
 <h1 id="solved-challenges">Solved challenges</h1>
 <h2 id="webjailbreak">Web/Jailbreak</h2>
 <p><img src="https://hackmd.io/_uploads/BJoEs2o7C.png" alt="image"></p>

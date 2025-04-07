@@ -10,10 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <title>CtfZone2024 - WEB &#39;s challenges - &gt; root@l3mnt2010:~# ./exploit.py</title>
-  <meta name="description" content="WEB challs web/0ld_b4t_g0ld Bài này là một bài black box tương đối đơn giản có chức năng reg &#43; login -&gt; sau khi login thì ta được chuyển đến một giao diện comment
-Sau khi comment thì sẽ hiển thị comment ở dưới:
-Quan sát api đã được gửi
-Vì thông tin đã bị escape nên khả năng là không xss được nên mình ngay lập tức nghĩ đến SSTI nhưng có vẻ không được để ý là api này version2 nên mình đổi thành version1 và may mắn nó vẫn có hoạt động">
+  <meta name="description" content="WEB challs  web/0ld_b4t_g0ld web/Funny buttons [9 solves]  analysis Socket-IO server: CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB exploit local &#43; real server   web/breathtaking-roulette    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.">
   <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -62,9 +59,9 @@ Vì thông tin đã bị escape nên khả năng là không xss được nên m�
     "name" : ""
   },
   "headline": "CtfZone2024 - WEB \u0027s challenges",
-  "description" : "WEB challs web\/0ld_b4t_g0ld Bài này là một bài black box tương đối đơn giản có chức năng reg \u002b login -\u0026gt; sau khi login thì ta được chuyển đến một giao diện comment\nSau khi comment thì sẽ hiển thị comment ở dưới:\nQuan sát api đã được gửi\nVì thông tin đã bị escape nên khả năng là không xss được nên mình ngay lập tức nghĩ đến SSTI nhưng có vẻ không được để ý là api này version2 nên mình đổi thành version1 và may mắn nó vẫn có hoạt động",
+  "description" : "WEB challs  web\/0ld_b4t_g0ld web\/Funny buttons [9 solves]  analysis Socket-IO server: CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB exploit local \u002b real server   web\/breathtaking-roulette    \r\r\r\r\r.toc-container {\rposition: fixed;\rleft: 0;\rtop: 100px; width: 350px; max-height: 80vh;\roverflow-y: auto;\roverflow-x: auto;\rpadding: 20px;\rborder-right: 1px solid #eee;\rbackground-color: black; z-index: 100;\rtext-align: left; }\r.toc {\rfont-size: 2.",
   "inLanguage" : "en",
-  "wordCount":  3245 ,
+  "wordCount":  3638 ,
   "datePublished" : "0001-01-01T00:00:00\u002b00:00",
   "dateModified" : "0001-01-01T00:00:00\u002b00:00",
   "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
@@ -85,18 +82,14 @@ Vì thông tin đã bị escape nên khả năng là không xss được nên m�
 
 
 <meta property="og:title" content="CtfZone2024 - WEB &#39;s challenges" />
-<meta property="og:description" content="WEB challs web/0ld_b4t_g0ld Bài này là một bài black box tương đối đơn giản có chức năng reg &#43; login -&gt; sau khi login thì ta được chuyển đến một giao diện comment
-Sau khi comment thì sẽ hiển thị comment ở dưới:
-Quan sát api đã được gửi
-Vì thông tin đã bị escape nên khả năng là không xss được nên mình ngay lập tức nghĩ đến SSTI nhưng có vẻ không được để ý là api này version2 nên mình đổi thành version1 và may mắn nó vẫn có hoạt động">
+<meta property="og:description" content="WEB challs  web/0ld_b4t_g0ld web/Funny buttons [9 solves]  analysis Socket-IO server: CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB exploit local &#43; real server   web/breathtaking-roulette    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.">
 <meta property="og:image" content="https://l3mnt2010.github.io/avatar.png" />
 <meta property="og:url" content="https://l3mnt2010.github.io/write-up/2024-08-10-ctfzone2024/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="&gt; root@l3mnt2010:~# ./exploit.py" />
 
   <meta name="twitter:title" content="CtfZone2024 - WEB &#39;s challenges" />
-  <meta name="twitter:description" content="WEB challs web/0ld_b4t_g0ld Bài này là một bài black box tương đối đơn giản có chức năng reg &#43; login -&gt; sau khi login thì ta được chuyển đến một giao diện comment
-Sau khi comment thì sẽ hiển thị …">
+  <meta name="twitter:description" content="WEB challs  web/0ld_b4t_g0ld web/Funny buttons [9 solves]  analysis Socket-IO server: CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB exploit local &#43; real server …">
   <meta name="twitter:image" content="https://l3mnt2010.github.io/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://l3mnt2010.github.io/avatar.png' rel='icon' type='image/x-icon'/>
@@ -128,6 +121,12 @@ Sau khi comment thì sẽ hiển thị …">
         
           
             <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
               <a title="Posts" href="https://l3mnt2010.github.io/posts">Posts</a>
             </li>
           
@@ -135,18 +134,6 @@ Sau khi comment thì sẽ hiển thị …">
           
             <li>
               <a title="Write-up" href="https://l3mnt2010.github.io/write-up">Write-up</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
             </li>
           
         
@@ -269,7 +256,225 @@ Sau khi comment thì sẽ hiển thị …">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <!-- raw HTML omitted -->
+        
+  <div class="toc-container">
+    <div class="toc">
+      <nav id="TableOfContents">
+        
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#web-challs">WEB challs</a>
+      <ol>
+        <li><a href="#web0ld_b4t_g0ld">web/0ld_b4t_g0ld</a></li>
+        <li><a href="#webfunny-buttons-9-solves">web/Funny buttons [9 solves]</a>
+          <ol>
+            <li><a href="#analysis">analysis</a></li>
+            <li><a href="#socket-io-server">Socket-IO server:</a></li>
+            <li><a href="#cve-2022-46164-account-takeover-via-prototype-vulnerability-in-nodebb">CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB</a></li>
+            <li><a href="#exploit-local--real-server">exploit local + real server</a></li>
+          </ol>
+        </li>
+        <li><a href="#webbreathtaking-roulette">web/breathtaking-roulette</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+      </nav>
+    </div>
+  </div>
+
+  <style>
+     
+    .toc-container {
+      position: fixed;
+      left: 0;
+      top: 100px;  
+      width: 350px;  
+      max-height: 80vh;
+      overflow-y: auto;
+      overflow-x: auto;
+      padding: 20px;
+      border-right: 1px solid #eee;
+      background-color: black;  
+      z-index: 100;
+      text-align: left;  
+    }
+
+    .toc {
+      font-size: 2.6rem;  
+      color: #fff;  
+      text-align: left;  
+    }
+
+    .toc h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;  
+      text-align: left;  
+    }
+
+     
+    .toc ul, .toc ol {
+      padding-left: 0;  
+      margin: 0;
+      list-style-type: none;
+      text-align: left;  
+    }
+
+     
+    .toc ul ul, .toc ul ol, .toc ol ul, .toc ol ol {
+      padding-left: 10px;
+    }
+
+    .toc li {
+      padding: 10px 0;
+      line-height: 1.6;
+      text-align: left;  
+    }
+
+    .toc a {
+      text-decoration: none;
+      color: #fff;  
+      display: block;
+      text-align: left;  
+      padding-left: 3px;  
+      font-size: 1.5rem;  
+      transition: color 0.2s;
+    }
+
+    .toc a:hover {
+      color: #ffcc00;  
+    }
+
+     
+    .toc a.active {
+      color: #ffcc00;  
+      font-weight: bold;
+      border-left: 4px solid #ffcc00;  
+      padding-left: 3px;  
+      margin-left: -5px;
+    }
+
+     
+    .main-content {
+      margin-left: 380px;  
+    }
+
+     
+    @media (max-width: 1200px) {
+      .toc-container {
+        width: 280px;  
+      }
+      .main-content {
+        margin-left: 320px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .toc-container {
+        position: static;
+        width: 100%;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      function highlightTOC() {
+        const headings = document.querySelectorAll('.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6');
+        const tocLinks = document.querySelectorAll('.toc a');
+
+        if (headings.length === 0 || tocLinks.length === 0) return;
+
+        let currentActiveIndex = -1;
+        const scrollPosition = window.scrollY;
+
+        for (let i = 0; i < headings.length; i++) {
+          const heading = headings[i];
+          const headingTop = heading.offsetTop - 100;
+          const headingBottom = headingTop + heading.offsetHeight;
+
+          if (scrollPosition >= headingTop && scrollPosition <= headingBottom) {
+            currentActiveIndex = i;
+            break;
+          }
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active'));
+
+        if (currentActiveIndex >= 0) {
+          const currentHeading = headings[currentActiveIndex];
+          const headingId = currentHeading.id;
+
+          const correspondingLink = document.querySelector(`.toc a[href="#${headingId}"]`);
+          if (correspondingLink) {
+            correspondingLink.classList.add('active');
+
+            const tocContainer = document.querySelector('.toc-container');
+            const linkTop = correspondingLink.offsetTop;
+            const containerScrollTop = tocContainer.scrollTop;
+            const containerHeight = tocContainer.clientHeight;
+
+            if (linkTop < containerScrollTop || linkTop > containerScrollTop + containerHeight) {
+              tocContainer.scrollTop = linkTop - containerHeight / 2;
+            }
+          }
+        }
+      }
+
+      highlightTOC();
+      window.addEventListener('scroll', highlightTOC);
+      window.addEventListener('resize', highlightTOC);
+
+      const fragment = window.location.hash;
+      if (fragment) {
+        const element = document.querySelector(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+
+          const tocLinks = document.querySelectorAll('.toc a');
+          tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === fragment) {
+              link.classList.add('active');
+            }
+          });
+
+          highlightTOC();
+        }
+      }
+
+      const tocLinks = document.querySelectorAll('.toc a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            tocLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            history.pushState(null, null, `#${targetId}`);
+
+            event.preventDefault();
+          }
+        });
+      });
+    });
+  </script>  
+
+
+<!-- raw HTML omitted -->
 <h1 id="web-challs">WEB challs</h1>
 <h2 id="web0ld_b4t_g0ld">web/0ld_b4t_g0ld</h2>
 <p>Bài này là một bài black box tương đối đơn giản có chức năng reg + login -&gt; sau khi login thì ta được chuyển đến một giao diện comment</p>

@@ -10,8 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <title>Htb web chall ctf 2024 - solved challenges - part 4 - &gt; root@l3mnt2010:~# ./exploit.py</title>
-  <meta name="description" content="Hack the box (part4) - Medium Under Construction GET / HTTP/1.1Host: 94.237.49.212:43743User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: text/html,application/xhtml&#43;xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg&#43;xml,*/*;q=0.8Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://burpsuite/Connection: closeCookie: PHPSESSID=eyJ1c2VybmFtZSI6ImhpaGlAZ21haWwuY29tIn0%3D; session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ICIndW5pb24gc2VsZWN0IG51bGwsdG9wX3NlY3JldF9mbGFhZyxudWxsIGZyb20gZmxhZ19zdG9yYWdlLS0iLCAicGsiOiAiLS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS1cbk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBOTVvVG05RE56Y0hyOGdMaGpaYVlcbmt0c2JqMUt4eFVPb3p3MHRyUDkzQmdJcFh2NldpcFFSQjVscW9mUGxVNkZCOTlKYzVRWjA0NTl0NzNnZ1ZEUWlcblh1Q01JMmhvVWZKMVZtak5lV0NyU3JEVWhva0lGWkV1Q3VtZWh3d3RVTnVFdjBlekM1NFpUZEVDNVlTVEFPemdcbmpJV2Fsc0hqL2dhNVpFRHgzRXh0ME1oNUFFd2JBRDczK3FYUy91Q3ZoZmFqZ3B6SEdkOU9nTlFVNjBMTWYybUhcbitGeW5Oc2pOTndvNW5SZTd0UjEyV2IyWU9DeHcydmRhbU8xbjFrZi9TTXlwU0tLdk9najV5MExHaVUzamVYTXhcblY4V1MrWWlZQ1U1T0JBbVRjejJ3Mmt6QmhaRmxINlJLNG1xdWV4SkhyYTIzSUd2NVVKNUdWUEVYcGRDcUszVHJcbjB3SURBUUFCXG4tLS0tLUVORCBQVUJMSUMgS0VZLS0tLS1cbiIsICJpYXQiOiAxNzI2ODAxNTQ2fQ.GMnFlwfpkGpgap8Wj4pdWhj67MzSyYc4goQvVb6npBcUpgrade-Insecure-Requests: 1Priority: u=0, iflag: HTB{d0n7_3xp053_y0ur_publ1ck3y}
-breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: */*Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://83.">
+  <meta name="description" content="Hack the box (part4) - Medium  Under Construction breaking grad wafwaf baby ninja ninja Mutation Lab HTB Proxy  backend [nodejs] proxy [golang]   SerialFlow LockTalk Magicom interdimensional internet Console    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.">
   <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -60,9 +59,9 @@ breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent:
     "name" : ""
   },
   "headline": "Htb web chall ctf 2024 - solved challenges - part 4",
-  "description" : "Hack the box (part4) - Medium Under Construction GET \/ HTTP\/1.1\rHost: 94.237.49.212:43743\rUser-Agent: Mozilla\/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko\/20100101 Firefox\/130.0\rAccept: text\/html,application\/xhtml\u002bxml,application\/xml;q=0.9,image\/avif,image\/webp,image\/png,image\/svg\u002bxml,*\/*;q=0.8\rAccept-Language: en-US,en;q=0.5\rAccept-Encoding: gzip, deflate, br\rReferer: http:\/\/burpsuite\/\rConnection: close\rCookie: PHPSESSID=eyJ1c2VybmFtZSI6ImhpaGlAZ21haWwuY29tIn0%3D; session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ICIndW5pb24gc2VsZWN0IG51bGwsdG9wX3NlY3JldF9mbGFhZyxudWxsIGZyb20gZmxhZ19zdG9yYWdlLS0iLCAicGsiOiAiLS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS1cbk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBOTVvVG05RE56Y0hyOGdMaGpaYVlcbmt0c2JqMUt4eFVPb3p3MHRyUDkzQmdJcFh2NldpcFFSQjVscW9mUGxVNkZCOTlKYzVRWjA0NTl0NzNnZ1ZEUWlcblh1Q01JMmhvVWZKMVZtak5lV0NyU3JEVWhva0lGWkV1Q3VtZWh3d3RVTnVFdjBlekM1NFpUZEVDNVlTVEFPemdcbmpJV2Fsc0hqL2dhNVpFRHgzRXh0ME1oNUFFd2JBRDczK3FYUy91Q3ZoZmFqZ3B6SEdkOU9nTlFVNjBMTWYybUhcbitGeW5Oc2pOTndvNW5SZTd0UjEyV2IyWU9DeHcydmRhbU8xbjFrZi9TTXlwU0tLdk9najV5MExHaVUzamVYTXhcblY4V1MrWWlZQ1U1T0JBbVRjejJ3Mmt6QmhaRmxINlJLNG1xdWV4SkhyYTIzSUd2NVVKNUdWUEVYcGRDcUszVHJcbjB3SURBUUFCXG4tLS0tLUVORCBQVUJMSUMgS0VZLS0tLS1cbiIsICJpYXQiOiAxNzI2ODAxNTQ2fQ.GMnFlwfpkGpgap8Wj4pdWhj67MzSyYc4goQvVb6npBc\rUpgrade-Insecure-Requests: 1\rPriority: u=0, i\rflag: HTB{d0n7_3xp053_y0ur_publ1ck3y}\nbreaking grad POST \/api\/calculate HTTP\/1.1\rHost: 83.136.249.80:30878\rUser-Agent: Mozilla\/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko\/20100101 Firefox\/130.0\rAccept: *\/*\rAccept-Language: en-US,en;q=0.5\rAccept-Encoding: gzip, deflate, br\rReferer: http:\/\/83.",
+  "description" : "Hack the box (part4) - Medium  Under Construction breaking grad wafwaf baby ninja ninja Mutation Lab HTB Proxy  backend [nodejs] proxy [golang]   SerialFlow LockTalk Magicom interdimensional internet Console    \r\r\r\r\r.toc-container {\rposition: fixed;\rleft: 0;\rtop: 100px; width: 350px; max-height: 80vh;\roverflow-y: auto;\roverflow-x: auto;\rpadding: 20px;\rborder-right: 1px solid #eee;\rbackground-color: black; z-index: 100;\rtext-align: left; }\r.",
   "inLanguage" : "en",
-  "wordCount":  5663 ,
+  "wordCount":  6060 ,
   "datePublished" : "0001-01-01T00:00:00\u002b00:00",
   "dateModified" : "0001-01-01T00:00:00\u002b00:00",
   "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
@@ -83,15 +82,14 @@ breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent:
 
 
 <meta property="og:title" content="Htb web chall ctf 2024 - solved challenges - part 4" />
-<meta property="og:description" content="Hack the box (part4) - Medium Under Construction GET / HTTP/1.1Host: 94.237.49.212:43743User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: text/html,application/xhtml&#43;xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg&#43;xml,*/*;q=0.8Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://burpsuite/Connection: closeCookie: PHPSESSID=eyJ1c2VybmFtZSI6ImhpaGlAZ21haWwuY29tIn0%3D; session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ICIndW5pb24gc2VsZWN0IG51bGwsdG9wX3NlY3JldF9mbGFhZyxudWxsIGZyb20gZmxhZ19zdG9yYWdlLS0iLCAicGsiOiAiLS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS1cbk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBOTVvVG05RE56Y0hyOGdMaGpaYVlcbmt0c2JqMUt4eFVPb3p3MHRyUDkzQmdJcFh2NldpcFFSQjVscW9mUGxVNkZCOTlKYzVRWjA0NTl0NzNnZ1ZEUWlcblh1Q01JMmhvVWZKMVZtak5lV0NyU3JEVWhva0lGWkV1Q3VtZWh3d3RVTnVFdjBlekM1NFpUZEVDNVlTVEFPemdcbmpJV2Fsc0hqL2dhNVpFRHgzRXh0ME1oNUFFd2JBRDczK3FYUy91Q3ZoZmFqZ3B6SEdkOU9nTlFVNjBMTWYybUhcbitGeW5Oc2pOTndvNW5SZTd0UjEyV2IyWU9DeHcydmRhbU8xbjFrZi9TTXlwU0tLdk9najV5MExHaVUzamVYTXhcblY4V1MrWWlZQ1U1T0JBbVRjejJ3Mmt6QmhaRmxINlJLNG1xdWV4SkhyYTIzSUd2NVVKNUdWUEVYcGRDcUszVHJcbjB3SURBUUFCXG4tLS0tLUVORCBQVUJMSUMgS0VZLS0tLS1cbiIsICJpYXQiOiAxNzI2ODAxNTQ2fQ.GMnFlwfpkGpgap8Wj4pdWhj67MzSyYc4goQvVb6npBcUpgrade-Insecure-Requests: 1Priority: u=0, iflag: HTB{d0n7_3xp053_y0ur_publ1ck3y}
-breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: */*Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://83.">
+<meta property="og:description" content="Hack the box (part4) - Medium  Under Construction breaking grad wafwaf baby ninja ninja Mutation Lab HTB Proxy  backend [nodejs] proxy [golang]   SerialFlow LockTalk Magicom interdimensional internet Console    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.">
 <meta property="og:image" content="https://l3mnt2010.github.io/avatar.png" />
 <meta property="og:url" content="https://l3mnt2010.github.io/write-up/2024-08-23-hackthebox-web-challpart4/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="&gt; root@l3mnt2010:~# ./exploit.py" />
 
   <meta name="twitter:title" content="Htb web chall ctf 2024 - solved challenges - part 4" />
-  <meta name="twitter:description" content="Hack the box (part4) - Medium Under Construction GET / HTTP/1.1Host: 94.237.49.212:43743User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: …">
+  <meta name="twitter:description" content="Hack the box (part4) - Medium  Under Construction breaking grad wafwaf baby ninja ninja Mutation Lab HTB Proxy  backend [nodejs] proxy [golang]   SerialFlow LockTalk Magicom interdimensional internet …">
   <meta name="twitter:image" content="https://l3mnt2010.github.io/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://l3mnt2010.github.io/avatar.png' rel='icon' type='image/x-icon'/>
@@ -123,6 +121,12 @@ breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent:
         
           
             <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
               <a title="Posts" href="https://l3mnt2010.github.io/posts">Posts</a>
             </li>
           
@@ -130,18 +134,6 @@ breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent:
           
             <li>
               <a title="Write-up" href="https://l3mnt2010.github.io/write-up">Write-up</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
             </li>
           
         
@@ -264,7 +256,231 @@ breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent:
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <!-- raw HTML omitted -->
+        
+  <div class="toc-container">
+    <div class="toc">
+      <nav id="TableOfContents">
+        
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#hack-the-box-part4---medium">Hack the box (part4) - Medium</a>
+      <ol>
+        <li><a href="#under-construction">Under Construction</a></li>
+        <li><a href="#breaking-grad">breaking grad</a></li>
+        <li><a href="#wafwaf">wafwaf</a></li>
+        <li><a href="#baby-ninja-ninja">baby ninja ninja</a></li>
+        <li><a href="#mutation-lab">Mutation Lab</a></li>
+        <li><a href="#htb-proxy">HTB Proxy</a>
+          <ol>
+            <li><a href="#backend-nodejs">backend [nodejs]</a></li>
+            <li><a href="#proxy-golang">proxy [golang]</a></li>
+          </ol>
+        </li>
+        <li><a href="#serialflow">SerialFlow</a></li>
+        <li><a href="#locktalk">LockTalk</a></li>
+        <li><a href="#magicom">Magicom</a></li>
+        <li><a href="#interdimensional-internet">interdimensional internet</a></li>
+        <li><a href="#console">Console</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+      </nav>
+    </div>
+  </div>
+
+  <style>
+     
+    .toc-container {
+      position: fixed;
+      left: 0;
+      top: 100px;  
+      width: 350px;  
+      max-height: 80vh;
+      overflow-y: auto;
+      overflow-x: auto;
+      padding: 20px;
+      border-right: 1px solid #eee;
+      background-color: black;  
+      z-index: 100;
+      text-align: left;  
+    }
+
+    .toc {
+      font-size: 2.6rem;  
+      color: #fff;  
+      text-align: left;  
+    }
+
+    .toc h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;  
+      text-align: left;  
+    }
+
+     
+    .toc ul, .toc ol {
+      padding-left: 0;  
+      margin: 0;
+      list-style-type: none;
+      text-align: left;  
+    }
+
+     
+    .toc ul ul, .toc ul ol, .toc ol ul, .toc ol ol {
+      padding-left: 10px;
+    }
+
+    .toc li {
+      padding: 10px 0;
+      line-height: 1.6;
+      text-align: left;  
+    }
+
+    .toc a {
+      text-decoration: none;
+      color: #fff;  
+      display: block;
+      text-align: left;  
+      padding-left: 3px;  
+      font-size: 1.5rem;  
+      transition: color 0.2s;
+    }
+
+    .toc a:hover {
+      color: #ffcc00;  
+    }
+
+     
+    .toc a.active {
+      color: #ffcc00;  
+      font-weight: bold;
+      border-left: 4px solid #ffcc00;  
+      padding-left: 3px;  
+      margin-left: -5px;
+    }
+
+     
+    .main-content {
+      margin-left: 380px;  
+    }
+
+     
+    @media (max-width: 1200px) {
+      .toc-container {
+        width: 280px;  
+      }
+      .main-content {
+        margin-left: 320px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .toc-container {
+        position: static;
+        width: 100%;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      function highlightTOC() {
+        const headings = document.querySelectorAll('.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6');
+        const tocLinks = document.querySelectorAll('.toc a');
+
+        if (headings.length === 0 || tocLinks.length === 0) return;
+
+        let currentActiveIndex = -1;
+        const scrollPosition = window.scrollY;
+
+        for (let i = 0; i < headings.length; i++) {
+          const heading = headings[i];
+          const headingTop = heading.offsetTop - 100;
+          const headingBottom = headingTop + heading.offsetHeight;
+
+          if (scrollPosition >= headingTop && scrollPosition <= headingBottom) {
+            currentActiveIndex = i;
+            break;
+          }
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active'));
+
+        if (currentActiveIndex >= 0) {
+          const currentHeading = headings[currentActiveIndex];
+          const headingId = currentHeading.id;
+
+          const correspondingLink = document.querySelector(`.toc a[href="#${headingId}"]`);
+          if (correspondingLink) {
+            correspondingLink.classList.add('active');
+
+            const tocContainer = document.querySelector('.toc-container');
+            const linkTop = correspondingLink.offsetTop;
+            const containerScrollTop = tocContainer.scrollTop;
+            const containerHeight = tocContainer.clientHeight;
+
+            if (linkTop < containerScrollTop || linkTop > containerScrollTop + containerHeight) {
+              tocContainer.scrollTop = linkTop - containerHeight / 2;
+            }
+          }
+        }
+      }
+
+      highlightTOC();
+      window.addEventListener('scroll', highlightTOC);
+      window.addEventListener('resize', highlightTOC);
+
+      const fragment = window.location.hash;
+      if (fragment) {
+        const element = document.querySelector(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+
+          const tocLinks = document.querySelectorAll('.toc a');
+          tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === fragment) {
+              link.classList.add('active');
+            }
+          });
+
+          highlightTOC();
+        }
+      }
+
+      const tocLinks = document.querySelectorAll('.toc a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            tocLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            history.pushState(null, null, `#${targetId}`);
+
+            event.preventDefault();
+          }
+        });
+      });
+    });
+  </script>  
+
+
+<!-- raw HTML omitted -->
 <h1 id="hack-the-box-part4---medium">Hack the box (part4) - Medium</h1>
 <h2 id="under-construction">Under Construction</h2>
 <pre><code>GET / HTTP/1.1

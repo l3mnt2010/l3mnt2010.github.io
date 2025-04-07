@@ -10,10 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <title>Root-me server side - WEB &#39;s challenges - &gt; root@l3mnt2010:~# ./exploit.py</title>
-  <meta name="description" content="Root-me server side HTML - Source code flag: nZ^&amp;@q5&amp;sjJHev0
-HTTP - IP restriction bypass Nếu người dùng trong mạng nội bộ của công ty thì không cần phải đăng nhập
-Có thể thấy ipv6 của ta ở đây (vậy làm sao để bypass cho hệ thống nghĩ mình nằm trong LAN)
-Mình thử với header X-Forwarded-X: 127.0.0.1 -&gt; server thông báo ip mình là 127.0.0.1 nhưng vẫn chưa cùng side với LAN">
+  <meta name="description" content="Root-me server side  HTML - Source code HTTP - IP restriction bypass HTTP - Open redirect HTTP - User-agent Weak password PHP - Command injection API - Broken Access Backup file HTTP - Directory indexing HTTP - Headers HTTP - POST HTTP - Improper redirect HTTP - Verb tampering Install files Nginx - Alias Misconfiguration Nginx - Root Location Misconfiguration API - Mass Assignment CRLF File upload - Double extensions File upload - MIME type Flask - Unsecure session GraphQL - Introspection HTTP - Cookies Insecure Code Management JWT - Introduction XSS - Server Side Directory traversal File upload - Null byte JWT - Revoked token JWT - Weak secret JWT - Unsecure File Signature PHP - assert() PHP - Apache configuration PHP - Filters PHP - register globals PHP - Remote Xdebug Python - Server-side Template Injection Introduction File upload - ZIP Flask - Development server GraphQL - Injection Command injection - Filter bypass Java - Server-side Template Injection JWT - Public key JWT - Header Injection Local File Inclusion Local File Inclusion - Double encoding Node - Eval PHP - Loose Comparison PHP - preg_replace() PHP - type juggling Remote File Inclusion SQL injection - Authentication SQL injection - Authentication - GBK SQL injection - String XSLT - Code execution Elixir - EEx JWT - Unsecure Key Handling LDAP injection - Authentication Node - Serialize NoSQL injection - Authentication PHP - Path Truncation PHP - Serialization SQL injection - Numeric SQL Injection - Routed SQL Truncation XML External Entity XPath injection - Authentication Yaml - Deserialization  CVE-2017-18342   API - Broken Access 2 GraphQL - Backend injection Local File Inclusion - Wrappers PHP - Eval PHP - Eval - Advanced filters bypass Java - Spring Boot SQL injection - Error SQL injection - Insert PHP - SerializationPHP  POC   Deserialization Overflow Deserialization Overflow    .">
   <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -62,9 +59,9 @@ Mình thử với header X-Forwarded-X: 127.0.0.1 -&gt; server thông báo ip m�
     "name" : ""
   },
   "headline": "Root-me server side - WEB \u0027s challenges",
-  "description" : "Root-me server side HTML - Source code flag: nZ^\u0026amp;@q5\u0026amp;sjJHev0\nHTTP - IP restriction bypass Nếu người dùng trong mạng nội bộ của công ty thì không cần phải đăng nhập\nCó thể thấy ipv6 của ta ở đây (vậy làm sao để bypass cho hệ thống nghĩ mình nằm trong LAN)\nMình thử với header X-Forwarded-X: 127.0.0.1 -\u0026gt; server thông báo ip mình là 127.0.0.1 nhưng vẫn chưa cùng side với LAN",
+  "description" : "Root-me server side  HTML - Source code HTTP - IP restriction bypass HTTP - Open redirect HTTP - User-agent Weak password PHP - Command injection API - Broken Access Backup file HTTP - Directory indexing HTTP - Headers HTTP - POST HTTP - Improper redirect HTTP - Verb tampering Install files Nginx - Alias Misconfiguration Nginx - Root Location Misconfiguration API - Mass Assignment CRLF File upload - Double extensions File upload - MIME type Flask - Unsecure session GraphQL - Introspection HTTP - Cookies Insecure Code Management JWT - Introduction XSS - Server Side Directory traversal File upload - Null byte JWT - Revoked token JWT - Weak secret JWT - Unsecure File Signature PHP - assert() PHP - Apache configuration PHP - Filters PHP - register globals PHP - Remote Xdebug Python - Server-side Template Injection Introduction File upload - ZIP Flask - Development server GraphQL - Injection Command injection - Filter bypass Java - Server-side Template Injection JWT - Public key JWT - Header Injection Local File Inclusion Local File Inclusion - Double encoding Node - Eval PHP - Loose Comparison PHP - preg_replace() PHP - type juggling Remote File Inclusion SQL injection - Authentication SQL injection - Authentication - GBK SQL injection - String XSLT - Code execution Elixir - EEx JWT - Unsecure Key Handling LDAP injection - Authentication Node - Serialize NoSQL injection - Authentication PHP - Path Truncation PHP - Serialization SQL injection - Numeric SQL Injection - Routed SQL Truncation XML External Entity XPath injection - Authentication Yaml - Deserialization  CVE-2017-18342   API - Broken Access 2 GraphQL - Backend injection Local File Inclusion - Wrappers PHP - Eval PHP - Eval - Advanced filters bypass Java - Spring Boot SQL injection - Error SQL injection - Insert PHP - SerializationPHP  POC   Deserialization Overflow Deserialization Overflow    \r\r\r\r\r.",
   "inLanguage" : "en",
-  "wordCount":  9006 ,
+  "wordCount":  9678 ,
   "datePublished" : "0001-01-01T00:00:00\u002b00:00",
   "dateModified" : "0001-01-01T00:00:00\u002b00:00",
   "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
@@ -85,19 +82,14 @@ Mình thử với header X-Forwarded-X: 127.0.0.1 -&gt; server thông báo ip m�
 
 
 <meta property="og:title" content="Root-me server side - WEB &#39;s challenges" />
-<meta property="og:description" content="Root-me server side HTML - Source code flag: nZ^&amp;@q5&amp;sjJHev0
-HTTP - IP restriction bypass Nếu người dùng trong mạng nội bộ của công ty thì không cần phải đăng nhập
-Có thể thấy ipv6 của ta ở đây (vậy làm sao để bypass cho hệ thống nghĩ mình nằm trong LAN)
-Mình thử với header X-Forwarded-X: 127.0.0.1 -&gt; server thông báo ip mình là 127.0.0.1 nhưng vẫn chưa cùng side với LAN">
+<meta property="og:description" content="Root-me server side  HTML - Source code HTTP - IP restriction bypass HTTP - Open redirect HTTP - User-agent Weak password PHP - Command injection API - Broken Access Backup file HTTP - Directory indexing HTTP - Headers HTTP - POST HTTP - Improper redirect HTTP - Verb tampering Install files Nginx - Alias Misconfiguration Nginx - Root Location Misconfiguration API - Mass Assignment CRLF File upload - Double extensions File upload - MIME type Flask - Unsecure session GraphQL - Introspection HTTP - Cookies Insecure Code Management JWT - Introduction XSS - Server Side Directory traversal File upload - Null byte JWT - Revoked token JWT - Weak secret JWT - Unsecure File Signature PHP - assert() PHP - Apache configuration PHP - Filters PHP - register globals PHP - Remote Xdebug Python - Server-side Template Injection Introduction File upload - ZIP Flask - Development server GraphQL - Injection Command injection - Filter bypass Java - Server-side Template Injection JWT - Public key JWT - Header Injection Local File Inclusion Local File Inclusion - Double encoding Node - Eval PHP - Loose Comparison PHP - preg_replace() PHP - type juggling Remote File Inclusion SQL injection - Authentication SQL injection - Authentication - GBK SQL injection - String XSLT - Code execution Elixir - EEx JWT - Unsecure Key Handling LDAP injection - Authentication Node - Serialize NoSQL injection - Authentication PHP - Path Truncation PHP - Serialization SQL injection - Numeric SQL Injection - Routed SQL Truncation XML External Entity XPath injection - Authentication Yaml - Deserialization  CVE-2017-18342   API - Broken Access 2 GraphQL - Backend injection Local File Inclusion - Wrappers PHP - Eval PHP - Eval - Advanced filters bypass Java - Spring Boot SQL injection - Error SQL injection - Insert PHP - SerializationPHP  POC   Deserialization Overflow Deserialization Overflow    .">
 <meta property="og:image" content="https://l3mnt2010.github.io/avatar.png" />
 <meta property="og:url" content="https://l3mnt2010.github.io/write-up/2024-11-14-root-me-server-side/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="&gt; root@l3mnt2010:~# ./exploit.py" />
 
   <meta name="twitter:title" content="Root-me server side - WEB &#39;s challenges" />
-  <meta name="twitter:description" content="Root-me server side HTML - Source code flag: nZ^&amp;@q5&amp;sjJHev0
-HTTP - IP restriction bypass Nếu người dùng trong mạng nội bộ của công ty thì không cần phải đăng nhập
-Có thể thấy ipv6 của ta ở …">
+  <meta name="twitter:description" content="Root-me server side  HTML - Source code HTTP - IP restriction bypass HTTP - Open redirect HTTP - User-agent Weak password PHP - Command injection API - Broken Access Backup file HTTP - Directory …">
   <meta name="twitter:image" content="https://l3mnt2010.github.io/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://l3mnt2010.github.io/avatar.png' rel='icon' type='image/x-icon'/>
@@ -129,6 +121,12 @@ Có thể thấy ipv6 của ta ở …">
         
           
             <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
               <a title="Posts" href="https://l3mnt2010.github.io/posts">Posts</a>
             </li>
           
@@ -136,18 +134,6 @@ Có thể thấy ipv6 của ta ở …">
           
             <li>
               <a title="Write-up" href="https://l3mnt2010.github.io/write-up">Write-up</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
             </li>
           
         
@@ -270,7 +256,302 @@ Có thể thấy ipv6 của ta ở …">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <!-- raw HTML omitted -->
+        
+  <div class="toc-container">
+    <div class="toc">
+      <nav id="TableOfContents">
+        
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#root-me-server-side">Root-me server side</a>
+      <ol>
+        <li><a href="#html---source-code">HTML - Source code</a></li>
+        <li><a href="#http---ip-restriction-bypass">HTTP - IP restriction bypass</a></li>
+        <li><a href="#http---open-redirect">HTTP - Open redirect</a></li>
+        <li><a href="#http---user-agent">HTTP - User-agent</a></li>
+        <li><a href="#weak-password">Weak password</a></li>
+        <li><a href="#php---command-injection">PHP - Command injection</a></li>
+        <li><a href="#api---broken-access">API - Broken Access</a></li>
+        <li><a href="#backup-file">Backup file</a></li>
+        <li><a href="#http---directory-indexing">HTTP - Directory indexing</a></li>
+        <li><a href="#http---headers">HTTP - Headers</a></li>
+        <li><a href="#http---post">HTTP - POST</a></li>
+        <li><a href="#http---improper-redirect">HTTP - Improper redirect</a></li>
+        <li><a href="#http---verb-tampering">HTTP - Verb tampering</a></li>
+        <li><a href="#install-files">Install files</a></li>
+        <li><a href="#nginx---alias-misconfiguration">Nginx - Alias Misconfiguration</a></li>
+        <li><a href="#nginx---root-location-misconfiguration">Nginx - Root Location Misconfiguration</a></li>
+        <li><a href="#api---mass-assignment">API - Mass Assignment</a></li>
+        <li><a href="#crlf">CRLF</a></li>
+        <li><a href="#file-upload---double-extensions">File upload - Double extensions</a></li>
+        <li><a href="#file-upload---mime-type">File upload - MIME type</a></li>
+        <li><a href="#flask---unsecure-session">Flask - Unsecure session</a></li>
+        <li><a href="#graphql---introspection">GraphQL - Introspection</a></li>
+        <li><a href="#http---cookies">HTTP - Cookies</a></li>
+        <li><a href="#insecure-code-management">Insecure Code Management</a></li>
+        <li><a href="#jwt---introduction">JWT - Introduction</a></li>
+        <li><a href="#xss---server-side">XSS - Server Side</a></li>
+        <li><a href="#directory-traversal">Directory traversal</a></li>
+        <li><a href="#file-upload---null-byte">File upload - Null byte</a></li>
+        <li><a href="#jwt---revoked-token">JWT - Revoked token</a></li>
+        <li><a href="#jwt---weak-secret">JWT - Weak secret</a></li>
+        <li><a href="#jwt---unsecure-file-signature">JWT - Unsecure File Signature</a></li>
+        <li><a href="#php---assert">PHP - assert()</a></li>
+        <li><a href="#php---apache-configuration">PHP - Apache configuration</a></li>
+        <li><a href="#php---filters">PHP - Filters</a></li>
+        <li><a href="#php---register-globals">PHP - register globals</a></li>
+        <li><a href="#php---remote-xdebug">PHP - Remote Xdebug</a></li>
+        <li><a href="#python---server-side-template-injection-introduction">Python - Server-side Template Injection Introduction</a></li>
+        <li><a href="#file-upload---zip">File upload - ZIP</a></li>
+        <li><a href="#flask---development-server">Flask - Development server</a></li>
+        <li><a href="#graphql---injection">GraphQL - Injection</a></li>
+        <li><a href="#command-injection---filter-bypass">Command injection - Filter bypass</a></li>
+        <li><a href="#java---server-side-template-injection">Java - Server-side Template Injection</a></li>
+        <li><a href="#jwt---public-key">JWT - Public key</a></li>
+        <li><a href="#jwt---header-injection">JWT - Header Injection</a></li>
+        <li><a href="#local-file-inclusion">Local File Inclusion</a></li>
+        <li><a href="#local-file-inclusion---double-encoding">Local File Inclusion - Double encoding</a></li>
+        <li><a href="#node---eval">Node - Eval</a></li>
+        <li><a href="#php---loose-comparison">PHP - Loose Comparison</a></li>
+        <li><a href="#php---preg_replace">PHP - preg_replace()</a></li>
+        <li><a href="#php---type-juggling">PHP - type juggling</a></li>
+        <li><a href="#remote-file-inclusion">Remote File Inclusion</a></li>
+        <li><a href="#sql-injection---authentication">SQL injection - Authentication</a></li>
+        <li><a href="#sql-injection---authentication---gbk">SQL injection - Authentication - GBK</a></li>
+        <li><a href="#sql-injection---string">SQL injection - String</a></li>
+        <li><a href="#xslt---code-execution">XSLT - Code execution</a></li>
+        <li><a href="#elixir---eex">Elixir - EEx</a></li>
+        <li><a href="#jwt---unsecure-key-handling">JWT - Unsecure Key Handling</a></li>
+        <li><a href="#ldap-injection---authentication">LDAP injection - Authentication</a></li>
+        <li><a href="#node---serialize">Node - Serialize</a></li>
+        <li><a href="#nosql-injection---authentication">NoSQL injection - Authentication</a></li>
+        <li><a href="#php---path-truncation">PHP - Path Truncation</a></li>
+        <li><a href="#php---serialization">PHP - Serialization</a></li>
+        <li><a href="#sql-injection---numeric">SQL injection - Numeric</a></li>
+        <li><a href="#sql-injection---routed">SQL Injection - Routed</a></li>
+        <li><a href="#sql-truncation">SQL Truncation</a></li>
+        <li><a href="#xml-external-entity">XML External Entity</a></li>
+        <li><a href="#xpath-injection---authentication">XPath injection - Authentication</a></li>
+        <li><a href="#yaml---deserialization">Yaml - Deserialization</a>
+          <ol>
+            <li><a href="#cve-2017-18342">CVE-2017-18342</a></li>
+          </ol>
+        </li>
+        <li><a href="#api---broken-access-2">API - Broken Access 2</a></li>
+        <li><a href="#graphql---backend-injection">GraphQL - Backend injection</a></li>
+        <li><a href="#local-file-inclusion---wrappers">Local File Inclusion - Wrappers</a></li>
+        <li><a href="#php---eval">PHP - Eval</a></li>
+        <li><a href="#php---eval---advanced-filters-bypass">PHP - Eval - Advanced filters bypass</a></li>
+        <li><a href="#java---spring-boot">Java - Spring Boot</a></li>
+        <li><a href="#sql-injection---error">SQL injection - Error</a></li>
+        <li><a href="#sql-injection---insert">SQL injection - Insert</a></li>
+        <li><a href="#php---serializationphp">PHP - SerializationPHP</a>
+          <ol>
+            <li><a href="#poc">POC</a></li>
+          </ol>
+        </li>
+        <li><a href="#deserialization-overflow">Deserialization Overflow</a></li>
+        <li><a href="#deserialization-overflow-1">Deserialization Overflow</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+      </nav>
+    </div>
+  </div>
+
+  <style>
+     
+    .toc-container {
+      position: fixed;
+      left: 0;
+      top: 100px;  
+      width: 350px;  
+      max-height: 80vh;
+      overflow-y: auto;
+      overflow-x: auto;
+      padding: 20px;
+      border-right: 1px solid #eee;
+      background-color: black;  
+      z-index: 100;
+      text-align: left;  
+    }
+
+    .toc {
+      font-size: 2.6rem;  
+      color: #fff;  
+      text-align: left;  
+    }
+
+    .toc h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;  
+      text-align: left;  
+    }
+
+     
+    .toc ul, .toc ol {
+      padding-left: 0;  
+      margin: 0;
+      list-style-type: none;
+      text-align: left;  
+    }
+
+     
+    .toc ul ul, .toc ul ol, .toc ol ul, .toc ol ol {
+      padding-left: 10px;
+    }
+
+    .toc li {
+      padding: 10px 0;
+      line-height: 1.6;
+      text-align: left;  
+    }
+
+    .toc a {
+      text-decoration: none;
+      color: #fff;  
+      display: block;
+      text-align: left;  
+      padding-left: 3px;  
+      font-size: 1.5rem;  
+      transition: color 0.2s;
+    }
+
+    .toc a:hover {
+      color: #ffcc00;  
+    }
+
+     
+    .toc a.active {
+      color: #ffcc00;  
+      font-weight: bold;
+      border-left: 4px solid #ffcc00;  
+      padding-left: 3px;  
+      margin-left: -5px;
+    }
+
+     
+    .main-content {
+      margin-left: 380px;  
+    }
+
+     
+    @media (max-width: 1200px) {
+      .toc-container {
+        width: 280px;  
+      }
+      .main-content {
+        margin-left: 320px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .toc-container {
+        position: static;
+        width: 100%;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      function highlightTOC() {
+        const headings = document.querySelectorAll('.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6');
+        const tocLinks = document.querySelectorAll('.toc a');
+
+        if (headings.length === 0 || tocLinks.length === 0) return;
+
+        let currentActiveIndex = -1;
+        const scrollPosition = window.scrollY;
+
+        for (let i = 0; i < headings.length; i++) {
+          const heading = headings[i];
+          const headingTop = heading.offsetTop - 100;
+          const headingBottom = headingTop + heading.offsetHeight;
+
+          if (scrollPosition >= headingTop && scrollPosition <= headingBottom) {
+            currentActiveIndex = i;
+            break;
+          }
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active'));
+
+        if (currentActiveIndex >= 0) {
+          const currentHeading = headings[currentActiveIndex];
+          const headingId = currentHeading.id;
+
+          const correspondingLink = document.querySelector(`.toc a[href="#${headingId}"]`);
+          if (correspondingLink) {
+            correspondingLink.classList.add('active');
+
+            const tocContainer = document.querySelector('.toc-container');
+            const linkTop = correspondingLink.offsetTop;
+            const containerScrollTop = tocContainer.scrollTop;
+            const containerHeight = tocContainer.clientHeight;
+
+            if (linkTop < containerScrollTop || linkTop > containerScrollTop + containerHeight) {
+              tocContainer.scrollTop = linkTop - containerHeight / 2;
+            }
+          }
+        }
+      }
+
+      highlightTOC();
+      window.addEventListener('scroll', highlightTOC);
+      window.addEventListener('resize', highlightTOC);
+
+      const fragment = window.location.hash;
+      if (fragment) {
+        const element = document.querySelector(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+
+          const tocLinks = document.querySelectorAll('.toc a');
+          tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === fragment) {
+              link.classList.add('active');
+            }
+          });
+
+          highlightTOC();
+        }
+      }
+
+      const tocLinks = document.querySelectorAll('.toc a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            tocLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            history.pushState(null, null, `#${targetId}`);
+
+            event.preventDefault();
+          }
+        });
+      });
+    });
+  </script>  
+
+
+<!-- raw HTML omitted -->
 <h1 id="root-me-server-side">Root-me server side</h1>
 <h2 id="html---source-code">HTML - Source code</h2>
 <p><img src="https://hackmd.io/_uploads/B1kHlOs1yx.png" alt="image"></p>

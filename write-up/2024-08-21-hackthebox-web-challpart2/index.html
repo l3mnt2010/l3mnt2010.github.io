@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <title>Htb web chall ctf 2024 - solved challenges - part 2 - &gt; root@l3mnt2010:~# ./exploit.py</title>
-  <meta name="description" content="Hack the box HauntMart  Tiếp tục chall với cấu trúc y hệt như mấy chall python_flask trước:  from flask import Flaskfrom application.blueprints.routes import web, apifrom application.database import mysqlfrom application.util import responseapp = Flask(__name__)app.config.from_object(&#39;application.config.Config&#39;)mysql.init_app(app)app.register_blueprint(web, url_prefix=&#39;/&#39;)app.register_blueprint(api, url_prefix=&#39;/api&#39;)@app.errorhandler(404)def not_found(error):return response(&#39;404 Not Found&#39;), 404@app.errorhandler(403)def forbidden(error):return response(&#39;403 Forbidden&#39;), 403@app.errorhandler(400)def bad_request(error):return response(&#39;400 Bad Request&#39;), 400@app.errorhandler(Exception)def handle_error(error):message = error.">
+  <meta name="description" content="Hack the box  HauntMart  exploit   PDFy ProxyAsAService  Exploit   Testimonial  RCE Exploit   HTB Proxy  Go proxy Bypass ssrf via nip.io DNS binding   Wild Goose Hunt emoji voting  exploit   ApacheBlaze  Backend Exploit CVE-2023-25690 HTTP Request Smuggling Explain   RenderQuest    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.">
   <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -59,9 +59,9 @@
     "name" : ""
   },
   "headline": "Htb web chall ctf 2024 - solved challenges - part 2",
-  "description" : "Hack the box HauntMart  Tiếp tục chall với cấu trúc y hệt như mấy chall python_flask trước:  from flask import Flask\rfrom application.blueprints.routes import web, api\rfrom application.database import mysql\rfrom application.util import response\rapp = Flask(__name__)\rapp.config.from_object(\u0027application.config.Config\u0027)\rmysql.init_app(app)\rapp.register_blueprint(web, url_prefix=\u0027\/\u0027)\rapp.register_blueprint(api, url_prefix=\u0027\/api\u0027)\r@app.errorhandler(404)\rdef not_found(error):\rreturn response(\u0027404 Not Found\u0027), 404\r@app.errorhandler(403)\rdef forbidden(error):\rreturn response(\u0027403 Forbidden\u0027), 403\r@app.errorhandler(400)\rdef bad_request(error):\rreturn response(\u0027400 Bad Request\u0027), 400\r@app.errorhandler(Exception)\rdef handle_error(error):\rmessage = error.",
+  "description" : "Hack the box  HauntMart  exploit   PDFy ProxyAsAService  Exploit   Testimonial  RCE Exploit   HTB Proxy  Go proxy Bypass ssrf via nip.io DNS binding   Wild Goose Hunt emoji voting  exploit   ApacheBlaze  Backend Exploit CVE-2023-25690 HTTP Request Smuggling Explain   RenderQuest    \r\r\r\r\r.toc-container {\rposition: fixed;\rleft: 0;\rtop: 100px; width: 350px; max-height: 80vh;\roverflow-y: auto;\roverflow-x: auto;\rpadding: 20px;\rborder-right: 1px solid #eee;\rbackground-color: black; z-index: 100;\rtext-align: left; }\r.",
   "inLanguage" : "en",
-  "wordCount":  7116 ,
+  "wordCount":  7521 ,
   "datePublished" : "0001-01-01T00:00:00\u002b00:00",
   "dateModified" : "0001-01-01T00:00:00\u002b00:00",
   "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
@@ -82,14 +82,14 @@
 
 
 <meta property="og:title" content="Htb web chall ctf 2024 - solved challenges - part 2" />
-<meta property="og:description" content="Hack the box HauntMart  Tiếp tục chall với cấu trúc y hệt như mấy chall python_flask trước:  from flask import Flaskfrom application.blueprints.routes import web, apifrom application.database import mysqlfrom application.util import responseapp = Flask(__name__)app.config.from_object(&#39;application.config.Config&#39;)mysql.init_app(app)app.register_blueprint(web, url_prefix=&#39;/&#39;)app.register_blueprint(api, url_prefix=&#39;/api&#39;)@app.errorhandler(404)def not_found(error):return response(&#39;404 Not Found&#39;), 404@app.errorhandler(403)def forbidden(error):return response(&#39;403 Forbidden&#39;), 403@app.errorhandler(400)def bad_request(error):return response(&#39;400 Bad Request&#39;), 400@app.errorhandler(Exception)def handle_error(error):message = error.">
+<meta property="og:description" content="Hack the box  HauntMart  exploit   PDFy ProxyAsAService  Exploit   Testimonial  RCE Exploit   HTB Proxy  Go proxy Bypass ssrf via nip.io DNS binding   Wild Goose Hunt emoji voting  exploit   ApacheBlaze  Backend Exploit CVE-2023-25690 HTTP Request Smuggling Explain   RenderQuest    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.">
 <meta property="og:image" content="https://l3mnt2010.github.io/avatar.png" />
 <meta property="og:url" content="https://l3mnt2010.github.io/write-up/2024-08-21-hackthebox-web-challpart2/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="&gt; root@l3mnt2010:~# ./exploit.py" />
 
   <meta name="twitter:title" content="Htb web chall ctf 2024 - solved challenges - part 2" />
-  <meta name="twitter:description" content="Hack the box HauntMart  Tiếp tục chall với cấu trúc y hệt như mấy chall python_flask trước:  from flask import Flaskfrom application.blueprints.routes import web, apifrom application.database import …">
+  <meta name="twitter:description" content="Hack the box  HauntMart  exploit   PDFy ProxyAsAService  Exploit   Testimonial  RCE Exploit   HTB Proxy  Go proxy Bypass ssrf via nip.io DNS binding   Wild Goose Hunt emoji voting  exploit …">
   <meta name="twitter:image" content="https://l3mnt2010.github.io/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://l3mnt2010.github.io/avatar.png' rel='icon' type='image/x-icon'/>
@@ -121,6 +121,12 @@
         
           
             <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
               <a title="Posts" href="https://l3mnt2010.github.io/posts">Posts</a>
             </li>
           
@@ -128,18 +134,6 @@
           
             <li>
               <a title="Write-up" href="https://l3mnt2010.github.io/write-up">Write-up</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
             </li>
           
         
@@ -262,7 +256,252 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <!-- raw HTML omitted -->
+        
+  <div class="toc-container">
+    <div class="toc">
+      <nav id="TableOfContents">
+        
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#hack-the-box">Hack the box</a>
+      <ol>
+        <li><a href="#hauntmart">HauntMart</a>
+          <ol>
+            <li><a href="#exploit">exploit</a></li>
+          </ol>
+        </li>
+        <li><a href="#pdfy">PDFy</a></li>
+        <li><a href="#proxyasaservice">ProxyAsAService</a>
+          <ol>
+            <li><a href="#exploit-1">Exploit</a></li>
+          </ol>
+        </li>
+        <li><a href="#testimonial">Testimonial</a>
+          <ol>
+            <li><a href="#rce">RCE</a></li>
+            <li><a href="#exploit-2">Exploit</a></li>
+          </ol>
+        </li>
+        <li><a href="#htb-proxy">HTB Proxy</a>
+          <ol>
+            <li><a href="#go-proxy">Go proxy</a></li>
+            <li><a href="#bypass-ssrf-via-nipio-dns-binding">Bypass ssrf via nip.io DNS binding</a></li>
+          </ol>
+        </li>
+        <li><a href="#wild-goose-hunt">Wild Goose Hunt</a></li>
+        <li><a href="#emoji-voting">emoji voting</a>
+          <ol>
+            <li><a href="#exploit-3">exploit</a></li>
+          </ol>
+        </li>
+        <li><a href="#apacheblaze">ApacheBlaze</a>
+          <ol>
+            <li><a href="#backend">Backend</a></li>
+            <li><a href="#exploit-cve-2023-25690-http-request-smuggling">Exploit CVE-2023-25690 HTTP Request Smuggling</a></li>
+            <li><a href="#explain">Explain</a></li>
+          </ol>
+        </li>
+        <li><a href="#renderquest">RenderQuest</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+      </nav>
+    </div>
+  </div>
+
+  <style>
+     
+    .toc-container {
+      position: fixed;
+      left: 0;
+      top: 100px;  
+      width: 350px;  
+      max-height: 80vh;
+      overflow-y: auto;
+      overflow-x: auto;
+      padding: 20px;
+      border-right: 1px solid #eee;
+      background-color: black;  
+      z-index: 100;
+      text-align: left;  
+    }
+
+    .toc {
+      font-size: 2.6rem;  
+      color: #fff;  
+      text-align: left;  
+    }
+
+    .toc h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;  
+      text-align: left;  
+    }
+
+     
+    .toc ul, .toc ol {
+      padding-left: 0;  
+      margin: 0;
+      list-style-type: none;
+      text-align: left;  
+    }
+
+     
+    .toc ul ul, .toc ul ol, .toc ol ul, .toc ol ol {
+      padding-left: 10px;
+    }
+
+    .toc li {
+      padding: 10px 0;
+      line-height: 1.6;
+      text-align: left;  
+    }
+
+    .toc a {
+      text-decoration: none;
+      color: #fff;  
+      display: block;
+      text-align: left;  
+      padding-left: 3px;  
+      font-size: 1.5rem;  
+      transition: color 0.2s;
+    }
+
+    .toc a:hover {
+      color: #ffcc00;  
+    }
+
+     
+    .toc a.active {
+      color: #ffcc00;  
+      font-weight: bold;
+      border-left: 4px solid #ffcc00;  
+      padding-left: 3px;  
+      margin-left: -5px;
+    }
+
+     
+    .main-content {
+      margin-left: 380px;  
+    }
+
+     
+    @media (max-width: 1200px) {
+      .toc-container {
+        width: 280px;  
+      }
+      .main-content {
+        margin-left: 320px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .toc-container {
+        position: static;
+        width: 100%;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      function highlightTOC() {
+        const headings = document.querySelectorAll('.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6');
+        const tocLinks = document.querySelectorAll('.toc a');
+
+        if (headings.length === 0 || tocLinks.length === 0) return;
+
+        let currentActiveIndex = -1;
+        const scrollPosition = window.scrollY;
+
+        for (let i = 0; i < headings.length; i++) {
+          const heading = headings[i];
+          const headingTop = heading.offsetTop - 100;
+          const headingBottom = headingTop + heading.offsetHeight;
+
+          if (scrollPosition >= headingTop && scrollPosition <= headingBottom) {
+            currentActiveIndex = i;
+            break;
+          }
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active'));
+
+        if (currentActiveIndex >= 0) {
+          const currentHeading = headings[currentActiveIndex];
+          const headingId = currentHeading.id;
+
+          const correspondingLink = document.querySelector(`.toc a[href="#${headingId}"]`);
+          if (correspondingLink) {
+            correspondingLink.classList.add('active');
+
+            const tocContainer = document.querySelector('.toc-container');
+            const linkTop = correspondingLink.offsetTop;
+            const containerScrollTop = tocContainer.scrollTop;
+            const containerHeight = tocContainer.clientHeight;
+
+            if (linkTop < containerScrollTop || linkTop > containerScrollTop + containerHeight) {
+              tocContainer.scrollTop = linkTop - containerHeight / 2;
+            }
+          }
+        }
+      }
+
+      highlightTOC();
+      window.addEventListener('scroll', highlightTOC);
+      window.addEventListener('resize', highlightTOC);
+
+      const fragment = window.location.hash;
+      if (fragment) {
+        const element = document.querySelector(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+
+          const tocLinks = document.querySelectorAll('.toc a');
+          tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === fragment) {
+              link.classList.add('active');
+            }
+          });
+
+          highlightTOC();
+        }
+      }
+
+      const tocLinks = document.querySelectorAll('.toc a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            tocLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            history.pushState(null, null, `#${targetId}`);
+
+            event.preventDefault();
+          }
+        });
+      });
+    });
+  </script>  
+
+
+<!-- raw HTML omitted -->
 <h1 id="hack-the-box">Hack the box</h1>
 <h2 id="hauntmart">HauntMart</h2>
 <ul>

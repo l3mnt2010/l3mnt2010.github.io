@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <title>CorCTF2024 - WEB &#39;s challenges - &gt; root@l3mnt2010:~# ./exploit.py</title>
-  <meta name="description" content="WEB challs rock-paper-scissors [79 solves]  Một chall kéo - búa - bao với nodejs &#43; redis để lưu số lần thắng của người chơi.  analysis  Ta sẽ đi vào phần tích các api của server:  import Redis from &#39;ioredis&#39;;import fastify from &#39;fastify&#39;;import fastifyStatic from &#39;@fastify/static&#39;;import fastifyJwt from &#39;@fastify/jwt&#39;;import fastifyCookie from &#39;@fastify/cookie&#39;;import { join } from &#39;node:path&#39;;import { randomBytes, randomInt } from &#39;node:crypto&#39;;const redis = new Redis(6379, &quot;redis&quot;);const app = fastify();const winning = new Map([[&#39;🪨&#39;, &#39;📃&#39;],[&#39;📃&#39;, &#39;✂️&#39;],[&#39;✂️&#39;, &#39;🪨&#39;]]);app.">
+  <meta name="description" content="WEB challs  rock-paper-scissors [79 solves]  analysis exploit real server Notes   erm [60 solves]  analysis exploit   msfrogofwar3  analyst solution1 solution 2   corctf-challenge-dev  analysis extension   iframe-note  analyst  api / api /login &#43; /register -&gt; đăng kí &amp; đăng nhập api /create api /view -&gt; hiển thị view template api /iframe/&lt;id&gt;   detect      .">
   <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -59,9 +59,9 @@
     "name" : ""
   },
   "headline": "CorCTF2024 - WEB \u0027s challenges",
-  "description" : "WEB challs rock-paper-scissors [79 solves]  Một chall kéo - búa - bao với nodejs \u002b redis để lưu số lần thắng của người chơi.  analysis  Ta sẽ đi vào phần tích các api của server:  import Redis from \u0027ioredis\u0027;\rimport fastify from \u0027fastify\u0027;\rimport fastifyStatic from \u0027@fastify\/static\u0027;\rimport fastifyJwt from \u0027@fastify\/jwt\u0027;\rimport fastifyCookie from \u0027@fastify\/cookie\u0027;\rimport { join } from \u0027node:path\u0027;\rimport { randomBytes, randomInt } from \u0027node:crypto\u0027;\rconst redis = new Redis(6379, \u0026quot;redis\u0026quot;);\rconst app = fastify();\rconst winning = new Map([\r[\u0027🪨\u0027, \u0027📃\u0027],\r[\u0027📃\u0027, \u0027✂️\u0027],\r[\u0027✂️\u0027, \u0027🪨\u0027]\r]);\rapp.",
+  "description" : "WEB challs  rock-paper-scissors [79 solves]  analysis exploit real server Notes   erm [60 solves]  analysis exploit   msfrogofwar3  analyst solution1 solution 2   corctf-challenge-dev  analysis extension   iframe-note  analyst  api \/ api \/login \u002b \/register -\u0026gt; đăng kí \u0026amp; đăng nhập api \/create api \/view -\u0026gt; hiển thị view template api \/iframe\/\u0026lt;id\u0026gt;   detect      \r\r\r\r\r.",
   "inLanguage" : "en",
-  "wordCount":  6653 ,
+  "wordCount":  7071 ,
   "datePublished" : "0001-01-01T00:00:00\u002b00:00",
   "dateModified" : "0001-01-01T00:00:00\u002b00:00",
   "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
@@ -82,14 +82,14 @@
 
 
 <meta property="og:title" content="CorCTF2024 - WEB &#39;s challenges" />
-<meta property="og:description" content="WEB challs rock-paper-scissors [79 solves]  Một chall kéo - búa - bao với nodejs &#43; redis để lưu số lần thắng của người chơi.  analysis  Ta sẽ đi vào phần tích các api của server:  import Redis from &#39;ioredis&#39;;import fastify from &#39;fastify&#39;;import fastifyStatic from &#39;@fastify/static&#39;;import fastifyJwt from &#39;@fastify/jwt&#39;;import fastifyCookie from &#39;@fastify/cookie&#39;;import { join } from &#39;node:path&#39;;import { randomBytes, randomInt } from &#39;node:crypto&#39;;const redis = new Redis(6379, &quot;redis&quot;);const app = fastify();const winning = new Map([[&#39;🪨&#39;, &#39;📃&#39;],[&#39;📃&#39;, &#39;✂️&#39;],[&#39;✂️&#39;, &#39;🪨&#39;]]);app.">
+<meta property="og:description" content="WEB challs  rock-paper-scissors [79 solves]  analysis exploit real server Notes   erm [60 solves]  analysis exploit   msfrogofwar3  analyst solution1 solution 2   corctf-challenge-dev  analysis extension   iframe-note  analyst  api / api /login &#43; /register -&gt; đăng kí &amp; đăng nhập api /create api /view -&gt; hiển thị view template api /iframe/&lt;id&gt;   detect      .">
 <meta property="og:image" content="https://l3mnt2010.github.io/avatar.png" />
 <meta property="og:url" content="https://l3mnt2010.github.io/write-up/2024-07-27-corctf2024/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="&gt; root@l3mnt2010:~# ./exploit.py" />
 
   <meta name="twitter:title" content="CorCTF2024 - WEB &#39;s challenges" />
-  <meta name="twitter:description" content="WEB challs rock-paper-scissors [79 solves]  Một chall kéo - búa - bao với nodejs &#43; redis để lưu số lần thắng của người chơi.  analysis  Ta sẽ đi vào phần tích các api của server:  import Redis from …">
+  <meta name="twitter:description" content="WEB challs  rock-paper-scissors [79 solves]  analysis exploit real server Notes   erm [60 solves]  analysis exploit   msfrogofwar3  analyst solution1 solution 2   corctf-challenge-dev  analysis …">
   <meta name="twitter:image" content="https://l3mnt2010.github.io/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://l3mnt2010.github.io/avatar.png' rel='icon' type='image/x-icon'/>
@@ -121,6 +121,12 @@
         
           
             <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
               <a title="Posts" href="https://l3mnt2010.github.io/posts">Posts</a>
             </li>
           
@@ -128,18 +134,6 @@
           
             <li>
               <a title="Write-up" href="https://l3mnt2010.github.io/write-up">Write-up</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
             </li>
           
         
@@ -262,7 +256,255 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <!-- raw HTML omitted -->
+        
+  <div class="toc-container">
+    <div class="toc">
+      <nav id="TableOfContents">
+        
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#web-challs">WEB challs</a>
+      <ol>
+        <li><a href="#rock-paper-scissors-79-solves">rock-paper-scissors [79 solves]</a>
+          <ol>
+            <li><a href="#analysis">analysis</a></li>
+            <li><a href="#exploit-real-server">exploit real server</a></li>
+            <li><a href="#notes">Notes</a></li>
+          </ol>
+        </li>
+        <li><a href="#erm-60-solves">erm [60 solves]</a>
+          <ol>
+            <li><a href="#analysis-1">analysis</a></li>
+            <li><a href="#exploit">exploit</a></li>
+          </ol>
+        </li>
+        <li><a href="#msfrogofwar3">msfrogofwar3</a>
+          <ol>
+            <li><a href="#analyst">analyst</a></li>
+            <li><a href="#solution1">solution1</a></li>
+            <li><a href="#solution-2">solution 2</a></li>
+          </ol>
+        </li>
+        <li><a href="#corctf-challenge-dev">corctf-challenge-dev</a>
+          <ol>
+            <li><a href="#analysis-2">analysis</a></li>
+            <li><a href="#extension">extension</a></li>
+          </ol>
+        </li>
+        <li><a href="#iframe-note">iframe-note</a>
+          <ol>
+            <li><a href="#analyst-1">analyst</a>
+              <ol>
+                <li><a href="#api-">api /</a></li>
+                <li><a href="#api-login--register---đăng-kí--đăng-nhập">api /login + /register -&gt; đăng kí &amp; đăng nhập</a></li>
+                <li><a href="#api-create">api /create</a></li>
+                <li><a href="#api-view---hiển-thị-view-template">api /view -&gt; hiển thị view template</a></li>
+                <li><a href="#api-iframeid">api /iframe/<code>&lt;id&gt;</code></a></li>
+              </ol>
+            </li>
+            <li><a href="#detect">detect</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+      </nav>
+    </div>
+  </div>
+
+  <style>
+     
+    .toc-container {
+      position: fixed;
+      left: 0;
+      top: 100px;  
+      width: 350px;  
+      max-height: 80vh;
+      overflow-y: auto;
+      overflow-x: auto;
+      padding: 20px;
+      border-right: 1px solid #eee;
+      background-color: black;  
+      z-index: 100;
+      text-align: left;  
+    }
+
+    .toc {
+      font-size: 2.6rem;  
+      color: #fff;  
+      text-align: left;  
+    }
+
+    .toc h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;  
+      text-align: left;  
+    }
+
+     
+    .toc ul, .toc ol {
+      padding-left: 0;  
+      margin: 0;
+      list-style-type: none;
+      text-align: left;  
+    }
+
+     
+    .toc ul ul, .toc ul ol, .toc ol ul, .toc ol ol {
+      padding-left: 10px;
+    }
+
+    .toc li {
+      padding: 10px 0;
+      line-height: 1.6;
+      text-align: left;  
+    }
+
+    .toc a {
+      text-decoration: none;
+      color: #fff;  
+      display: block;
+      text-align: left;  
+      padding-left: 3px;  
+      font-size: 1.5rem;  
+      transition: color 0.2s;
+    }
+
+    .toc a:hover {
+      color: #ffcc00;  
+    }
+
+     
+    .toc a.active {
+      color: #ffcc00;  
+      font-weight: bold;
+      border-left: 4px solid #ffcc00;  
+      padding-left: 3px;  
+      margin-left: -5px;
+    }
+
+     
+    .main-content {
+      margin-left: 380px;  
+    }
+
+     
+    @media (max-width: 1200px) {
+      .toc-container {
+        width: 280px;  
+      }
+      .main-content {
+        margin-left: 320px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .toc-container {
+        position: static;
+        width: 100%;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      function highlightTOC() {
+        const headings = document.querySelectorAll('.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6');
+        const tocLinks = document.querySelectorAll('.toc a');
+
+        if (headings.length === 0 || tocLinks.length === 0) return;
+
+        let currentActiveIndex = -1;
+        const scrollPosition = window.scrollY;
+
+        for (let i = 0; i < headings.length; i++) {
+          const heading = headings[i];
+          const headingTop = heading.offsetTop - 100;
+          const headingBottom = headingTop + heading.offsetHeight;
+
+          if (scrollPosition >= headingTop && scrollPosition <= headingBottom) {
+            currentActiveIndex = i;
+            break;
+          }
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active'));
+
+        if (currentActiveIndex >= 0) {
+          const currentHeading = headings[currentActiveIndex];
+          const headingId = currentHeading.id;
+
+          const correspondingLink = document.querySelector(`.toc a[href="#${headingId}"]`);
+          if (correspondingLink) {
+            correspondingLink.classList.add('active');
+
+            const tocContainer = document.querySelector('.toc-container');
+            const linkTop = correspondingLink.offsetTop;
+            const containerScrollTop = tocContainer.scrollTop;
+            const containerHeight = tocContainer.clientHeight;
+
+            if (linkTop < containerScrollTop || linkTop > containerScrollTop + containerHeight) {
+              tocContainer.scrollTop = linkTop - containerHeight / 2;
+            }
+          }
+        }
+      }
+
+      highlightTOC();
+      window.addEventListener('scroll', highlightTOC);
+      window.addEventListener('resize', highlightTOC);
+
+      const fragment = window.location.hash;
+      if (fragment) {
+        const element = document.querySelector(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+
+          const tocLinks = document.querySelectorAll('.toc a');
+          tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === fragment) {
+              link.classList.add('active');
+            }
+          });
+
+          highlightTOC();
+        }
+      }
+
+      const tocLinks = document.querySelectorAll('.toc a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            tocLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            history.pushState(null, null, `#${targetId}`);
+
+            event.preventDefault();
+          }
+        });
+      });
+    });
+  </script>  
+
+
+<!-- raw HTML omitted -->
 <h1 id="web-challs">WEB challs</h1>
 <h2 id="rock-paper-scissors-79-solves">rock-paper-scissors [79 solves]</h2>
 <p><img src="https://hackmd.io/_uploads/S1ijHFLKA.png" alt="image"></p>

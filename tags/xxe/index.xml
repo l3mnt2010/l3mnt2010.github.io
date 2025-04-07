@@ -15,8 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/xxe-lab/</guid>
-      <description>January 17, 2024 04:00 PM ICT to January 17, 2024 04:00 PM ICT
-Exploiting XXE using external entities to retrieve files  Bài này không có filter gì cả và chức năng chính là check trong kho hàng có còn hàng không với yêu cầu gửi lên là 1 dữ liệu XML     Khi mà xác định sẽ trả ra có bao nhiêu cơ sở có sản phầm này</description>
+      <description>Exploiting XXE using external entities to retrieve files Exploiting XXE to perform SSRF attacks Blind XXE with out-of-band interaction Blind XXE with out-of-band interaction via XML parameter entities Exploiting blind XXE to exfiltrate data using a malicious external DTD Exploiting blind XXE to retrieve data via error messages Exploiting XInclude to retrieve files Exploiting XXE via image file upload Exploiting XXE to retrieve data by repurposing a local DTD        .</description>
     </item>
     
   </channel>

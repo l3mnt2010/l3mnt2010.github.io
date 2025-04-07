@@ -15,10 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/insecure-deserialization-lab/</guid>
-      <description>Jannuary 17, 2024 04:00 PM ICT to Jannuary 17, 2024 04:00 PM ICT
-Lab: Modifying serialized objects   Đề bài yêu cầu như sau:
-    Như ta thấy thì lab chứa lỗ hổng Insecure deserialization do đó dễ bị leo thang đặc quyền vào nhiệm vụ là ta đạt được quyền quản trị sau đó xóa carlos.
-  Let&amp;rsquo;s go bắt đầu bài lab nào:</description>
+      <description>Lab: Modifying serialized objects Lab: Modifying serialized data types Lab: Using application functionality to exploit insecure deserialization Lab: Arbitrary object injection in PHP Lab: Developing a custom gadget chain for PHP deserialization        .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.</description>
     </item>
     
   </channel>

