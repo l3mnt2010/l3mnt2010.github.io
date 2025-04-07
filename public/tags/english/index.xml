@@ -1,32 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>English on l3mnt2010&#39;s Blog</title>
-    <link>https://l3mnt2010.github.io/tags/english/</link>
-    <description>Recent content in English on l3mnt2010&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <managingEditor>llam16219@gmail.com (l3mnt2010)</managingEditor>
-    <webMaster>llam16219@gmail.com (l3mnt2010)</webMaster>
-    <copyright>© l3mnt2010 Balogh 2021</copyright><atom:link href="https://l3mnt2010.github.io/tags/english/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>BKSEC-CTF-2023 - WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2023-08-19-bksecctf2023/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2023-08-19-bksecctf2023/</guid>
-      <description>WEB challs Metadata checker  This is whitebox challenge, you can view source below:  if (isset($_FILES) &amp;amp;&amp;amp; !empty($_FILES)) {$uploadpath = &amp;quot;/var/tmp/&amp;quot;;$error = &amp;quot;&amp;quot;;$timestamp = time();$userValue = $_COOKIE[&#39;user&#39;];$target_file = $uploadpath . $userValue . &amp;quot;_&amp;quot; . $timestamp . &amp;quot;_&amp;quot; . $_FILES[&amp;quot;image&amp;quot;][&amp;quot;name&amp;quot;];move_uploaded_file($_FILES[&amp;quot;image&amp;quot;][&amp;quot;tmp_name&amp;quot;], $target_file);if ($_FILES[&amp;quot;image&amp;quot;][&amp;quot;size&amp;quot;] &amp;gt; 1048576) {$error .= &#39;&amp;lt;p class=&amp;quot;h5 text-danger&amp;quot;&amp;gt;Maximum file size is 1MB.&amp;lt;/p&amp;gt;&#39;;} elseif ($_FILES[&amp;quot;image&amp;quot;][&amp;quot;type&amp;quot;] !== &amp;quot;image/jpeg&amp;quot;) {$error .= &#39;&amp;lt;p class=&amp;quot;h5 text-danger&amp;quot;&amp;gt;Only JPG files are allowed.</description>
-    </item>
-    
-    <item>
-      <title>Insomni&#39;hack2024 - WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-04-26-insomnihack2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-04-26-insomnihack2024/</guid>
-      <description>WEB challs InsoBank   Title : NextJs, Python, MySql, postgresSql, smart from u :3
-  The web application in this challenge is a banking app that supports transferring deposits from one account to another. However, all the accounts involved in a transfer operation must belong to the same person; this means we cannot transfer money from our account to other people’s accounts.   You must register with new account and login with your account   You only can transfer for 2 account provide by sever</description>
-    </item>
-    
-  </channel>
-</rss>

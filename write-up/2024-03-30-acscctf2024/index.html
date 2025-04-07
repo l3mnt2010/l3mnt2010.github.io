@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>ACSCCTF2024 - WEB chall - l3mnt2010&#39;s Blog</title>
+  <meta name="description" content="WEB challs Login!   Bài này là một bài white box nên mình sẽ vào xem source code của nó luôn nha.
+  Bài cho file này thui:
+  const express = require(&#39;express&#39;);const crypto = require(&#39;crypto&#39;);const FLAG = process.env.FLAG || &#39;flag{this_is_a_fake_flag}&#39;;const app = express();app.use(express.urlencoded({ extended: true }));const USER_DB = {user: {username: &#39;user&#39;, password: crypto.randomBytes(32).toString(&#39;hex&#39;)},guest: {username: &#39;guest&#39;,password: &#39;guest&#39;}};app.">
+  <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "l3mnt2010\u0027s Blog",
+    
+    "url": "https:\/\/l3mnt2010.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/l3mnt2010.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/l3mnt2010.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/l3mnt2010.github.io\/write-up\/2024-03-30-acscctf2024\/",
+          "name": "Acscctf2024 web chall"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "ACSCCTF2024 - WEB chall",
+  "description" : "WEB challs Login!   Bài này là một bài white box nên mình sẽ vào xem source code của nó luôn nha.\n  Bài cho file này thui:\n  \rconst express = require(\u0027express\u0027);\rconst crypto = require(\u0027crypto\u0027);\rconst FLAG = process.env.FLAG || \u0027flag{this_is_a_fake_flag}\u0027;\rconst app = express();\rapp.use(express.urlencoded({ extended: true }));\rconst USER_DB = {\ruser: {\rusername: \u0027user\u0027, password: crypto.randomBytes(32).toString(\u0027hex\u0027)\r},\rguest: {\rusername: \u0027guest\u0027,\rpassword: \u0027guest\u0027\r}\r};\rapp.",
+  "inLanguage" : "en",
+  "wordCount":  866 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/l3mnt2010.github.io\/write-up\/2024-03-30-acscctf2024\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/l3mnt2010.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/l3mnt2010.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="ACSCCTF2024 - WEB chall" />
+<meta property="og:description" content="WEB challs Login!   Bài này là một bài white box nên mình sẽ vào xem source code của nó luôn nha.
+  Bài cho file này thui:
+  const express = require(&#39;express&#39;);const crypto = require(&#39;crypto&#39;);const FLAG = process.env.FLAG || &#39;flag{this_is_a_fake_flag}&#39;;const app = express();app.use(express.urlencoded({ extended: true }));const USER_DB = {user: {username: &#39;user&#39;, password: crypto.randomBytes(32).toString(&#39;hex&#39;)},guest: {username: &#39;guest&#39;,password: &#39;guest&#39;}};app.">
+<meta property="og:image" content="https://l3mnt2010.github.io/avatar.png" />
+<meta property="og:url" content="https://l3mnt2010.github.io/write-up/2024-03-30-acscctf2024/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="l3mnt2010&#39;s Blog" />
+
+  <meta name="twitter:title" content="ACSCCTF2024 - WEB chall" />
+  <meta name="twitter:description" content="WEB challs Login!   Bài này là một bài white box nên mình sẽ vào xem source code của nó luôn nha.
+  Bài cho file này thui:
+  const express = require(&#39;express&#39;);const crypto = require(&#39;crypto&#39;); …">
+  <meta name="twitter:image" content="https://l3mnt2010.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://l3mnt2010.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://l3mnt2010.github.io/index.xml" type="application/rss+xml" title="l3mnt2010&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://l3mnt2010.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://l3mnt2010.github.io/css/syntax.css" /><link rel="stylesheet" href="https://l3mnt2010.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://l3mnt2010.github.io/">l3mnt2010&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://l3mnt2010.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Write-ups" href="https://l3mnt2010.github.io/write-up/">Write-ups</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://l3mnt2010.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="l3mnt2010&#39;s Blog" href="https://l3mnt2010.github.io/">
+            <img class="avatar-img" src="https://l3mnt2010.github.io/avatar.png" alt="l3mnt2010&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>ACSCCTF2024 - WEB chall</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="web-challs">WEB challs</h1>
+<h2 id="login">Login!</h2>
+<p><img src="https://hackmd.io/_uploads/SyNBuqt1C.png" alt="image"></p>
+<ul>
+<li>
+<p>Bài này là một bài white box nên mình sẽ vào xem source code của nó luôn nha.</p>
+</li>
+<li>
+<p>Bài cho file này thui:</p>
+</li>
+</ul>
+<pre><code>
+const express = require('express');
+const crypto = require('crypto');
+const FLAG = process.env.FLAG || 'flag{this_is_a_fake_flag}';
+
+const app = express();
+app.use(express.urlencoded({ extended: true }));
+
+const USER_DB = {
+    user: {
+        username: 'user', 
+        password: crypto.randomBytes(32).toString('hex')
+    },
+    guest: {
+        username: 'guest',
+        password: 'guest'
+    }
+    
+};
+
+app.get('/', (req, res) =&gt; {
+    res.send(`
+    &lt;html&gt;&lt;head&gt;&lt;title&gt;Login&lt;/title&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.simplecss.org/simple.min.css&quot;&gt;&lt;/head&gt;
+    &lt;body&gt;
+    &lt;section&gt;
+    &lt;h1&gt;Login&lt;/h1&gt;
+    &lt;form action=&quot;/login&quot; method=&quot;post&quot;&gt;
+    &lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;Username&quot; length=&quot;6&quot; required&gt;
+    &lt;input type=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;Password&quot; required&gt;
+    &lt;button type=&quot;submit&quot;&gt;Login&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;/section&gt;
+    &lt;/body&gt;&lt;/html&gt;
+    `);
+});
+
+app.post('/login', (req, res) =&gt; {
+    const { username, password } = req.body;
+    if (username.length &gt; 6) return res.send('Username is too long');
+
+    const user = USER_DB[username];
+    if (user &amp;&amp; user.password == password) {
+        if (username === 'guest') {
+            res.send('Welcome, guest. You do not have permission to view the flag');
+        } else {
+            res.send(`Welcome, ${username}. Here is your flag: ${FLAG}`);
+        }
+    } else {
+        res.send('Invalid username or password');
+    }
+});
+
+app.listen(5000, () =&gt; {
+    console.log('Server is running on port 5000');
+});
+</code></pre><ul>
+<li>
+<p>Ta quan sát thì khi chạy sever sẽ khởi tạo một object là <code>USER_DB</code> với 2 key là <code>user</code> và <code>guest</code> với từng giá trị là từng username và passwd tương ứng.</p>
+</li>
+<li>
+<p>Có thể thấy thì trang web chỉ có một chức năng đăng nhập và đây cũng là cách để lấy được <code>FLAG</code></p>
+</li>
+</ul>
+<pre><code>app.post('/login', (req, res) =&gt; {
+    const { username, password } = req.body;
+    if (username.length &gt; 6) return res.send('Username is too long');
+
+    const user = USER_DB[username];
+    if (user &amp;&amp; user.password == password) {
+        if (username === 'guest') {
+            res.send('Welcome, guest. You do not have permission to view the flag');
+        } else {
+            res.send(`Welcome, ${username}. Here is your flag: ${FLAG}`);
+        }
+    } else {
+        res.send('Invalid username or password');
+    }
+});
+
+</code></pre><ul>
+<li>
+<p>Để có được FLAG ta phải đăng nhập với username khác với <code>guest</code> và username này phải tồn tại trong <code>USER_DB</code> vì vậy chỉ có thể đăng nhập với <code>user</code> nhưng mà mật khẩu ở đây ta không thể biết được vì được gen ra bằng hàm <code>crypto.randomBytes(32).toString('hex')</code></p>
+</li>
+<li>
+<p>Nên hướng ở đây là sử dụng prototype-poluttion để khai thác với Object trên.</p>
+</li>
+<li>
+<p>Đầu tiên mình sẽ tạo một thuộc tính proto mới và gán giá trị cho passwd lúc này là null
+<img src="https://hackmd.io/_uploads/S1NEuoK1R.png" alt="image"></p>
+</li>
+<li>
+<p>Khi này có thể thấy nếu username của ta là một mảng có tên là <code>__proto__</code> thì khi check điều kiện sẽ thỏa mãn và ta nhận được flag:</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rkKXcjFyA.png" alt="image"></p>
+<p>FLAG: ACSC{y3t_an0th3r_l0gin_byp4ss}</p>
+<h2 id="buggy-bounty">Buggy Bounty</h2>
+<p><img src="https://hackmd.io/_uploads/SkV1g2YJC.png" alt="image"></p>
+<ul>
+<li>
+<p>oke let &rsquo;s go:</p>
+</li>
+<li>
+<p>Đây cũng là một bài white box nên cùng view qua source một lát nha:
+<img src="https://hackmd.io/_uploads/BkrelhF1C.png" alt="image"></p>
+</li>
+<li>
+<p>Có thể thấy chall chứa 2 sever một sever chạy với nodejs và một sever chạy với python và chứa route <code>/bounty</code> và nhận được flag.</p>
+</li>
+<li>
+<p>View qua sever nodejs thì ta thấy các route quan trọng:</p>
+</li>
+</ul>
+<pre><code>router.get(&quot;/triage&quot;, (req, res) =&gt; {
+  try {
+    if (!isAdmin(req)) {
+      return res.status(401).send({
+        err: &quot;Permission denied&quot;,
+      });
+    }
+    let bug_id = req.query.id;
+    let bug_url = req.query.url;
+    let bug_report = req.query.report;
+
+    return res.render(&quot;triage.html&quot;, {
+      id: bug_id,
+      url: bug_url,
+      report: bug_report,
+    });
+  } catch (e) {
+    res.status(500).send({
+      error: &quot;Server Error&quot;,
+    });
+  }
+});
+
+router.post(&quot;/report_bug&quot;, async (req, res) =&gt; {
+  try {
+    const id = req.body.id;
+    const url = req.body.url;
+    const report = req.body.report;
+    await visit(
+      `http://127.0.0.1/triage?id=${id}&amp;url=${url}&amp;report=${report}`,
+      authSecret
+    );
+  } catch (e) {
+    console.log(e);
+    return res.render(&quot;index.html&quot;, { err: &quot;Server Error&quot; });
+  }
+  const reward = Math.floor(Math.random() * (100 - 10 + 1)) + 10;
+  return res.render(&quot;index.html&quot;, {
+    message: &quot;Rewarded &quot; + reward + &quot;$&quot;,
+  });
+});
+
+router.get(&quot;/check_valid_url&quot;, async (req, res) =&gt; {
+  try {
+    if (!isAdmin(req)) {
+      return res.status(401).send({
+        err: &quot;Permission denied&quot;,
+      });
+    }
+
+    const report_url = req.query.url;
+    const customAgent = ssrfFilter(report_url);
+    
+    request(
+      { url: report_url, agent: customAgent },
+      function (error, response, body) {
+        if (!error &amp;&amp; response.statusCode == 200) {
+          res.send(body);
+        } else {
+          console.error(&quot;Error:&quot;, error);
+          res.status(500).send({ err: &quot;Server error&quot; });
+        }
+      }
+    );
+  } catch (e) {
+    res.status(500).send({
+      error: &quot;Server Error&quot;,
+    });
+  }
+});
+
+</code></pre><ul>
+<li>
+<p>Đầu tiên, mình thấy luồng khá là rõ là chúng ta sẽ report-bug sau đó sever sẽ chạy chromium view đến trang  <code>http://127.0.0.1/triage?id=${id}&amp;url=${url}&amp;report=${report}</code> với <code>authSecret</code> gán vào cookie của trang.</p>
+</li>
+<li>
+<p>Nhưng mà sau đó mình nhận ra trong trang triage ấy hoàn toàn không có chức năng gì cả ban đầu mình lọ mọ cũng nghĩ là dính lỗi ở js rồi nhưng search mãi không được sau anh <code>k3nv1n</code> chỉ mình là lỗi của file <code>launch-ENa21cfed3f06f4ddf9690de8077b39e81-development.min.js</code> bị dính <code>client-side-prototype-pollution</code> và có POC:
+<img src="https://hackmd.io/_uploads/BkxLH3YyA.png" alt="image"></p>
+</li>
+<li>
+<p>oke, bây giờ đã rõ luồng là ta sẽ report bug sau đó tận dụng lỗ hổng trên để nó trigger XSS gửi request đến port:5000/bounty và gửi ngược lại kết quả ra ngoài hoặc cũng có thể dùng cách là đầu tiên trigger lấy <code>authSecret</code> của admin sau đó bypass ip bằng <code>X-Forwarded-For</code></p>
+</li>
+<li>
+<p>ở đây thì mình sẽ dùng cách 1 cho nhanh:</p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/Hk3ui2FkR.png" alt="image"></p>
+<ul>
+<li>Đầu tiên là khai thác lỗi <code>client-side-prototype-pollution</code> và mình sẽ tạo một paramater dùng trick &amp;a=? để ghi thêm 1 parameter nữa.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rypv3nY10.png" alt="image"></p>
+<ul>
+<li>
+<p>Nhận được cookie :-1: 
+<img src="https://hackmd.io/_uploads/rk5u3nYJR.png" alt="image"></p>
+</li>
+<li>
+<p>Bây giờ thì gửi payload như luồng trên và nhận cờ:</p>
+</li>
+<li>
+<p>ở đây để bypass được ssrf filter thì mình sử dụng một host redirect</p>
+</li>
+</ul>
+<p><code>https://tellico.fun/redirect.php\\x3ftarget\\x3dhttp://reward:5000/bounty</code> gần tương tự như DNS binding.</p>
+<p><img src="https://hackmd.io/_uploads/BJKqa3KkC.png" alt="image"></p>
+<ul>
+<li>Flag nhận được là :-1:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rkKcR3t1A.png" alt="image"></p>
+<p>FLAG: <code>ACSC{y@u_4chieved_th3_highest_r3w4rd_in_th3_Buggy_Bounty_progr4m}</code></p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://l3mnt2010.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://l3mnt2010.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://l3mnt2010.github.io/write-up/2024-06-13-akasecctf2024-web-chall/" data-toggle="tooltip" data-placement="top" title="AkasecCTF web chall ctf 2024 - solved challenges">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://l3mnt2010.github.io/write-up/attackdefense.com-privilege-escalation/" data-toggle="tooltip" data-placement="top" title="[Attackdefense.com] Privilege Escalation">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://l3mnt2010.github.io/">l3mnt2010&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://l3mnt2010.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://l3mnt2010.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

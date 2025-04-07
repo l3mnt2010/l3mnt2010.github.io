@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine on l3mnt2010&#39;s Blog</title>
+    <link>https://l3mnt2010.github.io/categories/machine/</link>
+    <description>Recent content in Machine on l3mnt2010&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>llam16219@gmail.com (l3mnt2010)</managingEditor>
+    <webMaster>llam16219@gmail.com (l3mnt2010)</webMaster>
+    <copyright>© l3mnt2010 Balogh 2021</copyright><atom:link href="https://l3mnt2010.github.io/categories/machine/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Devel HTB</title>
+      <link>https://l3mnt2010.github.io/write-up/2024-12-02-develhtb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
+      <guid>https://l3mnt2010.github.io/write-up/2024-12-02-develhtb/</guid>
+      <description>Devel ở đây có 2 cổng đang mở là 21 là ftp và 80 là http webserver đang chạy web với phần mở rộng tệp là .aspx
+tìm được bài khai thác với metasploit:
+https://www.rapid7.com/blog/post/2009/12/28/exploiting-microsoft-iis-with-metasploit/
+l3mnt2010@ASUSEXPERTBOOK:~$ ftp 10.129.243.118Connected to 10.129.243.118.220 Microsoft FTP ServiceName (10.129.243.118:l3mnt2010): anonymous331 Anonymous access allowed, send identity (e-mail name) as password.Password:230 User logged in.Remote system type is Windows_NT.ftp&amp;gt; ls229 Entering Extended Passive Mode (|||49158|)125 Data connection already open; Transfer starting.</description>
+    </item>
+    
+  </channel>
+</rss>
