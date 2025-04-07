@@ -15,7 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/write-up/2024-12-02-develhtb/</guid>
-      <description>Devel  cheat    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.6rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.6rem; text-align: left; }.toc ul, .toc ol {padding-left: 0; margin: 0;list-style-type: none;text-align: left; }.</description>
+      <description>Devel  cheat    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 1.3rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.3rem; text-align: left; }.toc ul, .toc ol {padding-left: 0; margin: 0;list-style-type: none;text-align: left; }.</description>
     </item>
     
   </channel>

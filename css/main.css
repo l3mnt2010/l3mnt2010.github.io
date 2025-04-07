@@ -9,6 +9,10 @@ body {
   display: flex;
   flex-flow: column;
   height: 100vh;
+  background-image: url('/images/site-background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
 }
 @media (prefers-color-scheme: dark) {
   body {

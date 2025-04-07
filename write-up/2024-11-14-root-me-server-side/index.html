@@ -61,7 +61,7 @@
   "headline": "Root-me server side - WEB \u0027s challenges",
   "description" : "Root-me server side  HTML - Source code HTTP - IP restriction bypass HTTP - Open redirect HTTP - User-agent Weak password PHP - Command injection API - Broken Access Backup file HTTP - Directory indexing HTTP - Headers HTTP - POST HTTP - Improper redirect HTTP - Verb tampering Install files Nginx - Alias Misconfiguration Nginx - Root Location Misconfiguration API - Mass Assignment CRLF File upload - Double extensions File upload - MIME type Flask - Unsecure session GraphQL - Introspection HTTP - Cookies Insecure Code Management JWT - Introduction XSS - Server Side Directory traversal File upload - Null byte JWT - Revoked token JWT - Weak secret JWT - Unsecure File Signature PHP - assert() PHP - Apache configuration PHP - Filters PHP - register globals PHP - Remote Xdebug Python - Server-side Template Injection Introduction File upload - ZIP Flask - Development server GraphQL - Injection Command injection - Filter bypass Java - Server-side Template Injection JWT - Public key JWT - Header Injection Local File Inclusion Local File Inclusion - Double encoding Node - Eval PHP - Loose Comparison PHP - preg_replace() PHP - type juggling Remote File Inclusion SQL injection - Authentication SQL injection - Authentication - GBK SQL injection - String XSLT - Code execution Elixir - EEx JWT - Unsecure Key Handling LDAP injection - Authentication Node - Serialize NoSQL injection - Authentication PHP - Path Truncation PHP - Serialization SQL injection - Numeric SQL Injection - Routed SQL Truncation XML External Entity XPath injection - Authentication Yaml - Deserialization  CVE-2017-18342   API - Broken Access 2 GraphQL - Backend injection Local File Inclusion - Wrappers PHP - Eval PHP - Eval - Advanced filters bypass Java - Spring Boot SQL injection - Error SQL injection - Insert PHP - SerializationPHP  POC   Deserialization Overflow Deserialization Overflow    \r\r\r\r\r.",
   "inLanguage" : "en",
-  "wordCount":  9678 ,
+  "wordCount":  9711 ,
   "datePublished" : "0001-01-01T00:00:00\u002b00:00",
   "dateModified" : "0001-01-01T00:00:00\u002b00:00",
   "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
@@ -378,7 +378,7 @@
     }
 
     .toc {
-      font-size: 2.6rem;  
+      font-size: 1.3rem;  
       color: #fff;  
       text-align: left;  
     }
@@ -386,7 +386,7 @@
     .toc h4 {
       margin-top: 0;
       margin-bottom: 1rem;
-      font-size: 1.6rem;  
+      font-size: 1.3rem;  
       text-align: left;  
     }
 
@@ -409,16 +409,33 @@
       text-align: left;  
     }
 
+     
     .toc a {
       text-decoration: none;
-      color: #fff;  
       display: block;
       text-align: left;  
       padding-left: 3px;  
-      font-size: 1.5rem;  
+      font-size: 1.3rem;  
       transition: color 0.2s;
     }
 
+     
+    .toc > nav > ul > li > a {
+      color: #bb86fc;  
+      font-weight: bold;
+    }
+
+     
+    .toc > nav > ul > li > ul > li > a {
+      color: #ff4d4d;  
+    }
+
+     
+    .toc > nav > ul > li > ul > li > ul > li > a {
+      color: #4caf50;  
+    }
+
+     
     .toc a:hover {
       color: #ffcc00;  
     }

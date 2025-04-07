@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <title>CtfZone2024 - WEB &#39;s challenges - &gt; root@l3mnt2010:~# ./exploit.py</title>
-  <meta name="description" content="WEB challs  web/0ld_b4t_g0ld web/Funny buttons [9 solves]  analysis Socket-IO server: CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB exploit local &#43; real server   web/breathtaking-roulette    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.">
+  <meta name="description" content="WEB challs  web/0ld_b4t_g0ld web/Funny buttons [9 solves]  analysis Socket-IO server: CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB exploit local &#43; real server   web/breathtaking-roulette    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 1.">
   <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -59,9 +59,9 @@
     "name" : ""
   },
   "headline": "CtfZone2024 - WEB \u0027s challenges",
-  "description" : "WEB challs  web\/0ld_b4t_g0ld web\/Funny buttons [9 solves]  analysis Socket-IO server: CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB exploit local \u002b real server   web\/breathtaking-roulette    \r\r\r\r\r.toc-container {\rposition: fixed;\rleft: 0;\rtop: 100px; width: 350px; max-height: 80vh;\roverflow-y: auto;\roverflow-x: auto;\rpadding: 20px;\rborder-right: 1px solid #eee;\rbackground-color: black; z-index: 100;\rtext-align: left; }\r.toc {\rfont-size: 2.",
+  "description" : "WEB challs  web\/0ld_b4t_g0ld web\/Funny buttons [9 solves]  analysis Socket-IO server: CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB exploit local \u002b real server   web\/breathtaking-roulette    \r\r\r\r\r.toc-container {\rposition: fixed;\rleft: 0;\rtop: 100px; width: 350px; max-height: 80vh;\roverflow-y: auto;\roverflow-x: auto;\rpadding: 20px;\rborder-right: 1px solid #eee;\rbackground-color: black; z-index: 100;\rtext-align: left; }\r.toc {\rfont-size: 1.",
   "inLanguage" : "en",
-  "wordCount":  3638 ,
+  "wordCount":  3671 ,
   "datePublished" : "0001-01-01T00:00:00\u002b00:00",
   "dateModified" : "0001-01-01T00:00:00\u002b00:00",
   "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
@@ -82,7 +82,7 @@
 
 
 <meta property="og:title" content="CtfZone2024 - WEB &#39;s challenges" />
-<meta property="og:description" content="WEB challs  web/0ld_b4t_g0ld web/Funny buttons [9 solves]  analysis Socket-IO server: CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB exploit local &#43; real server   web/breathtaking-roulette    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 2.">
+<meta property="og:description" content="WEB challs  web/0ld_b4t_g0ld web/Funny buttons [9 solves]  analysis Socket-IO server: CVE-2022-46164 Account takeover via prototype vulnerability in NodeBB exploit local &#43; real server   web/breathtaking-roulette    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 1.">
 <meta property="og:image" content="https://l3mnt2010.github.io/avatar.png" />
 <meta property="og:url" content="https://l3mnt2010.github.io/write-up/2024-08-10-ctfzone2024/" />
 <meta property="og:type" content="website" />
@@ -301,7 +301,7 @@
     }
 
     .toc {
-      font-size: 2.6rem;  
+      font-size: 1.3rem;  
       color: #fff;  
       text-align: left;  
     }
@@ -309,7 +309,7 @@
     .toc h4 {
       margin-top: 0;
       margin-bottom: 1rem;
-      font-size: 1.6rem;  
+      font-size: 1.3rem;  
       text-align: left;  
     }
 
@@ -332,16 +332,33 @@
       text-align: left;  
     }
 
+     
     .toc a {
       text-decoration: none;
-      color: #fff;  
       display: block;
       text-align: left;  
       padding-left: 3px;  
-      font-size: 1.5rem;  
+      font-size: 1.3rem;  
       transition: color 0.2s;
     }
 
+     
+    .toc > nav > ul > li > a {
+      color: #bb86fc;  
+      font-weight: bold;
+    }
+
+     
+    .toc > nav > ul > li > ul > li > a {
+      color: #ff4d4d;  
+    }
+
+     
+    .toc > nav > ul > li > ul > li > ul > li > a {
+      color: #4caf50;  
+    }
+
+     
     .toc a:hover {
       color: #ffcc00;  
     }
