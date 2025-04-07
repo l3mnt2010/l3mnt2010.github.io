@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>English on l3mnt2010&#39;s Blog</title>
+    <title>English on &gt; root@l3mnt2010:~# ./exploit.py</title>
     <link>https://l3mnt2010.github.io/tags/english/</link>
-    <description>Recent content in English on l3mnt2010&#39;s Blog</description>
+    <description>Recent content in English on &gt; root@l3mnt2010:~# ./exploit.py</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>llam16219@gmail.com (l3mnt2010)</managingEditor>
     <webMaster>llam16219@gmail.com (l3mnt2010)</webMaster>
-    <copyright>© l3mnt2010 Balogh 2021</copyright><atom:link href="https://l3mnt2010.github.io/tags/english/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>l3mnt2010</copyright><atom:link href="https://l3mnt2010.github.io/tags/english/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>BKSEC-CTF-2023 - WEB &#39;s challenges</title>
       <link>https://l3mnt2010.github.io/write-up/2023-08-19-bksecctf2023/</link>

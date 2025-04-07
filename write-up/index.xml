@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Write-ups on l3mnt2010&#39;s Blog</title>
+    <title>Write-ups on &gt; root@l3mnt2010:~# ./exploit.py</title>
     <link>https://l3mnt2010.github.io/write-up/</link>
-    <description>Recent content in Write-ups on l3mnt2010&#39;s Blog</description>
+    <description>Recent content in Write-ups on &gt; root@l3mnt2010:~# ./exploit.py</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>llam16219@gmail.com (l3mnt2010)</managingEditor>
     <webMaster>llam16219@gmail.com (l3mnt2010)</webMaster>
-    <copyright>© l3mnt2010 Balogh 2021</copyright>
-    <lastBuildDate>Sun, 30 Aug 2020 18:17:00 +0700</lastBuildDate><atom:link href="https://l3mnt2010.github.io/write-up/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[Attackdefense.com] Privilege Escalation</title>
-      <link>https://l3mnt2010.github.io/write-up/attackdefense.com-privilege-escalation/</link>
-      <pubDate>Sun, 30 Aug 2020 18:17:00 +0700</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/attackdefense.com-privilege-escalation/</guid>
-      <description>Link https://attackdefense.com/challengedetails?cid=2021
-Student to Teacher Find SUID binaries Using ‘Strings’ to view
-When we run the read-submission file. It will call and run the read-file. Read file is a binary file. We will use the PATH variable method
-First create another read-file executable file in / tmp with the content to generate a shell. Then use export to append the $ PATH variable. Then run the read-submission file. Because of the teacher’s suid, when running will generate the teacher’s shell:</description>
-    </item>
-    
+    <copyright>l3mnt2010</copyright><atom:link href="https://l3mnt2010.github.io/write-up/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ACSCCTF2024 - WEB chall</title>
       <link>https://l3mnt2010.github.io/write-up/2024-03-30-acscctf2024/</link>

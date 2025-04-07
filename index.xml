@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>l3mnt2010&#39;s Blog</title>
+    <title>&gt; root@l3mnt2010:~# ./exploit.py</title>
     <link>https://l3mnt2010.github.io/</link>
-    <description>Recent content on l3mnt2010&#39;s Blog</description>
+    <description>Recent content on &gt; root@l3mnt2010:~# ./exploit.py</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>llam16219@gmail.com (l3mnt2010)</managingEditor>
     <webMaster>llam16219@gmail.com (l3mnt2010)</webMaster>
-    <copyright>© l3mnt2010 Balogh 2021</copyright>
-    <lastBuildDate>Wed, 21 Jul 2021 18:17:00 +0700</lastBuildDate><atom:link href="https://l3mnt2010.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Android Pentest Note</title>
-      <link>https://l3mnt2010.github.io/android-pentest-note/</link>
-      <pubDate>Wed, 21 Jul 2021 18:17:00 +0700</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/android-pentest-note/</guid>
-      <description>Concept Structure  AndroidManifest file contains the application’s structure Res folder contains all the resources that the application needs to run , including user interface layout, icons, audio, etc. The most interesting files for us are the classes.dex files because they are the compiled java files. The .dex extension stands for Dalvik EXecutable. So we need to decompile these dex files to get the java classes.  Tools  Apktool : tool for reverse engineering Android apk files.</description>
-    </item>
-    
+    <copyright>l3mnt2010</copyright><atom:link href="https://l3mnt2010.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About me</title>
       <link>https://l3mnt2010.github.io/about/</link>
@@ -26,18 +16,6 @@
       <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/about/</guid>
       <description># Whoami  Hi! I am a Security Student. I like to play around with anything that is related to hacking, pentesting, security, or tech in general. I love to share the things I&amp;rsquo;ve learned, which is why I set up this blog!  # Skills  Red Team (Reconnaissance, Exploit, Privilege Escalation) Penetration Testing (Web application) Strong knowledge of networking, virtualization, Windows, Linux Secure code review (Java, JS, Go, PHP, C, Python) Automation script, Exploit tools (Python, Bash) Problem-solving, individual work, and teamwork  </description>
-    </item>
-    
-    <item>
-      <title>[Attackdefense.com] Privilege Escalation</title>
-      <link>https://l3mnt2010.github.io/write-up/attackdefense.com-privilege-escalation/</link>
-      <pubDate>Sun, 30 Aug 2020 18:17:00 +0700</pubDate>
-      <author>llam16219@gmail.com (l3mnt2010)</author>
-      <guid>https://l3mnt2010.github.io/write-up/attackdefense.com-privilege-escalation/</guid>
-      <description>Link https://attackdefense.com/challengedetails?cid=2021
-Student to Teacher Find SUID binaries Using ‘Strings’ to view
-When we run the read-submission file. It will call and run the read-file. Read file is a binary file. We will use the PATH variable method
-First create another read-file executable file in / tmp with the content to generate a shell. Then use export to append the $ PATH variable. Then run the read-submission file. Because of the teacher’s suid, when running will generate the teacher’s shell:</description>
     </item>
     
     <item>
