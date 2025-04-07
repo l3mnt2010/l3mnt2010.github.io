@@ -1,6 +1,6 @@
 /* --- General --- */
 
-body {
+/* body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 18px;
   color: #404040;
@@ -19,7 +19,31 @@ body {
     background: black;
     color: white;
   }
+} */
+
+body {
+  font-family: 'Lora', 'Times New Roman', serif;
+  font-size: 18px;
+  color: #404040;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  background-image: url('../background.png');
+  background-color: #FFF;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: rgba(0, 0, 0, 0.8);
+    background-blend-mode: overlay;
+    color: white;
+  }
+}
+
 .container[role=main] {
   margin-bottom:50px;
   flex: 1 0 auto;
