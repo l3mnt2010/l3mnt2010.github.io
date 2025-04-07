@@ -6,367 +6,25 @@
     <description>Recent content in Tags on l3mnt2010&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zoltan.balogh@suse.com (l3mnt2010 Balogh)</managingEditor>
-    <webMaster>zoltan.balogh@suse.com (l3mnt2010 Balogh)</webMaster>
+    <managingEditor>llam16219@gmail.com (l3mnt2010)</managingEditor>
+    <webMaster>llam16219@gmail.com (l3mnt2010)</webMaster>
     <copyright>© l3mnt2010 Balogh 2021</copyright>
-    <lastBuildDate>Mon, 03 Apr 2023 06:13:44 +0300</lastBuildDate><atom:link href="https://l3mnt2010.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>software engineering</title>
-      <link>https://l3mnt2010.github.io/tags/software-engineering/</link>
-      <pubDate>Mon, 03 Apr 2023 06:13:44 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/software-engineering/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>developer tools</title>
-      <link>https://l3mnt2010.github.io/tags/developer-tools/</link>
-      <pubDate>Sat, 04 Mar 2023 03:27:12 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/developer-tools/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://l3mnt2010.github.io/tags/linux/</link>
-      <pubDate>Sat, 04 Mar 2023 03:27:12 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>OBS</title>
-      <link>https://l3mnt2010.github.io/tags/obs/</link>
-      <pubDate>Sat, 04 Mar 2023 03:27:12 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/obs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>opens source</title>
-      <link>https://l3mnt2010.github.io/tags/opens-source/</link>
-      <pubDate>Sat, 04 Mar 2023 03:27:12 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/opens-source/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>opensuse</title>
-      <link>https://l3mnt2010.github.io/tags/opensuse/</link>
-      <pubDate>Sat, 04 Mar 2023 03:27:12 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/opensuse/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SLES</title>
-      <link>https://l3mnt2010.github.io/tags/sles/</link>
-      <pubDate>Sat, 04 Mar 2023 03:27:12 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/sles/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SUSE</title>
-      <link>https://l3mnt2010.github.io/tags/suse/</link>
-      <pubDate>Sat, 04 Mar 2023 03:27:12 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/suse/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>zypper</title>
-      <link>https://l3mnt2010.github.io/tags/zypper/</link>
-      <pubDate>Sat, 04 Mar 2023 03:27:12 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/zypper/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hackweek</title>
-      <link>https://l3mnt2010.github.io/tags/hackweek/</link>
-      <pubDate>Wed, 01 Feb 2023 19:15:12 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/hackweek/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>LDAP</title>
-      <link>https://l3mnt2010.github.io/tags/ldap/</link>
-      <pubDate>Fri, 06 Jan 2023 04:41:11 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/ldap/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Open Build Service</title>
-      <link>https://l3mnt2010.github.io/tags/open-build-service/</link>
-      <pubDate>Fri, 06 Jan 2023 04:41:11 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/open-build-service/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>osc</title>
-      <link>https://l3mnt2010.github.io/tags/osc/</link>
-      <pubDate>Fri, 06 Jan 2023 04:41:11 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/osc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Grafana</title>
-      <link>https://l3mnt2010.github.io/tags/grafana/</link>
-      <pubDate>Thu, 06 Oct 2022 20:32:50 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/grafana/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>InfluxDB</title>
-      <link>https://l3mnt2010.github.io/tags/influxdb/</link>
-      <pubDate>Thu, 06 Oct 2022 20:32:50 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/influxdb/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Telegraf</title>
-      <link>https://l3mnt2010.github.io/tags/telegraf/</link>
-      <pubDate>Thu, 06 Oct 2022 20:32:50 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/telegraf/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>accesibility</title>
-      <link>https://l3mnt2010.github.io/tags/accesibility/</link>
-      <pubDate>Mon, 13 Jun 2022 17:32:50 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/accesibility/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>shelley</title>
-      <link>https://l3mnt2010.github.io/tags/shelley/</link>
-      <pubDate>Mon, 13 Jun 2022 17:32:50 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/shelley/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>voks</title>
-      <link>https://l3mnt2010.github.io/tags/voks/</link>
-      <pubDate>Mon, 13 Jun 2022 17:32:50 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/voks/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>enerprise linux</title>
-      <link>https://l3mnt2010.github.io/tags/enerprise-linux/</link>
-      <pubDate>Sat, 19 Feb 2022 06:42:50 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/enerprise-linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>vim</title>
-      <link>https://l3mnt2010.github.io/tags/vim/</link>
-      <pubDate>Sat, 19 Feb 2022 06:42:50 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/vim/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>iot</title>
-      <link>https://l3mnt2010.github.io/tags/iot/</link>
-      <pubDate>Tue, 28 Dec 2021 10:35:50 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/iot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mosquitto</title>
-      <link>https://l3mnt2010.github.io/tags/mosquitto/</link>
-      <pubDate>Tue, 28 Dec 2021 10:35:50 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/mosquitto/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mqtt</title>
-      <link>https://l3mnt2010.github.io/tags/mqtt/</link>
-      <pubDate>Tue, 28 Dec 2021 10:35:50 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/mqtt/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>shelly</title>
-      <link>https://l3mnt2010.github.io/tags/shelly/</link>
-      <pubDate>Tue, 28 Dec 2021 10:35:50 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/shelly/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Wed, 21 Jul 2021 18:17:00 +0700</lastBuildDate><atom:link href="https://l3mnt2010.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android</title>
       <link>https://l3mnt2010.github.io/tags/android/</link>
       <pubDate>Wed, 21 Jul 2021 18:17:00 +0700</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/tags/android/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>haproxy</title>
-      <link>https://l3mnt2010.github.io/tags/haproxy/</link>
-      <pubDate>Thu, 22 Apr 2021 20:40:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/haproxy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>letsencrypt</title>
-      <link>https://l3mnt2010.github.io/tags/letsencrypt/</link>
-      <pubDate>Thu, 22 Apr 2021 20:40:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/letsencrypt/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>matomo</title>
-      <link>https://l3mnt2010.github.io/tags/matomo/</link>
-      <pubDate>Thu, 22 Apr 2021 20:40:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/matomo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>website</title>
-      <link>https://l3mnt2010.github.io/tags/website/</link>
-      <pubDate>Thu, 22 Apr 2021 20:40:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/website/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>github</title>
-      <link>https://l3mnt2010.github.io/tags/github/</link>
-      <pubDate>Mon, 05 Apr 2021 19:36:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://l3mnt2010.github.io/tags/golang/</link>
-      <pubDate>Mon, 05 Apr 2021 19:36:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://l3mnt2010.github.io/tags/hugo/</link>
-      <pubDate>Mon, 05 Apr 2021 19:36:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mdadm</title>
-      <link>https://l3mnt2010.github.io/tags/mdadm/</link>
-      <pubDate>Mon, 05 Apr 2021 19:36:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/mdadm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>monit</title>
-      <link>https://l3mnt2010.github.io/tags/monit/</link>
-      <pubDate>Mon, 05 Apr 2021 19:36:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/monit/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>nextcloud</title>
-      <link>https://l3mnt2010.github.io/tags/nextcloud/</link>
-      <pubDate>Mon, 05 Apr 2021 19:36:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/nextcloud/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>packaging</title>
-      <link>https://l3mnt2010.github.io/tags/packaging/</link>
-      <pubDate>Mon, 05 Apr 2021 19:36:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/packaging/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pages</title>
-      <link>https://l3mnt2010.github.io/tags/pages/</link>
-      <pubDate>Mon, 05 Apr 2021 19:36:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/pages/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>telegram</title>
-      <link>https://l3mnt2010.github.io/tags/telegram/</link>
-      <pubDate>Mon, 05 Apr 2021 19:36:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/telegram/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>workflow</title>
-      <link>https://l3mnt2010.github.io/tags/workflow/</link>
-      <pubDate>Mon, 05 Apr 2021 19:36:57 +0300</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
-      <guid>https://l3mnt2010.github.io/tags/workflow/</guid>
+      <title>Linux</title>
+      <link>https://l3mnt2010.github.io/tags/linux/</link>
+      <pubDate>Sun, 30 Aug 2020 18:17:00 +0700</pubDate>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
+      <guid>https://l3mnt2010.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
@@ -374,7 +32,7 @@
       <title>Privilege Escalation</title>
       <link>https://l3mnt2010.github.io/tags/privilege-escalation/</link>
       <pubDate>Sun, 30 Aug 2020 18:17:00 +0700</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/tags/privilege-escalation/</guid>
       <description></description>
     </item>
@@ -383,7 +41,7 @@
       <title>CTF</title>
       <link>https://l3mnt2010.github.io/tags/ctf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/tags/ctf/</guid>
       <description></description>
     </item>
@@ -392,7 +50,7 @@
       <title>Deserialize</title>
       <link>https://l3mnt2010.github.io/tags/deserialize/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/tags/deserialize/</guid>
       <description></description>
     </item>
@@ -401,7 +59,7 @@
       <title>English</title>
       <link>https://l3mnt2010.github.io/tags/english/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/tags/english/</guid>
       <description></description>
     </item>
@@ -410,7 +68,7 @@
       <title>Vietnamese</title>
       <link>https://l3mnt2010.github.io/tags/vietnamese/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/tags/vietnamese/</guid>
       <description></description>
     </item>
@@ -419,7 +77,7 @@
       <title>Windows</title>
       <link>https://l3mnt2010.github.io/tags/windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/tags/windows/</guid>
       <description></description>
     </item>
@@ -428,7 +86,7 @@
       <title>XXE</title>
       <link>https://l3mnt2010.github.io/tags/xxe/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/tags/xxe/</guid>
       <description></description>
     </item>

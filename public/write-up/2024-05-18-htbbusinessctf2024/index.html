@@ -11,7 +11,7 @@
 
   <title>Htb business ctf 2024 the vault of hope - solved challenges in time - l3mnt2010&#39;s Blog</title>
   <meta name="description" content="Solved challenges Web/Jailbreak  Mở đầu các chall web bằng một bài black box khá đơn giản. Trang web có khá nhiều page render client side và không tương tác với server trừ chức năng update firmware với định dạng file xml.   Nhìn vào thì ta sẽ nghĩ ngay đến vul XXE external entity injection để đọc file trên hệ thống. Quan sát kĩ hơn bằng việc chặn proxy :    Post method với /api/update nhận file xml và trả ra nội dung update version nằm trong một thẻ của file xml vì vậy có thể đoán nôm na rằng server sẽ hiển thị nội dung của tag Version.">
-  <meta name="author" content="l3mnt2010 Balogh"/><script type="application/ld+json">
+  <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
@@ -122,6 +122,12 @@
           
             <li>
               <a title="Blog" href="https://l3mnt2010.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Write-ups" href="https://l3mnt2010.github.io/write-up/">Write-ups</a>
             </li>
           
         

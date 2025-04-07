@@ -6,15 +6,15 @@
     <description>Recent content in Privilege Escalation on l3mnt2010&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>zoltan.balogh@suse.com (l3mnt2010 Balogh)</managingEditor>
-    <webMaster>zoltan.balogh@suse.com (l3mnt2010 Balogh)</webMaster>
+    <managingEditor>llam16219@gmail.com (l3mnt2010)</managingEditor>
+    <webMaster>llam16219@gmail.com (l3mnt2010)</webMaster>
     <copyright>© l3mnt2010 Balogh 2021</copyright>
     <lastBuildDate>Sun, 30 Aug 2020 18:17:00 +0700</lastBuildDate><atom:link href="https://l3mnt2010.github.io/tags/privilege-escalation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Attackdefense.com] Privilege Escalation</title>
       <link>https://l3mnt2010.github.io/write-up/attackdefense.com-privilege-escalation/</link>
       <pubDate>Sun, 30 Aug 2020 18:17:00 +0700</pubDate>
-      <author>zoltan.balogh@suse.com (l3mnt2010 Balogh)</author>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/write-up/attackdefense.com-privilege-escalation/</guid>
       <description>Link https://attackdefense.com/challengedetails?cid=2021
 Student to Teacher Find SUID binaries Using ‘Strings’ to view

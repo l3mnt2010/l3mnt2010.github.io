@@ -11,7 +11,7 @@
 
   <title>KCSC CTF 2024 - WEB &#39;s challenges - l3mnt2010&#39;s Blog</title>
   <meta name="description" content="WEB challs Bài Ka Tuổi Trẻ (200 points)  Đây là một bài của anh null001 với một đoạn code python khá ngắn  from flask import Flask, request, redirectfrom os import access, R_OK, statfrom os.path import isfile, join, normpathimport regexapp = Flask(__name__, static_url_path=&#39;/static&#39;, static_folder=&#39;static&#39;)@app.get(&#39;/&#39;)def home():if request.args.get(&#39;file&#39;):filename = join(&quot;./static&quot;, request.args.get(&#39;file&#39;))if isfile(normpath(filename)) and access(normpath(filename), R_OK) and (stat(normpath(filename)).st_size &lt; 1024 * 1024 * 2):try:with open(normpath(filename), &quot;rb&quot;) as file:if not regex.">
-  <meta name="author" content="l3mnt2010 Balogh"/><script type="application/ld+json">
+  <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
@@ -122,6 +122,12 @@
           
             <li>
               <a title="Blog" href="https://l3mnt2010.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Write-ups" href="https://l3mnt2010.github.io/write-up/">Write-ups</a>
             </li>
           
         

@@ -11,7 +11,7 @@
 
   <title>BKSEC-CTF-2023 - WEB &#39;s challenges - l3mnt2010&#39;s Blog</title>
   <meta name="description" content="WEB challs Metadata checker  This is whitebox challenge, you can view source below:  if (isset($_FILES) &amp;&amp; !empty($_FILES)) {$uploadpath = &quot;/var/tmp/&quot;;$error = &quot;&quot;;$timestamp = time();$userValue = $_COOKIE[&#39;user&#39;];$target_file = $uploadpath . $userValue . &quot;_&quot; . $timestamp . &quot;_&quot; . $_FILES[&quot;image&quot;][&quot;name&quot;];move_uploaded_file($_FILES[&quot;image&quot;][&quot;tmp_name&quot;], $target_file);if ($_FILES[&quot;image&quot;][&quot;size&quot;] &gt; 1048576) {$error .= &#39;&lt;p class=&quot;h5 text-danger&quot;&gt;Maximum file size is 1MB.&lt;/p&gt;&#39;;} elseif ($_FILES[&quot;image&quot;][&quot;type&quot;] !== &quot;image/jpeg&quot;) {$error .= &#39;&lt;p class=&quot;h5 text-danger&quot;&gt;Only JPG files are allowed.">
-  <meta name="author" content="l3mnt2010 Balogh"/><script type="application/ld+json">
+  <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
@@ -122,6 +122,12 @@
           
             <li>
               <a title="Blog" href="https://l3mnt2010.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Write-ups" href="https://l3mnt2010.github.io/write-up/">Write-ups</a>
             </li>
           
         

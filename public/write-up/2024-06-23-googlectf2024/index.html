@@ -12,7 +12,7 @@
   <title>Google CTF 2024 - solved &#39;s challenges on time - l3mnt2010&#39;s Blog</title>
   <meta name="description" content="vsCTF 2024 ONLYECHO source :
 const readline = require(&#39;node:readline&#39;);const parse = require(&#39;bash-parser&#39;);const { exec } = require(&quot;child_process&quot;);const check = ast =&gt; {if (typeof(ast) === &#39;string&#39;) {return true;}for (var prop in ast) {if (prop === &#39;type&#39; &amp;&amp; ast[prop] === &#39;Redirect&#39;) {return false;}if (prop === &#39;type&#39; &amp;&amp; ast[prop] === &#39;Command&#39;) {if (ast[&#39;name&#39;] &amp;&amp; ast[&#39;name&#39;][&#39;text&#39;] &amp;&amp; ast[&#39;name&#39;][&#39;text&#39;] != &#39;echo&#39;) {return false;}}if (!">
-  <meta name="author" content="l3mnt2010 Balogh"/><script type="application/ld+json">
+  <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
@@ -125,6 +125,12 @@ const readline = require(&#39;node:readline&#39;);const parse = require(&#39;ba
           
             <li>
               <a title="Blog" href="https://l3mnt2010.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Write-ups" href="https://l3mnt2010.github.io/write-up/">Write-ups</a>
             </li>
           
         

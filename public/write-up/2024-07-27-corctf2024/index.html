@@ -11,7 +11,7 @@
 
   <title>CorCTF2024 - WEB &#39;s challenges - l3mnt2010&#39;s Blog</title>
   <meta name="description" content="WEB challs rock-paper-scissors [79 solves]  Một chall kéo - búa - bao với nodejs &#43; redis để lưu số lần thắng của người chơi.  analysis  Ta sẽ đi vào phần tích các api của server:  import Redis from &#39;ioredis&#39;;import fastify from &#39;fastify&#39;;import fastifyStatic from &#39;@fastify/static&#39;;import fastifyJwt from &#39;@fastify/jwt&#39;;import fastifyCookie from &#39;@fastify/cookie&#39;;import { join } from &#39;node:path&#39;;import { randomBytes, randomInt } from &#39;node:crypto&#39;;const redis = new Redis(6379, &quot;redis&quot;);const app = fastify();const winning = new Map([[&#39;🪨&#39;, &#39;📃&#39;],[&#39;📃&#39;, &#39;✂️&#39;],[&#39;✂️&#39;, &#39;🪨&#39;]]);app.">
-  <meta name="author" content="l3mnt2010 Balogh"/><script type="application/ld+json">
+  <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
@@ -122,6 +122,12 @@
           
             <li>
               <a title="Blog" href="https://l3mnt2010.github.io/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Write-ups" href="https://l3mnt2010.github.io/write-up/">Write-ups</a>
             </li>
           
         

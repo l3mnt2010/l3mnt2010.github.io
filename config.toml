@@ -27,16 +27,16 @@ authorlocation = "authorlocation"
 cover = "static/cover.png"
 logo = "avatar.png"
 favicon = "avatar.png"
-githubName = "bzoltan1"
-linkedinName = "zbalogh"
-email = "zoltan.balogh@suse.com"
+githubName = "l3mnt2010"
+linkedinName = "l3mnt2010"
+email = "llam16219@gmail.com"
 hideHUGOSupport = false
 
 [Author]
-name = "l3mnt2010 Balogh"
-email = "zoltan.balogh@suse.com"
-github = "bzoltan1"
-linkedin = "zbalogh"
+name = "l3mnt2010"
+email = "llam16219@gmail.com"
+github = "llam16219@gmail.com"
+linkedin = "llam16219@gmail.com"
 
 [[menu.main]]  
 name = "Home" 
@@ -56,6 +56,11 @@ url = "/about"
 name = "Blog"
 url = ""
 weight = 1
+
+[[menu.main]]
+name = "Write-ups"
+url = "/write-up/"
+weight = 2
 
 [[menu.main]]
 name = "Tags"
