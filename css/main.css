@@ -43,7 +43,6 @@ body {
     color: white;
   }
 }
-
 .container[role=main] {
   margin-bottom:50px;
   flex: 1 0 auto;
