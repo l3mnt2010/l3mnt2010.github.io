@@ -46,6 +46,24 @@
     </item>
     
     <item>
+      <title>CodegateCTF 2024 quals</title>
+      <link>https://l3mnt2010.github.io/write-up/2024-04-17-codegatectf2024quals/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
+      <guid>https://l3mnt2010.github.io/write-up/2024-04-17-codegatectf2024quals/</guid>
+      <description>code gate 2024 quals  Chatting service  flag server go server Flow + exploit   Master_of_calculator    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 1.3rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.</description>
+    </item>
+    
+    <item>
+      <title>CodegateCTF 2025 quals</title>
+      <link>https://l3mnt2010.github.io/write-up/2025-04-17-codegatectf2025quals/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
+      <guid>https://l3mnt2010.github.io/write-up/2025-04-17-codegatectf2025quals/</guid>
+      <description>codegate ctf 2025 quals  Masquerade  find sink endpoint find gadget endpoint find xss endpoint to inject find real endpoint to xss DOM clobbering change variable when trigger Change properties hasPerm to write new post string source -&amp;gt; gadget -&amp;gt; sink Exploit docker local   Hide and seek  CVE-2024-34351: Server-Side Request Forgery in NextJS Server Actions Tối ưu hóa hình ảnh với _next/image Server action Phân tích bài toán   Memo service back office cha&amp;rsquo;s point    .</description>
+    </item>
+    
+    <item>
       <title>Cookie arena</title>
       <link>https://l3mnt2010.github.io/write-up/2023-01-14-cookiearena/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -241,6 +259,15 @@
       <author>llam16219@gmail.com (l3mnt2010)</author>
       <guid>https://l3mnt2010.github.io/write-up/2024-12-10-popcornhtb/</guid>
       <description>Popcorn    Creat python pty-tcp-backconnect   cheat    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 1.3rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.3rem; text-align: left; }.</description>
+    </item>
+    
+    <item>
+      <title>Rmi attack and some chall</title>
+      <link>https://l3mnt2010.github.io/rmi-attack-and-some-chall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
+      <guid>https://l3mnt2010.github.io/rmi-attack-and-some-chall/</guid>
+      <description>RMI  RMI là gì? Example Dynamic class loading in RMI   SVATTT-Quals-2020: ascis_rmi_v1    Gadget chain   Chi tiết về quá trình xử lý khi register object với Registry của Server Chi tiết về quá trình xử lý khi lookup object với Registry của Client   SVATTT-Quals-2022: Waf-deserialize    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.</description>
     </item>
     
     <item>

